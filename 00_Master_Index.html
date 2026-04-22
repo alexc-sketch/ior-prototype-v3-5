@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IOR Website v3.5 — Master Navigation Index. All 55 pages grouped by module." />
+  <title>IOR Website v3.5 — Master Index</title>
+  <link rel="stylesheet" href="ior-global.css" />
+  <style>
+    /* ============================================================
+       MASTER INDEX — LOCAL STYLES
+       These styles are index-only and do not override ior-global.css
+    ============================================================ */
+
+    /* Page shell */
+    body {
+      background: #0A1929;
+      color: #E8EDF2;
+      font-family: 'Avenir Next LT Pro', 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── Header ── */
+    .idx-header {
+      background: #0355A3;
+      padding: 32px 40px 28px;
+      border-bottom: 3px solid #D98300;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .idx-header__wordmark {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .idx-header__wordmark span {
+      color: #D98300;
+    }
+    .idx-header__meta {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      text-align: right;
+    }
+    .idx-header__meta strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* ── Intro strip ── */
+    .idx-intro {
+      background: #0A2540;
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .idx-stat {
+      text-align: center;
+      min-width: 80px;
+    }
+    .idx-stat__num {
+      font-size: 32px;
+      font-weight: 900;
+      color: #D98300;
+      line-height: 1;
+    }
+    .idx-stat__label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+    .idx-intro__divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.15);
+    }
+    .idx-intro__note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* ── Legend ── */
+    .idx-legend {
+      padding: 16px 40px;
+      background: #0A1929;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .idx-legend__label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4);
+      margin-right: 8px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 0;
+    }
+    .badge--pending   { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.45); }
+    .badge--building  { background: rgba(3,85,163,0.35);    color: #7FBEE6; border: 1px solid rgba(3,85,163,0.6); }
+    .badge--review    { background: rgba(245,166,35,0.2);   color: #F5A623; border: 1px solid rgba(245,166,35,0.4); }
+    .badge--approved  { background: rgba(45,167,113,0.2);   color: #2DA771; border: 1px solid rgba(45,167,113,0.4); }
+
+    /* ── Main content ── */
+    .idx-main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+    }
+
+    /* ── Module section ── */
+    .idx-module {
+      margin-bottom: 48px;
+    }
+    .idx-module__header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .idx-module__tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #D98300;
+      background: rgba(217,131,0,0.12);
+      padding: 4px 10px;
+      border: 1px solid rgba(217,131,0,0.3);
+      white-space: nowrap;
+    }
+    .idx-module__title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+    .idx-module__count {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    /* ── Page card grid ── */
+    .idx-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .idx-card {
+      background: #0D2137;
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color 0.2s, background 0.2s;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+    .idx-card:hover {
+      border-color: rgba(3,85,163,0.6);
+      background: #0F2A45;
+    }
+    .idx-card--active {
+      border-left: 3px solid #0355A3;
+    }
+    .idx-card--gold {
+      border-left: 3px solid #D98300;
+    }
+    .idx-card__file {
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.03em;
+    }
+    .idx-card__title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #E8EDF2;
+      line-height: 1.3;
+    }
+    .idx-card__url {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      word-break: break-all;
+    }
+    .idx-card__status {
+      margin-top: 4px;
+    }
+    .idx-card__arrow {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.2);
+      transition: color 0.2s, transform 0.2s;
+    }
+    .idx-card:hover .idx-card__arrow {
+      color: #0355A3;
+      transform: translateX(3px);
+    }
+
+    /* ── System files row ── */
+    .idx-system {
+      background: #060F1A;
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 16px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+    .idx-system__label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+      margin-right: 8px;
+    }
+    .idx-system__file {
+      font-size: 12px;
+      font-family: 'Courier New', monospace;
+      color: #7FBEE6;
+      background: rgba(127,190,230,0.08);
+      padding: 4px 10px;
+      border: 1px solid rgba(127,190,230,0.15);
+    }
+
+    /* ── Footer ── */
+    .idx-footer {
+      background: #060F1A;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 24px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .idx-footer__copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+    .idx-footer__version {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .idx-header { padding: 24px 20px; }
+      .idx-header__meta { text-align: left; }
+      .idx-intro { padding: 20px; gap: 20px; }
+      .idx-legend { padding: 12px 20px; }
+      .idx-main { padding: 24px 20px 60px; }
+      .idx-footer { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════════════════════ -->
+  <header class="idx-header">
+    <div class="idx-header__wordmark">IOR<span>.</span></div>
+    <div class="idx-header__meta">
+      <strong>IOR Website v3.5 — Master Index</strong><br />
+      Repository: alexc-sketch/ior-prototype-v3-5 &nbsp;|&nbsp; Branch: feat/v3-m0-foundation<br />
+      Pages: 55 &nbsp;|&nbsp; Modules: M0 – M7 &nbsp;|&nbsp; Status: Foundation Build
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       INTRO STATS
+  ══════════════════════════════════════════════════════════ -->
+  <div class="idx-intro">
+    <div class="idx-stat">
+      <div class="idx-stat__num">61</div>
+      <div class="idx-stat__label">Total Pages</div>
+    </div>
+    <div class="idx-intro__divider"></div>
+    <div class="idx-stat">
+      <div class="idx-stat__num">8</div>
+      <div class="idx-stat__label">Modules</div>
+    </div>
+    <div class="idx-intro__divider"></div>
+    <div class="idx-stat">
+      <div class="idx-stat__num">M0</div>
+      <div class="idx-stat__label">Current Phase</div>
+    </div>
+    <div class="idx-intro__divider"></div>
+    <p class="idx-intro__note">
+      This is the single navigation hub for all 55 pages of the IOR v3.5 website rebuild.
+      Pages are grouped by module and built in sequence — M0 Foundation first, then M1 Homepage,
+      through to M7 Support &amp; Utility. Every page links back to this index.
+      Source of truth: <strong>IOR_Master_Content_Brief.md</strong>.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       LEGEND
+  ══════════════════════════════════════════════════════════ -->
+  <div class="idx-legend">
+    <span class="idx-legend__label">Status</span>
+    <span class="badge badge--pending">Pending</span>
+    <span class="badge badge--building">Building</span>
+    <span class="badge badge--review">In Review</span>
+    <span class="badge badge--approved">Approved</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════════════════════════════ -->
+  <main class="idx-main">
+
+    <!-- SYSTEM FILES -->
+    <div class="idx-system">
+      <span class="idx-system__label">Design System Files</span>
+      <span class="idx-system__file">ior-global.css</span>
+      <span class="idx-system__file">ior-global.js</span>
+      <span class="idx-system__file">ior-motion.js</span>
+      <span class="idx-system__file">IOR_Design_System.html</span>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────
+         M0 — FOUNDATION
+    ───────────────────────────────────────────────────── -->
+    <section class="idx-module">
+      <div class="idx-module__header">
+        <span class="idx-module__tag">M0</span>
+        <span class="idx-module__title">Foundation</span>
+        <span class="idx-module__count">1 page</span>
+      </div>
+      <div class="idx-grid">
+        <a href="00_Master_Index.html" class="idx-card idx-card--active">
+          <span class="idx-card__file">00_Master_Index.html</span>
+          <span class="idx-card__title">Master Index</span>
+          <span class="idx-card__url">Navigation hub — all 55 pages</span>
+          <span class="idx-card__status"><span class="badge badge--approved">Approved</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────
+         M1 — HOMEPAGE
+    ───────────────────────────────────────────────────── -->
+    <section class="idx-module">
+      <div class="idx-module__header">
+        <span class="idx-module__tag">M1</span>
+        <span class="idx-module__title">Homepage</span>
+        <span class="idx-module__count">1 page</span>
+      </div>
+      <div class="idx-grid">
+        <a href="01_Homepage.html" class="idx-card">
+          <span class="idx-card__file">01_Homepage.html</span>
+          <span class="idx-card__title">Homepage</span>
+          <span class="idx-card__url">iorstaging.wp1.site/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────
+         M2 — FUEL SOLUTIONS
+    ───────────────────────────────────────────────────── -->
+    <section class="idx-module">
+      <div class="idx-module__header">
+        <span class="idx-module__tag">M2</span>
+        <span class="idx-module__title">Fuel Solutions</span>
+        <span class="idx-module__count">14 pages</span>
+      </div>
+      <div class="idx-grid">
+
+        <!-- Fuel Solutions Hub -->
+        <a href="02_Fuel_Solutions_Hub.html" class="idx-card">
+          <span class="idx-card__file">02_Fuel_Solutions_Hub.html</span>
+          <span class="idx-card__title">Fuel Solutions Hub</span>
+          <span class="idx-card__url">fuel-solutions/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <!-- Ground Fuels -->
+        <a href="03_Ground_Fuels.html" class="idx-card">
+          <span class="idx-card__file">03_Ground_Fuels.html</span>
+          <span class="idx-card__title">Ground Fuels Hub</span>
+          <span class="idx-card__url">fuel-solutions/ground-fuels/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="03a_Diesel_Network.html" class="idx-card">
+          <span class="idx-card__file">03a_Diesel_Network.html</span>
+          <span class="idx-card__title">IOR Diesel Network</span>
+          <span class="idx-card__url">fuel-solutions/ground-fuels/ior-diesel-network/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="03b_On_Site_Refuelling.html" class="idx-card">
+          <span class="idx-card__file">03b_On_Site_Refuelling.html</span>
+          <span class="idx-card__title">On-Site Refuelling</span>
+          <span class="idx-card__url">fuel-solutions/ground-fuels/on-site-refuelling/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="03c_Bulk_Fuel_Delivery.html" class="idx-card">
+          <span class="idx-card__file">03c_Bulk_Fuel_Delivery.html</span>
+          <span class="idx-card__title">Bulk Fuel Delivery</span>
+          <span class="idx-card__url">fuel-solutions/ground-fuels/bulk-fuel-delivery/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="03d_HyBlue.html" class="idx-card">
+          <span class="idx-card__file">03d_HyBlue.html</span>
+          <span class="idx-card__title">HyBlue™ AdBlue®</span>
+          <span class="idx-card__url">fuel-solutions/ground-fuels/hyblue/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="03e_Oils_Lubricants.html" class="idx-card">
+          <span class="idx-card__file">03e_Oils_Lubricants.html</span>
+          <span class="idx-card__title">Oils &amp; Lubricants</span>
+          <span class="idx-card__url">fuel-solutions/ground-fuels/oils-lubricants/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <!-- Aviation -->
+        <a href="04_Aviation.html" class="idx-card idx-card--gold">
+          <span class="idx-card__file">04_Aviation.html</span>
+          <span class="idx-card__title">Aviation Fuel Hub</span>
+          <span class="idx-card__url">fuel-solutions/aviation/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="04a_Jet_A1.html" class="idx-card idx-card--gold">
+          <span class="idx-card__file">04a_Jet_A1.html</span>
+          <span class="idx-card__title">Jet A-1 &amp; Avgas</span>
+          <span class="idx-card__url">fuel-solutions/aviation/jet-a1/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="04b_Aviation_Infrastructure.html" class="idx-card idx-card--gold">
+          <span class="idx-card__file">04b_Aviation_Infrastructure.html</span>
+          <span class="idx-card__title">Aviation Infrastructure</span>
+          <span class="idx-card__url">fuel-solutions/aviation/infrastructure/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <!-- Equipment & Infrastructure -->
+        <a href="05_Equipment_Infrastructure.html" class="idx-card">
+          <span class="idx-card__file">05_Equipment_Infrastructure.html</span>
+          <span class="idx-card__title">Equipment &amp; Infrastructure Hub</span>
+          <span class="idx-card__url">fuel-solutions/equipment-infrastructure/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="05a_Fuel_Storage_Tanks.html" class="idx-card">
+          <span class="idx-card__file">05a_Fuel_Storage_Tanks.html</span>
+          <span class="idx-card__title">Fuel Storage Tanks</span>
+          <span class="idx-card__url">fuel-solutions/equipment-infrastructure/fuel-storage-tanks/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="05b_Frac_Tanks.html" class="idx-card">
+          <span class="idx-card__file">05b_Frac_Tanks.html</span>
+          <span class="idx-card__title">Frac Tanks</span>
+          <span class="idx-card__url">fuel-solutions/equipment-infrastructure/frac-tanks/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <!-- Supply & Trading -->
+        <a href="06_Supply_Trading.html" class="idx-card">
+          <span class="idx-card__file">06_Supply_Trading.html</span>
+          <span class="idx-card__title">Supply &amp; Trading Hub</span>
+          <span class="idx-card__url">fuel-solutions/supply-trading/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="06a_Lytton_PB.html" class="idx-card">
+          <span class="idx-card__file">06a_Lytton_PB.html</span>
+          <span class="idx-card__title">Lytton &amp; Port Bonython Terminals</span>
+          <span class="idx-card__url">fuel-solutions/supply-trading/terminals/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="06b_Eromanga.html" class="idx-card">
+          <span class="idx-card__file">06b_Eromanga.html</span>
+          <span class="idx-card__title">Eromanga Refinery</span>
+          <span class="idx-card__url">fuel-solutions/supply-trading/eromanga-refinery/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="06c_Condensates.html" class="idx-card">
+          <span class="idx-card__file">06c_Condensates.html</span>
+          <span class="idx-card__title">Condensates</span>
+          <span class="idx-card__url">fuel-solutions/supply-trading/condensates/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────
+         M3 — DIGITAL PLATFORMS
+    ───────────────────────────────────────────────────── -->
+    <section class="idx-module">
+      <div class="idx-module__header">
+        <span class="idx-module__tag">M3</span>
+        <span class="idx-module__title">Digital Platforms</span>
+        <span class="idx-module__count">4 pages</span>
+      </div>
+      <div class="idx-grid">
+
+        <a href="07_Digital_Platforms_Hub.html" class="idx-card">
+          <span class="idx-card__file">07_Digital_Platforms_Hub.html</span>
+          <span class="idx-card__title">Digital Platforms Hub</span>
+          <span class="idx-card__url">digital-platforms/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="07a_HyDip_FMS.html" class="idx-card">
+          <span class="idx-card__file">07a_HyDip_FMS.html</span>
+          <span class="idx-card__title">HyDip™ Fuel Management System</span>
+          <span class="idx-card__url">digital-platforms/hydip-fms/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="07b_Fuelcharge.html" class="idx-card">
+          <span class="idx-card__file">07b_Fuelcharge.html</span>
+          <span class="idx-card__title">Fuelcharge</span>
+          <span class="idx-card__url">digital-platforms/fuelcharge/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="07c_Customer_Portal.html" class="idx-card">
+          <span class="idx-card__file">07c_Customer_Portal.html</span>
+          <span class="idx-card__title">Customer Portal</span>
+          <span class="idx-card__url">digital-platforms/customer-portal/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────
+         M4 — INDUSTRIES
+    ───────────────────────────────────────────────────── -->
+    <section class="idx-module">
+      <div class="idx-module__header">
+        <span class="idx-module__tag">M4</span>
+        <span class="idx-module__title">Industries</span>
+        <span class="idx-module__count">9 pages</span>
+      </div>
+      <div class="idx-grid">
+
+        <a href="08_Industries_Hub.html" class="idx-card">
+          <span class="idx-card__file">08_Industries_Hub.html</span>
+          <span class="idx-card__title">Industries We Serve Hub</span>
+          <span class="idx-card__url">industries/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="08a_Mining_Resources.html" class="idx-card">
+          <span class="idx-card__file">08a_Mining_Resources.html</span>
+          <span class="idx-card__title">Mining &amp; Resources</span>
+          <span class="idx-card__url">industries/mining-resources/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="08b_Transport_Logistics.html" class="idx-card">
+          <span class="idx-card__file">08b_Transport_Logistics.html</span>
+          <span class="idx-card__title">Transport &amp; Logistics</span>
+          <span class="idx-card__url">industries/transport-logistics/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="08c_Agriculture.html" class="idx-card">
+          <span class="idx-card__file">08c_Agriculture.html</span>
+          <span class="idx-card__title">Agriculture</span>
+          <span class="idx-card__url">industries/agriculture/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="08d_Marine.html" class="idx-card">
+          <span class="idx-card__file">08d_Marine.html</span>
+          <span class="idx-card__title">Marine</span>
+          <span class="idx-card__url">industries/marine/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="08e_Power_Generation.html" class="idx-card">
+          <span class="idx-card__file">08e_Power_Generation.html</span>
+          <span class="idx-card__title">Power Generation</span>
+          <span class="idx-card__url">industries/power-generation/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="08f_Rural_Pastoral.html" class="idx-card">
+          <span class="idx-card__file">08f_Rural_Pastoral.html</span>
+          <span class="idx-card__title">Rural &amp; Pastoral</span>
+          <span class="idx-card__url">industries/rural-pastoral/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="08g_Aviation_Industry.html" class="idx-card idx-card--gold">
+          <span class="idx-card__file">08g_Aviation_Industry.html</span>
+          <span class="idx-card__title">Commercial &amp; General Aviation</span>
+          <span class="idx-card__url">industries/aviation/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="08h_Construction.html" class="idx-card">
+          <span class="idx-card__file">08h_Construction.html</span>
+          <span class="idx-card__title">Construction &amp; Civil</span>
+          <span class="idx-card__url">industries/construction-civil/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="08i_Government_Defence.html" class="idx-card">
+          <span class="idx-card__file">08i_Government_Defence.html</span>
+          <span class="idx-card__title">Government &amp; Defence</span>
+          <span class="idx-card__url">industries/government-defense/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────
+         M5 — ABOUT IOR
+    ───────────────────────────────────────────────────── -->
+    <section class="idx-module">
+      <div class="idx-module__header">
+        <span class="idx-module__tag">M5</span>
+        <span class="idx-module__title">About IOR</span>
+        <span class="idx-module__count">9 pages</span>
+      </div>
+      <div class="idx-grid">
+
+        <a href="09_About_IOR.html" class="idx-card">
+          <span class="idx-card__file">09_About_IOR.html</span>
+          <span class="idx-card__title">About IOR Hub</span>
+          <span class="idx-card__url">about/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="09a_Our_Leadership.html" class="idx-card">
+          <span class="idx-card__file">09a_Our_Leadership.html</span>
+          <span class="idx-card__title">Our Leadership</span>
+          <span class="idx-card__url">about/leadership/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="09b_Community.html" class="idx-card">
+          <span class="idx-card__file">09b_Community.html</span>
+          <span class="idx-card__title">Community &amp; Giving Back</span>
+          <span class="idx-card__url">about/community/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="09c_Sustainability.html" class="idx-card">
+          <span class="idx-card__file">09c_Sustainability.html</span>
+          <span class="idx-card__title">Sustainability, HSE &amp; ESG</span>
+          <span class="idx-card__url">about/sustainability-hse-esg/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="09d_Case_Studies.html" class="idx-card">
+          <span class="idx-card__file">09d_Case_Studies.html</span>
+          <span class="idx-card__title">Case Studies Listing</span>
+          <span class="idx-card__url">case-studies/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="09d1_Case_Study_MPC.html" class="idx-card">
+          <span class="idx-card__file">09d1_Case_Study_MPC.html</span>
+          <span class="idx-card__title">Case Study: MPC Kinetic</span>
+          <span class="idx-card__url">case-studies/mpc-kinetic/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="09d2_Case_Study_TCB.html" class="idx-card">
+          <span class="idx-card__file">09d2_Case_Study_TCB.html</span>
+          <span class="idx-card__title">Case Study: Tin Can Bay Marina</span>
+          <span class="idx-card__url">case-studies/tin-can-bay-marina/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="09d3_Case_Study_FTA.html" class="idx-card">
+          <span class="idx-card__file">09d3_Case_Study_FTA.html</span>
+          <span class="idx-card__title">Case Study: Flight Training Adelaide</span>
+          <span class="idx-card__url">case-studies/flight-training-adelaide/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="09e_News.html" class="idx-card">
+          <span class="idx-card__file">09e_News.html</span>
+          <span class="idx-card__title">News &amp; Insights</span>
+          <span class="idx-card__url">news/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────
+         M6 — CAREERS
+    ───────────────────────────────────────────────────── -->
+    <section class="idx-module">
+      <div class="idx-module__header">
+        <span class="idx-module__tag">M6</span>
+        <span class="idx-module__title">Careers</span>
+        <span class="idx-module__count">6 pages</span>
+      </div>
+      <div class="idx-grid">
+
+        <a href="10_Careers.html" class="idx-card">
+          <span class="idx-card__file">10_Careers.html</span>
+          <span class="idx-card__title">Careers Hub</span>
+          <span class="idx-card__url">careers/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="10a_Drivers.html" class="idx-card">
+          <span class="idx-card__file">10a_Drivers.html</span>
+          <span class="idx-card__title">Drivers &amp; Field Operations</span>
+          <span class="idx-card__url">careers/drivers/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="10b_Aviation_Careers.html" class="idx-card idx-card--gold">
+          <span class="idx-card__file">10b_Aviation_Careers.html</span>
+          <span class="idx-card__title">Aviation Careers</span>
+          <span class="idx-card__url">careers/aviation/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="10c_Corporate.html" class="idx-card">
+          <span class="idx-card__file">10c_Corporate.html</span>
+          <span class="idx-card__title">Corporate &amp; Support Roles</span>
+          <span class="idx-card__url">careers/corporate/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="10d_Apprenticeships.html" class="idx-card">
+          <span class="idx-card__file">10d_Apprenticeships.html</span>
+          <span class="idx-card__title">Apprenticeships &amp; Traineeships</span>
+          <span class="idx-card__url">careers/apprenticeships/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="10e_Current_Vacancies.html" class="idx-card">
+          <span class="idx-card__file">10e_Current_Vacancies.html</span>
+          <span class="idx-card__title">Current Vacancies</span>
+          <span class="idx-card__url">careers/vacancies/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────
+         M7 — SUPPORT & UTILITY
+    ───────────────────────────────────────────────────── -->
+    <section class="idx-module">
+      <div class="idx-module__header">
+        <span class="idx-module__tag">M7</span>
+        <span class="idx-module__title">Support &amp; Utility</span>
+        <span class="idx-module__count">13 pages</span>
+      </div>
+      <div class="idx-grid">
+
+        <a href="11_Support_Hub.html" class="idx-card">
+          <span class="idx-card__file">11_Support_Hub.html</span>
+          <span class="idx-card__title">Support Hub</span>
+          <span class="idx-card__url">support/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11a_Contact.html" class="idx-card">
+          <span class="idx-card__file">11a_Contact.html</span>
+          <span class="idx-card__title">Contact IOR</span>
+          <span class="idx-card__url">contact/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11b_Help_Centre.html" class="idx-card">
+          <span class="idx-card__file">11b_Help_Centre.html</span>
+          <span class="idx-card__title">Help Centre</span>
+          <span class="idx-card__url">support/help-centre/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11c_Regional_Contacts.html" class="idx-card">
+          <span class="idx-card__file">11c_Regional_Contacts.html</span>
+          <span class="idx-card__title">Regional Contacts</span>
+          <span class="idx-card__url">support/regional-contacts/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11d_Find_Location.html" class="idx-card">
+          <span class="idx-card__file">11d_Find_Location.html</span>
+          <span class="idx-card__title">Find a Location</span>
+          <span class="idx-card__url">support/find-a-location/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11e_Make_Payment.html" class="idx-card">
+          <span class="idx-card__file">11e_Make_Payment.html</span>
+          <span class="idx-card__title">Make a Payment</span>
+          <span class="idx-card__url">support/make-a-payment/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11f_Policy_Downloads.html" class="idx-card">
+          <span class="idx-card__file">11f_Policy_Downloads.html</span>
+          <span class="idx-card__title">Policy Downloads</span>
+          <span class="idx-card__url">support/policy-downloads/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11g_FAQs.html" class="idx-card">
+          <span class="idx-card__file">11g_FAQs.html</span>
+          <span class="idx-card__title">FAQs</span>
+          <span class="idx-card__url">support/faqs/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11h_Apply_Account.html" class="idx-card">
+          <span class="idx-card__file">11h_Apply_Account.html</span>
+          <span class="idx-card__title">Apply for an Account</span>
+          <span class="idx-card__url">apply/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11i_Request_Quote.html" class="idx-card">
+          <span class="idx-card__file">11i_Request_Quote.html</span>
+          <span class="idx-card__title">Request a Quote</span>
+          <span class="idx-card__url">request-a-quote/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11j_Privacy_Policy.html" class="idx-card">
+          <span class="idx-card__file">11j_Privacy_Policy.html</span>
+          <span class="idx-card__title">Privacy Policy</span>
+          <span class="idx-card__url">privacy-policy/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11k_Terms_Conditions.html" class="idx-card">
+          <span class="idx-card__file">11k_Terms_Conditions.html</span>
+          <span class="idx-card__title">Terms &amp; Conditions</span>
+          <span class="idx-card__url">terms-and-conditions/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+        <a href="11l_Accessibility.html" class="idx-card">
+          <span class="idx-card__file">11l_Accessibility.html</span>
+          <span class="idx-card__title">Accessibility Statement</span>
+          <span class="idx-card__url">accessibility/</span>
+          <span class="idx-card__status"><span class="badge badge--pending">Pending</span></span>
+          <span class="idx-card__arrow">→</span>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="idx-footer">
+    <span class="idx-footer__copy">
+      IOR Energy — Internal Prototype. Not for external distribution.
+      Source of truth: IOR_Master_Content_Brief.md (April 2026).
+    </span>
+    <span class="idx-footer__version">v3.5 — M0 Foundation</span>
+  </footer>
+
+</body>
+</html>
