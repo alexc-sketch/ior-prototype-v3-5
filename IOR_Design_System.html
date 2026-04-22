@@ -1671,16 +1671,150 @@
        the page on scroll.
     ============================================================ */
 
-    
+    .wf-nav {
+      position: sticky;
+      top: 0;
+      z-index: 9999;                        /* Always above IOR nav (z-index: 100) */
+      background-color: #1A1A2E;            /* Deep charcoal-indigo — clearly not IOR brand */
+      border-bottom: 2px solid #E94560;     /* Hot-pink rule — signals "tool layer" */
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      line-height: 1.4;
+      color: #A8B2D8;
+      user-select: none;
+    }
 
     /* Left cluster: navigation links */
+    .wf-nav__links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .wf-nav__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      background-color: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #CCD6F6;
+      text-decoration: none;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+      white-space: nowrap;
+    }
+    .wf-nav__link:hover {
+      background-color: #E94560;
+      border-color: #E94560;
+      color: #fff;
+    }
+
+    .wf-nav__link--index::before { content: '⌂ '; }
+    .wf-nav__link--ds::before    { content: '◈ '; }
+
+    .wf-nav__divider {
+      width: 1px;
+      height: 16px;
+      background-color: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
 
     /* Centre cluster: current module identity */
+    .wf-nav__module {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .wf-nav__module-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background-color: #E94560;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .wf-nav__module-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #CCD6F6;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .wf-nav__module-file {
+      font-size: 10px;
+      color: #6A7497;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     /* Right cluster: annotation colour legend */
+    .wf-nav__legend {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    .wf-nav__legend-label {
+      font-size: 10px;
+      color: #6A7497;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .wf-nav__legend-items {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .wf-nav__legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      color: #A8B2D8;
+      white-space: nowrap;
+    }
+
+    .wf-nav__legend-swatch {
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .wf-nav__legend-swatch--standard { background-color: #FFE066; }
+    .wf-nav__legend-swatch--question { background-color: #FFD0D0; }
+    .wf-nav__legend-swatch--approved { background-color: #D4EDDA; }
 
     /* Responsive: collapse legend label on narrow viewports */
     @media (max-width: 640px) {
+      .wf-nav__legend-label { display: none; }
+      .wf-nav__module-file  { display: none; }
     }
 
     /* ============================================================
@@ -1969,9 +2103,41 @@
   <!-- ═══════════════════════════════════════════════════════════
        WIREFRAME NAV BAR — TOOL LAYER — NOT PART OF IOR BRAND
   ═══════════════════════════════════════════════════════════ -->
+  <div class="wf-nav" role="navigation" aria-label="Wireframe navigation">
+    <div class="wf-nav__links">
+      <a href="00_Master_Index.html" class="wf-nav__link wf-nav__link--index">Master Index</a>
+      <div class="wf-nav__divider" aria-hidden="true"></div>
+      <a href="IOR_Design_System.html" class="wf-nav__link wf-nav__link--ds">Design System</a>
+    </div>
+    <div class="wf-nav__divider" aria-hidden="true"></div>
+    <div class="wf-nav__module">
+      <span class="wf-nav__module-badge">SYSTEM</span>
+      <span class="wf-nav__module-name">IOR Design System — Component Library &amp; CSS Architecture</span>
+      <span class="wf-nav__module-file">IOR_Design_System.html</span>
+    </div>
+    <div class="wf-nav__legend">
+      <span class="wf-nav__legend-label">Annotations:</span>
+      <div class="wf-nav__legend-items">
+        <span class="wf-nav__legend-item">
+          <span class="wf-nav__legend-swatch wf-nav__legend-swatch--standard" aria-hidden="true"></span>
+          Standard
+        </span>
+        <span class="wf-nav__legend-item">
+          <span class="wf-nav__legend-swatch wf-nav__legend-swatch--question" aria-hidden="true"></span>
+          Design Q
+        </span>
+        <span class="wf-nav__legend-item">
+          <span class="wf-nav__legend-swatch wf-nav__legend-swatch--approved" aria-hidden="true"></span>
+          Approved
+        </span>
+      </div>
+    </div>
+  </div>
   <!-- END WIREFRAME NAV BAR -->
 
-  
+  <!-- ============================================================
+       DESIGN SYSTEM HEADER
+  ============================================================ -->
   <header class="ds-header">
     <div class="ds-header__kicker">IOR Tier-1 Website Redesign — 2026</div>
     <h1 class="ds-header__title">IOR Design System</h1>
@@ -1981,7 +2147,9 @@
     </p>
   </header>
 
-  
+  <!-- ============================================================
+       INTERNAL NAVIGATION
+  ============================================================ -->
   <nav class="ds-nav" aria-label="Design system sections">
     <a href="#non-negotiables"  class="ds-nav__link">Non-Negotiables</a>
     <a href="#tokens"           class="ds-nav__link">Colour Tokens</a>
@@ -2001,7 +2169,9 @@
 
   <main class="ds-main">
 
-    
+    <!-- ============================================================
+         1. NON-NEGOTIABLE DESIGN RULES
+    ============================================================ -->
     <section id="non-negotiables" aria-label="Non-negotiable design rules">
       <h2 class="ds-section-title">Non-Negotiable Design Rules</h2>
       <p style="font-size:var(--text-body-m);color:var(--ior-mid-grey);margin-bottom:var(--space-8);">
@@ -2062,7 +2232,9 @@
       </div>
     </section>
 
-    
+    <!-- ============================================================
+         2. COLOUR TOKENS
+    ============================================================ -->
     <section id="tokens" aria-label="Colour tokens">
       <h2 class="ds-section-title">Colour Tokens — Masterbrand</h2>
 
@@ -2134,7 +2306,9 @@
       </div>
     </section>
 
-    
+    <!-- ============================================================
+         3. SUB-BRAND COLOUR RULES
+    ============================================================ -->
     <section id="sub-brands" aria-label="Sub-brand colour rules">
       <h2 class="ds-section-title">Sub-Brand & Sub-Hub Colour Rules</h2>
       <p style="font-size:var(--text-body-m);color:var(--ior-mid-grey);margin-bottom:var(--space-8);">
@@ -2204,7 +2378,9 @@
       </table>
     </section>
 
-    
+    <!-- ============================================================
+         4. TYPOGRAPHY
+    ============================================================ -->
     <section id="typography" aria-label="Typography scale">
       <h2 class="ds-section-title">Typography Scale</h2>
       <p style="font-size:var(--text-body-s);font-family:'Courier New';color:var(--ior-mid-grey);margin-bottom:var(--space-6);">
@@ -2215,7 +2391,7 @@
 
         <div class="ds-type-row">
           <div class="ds-type-meta">--text-display-xl · clamp(48px → 80px) · fw-bold · lh 1.05 · Class: .ior-display-xl [On dark bg]</div>
-          <div class="ior-display-xl" style="background:var(--ior-navy);padding:var(--space-5);display:inline-block;">The Fuel Infrastructure Partner for Your Industry</div>
+          <div class="ior-display-xl" style="background:var(--ior-navy);padding:var(--space-5);display:inline-block;">Fuelling Australia's Industries</div>
         </div>
 
         <div class="ds-type-row">
@@ -2245,7 +2421,7 @@
 
         <div class="ds-type-row">
           <div class="ds-type-meta">--text-body-l · clamp(16px → 20px) · fw-regular · lh 1.6 · Class: .ior-body-l [Lead body copy]</div>
-          <div class="ior-body-l">Since we commenced operations in 1984, we've grown with our customers, and we've reliably supplied fuel to Australia's most critical industries.</div>
+          <div class="ior-body-l">Since we commenced operations in 1984, we've grown with our customers, and we've been the fuelling force behind those industries critical to the lives of all Australians.</div>
         </div>
 
         <div class="ds-type-row">
@@ -2266,7 +2442,9 @@
       </div>
     </section>
 
-    
+    <!-- ============================================================
+         5. SPACING
+    ============================================================ -->
     <section id="spacing" aria-label="Spacing scale">
       <h2 class="ds-section-title">Spacing Scale (8px grid)</h2>
       <div class="ds-token-grid">
@@ -2332,7 +2510,9 @@
       </p>
     </section>
 
-    
+    <!-- ============================================================
+         6. BUTTON COMPONENTS
+    ============================================================ -->
     <section id="buttons" aria-label="Button components">
       <h2 class="ds-section-title">Button Components</h2>
       <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:var(--space-8);">
@@ -2375,7 +2555,9 @@
       </div>
     </section>
 
-    
+    <!-- ============================================================
+         7. NAVIGATION COMPONENTS
+    ============================================================ -->
     <section id="nav-components" aria-label="Navigation components">
       <h2 class="ds-section-title">Navigation Components</h2>
 
@@ -2416,7 +2598,9 @@
       </div>
     </section>
 
-    
+    <!-- ============================================================
+         8. HERO PATTERNS
+    ============================================================ -->
     <section id="hero-patterns" aria-label="Hero layout patterns">
       <h2 class="ds-section-title">Hero Layout Patterns</h2>
       <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:var(--space-8);">
@@ -2457,17 +2641,23 @@
           <div class="ior-hero-homepage__overlay"></div>
           <div class="ior-hero-homepage__content">
             <h1 class="ior-display-xl">Fuelling<br/>Australia's<br/>Industries</h1>
-            <p class="ior-body-l ior-body--white" style="font-weight:var(--fw-bold);">End-to-end fuel solutions and infrastructure for businesses where fuel is mission-critical.</p>
+            <p class="ior-body-l ior-body--white" style="font-weight:var(--fw-bold);">End-to-end fuel solutions and infrastructure for the nation's businesses who can't afford to stop.</p>
             <div class="ior-cta-group">
               <a href="#" class="btn btn--primary-white btn--lg">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
             </div>
           </div>
         </div>
       </div>
-      
+      <div class="annotation annotation--approved" style="margin-top:var(--space-3);">
+        <span class="annotation__block-id">APPROVED EXCEPTION</span>
+        <span class="annotation__separator">·</span>
+        <span class="annotation__description">Full-bleed hero with overlay permitted on Homepage ONLY per Figma brief. All other pages must use Pattern A or B.</span>
+      </div>
     </section>
 
-    
+    <!-- ============================================================
+         9. CARD COMPONENTS
+    ============================================================ -->
     <section id="cards" aria-label="Card components">
       <h2 class="ds-section-title">Card Components</h2>
 
@@ -2553,7 +2743,9 @@
       </div>
     </section>
 
-    
+    <!-- ============================================================
+         10. INTERACTIVE COMPONENTS
+    ============================================================ -->
     <section id="interactive" aria-label="Interactive components">
       <h2 class="ds-section-title">Interactive Components</h2>
 
@@ -2714,7 +2906,9 @@
       </div>
     </section>
 
-    
+    <!-- ============================================================
+         11. SOCIAL PROOF COMPONENTS
+    ============================================================ -->
     <section id="social-proof" aria-label="Social proof components">
       <h2 class="ds-section-title">Social Proof Components</h2>
 
@@ -2741,7 +2935,7 @@
 
       <h3 class="ds-subsection-title" style="margin-top:var(--space-8);">Logo Strip (.ior-logo-strip)</h3>
       <div style="padding:var(--space-8);background:var(--ior-white);border:1px solid var(--border-color-light);">
-        <p class="ior-eyebrow" style="text-align:center;margin-bottom:var(--space-8);">Trusted by Australia's Leading Organisations <span style='font-size:0.6em;font-weight:400;color:#e05c2a;letter-spacing:0;'>[Logo approvals required before launch]</span></p>
+        <p class="ior-eyebrow" style="text-align:center;margin-bottom:var(--space-8);">Trusted by Australia's Leading Organisations</p>
         <div class="ior-logo-strip">
           <div class="ior-logo-strip__item"></div>
           <div class="ior-logo-strip__item"></div>
@@ -2754,7 +2948,9 @@
       </div>
     </section>
 
-    
+    <!-- ============================================================
+         12. ANNOTATION SYSTEM
+    ============================================================ -->
     <section id="annotation" aria-label="Annotation system">
       <h2 class="ds-section-title">Annotation System</h2>
       <p style="font-size:var(--text-body-m);color:var(--ior-charcoal);margin-bottom:var(--space-6);">
@@ -2762,13 +2958,31 @@
       </p>
 
       <h3 class="ds-subsection-title">Standard Annotation (Default)</h3>
-      
+      <div class="annotation">
+        <span class="annotation__block-id">BLOCK 3 — ROUTING MATRIX</span>
+        <span class="annotation__separator">·</span>
+        <span class="annotation__description">4 cells: Ground Fuels / Aviation / Equipment &amp; Infrastructure / Supply &amp; Trading. Each cell contains a sub-title, body copy, and product pill row linking to child spoke pages.</span>
+        <span class="annotation__separator">·</span>
+        <span class="annotation__intent">DESIGN INTENT: Asymmetric grid. Acts as high-speed traffic controller routing Revenue Engine and Specialist personas to relevant product hubs. On hover: cell background transitions to --ior-blue, text inverts to white.</span>
+      </div>
 
       <h3 class="ds-subsection-title" style="margin-top:var(--space-6);">Design Question Annotation (Red — copy or design unclear)</h3>
-      
+      <div class="annotation annotation--question">
+        <span class="annotation__block-id">DESIGN QUESTION — BLOCK 7</span>
+        <span class="annotation__separator">·</span>
+        <span class="annotation__description">Copy scaffolding does not specify body copy for the Condensates page Section 2. Client input required before this block can be built.</span>
+        <span class="annotation__separator">·</span>
+        <span class="annotation__intent">ACTION REQUIRED: Request technical specs and use cases from IOR supply &amp; trading team. Do not fabricate copy.</span>
+      </div>
 
       <h3 class="ds-subsection-title" style="margin-top:var(--space-6);">Approved / Locked Annotation (Green)</h3>
-      
+      <div class="annotation annotation--approved">
+        <span class="annotation__block-id">APPROVED — BLOCK 1 — HERO (HOMEPAGE ONLY)</span>
+        <span class="annotation__separator">·</span>
+        <span class="annotation__description">Full-bleed photograph with 70% blue overlay. Approved exception per Figma brief. Copy locked: "Fuelling Australia's Industries".</span>
+        <span class="annotation__separator">·</span>
+        <span class="annotation__intent">DO NOT replicate this pattern on any other page. All other heroes must use Pattern A (split) or Pattern B (reduced-height banner).</span>
+      </div>
 
       <div class="ds-code" style="margin-top:var(--space-8);">
 <span class="comment">/* Annotation HTML pattern — copy exactly for each block */</span>
@@ -2789,7 +3003,9 @@
       </div>
     </section>
 
-    
+    <!-- ============================================================
+         13. MODULE MAP
+    ============================================================ -->
     <section id="module-map" aria-label="Module map">
       <h2 class="ds-section-title">Module Map — Final Approved Structure</h2>
       <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:var(--space-8);">
@@ -2908,7 +3124,9 @@
       </table>
     </section>
 
-    
+    <!-- ============================================================
+         14. IMPORT GUIDE
+    ============================================================ -->
     <section id="import" aria-label="Import guide for module files">
       <h2 class="ds-section-title">Import Guide — How to Use This File in Each Module</h2>
       <p style="font-size:var(--text-body-m);margin-bottom:var(--space-6);">
@@ -2926,7 +3144,94 @@
   &lt;title&gt;<span class="val">[Page Title] — IOR Wireframe</span>&lt;/title&gt;
   &lt;style&gt;
     <span class="comment">/* === PASTE FULL IOR DESIGN SYSTEM CSS HERE === */</span>
-    <span class="comment">/* Includes);
+    <span class="comment">/* Includes .wf-nav styles — do not strip them out */</span>
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  <span class="comment">&lt;!-- ═══════════════════════════════════════════════════════════
+       WIREFRAME NAV BAR — TOOL LAYER — NOT PART OF IOR BRAND
+       Must be the very first element inside &lt;body&gt;.
+       Update wf-nav__module-name and wf-nav__module-file per module.
+  ═══════════════════════════════════════════════════════════ --&gt;</span>
+  &lt;div class="wf-nav" role="navigation" aria-label="Wireframe navigation"&gt;
+
+    &lt;!-- Left: navigation links --&gt;
+    &lt;div class="wf-nav__links"&gt;
+      &lt;a href="00_Master_Index.html" class="wf-nav__link wf-nav__link--index"&gt;Master Index&lt;/a&gt;
+      &lt;div class="wf-nav__divider" aria-hidden="true"&gt;&lt;/div&gt;
+      &lt;a href="IOR_Design_System.html" class="wf-nav__link wf-nav__link--ds"&gt;Design System&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class="wf-nav__divider" aria-hidden="true"&gt;&lt;/div&gt;
+
+    &lt;!-- Centre: current module identity --&gt;
+    &lt;div class="wf-nav__module"&gt;
+      &lt;span class="wf-nav__module-badge"&gt;MODULE&lt;/span&gt;
+      &lt;span class="wf-nav__module-name"&gt;<span class="val">[Module Name — e.g. Ground Fuels Sub-Hub]</span>&lt;/span&gt;
+      &lt;span class="wf-nav__module-file"&gt;<span class="val">[File name — e.g. 03_Ground_Fuels.html]</span>&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Right: annotation colour legend --&gt;
+    &lt;div class="wf-nav__legend"&gt;
+      &lt;span class="wf-nav__legend-label"&gt;Annotations:&lt;/span&gt;
+      &lt;div class="wf-nav__legend-items"&gt;
+        &lt;span class="wf-nav__legend-item"&gt;
+          &lt;span class="wf-nav__legend-swatch wf-nav__legend-swatch--standard" aria-hidden="true"&gt;&lt;/span&gt;
+          Standard
+        &lt;/span&gt;
+        &lt;span class="wf-nav__legend-item"&gt;
+          &lt;span class="wf-nav__legend-swatch wf-nav__legend-swatch--question" aria-hidden="true"&gt;&lt;/span&gt;
+          Design Q
+        &lt;/span&gt;
+        &lt;span class="wf-nav__legend-item"&gt;
+          &lt;span class="wf-nav__legend-swatch wf-nav__legend-swatch--approved" aria-hidden="true"&gt;&lt;/span&gt;
+          Approved
+        &lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+  <span class="comment">&lt;!-- END WIREFRAME NAV BAR --&gt;</span>
+
+  <span class="comment">&lt;!-- IOR UTILITY BAR (brand layer starts here) --&gt;</span>
+  &lt;div class="ior-utility-bar"&gt;...&lt;/div&gt;
+
+  <span class="comment">&lt;!-- IOR PRIMARY NAV --&gt;</span>
+  &lt;nav class="ior-nav" aria-label="Primary navigation"&gt;...&lt;/nav&gt;
+
+  <span class="comment">&lt;!-- PAGE SECTIONS (anchor IDs match Master Index links) --&gt;</span>
+  &lt;main id="<span class="val">[module-id]</span>" aria-label="<span class="val">[Module name]</span>"&gt;
+
+    <span class="comment">&lt;!-- Repeat this pattern for every content block: --&gt;</span>
+    &lt;div class="annotation"&gt;
+      &lt;span class="annotation__block-id"&gt;<span class="val">BLOCK 1 — HERO</span>&lt;/span&gt;
+      &lt;span class="annotation__separator"&gt;·&lt;/span&gt;
+      &lt;span class="annotation__description"&gt;<span class="val">[Content spec: components, columns, copy source]</span>&lt;/span&gt;
+      &lt;span class="annotation__separator"&gt;·&lt;/span&gt;
+      &lt;span class="annotation__intent"&gt;<span class="val">[Design intent: persona, conversion goal, behaviour]</span>&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;section aria-label="<span class="val">[Block name]</span>"&gt;
+      <span class="comment">&lt;!-- Block content --&gt;</span>
+    &lt;/section&gt;
+
+  &lt;/main&gt;
+
+  <span class="comment">&lt;!-- IOR FOOTER --&gt;</span>
+  &lt;footer class="ior-footer" aria-label="Site footer"&gt;...&lt;/footer&gt;
+
+  <span class="comment">&lt;!-- BASIC INTERACTIVITY (tabs, accordion, split-interactive) --&gt;</span>
+  &lt;script&gt;
+    <span class="comment">/* Tab switching */</span>
+    document.querySelectorAll('.ior-tab-btn').forEach(btn =&gt; {
+      btn.addEventListener('click', () =&gt; {
+        const tabs = btn.closest('.ior-tabs');
+        tabs.querySelectorAll('.ior-tab-btn').forEach(b =&gt; b.classList.remove('ior-tab-btn--active'));
+        tabs.querySelectorAll('.ior-tab-panel').forEach(p =&gt; p.classList.remove('ior-tab-panel--active'));
+        btn.classList.add('ior-tab-btn--active');
+        const idx = [...btn.parentElement.children].indexOf(btn);
+        tabs.querySelectorAll('.ior-tab-panel')[idx]?.classList.add('ior-tab-panel--active');
+      });
     });
     <span class="comment">/* Accordion */</span>
     document.querySelectorAll('.ior-accordion__trigger').forEach(trigger =&gt; {

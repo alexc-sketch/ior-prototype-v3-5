@@ -1,0 +1,2302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01 Homepage &amp; Global — IOR Wireframe</title>
+  <style>
+
+    /* ============================================================
+       IOR DESIGN SYSTEM — FULL CSS (pasted per self-containment rule)
+    ============================================================ */
+    :root {
+      --ior-blue:          #0355A3;
+      --ior-navy:          #0A4066;
+      --ior-white:         #FFFFFF;
+      --ior-near-black:    #231F20;
+      --ior-charcoal:      #383838;
+      --ior-mid-grey:      #94A9BA;
+      --ior-light-blue-bg: #E0F1FF;
+      --ior-sky:           #7FBEE6;
+      --ior-teal:          #00D1CC;
+      --aviation-gold:     #D98300;
+      --ior-success:       #2DA771;
+      --ior-warning:       #F5A623;
+      --ior-error:         #C0392B;
+      --font-primary:      'Avenir Next LT Pro','Avenir Next','Avenir','Nunito Sans',sans-serif;
+      --text-display-xl:   clamp(44px,6vw,80px);
+      --text-display-m:    clamp(26px,3.5vw,50px);
+      --text-display-s:    clamp(20px,2.5vw,40px);
+      --text-heading-l:    clamp(18px,2vw,26px);
+      --text-heading-m:    clamp(15px,1.8vw,22px);
+      --text-heading-s:    18px;
+      --text-body-l:       clamp(16px,1.4vw,20px);
+      --text-body-m:       16px;
+      --text-body-s:       14px;
+      --text-eyebrow:      18px;
+      --text-caption:      12px;
+      --lh-display:        1.05;
+      --lh-heading:        1.2;
+      --lh-body:           1.6;
+      --ls-eyebrow:        0.09em;
+      --fw-bold:           800;
+      --fw-semibold:       700;
+      --fw-regular:        400;
+      --space-2:  8px;  --space-3: 12px; --space-4: 16px; --space-5: 20px;
+      --space-6: 24px;  --space-7: 28px; --space-8: 32px; --space-10: 40px;
+      --space-12: 48px; --space-15: 60px; --space-16: 64px; --space-20: 80px;
+      --space-25: 100px;
+      --section-pad-y:  clamp(50px,7vw,100px);
+      --section-pad-x:  clamp(20px,8vw,125px);
+      --content-max:    1300px;
+      --container-max:  1550px;
+      --grid-gap:       30px;
+      --radius:         0px; /* LOCKED — no rounded corners */
+      --border-color-light: rgba(3,85,163,0.18);
+      --transition-base: 250ms ease;
+      --transition-fast: 150ms ease;
+      --z-nav: 100; --z-drawer: 500; --z-overlay: 400;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-primary);
+      color: var(--ior-charcoal);
+      background: #fff;
+      line-height: var(--lh-body);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul,ol { list-style: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* ── Layout ─────────────────────────────────────────────── */
+    .container { width: 100%; max-width: var(--container-max); margin-inline: auto; }
+    .inner     { width: 100%; max-width: var(--content-max);   margin-inline: auto; }
+    .section-pad { padding-block: var(--section-pad-y); padding-inline: var(--section-pad-x); }
+
+    /* ── Typography ─────────────────────────────────────────── */
+    .eyebrow {
+      font-size: var(--text-eyebrow); font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-eyebrow); text-transform: uppercase;
+      color: var(--ior-mid-grey);
+    }
+    .eyebrow--white { color: rgba(255,255,255,.7); }
+    .eyebrow--sky   { color: var(--ior-sky); }
+
+    /* ── Buttons ─────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-primary); font-size: var(--text-body-m);
+      font-weight: var(--fw-bold); padding: 18px 28px;
+      border-radius: var(--radius); /* LOCKED 0 */
+      cursor: pointer; text-align: center; transition: all var(--transition-base);
+      text-decoration: none; white-space: nowrap; border: 2px solid transparent;
+    }
+    .btn__arrow {
+      display: inline-block; width: 9px; height: 9px; flex-shrink: 0;
+      border-right: 2px solid currentColor; border-top: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+    .btn--primary   { background: var(--ior-blue);  color: #fff; border-color: var(--ior-blue); }
+    .btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
+    .btn--white     { background: #fff; color: var(--ior-blue); border-color: #fff; }
+    .btn--white:hover { background: var(--ior-sky); border-color: var(--ior-sky); }
+    .btn--outline   { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+    .btn--outline:hover { background: var(--ior-blue); color: #fff; }
+    .btn--outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+    .btn--outline-white:hover { background: rgba(255,255,255,.12); }
+    .btn--ghost     { background: none; border: none; color: var(--ior-blue); padding: 0; font-weight: var(--fw-bold); display: inline-flex; align-items: center; gap: 8px; }
+    .btn--ghost:hover { color: var(--ior-navy); }
+    .btn--ghost-sky { color: var(--ior-sky); }
+    .btn--gold      { background: var(--aviation-gold); color: #fff; border-color: var(--aviation-gold); }
+    .btn--gold:hover { background: #b36e00; border-color: #b36e00; }
+    .btn--disabled  { background: #E2E8F0; color: #A0AEC0; border-color: #E2E8F0; cursor: not-allowed; }
+    .btn--navy      { background: var(--ior-navy); color: #fff; border-color: var(--ior-navy); }
+    .btn--teal      { background: var(--ior-teal); color: #13114D; border-color: var(--ior-teal); }
+    .btn--lg        { padding: 22px 40px; font-size: 18px; }
+
+    /* ── Annotation System ───────────────────────────────────── */
+    .ann {
+      width: 100%; background: #FFE066; border-left: 4px solid #E6B800;
+      padding: 8px 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+      font-family: 'Courier New', monospace; font-size: 11px; color: #3D2E00; line-height: 1.5;
+    }
+    .ann__id   { font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+    .ann__sep  { color: #9A7700; font-weight: 700; }
+    .ann__desc { flex: 1; min-width: 160px; }
+    .ann__int  { font-style: italic; color: #5C4400; border-left: 1px solid #C9A200; padding-left: 10px; }
+    .ann--q    { background: #FFD0D0; border-color: #C0392B; color: #4D0000; }
+    .ann--q .ann__sep { color: #8B0000; }
+    .ann--q .ann__int { color: #6B0000; border-color: #C0392B; }
+    .ann--ok   { background: #D4EDDA; border-color: #2DA771; color: #0D3320; }
+
+    /* ── Wireframe Nav Bar ──────────────────────────────────── */
+    .wf-nav {
+      position: sticky; top: 0; z-index: 9999; background: #1A1A2E;
+      border-bottom: 2px solid #E94560; padding: 6px 16px;
+      display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+      font-family: 'Courier New', monospace; font-size: 11px; color: #A8B2D8;
+      user-select: none;
+    }
+    .wf-nav__links { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+    .wf-nav__link {
+      display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      color: #CCD6F6; text-decoration: none; font-size: 11px; font-weight: 700;
+      letter-spacing: .04em; transition: background 120ms, color 120ms; white-space: nowrap;
+    }
+    .wf-nav__link:hover { background: #E94560; border-color: #E94560; color: #fff; }
+    .wf-nav__link--index::before { content: '⌂ '; }
+    .wf-nav__link--ds::before    { content: '◈ '; }
+    .wf-nav__div { width: 1px; height: 16px; background: rgba(255,255,255,.15); flex-shrink: 0; }
+    .wf-nav__mod { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+    .wf-nav__badge {
+      display: inline-block; padding: 2px 8px; background: #E94560; color: #fff;
+      font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .wf-nav__name { font-size: 11px; font-weight: 700; color: #CCD6F6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .wf-nav__file { font-size: 10px; color: #6A7497; white-space: nowrap; }
+    .wf-nav__legend { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-left: auto; }
+    .wf-nav__leg-lbl { font-size: 10px; color: #6A7497; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+    .wf-nav__leg-items { display: flex; align-items: center; gap: 6px; }
+    .wf-nav__leg-item  { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; color: #A8B2D8; white-space: nowrap; }
+    .wf-nav__swatch    { width: 10px; height: 10px; border: 1px solid rgba(255,255,255,.15); flex-shrink: 0; }
+    .wf-nav__swatch--std { background: #FFE066; }
+    .wf-nav__swatch--q   { background: #FFD0D0; }
+    .wf-nav__swatch--ok  { background: #D4EDDA; }
+    @media (max-width: 640px) { .wf-nav__leg-lbl, .wf-nav__file { display: none; } }
+
+    /* ── Section dividers ────────────────────────────────────── */
+    .spec-section {
+      background: #F0F4F8; border-top: 3px solid var(--ior-blue);
+      padding: 24px var(--section-pad-x) 0;
+    }
+    .spec-section__title {
+      font-size: clamp(18px,2vw,28px); font-weight: var(--fw-bold);
+      color: var(--ior-navy); padding-bottom: 16px;
+      border-bottom: 2px solid var(--border-color-light); margin-bottom: 0;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .spec-section__tag {
+      display: inline-block; padding: 2px 8px; background: var(--ior-blue);
+      color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .spec-subsection {
+      background: rgba(3,85,163,.04); border-left: 3px solid var(--ior-blue);
+      padding: 16px 20px; margin: 16px 0 0;
+      font-family: 'Courier New', monospace; font-size: 12px; color: #3D2E00;
+    }
+    .spec-subsection strong { color: var(--ior-navy); }
+
+    /* ── HEADER COMPONENT ─────────────────────────────────────── */
+    /* Utility bar */
+    .utility-bar {
+      background: var(--ior-blue);
+      padding: 10px var(--section-pad-x);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; font-size: var(--text-body-m); color: #fff;
+    }
+    .utility-bar__actions { display: flex; align-items: center; gap: 20px; }
+    .utility-bar__link {
+      display: inline-flex; align-items: center; gap: 6px; color: #fff;
+      font-size: var(--text-body-m); text-decoration: none; transition: opacity var(--transition-fast);
+    }
+    .utility-bar__link:hover { opacity: .8; }
+    .utility-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.4); }
+    .u-icon {
+      width: 16px; height: 16px; background: #fff;
+      display: inline-block; flex-shrink: 0; opacity: .9;
+    }
+    /* Primary nav */
+    .primary-nav {
+      background: #fff; padding: 0 var(--section-pad-x);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; border-bottom: 1px solid rgba(3,85,163,.1);
+      position: sticky; top: 0; z-index: var(--z-nav);
+      transition: height var(--transition-base), box-shadow var(--transition-base);
+    }
+    .primary-nav--scrolled {
+      height: 56px; box-shadow: 0 2px 20px rgba(0,0,0,.1);
+    }
+    .nav-logo {
+      width: 90px; height: 42px; background: var(--ior-light-blue-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--ior-mid-grey);
+      letter-spacing: .04em; font-family: 'Courier New', monospace; flex-shrink: 0;
+    }
+    .nav-logo--sm { width: 70px; height: 33px; }
+    .nav-links {
+      display: none; align-items: center; gap: 24px; list-style: none;
+    }
+    @media (min-width: 1200px) { .nav-links { display: flex; } }
+    .nav-link {
+      font-size: var(--text-body-m); font-weight: var(--fw-bold); color: var(--ior-charcoal);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+      padding-block: 8px; position: relative; transition: color var(--transition-fast);
+      white-space: nowrap;
+    }
+    .nav-link::after {
+      content: ''; display: block; width: 7px; height: 7px; margin-top: -2px;
+      border-left: 2px solid currentColor; border-bottom: 2px solid currentColor;
+      transform: rotate(-45deg);
+    }
+    .nav-link:hover { color: var(--ior-blue); }
+    .nav-link--active::before {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 2px; background: var(--ior-blue);
+    }
+    .nav-ctas { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    /* Hamburger */
+    .hamburger { display: flex; flex-direction: column; gap: 5px; width: 24px; cursor: pointer; }
+    .hamburger span { display: block; height: 2px; background: var(--ior-charcoal); width: 100%; transition: all var(--transition-base); }
+    .hamburger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger--open span:nth-child(2) { opacity: 0; }
+    .hamburger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (min-width: 1200px) { .hamburger { display: none; } }
+
+    /* Mega menu panel */
+    .mega-panel {
+      position: absolute; top: 100%; left: 0; width: 100%;
+      background: #fff; border-top: 3px solid var(--ior-blue);
+      box-shadow: 0 8px 40px rgba(0,0,0,.12);
+      padding: 32px var(--section-pad-x) 40px;
+      display: none; z-index: 200;
+    }
+    .mega-panel--visible { display: block; }
+    .mega-grid { display: grid; gap: 0; }
+    /* Fix 3: equal-width columns, aligned to top */
+    .mega-grid--4 { grid-template-columns: repeat(4,1fr); align-items: start; }
+    .mega-grid--3 { grid-template-columns: repeat(3,1fr); align-items: start; }
+    .mega-grid--2 { grid-template-columns: repeat(2,1fr); align-items: start; }
+    .mega-grid--1 { grid-template-columns: 1fr; max-width: 360px; }
+    .mega-col {
+      padding: 0 24px;
+      border-left: 1px solid var(--border-color-light);
+      /* Fix 3: ensure column content always starts from top */
+      align-self: start;
+    }
+    .mega-col:first-child { border-left: none; padding-left: 0; }
+    .mega-col__title {
+      font-size: var(--text-body-m); font-weight: var(--fw-bold); color: var(--ior-navy);
+      padding-bottom: 12px; margin-bottom: 12px;
+      border-bottom: 2px solid var(--ior-blue);
+      display: flex; align-items: center; gap: 8px;
+      /* Fix 3: consistent title height across all columns */
+      min-height: 42px;
+    }
+    .mega-col__title--gold { color: var(--aviation-gold); border-bottom-color: var(--aviation-gold); }
+    .mega-col__links { display: flex; flex-direction: column; gap: 2px; }
+    /* Fix 1: .mi icon span — matches old file pattern exactly */
+    .mi {
+      width: 28px; height: 28px;
+      background: var(--ior-light-blue-bg);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0;
+      transition: background var(--transition-fast);
+    }
+    .mega-col__link {
+      font-size: var(--text-body-s); color: var(--ior-charcoal); text-decoration: none;
+      display: flex; align-items: center; gap: 10px; padding: 7px 10px;
+      transition: background var(--transition-fast), color var(--transition-fast);
+      white-space: nowrap; /* Fix 5: prevent industry links wrapping */
+    }
+    .mega-col__link:hover { background: var(--ior-light-blue-bg); color: var(--ior-blue); }
+    .mega-col__link:hover .mi { background: #fff; }
+    /* Remove the old CSS-only ::before arrow — .mi replaces it */
+    .mega-col__link--cta {
+      font-weight: var(--fw-bold); color: var(--ior-blue); font-size: var(--text-body-s);
+      margin-top: 8px; padding-top: 12px; border-top: 1px solid var(--border-color-light);
+      white-space: nowrap;
+    }
+    .mega-col__link--cta-gold { color: var(--aviation-gold); }
+    .mega-col__link--cta:hover { color: var(--ior-navy); background: transparent; }
+    /* Fix 2: map-action styled links (Find a Diesel Stop / Find an Airport) in columns */
+    .mega-col__link.map-action {
+      color: var(--ior-blue); font-weight: var(--fw-bold);
+      border-top: 1px solid var(--border-color-light);
+      margin-top: 6px; padding-top: 10px;
+    }
+    .mega-col__link.map-action .mi { background: var(--ior-blue); color: #fff; font-size: 11px; }
+    .mega-col__link.map-action:hover { background: var(--ior-light-blue-bg); }
+    .mega-col__link.map-action--gold { color: var(--aviation-gold); }
+    .mega-col__link.map-action--gold .mi { background: var(--aviation-gold); }
+    .mega-footer {
+      grid-column: 1 / -1; padding-top: 20px; margin-top: 20px;
+      border-top: 1px solid var(--border-color-light);
+      display: flex; gap: 20px; flex-wrap: wrap;
+    }
+    /* CTA-styled link in mega menu (for footer row Find a Diesel Stop / Find an Airport) */
+    .mega-cta-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; background: var(--ior-navy); color: #fff;
+      font-size: var(--text-body-s); font-weight: var(--fw-bold);
+      text-decoration: none; transition: background var(--transition-fast);
+    }
+    .mega-cta-link:hover { background: var(--ior-blue); }
+
+    /* Off-canvas drawer */
+    .drawer-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.5);
+      z-index: var(--z-overlay); opacity: 0; pointer-events: none;
+      transition: opacity var(--transition-base);
+    }
+    .drawer-overlay--open { opacity: 1; pointer-events: all; }
+    .drawer {
+      position: fixed; top: 0; left: 0; bottom: 0; width: min(320px,90vw);
+      background: #fff; z-index: var(--z-drawer);
+      transform: translateX(-100%); transition: transform 350ms cubic-bezier(.4,0,.2,1);
+      overflow-y: auto; display: flex; flex-direction: column;
+    }
+    .drawer--open { transform: translateX(0); }
+    .drawer__head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 20px; background: var(--ior-navy); border-bottom: 2px solid var(--ior-blue);
+    }
+    .drawer__close {
+      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 22px; cursor: pointer; background: none; border: none;
+      font-family: inherit;
+    }
+    .drawer__nav { padding: 8px 0; flex: 1; }
+    .drawer__item {}
+    .drawer__link {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px; font-size: var(--text-body-m); font-weight: var(--fw-bold);
+      color: var(--ior-charcoal); border-bottom: 1px solid rgba(3,85,163,.08);
+      cursor: pointer; transition: background var(--transition-fast);
+    }
+    .drawer__link:hover { background: var(--ior-light-blue-bg); }
+    .drawer__link-chevron {
+      width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+      transform: rotate(-45deg); transition: transform var(--transition-base);
+    }
+    .drawer__link-chevron--open { transform: rotate(45deg); }
+    .drawer__sub {
+      display: none; flex-direction: column; background: var(--ior-light-blue-bg);
+    }
+    .drawer__sub--open { display: flex; }
+    .drawer__sub-link {
+      padding: 10px 20px 10px 36px; font-size: var(--text-body-s);
+      color: var(--ior-charcoal); border-bottom: 1px solid rgba(3,85,163,.06);
+      text-decoration: none; transition: color var(--transition-fast);
+    }
+    .drawer__sub-link:hover { color: var(--ior-blue); }
+    .drawer__ctas {
+      padding: 16px 20px; display: flex; flex-direction: column; gap: 10px;
+      border-top: 2px solid var(--ior-blue);
+    }
+
+    /* ── HERO ─────────────────────────────────────────────────── */
+    .hero {
+      position: relative; min-height: clamp(440px, 55vw, 700px);
+      padding-block: clamp(60px,8vw,100px); padding-inline: var(--section-pad-x);
+      background-color: var(--ior-navy);
+      background-size: cover; background-position: center;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: rgba(3,85,163,.70); z-index: 1;
+    }
+    .hero__content {
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      gap: clamp(24px,4vw,50px); max-width: 640px;
+    }
+    .hero__headline {
+      font-size: var(--text-display-xl); font-weight: var(--fw-bold);
+      color: #fff; line-height: 1.05;
+    }
+    .hero__word {
+      display: inline-block; opacity: 0; transform: translateY(24px);
+      animation: wordReveal .65s ease forwards;
+    }
+    .hero__word:nth-child(1) { animation-delay: .05s; }
+    .hero__word:nth-child(2) { animation-delay: .20s; }
+    .hero__word:nth-child(3) { animation-delay: .35s; }
+    @keyframes wordReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero__sub {
+      font-size: clamp(17px,2vw,24px); font-weight: var(--fw-bold);
+      color: #fff; max-width: 560px;
+    }
+
+    /* ── QUICK ACCESS BAR ─────────────────────────────────────── */
+    .qa-bar { display: grid; grid-template-columns: 1fr; }
+    @media (min-width: 768px) { .qa-bar { grid-template-columns: repeat(3,1fr); } }
+    .qa-cell {
+      display: flex; align-items: center; gap: 16px;
+      padding: clamp(20px,3vw,40px) clamp(20px,4vw,48px);
+      background: var(--ior-navy); text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: background var(--transition-base), border-left var(--transition-fast);
+      border-left: 0px solid transparent;
+    }
+    .qa-cell:hover { background: var(--ior-blue); border-left: 4px solid var(--ior-sky); }
+    @media (min-width: 768px) { .qa-cell { border-bottom: none; border-right: 1px solid rgba(255,255,255,.08); } }
+    .qa-cell--teal { background: var(--ior-teal); }
+    .qa-cell--teal:hover { background: #00b8b4; }
+    .qa-icon {
+      width: 55px; height: 55px; flex-shrink: 0;
+      background: rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center;
+    }
+    .qa-icon--teal-bg { background: rgba(19,17,77,.12); }
+    .qa-icon__placeholder {
+      width: 28px; height: 28px; background: rgba(255,255,255,.5);
+    }
+    .qa-text {}
+    .qa-title {
+      font-size: var(--text-heading-s); font-weight: var(--fw-bold);
+      color: #fff; display: flex; align-items: center; gap: 8px;
+    }
+    .qa-title--dark { color: #13114D; }
+    .qa-body { font-size: var(--text-body-m); color: rgba(255,255,255,.85); margin-top: 4px; }
+    .qa-body--dark { color: #13114D; }
+
+    /* ── VALUE PROPS ─────────────────────────────────────────── */
+    .vp-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 24px;
+    }
+    @media (min-width: 1100px) { .vp-grid { grid-template-columns: repeat(4,1fr); gap: 0; } }
+    .vp-item {
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      text-align: center; padding: 24px 16px;
+    }
+    @media (min-width: 1100px) {
+      .vp-item { padding: 32px 24px; border-left: 1px solid rgba(3,85,163,.2); }
+      .vp-item:first-child { border-left: none; }
+    }
+    .vp-icon {
+      width: 68px; height: 68px; background: rgba(3,85,163,.12);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .vp-icon__inner { width: 40px; height: 40px; background: var(--ior-blue); }
+    .vp-title { font-size: var(--text-heading-s); font-weight: var(--fw-bold); color: var(--ior-charcoal); }
+    .vp-body  { font-size: var(--text-body-m); color: var(--ior-charcoal); }
+
+    /* ── SOLUTIONS GRID ──────────────────────────────────────── */
+    .sol-grid {
+      display: grid; grid-template-columns: 1fr; gap: var(--grid-gap);
+    }
+    @media (min-width: 768px)  { .sol-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1200px) { .sol-grid { grid-template-columns: repeat(4,1fr); } }
+    .sol-card { display: flex; flex-direction: column; gap: 24px; }
+    .sol-card__img {
+      width: 100%; aspect-ratio: 4/3; background: var(--ior-light-blue-bg);
+      overflow: hidden;
+      /* DESIGN RULE NOTE: Figma shows border-radius: 20px on these images.
+         Per Non-Negotiable Rule 1, border-radius: 0 is enforced here. */
+    }
+    .sol-card__img .img-ph {
+      width: 100%; height: 100%; background: repeating-linear-gradient(
+        -45deg, var(--ior-light-blue-bg), var(--ior-light-blue-bg) 8px,
+        rgba(3,85,163,.08) 8px, rgba(3,85,163,.08) 16px
+      );
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: var(--ior-mid-grey); font-family: 'Courier New', monospace;
+      font-weight: 700;
+    }
+    .sol-card__body { display: flex; flex-direction: column; gap: 16px; }
+    .sol-card__title { font-size: var(--text-heading-l); font-weight: var(--fw-bold); color: var(--ior-charcoal); }
+    .sol-card__text  { font-size: var(--text-body-m); color: var(--ior-charcoal); line-height: var(--lh-body); }
+
+    /* ── STAT BAR ────────────────────────────────────────────── */
+    /* DESIGN RULE NOTE: Figma shows border-top-left-radius: 50px; border-top-right-radius: 50px.
+       Per Non-Negotiable Rule 1, these are stripped. Sharp geometry only. */
+    .stat-bar {
+      background: var(--ior-navy); padding: clamp(40px,6vw,80px) var(--section-pad-x);
+      display: flex; flex-direction: column; gap: 32px; align-items: center;
+    }
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; width: 100%;
+      max-width: 1000px;
+    }
+    @media (min-width: 768px) { .stat-grid { grid-template-columns: repeat(4,1fr); gap: 0; } }
+    .stat-item {
+      display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;
+    }
+    @media (min-width: 768px) {
+      .stat-item { padding-inline: 20px; border-left: 1px solid rgba(255,255,255,.2); }
+      .stat-item:first-child { border-left: none; }
+    }
+    .stat-number { font-size: clamp(28px,4vw,44px); font-weight: var(--fw-bold); color: #fff; line-height: 1; }
+    .stat-label  { font-size: var(--text-heading-s); font-weight: var(--fw-bold); color: var(--ior-sky); }
+
+    /* ── LOGO STRIP ──────────────────────────────────────────── */
+    .logo-strip {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      justify-content: center; overflow: hidden; position: relative;
+    }
+    .logo-strip__item {
+      width: clamp(100px,14vw,160px); height: 44px; background: var(--ior-light-blue-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--ior-mid-grey); font-family: 'Courier New', monospace;
+    }
+
+    /* ── INDUSTRY CARDS ──────────────────────────────────────── */
+    .ind-grid {
+      display: grid; grid-template-columns: 1fr; gap: var(--grid-gap);
+    }
+    @media (min-width: 600px)  { .ind-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1200px) { .ind-grid { grid-template-columns: repeat(4,1fr); } }
+    .ind-card {
+      /* DESIGN RULE NOTE: Figma shows border-radius: 10px here.
+         Per Non-Negotiable Rule 1, border-radius: 0. Annotation below. */
+      background: var(--ior-light-blue-bg); display: flex; flex-direction: column;
+      transition: box-shadow var(--transition-base), transform var(--transition-base);
+    }
+    .ind-card:hover { box-shadow: 0 8px 32px rgba(3,85,163,.16); transform: translateY(-3px); }
+    .ind-card__header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+    }
+    .ind-card__title {
+      font-size: var(--text-heading-m); font-weight: var(--fw-bold);
+      color: var(--ior-blue); padding: 20px 0 0 24px; flex: 1; max-width: 140px;
+      line-height: var(--lh-heading);
+    }
+    .ind-card__icon-box {
+      background: var(--ior-blue); padding: 20px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      /* No border-radius — Figma showed border-top-right-radius/border-bottom-left-radius: 10px;
+         stripped per Rule 1. */
+    }
+    .ind-card__icon { width: 50px; height: 50px; background: rgba(255,255,255,.2); }
+    .ind-card__body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+    .ind-card__text  { font-size: var(--text-body-m); color: var(--ior-charcoal); line-height: var(--lh-body); }
+
+    /* ── DIGITAL PLATFORMS / DARK CARDS ─────────────────────── */
+    .dp-grid {
+      display: grid; grid-template-columns: 1fr; gap: var(--grid-gap);
+    }
+    @media (min-width: 768px)  { .dp-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1200px) { .dp-grid { grid-template-columns: repeat(3,1fr); } }
+    .dp-card {
+      /* DESIGN RULE NOTE: Figma shows border-radius: 20px.
+         Per Non-Negotiable Rule 1, border-radius: 0. Sharp geometry. */
+      background: linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.85) 100%),
+                  var(--ior-navy);
+      padding: 28px; display: flex; flex-direction: column; justify-content: flex-end;
+      gap: 20px; min-height: clamp(380px,45vw,560px); position: relative; overflow: hidden;
+    }
+    .dp-card__bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: repeating-linear-gradient(
+        -45deg, rgba(3,85,163,.15), rgba(3,85,163,.15) 6px,
+        transparent 6px, transparent 24px
+      );
+    }
+    .dp-card > *:not(.dp-card__bg) { position: relative; z-index: 1; }
+    .dp-card__tag {
+      /* DESIGN RULE NOTE: Figma shows border-radius: 100px on this pill.
+         Per Non-Negotiable Rule 1, border-radius: 0. */
+      display: inline-flex; align-items: center; padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,.6); color: #fff;
+      font-size: var(--text-body-s); font-weight: var(--fw-bold); width: fit-content;
+    }
+    .dp-card__title { font-size: clamp(20px,2.5vw,26px); font-weight: var(--fw-bold); color: #fff; }
+    .dp-card__text  { font-size: var(--text-body-m); color: rgba(255,255,255,.9); line-height: var(--lh-body); }
+    .dp-card__features { display: flex; flex-direction: column; gap: 10px; }
+    .dp-card__feature {
+      display: flex; align-items: center; gap: 12px;
+      font-size: var(--text-body-m); color: #fff;
+    }
+    .dp-card__feature-tick {
+      width: 13px; height: 9px; flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,.7); display: block;
+    }
+
+    /* ── FUELCHARGE SECTION ──────────────────────────────────── */
+    .fc-section {
+      background: var(--ior-teal); padding-block: clamp(40px,6vw,80px);
+      padding-inline: var(--section-pad-x);
+    }
+    .fc-inner {
+      display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center;
+    }
+    @media (min-width: 1024px) { .fc-inner { grid-template-columns: 1fr 1fr 1fr 1fr; } }
+    .fc-content { display: flex; flex-direction: column; gap: 28px; }
+    @media (min-width: 1024px) { .fc-content { grid-column: 1; } }
+    .fc-logo { width: 170px; height: 43px; background: rgba(19,17,77,.15); }
+    .fc-headline { font-size: var(--text-display-m); font-weight: var(--fw-bold); color: #13114D; line-height: var(--lh-heading); }
+    .fc-sub { font-size: var(--text-body-l); color: #13114D; }
+    .fc-features { display: flex; flex-wrap: wrap; gap: 20px; }
+    .fc-feature { display: flex; align-items: center; gap: 8px; font-size: var(--text-heading-s); font-weight: var(--fw-bold); color: #13114D; }
+    .fc-feature__icon { width: 46px; height: 46px; background: rgba(19,17,77,.1); flex-shrink: 0; }
+    .fc-btn { background: #13114D; color: #fff; border-color: #13114D; }
+    .fc-btn:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
+    .fc-stores { display: flex; gap: 12px; flex-wrap: wrap; }
+    .fc-store { height: 45px; width: 148px; background: rgba(19,17,77,.12); display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: 'Courier New', monospace; color: #13114D; font-weight: 700; }
+    .fc-image {
+      width: 100%; aspect-ratio: 3/4; background: repeating-linear-gradient(
+        -45deg, rgba(0,209,204,.3), rgba(0,209,204,.3) 8px,
+        rgba(19,17,77,.1) 8px, rgba(19,17,77,.1) 16px
+      );
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: #13114D; font-family: 'Courier New', monospace;
+    }
+    @media (max-width: 1023px) { .fc-image { display: none; } }
+
+    /* ── LATEST FROM IOR ─────────────────────────────────────── */
+    .news-header {
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    @media (min-width: 768px) {
+      .news-header { flex-direction: row; align-items: flex-start; justify-content: space-between; }
+      .news-header__left { max-width: 60%; }
+    }
+    .news-header__title { font-size: var(--text-display-m); font-weight: var(--fw-bold); color: var(--ior-blue); }
+    .news-header__body { font-size: var(--text-body-l); color: var(--ior-charcoal); }
+    .news-header__ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+    .news-grid {
+      display: grid; grid-template-columns: 1fr; gap: var(--grid-gap);
+      margin-top: clamp(28px,4vw,48px);
+    }
+    @media (min-width: 600px)  { .news-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1100px) { .news-grid { grid-template-columns: repeat(3,1fr); } }
+    .news-card { display: flex; flex-direction: column; gap: 20px; }
+    .news-card__img {
+      width: 100%; aspect-ratio: 16/9; background: var(--ior-light-blue-bg);
+      /* DESIGN RULE NOTE: Figma shows border-radius: 20px.
+         Per Non-Negotiable Rule 1, border-radius: 0. */
+    }
+    .news-card__img .img-ph { width: 100%; height: 100%; background: repeating-linear-gradient(
+      -45deg, var(--ior-light-blue-bg), var(--ior-light-blue-bg) 8px,
+      rgba(3,85,163,.06) 8px, rgba(3,85,163,.06) 16px
+    ); display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: var(--ior-mid-grey); font-family: 'Courier New', monospace; font-weight: 700; }
+    .news-card__title { font-size: var(--text-heading-l); font-weight: var(--fw-bold); color: var(--ior-charcoal); }
+    .news-card__read { font-size: var(--text-body-m); color: var(--ior-charcoal); text-decoration: underline; }
+
+    /* ── PRE-FOOTER CTA ──────────────────────────────────────── */
+    .pre-footer {
+      background: var(--ior-blue); padding-block: clamp(48px,6vw,80px);
+      padding-inline: var(--section-pad-x);
+      display: flex; flex-direction: column; gap: 32px;
+    }
+    @media (min-width: 768px) {
+      .pre-footer__row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    }
+    .pre-footer__title { font-size: clamp(24px,3vw,40px); font-weight: var(--fw-bold); color: #fff; }
+    .pre-footer__ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    @media (min-width: 768px) { .pre-footer__ctas { margin-top: 0; } }
+    .pre-footer__divider { height: 1px; background: rgba(255,255,255,.25); }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--ior-blue); padding-block: clamp(48px,6vw,80px);
+      padding-inline: var(--section-pad-x);
+    }
+    .footer-nav-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 32px;
+    }
+    @media (min-width: 768px)  { .footer-nav-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (min-width: 1200px) { .footer-nav-grid { grid-template-columns: repeat(6,1fr); } }
+    .footer-col__title {
+      font-size: var(--text-body-m); font-weight: var(--fw-bold); color: #fff;
+      padding-bottom: 16px; margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.2);
+    }
+    .footer-col__links { display: flex; flex-direction: column; gap: 14px; }
+    .footer-col__link {
+      font-size: var(--text-body-s); color: rgba(255,255,255,.85); text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .footer-col__link:hover { color: #fff; }
+    .footer-state-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+    .footer-state-pill {
+      padding: 6px 12px; background: rgba(255,255,255,.15);
+      font-size: var(--text-body-s); color: #fff;
+      transition: background var(--transition-fast); text-decoration: none;
+    }
+    .footer-state-pill:hover { background: rgba(255,255,255,.3); }
+    .footer-legal {
+      margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.25);
+      display: flex; flex-direction: column; gap: 12px; align-items: flex-start;
+    }
+    @media (min-width: 768px) {
+      .footer-legal { flex-direction: row; align-items: center; justify-content: space-between; }
+    }
+    .footer-legal__text { font-size: var(--text-caption); color: rgba(255,255,255,.6); }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social__icon {
+      width: 36px; height: 36px; background: rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition-fast);
+      font-size: 11px; color: #fff; font-family: 'Courier New', monospace;
+    }
+    .footer-social__icon:hover { background: rgba(255,255,255,.3); }
+
+    /* Footer mobile accordion */
+    .footer-acc-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      font-size: var(--text-body-m); font-weight: var(--fw-bold); color: #fff;
+      background: none; border: none; border-bottom: 1px solid rgba(255,255,255,.15);
+      padding: 14px 0; cursor: pointer; text-align: left;
+    }
+    .footer-acc-trigger__icon {
+      width: 14px; height: 14px; position: relative; flex-shrink: 0;
+    }
+    .footer-acc-trigger__icon::before,
+    .footer-acc-trigger__icon::after {
+      content: ''; position: absolute; background: rgba(255,255,255,.7);
+      transition: transform var(--transition-base);
+    }
+    .footer-acc-trigger__icon::before { width: 12px; height: 2px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .footer-acc-trigger__icon::after  { width: 2px; height: 12px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .footer-acc-item--open .footer-acc-trigger__icon::after { opacity: 0; }
+    .footer-acc-panel { display: none; padding: 12px 0 4px 12px; }
+    .footer-acc-item--open .footer-acc-panel { display: block; }
+
+    /* ── FADE-UP ANIMATION ───────────────────────────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+    .fade-up--d1 { transition-delay: .10s; }
+    .fade-up--d2 { transition-delay: .20s; }
+    .fade-up--d3 { transition-delay: .30s; }
+    .fade-up--d4 { transition-delay: .40s; }
+
+    /* ── COMPONENT STATES PAGE ───────────────────────────────── */
+    .cs-section { padding: 32px var(--section-pad-x) 0; background: #F7F9FC; }
+    .cs-title {
+      font-size: clamp(18px,2vw,26px); font-weight: var(--fw-bold); color: var(--ior-navy);
+      border-bottom: 2px solid var(--ior-blue); padding-bottom: 12px; margin-bottom: 24px;
+    }
+    .cs-row {
+      display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px;
+      padding: 20px; background: #fff; border: 1px solid var(--border-color-light);
+      margin-bottom: 12px;
+    }
+    .cs-row--dark { background: var(--ior-navy); }
+    .cs-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--ior-mid-grey); font-family: 'Courier New', monospace;
+      margin-bottom: 8px; display: block;
+    }
+    /* Form inputs */
+    .input-group { display: flex; flex-direction: column; gap: 4px; min-width: 200px; }
+    .input-label { font-size: var(--text-body-s); font-weight: var(--fw-bold); color: var(--ior-charcoal); }
+    .input {
+      padding: 12px 16px; font-size: var(--text-body-m); font-family: var(--font-primary);
+      border: 2px solid rgba(3,85,163,.25); color: var(--ior-charcoal);
+      border-radius: var(--radius); /* LOCKED 0 */
+      background: #fff; transition: border-color var(--transition-fast); outline: none; width: 100%;
+    }
+    .input:focus, .input--focus { border-color: var(--ior-blue); }
+    .input--error { border-color: var(--ior-error); }
+    .input--filled { border-color: var(--ior-blue); color: var(--ior-navy); }
+    .input-error-msg { font-size: var(--text-caption); color: var(--ior-error); font-weight: var(--fw-bold); }
+    /* Breadcrumb */
+    .breadcrumb { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb__item {
+      font-size: var(--text-body-s); color: var(--ior-mid-grey); text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .breadcrumb__item:hover { color: var(--ior-blue); }
+    .breadcrumb__item--current { color: var(--ior-charcoal); font-weight: var(--fw-bold); }
+    .breadcrumb__sep { font-size: var(--text-body-s); color: var(--ior-mid-grey); }
+    /* Page badges */
+    .page-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; font-size: 11px; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+    }
+    .page-badge--hub     { background: var(--ior-blue); color: #fff; }
+    .page-badge--spoke   { background: var(--ior-light-blue-bg); color: var(--ior-blue); border: 1px solid var(--ior-blue); }
+    .page-badge--utility { background: var(--ior-teal); color: #13114D; }
+
+    /* ── RESPONSIVE UTILITY ──────────────────────────────────── */
+    .hide-mobile  { display: none; }
+    @media (min-width: 768px) { .hide-mobile { display: flex; } }
+    .hide-desktop {}
+    @media (min-width: 768px) { .hide-desktop { display: none !important; } }
+
+    /* ── IMG PLACEHOLDER ─────────────────────────────────────── */
+    .img-ph {
+      width: 100%; height: 100%;
+      background: var(--ior-light-blue-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--ior-mid-grey); font-family: 'Courier New', monospace;
+      font-weight: 700; text-align: center; padding: 8px;
+    }
+    .img-ph--dark { background: rgba(255,255,255,.05); color: rgba(255,255,255,.3); }
+
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     WIREFRAME NAV BAR — TOOL LAYER — NOT PART OF IOR BRAND
+═══════════════════════════════════════════════════════════ -->
+<div class="wf-nav" role="navigation" aria-label="Wireframe navigation">
+  <div class="wf-nav__links">
+    <a href="00_Master_Index.html" class="wf-nav__link wf-nav__link--index">Master Index</a>
+    <div class="wf-nav__div" aria-hidden="true"></div>
+    <a href="IOR_Design_System.html" class="wf-nav__link wf-nav__link--ds">Design System</a>
+  </div>
+  <div class="wf-nav__div" aria-hidden="true"></div>
+  <div class="wf-nav__mod">
+    <span class="wf-nav__badge">MODULE 01</span>
+    <span class="wf-nav__name">Homepage &amp; Global Components</span>
+    <span class="wf-nav__file">01_Homepage_and_Global.html</span>
+  </div>
+  <div class="wf-nav__legend">
+    <span class="wf-nav__leg-lbl">Annotations:</span>
+    <div class="wf-nav__leg-items">
+      <span class="wf-nav__leg-item"><span class="wf-nav__swatch wf-nav__swatch--std" aria-hidden="true"></span>Standard</span>
+      <span class="wf-nav__leg-item"><span class="wf-nav__swatch wf-nav__swatch--q"   aria-hidden="true"></span>Design Q</span>
+      <span class="wf-nav__leg-item"><span class="wf-nav__swatch wf-nav__swatch--ok"  aria-hidden="true"></span>Approved</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 1 — GLOBAL HEADER SPECIFICATION
+═══════════════════════════════════════════════════════════ -->
+<div class="spec-section" id="header-spec">
+  <div class="spec-section__title">
+    <span class="spec-section__tag">Section 1</span>
+    Global Header — Full Specification
+  </div>
+  <div class="spec-subsection">
+    <strong>Implementation note:</strong> The mega menu requires Max Mega Menu plugin (megamenu.com).
+    Elementor's native nav widget does NOT support multi-column mega menus. Configure Max Mega Menu
+    to match these wireframe layouts. Key requirements: Fuel Solutions = 4 columns; Aviation column
+    = gold (#D98300) accent on header and CTA; "Find a Diesel Stop" and "Find an Airport" =
+    CTA-styled links, not plain links. See megamenu.com documentation for Elementor integration.
+  </div>
+</div>
+
+<!-- ── BLOCK 1.1 — HEADER DEFAULT STATE ───────────────── -->
+<div class="ann">
+  <span class="ann__id">BLOCK 1.1 — HEADER DEFAULT STATE</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">Utility bar (blue, full width) + Primary nav (white, 72px height, sticky). All 5 nav items visible at 1200px+. Two CTAs: Customer Login (outline) + Apply for an Account (solid). Hamburger visible below 1200px.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Full persistent header. Utility bar provides fast-lane access for Utility User persona. Primary nav serves Revenue Engine and Specialist. Scroll trigger >80px collapses to State 1.2.</span>
+</div>
+<header aria-label="Global header — default state">
+  <!-- Utility bar -->
+  <div class="utility-bar" role="complementary" aria-label="Utility navigation">
+    <span style="font-size:var(--text-body-m);color:#fff;">📢 Announcement Message Placeholder</span>
+    <div class="utility-bar__actions">
+      <a href="12_Support_Utility.html#find-a-location" class="utility-bar__link">
+        📍 Find a Location
+      </a>
+      <div class="utility-bar__divider" aria-hidden="true"></div>
+      <a href="12_Support_Utility.html#make-a-payment" class="utility-bar__link">
+        ✉️ Make a Payment
+      </a>
+      <div class="utility-bar__divider" aria-hidden="true"></div>
+      <a href="tel:1300457467" class="utility-bar__link">
+        📞 1300 457 467
+      </a>
+    </div>
+  </div>
+  <!-- Primary nav -->
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+    <a href="01_Homepage_and_Global.html" class="nav-logo" aria-label="IOR home">[IOR LOGO]</a>
+    <ul class="nav-links" role="list" aria-label="Main menu">
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="fuel">Fuel Solutions</button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="digital">Digital Platforms</button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="industries">Industries We Serve</button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="about">About IOR</button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="support">Support &amp; Contact</button></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="#" class="btn btn--outline" style="padding:10px 20px;font-size:14px;">Customer Login <span class="btn__arrow" aria-hidden="true"></span></a>
+      <a href="#" class="btn btn--primary" style="padding:10px 20px;font-size:14px;">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+      <div class="hamburger" id="hamburger-btn" aria-label="Open menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <!-- Mega menus rendered within nav for DOM proximity -->
+  </nav>
+</header>
+
+<!-- ── BLOCK 1.2 — HEADER SCROLLED / COMPRESSED STATE ─── -->
+<div class="ann">
+  <span class="ann__id">BLOCK 1.2 — HEADER SCROLLED / COMPRESSED STATE</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">Scroll trigger: window.scrollY > 80px. Utility bar hidden (display:none). Primary nav height collapses from 72px to 56px. Logo shrinks from 90×42px to 70×33px. Box shadow appears. Transition: 250ms ease on all properties.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Maximise viewport real estate on content pages. Revenue Engine persona scrolls deep into spec pages — compact nav ensures nav links remain accessible without dominating the view. Implemented via JS scroll listener + .primary-nav--scrolled class toggle.</span>
+</div>
+<div style="background:#f7f9fc;padding:16px var(--section-pad-x);border-bottom:1px solid var(--border-color-light);">
+  <!-- Scrolled state demonstration -->
+  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);padding:4px;">
+    <div style="background:rgba(3,85,163,.05);padding:4px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">
+      ↑ UTILITY BAR: hidden when scrolled (display:none, not visibility:hidden — removes from document flow)
+    </div>
+    <nav style="background:#fff;padding:0 clamp(20px,8vw,125px);display:flex;align-items:center;justify-content:space-between;height:56px;box-shadow:0 2px 20px rgba(0,0,0,.10);border-left:3px solid var(--ior-blue);" aria-label="Header scrolled state demo">
+      <a href="#" class="nav-logo nav-logo--sm" aria-label="IOR home" style="font-size:10px;">[IOR LOGO — SMALL]</a>
+      <ul class="nav-links" role="list" style="display:flex;gap:20px;">
+        <li><span class="nav-link" style="font-size:14px;">Fuel Solutions</span></li>
+        <li><span class="nav-link" style="font-size:14px;">Digital Platforms</span></li>
+        <li><span class="nav-link" style="font-size:14px;">Industries We Serve</span></li>
+        <li><span class="nav-link" style="font-size:14px;">About IOR</span></li>
+        <li><span class="nav-link" style="font-size:14px;">Support &amp; Contact</span></li>
+      </ul>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <a href="#" class="btn btn--outline" style="padding:8px 16px;font-size:13px;">Customer Login</a>
+        <a href="#" class="btn btn--primary" style="padding:8px 16px;font-size:13px;">Apply for an Account</a>
+      </div>
+    </nav>
+    <div style="background:rgba(3,85,163,.05);padding:4px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">
+      HEIGHT: 56px (from 72px) · LOGO: 70×33px (from 90×42px) · BOX-SHADOW: 0 2px 20px rgba(0,0,0,.10) · TRIGGER: scrollY > 80px
+    </div>
+  </div>
+</div>
+
+<!-- ── BLOCK 1.3 — MEGA MENU: FUEL SOLUTIONS (4 COLUMNS) ─ -->
+<div class="ann">
+  <span class="ann__id">BLOCK 1.3 — MEGA MENU: FUEL SOLUTIONS (4 COLUMNS)</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">4-column grid: Ground Fuels / Aviation (gold accent) / Equipment & Infrastructure / Supply & Trading. Footer row with two CTA-styled links: Find a Diesel Stop, Find an Airport. Max Mega Menu plugin required — 4 column layout.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Routes Revenue Engine persona directly to capability spokes. Aviation column uses --aviation-gold (#D98300) per sub-brand governance. "Find a Diesel Stop" and "Find an Airport" are CTA links (not plain links) — use Max Mega Menu custom item styling. See developer note above.</span>
+</div>
+<div class="ann ann--ok" style="background:#fff3cd;border-color:#f5a623;">
+  <span class="ann__id">DEVELOPER NOTE — MAX MEGA MENU</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">This panel is implemented via Max Mega Menu (megamenu.com). Configure: 4-column tabbed layout, Aviation column = gold header color. "Find a Diesel Stop" and "Find an Airport" = custom item type "CTA Button". Full config in megamenu.com docs → Elementor widget → Custom Item Styling.</span>
+</div>
+<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
+  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
+    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — FUEL SOLUTIONS — triggered by hover/click on "Fuel Solutions" nav item</div>
+    <div class="mega-panel mega-panel--visible" style="position:relative;top:auto;box-shadow:none;border-top:3px solid var(--ior-blue);">
+      <div class="mega-grid mega-grid--4">
+        <!-- Column 1: Ground Fuels -->
+        <div class="mega-col">
+          <div class="mega-col__title">Ground Fuels</div>
+          <div class="mega-col__links">
+            <a href="03_Ground_Fuels.html#diesel-network"    class="mega-col__link"><span class="mi">⛽</span>IOR Diesel Network</a>
+            <a href="03_Ground_Fuels.html#onsite-refuelling" class="mega-col__link"><span class="mi">🚛</span>On-Site Refuelling</a>
+            <a href="03_Ground_Fuels.html#bulk-diesel"       class="mega-col__link"><span class="mi">🔄</span>Bulk Diesel Delivery</a>
+            <a href="03_Ground_Fuels.html#hyblue"            class="mega-col__link"><span class="mi">🟦</span>HyBlue™ (AdBlue®)</a>
+            <a href="03_Ground_Fuels.html#oils-lubricants"   class="mega-col__link"><span class="mi">🛢️</span>Oils &amp; Lubricants</a>
+            <a href="12_Support_Utility.html#find-a-location" class="mega-col__link map-action"><span class="mi">📍</span>Find a Diesel Stop</a>
+            <a href="03_Ground_Fuels.html#ground-fuels" class="mega-col__link mega-col__link--cta">View All Ground Fuels →</a>
+          </div>
+        </div>
+        <!-- Column 2: Aviation — GOLD accent -->
+        <div class="mega-col">
+          <div class="mega-col__title mega-col__title--gold">
+            Aviation
+            <span style="font-size:10px;font-weight:400;color:var(--aviation-gold);font-family:'Courier New',monospace;">[GOLD — #D98300]</span>
+          </div>
+          <div class="mega-col__links">
+            <a href="04_Aviation.html#aviation-network"  class="mega-col__link"><span class="mi">✈️</span>IOR Aviation Network</a>
+            <a href="04_Aviation.html#airport-fuelling"  class="mega-col__link"><span class="mi">🛫</span>Airport Fuelling Services</a>
+            <a href="04_Aviation.html#aviation-bulk"     class="mega-col__link"><span class="mi">🚁</span>Aviation Bulk Delivery</a>
+            <a href="04_Aviation.html#aviation-oils"     class="mega-col__link"><span class="mi">🧴</span>Aviation Oils &amp; Lubricants</a>
+            <a href="12_Support_Utility.html#find-a-location" class="mega-col__link map-action map-action--gold"><span class="mi">📍</span>Find an Airport</a>
+            <a href="04_Aviation.html#aviation" class="mega-col__link mega-col__link--cta mega-col__link--cta-gold">View All Aviation →</a>
+          </div>
+        </div>
+        <!-- Column 3: Equipment & Infrastructure -->
+        <div class="mega-col">
+          <div class="mega-col__title">Equipment &amp; Infrastructure</div>
+          <div class="mega-col__links">
+            <a href="05_Equipment_Infrastructure.html#fuel-storage-tanks" class="mega-col__link"><span class="mi">🏗️</span>Fuel Storage Tanks</a>
+            <a href="05_Equipment_Infrastructure.html#frac-tanks"         class="mega-col__link"><span class="mi">🔧</span>Frac Tanks</a>
+            <a href="05_Equipment_Infrastructure.html#equipment-infrastructure" class="mega-col__link"><span class="mi">📦</span>Equipment Hub</a>
+            <a href="05_Equipment_Infrastructure.html#equipment-infrastructure" class="mega-col__link mega-col__link--cta">View All Equipment →</a>
+          </div>
+        </div>
+        <!-- Column 4: Supply & Trading -->
+        <div class="mega-col">
+          <div class="mega-col__title">Supply &amp; Trading</div>
+          <div class="mega-col__links">
+            <a href="06_Supply_Trading.html#terminals"        class="mega-col__link"><span class="mi">🏭</span>Lytton &amp; Port Bonython</a>
+            <a href="06_Supply_Trading.html#eromanga-refinery"class="mega-col__link"><span class="mi">🔬</span>Eromanga Refinery</a>
+            <a href="06_Supply_Trading.html#condensates"      class="mega-col__link"><span class="mi">💧</span>Condensates</a>
+            <a href="06_Supply_Trading.html#supply-trading"   class="mega-col__link"><span class="mi">🔗</span>Supply &amp; Trading Hub</a>
+            <a href="06_Supply_Trading.html#supply-trading" class="mega-col__link mega-col__link--cta">View All Supply &amp; Trading →</a>
+          </div>
+        </div>
+        <div class="mega-footer">
+          <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);padding-right:16px;align-self:center;">FOOTER CTA LINKS (Max Mega Menu custom item type — not plain links):</div>
+          <a href="12_Support_Utility.html#find-a-location" class="mega-cta-link">
+            <span style="font-size:14px;" aria-hidden="true">📍</span>
+            Find a Diesel Stop
+          </a>
+          <a href="12_Support_Utility.html#find-a-location" class="mega-cta-link" style="background:var(--aviation-gold);">
+            <span style="font-size:14px;" aria-hidden="true">📍</span>
+            Find an Airport
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BLOCK 1.4 — MEGA MENU: DIGITAL PLATFORMS (3 COLS) ─ -->
+<div class="ann">
+  <span class="ann__id">BLOCK 1.4 — MEGA MENU: DIGITAL PLATFORMS (3 COLUMNS)</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">3-column layout: HyDip™ FMS / Fuelcharge / Customer Portal. Each column includes a brief descriptor beneath the title. HyDip and Customer Portal include Login CTAs.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Separates HyDip and Customer Portal as distinct products per V2 direction document. Positions IOR as SaaS competitor against SmartFill and Fuellox. Fuelcharge column targets Utility User persona (no login required).</span>
+</div>
+<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
+  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
+    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — DIGITAL PLATFORMS</div>
+    <div class="mega-panel mega-panel--visible" style="position:relative;top:auto;box-shadow:none;border-top:3px solid var(--ior-blue);">
+      <div class="mega-grid mega-grid--3">
+        <div class="mega-col">
+          <div class="mega-col__title">💻 HyDip™ Fuel Management System</div>
+          <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:12px;">Real-time tank monitoring, automated reorder triggers, and compliance reporting.</p>
+          <div class="mega-col__links">
+            <a href="07_Digital_Platforms.html#hydip" class="mega-col__link"><span class="mi">💻</span>About HyDip™ FMS</a>
+            <a href="https://www.hydip.com/accounts/login/" class="mega-col__link" target="_blank" rel="noopener"><span class="mi">🔑</span>Sign In to HyDip</a>
+            <a href="https://status.hydip.com/" class="mega-col__link" target="_blank" rel="noopener"><span class="mi">🟢</span>Server Status</a>
+            <a href="07_Digital_Platforms.html#hydip" class="mega-col__link mega-col__link--cta">Learn More →</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <div class="mega-col__title" style="color:var(--ior-teal);border-bottom-color:var(--ior-teal);">📱 Fuelcharge</div>
+          <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:12px;">No account required. Pay at the pump at IOR diesel stops and regional airstrips.</p>
+          <div class="mega-col__links">
+            <a href="07_Digital_Platforms.html#fuelcharge" class="mega-col__link"><span class="mi">📱</span>About Fuelcharge</a>
+            <a href="#" class="mega-col__link"><span class="mi">📲</span>Download App (iOS)</a>
+            <a href="#" class="mega-col__link"><span class="mi">📲</span>Download App (Android)</a>
+            <a href="07_Digital_Platforms.html#fuelcharge" class="mega-col__link mega-col__link--cta" style="color:var(--ior-teal);">Learn More →</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <div class="mega-col__title">🔑 Customer Portal</div>
+          <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:12px;">Real-time fuel visibility, fraud prevention, and account management for IOR customers.</p>
+          <div class="mega-col__links">
+            <a href="07_Digital_Platforms.html#customer-portal" class="mega-col__link"><span class="mi">🌐</span>About the Portal</a>
+            <a href="#" class="mega-col__link"><span class="mi">🔑</span>Login Now</a>
+            <a href="#" class="mega-col__link"><span class="mi">✅</span>Apply for an Account</a>
+            <a href="07_Digital_Platforms.html#customer-portal" class="mega-col__link mega-col__link--cta">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BLOCK 1.5 — MEGA MENU: INDUSTRIES WE SERVE (2 COLS) -->
+<div class="ann">
+  <span class="ann__id">BLOCK 1.5 — MEGA MENU: INDUSTRIES WE SERVE (2 COLUMNS)</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">2-column layout. Col 1: Transport & Logistics, Oil & Gas, Agriculture & Harvest, Mining & Resources. Col 2: Livestock, Commercial & General Aviation, Construction & Civil, Government & Defence. Footer CTA to hub page.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Empathy Hub — Revenue Engine persona self-segments by industry before reaching product spokes. Secondary SEO keyword capture via industry-specific URL structure.</span>
+</div>
+<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
+  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
+    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — INDUSTRIES WE SERVE</div>
+    <div class="mega-panel mega-panel--visible" style="position:relative;top:auto;box-shadow:none;border-top:3px solid var(--ior-blue);">
+      <div class="mega-grid mega-grid--2" style="max-width:700px;">
+        <div class="mega-col">
+          <div class="mega-col__title">Industries We Serve</div>
+          <div class="mega-col__links">
+            <a href="08_Industries.html#transport-logistics" class="mega-col__link"><span class="mi">🚛</span>Transport &amp; Logistics</a>
+            <a href="08_Industries.html#mining"             class="mega-col__link"><span class="mi">⛏️</span>Mining &amp; Resources</a>
+            <a href="08_Industries.html#agriculture"        class="mega-col__link"><span class="mi">🌾</span>Agriculture &amp; Harvest</a>
+            <a href="08_Industries.html#construction"       class="mega-col__link"><span class="mi">🏗️</span>Construction &amp; Civil</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <div class="mega-col__title">&nbsp;</div>
+          <div class="mega-col__links">
+            <a href="08_Industries.html#government-defence"  class="mega-col__link"><span class="mi">🛡️</span>Government &amp; Defence</a>
+            <a href="08_Industries.html#livestock"           class="mega-col__link"><span class="mi">🐄</span>Livestock</a>
+            <a href="08_Industries.html#commercial-aviation" class="mega-col__link"><span class="mi">✈️</span>Commercial Aviation</a>
+            <a href="08_Industries.html#oil-gas"             class="mega-col__link"><span class="mi">🛢️</span>Oil &amp; Gas</a>
+          </div>
+        </div>
+        <div class="mega-footer">
+          <a href="08_Industries.html#industries" class="mega-cta-link"><span style="font-size:14px;" aria-hidden="true">🌐</span> View All Industries</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BLOCK 1.6 — MEGA MENU: ABOUT IOR (2 COLUMNS) ──── -->
+<div class="ann">
+  <span class="ann__id">BLOCK 1.6 — MEGA MENU: ABOUT IOR (2 COLUMNS)</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">2-column layout. Col 1: About IOR, Our Leadership, Community & Giving Back, Sustainability HSE & ESG. Col 2: Case Studies, Careers (links to sub-pages), News & Updates.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Authority Hub — Stonepeak-backed scale proof for Revenue Engine persona evaluating tender. Case Studies elevated to primary trust-building tool, not buried in blog. Careers routes Candidate persona from social media entry.</span>
+</div>
+<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
+  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
+    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — ABOUT IOR</div>
+    <div class="mega-panel mega-panel--visible" style="position:relative;top:auto;box-shadow:none;border-top:3px solid var(--ior-blue);">
+      <div class="mega-grid mega-grid--2" style="max-width:640px;">
+        <div class="mega-col">
+          <div class="mega-col__title">About IOR</div>
+          <div class="mega-col__links">
+            <a href="09_About.html#about"          class="mega-col__link"><span class="mi">🏢</span>About IOR</a>
+            <a href="09_About.html#leadership"     class="mega-col__link"><span class="mi">👥</span>Our Leadership</a>
+            <a href="09_About.html#community"      class="mega-col__link"><span class="mi">🤝</span>Community &amp; Giving Back</a>
+            <a href="09_About.html#sustainability" class="mega-col__link"><span class="mi">🌿</span>Sustainability, HSE &amp; ESG</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <div class="mega-col__title">Resources</div>
+          <div class="mega-col__links">
+            <a href="09_About.html#case-studies"           class="mega-col__link"><span class="mi">📋</span>Case Studies</a>
+            <a href="11_News_Updates.html#news-updates"    class="mega-col__link"><span class="mi">📰</span>News &amp; Updates</a>
+            <a href="10_Careers.html#careers"              class="mega-col__link"><span class="mi">💼</span>Careers</a>
+            <a href="12_Support_Utility.html#policy-downloads" class="mega-col__link"><span class="mi">📄</span>Policy &amp; Form Downloads</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BLOCK 1.7 — MEGA MENU: SUPPORT & CONTACT (1 COL) ─ -->
+<div class="ann">
+  <span class="ann__id">BLOCK 1.7 — MEGA MENU: SUPPORT & CONTACT (1 COLUMN)</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">Single column. Links: Contact Us, Regional Contacts, Find a Location, Make a Payment, Policy & Form Downloads. Phone number displayed as prominent link.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Utility Hub — deflects low-value enquiries to self-serve. Designed specifically for Utility User persona on mobile. Phone number CTA satisfies immediate support need without form friction.</span>
+</div>
+<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
+  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
+    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — SUPPORT & CONTACT</div>
+    <div class="mega-panel mega-panel--visible" style="position:relative;top:auto;box-shadow:none;border-top:3px solid var(--ior-blue);">
+      <div class="mega-grid mega-grid--1">
+        <div class="mega-col">
+          <div class="mega-col__title">Support &amp; Contact</div>
+          <div class="mega-col__links">
+            <a href="12_Support_Utility.html#support-contact"  class="mega-col__link"><span class="mi">❓</span>Help Centre &amp; FAQs</a>
+            <a href="12_Support_Utility.html#contact-us"       class="mega-col__link"><span class="mi">📞</span>Contact Us</a>
+            <a href="12_Support_Utility.html#regional-contacts"class="mega-col__link"><span class="mi">📍</span>Regional Contacts</a>
+            <a href="12_Support_Utility.html#policy-downloads" class="mega-col__link"><span class="mi">📄</span>Policy &amp; Form Downloads</a>
+            <a href="12_Support_Utility.html#find-a-location"  class="mega-col__link map-action"><span class="mi">🗺️</span>Find a Location</a>
+          </div>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border-color-light);">
+            <a href="tel:1300457467" class="mega-cta-link">📞 1300 457 467</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BLOCK 1.8 — MOBILE HEADER + OFF-CANVAS DRAWER ─── -->
+<div class="ann">
+  <span class="ann__id">BLOCK 1.8 — MOBILE HEADER + OFF-CANVAS DRAWER</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">Below 1200px: hamburger replaces nav links. Tap hamburger → drawer slides from left (translateX from -100% to 0, 350ms cubic-bezier). Overlay (rgba 0,0,0,.5) covers content. Each nav item has chevron; tap expands accordion sub-menu. Two primary CTAs in drawer footer.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Full navigation accessible on mobile without horizontal scroll. Candidate persona enters from social media on mobile — drawer must feel fast and un-intimidating. Sub-menus as accordions prevent cognitive overload. Focus trap inside drawer for accessibility.</span>
+</div>
+<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
+  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);max-width:380px;">
+    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MOBILE STATE — viewport &lt; 1200px</div>
+    <!-- Mock mobile nav bar -->
+    <div style="background:#fff;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:1px solid rgba(3,85,163,.1);">
+      <span class="nav-logo" style="width:70px;height:33px;font-size:10px;">[LOGO]</span>
+      <button class="hamburger" aria-label="Open menu" style="display:flex;"><span></span><span></span><span></span></button>
+    </div>
+    <!-- Drawer demo (static) -->
+    <div style="border-top:2px solid var(--ior-blue);">
+      <div class="drawer__head">
+        <span class="nav-logo" style="width:70px;height:33px;font-size:10px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);">[LOGO]</span>
+        <button class="drawer__close" aria-label="Close menu">✕</button>
+      </div>
+      <div class="drawer__nav">
+        <!-- Fuel Solutions — expanded state demo -->
+        <div class="drawer__item">
+          <div class="drawer__link">
+            Fuel Solutions
+            <span class="drawer__link-chevron drawer__link-chevron--open" aria-hidden="true"></span>
+          </div>
+          <div class="drawer__sub drawer__sub--open">
+            <a href="02_Fuel_Solutions_Hub.html" class="drawer__sub-link">Fuel Solutions Overview</a>
+            <a href="03_Ground_Fuels.html#ground-fuels"   class="drawer__sub-link">Ground Fuels</a>
+            <a href="04_Aviation.html#aviation"           class="drawer__sub-link">Aviation</a>
+            <a href="05_Equipment_Infrastructure.html"    class="drawer__sub-link">Equipment &amp; Infrastructure</a>
+            <a href="06_Supply_Trading.html"              class="drawer__sub-link">Supply &amp; Trading</a>
+          </div>
+        </div>
+        <!-- Collapsed items -->
+        <div class="drawer__item">
+          <div class="drawer__link">Digital Platforms <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+        </div>
+        <div class="drawer__item">
+          <div class="drawer__link">Industries We Serve <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+        </div>
+        <div class="drawer__item">
+          <div class="drawer__link">About IOR <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+        </div>
+        <div class="drawer__item">
+          <div class="drawer__link">Support &amp; Contact <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+        </div>
+      </div>
+      <div class="drawer__ctas">
+        <a href="#" class="btn btn--outline" style="justify-content:center;">Customer Login</a>
+        <a href="#" class="btn btn--primary" style="justify-content:center;">Apply for an Account</a>
+      </div>
+    </div>
+    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">
+      ANIMATION: translateX(-100% → 0) · 350ms cubic-bezier(.4,0,.2,1) · OVERLAY: rgba(0,0,0,.5) · FOCUS TRAP: yes · ESC closes drawer
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 2 — HOMEPAGE (RESPONSIVE, APPROVED DESIGN)
+═══════════════════════════════════════════════════════════ -->
+<div class="spec-section" id="homepage">
+  <div class="spec-section__title">
+    <span class="spec-section__tag">Section 2</span>
+    Homepage — Module 01 · Focus Keyword: commercial fuel network · /
+  </div>
+  <div class="spec-subsection">
+    <strong>Responsive breakpoints:</strong> 375px (single column, stacked) · 768px (tablet reflow) · 1440px (full desktop) ·
+    <strong>Animations:</strong> Hero headline staggered word reveal · IntersectionObserver fade-up · Quick access hover border slide · Smooth scroll ·
+    <strong>Design rule override:</strong> All border-radius values from Figma export stripped to 0. See individual block annotations.
+  </div>
+</div>
+
+<main id="homepage-content" aria-label="Homepage">
+
+  <!-- ── BLOCK 2.1 — UTILITY BAR ─────────────────────────── -->
+  <div class="ann ann--ok">
+    <span class="ann__id">BLOCK 2.1 — UTILITY BAR</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Full-width, #0355A3 blue. Left: announcement placeholder. Right: Find a Location (with sub-dropdown for Diesel Stop / Airport) · Make a Payment · 1300 457 467. Hidden when scrolled (State 1.2).</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">APPROVED per Figma. Fast-lane for Utility User persona. Mobile: collapses to icon-only or hidden behind hamburger.</span>
+  </div>
+  <div class="utility-bar" role="complementary" aria-label="Site utilities">
+    <span style="font-size:var(--text-body-m);">📢 Announcement Message Placeholder</span>
+    <div class="utility-bar__actions">
+      <a href="12_Support_Utility.html#find-a-location" class="utility-bar__link">
+        📍 Find a Location
+      </a>
+      <div class="utility-bar__divider" aria-hidden="true"></div>
+      <a href="12_Support_Utility.html#make-a-payment" class="utility-bar__link">
+        ✉️ Make a Payment
+      </a>
+      <div class="utility-bar__divider" aria-hidden="true"></div>
+      <a href="tel:1300457467" class="utility-bar__link">
+        📞 1300 457 467
+      </a>
+    </div>
+  </div>
+
+  <!-- ── BLOCK 2.2 — PRIMARY NAV (ref. Section 1) ────────── -->
+  <div class="ann">
+    <span class="ann__id">BLOCK 2.2 — PRIMARY NAV (HOMEPAGE INSTANCE)</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Identical to Section 1 Block 1.1. Sticky. Collapses to scrolled state at scrollY > 80px. Mega menus on hover/focus. Hamburger below 1200px.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">See Section 1 for full header specification and all mega menu layouts.</span>
+  </div>
+  <nav class="primary-nav" aria-label="Primary navigation" style="position:relative;z-index:var(--z-nav);">
+    <a href="01_Homepage_and_Global.html" class="nav-logo" aria-label="IOR home">[IOR LOGO]</a>
+    <ul class="nav-links" role="list">
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false">Fuel Solutions</button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false">Digital Platforms</button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false">Industries We Serve</button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false">About IOR</button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false">Support &amp; Contact</button></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="#" class="btn btn--outline" style="padding:10px 20px;font-size:14px;">Customer Login <span class="btn__arrow" aria-hidden="true"></span></a>
+      <a href="#" class="btn btn--primary" style="padding:10px 20px;font-size:14px;">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+      <div class="hamburger" aria-label="Open menu" role="button" tabindex="0" id="mob-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── BLOCK 2.3 — HERO ─────────────────────────────────── -->
+  <div class="ann ann--ok">
+    <span class="ann__id">BLOCK 2.3 — HERO</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Full-bleed photograph with 70% blue overlay. APPROVED EXCEPTION (Homepage only). Headline: "Fuelling Australia's Industries" — 3 words split into spans for staggered animation. Sub: bold, max 560px. Single CTA: "Apply for an Account" (white button). Min-height: clamp(440px,55vw,700px). Padding: clamp(60px,8vw,100px) vertical / clamp(20px,8vw,125px) horizontal. 375px: headline ~44px. 768px: ~60px. 1440px: 80px.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">APPROVED per Figma. Hero word reveal animation: each word fades up sequentially (0.05s, 0.20s, 0.35s delay). Background image placeholder — replace with actual photography. Content is left-aligned, max 640px wide to preserve right-side space for future hero image variant.</span>
+  </div>
+  <section class="hero" aria-label="Hero" style="background-image:linear-gradient(rgba(3,85,163,.70),rgba(3,85,163,.70)),repeating-linear-gradient(-45deg,#0A4066,#0A4066 12px,#0B4B76 12px,#0B4B76 24px);">
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__content">
+      <h1 class="hero__headline" aria-label="Fuelling Australia's Industries">
+        <span class="hero__word">Fuelling</span><br>
+        <span class="hero__word">Australia's</span><br>
+        <span class="hero__word">Industries</span>
+      </h1>
+      <p class="hero__sub">End-to-end fuel solutions and infrastructure for the nation's businesses who can't afford to stop.</p>
+      <div>
+        <a href="#" class="btn btn--white btn--lg">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLOCK 2.4 — QUICK ACCESS BAR ─────────────────────── -->
+  <div class="ann">
+    <span class="ann__id">BLOCK 2.4 — QUICK ACCESS BAR</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">3 cells. Cell 1 & 2: #0A4066 navy. Cell 3: #00D1CC teal (Fuelcharge brand). Content: icon + title + body copy. 375px: stacked vertically. 768px+: 3-column grid. Hover: left border slides in (4px solid --ior-sky) + background lightens. DESIGN RULE: Figma shows border-bottom-left-radius:50px on Cell 1 and border-bottom-right-radius:50px on Cell 3 — STRIPPED per Rule 1.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">INTENT: Immediately serves Utility User persona who enters from physical fuel stop. Fast-lane access without hunting through nav. Hover border slide animation signals interactivity without full card lift. Cell 3 teal signals Fuelcharge sub-brand identity.</span>
+  </div>
+  <nav class="qa-bar" aria-label="Quick access">
+    <a href="12_Support_Utility.html#find-a-location" class="qa-cell">
+      <div class="qa-icon" aria-hidden="true" style="font-size:28px;background:rgba(255,255,255,.12);">⛽</div>
+      <div class="qa-text">
+        <div class="qa-title">Find a Diesel Stop <span class="btn__arrow" aria-hidden="true"></span></div>
+        <div class="qa-body">Locate your nearest IOR diesel network site nationwide.</div>
+      </div>
+    </a>
+    <a href="12_Support_Utility.html#find-a-location" class="qa-cell">
+      <div class="qa-icon" aria-hidden="true" style="font-size:28px;background:rgba(255,255,255,.12);">✈️</div>
+      <div class="qa-text">
+        <div class="qa-title">Find an Airport <span class="btn__arrow" aria-hidden="true"></span></div>
+        <div class="qa-body">Access IOR's into-plane refuelling locations.</div>
+      </div>
+    </a>
+    <a href="07_Digital_Platforms.html#fuelcharge" class="qa-cell qa-cell--teal">
+      <div class="qa-icon qa-icon--teal-bg" aria-hidden="true" style="font-size:28px;background:rgba(19,17,77,.12);">📱</div>
+      <div class="qa-text">
+        <div class="qa-title qa-title--dark">Fuelcharge <span class="btn__arrow" style="border-color:#13114D;" aria-hidden="true"></span></div>
+        <div class="qa-body qa-body--dark">Fuel now. Pay at the pump.</div>
+      </div>
+    </a>
+  </nav>
+
+  <!-- ── BLOCK 2.5 — VALUE PROPS ──────────────────────────── -->
+  <div class="ann">
+    <span class="ann__id">BLOCK 2.5 — VALUE PROPS (4 PILLARS)</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Background: #E0F1FF. 4 items: Owned supply chain · National reach (115+ network sites) · Built for remote · Real-time visibility. 375px: 2×2 grid, no dividers. 768px: 2×2. 1100px+: 4-column with vertical dividers between items. Icons: 68×68px placeholder boxes.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">INTENT: Immediately establishes Tier-1 differentiation post-hero. Addresses Revenue Engine's primary anxiety (supply chain reliability) before any product detail. Fade-up animation on scroll entry.</span>
+  </div>
+  <div style="background:var(--ior-light-blue-bg);padding:clamp(40px,5vw,80px) var(--section-pad-x) clamp(24px,3vw,40px);" aria-label="Value propositions">
+    <div class="vp-grid fade-up">
+      <div class="vp-item">
+        <div class="vp-icon" aria-hidden="true" style="font-size:32px;background:rgba(3,85,163,.1);">🔗</div>
+        <div class="vp-title">Owned supply chain</div>
+        <div class="vp-body">Integrated end-to-end fuel supply</div>
+      </div>
+      <div class="vp-item fade-up fade-up--d1">
+        <div class="vp-icon" aria-hidden="true" style="font-size:32px;background:rgba(3,85,163,.1);">🗺️</div>
+        <div class="vp-title">National reach</div>
+        <div class="vp-body">115+ network sites across Australia</div>
+      </div>
+      <div class="vp-item fade-up fade-up--d2">
+        <div class="vp-icon" aria-hidden="true" style="font-size:32px;background:rgba(3,85,163,.1);">🏗️</div>
+        <div class="vp-title">Built for remote</div>
+        <div class="vp-body">Infrastructure for operations where others won't go</div>
+      </div>
+      <div class="vp-item fade-up fade-up--d3">
+        <div class="vp-icon" aria-hidden="true" style="font-size:32px;background:rgba(3,85,163,.1);">💻</div>
+        <div class="vp-title">Real-time visibility</div>
+        <div class="vp-body">Digital tools to manage your fuel spend</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BLOCK 2.6 — SOLUTIONS SECTION ───────────────────── -->
+  <div class="ann">
+    <span class="ann__id">BLOCK 2.6 — OUR SOLUTIONS (4-CARD GRID)</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Eyebrow: "Our Solutions". Headline: "End-to-End Fuel Solutions". Body: 929px max-width. 4 cards: Ground Fuels / Aviation / Equipment & Infrastructure / Supply & Trading. Each card: image placeholder (4:3 ratio) + title + body + ghost link. 375px: 1 col. 768px: 2 cols. 1200px+: 4 cols. DESIGN RULE: Figma shows border-radius:20px on card images — STRIPPED per Rule 1.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">INTENT: Introduces the 4 product hubs. Revenue Engine routes to relevant spoke. Copy sourced from approved copy scaffolding doc.</span>
+  </div>
+  <section class="section-pad" aria-label="Our solutions" style="background:#fff;">
+    <div class="inner">
+      <div class="fade-up" style="max-width:1170px;margin-bottom:40px;">
+        <p class="eyebrow" style="margin-bottom:16px;">Our Solutions</p>
+        <h2 style="font-size:var(--text-display-m);font-weight:var(--fw-bold);color:var(--ior-blue);line-height:var(--lh-display);margin-bottom:20px;">End-to-End Fuel Solutions</h2>
+        <p style="font-size:var(--text-body-l);color:var(--ior-charcoal);max-width:929px;line-height:var(--lh-body);">Since we commenced operations in 1984, we've grown with our customers, and we've been the fuelling force behind those industries critical to the lives of all Australians. Industries and businesses that put food on our plates, move goods from A to B, keep the lights on, and put a roof over our heads.</p>
+      </div>
+      <div class="sol-grid">
+        <div class="sol-card fade-up">
+          <div class="sol-card__img"><div class="img-ph">[IMAGE — Ground Fuels]</div></div>
+          <div class="sol-card__body">
+            <h3 class="sol-card__title">Ground Fuels</h3>
+            <p class="sol-card__text">National diesel network and bulk supply solutions across diesel, HyBlue and lubricants for Australia's hardest-working heavy fleets.</p>
+            <a href="03_Ground_Fuels.html#ground-fuels" class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></a>
+          </div>
+        </div>
+        <div class="sol-card fade-up fade-up--d1">
+          <div class="sol-card__img"><div class="img-ph">[IMAGE — Aviation]</div></div>
+          <div class="sol-card__body">
+            <h3 class="sol-card__title">Aviation</h3>
+            <p class="sol-card__text">Expert into-plane refuelling, aviation fuel network, and lubricant supply for commercial and private aircrafts.</p>
+            <a href="04_Aviation.html#aviation" class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></a>
+          </div>
+        </div>
+        <div class="sol-card fade-up fade-up--d2">
+          <div class="sol-card__img"><div class="img-ph">[IMAGE — Equipment & Infrastructure]</div></div>
+          <div class="sol-card__body">
+            <h3 class="sol-card__title">Equipment &amp; Infrastructure</h3>
+            <p class="sol-card__text">Scalable fuel storage, self-bunded tanks, and onsite infrastructure for remote project sites.</p>
+            <a href="05_Equipment_Infrastructure.html#equipment-infrastructure" class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></a>
+          </div>
+        </div>
+        <div class="sol-card fade-up fade-up--d3">
+          <div class="sol-card__img"><div class="img-ph">[IMAGE — Supply & Trading]</div></div>
+          <div class="sol-card__body">
+            <h3 class="sol-card__title">Supply &amp; Trading</h3>
+            <p class="sol-card__text">Sourcing fuel directly into IOR's storage terminals to supply our network, bulk fuel, and wholesale customers.</p>
+            <a href="06_Supply_Trading.html#supply-trading" class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLOCK 2.7 — STAT BAR ──────────────────────────────── -->
+  <div class="ann">
+    <span class="ann__id">BLOCK 2.7 — STAT BAR (FOUR DECADES)</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Background: #0A4066. Eyebrow (uppercase): "FOUR DECADES OF KEEPING AUSTRALIA MOVING". 4 stats: 190M+ Litres Storage · 115+ Network Sites · 40+ Years · Australian Founded & Operated. 375px: 2×2 grid. 768px+: 4-column with dividers. DESIGN RULE: Figma shows border-top-left-radius:50px and border-top-right-radius:50px — STRIPPED per Rule 1.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">INTENT: Authority signal. Revenue Engine evaluating multi-year tender needs proof of scale before trust. Stats animate as counters on IntersectionObserver entry (JS counter animation, 1.2s duration).</span>
+  </div>
+  <section class="stat-bar fade-up" aria-label="Company statistics">
+    <p class="eyebrow eyebrow--white" style="text-align:center;">Four Decades of Keeping Australia Moving</p>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <span class="stat-number" data-target="190">190M+</span>
+        <span class="stat-label">Litres Storage</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="115">115+</span>
+        <span class="stat-label">Network Sites</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="40">40+</span>
+        <span class="stat-label">Years</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">Australian</span>
+        <span class="stat-label">Founded &amp; Operated</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLOCK 2.8 — LOGO STRIP ────────────────────────────── -->
+  <div class="ann">
+    <span class="ann__id">BLOCK 2.8 — TRUSTED ORGANISATIONS (LOGO STRIP)</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Eyebrow: "Trusted by Australia's Leading Organisations". 6 logo placeholders in a scrolling row. Fade masks on left/right edges (CSS gradient overlay). 375px: wraps to 2 rows. 768px+: single row. Logos greyscale at rest, full colour on hover.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">INTENT: Social proof for Revenue Engine entering tender evaluation. Logo placeholders — replace with actual client logos when client approval obtained. Do NOT use competitor logos as stand-ins.</span>
+  </div>
+  <section class="section-pad" aria-label="Trusted organisations" style="background:#fff;">
+    <div class="inner" style="text-align:center;">
+      <p class="eyebrow" style="margin-bottom:28px;">Trusted by Australia's Leading Organisations</p>
+      <div style="position:relative;overflow:hidden;">
+        <div class="logo-strip fade-up">
+          <div class="logo-strip__item">[LOGO]</div>
+          <div class="logo-strip__item">[LOGO]</div>
+          <div class="logo-strip__item">[LOGO]</div>
+          <div class="logo-strip__item">[LOGO]</div>
+          <div class="logo-strip__item">[LOGO]</div>
+          <div class="logo-strip__item">[LOGO]</div>
+        </div>
+        <!-- Fade masks -->
+        <div style="position:absolute;top:0;left:0;bottom:0;width:80px;background:linear-gradient(to right,#fff,transparent);pointer-events:none;" aria-hidden="true"></div>
+        <div style="position:absolute;top:0;right:0;bottom:0;width:80px;background:linear-gradient(to left,#fff,transparent);pointer-events:none;" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLOCK 2.9 — INDUSTRIES WE SERVE ─────────────────── -->
+  <div class="ann">
+    <span class="ann__id">BLOCK 2.9 — INDUSTRIES WE SERVE (8-CARD GRID)</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Eyebrow: "Industries We Serve". Headline: "We Fuel Every Industry". Body. 8 industry cards: Transport & Logistics · Oil & Gas · Agriculture & Harvest · Mining & Resources · Livestock · Commercial & General Aviation · Construction & Civil · Government & Defence. 375px: 1 col. 600px: 2 cols. 1200px+: 4 cols (wraps to 4+4). DESIGN RULE: Figma shows border-radius:10px on cards and icon boxes — STRIPPED per Rule 1.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">INTENT: Empathy Hub. Each card opens the relevant industry spoke page. Card hover: translateY(-3px) + box shadow. Industry cards are the primary SEO engine for long-tail keywords.</span>
+  </div>
+  <section class="section-pad" aria-label="Industries we serve" style="background:#fff;">
+    <div class="inner">
+      <div class="fade-up" style="margin-bottom:40px;">
+        <p class="eyebrow" style="margin-bottom:16px;">Industries We Serve</p>
+        <h2 style="font-size:var(--text-display-m);font-weight:var(--fw-bold);color:var(--ior-blue);line-height:var(--lh-display);margin-bottom:16px;">We Fuel Every Industry</h2>
+        <p style="font-size:var(--text-body-l);color:var(--ior-charcoal);line-height:var(--lh-body);">End-to-end fuel supply, infrastructure, and management solutions engineered specifically for Australia's hardest-working sectors.</p>
+      </div>
+      <div class="ind-grid">
+        <!-- Transport & Logistics -->
+        <a href="08_Industries.html#transport-logistics" class="ind-card fade-up">
+          <div class="ind-card__header">
+            <h3 class="ind-card__title">Transport &amp; Logistics</h3>
+            <div class="ind-card__icon-box" aria-hidden="true" style="font-size:28px;">🚛</div>
+          </div>
+          <div class="ind-card__body">
+            <p class="ind-card__text">Keep your heavy haulage fleet moving with our 24/7 national diesel network and real-time fleet tracking.</p>
+            <span class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></span>
+          </div>
+        </a>
+        <!-- Oil & Gas -->
+        <a href="08_Industries.html#oil-gas" class="ind-card fade-up fade-up--d1">
+          <div class="ind-card__header">
+            <h3 class="ind-card__title">Oil &amp; Gas</h3>
+            <div class="ind-card__icon-box" aria-hidden="true" style="font-size:28px;">🛢️</div>
+          </div>
+          <div class="ind-card__body">
+            <p class="ind-card__text">Australia's largest regional network of reliable diesel services for the oil and gas industries.</p>
+            <span class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></span>
+          </div>
+        </a>
+        <!-- Agriculture & Harvest -->
+        <a href="08_Industries.html#agriculture" class="ind-card fade-up fade-up--d2">
+          <div class="ind-card__header">
+            <h3 class="ind-card__title">Agriculture &amp; Harvest</h3>
+            <div class="ind-card__icon-box" aria-hidden="true" style="font-size:28px;">🌾</div>
+          </div>
+          <div class="ind-card__body">
+            <p class="ind-card__text">Reliable bulk diesel and lubricants delivered directly to your farm to guarantee supply during peak harvest.</p>
+            <span class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></span>
+          </div>
+        </a>
+        <!-- Mining & Resources -->
+        <a href="08_Industries.html#mining" class="ind-card fade-up fade-up--d3">
+          <div class="ind-card__header">
+            <h3 class="ind-card__title">Mining &amp; Resources</h3>
+            <div class="ind-card__icon-box" aria-hidden="true" style="font-size:28px;">⛏️</div>
+          </div>
+          <div class="ind-card__body">
+            <p class="ind-card__text">Power remote operations with scalable storage, X2U mobile refuelling, and secure bulk diesel supply.</p>
+            <span class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></span>
+          </div>
+        </a>
+        <!-- Livestock -->
+        <a href="08_Industries.html#livestock" class="ind-card fade-up">
+          <div class="ind-card__header">
+            <h3 class="ind-card__title">Livestock</h3>
+            <div class="ind-card__icon-box" aria-hidden="true" style="font-size:28px;">🐄</div>
+          </div>
+          <div class="ind-card__body">
+            <p class="ind-card__text">Specialised remote fuel delivery supporting Australia's massive cattle stations and livestock transport networks.</p>
+            <span class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></span>
+          </div>
+        </a>
+        <!-- Commercial & General Aviation -->
+        <a href="08_Industries.html#commercial-aviation" class="ind-card fade-up fade-up--d1">
+          <div class="ind-card__header">
+            <h3 class="ind-card__title">Commercial &amp; General Aviation</h3>
+            <div class="ind-card__icon-box" aria-hidden="true" style="font-size:28px;">✈️</div>
+          </div>
+          <div class="ind-card__body">
+            <p class="ind-card__text">Australia's largest regional network of self-serve Avgas and Jet A-1. Just scan and pay with the Fuelcharge app.</p>
+            <span class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></span>
+          </div>
+        </a>
+        <!-- Construction & Civil -->
+        <a href="08_Industries.html#construction" class="ind-card fade-up fade-up--d2">
+          <div class="ind-card__header">
+            <h3 class="ind-card__title">Construction &amp; Civil</h3>
+            <div class="ind-card__icon-box" aria-hidden="true" style="font-size:28px;">🏗️</div>
+          </div>
+          <div class="ind-card__body">
+            <p class="ind-card__text">Eliminate machinery downtime with direct-to-equipment wet-hire refuelling and temporary on-site fuel storage.</p>
+            <span class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></span>
+          </div>
+        </a>
+        <!-- Government & Defence -->
+        <a href="08_Industries.html#government-defence" class="ind-card fade-up fade-up--d3">
+          <div class="ind-card__header">
+            <h3 class="ind-card__title">Government &amp; Defence</h3>
+            <div class="ind-card__icon-box" aria-hidden="true" style="font-size:28px;">🛡️</div>
+          </div>
+          <div class="ind-card__body">
+            <p class="ind-card__text">100% Australian-owned, secure, and fully ISO-compliant sovereign fuel supply chains for critical operations.</p>
+            <span class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLOCK 2.10 — DIGITAL PLATFORMS / SMARTER SYSTEMS ─ -->
+  <div class="ann">
+    <span class="ann__id">BLOCK 2.10 — INTEGRATED FUEL SYSTEMS (3 DARK CARDS)</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Background: #0A4066. Eyebrow (sky blue): "Integrated Fuel Systems". Headline (white): "Smarter Systems That Keep You Moving". Body (white). 3 dark photo cards: HyDip FMS (For Fleet Managers) · Tank Manufacturing (For Project Managers) · X2U Mobile Refuelling (For Site Supervisors). Card min-height: clamp(380px,45vw,560px). 375px: 1 col. 768px: 2 cols. 1200px+: 3 cols. DESIGN RULE: Figma shows border-radius:20px on cards and border-radius:100px on pill tags — STRIPPED per Rule 1.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">INTENT: Tech Hub. Positions IOR against dedicated SaaS competitors (SmartFill, Fuellox). Persona-tagged pills (For Fleet Managers etc.) signal the Value-First Framework. Cards link to Digital Platforms module.</span>
+  </div>
+  <section style="background:var(--ior-navy);padding:clamp(50px,7vw,100px) var(--section-pad-x);" aria-label="Integrated fuel systems">
+    <div class="inner" style="margin-bottom:40px;text-align:center;">
+      <p class="eyebrow eyebrow--sky fade-up" style="margin-bottom:16px;">Integrated Fuel Systems</p>
+      <h2 class="fade-up fade-up--d1" style="font-size:var(--text-display-m);font-weight:var(--fw-bold);color:#fff;line-height:var(--lh-display);max-width:996px;margin:0 auto 20px;">Smarter Systems That Keep You Moving</h2>
+      <p class="fade-up fade-up--d2" style="font-size:var(--text-body-l);color:rgba(255,255,255,.9);max-width:926px;margin:0 auto;line-height:var(--lh-body);">From robust combination tanks and X2U mobile refuelling to real-time HyDip management software, gain total visibility and control over your fleet's fuel.</p>
+    </div>
+    <div class="dp-grid">
+      <div class="dp-card fade-up">
+        <div class="dp-card__bg" aria-hidden="true"></div>
+        <div class="dp-card__tag">For Fleet Managers</div>
+        <h3 class="dp-card__title">HyDip FMS</h3>
+        <p class="dp-card__text">Fuel Management System. Real-time monitoring, automated reorder triggers, and compliance reporting for large fleets.</p>
+        <div class="dp-card__features">
+          <div class="dp-card__feature"><span class="dp-card__feature-tick" aria-hidden="true"></span>Real-time tank monitoring</div>
+          <div class="dp-card__feature"><span class="dp-card__feature-tick" aria-hidden="true"></span>Automated reorder triggers</div>
+          <div class="dp-card__feature"><span class="dp-card__feature-tick" aria-hidden="true"></span>Compliance reporting</div>
+        </div>
+        <a href="07_Digital_Platforms.html#hydip" class="btn btn--ghost btn--ghost-sky">Learn More <span class="btn__arrow" aria-hidden="true"></span></a>
+      </div>
+      <div class="dp-card fade-up fade-up--d1">
+        <div class="dp-card__bg" aria-hidden="true"></div>
+        <div class="dp-card__tag">For Project Managers</div>
+        <h3 class="dp-card__title">Tank Manufacturing</h3>
+        <p class="dp-card__text">High-capacity, self-bunded storage infrastructure engineered to secure your heavy fuel supply in Australia's harshest remote environments.</p>
+        <div class="dp-card__features">
+          <div class="dp-card__feature"><span class="dp-card__feature-tick" aria-hidden="true"></span>Self-bunded maximum security</div>
+          <div class="dp-card__feature"><span class="dp-card__feature-tick" aria-hidden="true"></span>Scalable storage combinations</div>
+          <div class="dp-card__feature"><span class="dp-card__feature-tick" aria-hidden="true"></span>Built for remote project sites</div>
+        </div>
+        <a href="05_Equipment_Infrastructure.html#fuel-storage-tanks" class="btn btn--ghost btn--ghost-sky">Learn More <span class="btn__arrow" aria-hidden="true"></span></a>
+      </div>
+      <div class="dp-card fade-up fade-up--d2">
+        <div class="dp-card__bg" aria-hidden="true"></div>
+        <div class="dp-card__tag">For Site Supervisors</div>
+        <h3 class="dp-card__title">X2U Mobile Refuelling</h3>
+        <p class="dp-card__text">Direct-to-equipment fuel delivery. Eliminate non-productive labour time and keep your heavy civil and mining machinery operating seamlessly.</p>
+        <div class="dp-card__features">
+          <div class="dp-card__feature"><span class="dp-card__feature-tick" aria-hidden="true"></span>Zero machinery downtime</div>
+          <div class="dp-card__feature"><span class="dp-card__feature-tick" aria-hidden="true"></span>Direct-to-asset delivery</div>
+          <div class="dp-card__feature"><span class="dp-card__feature-tick" aria-hidden="true"></span>Detailed wet-hire tracking</div>
+        </div>
+        <a href="03_Ground_Fuels.html#onsite-refuelling" class="btn btn--ghost btn--ghost-sky">Learn More <span class="btn__arrow" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLOCK 2.11 — FUELCHARGE SECTION ──────────────────── -->
+  <div class="ann">
+    <span class="ann__id">BLOCK 2.11 — FUELCHARGE (TEAL SECTION)</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Background: #00D1CC (Fuelcharge brand only). Left content column: Fuelcharge logo placeholder · Headline (dark navy #13114D): "Fuel on the Go with Fuelcharge" · Sub-body · 3 feature icons: Scan & Pay / Digital Receipts / Find Sites · "Learn more" CTA (navy #13114D) · App store badge placeholders. Right: 3 app screenshot image placeholders. 375px: content only (images hidden). 768px: 2-column. 1024px+: 4-column (1 content + 3 images). DESIGN RULE: Figma shows border-radius:500px on "Learn more" CTA — STRIPPED per Rule 1.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">INTENT: Fuelcharge sub-brand section. Targets Utility User (no account required) AND Revenue Engine cross-sell. Teal is CONTAINED to this section only per brand governance. App store badges must link to actual stores when live.</span>
+  </div>
+  <section class="fc-section fade-up" aria-label="Fuelcharge">
+    <div class="fc-inner">
+      <div class="fc-content">
+        <div class="fc-logo" aria-label="Fuelcharge logo placeholder" role="img"></div>
+        <h2 class="fc-headline">Fuel on the Go with Fuelcharge</h2>
+        <p class="fc-sub">No account required. The fastest way to pay at IOR diesel stops and regional airstrips.</p>
+        <div class="fc-features">
+          <div class="fc-feature">
+            <div class="fc-feature__icon" aria-hidden="true" style="font-size:24px;display:flex;align-items:center;justify-content:center;background:rgba(19,17,77,.1);">📷</div>
+            Scan &amp; Pay
+          </div>
+          <div class="fc-feature">
+            <div class="fc-feature__icon" aria-hidden="true" style="font-size:24px;display:flex;align-items:center;justify-content:center;background:rgba(19,17,77,.1);">🧾</div>
+            Digital Receipts
+          </div>
+          <div class="fc-feature">
+            <div class="fc-feature__icon" aria-hidden="true" style="font-size:24px;display:flex;align-items:center;justify-content:center;background:rgba(19,17,77,.1);">📍</div>
+            Find Sites
+          </div>
+        </div>
+        <a href="07_Digital_Platforms.html#fuelcharge" class="btn fc-btn">Learn more <span class="btn__arrow" aria-hidden="true"></span></a>
+        <div class="fc-stores">
+          <div class="fc-store">[App Store Badge]</div>
+          <div class="fc-store">[Google Play Badge]</div>
+        </div>
+      </div>
+      <div class="fc-image"><span>[APP SCREENSHOT 1]</span></div>
+      <div class="fc-image"><span>[APP SCREENSHOT 2]</span></div>
+      <div class="fc-image"><span>[APP SCREENSHOT 3]</span></div>
+    </div>
+  </section>
+
+  <!-- ── BLOCK 2.12 — LATEST FROM IOR ─────────────────────── -->
+  <div class="ann ann--q">
+    <span class="ann__id">DESIGN QUESTION — BLOCK 2.12 — NEWS SECTION BODY COPY</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Figma export contains Lorem Ipsum in the "Latest from IOR" sub-heading: "Viverra eu porttitor augue nunc risus massa tortor ravida euismod." This violates Non-Negotiable Rule 3 (no Lorem Ipsum). COPY REQUIRED from IOR marketing team before build.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">ACTION REQUIRED: Supply approved body copy for this sub-heading. Suggested tone: mirrors the brief — something like "The latest news, case studies, and updates from Australia's Tier-1 fuel infrastructure partner." 3 article cards use real titles from Figma brief (approved).</span>
+  </div>
+  <div class="ann">
+    <span class="ann__id">BLOCK 2.12 — LATEST FROM IOR (3-CARD NEWS GRID)</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Headline: "Latest from IOR". Sub body copy: [COPY REQUIRED — see Design Question above]. Two CTAs top right: All Case Studies / All Articles. 3 article cards with image placeholder + title + "Read Article" underline link. 375px: 1 col, header stacks. 600px: 2 cols. 1100px+: 3 cols, header row side-by-side. DESIGN RULE: Figma shows border-radius:20px on card images — STRIPPED per Rule 1.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">INTENT: Social proof + SEO content hub. Case Studies routed to 09_About.html. Articles routed to 11_News_Updates.html. Article titles from approved Figma brief used as-is.</span>
+  </div>
+  <section class="section-pad" aria-label="Latest from IOR" style="background:#fff;">
+    <div class="inner">
+      <div class="news-header fade-up">
+        <div class="news-header__left">
+          <h2 class="news-header__title">Latest from IOR</h2>
+          <p class="news-header__body" style="color:var(--ior-mid-grey);font-style:italic;">[COPY REQUIRED — see design question annotation above. No Lorem Ipsum.]</p>
+        </div>
+        <div class="news-header__ctas">
+          <a href="09_About.html#case-studies" class="btn btn--outline">All Case Studies <span class="btn__arrow" aria-hidden="true"></span></a>
+          <a href="11_News_Updates.html#news-updates" class="btn btn--outline">All Articles <span class="btn__arrow" aria-hidden="true"></span></a>
+        </div>
+      </div>
+      <div class="news-grid">
+        <article class="news-card fade-up">
+          <div class="news-card__img"><div class="img-ph">[IMAGE — IOR White Sands]</div></div>
+          <div>
+            <h3 class="news-card__title">IOR White Sands NOW OPEN!</h3>
+            <a href="11_News_Updates.html#article-detail" class="news-card__read">Read Article</a>
+          </div>
+        </article>
+        <article class="news-card fade-up fade-up--d1">
+          <div class="news-card__img"><div class="img-ph">[IMAGE — Camden Aviation]</div></div>
+          <div>
+            <h3 class="news-card__title">IOR Aviation Lands in Camden!</h3>
+            <a href="11_News_Updates.html#article-detail" class="news-card__read">Read Article</a>
+          </div>
+        </article>
+        <article class="news-card fade-up fade-up--d2">
+          <div class="news-card__img"><div class="img-ph">[IMAGE — Surat Basin Awards]</div></div>
+          <div>
+            <h3 class="news-card__title">Stewart Morland Takes Top Prize at Surat Basin Energy Awards</h3>
+            <a href="11_News_Updates.html#article-detail" class="news-card__read">Read Article</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLOCK 2.13 — PRE-FOOTER CTA ──────────────────────── -->
+  <div class="ann">
+    <span class="ann__id">BLOCK 2.13 — PRE-FOOTER CTA ("WE'RE HERE TO HELP")</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__desc">Background: #0355A3. Headline: "We're here to help". 3 CTAs: Apply for an Account (white solid) · Make an Enquiry (outline white) · Need Help? (outline white). Horizontal divider. Footer nav columns below (see Section 3). 375px: headline + CTAs stack vertically. 768px+: row layout.</span>
+    <span class="ann__sep">·</span>
+    <span class="ann__int">INTENT: Final conversion trap before exit. Serves all 4 personas: Apply for Account (Revenue Engine / high intent), Make an Enquiry (Revenue Engine / tender track), Need Help? (Utility User / support). DESIGN RULE: Figma shows border-radius:500px on CTAs — STRIPPED per Rule 1.</span>
+  </div>
+  <section class="pre-footer fade-up" aria-label="We're here to help">
+    <div class="pre-footer__row">
+      <h2 class="pre-footer__title">We're here to help</h2>
+      <div class="pre-footer__ctas">
+        <a href="#" class="btn btn--white">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="12_Support_Utility.html#contact-us" class="btn btn--outline-white">Make an Enquiry <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="12_Support_Utility.html#support-contact" class="btn btn--outline-white">Need Help? <span class="btn__arrow" aria-hidden="true"></span></a>
+      </div>
+    </div>
+    <div class="pre-footer__divider"></div>
+  </section>
+
+</main><!-- /#homepage-content -->
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 3 — GLOBAL FOOTER (FULL SPECIFICATION)
+═══════════════════════════════════════════════════════════ -->
+<div class="spec-section" id="footer-spec">
+  <div class="spec-section__title">
+    <span class="spec-section__tag">Section 3</span>
+    Global Footer — Desktop &amp; Mobile Specification
+  </div>
+</div>
+
+<!-- ── BLOCK 3.1 — FOOTER DESKTOP ───────────────────────── -->
+<div class="ann">
+  <span class="ann__id">BLOCK 3.1 — FOOTER DESKTOP (6-COLUMN GRID)</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">Background: #0355A3. 6 columns: Contact · Fuel Solutions · Digital Platforms · Corporate · Quick Actions · Find a Site By State (state pills). Each column: bold white title with bottom border, then link list. Bottom bar: copyright + legal links (left) + social icon row (right). 375px: 2-column grid. 768px: 3-column. 1200px+: 6-column. DESIGN RULE: Figma shows border-radius:9999px on social icons and state pills — STRIPPED per Rule 1.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Persistent footer present on every page. Provides secondary navigation and SEO link structure. Quick Actions column deflects high-friction tasks (Apply, Pay) away from phone support. Find a Site By State enables direct regional routing without opening the full Find a Location map.</span>
+</div>
+<footer class="site-footer" aria-label="Site footer">
+  <div class="footer-nav-grid">
+    <!-- Contact -->
+    <div>
+      <div class="footer-col__title">Contact</div>
+      <div class="footer-col__links">
+        <span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
+        <a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a>
+        <a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a>
+        <a href="12_Support_Utility.html#regional-contacts" class="footer-col__link">Regional Contacts</a>
+      </div>
+    </div>
+    <!-- Fuel Solutions -->
+    <div>
+      <div class="footer-col__title">Fuel Solutions</div>
+      <div class="footer-col__links">
+        <a href="03_Ground_Fuels.html"              class="footer-col__link">Ground Fuels</a>
+        <a href="04_Aviation.html"                  class="footer-col__link">Aviation</a>
+        <a href="05_Equipment_Infrastructure.html"  class="footer-col__link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading.html"            class="footer-col__link">Supply &amp; Trading</a>
+      </div>
+    </div>
+    <!-- Digital Platforms -->
+    <div>
+      <div class="footer-col__title">Digital Platforms</div>
+      <div class="footer-col__links">
+        <a href="07_Digital_Platforms.html#hydip"           class="footer-col__link">HyDip™ FMS</a>
+        <a href="07_Digital_Platforms.html#fuelcharge"      class="footer-col__link">Fuelcharge App</a>
+        <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
+      </div>
+    </div>
+    <!-- Corporate -->
+    <div>
+      <div class="footer-col__title">Corporate</div>
+      <div class="footer-col__links">
+        <a href="09_About.html#about"          class="footer-col__link">About IOR</a>
+        <a href="10_Careers.html#careers"      class="footer-col__link">Careers</a>
+        <a href="09_About.html#case-studies"   class="footer-col__link">Case Studies</a>
+        <a href="09_About.html#sustainability" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+        <a href="11_News_Updates.html"         class="footer-col__link">News &amp; Updates</a>
+      </div>
+    </div>
+    <!-- Quick Actions -->
+    <div>
+      <div class="footer-col__title">Quick Actions</div>
+      <div class="footer-col__links">
+        <a href="#" class="footer-col__link">Apply for an Account</a>
+        <a href="12_Support_Utility.html#make-a-payment" class="footer-col__link">Make a Payment</a>
+        <a href="12_Support_Utility.html#contact-us" class="footer-col__link">Contact Us</a>
+        <a href="12_Support_Utility.html#support-contact" class="footer-col__link">Help Centre &amp; FAQs</a>
+      </div>
+    </div>
+    <!-- Find a Site By State -->
+    <div>
+      <div class="footer-col__title">Find a Site By State</div>
+      <div class="footer-state-pills">
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">QLD</a>
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">NSW</a>
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">VIC</a>
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">SA</a>
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">WA</a>
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">NT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">
+      Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      Site by 3PM
+    </p>
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
+      <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
+      <a href="#" class="footer-social__icon" aria-label="Instagram">📷</a>
+      <a href="#" class="footer-social__icon" aria-label="YouTube">▶</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ── BLOCK 3.2 — FOOTER MOBILE (ACCORDION) ─────────── -->
+<div class="ann">
+  <span class="ann__id">BLOCK 3.2 — FOOTER MOBILE (ACCORDION LAYOUT)</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">Below 768px: each column collapses to an accordion. Title row: bold text + +/– icon. Tap title to expand/collapse panel (JS toggle .footer-acc-item--open class). Contact column always expanded on load. Quick Actions visible without expansion. Bottom bar remains full-width.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Prevents footer from dominating mobile viewport. Candidate persona and Utility User on mobile need fast access to Apply and Contact without scrolling through all 6 columns. Contact expanded by default as highest-urgency column for on-the-road users.</span>
+</div>
+<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
+  <div style="max-width:380px;background:var(--ior-blue);padding:20px 20px 0;">
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:rgba(255,255,255,.4);padding-bottom:12px;">MOBILE FOOTER — viewport &lt; 768px</div>
+    <!-- Accordion demo -->
+    <div class="footer-acc-item footer-acc-item--open">
+      <button class="footer-acc-trigger">
+        Contact
+        <span class="footer-acc-trigger__icon" aria-hidden="true"></span>
+      </button>
+      <div class="footer-acc-panel">
+        <div class="footer-col__links" style="padding-bottom:12px;">
+          <span class="footer-col__link" style="display:block;">IOR Head Office, 99 Southgate Ave, Cannon Hill Qld 4170</span>
+          <a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a>
+          <a href="mailto:enquiries@ior.com.au" class="footer-col__link">enquiries@ior.com.au</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-acc-item">
+      <button class="footer-acc-trigger">Fuel Solutions <span class="footer-acc-trigger__icon" aria-hidden="true"></span></button>
+    </div>
+    <div class="footer-acc-item">
+      <button class="footer-acc-trigger">Digital Platforms <span class="footer-acc-trigger__icon" aria-hidden="true"></span></button>
+    </div>
+    <div class="footer-acc-item">
+      <button class="footer-acc-trigger">Corporate <span class="footer-acc-trigger__icon" aria-hidden="true"></span></button>
+    </div>
+    <div class="footer-acc-item">
+      <button class="footer-acc-trigger">Quick Actions <span class="footer-acc-trigger__icon" aria-hidden="true"></span></button>
+    </div>
+    <div style="padding:16px 0;border-top:1px solid rgba(255,255,255,.2);margin-top:8px;">
+      <p class="footer-legal__text">&copy; 2026 IOR. All rights reserved.</p>
+    </div>
+    <div style="background:rgba(3,85,163,.06);padding:6px;font-family:'Courier New',monospace;font-size:10px;color:rgba(255,255,255,.4);">
+      JS: .footer-acc-trigger click → toggle .footer-acc-item--open on parent · Contact pre-expanded on load
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SECTION 4 — GLOBAL COMPONENT STATES
+═══════════════════════════════════════════════════════════ -->
+<div class="spec-section" id="components">
+  <div class="spec-section__title">
+    <span class="spec-section__tag">Section 4</span>
+    Global Component States
+  </div>
+</div>
+
+<!-- ── BLOCK 4.1 — BUTTON VARIANTS ──────────────────────── -->
+<div class="ann">
+  <span class="ann__id">BLOCK 4.1 — BUTTON VARIANTS</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">Primary (solid blue) · Outline (blue border) · Ghost (text link) · Aviation Gold (aviation sub-hub only) · Disabled. All: border-radius: 0 (LOCKED). Arrow: CSS-only chevron via .btn__arrow. Hover states shown via :hover — see CSS.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">DESIGN RULE: border-radius: 0 on ALL buttons. The Figma export shows border-radius:500px on nav CTAs and border-radius:500px on hero CTA. These are stripped. Sharp geometry enforced site-wide.</span>
+</div>
+<div class="cs-section">
+  <h3 class="cs-title">4.1 Button Variants</h3>
+  <span class="cs-label">On Light Background</span>
+  <div class="cs-row">
+    <div>
+      <span class="cs-label">Primary</span>
+      <a href="#" class="btn btn--primary">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+    </div>
+    <div>
+      <span class="cs-label">Outline</span>
+      <a href="#" class="btn btn--outline">Customer Login <span class="btn__arrow" aria-hidden="true"></span></a>
+    </div>
+    <div>
+      <span class="cs-label">Ghost</span>
+      <a href="#" class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></a>
+    </div>
+    <div>
+      <span class="cs-label">Aviation Gold (aviation pages only)</span>
+      <a href="#" class="btn btn--gold">View Aviation →</a>
+    </div>
+    <div>
+      <span class="cs-label">Disabled</span>
+      <button class="btn btn--disabled" disabled aria-disabled="true">Not Available</button>
+    </div>
+    <div>
+      <span class="cs-label">Large Primary</span>
+      <a href="#" class="btn btn--primary btn--lg">Apply Now <span class="btn__arrow" aria-hidden="true"></span></a>
+    </div>
+  </div>
+  <span class="cs-label" style="margin-top:12px;display:block;">On Dark Background</span>
+  <div class="cs-row cs-row--dark">
+    <div>
+      <span class="cs-label" style="color:rgba(255,255,255,.5);">Primary White</span>
+      <a href="#" class="btn btn--white">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+    </div>
+    <div>
+      <span class="cs-label" style="color:rgba(255,255,255,.5);">Outline White</span>
+      <a href="#" class="btn btn--outline-white">Make an Enquiry <span class="btn__arrow" aria-hidden="true"></span></a>
+    </div>
+    <div>
+      <span class="cs-label" style="color:rgba(255,255,255,.5);">Ghost Sky</span>
+      <a href="#" class="btn btn--ghost btn--ghost-sky">Learn More <span class="btn__arrow" aria-hidden="true"></span></a>
+    </div>
+    <div>
+      <span class="cs-label" style="color:rgba(255,255,255,.5);">Teal (Fuelcharge only)</span>
+      <a href="#" class="btn btn--teal">Get Fuelcharge <span class="btn__arrow" aria-hidden="true"></span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ── BLOCK 4.2 — FORM INPUT STATES ─────────────────────── -->
+<div class="ann">
+  <span class="ann__id">BLOCK 4.2 — FORM INPUT STATES</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">4 states: Default (rgba border) · Focus (--ior-blue border, 2px) · Error (--ior-error #C0392B border + error message) · Filled (--ior-blue border + content). All inputs: border-radius: 0 (LOCKED). Padding: 12px 16px. Used in: HubSpot form embeds, gated download popups, Customer Portal request form.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Consistent form treatment across HubSpot and Elementor form widget. Error state triggers on invalid submission. Focus ring for accessibility.</span>
+</div>
+<div class="cs-section" style="padding-top:0;">
+  <h3 class="cs-title">4.2 Form Input States</h3>
+  <div class="cs-row" style="flex-wrap:wrap;gap:20px;">
+    <div class="input-group">
+      <label class="input-label">Default</label>
+      <input type="text" class="input" placeholder="e.g. Company name">
+    </div>
+    <div class="input-group">
+      <label class="input-label">Focus</label>
+      <input type="text" class="input input--focus" value="" placeholder="Focused state">
+    </div>
+    <div class="input-group">
+      <label class="input-label">Error</label>
+      <input type="text" class="input input--error" value="invalid@">
+      <span class="input-error-msg">Please enter a valid email address.</span>
+    </div>
+    <div class="input-group">
+      <label class="input-label">Filled</label>
+      <input type="text" class="input input--filled" value="IOR Petroleum">
+    </div>
+  </div>
+</div>
+
+<!-- ── BLOCK 4.3 — BREADCRUMB ────────────────────────────── -->
+<div class="ann">
+  <span class="ann__id">BLOCK 4.3 — BREADCRUMB (3-LEVEL EXAMPLE)</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">3 levels: Homepage > Fuel Solutions > Ground Fuels. Current page: bold, charcoal (not a link). Parent levels: --ior-mid-grey, hover --ior-blue. Separator: › chevron character. Font-size: 14px. Used on all spoke pages below the nav.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: SEO breadcrumb markup (Schema.org BreadcrumbList). Helps Revenue Engine orient within deep content hierarchy. Reduces bounce from direct-entry landing pages.</span>
+</div>
+<div class="cs-section" style="padding-top:0;">
+  <h3 class="cs-title">4.3 Breadcrumb</h3>
+  <div class="cs-row">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="01_Homepage_and_Global.html" class="breadcrumb__item">Homepage</a>
+      <span class="breadcrumb__sep" aria-hidden="true">›</span>
+      <a href="02_Fuel_Solutions_Hub.html" class="breadcrumb__item">Fuel Solutions</a>
+      <span class="breadcrumb__sep" aria-hidden="true">›</span>
+      <span class="breadcrumb__item breadcrumb__item--current" aria-current="page">Ground Fuels</span>
+    </nav>
+  </div>
+</div>
+
+<!-- ── BLOCK 4.4 — PAGE BADGES ───────────────────────────── -->
+<div class="ann">
+  <span class="ann__id">BLOCK 4.4 — PAGE BADGES (HUB / SPOKE / UTILITY)</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">3 types: HUB (solid blue) · SPOKE (light blue bg, blue border) · UTILITY (teal bg). Used in Master Index and optionally in page headers to identify page type at a glance in the wireframe set.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Wireframe-only review tool. Not rendered on live site. Allows reviewer to confirm page type matches sitemap hierarchy at a glance.</span>
+</div>
+<div class="cs-section" style="padding-top:0;padding-bottom:24px;">
+  <h3 class="cs-title">4.4 Page Badges</h3>
+  <div class="cs-row" style="gap:10px;align-items:center;">
+    <span class="page-badge page-badge--hub">HUB</span>
+    <span style="font-size:12px;color:var(--ior-mid-grey);font-family:'Courier New',monospace;">→ Secondary hub landing page (e.g. Fuel Solutions, Digital Platforms)</span>
+  </div>
+  <div class="cs-row" style="gap:10px;align-items:center;margin-top:4px;">
+    <span class="page-badge page-badge--spoke">SPOKE</span>
+    <span style="font-size:12px;color:var(--ior-mid-grey);font-family:'Courier New',monospace;">→ Child product or service page (e.g. IOR Diesel Network, Airport Fuelling Services)</span>
+  </div>
+  <div class="cs-row" style="gap:10px;align-items:center;margin-top:4px;">
+    <span class="page-badge page-badge--utility">UTILITY</span>
+    <span style="font-size:12px;color:var(--ior-mid-grey);font-family:'Courier New',monospace;">→ Transactional utility page (e.g. Make a Payment, Find a Location, Policy Downloads)</span>
+  </div>
+</div>
+
+<!-- ── BLOCK 4.5 — ANNOTATION BAR VARIANTS ──────────────── -->
+<div class="ann">
+  <span class="ann__id">BLOCK 4.5 — ANNOTATION BAR VARIANTS (3 STATES)</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__desc">Three variants: Standard (yellow #FFE066 + #E6B800 border) · Design Question (red #FFD0D0 + #C0392B border) · Approved/Locked (green #D4EDDA + #2DA771 border). Format: BLOCK ID · Separator · Content description · Separator · Design intent. Font: Courier New 11px.</span>
+  <span class="ann__sep">·</span>
+  <span class="ann__int">INTENT: Non-Negotiable Rule 4 enforcement. Every content block on every module page must have a preceding annotation bar. Use Design Question variant when copy or design direction is unclear. Use Approved variant for locked decisions that must not be changed in downstream modules.</span>
+</div>
+<div style="background:#f7f9fc;padding:16px var(--section-pad-x) 40px;">
+  <div style="display:flex;flex-direction:column;gap:4px;max-width:900px;">
+    <div class="ann">
+      <span class="ann__id">BLOCK X — [BLOCK NAME]</span>
+      <span class="ann__sep">·</span>
+      <span class="ann__desc">Standard: Content description goes here — what is in this block, columns, components, copy source.</span>
+      <span class="ann__sep">·</span>
+      <span class="ann__int">Design intent: persona served, conversion goal, responsive behaviour, hover states.</span>
+    </div>
+    <div class="ann ann--q">
+      <span class="ann__id">DESIGN QUESTION — BLOCK X</span>
+      <span class="ann__sep">·</span>
+      <span class="ann__desc">Design question: copy missing, design direction unclear, or client input required before build.</span>
+      <span class="ann__sep">·</span>
+      <span class="ann__int">ACTION REQUIRED: Specific action needed from team member or client before this block can be completed.</span>
+    </div>
+    <div class="ann ann--ok">
+      <span class="ann__id">APPROVED — BLOCK X</span>
+      <span class="ann__sep">·</span>
+      <span class="ann__desc">Approved/locked: this decision is confirmed and must not be changed in subsequent modules without explicit approval.</span>
+      <span class="ann__sep">·</span>
+      <span class="ann__int">DO NOT modify without approval. Reference: Figma brief / client sign-off date.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     MOBILE DRAWER (off-canvas, hidden by default)
+═══════════════════════════════════════════════════════════ -->
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<div class="drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <div class="drawer__head">
+    <span class="nav-logo" style="width:70px;height:33px;font-size:10px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);">[IOR]</span>
+    <button class="drawer__close" id="drawerClose" aria-label="Close navigation menu">✕</button>
+  </div>
+  <nav class="drawer__nav" aria-label="Mobile navigation">
+    <div class="drawer__item">
+      <div class="drawer__link" data-sub="sub-fuel">Fuel Solutions <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+      <div class="drawer__sub" id="sub-fuel">
+        <a href="02_Fuel_Solutions_Hub.html"       class="drawer__sub-link">Fuel Solutions Overview</a>
+        <a href="03_Ground_Fuels.html"             class="drawer__sub-link">Ground Fuels</a>
+        <a href="04_Aviation.html"                 class="drawer__sub-link">Aviation</a>
+        <a href="05_Equipment_Infrastructure.html" class="drawer__sub-link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading.html"           class="drawer__sub-link">Supply &amp; Trading</a>
+      </div>
+    </div>
+    <div class="drawer__item">
+      <div class="drawer__link" data-sub="sub-digital">Digital Platforms <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+      <div class="drawer__sub" id="sub-digital">
+        <a href="07_Digital_Platforms.html#hydip"           class="drawer__sub-link">HyDip™ FMS</a>
+        <a href="07_Digital_Platforms.html#fuelcharge"      class="drawer__sub-link">Fuelcharge</a>
+        <a href="07_Digital_Platforms.html#customer-portal" class="drawer__sub-link">Customer Portal</a>
+      </div>
+    </div>
+    <div class="drawer__item">
+      <div class="drawer__link" data-sub="sub-ind">Industries We Serve <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+      <div class="drawer__sub" id="sub-ind">
+        <a href="08_Industries.html#transport-logistics" class="drawer__sub-link">Transport &amp; Logistics</a>
+        <a href="08_Industries.html#oil-gas"             class="drawer__sub-link">Oil &amp; Gas</a>
+        <a href="08_Industries.html#agriculture"         class="drawer__sub-link">Agriculture &amp; Harvest</a>
+        <a href="08_Industries.html#mining"              class="drawer__sub-link">Mining &amp; Resources</a>
+        <a href="08_Industries.html#livestock"           class="drawer__sub-link">Livestock</a>
+        <a href="08_Industries.html#commercial-aviation" class="drawer__sub-link">Commercial &amp; General Aviation</a>
+        <a href="08_Industries.html#construction"        class="drawer__sub-link">Construction &amp; Civil</a>
+        <a href="08_Industries.html#government-defence"  class="drawer__sub-link">Government &amp; Defence</a>
+      </div>
+    </div>
+    <div class="drawer__item">
+      <div class="drawer__link" data-sub="sub-about">About IOR <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+      <div class="drawer__sub" id="sub-about">
+        <a href="09_About.html#about"          class="drawer__sub-link">About IOR</a>
+        <a href="09_About.html#leadership"     class="drawer__sub-link">Our Leadership</a>
+        <a href="09_About.html#sustainability" class="drawer__sub-link">Sustainability, HSE &amp; ESG</a>
+        <a href="09_About.html#case-studies"   class="drawer__sub-link">Case Studies</a>
+        <a href="10_Careers.html#careers"      class="drawer__sub-link">Careers</a>
+        <a href="11_News_Updates.html"         class="drawer__sub-link">News &amp; Updates</a>
+      </div>
+    </div>
+    <div class="drawer__item">
+      <div class="drawer__link" data-sub="sub-support">Support &amp; Contact <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+      <div class="drawer__sub" id="sub-support">
+        <a href="12_Support_Utility.html#contact-us"        class="drawer__sub-link">Contact Us</a>
+        <a href="12_Support_Utility.html#regional-contacts" class="drawer__sub-link">Regional Contacts</a>
+        <a href="12_Support_Utility.html#find-a-location"   class="drawer__sub-link">Find a Location</a>
+        <a href="12_Support_Utility.html#make-a-payment"    class="drawer__sub-link">Make a Payment</a>
+      </div>
+    </div>
+  </nav>
+  <div class="drawer__ctas">
+    <a href="#" class="btn btn--outline" style="justify-content:center;border-radius:0;">Customer Login</a>
+    <a href="#" class="btn btn--primary" style="justify-content:center;border-radius:0;">Apply for an Account</a>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════ -->
+<script>
+/* ── IntersectionObserver fade-up ─────────────────────────── */
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+/* ── Scroll-triggered nav compression ────────────────────── */
+const navEl  = document.getElementById('primary-nav');
+const utilEl = document.querySelector('.utility-bar');
+window.addEventListener('scroll', () => {
+  if (!navEl) return;
+  const scrolled = window.scrollY > 80;
+  navEl.classList.toggle('primary-nav--scrolled', scrolled);
+  // The utility bar above the nav should hide when scrolled, but since
+  // position:sticky is on the nav itself, we only toggle the class here.
+  // In production, hide/show the utility bar wrapper with CSS:
+  // .scrolled ~ .utility-bar { display: none; }
+}, { passive: true });
+
+/* ── Mobile drawer ────────────────────────────────────────── */
+const hamburger    = document.getElementById('mob-hamburger');
+const drawerEl     = document.getElementById('mobileDrawer');
+const drawerOverlay = document.getElementById('drawerOverlay');
+const drawerClose  = document.getElementById('drawerClose');
+let isDrawerOpen   = false;
+
+function openDrawer() {
+  isDrawerOpen = true;
+  drawerEl.classList.add('drawer--open');
+  drawerOverlay.classList.add('drawer-overlay--open');
+  drawerEl.removeAttribute('aria-hidden');
+  drawerOverlay.removeAttribute('aria-hidden');
+  document.body.style.overflow = 'hidden';
+  if (hamburger) hamburger.classList.add('hamburger--open');
+}
+function closeDrawer() {
+  isDrawerOpen = false;
+  drawerEl.classList.remove('drawer--open');
+  drawerOverlay.classList.remove('drawer-overlay--open');
+  drawerEl.setAttribute('aria-hidden', 'true');
+  drawerOverlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  if (hamburger) hamburger.classList.remove('hamburger--open');
+}
+
+if (hamburger) hamburger.addEventListener('click', () => isDrawerOpen ? closeDrawer() : openDrawer());
+if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && isDrawerOpen) closeDrawer(); });
+
+/* ── Mobile drawer sub-menu accordions ───────────────────── */
+document.querySelectorAll('.drawer__link').forEach(link => {
+  link.addEventListener('click', () => {
+    const subId = link.getAttribute('data-sub');
+    if (!subId) return;
+    const subEl = document.getElementById(subId);
+    if (!subEl) return;
+    const chevron = link.querySelector('.drawer__link-chevron');
+    const isOpen = subEl.classList.contains('drawer__sub--open');
+    // Close all
+    document.querySelectorAll('.drawer__sub--open').forEach(s => s.classList.remove('drawer__sub--open'));
+    document.querySelectorAll('.drawer__link-chevron--open').forEach(c => c.classList.remove('drawer__link-chevron--open'));
+    // Open this one if it was closed
+    if (!isOpen) {
+      subEl.classList.add('drawer__sub--open');
+      if (chevron) chevron.classList.add('drawer__link-chevron--open');
+    }
+  });
+});
+
+/* ── Footer mobile accordion ─────────────────────────────── */
+document.querySelectorAll('.footer-acc-trigger').forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    trigger.closest('.footer-acc-item').classList.toggle('footer-acc-item--open');
+  });
+});
+
+/* ── Smooth scroll for all #anchor links ─────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+/* ── Mega menu (wireframe demo — hover on nav buttons) ────── */
+// In production this is handled by Max Mega Menu plugin.
+// This JS provides a basic wireframe preview only.
+document.querySelectorAll('[data-menu]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    // wireframe mega menus are static panels shown in Section 1
+    // no dynamic behaviour needed for review purposes
+  });
+});
+</script>
+
+</body>
+</html>
