@@ -135,6 +135,23 @@
     .content-narrow{max-width:900px;}
     .sec-bg-light-blue{background:var(--ior-light-blue-bg);}
     .sec-bg-white{background:#fff;}
+  
+    /* Partner grid */
+    .partner-grid{display:grid;grid-template-columns:1fr;gap:var(--grid-gap);}
+    @media(min-width:600px){.partner-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(min-width:1000px){.partner-grid{grid-template-columns:repeat(4,1fr);}}
+    .partner-card{display:flex;flex-direction:column;gap:16px;background:#fff;padding:28px 24px;border-top:4px solid var(--ior-blue);}
+    .partner-card__logo{width:100%;aspect-ratio:3/1;background:var(--ior-light-blue-bg);display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-size:11px;color:var(--ior-mid-grey);}
+    .partner-card__name{font-size:var(--text-heading-m);font-weight:var(--fw-bold);color:var(--ior-near-black);}
+    .partner-card__desc{font-size:var(--text-body-s);color:var(--ior-charcoal);line-height:var(--lh-body);}
+    /* RAP band */
+    .rap-band{background:var(--ior-navy);padding:clamp(50px,7vw,80px) var(--section-pad-x);}
+    .rap-band__inner{display:flex;flex-direction:column;gap:28px;align-items:flex-start;}
+    @media(min-width:768px){.rap-band__inner{flex-direction:row;align-items:center;justify-content:space-between;}}
+    .rap-band__heading{font-size:var(--text-display-s);font-weight:var(--fw-bold);color:#fff;line-height:var(--lh-heading);}
+    .rap-band__body{font-size:var(--text-body-m);color:rgba(255,255,255,0.85);line-height:var(--lh-body);margin-top:12px;max-width:640px;}
+    .btn--white{background:#fff;color:var(--ior-blue);border:2px solid #fff;}
+    .btn--white:hover{background:transparent;color:#fff;}
   </style>
 </head>
 <body>
@@ -269,43 +286,53 @@
     </div>
   </section>
 
-  <!-- COMMUNITY STORIES -->
-  <section class="section-pad" aria-label="Community stories" class="sec-bg-light-blue">
+  <!-- PARTNERSHIP SHOWCASE -->
+  <section class="section-pad" aria-label="Community partnerships" class="sec-bg-light-blue">
     <div class="inner">
-      <p class="eyebrow fade-up" style="margin-bottom:16px;">Community Stories</p>
+      <p class="eyebrow fade-up" style="margin-bottom:16px;">Our Partners</p>
       <h2 class="fade-up fade-up--d1" style="font-size:var(--text-display-m);font-weight:var(--fw-bold);color:var(--ior-blue);line-height:var(--lh-display);margin-bottom:40px;">Making a Difference Across Australia</h2>
-      <div class="story-grid">
-        <div class="story-card fade-up">
-          <div class="story-card__img">[IMAGE — Community Story 1]</div>
-          <div class="story-card__body">
-            <div class="story-card__tag">Regional Sport</div>
-            <div class="story-card__title">IOR Partners with Longreach Rugby League Club</div>
-            <div class="story-card__excerpt">Placeholder — replace with approved community story copy. IOR's multi-year partnership with the Longreach Rugby League Club supports junior development and regional competition travel.</div>
-            <a href="11_News_Updates.html" class="story-card__cta">Read More <span class="btn__arrow" aria-hidden="true"></span></a>
+      <div class="partner-grid">
+        <div class="partner-card fade-up">
+          <div class="partner-card__logo">[LOGO — LifeFlight]</div>
+          <div class="partner-card__body">
+            <div class="partner-card__name">LifeFlight</div>
+            <div class="partner-card__desc">Emergency aeromedical service partner. IOR supports LifeFlight’s critical operations across Queensland and beyond.</div>
           </div>
         </div>
-        <div class="story-card fade-up fade-up--d1">
-          <div class="story-card__img">[IMAGE — Community Story 2]</div>
-          <div class="story-card__body">
-            <div class="story-card__tag">Emergency Services</div>
-            <div class="story-card__title">Supporting Queensland Rural Fire Brigades</div>
-            <div class="story-card__excerpt">Placeholder — replace with approved community story copy. During the 2023 fire season, IOR provided emergency fuel supply to 14 volunteer brigades across outback Queensland.</div>
-            <a href="11_News_Updates.html" class="story-card__cta">Read More <span class="btn__arrow" aria-hidden="true"></span></a>
+        <div class="partner-card fade-up fade-up--d1">
+          <div class="partner-card__logo">[LOGO — AgForce]</div>
+          <div class="partner-card__body">
+            <div class="partner-card__name">AgForce</div>
+            <div class="partner-card__desc">Queensland’s peak rural industry body. IOR is a proud partner supporting the agricultural sector.</div>
           </div>
         </div>
-        <div class="story-card fade-up fade-up--d2">
-          <div class="story-card__img">[IMAGE — Community Story 3]</div>
-          <div class="story-card__body">
-            <div class="story-card__tag">Education</div>
-            <div class="story-card__title">IOR Scholarship Program — 2025 Recipients</div>
-            <div class="story-card__excerpt">Placeholder — replace with approved community story copy. IOR's annual scholarship program awarded five trade apprenticeships to students from regional Queensland and Western Australia.</div>
-            <a href="11_News_Updates.html" class="story-card__cta">Read More <span class="btn__arrow" aria-hidden="true"></span></a>
+        <div class="partner-card fade-up fade-up--d2">
+          <div class="partner-card__logo">[LOGO — Red Dust Role Models]</div>
+          <div class="partner-card__body">
+            <div class="partner-card__name">Red Dust Role Models</div>
+            <div class="partner-card__desc">Inspiring Indigenous youth in remote communities through sport and mentorship.</div>
+          </div>
+        </div>
+        <div class="partner-card fade-up fade-up--d3">
+          <div class="partner-card__logo">[LOGO — Outback Communities]</div>
+          <div class="partner-card__body">
+            <div class="partner-card__name">Outback Communities</div>
+            <div class="partner-card__desc">[Placeholder — specific outback community partnership detail to be provided]</div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
+  <!-- RECONCILIATION ACTION PLAN -->
+  <section class="rap-band fade-up" aria-label="Reconciliation Action Plan">
+    <div class="inner rap-band__inner">
+      <div class="rap-band__content">
+        <h2 class="rap-band__heading">Our Reconciliation Action Plan</h2>
+        <p class="rap-band__body">IOR is committed to reconciliation with Aboriginal and Torres Strait Islander peoples. Our Reconciliation Action Plan guides our relationships, respect, and opportunities across our operations.</p>
+      </div>
+      <a href="#" class="btn btn--pill btn--white">Learn More</a>
+    </div>
+  </section>
   <!-- PRE-FOOTER CTA -->
   <section class="pre-footer fade-up" aria-label="Partner with IOR">
     <div class="pre-footer__row">

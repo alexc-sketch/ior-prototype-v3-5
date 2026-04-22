@@ -143,6 +143,21 @@
     /* Section background utility classes */
     .sec-bg-light-blue{background:var(--ior-light-blue-bg);}
     .sec-bg-white{background:#fff;}
+  
+    /* Accordion */
+    .accordion{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border-color-light);}
+    .accordion__item{border-bottom:1px solid var(--border-color-light);}
+    .accordion__trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;background:none;border:none;cursor:pointer;text-align:left;}
+    .accordion__title{font-size:var(--text-heading-m);font-weight:var(--fw-bold);color:var(--ior-near-black);}
+    .accordion__icon{width:24px;height:24px;flex-shrink:0;background:var(--ior-blue);position:relative;}
+    .accordion__icon::before,.accordion__icon::after{content:'';position:absolute;background:#fff;border-radius:0;}
+    .accordion__icon::before{width:12px;height:2px;top:50%;left:50%;transform:translate(-50%,-50%);}
+    .accordion__icon::after{width:2px;height:12px;top:50%;left:50%;transform:translate(-50%,-50%);transition:transform 0.3s ease,opacity 0.3s ease;}
+    .accordion__trigger[aria-expanded="true"] .accordion__icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+    .accordion__panel{max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+    .accordion__panel.is-open{max-height:600px;}
+    .accordion__body{padding:0 0 24px;display:flex;flex-direction:column;gap:12px;}
+    .accordion__body p{font-size:var(--text-body-m);color:var(--ior-charcoal);line-height:var(--lh-body);}
   </style>
 </head>
 <body>
@@ -226,49 +241,51 @@
     </div>
   </section>
 
-  <!-- ESG PILLARS -->
-  <section class="section-pad" aria-label="ESG framework" class="sec-bg-white">
+  <!-- HSE POLICIES ACCORDION -->
+  <section class="section-pad" aria-label="HSE policies" class="sec-bg-white">
     <div class="inner">
-      <p class="eyebrow fade-up" style="margin-bottom:16px;">Our ESG Framework</p>
-      <h2 class="fade-up fade-up--d1" style="font-size:var(--text-display-m);font-weight:var(--fw-bold);color:var(--ior-blue);line-height:var(--lh-display);margin-bottom:40px;">Environmental, Social &amp; Governance</h2>
-      <div class="esg-grid">
-        <div class="esg-card esg-card--e fade-up">
-          <div class="esg-card__label">Environmental</div>
-          <div class="esg-card__title">Minimising Our Environmental Footprint</div>
-          <div class="esg-card__body">IOR operates under a certified ISO 14001 Environmental Management System, with active programs to reduce emissions, manage spill risk, and protect the natural environments surrounding our operations.</div>
-          <div class="esg-card__items">
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>ISO 14001 certified Environmental Management System</div></div>
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>Spill prevention and containment infrastructure at all sites</div></div>
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>Scope 1 and Scope 2 emissions monitoring and reporting</div></div>
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>Fleet efficiency and route optimisation programs</div></div>
+      <p class="eyebrow fade-up" style="margin-bottom:16px;">Our Policies</p>
+      <h2 class="fade-up fade-up--d1" style="font-size:var(--text-display-m);font-weight:var(--fw-bold);color:var(--ior-blue);line-height:var(--lh-display);margin-bottom:40px;">HSE Policy Framework</h2>
+      <div class="accordion fade-up">
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-ohs">
+            <span class="accordion__title">Occupational Health &amp; Safety Policy</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel" id="acc-ohs" role="region">
+            <div class="accordion__body">
+              <p>IOR is committed to providing a safe and healthy workplace for all employees, contractors, and visitors. Our Occupational Health &amp; Safety Policy establishes the framework for identifying, assessing, and controlling workplace hazards across all operations. We hold certification to ISO 45001:2018 and AS/NZS 4801:2001, verified by QAS International, demonstrating our commitment to the highest standards of occupational health and safety management.</p>
+              <p>[Placeholder — full policy document available on request. Contact your IOR representative for access.]</p>
+            </div>
           </div>
         </div>
-        <div class="esg-card esg-card--s fade-up fade-up--d1">
-          <div class="esg-card__label">Social</div>
-          <div class="esg-card__title">Zero-Harm Safety Culture</div>
-          <div class="esg-card__body">Safety is IOR's highest operational priority. Our zero-harm commitment is embedded in every process, from driver training and site management to incident reporting and continuous improvement.</div>
-          <div class="esg-card__items">
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>ISO 45001 certified Occupational Health &amp; Safety Management System</div></div>
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>Zero-harm target with mandatory near-miss reporting</div></div>
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>Regular safety audits across all 115+ network sites</div></div>
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>Mental health and wellbeing programs for remote workers</div></div>
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-env">
+            <span class="accordion__title">Environmental Management Policy</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel" id="acc-env" role="region">
+            <div class="accordion__body">
+              <p>IOR’s Environmental Management Policy reflects our commitment to minimising environmental impact across all aspects of our operations. We hold ISO 14001:2015 certification through QAS International, ensuring our environmental management system meets internationally recognised standards. Our policy covers spill prevention, emissions monitoring, waste management, and environmental risk assessment across all 115+ sites.</p>
+              <p>[Placeholder — full policy document available on request. Contact your IOR representative for access.]</p>
+            </div>
           </div>
         </div>
-        <div class="esg-card esg-card--g fade-up fade-up--d2">
-          <div class="esg-card__label">Governance</div>
-          <div class="esg-card__title">Transparent &amp; Accountable Operations</div>
-          <div class="esg-card__body">IOR's governance framework ensures accountability, transparency, and ethical conduct across all business activities, supported by Stonepeak's institutional governance standards.</div>
-          <div class="esg-card__items">
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>Board-level ESG oversight and reporting</div></div>
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>Anti-bribery and corruption policy (ISO 37001 aligned)</div></div>
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>Modern Slavery Act compliance and supply chain auditing</div></div>
-            <div class="esg-card__item"><div class="esg-card__item-dot" aria-hidden="true"></div><div>Annual ESG report published for stakeholder transparency</div></div>
+        <div class="accordion__item">
+          <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-esg">
+            <span class="accordion__title">Sustainability &amp; ESG Framework</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion__panel" id="acc-esg" role="region">
+            <div class="accordion__body">
+              <p>IOR’s Sustainability &amp; ESG Framework outlines our approach to environmental stewardship, social responsibility, and governance. The framework guides our reporting obligations, stakeholder engagement, and continuous improvement targets across all three ESG pillars. [Placeholder — IOR’s ESG governance framework, reporting standards, and commitment to transparent disclosure.]</p>
+              <p>[Placeholder — full framework document available on request. Contact your IOR representative for access.]</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
   <!-- CERTIFICATIONS -->
   <section class="section-pad" aria-label="Certifications" class="sec-bg-light-blue">
     <div class="inner">
@@ -352,5 +369,23 @@
 <script>
 (function(){var hamburger=document.getElementById('mob-hamburger');var drawer=document.getElementById('mobileDrawer');var overlay=document.getElementById('drawerOverlay');var closeBtn=document.getElementById('drawerClose');function openDrawer(){drawer.classList.add('drawer--open');overlay.classList.add('drawer-overlay--open');overlay.removeAttribute('aria-hidden');hamburger.classList.add('hamburger--open');hamburger.setAttribute('aria-expanded','true');closeBtn.focus();}function closeDrawer(){drawer.classList.remove('drawer--open');overlay.classList.remove('drawer-overlay--open');overlay.setAttribute('aria-hidden','true');hamburger.classList.remove('hamburger--open');hamburger.setAttribute('aria-expanded','false');hamburger.focus();}hamburger.addEventListener('click',openDrawer);hamburger.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openDrawer();}});closeBtn.addEventListener('click',closeDrawer);overlay.addEventListener('click',closeDrawer);document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});var drawerLinks=drawer.querySelectorAll('.drawer__link');drawerLinks.forEach(function(link){link.addEventListener('click',function(){var sub=this.nextElementSibling;if(!sub||!sub.classList.contains('drawer__sub'))return;var isOpen=sub.classList.contains('drawer__sub--open');drawer.querySelectorAll('.drawer__sub--open').forEach(function(s){s.classList.remove('drawer__sub--open');});drawer.querySelectorAll('.drawer__link-chevron--open').forEach(function(c){c.classList.remove('drawer__link-chevron--open');});if(!isOpen){sub.classList.add('drawer__sub--open');var chevron=this.querySelector('.drawer__link-chevron');if(chevron)chevron.classList.add('drawer__link-chevron--open');}});});var fadeEls=document.querySelectorAll('.fade-up');if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.12});fadeEls.forEach(function(el){observer.observe(el);});}else{fadeEls.forEach(function(el){el.classList.add('is-visible');});}})();
 </script>
+  <script>
+    // Accordion
+    document.querySelectorAll('.accordion__trigger').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var expanded = this.getAttribute('aria-expanded')==='true';
+        document.querySelectorAll('.accordion__trigger').forEach(function(b){
+          b.setAttribute('aria-expanded','false');
+          var panel = document.getElementById(b.getAttribute('aria-controls'));
+          if(panel) panel.classList.remove('is-open');
+        });
+        if(!expanded){
+          this.setAttribute('aria-expanded','true');
+          var panel = document.getElementById(this.getAttribute('aria-controls'));
+          if(panel) panel.classList.add('is-open');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
