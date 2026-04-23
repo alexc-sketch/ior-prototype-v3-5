@@ -540,7 +540,14 @@
       font-size: 10px; color: var(--ior-mid-grey); font-family: 'Courier New', monospace;
     }
 
-    /* ── INDUSTRY CARDS ──────────────────────────────────────── */
+   /* ── CASE STUDY / BLOG TAB STRIP ───────────────────────────── */
+.cs-tabs{display:flex;gap:0;align-items:flex-end;}
+.cs-tab{padding:14px 28px;font-size:var(--text-body-m);font-weight:var(--fw-bold);font-family:var(--ff-body);background:transparent;border:1px solid var(--ior-blue);border-bottom:none;border-radius:0;cursor:pointer;color:var(--ior-blue);transition:background .2s,color .2s;line-height:1;}
+.cs-tab--active{background:var(--ior-blue);color:#fff;}
+.cs-tab:not(.cs-tab--active):hover{background:rgba(3,85,163,.06);}
+.cs-tab-rule{width:100%;height:1px;background:#94A9BA;margin-bottom:0;}
+
+/* ── NEWS / BLOG CARDS ─────────────────────────────────────── */
     .ind-grid {
       display: grid; grid-template-columns: 1fr; gap: var(--grid-gap);
     }
@@ -908,7 +915,17 @@
   </div>
   <!-- Primary nav -->
   <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
-    <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">[IOR LOGO]</a>
+    <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">
+      <svg width="98" height="46" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:90px;height:auto;display:block;">
+        <g clip-path="url(#ior-logo-clip)">
+          <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/>
+          <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/>
+          <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/>
+          <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/>
+        </g>
+        <defs><clipPath id="ior-logo-clip"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
+      </svg>
+    </a>
     <ul class="nav-links" role="list" aria-label="Main menu">
       <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="fuel">Fuel Solutions <span class="nav-chevron" aria-hidden="true"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
       <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="digital">Digital Platforms <span class="nav-chevron" aria-hidden="true"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
@@ -942,7 +959,17 @@
       ↑ UTILITY BAR: hidden when scrolled (display:none, not visibility:hidden — removes from document flow)
     </div>
     <nav style="background:#fff;padding:0 clamp(20px,8vw,125px);display:flex;align-items:center;justify-content:space-between;height:56px;box-shadow:0 2px 20px rgba(0,0,0,.10);border-left:3px solid var(--ior-blue);" aria-label="Header scrolled state demo">
-      <a href="#" class="nav-logo nav-logo--sm" aria-label="IOR home" style="font-size:10px;">[IOR LOGO — SMALL]</a>
+      <a href="01_Homepage.html" class="nav-logo nav-logo--sm" aria-label="IOR home">
+        <svg width="70" height="33" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:70px;height:auto;display:block;">
+          <g clip-path="url(#ior-logo-clip-sm)">
+            <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/>
+            <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/>
+            <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/>
+            <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/>
+          </g>
+          <defs><clipPath id="ior-logo-clip-sm"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
+        </svg>
+      </a>
       <ul class="nav-links" role="list" style="display:flex;gap:20px;">
         <li><span class="nav-link" style="font-size:14px;">Fuel Solutions</span></li>
         <li><span class="nav-link" style="font-size:14px;">Digital Platforms</span></li>
@@ -1312,7 +1339,17 @@
     <span class="ann__int">See Section 1 for full header specification and all mega menu layouts.</span>
   </div>
   <nav class="primary-nav" aria-label="Primary navigation" style="position:relative;z-index:var(--z-nav);">
-    <a href="01_Homepage_and_Global.html" class="nav-logo" aria-label="IOR home">[IOR LOGO]</a>
+      <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">
+        <svg width="90" height="42" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:90px;height:auto;display:block;">
+          <g clip-path="url(#ior-logo-clip-hp)">
+            <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/>
+            <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/>
+            <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/>
+            <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/>
+          </g>
+          <defs><clipPath id="ior-logo-clip-hp"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
+        </svg>
+      </a>
     <ul class="nav-links" role="list">
       <li><button class="nav-link" aria-haspopup="true" aria-expanded="false">Fuel Solutions</button></li>
       <li><button class="nav-link" aria-haspopup="true" aria-expanded="false">Digital Platforms</button></li>
@@ -1392,7 +1429,7 @@
     <span class="ann__sep">·</span>
     <span class="ann__int">INTENT: Immediately establishes Tier-1 differentiation post-hero. Addresses Revenue Engine's primary anxiety (supply chain reliability) before any product detail. Fade-up animation on scroll entry.</span>
   </div>
-  <div style="background:var(--ior-light-blue-bg);padding:clamp(40px,5vw,80px) var(--section-pad-x) clamp(24px,3vw,40px);" aria-label="Value propositions">
+  <div style="background:#F4F5F7;padding:clamp(40px,5vw,80px) var(--section-pad-x) clamp(24px,3vw,40px);" aria-label="Value propositions">
     <div class="vp-grid fade-up">
       <div class="vp-item">
         <div class="vp-icon" aria-hidden="true" style="font-size:32px;background:rgba(3,85,163,.1);">🔗</div>
@@ -1534,7 +1571,7 @@
     <span class="ann__sep">·</span>
     <span class="ann__int">INTENT: Empathy Hub. Each card opens the relevant industry spoke page. Card hover: translateY(-3px) + box shadow. Industry cards are the primary SEO engine for long-tail keywords.</span>
   </div>
-  <section class="section-pad" aria-label="Industries we serve" style="background:#fff;">
+  <section class="section-pad" aria-label="Industries we serve" style="background:#F4F5F7;">
     <div class="inner">
       <div class="fade-up" style="margin-bottom:40px;">
         <p class="eyebrow" style="margin-bottom:16px;">Industries We Serve</p>
@@ -1745,38 +1782,46 @@
   </div>
   <section class="section-pad" aria-label="Latest from IOR" style="background:#fff;">
     <div class="inner">
-      <div class="news-header fade-up">
-        <div class="news-header__left">
-          <h2 class="news-header__title">Latest from IOR</h2>
-          <p class="news-header__body" style="color:var(--ior-mid-grey);font-style:italic;">[COPY REQUIRED — see design question annotation above. No Lorem Ipsum.]</p>
-        </div>
-        <div class="news-header__ctas">
-          <a href="09_About.html#case-studies" class="btn btn--outline">All Case Studies <span class="btn__arrow" aria-hidden="true"></span></a>
-          <a href="11_News_Updates.html#news-updates" class="btn btn--outline">All Articles <span class="btn__arrow" aria-hidden="true"></span></a>
-        </div>
+      <!-- Section header -->
+      <div class="fade-up" style="margin-bottom:32px;">
+        <p class="eyebrow" style="color:#94A9BA;margin-bottom:16px;">Latest from IOR</p>
+        <h2 style="font-size:clamp(32px,4vw,50px);font-weight:var(--fw-bold);color:var(--ior-blue);line-height:1.1;">
+          <span style="font-weight:400;">Innovations and insights from the team</span> keeping Australia moving
+        </h2>
       </div>
-      <div class="news-grid">
+      <!-- Tab strip -->
+      <div class="cs-tabs" role="tablist" aria-label="Filter content">
+        <button class="cs-tab" role="tab" aria-selected="false" data-tab="case-studies">All Case Studies</button>
+        <button class="cs-tab cs-tab--active" role="tab" aria-selected="true" data-tab="blog">Blog Posts</button>
+      </div>
+      <div class="cs-tab-rule"></div>
+      <!-- Card grid -->
+      <div class="news-grid" style="margin-top:32px;">
         <article class="news-card fade-up">
-          <div class="news-card__img"><div class="img-ph">[IMAGE — IOR White Sands]</div></div>
-          <div>
+          <div class="news-card__img"><div class="img-ph" style="height:298px;">[IMAGE — IOR White Sands]</div></div>
+          <div style="padding-top:20px;">
             <h3 class="news-card__title">IOR White Sands NOW OPEN!</h3>
-            <a href="11_News_Updates.html#article-detail" class="news-card__read">Read Article</a>
+            <a href="11c_News_Updates.html" class="news-card__read">Read Article</a>
           </div>
         </article>
         <article class="news-card fade-up fade-up--d1">
-          <div class="news-card__img"><div class="img-ph">[IMAGE — Camden Aviation]</div></div>
-          <div>
+          <div class="news-card__img"><div class="img-ph" style="height:298px;">[IMAGE — Camden Aviation]</div></div>
+          <div style="padding-top:20px;">
             <h3 class="news-card__title">IOR Aviation Lands in Camden!</h3>
-            <a href="11_News_Updates.html#article-detail" class="news-card__read">Read Article</a>
+            <a href="11c_News_Updates.html" class="news-card__read">Read Article</a>
           </div>
         </article>
         <article class="news-card fade-up fade-up--d2">
-          <div class="news-card__img"><div class="img-ph">[IMAGE — Surat Basin Awards]</div></div>
-          <div>
+          <div class="news-card__img"><div class="img-ph" style="height:298px;">[IMAGE — Surat Basin Awards]</div></div>
+          <div style="padding-top:20px;">
             <h3 class="news-card__title">Stewart Morland Takes Top Prize at Surat Basin Energy Awards</h3>
-            <a href="11_News_Updates.html#article-detail" class="news-card__read">Read Article</a>
+            <a href="11c_News_Updates.html" class="news-card__read">Read Article</a>
           </div>
         </article>
+      </div>
+      <!-- Bottom CTA -->
+      <div style="text-align:center;margin-top:40px;">
+        <a href="11c_News_Updates.html" class="btn btn--primary">View all blog posts <span class="btn__arrow" aria-hidden="true"></span></a>
       </div>
     </div>
   </section>
