@@ -801,12 +801,19 @@
     ======================================================== -->
     <section class="gc-section" id="hubspot">
       <div class="gc-section__header">
-        <h2 class="gc-section__title">HubSpot Form Placeholder</h2>
-        <span class="gc-section__badge">Required — All Pages</span>
+        <h2 class="gc-section__title">HubSpot Form Container</h2>
+        <span class="gc-section__badge">Global Component &mdash; Required</span>
       </div>
-      <p class="gc-section__desc">Required on every spoke page. Position: above the FAQ section, below the gated asset / related content block. When HubSpot form IDs are confirmed, replace the <code>.hs-form-placeholder</code> div with the HubSpot embed script.</p>
+      <p class="gc-section__desc">A standardised container for all HubSpot form embeds across the site. Two variants exist: <strong>Inline (Spoke Page)</strong> for general enquiries placed above the FAQ section on every spoke page, and <strong>Card (Gated Asset Page)</strong> for the dedicated download page (<a href="11g_Gated_Asset_Download_v3.5.html">11g_Gated_Asset_Download_v3.5.html</a>). When HubSpot form IDs are confirmed, replace the <code>.hs-form-placeholder</code> div with the HubSpot embed script.</p>
+
+      <div class="gc-rule">
+        <strong>Architecture rule:</strong> Brochure / capability statement / directory CTAs anywhere on the site MUST link to <code>11g_Gated_Asset_Download_v3.5.html</code>. Do not embed gated asset forms on individual spoke pages. Asset choice is handled by HubSpot conditional logic on the dedicated page, not by URL parameters.
+      </div>
+
+      <h3 style="margin-top: 28px; margin-bottom: 12px; font-size: 16px;">Variant 1 &mdash; Inline (Spoke Page)</h3>
+      <p class="gc-section__desc" style="margin-bottom: 16px;">Position: above the FAQ section on every spoke page. Background <code>--brand-fill</code>, full-width section.</p>
       <div class="gc-preview">
-        <div class="gc-preview__label">Live Preview</div>
+        <div class="gc-preview__label">Live Preview &mdash; Inline</div>
         <div class="gc-preview__inner">
           <section class="hubspot-form-section" aria-labelledby="hs-demo-heading">
             <div class="container">
@@ -815,12 +822,33 @@
                 <h2 id="hs-demo-heading">Speak with an IOR specialist.</h2>
                 <p class="section-sub">Complete the form below and a member of our team will be in touch within one business day.</p>
               </div>
-              <div class="hs-form-placeholder" aria-label="HubSpot enquiry form — embed pending">
-                <!-- HubSpot embed: [FORM ID TBC] -->
-                <p>HubSpot Form &mdash; Embed Code Pending</p>
+              <div class="hubspot-form-container">
+                <div class="hs-form-placeholder" aria-label="HubSpot enquiry form &mdash; embed pending">
+                  <!-- HubSpot embed: [FORM ID TBC for general enquiry] -->
+                  <p>HubSpot Form &mdash; Embed Code Pending</p>
+                </div>
               </div>
             </div>
           </section>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 28px; margin-bottom: 12px; font-size: 16px;">Variant 2 &mdash; Card (Gated Asset Page)</h3>
+      <p class="gc-section__desc" style="margin-bottom: 16px;">Used only on <code>11g_Gated_Asset_Download_v3.5.html</code>. Sits inside a white card with shadow, beside hero copy. HubSpot conditional logic presents the asset selector inside the form and routes leads on submission.</p>
+      <div class="gc-preview">
+        <div class="gc-preview__label">Live Preview &mdash; Card (Gated Asset)</div>
+        <div class="gc-preview__inner" style="background: var(--brand-fill); padding: 32px;">
+          <div class="ga-form-card" style="background:#fff;border:1px solid var(--grey-200);padding:32px;box-shadow:0 8px 24px rgba(10,22,40,0.06);max-width:520px;margin:0 auto;">
+            <p style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ior-blue);margin-bottom:8px;">Step 1 of 1</p>
+            <h2 style="font-size:22px;font-weight:900;color:var(--grey-900);margin-bottom:6px;">Request your resource</h2>
+            <p style="font-size:14px;color:var(--grey-700);line-height:1.6;margin-bottom:24px;">Select what you need below. We&rsquo;ll email you the latest version within minutes.</p>
+            <div class="hubspot-form-container">
+              <div class="hs-form-placeholder" aria-label="HubSpot resource request form &mdash; embed pending">
+                <!-- HubSpot embed: gated-asset-master-form. Asset choice handled by HubSpot conditional logic. -->
+                <p>HubSpot Form &mdash; Embed Code Pending</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
