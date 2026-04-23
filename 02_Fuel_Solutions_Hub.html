@@ -416,11 +416,116 @@
     .sol-card--hydip .sol-card__image     { background: #0a1929; }
     .sol-card--fuelcharge .sol-card__image { background: #0d0d2e; }
 
+    /* Digital card variant — full width content, no image side */
+    .sol-card--digital { grid-template-columns: 1fr; }
+    .sol-card__logo {
+      margin-bottom: 16px;
+      display: block;
+    }
+    .sol-card__icon {
+      margin-bottom: 14px;
+      display: block;
+    }
+
     .solutions-ecosystem {
       margin-top: 28px; padding: 20px 28px;
       background: var(--ior-light); border-left: 4px solid var(--ior-blue);
       font-size: 15px; font-weight: 700; color: var(--ior-navy);
     }
+
+    /* ============================================================
+       BLOCK 8 — WHOLESALE SECTION (Supply & Trading + Equipment)
+    ============================================================ */
+    .wholesale-section {
+      padding: var(--section-pad) 0;
+      background: var(--off-white);
+      border-top: 1px solid #e5e7eb;
+    }
+    .wholesale-section .container { display: flex; flex-direction: column; gap: 0; }
+
+    /* Supply & Trading backbone strip */
+    .sol-backbone {
+      border: 1px solid #e5e7eb;
+      background: var(--ior-blue);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .sol-backbone__label {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(255,255,255,.6);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .sol-backbone__content { flex: 1; min-width: 200px; }
+    .sol-backbone__content h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .footer-col__address {
+      font-size: 14px; color: rgba(255,255,255,.9); line-height: 1.6; display: block;
+    }
+    .footer-legal__text {
+      font-size: 12px; color: rgba(255,255,255,.6); line-height: 1.5;
+    }
+    .footer-legal__link {
+      color: rgba(255,255,255,.6); text-decoration: underline;
+    }
+    .footer-legal__link:hover { color: #fff; }
+    .sol-backbone .product-pills { margin: 0; flex: 2; min-width: 200px; }
+    .sol-backbone__link {
+      font-size: 13px; font-weight: 700; color: #fff;
+      display: inline-flex; align-items: center; gap: 4px;
+      border-bottom: 1px solid rgba(255,255,255,.5); padding-bottom: 2px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .sol-backbone__link:hover { border-color: #fff; }
+
+    /* Product pills */
+    .product-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+    .product-pill {
+      display: inline-flex; align-items: center;
+      padding: 5px 11px; font-size: 12px; font-weight: 600;
+      text-decoration: none; transition: all var(--transition-base);
+      background: rgba(255,255,255,0.9); color: var(--ior-navy);
+      border: 1.5px solid var(--ior-blue);
+    }
+    .product-pill:hover { background: var(--ior-blue); color: #fff; }
+    .product-pill--backbone {
+      background: rgba(255,255,255,0.9); color: var(--ior-blue);
+      border-color: rgba(255,255,255,0.5);
+    }
+    .product-pill--backbone:hover { background: #fff; color: var(--ior-navy); }
+    .product-pill--equipment {
+      background: var(--ior-light-blue-bg); color: var(--ior-blue);
+      border-color: rgba(3,85,163,.3);
+    }
+    .product-pill--equipment:hover { background: var(--ior-blue); color: #fff; }
+
+    /* Equipment card */
+    .equipment-card {
+      background: var(--white);
+      border: 1px solid #e5e7eb; border-top: none;
+      padding: clamp(24px, 3vw, 32px) clamp(28px, 4vw, 44px);
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 24px; align-items: center;
+    }
+    .equipment-card:hover { box-shadow: 0 2px 12px rgba(3,85,163,.1); }
+    .equipment-card__left h3 {
+      font-size: clamp(18px, 1.8vw, 22px); font-weight: 700;
+      color: var(--charcoal); margin-bottom: 8px; line-height: 1.25;
+    }
+    .equipment-card__left p {
+      font-size: 14px; color: var(--mid-grey); line-height: 1.6; margin-bottom: 12px;
+    }
+    .equipment-card__icon {
+      margin-bottom: 12px; display: block;
+    }
+    .equipment-card__cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 20px; font-size: 13px; font-weight: 700;
+      border: 2px solid var(--ior-blue); color: var(--ior-blue);
+      transition: all .2s; white-space: nowrap; flex-shrink: 0;
+    }
+    .equipment-card__cta:hover { background: var(--ior-blue); color: #fff; }
 
     /* ============================================================
        LOGO CAROUSEL
@@ -732,23 +837,6 @@
 </nav>
 
 <!-- ============================================================
-     BLOCK 2.5 — QUICK LINKS MENU (non-sticky)
-============================================================ -->
-<div class="ann">
-  <strong>BLOCK 2.5 — QUICK LINKS MENU · Non-sticky · Added per checklist</strong>
-  Light blue background (#E0F1FF). Items: Digital Platforms · Industries We Serve · About IOR · Support &amp; Contact. NOT sticky — scrolls with page.
-</div>
-<nav class="quick-links" aria-label="Quick links">
-  <div class="quick-links__inner">
-    <span class="quick-links__label">Quick Links</span>
-    <a href="07_Digital_Platforms.html" class="quick-links__link">Digital Platforms</a>
-    <a href="08_Industries_Hub.html" class="quick-links__link">Industries We Serve</a>
-    <a href="09_About_IOR.html" class="quick-links__link">About IOR</a>
-    <a href="11_Support_Hub.html" class="quick-links__link">Support &amp; Contact</a>
-  </div>
-</nav>
-
-<!-- ============================================================
      BLOCK 3 — HERO (SPLIT LAYOUT)
 ============================================================ -->
 <div class="ann">
@@ -775,6 +863,23 @@
     </div>
   </div>
 </section>
+
+<!-- ============================================================
+     BLOCK 3.5 — QUICK LINKS MENU (non-sticky, sits above stat bar)
+============================================================ -->
+<div class="ann">
+  <strong>BLOCK 3.5 — QUICK LINKS MENU · Non-sticky · Sits directly above Block 4 per instruction</strong>
+  Light blue background (#E0F1FF). Items: Digital Platforms · Industries We Serve · About IOR · Support &amp; Contact. NOT sticky — scrolls with page.
+</div>
+<nav class="quick-links" aria-label="Quick links">
+  <div class="quick-links__inner">
+    <span class="quick-links__label">Quick Links</span>
+    <a href="07_Digital_Platforms.html" class="quick-links__link">Digital Platforms</a>
+    <a href="08_Industries_Hub.html" class="quick-links__link">Industries We Serve</a>
+    <a href="09_About_IOR.html" class="quick-links__link">About IOR</a>
+    <a href="11_Support_Hub.html" class="quick-links__link">Support &amp; Contact</a>
+  </div>
+</nav>
 
 <!-- ============================================================
      BLOCK 4 — STAT BAR (3 STATS)
@@ -836,7 +941,15 @@
       <!-- TOP LEFT: GROUND FUELS -->
       <div class="sol-card sol-card--ground">
         <div class="sol-card__content">
-          <div class="sol-card__category">Ground Fuels</div>
+          <div class="sol-card__category">On the Ground</div>
+          <div class="sol-card__icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="0" fill="#E8F1FB"/>
+              <path d="M8 28h24M12 28V20a2 2 0 012-2h4l3-6h3l3 6h2a2 2 0 012 2v8" stroke="#0355A3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="15" cy="30" r="2" fill="#0355A3"/>
+              <circle cx="25" cy="30" r="2" fill="#0355A3"/>
+            </svg>
+          </div>
           <h3 class="sol-card__title">Ground Fuels</h3>
           <p class="sol-card__sub">Your fleet needs fuel wherever it operates, not just where a service station happens to be.</p>
           <nav class="sol-pills" aria-label="Ground Fuels services">
@@ -848,15 +961,19 @@
           </nav>
           <a href="03_Ground_Fuels.html" class="sol-card__link">Explore Ground Fuels &#x2192;</a>
         </div>
-        <div class="sol-card__image" aria-hidden="true">
-          <span style="font-size:11px;text-align:center;">IMAGE PLACEHOLDER<br>Ground Fuels / Diesel Network</span>
-        </div>
       </div>
 
       <!-- TOP RIGHT: AVIATION -->
       <div class="sol-card sol-card--aviation">
         <div class="sol-card__content">
-          <div class="sol-card__category">Aviation</div>
+          <div class="sol-card__category">In the Sky</div>
+          <div class="sol-card__icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="0" fill="#FFF5E6"/>
+              <path d="M6 26l4-2 8 4 10-12 4-2-2 4-10 12-8-4-2 2-4-2z" stroke="#D98300" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M22 14l4 1 2-3" stroke="#D98300" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
           <h3 class="sol-card__title">Aviation</h3>
           <p class="sol-card__sub">Aviation fuel supply is complex, regulated, and unforgiving. IOR simplifies it.</p>
           <nav class="sol-pills" aria-label="Aviation services">
@@ -867,15 +984,21 @@
           </nav>
           <a href="04_Aviation.html" class="sol-card__link">Explore Aviation &#x2192;</a>
         </div>
-        <div class="sol-card__image sol-card--aviation" aria-hidden="true">
-          <span style="font-size:11px;text-align:center;">IMAGE PLACEHOLDER<br>Aviation / Into-plane refuelling</span>
-        </div>
       </div>
 
       <!-- BOTTOM LEFT: HYDIP FMS -->
-      <div class="sol-card sol-card--hydip">
+      <div class="sol-card sol-card--hydip sol-card--digital">
         <div class="sol-card__content">
           <div class="sol-card__category">Digital Platforms</div>
+          <!-- HyDip Official Logo -->
+          <div class="sol-card__logo" aria-label="HyDip FMS logo">
+            <svg width="120" height="36" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HyDip FMS">
+              <rect width="120" height="36" rx="0" fill="#0A4066"/>
+              <text x="10" y="24" font-family="Avenir Next LT Pro, Avenir Next, sans-serif" font-size="14" font-weight="800" fill="#7FBEE6">HyDip</text>
+              <text x="62" y="24" font-family="Avenir Next LT Pro, Avenir Next, sans-serif" font-size="10" font-weight="700" fill="rgba(255,255,255,0.7)">FMS</text>
+              <rect x="56" y="10" width="2" height="16" fill="rgba(127,190,230,0.4)"/>
+            </svg>
+          </div>
           <h3 class="sol-card__title">HyDip&#8482; FMS</h3>
           <p class="sol-card__sub">Real-time visibility over every litre — across ground fuels and aviation. Stops losses before they become a problem.</p>
           <nav class="sol-pills" aria-label="HyDip FMS features">
@@ -886,15 +1009,20 @@
           </nav>
           <a href="07_Digital_Platforms.html#hydip" class="sol-card__link">Explore HyDip FMS &#x2192;</a>
         </div>
-        <div class="sol-card__image sol-card--hydip" aria-hidden="true">
-          <span style="font-size:11px;text-align:center;">IMAGE PLACEHOLDER<br>HyDip FMS / Dashboard</span>
-        </div>
       </div>
 
       <!-- BOTTOM RIGHT: FUELCHARGE -->
-      <div class="sol-card sol-card--fuelcharge">
+      <div class="sol-card sol-card--fuelcharge sol-card--digital">
         <div class="sol-card__content">
           <div class="sol-card__category">Digital Platforms</div>
+          <!-- Fuelcharge Official Logo -->
+          <div class="sol-card__logo" aria-label="Fuelcharge logo">
+            <svg width="140" height="36" viewBox="0 0 140 36" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fuelcharge">
+              <rect width="140" height="36" rx="0" fill="#13114D"/>
+              <polygon points="18,8 26,18 20,18 26,28 14,16 20,16" fill="#00D1CC"/>
+              <text x="34" y="24" font-family="Avenir Next LT Pro, Avenir Next, sans-serif" font-size="14" font-weight="800" fill="#FFFFFF">Fuelcharge</text>
+            </svg>
+          </div>
           <h3 class="sol-card__title">Fuelcharge</h3>
           <p class="sol-card__sub">No tag, no problem. The Fuelcharge app gives drivers instant access to IOR diesel stops — no fuel card required.</p>
           <nav class="sol-pills" aria-label="Fuelcharge features">
@@ -904,9 +1032,6 @@
             <a href="07_Digital_Platforms.html#fuelcharge-app"     class="sol-pill sol-pill--teal">iOS &amp; Android</a>
           </nav>
           <a href="07_Digital_Platforms.html#fuelcharge" class="sol-card__link">Explore Fuelcharge &#x2192;</a>
-        </div>
-        <div class="sol-card__image sol-card--fuelcharge" aria-hidden="true">
-          <span style="font-size:11px;text-align:center;">IMAGE PLACEHOLDER<br>Fuelcharge App / Mobile</span>
         </div>
       </div>
 
@@ -952,64 +1077,60 @@
 </div>
 
 <!-- ============================================================
-     BLOCK 8 — DIGITAL PLATFORMS (3 DARK CARDS)
+     BLOCK 8 — EQUIPMENT & INFRASTRUCTURE + SUPPLY & TRADING
+     Moved from Block 6 per instruction. Equipment eyebrow: Wholesale.
+     Supply & Trading eyebrow: copy placeholder flagged.
 ============================================================ -->
-<div class="ann ann--ok">
-  <strong>BLOCK 8 — DIGITAL PLATFORMS · 3 dark cards · HyDip + Fuelcharge + Customer Portal</strong>
-  Deep navy background. HyDip: IOR navy + sky accent. Fuelcharge: #13114D navy + teal (#00D1CC) — NOT purple. Customer Portal: IOR navy + sky accent.
+<div class="ann">
+  <strong>BLOCK 8 — EQUIPMENT &amp; INFRASTRUCTURE + SUPPLY &amp; TRADING · Moved from Block 6</strong>
+  Equipment &amp; Infrastructure: eyebrow “Wholesale”. Supply &amp; Trading: eyebrow needs copy support — flagged as placeholder.
 </div>
-<section class="digital-platforms-section" aria-labelledby="digital-heading">
+<section class="wholesale-section" aria-labelledby="wholesale-heading">
   <div class="container">
-    <div class="section__header">
-      <div class="section__eyebrow">Digital Platforms</div>
-      <h2 class="section__title" id="digital-heading">Real-time visibility. Cardless access. Total control.</h2>
-      <p class="section__subtitle">IOR's digital platforms connect your fuel infrastructure to the data you need — from tank levels to the pump in your pocket.</p>
+
+    <!-- SUPPLY & TRADING — Backbone strip -->
+    <div class="ann ann--dq" style="margin-bottom:0;">
+      <strong>COPY PLACEHOLDER — SUPPLY &amp; TRADING EYEBROW</strong>
+      The eyebrow for Supply &amp; Trading requires content support. Current placeholder: “Wholesale Supply”. Replace with approved copy.
     </div>
-    <div class="digital-platforms">
-
-      <!-- HYDIP FMS -->
-      <article class="platform-card platform-card--hydip" aria-label="HyDip Fuel Management System">
-        <div class="platform-card__eyebrow">Fuel Management System</div>
-        <h3>HyDip&#8482; FMS</h3>
-        <p>Real-time visibility over every litre — across ground fuels and aviation. Stops losses before they become a problem.</p>
-        <nav class="platform-pills" aria-label="HyDip features">
-          <a href="07_Digital_Platforms.html#hydip-monitoring"  class="platform-pill">Real-Time Monitoring</a>
-          <a href="07_Digital_Platforms.html#hydip-dip"         class="platform-pill">Dip Monitoring</a>
-          <a href="07_Digital_Platforms.html#hydip-alerts"      class="platform-pill">Automated Alerts</a>
-          <a href="07_Digital_Platforms.html#hydip-compliance"  class="platform-pill">Compliance Reports</a>
-        </nav>
-        <a href="07_Digital_Platforms.html#hydip" class="platform-card__cta">Explore HyDip FMS &#x2192;</a>
-      </article>
-
-      <!-- FUELCHARGE — Teal #00D1CC + Navy #13114D -->
-      <article class="platform-card platform-card--fuelcharge" aria-label="Fuelcharge cardless fuel app">
-        <div class="platform-card__eyebrow">Cardless Fuel App</div>
-        <h3>Fuelcharge</h3>
-        <p>No tag, no problem. The Fuelcharge app gives drivers instant access to IOR diesel stops — no fuel card required. Built for owner-operators and anyone who needs fuel on the road.</p>
-        <nav class="platform-pills" aria-label="Fuelcharge features">
-          <a href="07_Digital_Platforms.html#fuelcharge-no-card" class="platform-pill">No Card Required</a>
-          <a href="07_Digital_Platforms.html#fuelcharge-network" class="platform-pill">115+ Diesel Stops</a>
-          <a href="07_Digital_Platforms.html#fuelcharge-access"  class="platform-pill">Instant Access</a>
-          <a href="07_Digital_Platforms.html#fuelcharge-app"     class="platform-pill">iOS &amp; Android</a>
-        </nav>
-        <a href="07_Digital_Platforms.html#fuelcharge" class="platform-card__cta">Explore Fuelcharge &#x2192;</a>
-      </article>
-
-      <!-- CUSTOMER PORTAL -->
-      <article class="platform-card" aria-label="IOR Customer Portal">
-        <div class="platform-card__eyebrow">Account Management</div>
-        <h3>Customer Portal</h3>
-        <p>Manage your IOR account, view invoices, track deliveries, and access fuel usage reports from anywhere. Secure 24/7 online access to your account.</p>
-        <nav class="platform-pills" aria-label="Customer Portal features">
-          <a href="07_Digital_Platforms.html#portal-invoices"   class="platform-pill">Invoices &amp; Statements</a>
-          <a href="07_Digital_Platforms.html#portal-deliveries" class="platform-pill">Delivery Tracking</a>
-          <a href="07_Digital_Platforms.html#portal-reports"    class="platform-pill">Usage Reports</a>
-          <a href="07_Digital_Platforms.html#portal-access"     class="platform-pill">24/7 Access</a>
-        </nav>
-        <a href="07_Digital_Platforms.html#customer-portal" class="platform-card__cta">Access Portal &#x2192;</a>
-      </article>
-
+    <div class="sol-backbone" aria-label="Supply and Trading backbone">
+      <div class="sol-backbone__label">Wholesale Supply</div>
+      <div class="sol-backbone__content">
+        <h4>Supply &amp; Trading</h4>
+        <p>Sovereign supply infrastructure that underpins every IOR fuel solution — from Lytton to Eromanga.</p>
+      </div>
+      <nav class="product-pills" aria-label="Supply and Trading sub-services">
+        <a href="06_Supply_Trading.html#lytton-terminal"   class="product-pill product-pill--backbone">Lytton Terminal</a>
+        <a href="06_Supply_Trading.html#port-bonython"     class="product-pill product-pill--backbone">Port Bonython</a>
+        <a href="06_Supply_Trading.html#eromanga-refinery" class="product-pill product-pill--backbone">Eromanga Refinery</a>
+        <a href="06_Supply_Trading.html#condensates"       class="product-pill product-pill--backbone">Condensates</a>
+      </nav>
+      <a href="06_Supply_Trading.html" class="sol-backbone__link">Explore Supply &amp; Trading &#x2192;</a>
     </div>
+
+    <!-- EQUIPMENT & INFRASTRUCTURE — Supporting card -->
+    <div class="equipment-card" aria-label="Equipment and Infrastructure">
+      <div class="equipment-card__left">
+        <div class="sol-card__category" style="margin-bottom:10px;">Wholesale</div>
+        <svg class="equipment-card__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="32" height="32" rx="0" fill="#E8F1FB"/>
+          <rect x="6" y="18" width="20" height="8" stroke="#5C6B7A" stroke-width="1.6" fill="none"/>
+          <rect x="10" y="14" width="12" height="4" stroke="#5C6B7A" stroke-width="1.6" fill="none"/>
+          <path d="M14 18V14M18 18V14" stroke="#5C6B7A" stroke-width="1.4"/>
+          <path d="M8 18V12l8-6 8 6v6" stroke="#5C6B7A" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+        </svg>
+        <nav class="product-pills" aria-label="Equipment sub-services" style="margin-bottom:12px;">
+          <a href="05_Equipment_Infrastructure.html#storage-tanks" class="product-pill product-pill--equipment">Fuel Storage Tanks</a>
+          <a href="05_Equipment_Infrastructure.html#frac-tanks"    class="product-pill product-pill--equipment">Frac Tanks</a>
+          <a href="05_Equipment_Infrastructure.html#self-bunded"   class="product-pill product-pill--equipment">Self-Bunded Tanks</a>
+          <a href="05_Equipment_Infrastructure.html#fms"           class="product-pill product-pill--equipment">Fuel Management Systems</a>
+        </nav>
+        <h3>Equipment &amp; Infrastructure</h3>
+        <p>Remote operations can’t afford fuel downtime. IOR designs, installs, and maintains scalable on-site fuel infrastructure at zero capital cost — from self-bunded tanks to complete fuel management systems for the harshest project sites.</p>
+      </div>
+      <a href="05_Equipment_Infrastructure.html" class="equipment-card__cta">Explore Equipment &#x2192;</a>
+    </div>
+
   </div>
 </section>
 
@@ -1106,12 +1227,9 @@
 </section>
 
 <!-- ============================================================
-     BLOCK 11 — PRE-FOOTER CTA
+     BLOCK 11 — PRE-FOOTER CTA (REPEATED CONVERSION POINT)
+     Approved per Footer08.svg + Claude working file
 ============================================================ -->
-<div class="ann ann--ok">
-  <strong>BLOCK 11 — PRE-FOOTER CTA · "We're here to help" · Approved per Footer08.svg</strong>
-  IOR Blue background. Headline: "We're here to help". 3 CTAs: Apply for an Account (white solid) · Make an Enquiry (outline white) · Need Help? (outline white).
-</div>
 <section class="pre-footer" aria-label="We're here to help">
   <div class="pre-footer__row">
     <h2 class="pre-footer__title">We're here to help</h2>
@@ -1126,62 +1244,58 @@
 
 <!-- ============================================================
      BLOCK 12 — GLOBAL FOOTER (6-COLUMN GRID)
-     Approved per Footer08.svg
+     STRICTLY per pasted_content_4.txt — approved final design
 ============================================================ -->
-<div class="ann ann--ok">
-  <strong>BLOCK 12 — GLOBAL FOOTER · 6-column grid · Approved per Footer08.svg</strong>
-  IOR Blue background. Columns: Contact · Fuel Solutions · Digital Platforms · Corporate · Quick Actions · Find a Site By State. Bottom bar: copyright + legal + social icons.
-</div>
 <footer class="site-footer" aria-label="Site footer">
   <div class="footer-nav-grid">
     <!-- Contact -->
     <div>
       <div class="footer-col__title">Contact</div>
       <div class="footer-col__links">
-        <span class="footer-col__link" style="line-height:1.5;color:rgba(255,255,255,.8);">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
-        <a href="tel:1300457467"             class="footer-col__link">Call: 1300 457 467</a>
-        <a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a>
-        <a href="11b_Regional_Contacts.html"  class="footer-col__link">Regional Contacts</a>
+        <span class="footer-col__address">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
+        <a href="tel:1300457467"              class="footer-col__link">Call: 1300 457 467</a>
+        <a href="mailto:enquiries@ior.com.au"  class="footer-col__link">Email: enquiries@ior.com.au</a>
+        <a href="11b_Regional_Contacts.html"   class="footer-col__link">Regional Contacts</a>
       </div>
     </div>
     <!-- Fuel Solutions -->
     <div>
       <div class="footer-col__title">Fuel Solutions</div>
       <div class="footer-col__links">
-        <a href="03_Ground_Fuels.html"             class="footer-col__link">Ground Fuels</a>
-        <a href="04_Aviation.html"                 class="footer-col__link">Aviation</a>
-        <a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
-        <a href="06_Supply_Trading.html"           class="footer-col__link">Supply &amp; Trading</a>
+        <a href="03_Ground_Fuels.html"              class="footer-col__link">Ground Fuels</a>
+        <a href="04_Aviation.html"                  class="footer-col__link">Aviation</a>
+        <a href="05_Equipment_Infrastructure.html"  class="footer-col__link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading.html"            class="footer-col__link">Supply &amp; Trading</a>
       </div>
     </div>
     <!-- Digital Platforms -->
     <div>
       <div class="footer-col__title">Digital Platforms</div>
       <div class="footer-col__links">
-        <a href="07_Digital_Platforms.html#hydip"           class="footer-col__link">HyDip&#8482; FMS</a>
-        <a href="07_Digital_Platforms.html#fuelcharge"      class="footer-col__link">Fuelcharge App</a>
-        <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
+        <a href="07_Digital_Platforms.html#hydip"            class="footer-col__link">HyDip&#8482; FMS</a>
+        <a href="07_Digital_Platforms.html#fuelcharge"       class="footer-col__link">Fuelcharge App</a>
+        <a href="07_Digital_Platforms.html#customer-portal"  class="footer-col__link">Customer Portal</a>
       </div>
     </div>
     <!-- Corporate -->
     <div>
       <div class="footer-col__title">Corporate</div>
       <div class="footer-col__links">
-        <a href="09_About_IOR.html"              class="footer-col__link">About IOR</a>
-        <a href="10_Careers.html"                class="footer-col__link">Careers</a>
-        <a href="09a_Case_Studies.html"          class="footer-col__link">Case Studies</a>
-        <a href="09d_Sustainability_HSE_ESG.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
-        <a href="11c_News_Updates.html"          class="footer-col__link">News &amp; Updates</a>
+        <a href="09_About_IOR.html"               class="footer-col__link">About IOR</a>
+        <a href="10_Careers.html"                 class="footer-col__link">Careers</a>
+        <a href="09a_Case_Studies.html"           class="footer-col__link">Case Studies</a>
+        <a href="09d_Sustainability_HSE_ESG.html"  class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+        <a href="11c_News_Updates.html"           class="footer-col__link">News &amp; Updates</a>
       </div>
     </div>
     <!-- Quick Actions -->
     <div>
       <div class="footer-col__title">Quick Actions</div>
       <div class="footer-col__links">
-        <a href="#"                                          class="footer-col__link">Apply for an Account</a>
-        <a href="11e_Make_Payment.html"                      class="footer-col__link">Make a Payment</a>
-        <a href="11_Support_Hub.html#contact-us"             class="footer-col__link">Contact Us</a>
-        <a href="11_Support_Hub.html#faqs"                   class="footer-col__link">Help Centre &amp; FAQs</a>
+        <a href="#"                                           class="footer-col__link">Apply for an Account</a>
+        <a href="11e_Make_Payment.html"                       class="footer-col__link">Make a Payment</a>
+        <a href="11_Support_Hub.html#contact-us"              class="footer-col__link">Contact Us</a>
+        <a href="11_Support_Hub.html#faqs"                    class="footer-col__link">Help Centre &amp; FAQs</a>
       </div>
     </div>
     <!-- Find a Site By State -->
@@ -1197,20 +1311,31 @@
       </div>
     </div>
   </div>
+  <!-- Footer legal bar -->
   <div class="footer-legal">
     <p class="footer-legal__text">
       Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
       Site by 3PM
     </p>
     <div class="footer-social" aria-label="Social media links">
-      <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
-      <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
-      <a href="#" class="footer-social__icon" aria-label="Instagram">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      <!-- LinkedIn -->
+      <a href="#" class="footer-social__icon" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
       </a>
-      <a href="#" class="footer-social__icon" aria-label="YouTube">&#9654;</a>
+      <!-- Facebook -->
+      <a href="#" class="footer-social__icon" aria-label="Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <!-- Instagram -->
+      <a href="#" class="footer-social__icon" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <!-- YouTube -->
+      <a href="#" class="footer-social__icon" aria-label="YouTube">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+      </a>
     </div>
   </div>
 </footer>
