@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IOR Global Components — v3.5 Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     ROOT TOKENS
+  ============================================================ */
+  :root {
+    --ior-blue:    #0355A3;
+    --ior-navy:    #0A1628;
+    --ior-dark:    #0A4066;
+    --ior-light:   #E0F1FF;
+    --ior-gold:    #D98300;
+    --grey-50:     #F9FAFB;
+    --grey-100:    #F0F2F5;
+    --grey-200:    #E5E8ED;
+    --grey-400:    #9CA3AF;
+    --grey-700:    #374151;
+    --grey-900:    #111827;
+    --brand-fill:  #F4F5F7;
+    --section-pad: clamp(48px, 6vw, 96px);
+    --fw-bold:     700;
+    --fw-black:    900;
+    --transition:  0.25s ease;
+    --z-nav:       100;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--grey-50);
+    color: var(--grey-900);
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+
+  /* ============================================================
+     PAGE SHELL
+  ============================================================ */
+  .gc-banner {
+    background: var(--ior-navy);
+    color: #fff;
+    text-align: center;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    border-bottom: 3px solid var(--ior-blue);
+  }
+  .gc-banner strong { color: var(--ior-light); }
+  .gc-banner a { color: var(--ior-light); text-decoration: underline; }
+
+  .gc-header {
+    background: #fff;
+    border-bottom: 1px solid var(--grey-200);
+    padding: clamp(24px, 3vw, 40px) clamp(16px, 3vw, 40px);
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .gc-header__eyebrow {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ior-blue); margin-bottom: 8px;
+  }
+  .gc-header__title {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: var(--fw-black);
+    color: var(--grey-900); margin-bottom: 8px;
+  }
+  .gc-header__sub { font-size: 15px; color: var(--grey-700); max-width: 640px; }
+
+  /* ============================================================
+     SIDEBAR + CONTENT LAYOUT
+  ============================================================ */
+  .gc-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 0;
+    max-width: 1280px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .gc-layout { grid-template-columns: 1fr; } }
+
+  .gc-sidebar {
+    position: sticky;
+    top: 80px;
+    padding: clamp(20px, 2.5vw, 32px) 24px;
+    border-right: 1px solid var(--grey-200);
+    background: #fff;
+    min-height: calc(100dvh - 80px);
+  }
+  @media (max-width: 900px) { .gc-sidebar { position: static; min-height: auto; border-right: none; border-bottom: 1px solid var(--grey-200); } }
+
+  .gc-sidebar__title {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--grey-400); margin-bottom: 12px;
+  }
+  .gc-sidebar__link {
+    display: block;
+    font-size: 13px; font-weight: 600;
+    color: var(--grey-700);
+    padding: 8px 12px;
+    border-radius: 0;
+    transition: background var(--transition), color var(--transition);
+    margin-bottom: 2px;
+  }
+  .gc-sidebar__link:hover { background: var(--grey-100); color: var(--ior-blue); }
+  .gc-sidebar__link--active { background: var(--ior-light); color: var(--ior-blue); }
+  .gc-sidebar__divider { height: 1px; background: var(--grey-200); margin: 12px 0; }
+
+  .gc-content {
+    padding: clamp(24px, 3vw, 48px) clamp(16px, 3vw, 48px);
+  }
+
+  /* ============================================================
+     COMPONENT SECTION WRAPPER
+  ============================================================ */
+  .gc-section {
+    margin-bottom: clamp(48px, 6vw, 80px);
+    scroll-margin-top: 100px;
+  }
+  .gc-section__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--grey-200);
+    flex-wrap: wrap;
+  }
+  .gc-section__title {
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: var(--fw-black);
+    color: var(--grey-900);
+  }
+  .gc-section__badge {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    background: var(--ior-light);
+    color: var(--ior-blue);
+    padding: 4px 10px;
+    flex-shrink: 0;
+  }
+  .gc-section__desc {
+    font-size: 14px; color: var(--grey-700);
+    line-height: 1.7; margin-bottom: 24px;
+    max-width: 680px;
+  }
+  .gc-rule {
+    background: var(--brand-fill);
+    border-left: 3px solid var(--ior-blue);
+    padding: 12px 16px;
+    font-size: 13px; color: var(--grey-700);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .gc-rule strong { color: var(--grey-900); }
+
+  /* ============================================================
+     LIVE PREVIEW WRAPPER
+  ============================================================ */
+  .gc-preview {
+    background: #fff;
+    border: 1px solid var(--grey-200);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .gc-preview__label {
+    background: var(--grey-100);
+    border-bottom: 1px solid var(--grey-200);
+    padding: 8px 16px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: var(--grey-400);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .gc-preview__inner { padding: 0; }
+
+  /* ============================================================
+     CODE BLOCK
+  ============================================================ */
+  .gc-code-wrap { position: relative; margin-bottom: 8px; }
+  .gc-code {
+    background: var(--grey-900);
+    color: #e5e7eb;
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    padding: 20px 24px;
+    overflow-x: auto;
+    white-space: pre;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .gc-copy-btn {
+    position: absolute; top: 8px; right: 8px;
+    background: rgba(255,255,255,.1);
+    color: rgba(255,255,255,.7);
+    border: 1px solid rgba(255,255,255,.2);
+    font-size: 11px; font-weight: 600;
+    padding: 4px 10px; cursor: pointer;
+    transition: background var(--transition);
+    border-radius: 0;
+  }
+  .gc-copy-btn:hover { background: rgba(255,255,255,.2); color: #fff; }
+
+  /* ============================================================
+     RULE TABLE
+  ============================================================ */
+  .gc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+  .gc-table th {
+    background: var(--grey-900);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .gc-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--grey-200);
+    vertical-align: top;
+    color: var(--grey-700);
+  }
+  .gc-table tr:nth-child(even) td { background: var(--grey-50); }
+  .gc-table code {
+    background: var(--grey-100);
+    padding: 2px 6px;
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--ior-blue);
+  }
+  .pass { color: #059669; font-weight: 700; }
+  .fail { color: #DC2626; font-weight: 700; }
+  .warn { color: #D97706; font-weight: 700; }
+
+  /* ============================================================
+     DOWNLOAD STRIP
+  ============================================================ */
+  .gc-download {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--ior-dark);
+    padding: 20px 24px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .gc-download__text { color: #fff; }
+  .gc-download__text h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .gc-download__text p { font-size: 13px; color: rgba(255,255,255,.7); }
+  .gc-download__btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--ior-blue); color: #fff;
+    font-size: 13px; font-weight: 700;
+    padding: 10px 20px; border: 2px solid var(--ior-blue);
+    border-radius: 0; transition: background var(--transition);
+    white-space: nowrap; min-height: 44px;
+  }
+  .gc-download__btn:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
+
+  /* ============================================================
+     COMPONENT LIVE PREVIEWS — SHARED STYLES
+  ============================================================ */
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; font-weight: 600;
+    padding: 10px 20px; border: 2px solid transparent;
+    border-radius: 0; cursor: pointer;
+    text-decoration: none;
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+    white-space: nowrap; min-height: 44px;
+  }
+  .btn--pill          { border-radius: 500px; }
+  .btn--primary       { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
+  .btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
+  .btn--outline       { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+  .btn--outline:hover { background: var(--ior-light); }
+  .btn--outline-dark       { background: transparent; color: var(--grey-900); border-color: var(--grey-900); }
+  .btn--outline-dark:hover { background: var(--grey-100); }
+  .btn--ghost       { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.3); }
+  .btn--ghost:hover { background: rgba(255,255,255,.2); }
+  .btn--sm { font-size: 13px; padding: 8px 16px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px); }
+  .eyebrow {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ior-blue); margin-bottom: 8px;
+  }
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+  .fade-up--visible { opacity: 1; transform: none; }
+
+  /* Related Content component */
+  .related-content { padding: clamp(40px,5vw,72px) 0; background: var(--grey-50); }
+  .related-content__tabs { display: flex; border-bottom: 2px solid var(--grey-200); margin-bottom: 28px; }
+  .related-content__tab {
+    font-size: 14px; font-weight: 600; color: var(--grey-400);
+    padding: 10px 20px; border: none; background: none; cursor: pointer;
+    border-bottom: 2px solid transparent; margin-bottom: -2px;
+    transition: color var(--transition), border-color var(--transition);
+    min-height: 44px;
+  }
+  .related-content__tab.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+  .related-tab-panel { display: none; }
+  .related-tab-panel.active { display: block; }
+  .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,2vw,20px); }
+  @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card { background: #fff; border: 1px solid var(--grey-200); }
+  .related-card__img {
+    background: var(--grey-100); aspect-ratio: 16/9;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .related-card__img-logo {
+    width: 28px; height: 28px; background: var(--ior-blue);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .related-card__body { padding: 18px; }
+  .related-card__tag { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 6px; }
+  .related-card__title { font-size: 14px; font-weight: 700; color: var(--grey-900); line-height: 1.4; margin-bottom: 6px; }
+  .related-card__excerpt { font-size: 13px; color: var(--grey-700); line-height: 1.6; margin-bottom: 14px; }
+  .related-card__link { font-size: 13px; font-weight: 700; color: var(--ior-blue); }
+  .related-card__link:hover { text-decoration: underline; }
+  .related-content__view-all { text-align: center; margin-top: 28px; }
+
+  /* FAQ component */
+  .faq-section { padding: clamp(40px,5vw,72px) 0; background: var(--grey-50); border-top: 1px solid var(--grey-200); }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-bottom: 1px solid var(--grey-200); }
+  .faq-question {
+    width: 100%; text-align: left;
+    padding: clamp(12px,1.5vw,18px) 0;
+    font-size: clamp(14px,1.4vw,16px); font-weight: 600; color: var(--grey-900);
+    background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    transition: color var(--transition); min-height: 44px;
+  }
+  .faq-question:hover, .faq-question[aria-expanded="true"] { color: var(--ior-blue); }
+  .faq-chevron { flex-shrink: 0; transition: transform var(--transition); }
+  .faq-question[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
+  .faq-answer { overflow: hidden; max-height: 0; transition: max-height .35s ease; }
+  .faq-answer p { font-size: 15px; color: var(--grey-700); line-height: 1.7; padding-bottom: 20px; }
+  .faq-footer {
+    margin-top: 32px; padding: 24px 32px;
+    background: var(--grey-50); border: 1px solid var(--grey-200);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .faq-footer__text h4 { font-size: 15px; font-weight: 700; color: var(--grey-900); margin-bottom: 4px; }
+  .faq-footer__text p { font-size: 13px; color: var(--grey-700); }
+  .faq-footer__actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; flex-shrink: 0; }
+  .faq-footer__help-link { font-size: 13px; color: var(--ior-blue); text-decoration: underline; text-underline-offset: 4px; }
+
+  /* HubSpot placeholder */
+  .hubspot-form-section { padding: var(--section-pad) 0; background: var(--brand-fill); border-top: 1px solid var(--grey-200); border-bottom: 1px solid var(--grey-200); }
+  .hs-form-placeholder {
+    background: #fff; border: 2px dashed var(--grey-200);
+    padding: clamp(40px,5vw,80px) clamp(24px,3vw,48px);
+    text-align: center; color: var(--grey-400);
+    font-size: 14px; font-weight: 600; letter-spacing: .04em;
+    margin-top: clamp(24px,3vw,40px);
+  }
+  .section-heading { margin-bottom: clamp(24px,3vw,40px); }
+  .section-heading h2 { font-size: clamp(22px,2.8vw,36px); font-weight: var(--fw-black); color: var(--grey-900); }
+  .section-heading h2 .accent { color: var(--ior-blue); }
+  .section-sub { font-size: clamp(14px,1.4vw,16px); color: var(--grey-700); margin-top: 8px; max-width: 560px; }
+
+  /* 1-2-3 step component */
+  .steps-section { padding: var(--section-pad) 0; background: var(--grey-50); }
+  .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--grey-100); margin-top: 40px; }
+  @media (max-width: 640px) { .steps-grid { grid-template-columns: 1fr; } }
+  .step-card { background: #fff; padding: 40px; border-top: 4px solid var(--ior-blue); }
+  .step-card__num { font-size: 48px; font-weight: 900; color: rgba(3,85,163,.15); line-height: 1; margin-bottom: 16px; }
+  .step-card__title { font-size: 18px; font-weight: 800; color: var(--grey-900); margin-bottom: 10px; }
+  .step-card__desc { font-size: 14px; color: var(--grey-700); }
+  .steps-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
+
+  /* Utility bar preview */
+  .utility-bar { background: var(--ior-dark); padding: 8px 0; font-size: 12px; font-weight: 600; letter-spacing: .04em; }
+  .utility-bar__inner { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px,3vw,40px); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .utility-bar__brand { font-size: 11px; color: rgba(255,255,255,.7); letter-spacing: .08em; text-transform: uppercase; }
+  .utility-bar__actions { display: flex; align-items: center; gap: 4px; }
+  .utility-bar__link { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,.85); padding: 4px 10px; border-radius: 0; transition: background var(--transition); white-space: nowrap; }
+  .utility-bar__link:hover { background: rgba(255,255,255,.12); color: #fff; }
+  .utility-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.2); margin: 0 2px; }
+
+  /* Quick links bar preview */
+  .quick-links-bar { background: #fff; border-bottom: 2px solid var(--grey-200); }
+  .quick-links-bar__inner { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px,3vw,40px); display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; }
+  .quick-links-bar__inner::-webkit-scrollbar { display: none; }
+  .quick-links-bar__link { font-size: 13px; font-weight: 600; color: var(--grey-700); padding: 14px 16px; border-bottom: 2px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: color var(--transition), border-color var(--transition); min-height: 44px; display: flex; align-items: center; }
+  .quick-links-bar__link:hover { color: var(--ior-blue); }
+  .quick-links-bar__link--active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+
+  /* Pre-footer preview */
+  .pre-footer { background: var(--ior-blue); padding: clamp(48px,6vw,80px) 0; }
+  .pre-footer__row { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .pre-footer__title { font-size: clamp(22px,2.5vw,32px); font-weight: var(--fw-bold); color: #fff; }
+  .pre-footer__ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  /* Logo carousel preview */
+  .logo-carousel { background: var(--brand-fill); border-top: 1px solid var(--grey-200); border-bottom: 1px solid var(--grey-200); padding: clamp(24px,3vw,40px) 0; overflow: hidden; }
+  .logo-carousel__track { display: flex; gap: clamp(32px,4vw,56px); align-items: center; animation: scroll-logos 20s linear infinite; width: max-content; }
+  .logo-carousel__track:hover { animation-play-state: paused; }
+  @keyframes scroll-logos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .logo-carousel__item { height: 32px; opacity: .45; filter: grayscale(1); transition: opacity .3s, filter .3s; flex-shrink: 0; display: flex; align-items: center; }
+  .logo-carousel__item:hover { opacity: 1; filter: none; }
+  .logo-carousel__label {
+    font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--grey-400); white-space: nowrap; padding: 4px 12px;
+    border: 1.5px solid var(--grey-200); background: #fff;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     BANNER
+============================================================ -->
+<div class="gc-banner">
+  <strong>IOR v3.5 Prototype</strong> &mdash; Global Components Reference &mdash;
+  <a href="00_Master_Index.html">Back to Master Index</a>
+</div>
+
+<!-- ============================================================
+     PAGE HEADER
+============================================================ -->
+<div class="gc-header">
+  <div class="gc-header__eyebrow">Reference Document</div>
+  <h1 class="gc-header__title">IOR Global Components &amp; Template Shell</h1>
+  <p class="gc-header__sub">The single source of truth for all builders and auditors working on the IOR v3.5 prototype. Every component listed here is production-ready and must be used verbatim.</p>
+</div>
+
+<!-- ============================================================
+     LAYOUT
+============================================================ -->
+<div class="gc-layout">
+
+  <!-- SIDEBAR -->
+  <nav class="gc-sidebar" aria-label="Component navigation">
+    <div class="gc-sidebar__title">Components</div>
+    <a href="#template-shell" class="gc-sidebar__link gc-sidebar__link--active">Template Shell</a>
+    <a href="#build-rules" class="gc-sidebar__link">Build Rules</a>
+    <div class="gc-sidebar__divider"></div>
+    <div class="gc-sidebar__title">Global Shell</div>
+    <a href="#utility-bar" class="gc-sidebar__link">Utility Bar</a>
+    <a href="#primary-nav" class="gc-sidebar__link">Primary Nav</a>
+    <a href="#mobile-drawer" class="gc-sidebar__link">Mobile Drawer</a>
+    <a href="#quick-links" class="gc-sidebar__link">Quick Links Bar</a>
+    <div class="gc-sidebar__divider"></div>
+    <div class="gc-sidebar__title">Page Components</div>
+    <a href="#related-content" class="gc-sidebar__link">Related Content (Tabbed)</a>
+    <a href="#faq" class="gc-sidebar__link">FAQ Accordion</a>
+    <a href="#hubspot" class="gc-sidebar__link">HubSpot Form</a>
+    <a href="#steps" class="gc-sidebar__link">1-2-3 Steps</a>
+    <a href="#logo-carousel" class="gc-sidebar__link">Logo Carousel</a>
+    <a href="#pre-footer" class="gc-sidebar__link">Pre-footer CTA</a>
+    <a href="#footer" class="gc-sidebar__link">Site Footer</a>
+    <div class="gc-sidebar__divider"></div>
+    <div class="gc-sidebar__title">Audit</div>
+    <a href="#audit-script" class="gc-sidebar__link">Self-Audit Script</a>
+    <a href="#page-matrix" class="gc-sidebar__link">Page Matrix</a>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="gc-content" id="main-content">
+
+    <!-- ========================================================
+         TEMPLATE SHELL
+    ======================================================== -->
+    <section class="gc-section" id="template-shell">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">Global Template Shell</h2>
+        <span class="gc-section__badge">Starting Point</span>
+      </div>
+      <p class="gc-section__desc">Every spoke page must start from this template. The global shell components (utility bar, primary nav, mobile drawer, pre-footer, footer, JS) are locked and must not be modified. Only fill in the <code>[PLACEHOLDER]</code> sections.</p>
+      <div class="gc-rule">
+        <strong>Rule:</strong> Do not patch or string-replace an existing page to create a new one. Always start from this template and write the complete file directly. Patching causes structural drift and introduces bugs.
+      </div>
+      <div class="gc-download">
+        <div class="gc-download__text">
+          <h3>IOR_Global_Template_Shell_v3.5.html</h3>
+          <p>Production-ready single-file HTML template. All 15 self-audit checks pass on the template itself.</p>
+        </div>
+        <a href="IOR_Global_Template_Shell_v3.5.html" class="gc-download__btn" aria-label="Download the Global Template Shell">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Open Template &raquo;
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         BUILD RULES
+    ======================================================== -->
+    <section class="gc-section" id="build-rules">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">Build Rules — Non-Negotiable</h2>
+        <span class="gc-section__badge">v3.5 Rules</span>
+      </div>
+      <p class="gc-section__desc">These rules apply to every file in the prototype. Zero exceptions. The auditor will block any PR that violates these rules.</p>
+
+      <table class="gc-table">
+        <thead>
+          <tr><th>Rule</th><th>Requirement</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>border-radius</code></td><td><code>0</code> on ALL elements. Only exception: <code>.btn--pill { border-radius: 500px; }</code> via CSS class only &mdash; never inline <code>style=</code></td><td class="fail">Zero tolerance</td></tr>
+          <tr><td>Gradients</td><td>Zero gradient declarations anywhere</td><td class="fail">Zero tolerance</td></tr>
+          <tr><td>Emoji</td><td>Zero emoji characters &mdash; SVG icons only</td><td class="fail">Zero tolerance</td></tr>
+          <tr><td><code>clamp()</code></td><td>Minimum 20 instances per page for all typography and spacing</td><td class="warn">Min 20</td></tr>
+          <tr><td><code>dvh</code></td><td>Use <code>dvh</code> instead of <code>vh</code></td><td class="warn">Required</td></tr>
+          <tr><td><code>--brand-fill</code></td><td>Define <code>--brand-fill: #F4F5F7</code> in <code>:root</code></td><td class="warn">Required</td></tr>
+          <tr><td>Inline <code>style=</code></td><td>Only permitted for <code>display:none</code> (tab panels) and <code>fill:</code> (SVG). All other layout/colour in CSS.</td><td class="fail">Zero tolerance</td></tr>
+          <tr><td><code>.main-audit-container</code></td><td><code>max-width: 1920px; margin: 0 auto;</code> wrapping all content</td><td class="warn">Required</td></tr>
+          <tr><td>Semantic HTML</td><td><code>&lt;header&gt;</code>, <code>&lt;main id="main-content"&gt;</code>, <code>&lt;footer&gt;</code> all required</td><td class="warn">Required</td></tr>
+          <tr><td>Breadcrumb</td><td>Do NOT include on any spoke page &mdash; no CSS, no HTML</td><td class="fail">Zero tolerance</td></tr>
+          <tr><td>HubSpot form</td><td>Required on ALL spoke pages, above FAQ section</td><td class="warn">Required</td></tr>
+          <tr><td>HyDip&#8482;</td><td><code>HyDip&amp;#8482;</code> on every occurrence</td><td class="fail">Zero tolerance</td></tr>
+          <tr><td>HyBlue&#8482;</td><td><code>HyBlue&amp;#8482;</code> on every occurrence</td><td class="fail">Zero tolerance</td></tr>
+          <tr><td>AdBlue&#174;</td><td><code>AdBlue&amp;#174;</code> on every occurrence</td><td class="fail">Zero tolerance</td></tr>
+          <tr><td>Copyright</td><td><code>&amp;copy; 2026 IOR. All rights reserved.</code></td><td class="warn">Required</td></tr>
+          <tr><td>IOR Petroleum</td><td>Never use &mdash; company name is <code>IOR</code> only</td><td class="fail">Zero tolerance</td></tr>
+          <tr><td>Founding year</td><td><code>1984</code> or <code>40+ years</code> in hero body copy</td><td class="warn">Required</td></tr>
+          <tr><td>Quick links position</td><td>After hero <code>&lt;/section&gt;</code>, before stat bar. Sticky <code>top: 64px</code>.</td><td class="warn">Required</td></tr>
+          <tr><td>File naming</td><td><code>[code]_[Name]_v3.5.html</code> e.g. <code>03b_On_Site_Refuelling_v3.5.html</code></td><td class="warn">Required</td></tr>
+          <tr><td>Master Index</td><td>Each PR updates only its own card in <code>00_Master_Index.html</code></td><td class="warn">Required</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ========================================================
+         UTILITY BAR
+    ======================================================== -->
+    <section class="gc-section" id="utility-bar">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">Utility Bar</h2>
+        <span class="gc-section__badge">Global Shell</span>
+      </div>
+      <p class="gc-section__desc">Top-of-page utility strip. Background <code>#0A4066</code>. Three links only: Find a Location | Make a Payment | 1300 457 467. Do not add or remove links.</p>
+      <div class="gc-preview">
+        <div class="gc-preview__label">Live Preview</div>
+        <div class="gc-preview__inner">
+          <div class="utility-bar" role="complementary">
+            <div class="utility-bar__inner">
+              <span class="utility-bar__brand">Australia&rsquo;s Remote Fuel Specialists &mdash; Since 1984</span>
+              <div class="utility-bar__actions">
+                <a href="#" class="utility-bar__link" aria-label="Find a Location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Find a Location
+                </a>
+                <div class="utility-bar__divider" aria-hidden="true"></div>
+                <a href="#" class="utility-bar__link" aria-label="Make a Payment">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                  Make a Payment
+                </a>
+                <div class="utility-bar__divider" aria-hidden="true"></div>
+                <a href="tel:1300457467" class="utility-bar__link" aria-label="Call IOR on 1300 457 467">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  1300 457 467
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         QUICK LINKS BAR
+    ======================================================== -->
+    <section class="gc-section" id="quick-links">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">Quick Links Bar</h2>
+        <span class="gc-section__badge">Global Shell</span>
+      </div>
+      <p class="gc-section__desc">Sticky sub-navigation bar. Position: immediately after the hero <code>&lt;/section&gt;</code>, before the stat bar. Sticky at <code>top: 64px</code>. Set <code>aria-current="page"</code> and <code>quick-links-bar__link--active</code> on the current page link.</p>
+      <div class="gc-rule">
+        <strong>Ground Fuels quick links</strong> must always list all 5 spokes in order: IOR Diesel Network | On-Site Refuelling | Bulk Diesel Delivery | HyBlue&#8482; | Oils &amp; Lubricants. All links use <code>_v3.5.html</code> filenames.
+      </div>
+      <div class="gc-preview">
+        <div class="gc-preview__label">Live Preview — Ground Fuels (On-Site Refuelling active)</div>
+        <div class="gc-preview__inner">
+          <nav class="quick-links-bar" aria-label="Ground Fuels section navigation">
+            <div class="quick-links-bar__inner">
+              <a href="03a_Diesel_Network_v3.5.html" class="quick-links-bar__link">IOR Diesel Network</a>
+              <a href="03b_On_Site_Refuelling_v3.5.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">On-Site Refuelling</a>
+              <a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="quick-links-bar__link">Bulk Diesel Delivery</a>
+              <a href="03d_HyBlue_v3.5.html" class="quick-links-bar__link">HyBlue&#8482;</a>
+              <a href="03e_Oils_Lubricants_v3.5.html" class="quick-links-bar__link">Oils &amp; Lubricants</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         RELATED CONTENT (TABBED)
+    ======================================================== -->
+    <section class="gc-section" id="related-content">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">Related Content — Tabbed Grid</h2>
+        <span class="gc-section__badge">Page Component</span>
+      </div>
+      <p class="gc-section__desc">Case study and blog post grid with tabbed navigation. Exactly 3 cards per tab. Eyebrow must always read <strong>LATEST FROM IOR</strong>. The <code>&lt;h2&gt;</code> must be bespoke to the page audience.</p>
+      <div class="gc-rule">
+        <strong>Header rule:</strong> The <code>&lt;h2&gt;</code> MUST call out the specific target audience of the page. Example: <em>"Case studies &amp; insights for <span style="color:var(--ior-blue)">fleet operators.</span>"</em> Do not use generic headers like "Read our blog."
+      </div>
+      <div class="gc-rule">
+        <strong>Tab IDs:</strong> Use <code>data-tab="rc-[UNIQUE_ID]-cases"</code> and <code>data-tab="rc-[UNIQUE_ID]-blog"</code> where <code>[UNIQUE_ID]</code> is a short page slug (e.g. <code>diesel</code>, <code>onsite</code>). This prevents ID collisions when multiple components appear on one page.
+      </div>
+      <div class="gc-preview">
+        <div class="gc-preview__label">Live Preview</div>
+        <div class="gc-preview__inner">
+          <section class="related-content" aria-labelledby="rc-demo-heading">
+            <div class="container">
+              <div class="section-heading fade-up">
+                <div class="eyebrow">LATEST FROM IOR</div>
+                <h2 id="rc-demo-heading">Case studies &amp; insights for <span class="accent">fleet operators.</span></h2>
+              </div>
+              <div class="related-content__tabs" role="tablist">
+                <button class="related-content__tab active" role="tab" aria-selected="true" aria-controls="rc-demo-cases" id="rc-demo-tab-cs">Case Studies</button>
+                <button class="related-content__tab" role="tab" aria-selected="false" aria-controls="rc-demo-blog" id="rc-demo-tab-blog">Blog Posts</button>
+              </div>
+              <div class="related-tab-panel active" id="rc-demo-cases" role="tabpanel" aria-labelledby="rc-demo-tab-cs">
+                <div class="related-grid">
+                  <article class="related-card fade-up">
+                    <div class="related-card__img" aria-label="K.S. Easter Transport case study">
+                      <div class="related-card__img-logo" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                      </div>
+                    </div>
+                    <div class="related-card__body">
+                      <div class="related-card__tag">Case Study</div>
+                      <h3 class="related-card__title">How K.S. Easter Transport cut fuel admin by 40%</h3>
+                      <p class="related-card__excerpt">With 115+ IOR diesel stops across the network, K.S. Easter drivers refuel without detours &mdash; keeping schedules tight and costs predictable.</p>
+                      <a href="#" class="related-card__link" aria-label="Read the K.S. Easter Transport case study">Read the case study &raquo;</a>
+                    </div>
+                  </article>
+                  <article class="related-card fade-up">
+                    <div class="related-card__img" aria-label="Incitec Pivot case study">
+                      <div class="related-card__img-logo" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                      </div>
+                    </div>
+                    <div class="related-card__body">
+                      <div class="related-card__tag">Case Study</div>
+                      <h3 class="related-card__title">Incitec Pivot: reliable bulk supply to remote sites</h3>
+                      <p class="related-card__excerpt">IOR delivers bulk diesel to Incitec Pivot&rsquo;s remote agricultural operations, ensuring zero supply interruptions across seasonal peaks.</p>
+                      <a href="#" class="related-card__link" aria-label="Read the Incitec Pivot case study">Read the case study &raquo;</a>
+                    </div>
+                  </article>
+                  <article class="related-card fade-up">
+                    <div class="related-card__img" aria-label="MPC Kinetic case study">
+                      <div class="related-card__img-logo" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                      </div>
+                    </div>
+                    <div class="related-card__body">
+                      <div class="related-card__tag">Case Study</div>
+                      <h3 class="related-card__title">MPC Kinetic: on-site refuelling across 200+ vehicles</h3>
+                      <p class="related-card__excerpt">IOR&rsquo;s on-site refuelling solution eliminated manual dipping and gave MPC Kinetic real-time visibility across their entire fleet.</p>
+                      <a href="#" class="related-card__link" aria-label="Read the MPC Kinetic case study">Read the case study &raquo;</a>
+                    </div>
+                  </article>
+                </div>
+                <div class="related-content__view-all">
+                  <a href="/about/case-studies/" class="btn btn--outline-dark" aria-label="View all case studies">View All Case Studies &raquo;</a>
+                </div>
+              </div>
+              <div class="related-tab-panel" id="rc-demo-blog" role="tabpanel" aria-labelledby="rc-demo-tab-blog" style="display:none;">
+                <div class="related-grid">
+                  <article class="related-card fade-up">
+                    <div class="related-card__img" aria-label="Blog post image">
+                      <div class="related-card__img-logo" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                      </div>
+                    </div>
+                    <div class="related-card__body">
+                      <div class="related-card__tag">Blog Post</div>
+                      <h3 class="related-card__title">5 ways to reduce fuel theft on remote sites</h3>
+                      <p class="related-card__excerpt">Fuel theft costs Australian operators millions annually. Here are five proven strategies IOR recommends for remote site security.</p>
+                      <a href="#" class="related-card__link" aria-label="Read the blog post">Read the post &raquo;</a>
+                    </div>
+                  </article>
+                  <article class="related-card fade-up">
+                    <div class="related-card__img" aria-label="Blog post image">
+                      <div class="related-card__img-logo" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                      </div>
+                    </div>
+                    <div class="related-card__body">
+                      <div class="related-card__tag">Blog Post</div>
+                      <h3 class="related-card__title">Understanding diesel quality: what every fleet manager should know</h3>
+                      <p class="related-card__excerpt">Not all diesel is equal. IOR&rsquo;s quality assurance process ensures every litre delivered meets Australian fuel standards.</p>
+                      <a href="#" class="related-card__link" aria-label="Read the blog post">Read the post &raquo;</a>
+                    </div>
+                  </article>
+                  <article class="related-card fade-up">
+                    <div class="related-card__img" aria-label="Blog post image">
+                      <div class="related-card__img-logo" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                      </div>
+                    </div>
+                    <div class="related-card__body">
+                      <div class="related-card__tag">Blog Post</div>
+                      <h3 class="related-card__title">AdBlue&#174; explained: why DEF compliance matters for your fleet</h3>
+                      <p class="related-card__excerpt">With Euro 5 and Euro 6 engines now standard across Australian fleets, AdBlue&#174; compliance is non-negotiable. Here&rsquo;s what you need to know.</p>
+                      <a href="#" class="related-card__link" aria-label="Read the blog post">Read the post &raquo;</a>
+                    </div>
+                  </article>
+                </div>
+                <div class="related-content__view-all">
+                  <a href="/news/" class="btn btn--outline-dark" aria-label="View all blog posts">View All Blog Posts &raquo;</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         FAQ ACCORDION
+    ======================================================== -->
+    <section class="gc-section" id="faq">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">FAQ Accordion + Still Have Questions?</h2>
+        <span class="gc-section__badge">Page Component</span>
+      </div>
+      <p class="gc-section__desc">Minimum 5 FAQ items per page, all collapsed by default. The <strong>"Still have questions?"</strong> routing box must appear immediately after the <code>.faq-list</code> closing tag on every page.</p>
+      <div class="gc-rule">
+        <strong>Routing box links:</strong> Primary: "Ask us here &rarr;" links to <code>/support-contact/contact-us/</code>. Secondary: "Browse Help Centre" links to <code>/support-contact/</code>.
+      </div>
+      <div class="gc-preview">
+        <div class="gc-preview__label">Live Preview</div>
+        <div class="gc-preview__inner">
+          <section class="faq-section" aria-labelledby="faq-demo-heading">
+            <div class="container">
+              <div class="section-heading">
+                <p class="eyebrow">FAQs</p>
+                <h2 id="faq-demo-heading">Frequently asked <span class="accent">questions</span></h2>
+              </div>
+              <div class="faq-list">
+                <div class="faq-item">
+                  <button class="faq-question" aria-expanded="false" aria-controls="faq-demo-1">
+                    How do I find my nearest IOR diesel stop?
+                    <span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+                  </button>
+                  <div class="faq-answer" id="faq-demo-1" role="region">
+                    <p>Use the IOR Location Finder at <a href="11d_Find_Location.html" style="color:var(--ior-blue)">ior.com.au/find-a-location</a> or call 1300 457 467. Our network spans 115+ stops across Australia including remote and regional areas.</p>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question" aria-expanded="false" aria-controls="faq-demo-2">
+                    Do I need an account to use IOR diesel stops?
+                    <span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span>
+                  </button>
+                  <div class="faq-answer" id="faq-demo-2" role="region">
+                    <p>Yes. IOR operates on a trade account basis. Apply online in minutes &mdash; approval is typically within one business day for qualifying businesses.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Still have questions? routing box -->
+              <div class="faq-footer fade-up">
+                <div class="faq-footer__text">
+                  <h4>Still have questions?</h4>
+                  <p>Submit an enquiry to our local team or search our full knowledge base.</p>
+                </div>
+                <div class="faq-footer__actions">
+                  <a href="/support-contact/" class="faq-footer__help-link" aria-label="Browse the IOR Help Centre">Browse Help Centre</a>
+                  <a href="/support-contact/contact-us/" class="btn btn--outline-dark btn--sm" aria-label="Ask IOR a question">Ask us here &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         HUBSPOT FORM PLACEHOLDER
+    ======================================================== -->
+    <section class="gc-section" id="hubspot">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">HubSpot Form Placeholder</h2>
+        <span class="gc-section__badge">Required — All Pages</span>
+      </div>
+      <p class="gc-section__desc">Required on every spoke page. Position: above the FAQ section, below the gated asset / related content block. When HubSpot form IDs are confirmed, replace the <code>.hs-form-placeholder</code> div with the HubSpot embed script.</p>
+      <div class="gc-preview">
+        <div class="gc-preview__label">Live Preview</div>
+        <div class="gc-preview__inner">
+          <section class="hubspot-form-section" aria-labelledby="hs-demo-heading">
+            <div class="container">
+              <div class="section-heading">
+                <p class="eyebrow">Get in Touch</p>
+                <h2 id="hs-demo-heading">Speak with an IOR specialist.</h2>
+                <p class="section-sub">Complete the form below and a member of our team will be in touch within one business day.</p>
+              </div>
+              <div class="hs-form-placeholder" aria-label="HubSpot enquiry form — embed pending">
+                <!-- HubSpot embed: [FORM ID TBC] -->
+                <p>HubSpot Form &mdash; Embed Code Pending</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         1-2-3 STEPS
+    ======================================================== -->
+    <section class="gc-section" id="steps">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">1-2-3 Steps Component</h2>
+        <span class="gc-section__badge">Page Component</span>
+      </div>
+      <p class="gc-section__desc">Use for any 3-step process or conversion block ("How it works", "Ready to get started"). Do not invent new step-by-step designs. Ghost numbers use the page accent colour at 15% opacity.</p>
+      <div class="gc-rule">
+        <strong>Accent colour:</strong> Use <code>var(--ior-blue)</code> for Ground Fuels pages. For Aviation pages, use the aviation gold variable. Ghost number colour: <code>rgba(3, 85, 163, .15)</code> for IOR Blue.
+      </div>
+      <div class="gc-preview">
+        <div class="gc-preview__label">Live Preview</div>
+        <div class="gc-preview__inner">
+          <section class="steps-section" aria-labelledby="steps-demo-heading">
+            <div class="container">
+              <div class="section-heading fade-up" style="text-align:center;">
+                <h2 id="steps-demo-heading">Ready to power your business with IOR?</h2>
+              </div>
+              <div class="steps-grid">
+                <div class="step-card fade-up">
+                  <div class="step-card__num">01</div>
+                  <div class="step-card__title">Apply for an Account</div>
+                  <div class="step-card__desc">Complete our simple online application. Most accounts are approved within one business day.</div>
+                </div>
+                <div class="step-card fade-up">
+                  <div class="step-card__num">02</div>
+                  <div class="step-card__title">Set Up Your Fleet</div>
+                  <div class="step-card__desc">Add your vehicles and drivers to the IOR Customer Portal. Set spend limits and fuel type restrictions.</div>
+                </div>
+                <div class="step-card fade-up">
+                  <div class="step-card__num">03</div>
+                  <div class="step-card__title">Fuel Anywhere, Anytime</div>
+                  <div class="step-card__desc">Access 115+ IOR diesel stops across Australia. Track every transaction in real time via HyDip&#8482; FMS.</div>
+                </div>
+              </div>
+              <div class="steps-ctas fade-up">
+                <a href="#" class="btn btn--primary" aria-label="Apply for an IOR Account">Apply for an Account &raquo;</a>
+                <a href="#" class="btn btn--outline-dark" aria-label="Talk to an IOR specialist">Talk to a Specialist &raquo;</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         LOGO CAROUSEL
+    ======================================================== -->
+    <section class="gc-section" id="logo-carousel">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">Logo Carousel</h2>
+        <span class="gc-section__badge">Global Shell</span>
+      </div>
+      <p class="gc-section__desc">Infinite-scroll logo strip. Background <code>var(--brand-fill)</code>. Logos are greyscale at 45% opacity, full colour on hover. Animation pauses on hover. Duplicate the track for seamless looping.</p>
+      <div class="gc-preview">
+        <div class="gc-preview__label">Live Preview</div>
+        <div class="gc-preview__inner">
+          <div class="logo-carousel" aria-label="IOR client logos">
+            <div class="logo-carousel__track" aria-hidden="true">
+              <div class="logo-carousel__item"><span class="logo-carousel__label">K.S. Easter Transport</span></div>
+              <div class="logo-carousel__item"><span class="logo-carousel__label">Incitec Pivot</span></div>
+              <div class="logo-carousel__item"><span class="logo-carousel__label">MPC Kinetic</span></div>
+              <div class="logo-carousel__item"><span class="logo-carousel__label">Boral</span></div>
+              <div class="logo-carousel__item"><span class="logo-carousel__label">Qantas</span></div>
+              <div class="logo-carousel__item"><span class="logo-carousel__label">Virgin Australia</span></div>
+              <!-- Duplicate for seamless loop -->
+              <div class="logo-carousel__item"><span class="logo-carousel__label">K.S. Easter Transport</span></div>
+              <div class="logo-carousel__item"><span class="logo-carousel__label">Incitec Pivot</span></div>
+              <div class="logo-carousel__item"><span class="logo-carousel__label">MPC Kinetic</span></div>
+              <div class="logo-carousel__item"><span class="logo-carousel__label">Boral</span></div>
+              <div class="logo-carousel__item"><span class="logo-carousel__label">Qantas</span></div>
+              <div class="logo-carousel__item"><span class="logo-carousel__label">Virgin Australia</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         PRE-FOOTER CTA BAND
+    ======================================================== -->
+    <section class="gc-section" id="pre-footer">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">Pre-footer CTA Band</h2>
+        <span class="gc-section__badge">Global Shell</span>
+      </div>
+      <p class="gc-section__desc">Last section inside <code>&lt;main&gt;</code> before the closing tag. Background <code>var(--ior-blue)</code>. Heading is always "Ready to take control of your fuel?" Two CTAs: Apply for an Account + Contact IOR.</p>
+      <div class="gc-preview">
+        <div class="gc-preview__label">Live Preview</div>
+        <div class="gc-preview__inner">
+          <section class="pre-footer" aria-label="Pre-footer call to action">
+            <div class="container">
+              <div class="pre-footer__row">
+                <h2 class="pre-footer__title">Ready to take control of your fuel?</h2>
+                <div class="pre-footer__ctas">
+                  <a href="#" class="btn btn--outline btn--pill" aria-label="Apply for an Account">Apply for an Account &raquo;</a>
+                  <a href="11a_Contact_Us.html" class="btn btn--ghost btn--pill" aria-label="Contact IOR">Contact IOR &raquo;</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         AUDIT SCRIPT
+    ======================================================== -->
+    <section class="gc-section" id="audit-script">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">Self-Audit Script</h2>
+        <span class="gc-section__badge">Run Before PR</span>
+      </div>
+      <p class="gc-section__desc">Run all 15 checks before opening a PR. All must pass. The auditor runs the same script independently after merge.</p>
+      <div class="gc-code-wrap">
+        <pre class="gc-code"># Run from repo root — replace [FILE] with your filename
+FILE="03b_On_Site_Refuelling_v3.5.html"
+
+echo "=== IOR v3.5 Self-Audit ===" && \
+echo "1. clamp() count (min 20):" && grep -c "clamp(" $FILE && \
+echo "2. dvh count (min 1):" && grep -c "dvh" $FILE && \
+echo "3. border-radius violations (must be empty):" && grep "border-radius:" $FILE | grep -v "border-radius: 0\|500px" && \
+echo "4. gradient violations (must be empty):" && grep "gradient" $FILE && \
+echo "5. emoji violations (must be empty):" && grep -P "[\x{1F300}-\x{1FFFF}]" $FILE && \
+echo "6. bare AdBlue (must be empty):" && grep "AdBlue" $FILE | grep -v "&#174;\|&reg;" && \
+echo "7. bare HyDip/HyBlue (must be empty):" && grep "HyDip\|HyBlue" $FILE | grep -v "&#8482;\|&trade;" && \
+echo "8. annotation bars (must be empty):" && grep "page-badge\|BLOCK\|INTENT:\|MODULE" $FILE && \
+echo "9. illegal inline styles (must be empty):" && grep 'style="' $FILE | grep -v "display:none\|fill:" && \
+echo "10. semantic tags (must have all 3):" && grep "<main\|<header\|<footer" $FILE && \
+echo "11. main-audit-container (must exist):" && grep "max-width: 1920px\|main-audit-container" $FILE && \
+echo "12. pre-footer (must exist):" && grep "pre-footer" $FILE && \
+echo "13. HubSpot form (must exist):" && grep "hubspot-form-section\|HubSpot Form" $FILE && \
+echo "14. quick-links-bar (must exist):" && grep "quick-links-bar" $FILE && \
+echo "15. drawer IDs (must be 4):" && grep "mob-hamburger\|mobileDrawer\|drawerOverlay\|drawerClose" $FILE | wc -l && \
+echo "=== Audit complete ==="</pre>
+        <button class="gc-copy-btn" onclick="copyCode(this)" aria-label="Copy audit script">Copy</button>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         PAGE MATRIX
+    ======================================================== -->
+    <section class="gc-section" id="page-matrix">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">Page Matrix</h2>
+        <span class="gc-section__badge">Reference</span>
+      </div>
+      <p class="gc-section__desc">HubSpot form, FAQ, and confirmed gated asset filenames for every spoke page.</p>
+      <table class="gc-table">
+        <thead>
+          <tr><th>Page</th><th>File</th><th>HubSpot</th><th>FAQs</th><th>Gated Asset #1</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>IOR Diesel Network</td><td><code>03a_Diesel_Network_v3.5.html</code></td><td class="pass">YES</td><td class="pass">YES</td><td><code>IOR-MAR-BRO-0231-Diesel-Network-Brochure_v20250828</code></td></tr>
+          <tr><td>On-Site Refuelling</td><td><code>03b_On_Site_Refuelling_v3.5.html</code></td><td class="pass">YES</td><td class="pass">YES</td><td>&mdash;</td></tr>
+          <tr><td>Bulk Diesel Delivery</td><td><code>03c_Bulk_Diesel_Delivery_v3.5.html</code></td><td class="pass">YES</td><td class="pass">YES</td><td><code>IOR-MAR-BRO-0201-Ground-Fuels-Capability-Brochure_v20251103</code></td></tr>
+          <tr><td>HyBlue&#8482; (AdBlue&#174;)</td><td><code>03d_HyBlue_v3.5.html</code></td><td class="pass">YES</td><td class="pass">YES</td><td><code>IOR-MAR-BRO-0402-HyBlue-Overview-Brochure_v20250908</code></td></tr>
+          <tr><td>Oils &amp; Lubricants</td><td><code>03e_Oils_Lubricants_v3.5.html</code></td><td class="pass">YES</td><td class="pass">YES</td><td>&mdash;</td></tr>
+          <tr><td>IOR Aviation Network</td><td><code>04a_Aviation_Network_v3.5.html</code></td><td class="pass">YES</td><td class="pass">YES</td><td><code>IOR-MAR-BRO-0332-Aviation-Network-Directory_v20250812-1</code></td></tr>
+          <tr><td>Airport Fuelling Services</td><td><code>04b_Airport_Fuelling_v3.5.html</code></td><td class="pass">YES</td><td class="pass">YES</td><td><code>IOR-MAR-BRO-0321-Aviation-Supply-Chain-Capability-Brochure_v20250307</code></td></tr>
+          <tr><td>HyDip&#8482; FMS</td><td><code>07a_HyDip_FMS_v3.5.html</code></td><td class="pass">YES</td><td class="pass">YES</td><td><code>IOR-MAR-BRO-0501-HyDip-Brochure_v2021006</code></td></tr>
+          <tr><td>Fuelcharge</td><td><code>07c_Fuelcharge_v3.5.html</code></td><td class="pass">YES</td><td class="pass">YES</td><td><a href="https://www.fuelcharge.com.au/" style="color:var(--ior-blue)">fuelcharge.com.au</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  /* -- Tab switching for related content demo -- */
+  document.querySelectorAll('.related-content__tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const panel = tab.getAttribute('aria-controls');
+      tab.closest('.related-content').querySelectorAll('.related-content__tab').forEach(t => {
+        t.classList.remove('active'); t.setAttribute('aria-selected','false');
+      });
+      tab.closest('.related-content').querySelectorAll('.related-tab-panel').forEach(p => {
+        p.classList.remove('active'); p.style.display = 'none';
+      });
+      tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+      const el = document.getElementById(panel);
+      if (el) { el.classList.add('active'); el.style.display = 'block'; }
+    });
+  });
+
+  /* -- FAQ accordion -- */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.closest('.faq-list').querySelectorAll('.faq-question').forEach(b => {
+        b.setAttribute('aria-expanded','false');
+        b.nextElementSibling.style.maxHeight = '0';
+      });
+      if (!expanded) {
+        btn.setAttribute('aria-expanded','true');
+        btn.nextElementSibling.style.maxHeight = btn.nextElementSibling.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* -- Copy code button -- */
+  function copyCode(btn) {
+    const code = btn.previousElementSibling.textContent;
+    navigator.clipboard.writeText(code).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    });
+  }
+
+  /* -- Fade-up observer -- */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-up--visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
