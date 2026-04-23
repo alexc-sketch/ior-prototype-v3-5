@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IOR Policy Forms &amp; Compliance Downloads | Enterprise Fuel Solutions</title>
+  <meta name="description" content="Download IOR policy forms, HSE policies, and compliance documents. Access fuel account applications and safety data sheets for enterprise operations.">
+  <style>
+  /* ── RESET & TOKENS ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ior-blue: #0355A3;
+    --ior-navy: #0A4066;
+    --ior-gold: #D98300;
+    --ior-light: #E0F1FF;
+    --ior-grey: #F5F7FA;
+    --ior-text: #1A1A1A;
+    --radius: 0;
+    --font: 'Helvetica Neue', Arial, sans-serif;
+  }
+  body { font-family: var(--font); color: var(--ior-text); background: #fff; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── UTILITY BAR ── */
+  .utility-bar { background: #0A4066; color: #fff; font-size: .8rem; padding: 8px 0; }
+  .utility-bar__inner { max-width: 1300px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .utility-bar__links { display: flex; gap: 20px; }
+  .utility-bar__links a { color: rgba(255,255,255,.85); transition: color .2s; }
+  .utility-bar__links a:hover { color: #fff; }
+  .utility-bar__phone a { color: #fff; font-weight: 600; }
+
+  /* ── PRIMARY NAV ── */
+  .primary-nav { background: #fff; border-bottom: 1px solid #e5e5e5; position: sticky; top: 0; z-index: 100; }
+  .primary-nav__inner { max-width: 1300px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .primary-nav__logo { font-size: 1.5rem; font-weight: 800; color: var(--ior-blue); letter-spacing: -0.5px; }
+  .primary-nav__links { display: flex; gap: 28px; list-style: none; }
+  .primary-nav__links a { font-size: .9rem; font-weight: 500; color: #333; transition: color .2s; }
+  .primary-nav__links a:hover { color: var(--ior-blue); }
+  .nav-actions { display: flex; gap: 12px; align-items: center; }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: var(--ior-blue); padding: 8px; }
+
+  /* ── BUTTONS ── */
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-size: .9rem; font-weight: 600; cursor: pointer; border: 2px solid transparent; transition: all .2s; border-radius: 0; text-decoration: none; }
+  .btn--pill { border-radius: 500px; }
+  .btn--primary { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
+  .btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
+  .btn--outline { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+  .btn--outline:hover { background: var(--ior-blue); color: #fff; }
+  .btn--ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+  .btn--ghost:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+  .btn--gold { background: var(--ior-gold); color: #fff; border-color: var(--ior-gold); }
+  .btn--gold:hover { background: #b86f00; border-color: #b86f00; }
+  .btn--sm { padding: 8px 18px; font-size: .8rem; }
+
+  /* ── MOBILE DRAWER ── */
+  .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 199; opacity: 0; pointer-events: none; transition: opacity .3s; }
+  .drawer-overlay.is-open { opacity: 1; pointer-events: auto; }
+  .drawer { position: fixed; top: 0; right: 0; width: min(320px, 85vw); height: 100vh; background: #fff; z-index: 200; transform: translateX(100%); transition: transform .3s ease; overflow-y: auto; padding: 24px; }
+  .drawer.is-open { transform: translateX(0); }
+  .drawer__close { background: none; border: none; font-size: 1.4rem; cursor: pointer; float: right; color: #333; margin-bottom: 16px; }
+  .drawer__nav { list-style: none; margin-top: 48px; }
+  .drawer__nav li { border-bottom: 1px solid #eee; }
+  .drawer__nav a { display: block; padding: 14px 0; font-size: 1rem; font-weight: 500; color: #333; }
+  .drawer__actions { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+
+  /* ── HERO ── */
+  .hero { background-color: #0355A3; color: #fff; padding: 80px 24px; }
+  .hero__inner { max-width: 1300px; margin: 0 auto; }
+  .hero__eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 16px; }
+  .hero__h1 { font-size: clamp(36px, 4vw, 64px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+  .hero__sub { font-size: 1.1rem; line-height: 1.6; max-width: 640px; color: rgba(255,255,255,.85); margin-bottom: 32px; }
+  .hero__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb { font-size: .8rem; color: rgba(255,255,255,.65); margin-bottom: 20px; }
+  .breadcrumb a { color: rgba(255,255,255,.65); }
+  .breadcrumb a:hover { color: #fff; }
+  .breadcrumb span { margin: 0 6px; }
+
+  /* ── STAT BAR ── */
+  .stat-bar { background: var(--ior-navy); color: #fff; padding: 48px 24px; }
+  .stat-bar__inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+  .stat-bar__num { font-size: clamp(36px, 4vw, 56px); font-weight: 800; color: #fff; }
+  .stat-bar__label { font-size: .85rem; color: rgba(255,255,255,.7); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ── SECTION LAYOUT ── */
+  .section { padding: 80px 24px; }
+  .section__inner { max-width: 1300px; margin: 0 auto; }
+  .section--grey { background: var(--ior-grey); }
+  .section--blue { background: var(--ior-blue); color: #fff; }
+  .section--navy { background: var(--ior-navy); color: #fff; }
+  .section--light { background: var(--ior-light); }
+  .section__eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
+  .section--blue .section__eyebrow, .section--navy .section__eyebrow { color: rgba(255,255,255,.7); }
+  .section__h2 { font-size: clamp(28px, 3vw, 44px); font-weight: 800; margin-bottom: 16px; }
+  .section__sub { font-size: 1rem; line-height: 1.7; color: #555; max-width: 700px; margin-bottom: 40px; }
+  .section--blue .section__sub, .section--navy .section__sub { color: rgba(255,255,255,.8); }
+
+  /* ── HUB CARD GRID ── */
+  .hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .hub-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 32px 28px; transition: box-shadow .2s, transform .2s; }
+  .hub-card:hover { box-shadow: 0 8px 32px rgba(3,85,163,.12); transform: translateY(-2px); }
+  .hub-card__icon { width: 48px; height: 48px; background: var(--ior-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .hub-card__icon svg { width: 24px; height: 24px; stroke: var(--ior-blue); fill: none; stroke-width: 2; }
+  .hub-card__title { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--ior-text); }
+  .hub-card__desc { font-size: .9rem; color: #666; line-height: 1.6; margin-bottom: 20px; }
+  .hub-card__cta { font-size: .85rem; font-weight: 700; color: var(--ior-blue); display: flex; align-items: center; gap: 6px; }
+  .hub-card__cta:hover { gap: 10px; }
+
+  /* ── CONTACT LAYOUT ── */
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-split__body p { font-size: 1rem; line-height: 1.8; color: #444; margin-bottom: 16px; }
+  .contact-form-placeholder { border: 2px dashed #ccc; border-radius: 8px; height: 480px; display: flex; align-items: center; justify-content: center; background: #fafafa; color: #999; font-size: .9rem; text-align: center; padding: 24px; }
+  .contact-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+  .contact-card { background: var(--ior-light); border-radius: 10px; padding: 28px 24px; text-align: center; }
+  .contact-card__icon { width: 40px; height: 40px; background: var(--ior-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+  .contact-card__icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 2; }
+  .contact-card__label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 6px; }
+  .contact-card__value { font-size: 1rem; font-weight: 600; color: var(--ior-blue); }
+  .contact-card__sub { font-size: .8rem; color: #888; margin-top: 4px; }
+
+  /* ── REGIONAL TABS ── */
+  .tab-strip { display: flex; gap: 0; border-bottom: 2px solid #e5e5e5; margin-bottom: 40px; overflow-x: auto; }
+  .tab-btn { padding: 14px 28px; font-size: .9rem; font-weight: 600; color: #666; background: none; border: none; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: color .2s, border-color .2s; }
+  .tab-btn.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .regional-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 24px; }
+  .regional-card__name { font-size: 1rem; font-weight: 700; color: var(--ior-blue); margin-bottom: 8px; }
+  .regional-card__address { font-size: .85rem; color: #555; line-height: 1.6; margin-bottom: 12px; }
+  .regional-card__contact a { font-size: .85rem; color: var(--ior-blue); display: block; }
+
+  /* ── NEWS CARDS ── */
+  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .news-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; transition: box-shadow .2s; }
+  .news-card:hover { box-shadow: 0 8px 32px rgba(3,85,163,.1); }
+  .news-card__img { height: 180px; background: var(--ior-light); display: flex; align-items: center; justify-content: center; color: #aaa; font-size: .85rem; }
+  .news-card__body { padding: 24px; }
+  .news-card__meta { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 4px 12px; border-radius: 500px; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+  .tag--blue { background: var(--ior-blue); color: #fff; }
+  .tag--navy { background: var(--ior-navy); color: #fff; }
+  .tag--gold { background: var(--ior-gold); color: #fff; }
+  .tag--teal { background: #0A7A7A; color: #fff; }
+  .news-card__date { font-size: .78rem; color: #999; }
+  .news-card__h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; line-height: 1.4; }
+  .news-card__excerpt { font-size: .88rem; color: #666; line-height: 1.6; margin-bottom: 16px; }
+  .cta-arrow { font-size: .85rem; font-weight: 700; color: var(--ior-blue); display: inline-flex; align-items: center; gap: 6px; transition: gap .2s; }
+  .cta-arrow:hover { gap: 10px; }
+
+  /* ── FILTER STRIP ── */
+  .filter-strip { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+  .filter-btn { padding: 8px 20px; border-radius: 500px; font-size: .82rem; font-weight: 600; cursor: pointer; border: 1.5px solid var(--ior-blue); color: var(--ior-blue); background: transparent; transition: all .2s; }
+  .filter-btn.active { background: var(--ior-blue); color: #fff; }
+
+  /* ── NEWSLETTER STRIP ── */
+  .newsletter-strip { background: var(--ior-navy); color: #fff; padding: 60px 24px; text-align: center; }
+  .newsletter-strip__inner { max-width: 600px; margin: 0 auto; }
+  .newsletter-strip__h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; }
+  .newsletter-strip__sub { color: rgba(255,255,255,.8); margin-bottom: 28px; }
+  .newsletter-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .newsletter-form input { flex: 1; min-width: 240px; padding: 12px 20px; border: none; border-radius: 500px; font-size: .9rem; }
+  .newsletter-note { font-size: .75rem; color: rgba(255,255,255,.5); margin-top: 12px; }
+
+  /* ── MAP PLACEHOLDER ── */
+  .map-placeholder { border: 2px dashed #ccc; border-radius: 8px; height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fafafa; color: #999; font-size: .9rem; text-align: center; padding: 24px; gap: 12px; margin-bottom: 40px; }
+  .map-filter-bar { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+  .map-filter-btn { padding: 6px 16px; border-radius: 500px; border: 1.5px solid #ccc; background: #fff; font-size: .8rem; cursor: pointer; color: #666; }
+
+  /* ── NETWORK STATS (3 col) ── */
+  .net-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 60px; }
+  .net-stat { text-align: center; padding: 32px 20px; background: var(--ior-light); border-radius: 10px; }
+  .net-stat__num { font-size: 2.5rem; font-weight: 800; color: var(--ior-blue); }
+  .net-stat__label { font-size: .85rem; color: #555; margin-top: 6px; }
+
+  /* ── ICON CARDS (3 col) ── */
+  .icon-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .icon-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 28px 24px; display: flex; gap: 16px; align-items: flex-start; }
+  .icon-card__icon { width: 44px; height: 44px; background: var(--ior-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .icon-card__icon svg { width: 22px; height: 22px; stroke: var(--ior-blue); fill: none; stroke-width: 2; }
+  .icon-card__text { font-size: .9rem; color: #444; line-height: 1.6; }
+
+  /* ── PAYMENT CARDS ── */
+  .payment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .payment-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 32px 28px; }
+  .payment-card__h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; color: var(--ior-blue); }
+  .payment-card__body { font-size: .9rem; color: #555; line-height: 1.7; margin-bottom: 20px; }
+  .bank-details { background: #F5F5F5; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px; font-size: .88rem; }
+  .bank-details dt { font-weight: 700; color: #333; margin-bottom: 2px; }
+  .bank-details dd { color: #555; margin-bottom: 10px; }
+  .payment-placeholder { border: 2px dashed #ccc; border-radius: 8px; padding: 20px; text-align: center; color: #999; font-size: .85rem; margin-top: 16px; }
+
+  /* ── SECURITY STRIP ── */
+  .security-strip { background: var(--ior-navy); color: #fff; padding: 32px 24px; text-align: center; }
+  .security-strip__inner { max-width: 900px; margin: 0 auto; }
+  .security-strip__text { font-size: .95rem; color: rgba(255,255,255,.85); margin-bottom: 16px; }
+  .payment-icons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+  .payment-icon { padding: 6px 16px; border: 1.5px solid rgba(255,255,255,.3); border-radius: 6px; font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.8); }
+
+  /* ── ACCORDION ── */
+  .accordion { border: 1px solid #e5e5e5; border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+  .accordion__trigger { width: 100%; background: #fff; border: none; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; font-size: 1rem; font-weight: 600; cursor: pointer; text-align: left; color: var(--ior-text); }
+  .accordion__trigger:hover { background: var(--ior-grey); }
+  .accordion__icon { font-size: 1.2rem; color: var(--ior-blue); transition: transform .3s; }
+  .accordion__panel { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  .accordion__panel.is-open { max-height: 600px; }
+  .accordion__body { padding: 0 24px 24px; }
+  .download-item { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid #f0f0f0; }
+  .download-item:last-child { border-bottom: none; }
+  .doc-icon { width: 36px; height: 36px; flex-shrink: 0; }
+  .doc-icon svg { width: 36px; height: 36px; stroke: var(--ior-blue); fill: none; stroke-width: 1.5; }
+  .download-item__info { flex: 1; }
+  .download-item__name { font-size: .9rem; font-weight: 600; color: var(--ior-text); }
+  .download-item__meta { font-size: .78rem; color: #999; margin-top: 2px; }
+  .download-item__cta { font-size: .82rem; font-weight: 700; color: var(--ior-blue); display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+  .download-item__cta:hover { gap: 8px; }
+
+  /* ── GATED NOTICE ── */
+  .gated-notice { background: #EBF3FB; border-left: 4px solid var(--ior-blue); border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 24px; font-size: .9rem; color: #333; }
+  .gated-notice a { color: var(--ior-blue); font-weight: 600; }
+
+  /* ── PRE-FOOTER CTA ── */
+  .prefooter { background: var(--ior-blue); color: #fff; padding: 72px 24px; text-align: center; }
+  .prefooter__inner { max-width: 700px; margin: 0 auto; }
+  .prefooter__h2 { font-size: clamp(24px, 3vw, 38px); font-weight: 800; margin-bottom: 12px; }
+  .prefooter__sub { color: rgba(255,255,255,.8); margin-bottom: 32px; font-size: 1rem; }
+  .prefooter__ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  .site-footer { background: #0A1929; color: rgba(255,255,255,.75); padding: 64px 24px 32px; }
+  .footer-nav-grid { max-width: 1300px; margin: 0 auto 48px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr; gap: 40px; }
+  .footer-brand__logo { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+  .footer-brand__tagline { font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.55); max-width: 220px; }
+  .footer-col__heading { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,.4); margin-bottom: 16px; }
+  .footer-col__links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col__links a { font-size: .85rem; color: rgba(255,255,255,.65); transition: color .2s; }
+  .footer-col__links a:hover { color: #fff; }
+  .footer-bottom { max-width: 1300px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: .78rem; color: rgba(255,255,255,.4); }
+  .footer-states { display: flex; gap: 8px; flex-wrap: wrap; }
+  .footer-states span { padding: 3px 10px; border: 1px solid rgba(255,255,255,.15); border-radius: 500px; font-size: .72rem; }
+
+  /* ── WIREFRAME BAR ── */
+  .wireframe-bar { background: #1a1a1a; color: #fff; padding: 10px 24px; font-size: .78rem; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+  .wireframe-bar a { color: #aaa; text-decoration: underline; }
+  .wireframe-bar a:hover { color: #fff; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hub-grid { grid-template-columns: repeat(2, 1fr); }
+    .payment-grid { grid-template-columns: 1fr; }
+    .contact-split { grid-template-columns: 1fr; }
+    .contact-strip { grid-template-columns: 1fr; }
+    .footer-nav-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .stat-bar__inner { grid-template-columns: repeat(2, 1fr); }
+    .tab-panel.active { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .primary-nav__links, .nav-actions { display: none; }
+    .hamburger { display: block; }
+    .hub-grid { grid-template-columns: 1fr; }
+    .news-grid { grid-template-columns: 1fr; }
+    .icon-cards { grid-template-columns: 1fr; }
+    .net-stats { grid-template-columns: 1fr; }
+    .footer-nav-grid { grid-template-columns: 1fr 1fr; }
+    .stat-bar__inner { grid-template-columns: 1fr 1fr; }
+    .tab-panel.active { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="wireframe-bar">
+  <strong>IOR v3.5 Prototype</strong>
+  <a href="00_Master_Index.html">&#8592; Back to Master Index</a>
+  <span>Module 7 — Support &amp; Utility</span>
+</div>
+  <div class="utility-bar">
+  <div class="utility-bar__inner">
+    <div class="utility-bar__links">
+      <a href="11d_Find_Location.html">Find a Location</a>
+      <a href="11e_Make_Payment.html">Make a Payment</a>
+    </div>
+    <div class="utility-bar__phone"><a href="tel:1300457467">1300 457 467</a></div>
+  </div>
+</div>
+  <nav class="primary-nav" aria-label="Primary navigation">
+  <div class="primary-nav__inner">
+    <a href="01_Homepage_and_Global.html" class="primary-nav__logo">IOR</a>
+    <ul class="primary-nav__links">
+      <li><a href="02_Fuel_Solutions_Hub.html">Fuel Solutions</a></li>
+      <li><a href="07_Digital_Platforms.html">Digital Platforms</a></li>
+      <li><a href="08_Industries_Hub.html">Industries We Serve</a></li>
+      <li><a href="09_About_IOR.html">About IOR</a></li>
+      <li><a href="10_Careers.html">Careers</a></li>
+      <li><a href="11_Support_Hub.html">Support</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="btn btn--outline btn--pill btn--sm">Customer Login</a>
+      <a href="#" class="btn btn--primary btn--pill btn--sm">Apply for an Account</a>
+    </div>
+    <button class="hamburger" id="mob-hamburger" aria-label="Open navigation menu">&#9776;</button>
+  </div>
+</nav>
+  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<div class="drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="drawer__close" id="drawerClose" aria-label="Close navigation menu">&#10005;</button>
+  <ul class="drawer__nav">
+    <li><a href="02_Fuel_Solutions_Hub.html">Fuel Solutions</a></li>
+    <li><a href="07_Digital_Platforms.html">Digital Platforms</a></li>
+    <li><a href="08_Industries_Hub.html">Industries We Serve</a></li>
+    <li><a href="09_About_IOR.html">About IOR</a></li>
+    <li><a href="10_Careers.html">Careers</a></li>
+    <li><a href="11_Support_Hub.html">Support</a></li>
+  </ul>
+  <div class="drawer__actions">
+    <a href="#" class="btn btn--outline btn--pill">Customer Login</a>
+    <a href="#" class="btn btn--primary btn--pill">Apply for an Account</a>
+  </div>
+</div>
+  
+  <section class="hero">
+    <div class="hero__inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="01_Homepage_and_Global.html">Home</a>
+        <span>&rsaquo;</span>
+        <a href="11_Support_Hub.html">Support &amp; Utility</a>
+        <span>&rsaquo;</span>
+        <span>Policy &amp; Form Downloads</span>
+      </nav>
+      <div class="hero__eyebrow">Support &amp; Utility</div>
+      <h1 class="hero__h1">Policy &amp; Form Downloads</h1>
+      <p class="hero__sub">Access essential IOR policy forms and resources designed for enterprise scale and compliance. Our comprehensive collection includes fuel account application forms, HSE policies, safety data sheets, compliance certificates, and product brochures.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__inner">
+      <div class="section__eyebrow">Document Library</div>
+      <h2 class="section__h2">Download Centre</h2>
+
+      <div class="accordion" id="acc-1">
+        <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-1-panel">
+          Account &amp; Application Forms
+          <span class="accordion__icon">+</span>
+        </button>
+        <div class="accordion__panel" id="acc-1-panel" role="region">
+          <div class="accordion__body">
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">IOR Account Application Form</div>
+                <div class="download-item__meta">PDF &mdash; Updated Jan 2026</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">Direct Debit Authority Form</div>
+                <div class="download-item__meta">PDF &mdash; Updated Jan 2026</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">Credit Application Form</div>
+                <div class="download-item__meta">PDF &mdash; Updated Jan 2026</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gated-notice">
+        Some documents require an active IOR account to access. <a href="#">Apply for an Account &rarr;</a> to unlock the full library.
+      </div>
+
+      <div class="accordion" id="acc-2">
+        <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-2-panel">
+          HSE Policies
+          <span class="accordion__icon">+</span>
+        </button>
+        <div class="accordion__panel" id="acc-2-panel" role="region">
+          <div class="accordion__body">
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">Occupational Health &amp; Safety Policy</div>
+                <div class="download-item__meta">PDF &mdash; 2026</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">Environmental Management Policy</div>
+                <div class="download-item__meta">PDF &mdash; 2026</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">Sustainability &amp; ESG Framework</div>
+                <div class="download-item__meta">PDF &mdash; 2026</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">Drug &amp; Alcohol Policy</div>
+                <div class="download-item__meta">PDF &mdash; 2026</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion" id="acc-3">
+        <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-3-panel">
+          Safety Data Sheets (SDS)
+          <span class="accordion__icon">+</span>
+        </button>
+        <div class="accordion__panel" id="acc-3-panel" role="region">
+          <div class="accordion__body">
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">Diesel Fuel SDS</div>
+                <div class="download-item__meta">PDF &mdash; [DOWNLOAD PLACEHOLDER]</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">Jet A-1 Aviation Fuel SDS</div>
+                <div class="download-item__meta">PDF &mdash; [DOWNLOAD PLACEHOLDER]</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">Avgas 100LL SDS</div>
+                <div class="download-item__meta">PDF &mdash; [DOWNLOAD PLACEHOLDER]</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">AdBlue / HyBlue&#x2122; SDS</div>
+                <div class="download-item__meta">PDF &mdash; [DOWNLOAD PLACEHOLDER]</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion" id="acc-4">
+        <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-4-panel">
+          Product Brochures
+          <span class="accordion__icon">+</span>
+        </button>
+        <div class="accordion__panel" id="acc-4-panel" role="region">
+          <div class="accordion__body">
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">IOR Ground Fuels Capability Brochure</div>
+                <div class="download-item__meta">PDF &mdash; 2026</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">HyDip&#x2122; FMS Product Brochure</div>
+                <div class="download-item__meta">PDF &mdash; 2026</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+            <div class="download-item">
+              <div class="doc-icon"><svg viewBox="0 0 36 36"><path d="M22 2H8a2 2 0 00-2 2v28a2 2 0 002 2h20a2 2 0 002-2V12L22 2z"/><polyline points="22 2 22 12 32 12"/></svg></div>
+              <div class="download-item__info">
+                <div class="download-item__name">IOR Aviation Fuel Services Brochure</div>
+                <div class="download-item__meta">PDF &mdash; 2026</div>
+              </div>
+              <a href="#" class="download-item__cta">Download &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prefooter">
+    <div class="prefooter__inner">
+      <h2 class="prefooter__h2">Need a Document Not Listed Here?</h2>
+      <p class="prefooter__sub">Contact our team and we'll provide the documentation you need.</p>
+      <div class="prefooter__ctas">
+        <a href="11a_Contact_Us.html" class="btn btn--ghost btn--pill">Contact Us &rarr;</a>
+      </div>
+    </div>
+  </section>
+  <footer class="site-footer">
+  <div class="footer-nav-grid">
+    <div class="footer-brand">
+      <div class="footer-brand__logo">IOR</div>
+      <p class="footer-brand__tagline">Australia's trusted independent fuel company, fuelling regional and remote operations since 1984.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col__heading">Fuel Solutions</div>
+      <ul class="footer-col__links">
+        <li><a href="03_Ground_Fuels.html">Ground Fuels</a></li>
+        <li><a href="04_Aviation.html">Aviation Fuel</a></li>
+        <li><a href="05_Equipment_Infrastructure.html">Equipment</a></li>
+        <li><a href="06_Supply_Trading.html">Supply &amp; Trading</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col__heading">Digital Platforms</div>
+      <ul class="footer-col__links">
+        <li><a href="07_Digital_Platforms.html">HyDip&#x2122; FMS</a></li>
+        <li><a href="07_Digital_Platforms.html">Fuelcharge</a></li>
+        <li><a href="07_Digital_Platforms.html">IOR Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col__heading">Industries</div>
+      <ul class="footer-col__links">
+        <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+        <li><a href="08c_Agriculture.html">Agriculture</a></li>
+        <li><a href="08d_Mining.html">Mining</a></li>
+        <li><a href="08f_Aviation_Industry.html">Aviation</a></li>
+        <li><a href="08_Industries_Hub.html">All Industries</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col__heading">About IOR</div>
+      <ul class="footer-col__links">
+        <li><a href="09_About_IOR.html">Our Story</a></li>
+        <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+        <li><a href="09b_Community.html">Community</a></li>
+        <li><a href="09c_Sustainability.html">Sustainability</a></li>
+        <li><a href="10_Careers.html">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col__heading">Support</div>
+      <ul class="footer-col__links">
+        <li><a href="11a_Contact_Us.html">Contact Us</a></li>
+        <li><a href="11b_Regional_Contacts.html">Regional Offices</a></li>
+        <li><a href="11d_Find_Location.html">Find a Location</a></li>
+        <li><a href="11e_Make_Payment.html">Make a Payment</a></li>
+        <li><a href="11f_Policy_Downloads.html">Policy Downloads</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 IOR. All rights reserved.</span>
+    <div class="footer-states">
+      <span>QLD</span><span>NSW</span><span>VIC</span><span>SA</span><span>WA</span><span>NT</span><span>TAS</span>
+    </div>
+  </div>
+</footer>
+  <script>
+  (function(){
+    var btn = document.getElementById('mob-hamburger');
+    var drawer = document.getElementById('mobileDrawer');
+    var overlay = document.getElementById('drawerOverlay');
+    var close = document.getElementById('drawerClose');
+    function openD(){drawer.classList.add('is-open');overlay.classList.add('is-open');document.body.style.overflow='hidden';}
+    function closeD(){drawer.classList.remove('is-open');overlay.classList.remove('is-open');document.body.style.overflow='';}
+    if(btn) btn.addEventListener('click', openD);
+    if(close) close.addEventListener('click', closeD);
+    if(overlay) overlay.addEventListener('click', closeD);
+  })();
+</script>
+  <script>
+  (function(){
+    var triggers = document.querySelectorAll('.accordion__trigger');
+    triggers.forEach(function(trigger){
+      trigger.addEventListener('click', function(){
+        var panel = trigger.nextElementSibling;
+        var icon = trigger.querySelector('.accordion__icon');
+        var isOpen = panel.classList.contains('is-open');
+        // Close all
+        document.querySelectorAll('.accordion__panel').forEach(function(p){ p.classList.remove('is-open'); });
+        document.querySelectorAll('.accordion__icon').forEach(function(i){ i.textContent = '+'; });
+        document.querySelectorAll('.accordion__trigger').forEach(function(t){ t.setAttribute('aria-expanded','false'); });
+        // Open clicked if was closed
+        if(!isOpen){
+          panel.classList.add('is-open');
+          icon.textContent = '-';
+          trigger.setAttribute('aria-expanded','true');
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
