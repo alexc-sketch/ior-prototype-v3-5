@@ -402,9 +402,9 @@
 
     /* Sol card — top row */
     .sol-card {
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: flex; flex-direction: column;
       border-right: 1px solid var(--border-color-light);
-      min-height: clamp(280px, 30vw, 380px);
+      min-height: 520px;
       position: relative; overflow: hidden;
     }
     .sol-card:last-child { border-right: none; }
@@ -414,8 +414,8 @@
     }
     .sol-card--aviation::before { background: var(--aviation-gold); }
     .sol-card__content {
-      padding: clamp(24px, 3vw, 36px) clamp(20px, 2.5vw, 32px);
-      display: flex; flex-direction: column; justify-content: flex-start; gap: 0;
+      padding: clamp(36px, 5vw, 56px) clamp(28px, 4vw, 44px);
+      display: flex; flex-direction: column; justify-content: flex-start; gap: 0; flex: 1;
     }
     .sol-card__category {
       font-size: 11px; font-weight: 700; letter-spacing: .1em;
@@ -433,13 +433,15 @@
     }
     .sol-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
     .sol-pill {
-      display: inline-block; padding: 5px 12px;
-      font-size: 12px; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 5px 12px; font-size: 12px; font-weight: 700;
       border: 1.5px solid var(--ior-blue); color: var(--ior-blue);
       transition: all var(--transition-fast); cursor: pointer; white-space: nowrap;
-      min-height: 44px; display: inline-flex; align-items: center;
+      min-height: 44px;
     }
+    .sol-pill::after { content: '\203A'; font-size: 13px; line-height: 1; opacity: .55; flex-shrink: 0; }
     .sol-pill:hover { background: var(--ior-blue); color: #fff; }
+    .sol-pill:hover::after { opacity: 1; }
     .sol-pill--gold { border-color: var(--aviation-gold); color: var(--aviation-gold); }
     .sol-pill--gold:hover { background: var(--aviation-gold); color: #fff; }
     .sol-card__link {
@@ -449,13 +451,7 @@
       align-self: flex-start;
     }
     .sol-card--aviation .sol-card__link { color: var(--aviation-gold); border-bottom-color: var(--aviation-gold); }
-    .sol-card__image {
-      background: #1a2535;
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.3); font-size: 12px; text-align: center;
-      padding: 16px; min-height: 200px;
-    }
-    .sol-card--aviation .sol-card__image { background: #2a1f0a; }
+    .sol-card__image { display: none; }
 
     /* ── Digital strips (HyDip + Fuelcharge) ─────────────────── */
     .digital-strip {
@@ -564,14 +560,16 @@
     }
     .product-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 0; }
     .product-pill {
-      display: inline-flex; align-items: center;
+      display: inline-flex; align-items: center; gap: 4px;
       padding: 5px 11px; font-size: 12px; font-weight: 600;
       text-decoration: none; transition: all var(--transition-base);
       background: var(--ior-light-blue-bg); color: var(--ior-blue);
       border: 1.5px solid rgba(3,85,163,.3);
       min-height: 44px;
     }
+    .product-pill::after { content: '\203A'; font-size: 13px; line-height: 1; opacity: .55; flex-shrink: 0; }
     .product-pill:hover { background: var(--ior-blue); color: #fff; }
+    .product-pill:hover::after { opacity: 1; }
     .product-pill--supply {
       background: rgba(10,64,102,.08); color: var(--ior-navy);
       border-color: rgba(10,64,102,.25);
@@ -691,7 +689,7 @@
       gap: 32px; flex-wrap: wrap;
     }
     .pre-footer__title {
-      font-size: clamp(24px, 3.5vw, 44px); font-weight: 800; color: #fff;
+      font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: #fff;
     }
     .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
     .pre-footer__divider {
@@ -704,7 +702,7 @@
     ============================================================ */
     .site-footer {
       background: var(--ior-blue); color: #fff;
-      padding: clamp(32px, 4vw, 48px) var(--section-pad-x) 0;
+      padding: clamp(60px, 8vw, 80px) clamp(20px, 8vw, 80px) clamp(40px, 5vw, 60px);
     }
     .footer-nav-grid {
       max-width: var(--container-max); margin-inline: auto;
@@ -786,7 +784,6 @@
     @media (max-width: 900px) {
       .solutions-top-row { grid-template-columns: 1fr; }
       .sol-card { grid-template-columns: 1fr; }
-      .sol-card__image { min-height: 160px; }
       .map-section .container { grid-template-columns: 1fr; }
       .testimonial-grid { grid-template-columns: 1fr; }
       .digital-strip { grid-template-columns: 1fr; }
@@ -1238,9 +1235,6 @@
           </nav>
           <a href="03_Ground_Fuels.html" class="sol-card__link" aria-label="Explore Ground Fuels">Explore Ground Fuels &raquo;</a>
         </div>
-        <div class="sol-card__image" aria-label="Ground Fuels image placeholder">
-          <span style="font-size:11px;text-align:center;">IMAGE PLACEHOLDER<br>Ground Fuels</span>
-        </div>
       </div>
 
       <!-- Aviation -->
@@ -1263,9 +1257,6 @@
             <a href="04_Aviation.html#aviation-oils"     class="sol-pill sol-pill--gold">Aviation Oils &amp; Lubricants</a>
           </nav>
           <a href="04_Aviation.html" class="sol-card__link" aria-label="Explore Aviation">Explore Aviation &raquo;</a>
-        </div>
-        <div class="sol-card__image" style="background:#2a1f0a;" aria-label="Aviation image placeholder">
-          <span style="font-size:11px;text-align:center;">IMAGE PLACEHOLDER<br>Aviation</span>
         </div>
       </div>
 
@@ -1355,7 +1346,7 @@
           <a href="06_Supply_Trading.html#condensates"       class="product-pill product-pill--supply">Condensates</a>
         </nav>
       </div>
-      <a href="06_Supply_Trading.html" class="wholesale-card__cta" aria-label="Explore Supply and Trading">Explore Supply &amp; Trading &raquo;</a>
+      <a href="06_Supply_Trading.html" class="wholesale-card__cta" aria-label="Explore Supply and Trading — Lytton and Port Bonython Terminals">Lytton &amp; Port Bonython Terminals &raquo;</a>
     </div>
 
     <!-- Equipment & Infrastructure -->
