@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HyBlue by IOR -- VDA and ISO 22241 certified AdBlue made in Australia. Available in 10L containers, 210L drums, 1,000L IBCs, bulk delivery, and at IOR Diesel Network stops.">
+  <meta name="robots" content="index, follow">
+  <title>HyBlue&#8482; AdBlue&#174; -- Australian-Made DEF by IOR | IOR</title>
+  <style>
+    /* ============================================================
+       ROOT TOKENS
+    ============================================================ */
+    :root {
+      --ior-blue:       #0355A3;
+      --ior-navy:       #0A1628;
+      --ior-dark:       #0A4066;
+      --ior-light:      #E0F1FF;
+      --ior-gold:       #D98300;
+      --hyblue:         #0069C6;
+      --hyblue-dark:    #004fa3;
+      --grey-50:        #F9FAFB;
+      --grey-100:       #F0F2F5;
+      --grey-200:       #E5E8ED;
+      --grey-400:       #9CA3AF;
+      --grey-700:       #374151;
+      --grey-900:       #111827;
+      --brand-fill:     #F4F5F7;
+      --fw-bold:        700;
+      --fw-black:       900;
+      --section-pad:    clamp(48px, 6vw, 96px);
+      --z-nav:          100;
+      --z-drawer:       200;
+      --z-overlay:      190;
+      --radius-card:    0;
+      --transition:     0.25s ease;
+    }
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--grey-900);
+      background: #fff;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    /* ============================================================
+       LAYOUT UTILITIES
+    ============================================================ */
+    .main-audit-container { max-width: 1920px; margin: 0 auto; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px); }
+    /* ============================================================
+       UTILITY BAR
+    ============================================================ */
+    .utility-bar {
+      background: var(--ior-dark);
+      padding: 8px 0;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .utility-bar__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .utility-bar__brand {
+      font-size: 11px;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .utility-bar__actions { display: flex; align-items: center; gap: 4px; }
+    .utility-bar__link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,.85);
+      padding: 4px 10px;
+      border-radius: 0;
+      transition: background var(--transition);
+      white-space: nowrap;
+    }
+    .utility-bar__link:hover { background: rgba(255,255,255,.12); color: #fff; }
+    .utility-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.2); margin: 0 2px; }
+    /* ============================================================
+       PRIMARY NAV
+    ============================================================ */
+    .primary-nav {
+      background: #fff;
+      border-bottom: 1px solid var(--grey-200);
+      position: sticky;
+      top: 0;
+      z-index: var(--z-nav);
+    }
+    .primary-nav__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+      display: flex;
+      align-items: center;
+      height: 64px;
+      gap: 0;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: clamp(24px, 3vw, 48px);
+      flex-shrink: 0;
+    }
+    .nav-logo__mark {
+      width: 36px; height: 36px;
+      background: var(--ior-blue);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 0;
+      flex-shrink: 0;
+    }
+    .nav-logo__wordmark { font-size: 18px; font-weight: 900; letter-spacing: -0.03em; color: var(--ior-navy); }
+    .nav-logo__wordmark span { color: var(--ior-blue); }
+    .primary-nav__links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex: 1;
+    }
+    .nav-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--grey-700);
+      padding: 0 14px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border-bottom: 2px solid transparent;
+      transition: color var(--transition), border-color var(--transition);
+      white-space: nowrap;
+    }
+    .nav-link:hover, .nav-link--active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+    .nav-link__chevron { width: 12px; height: 12px; transition: transform var(--transition); }
+    .nav-link:hover .nav-link__chevron { transform: rotate(180deg); }
+    .primary-nav__ctas {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: clamp(13px, 1.2vw, 14px);
+      font-weight: 700;
+      padding: clamp(10px, 1.2vw, 12px) clamp(18px, 2vw, 24px);
+      border: 2px solid transparent;
+      border-radius: 0;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+      white-space: nowrap;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .btn--primary    { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
+    .btn--primary:hover { background: var(--ior-dark); border-color: var(--ior-dark); }
+    .btn--outline    { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+    .btn--outline:hover { background: var(--ior-blue); color: #fff; }
+    .btn--outline-dark { background: transparent; color: var(--grey-900); border-color: var(--grey-900); }
+    .btn--outline-dark:hover { background: var(--grey-900); color: #fff; }
+    .btn--white      { background: #fff; color: var(--hyblue); border-color: #fff; }
+    .btn--white:hover { background: var(--ior-light); }
+    .btn--ghost-white { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
+    .btn--ghost-white:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+    .btn--pill          { border-radius: 500px; }
+    .btn--sm         { font-size: 12px; padding: 8px 16px; }
+    .btn--nav        { font-size: 12px; padding: 8px 16px; }
+    /* ============================================================
+       QUICK LINKS BAR
+    ============================================================ */
+    .quick-links-bar {
+      background: #fff;
+      border-bottom: 2px solid var(--grey-200);
+      z-index: calc(var(--z-nav) - 1);
+    }
+    .quick-links-bar__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .quick-links-bar__inner::-webkit-scrollbar { display: none; }
+    .quick-links-bar__link {
+      font-size: 13px; font-weight: 600;
+      color: var(--grey-700);
+      padding: 14px 16px;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      white-space: nowrap;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .quick-links-bar__link:hover { color: var(--hyblue); }
+    .quick-links-bar__link--active { color: var(--hyblue); border-bottom-color: var(--hyblue); }
+    /* ============================================================
+       HERO -- FULL-WIDTH CENTRED (HYBLUE BLUE)
+    ============================================================ */
+    .hero {
+      background: var(--hyblue);
+      border-top: 4px solid var(--hyblue-dark);
+      min-height: clamp(480px, 55dvh, 640px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(48px, 6vw, 96px) clamp(24px, 4vw, 80px);
+    }
+    .hero__inner {
+      max-width: 760px;
+    }
+    .hero__logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: clamp(20px, 2.5vw, 32px);
+    }
+    .hero__logo-mark {
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,.15);
+      border-radius: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero__logo-wordmark {
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.03em;
+    }
+    .hero__eyebrow {
+      font-size: clamp(11px, 1vw, 12px);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 12px;
+    }
+    .hero__h1 {
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: clamp(16px, 2vw, 24px);
+    }
+    .hero__h1-accent { color: #a8d4ff; }
+    .hero__body {
+      font-size: clamp(15px, 1.5vw, 18px);
+      color: rgba(255,255,255,.85);
+      line-height: 1.7;
+      margin-bottom: clamp(24px, 3vw, 40px);
+    }
+    .hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    /* ============================================================
+       HERO VALUE BAR
+    ============================================================ */
+    .hero-value-bar {
+      background: var(--ior-navy);
+      padding: clamp(20px, 2.5vw, 32px) 0;
+    }
+    .hero-value-bar__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.08);
+    }
+    .hero-value-bar__item {
+      background: var(--ior-navy);
+      padding: clamp(16px, 2vw, 24px) clamp(16px, 2vw, 24px);
+    }
+    .hero-value-bar__title {
+      font-size: clamp(13px, 1.3vw, 15px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .hero-value-bar__sub {
+      font-size: clamp(11px, 1vw, 12px);
+      color: rgba(255,255,255,.55);
+      line-height: 1.4;
+    }
+    /* ============================================================
+       CERTIFICATION BADGES
+    ============================================================ */
+    .cert-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: clamp(24px, 3vw, 40px);
+    }
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 0;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+    /* ============================================================
+       SUPPLY OPTIONS TABS
+    ============================================================ */
+    .supply-section {
+      padding: var(--section-pad) 0;
+      background: #fff;
+    }
+    .supply-section .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+    }
+    .supply-section__header {
+      max-width: 640px;
+      margin-bottom: clamp(32px, 4vw, 56px);
+    }
+    .supply-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--grey-200);
+      margin-bottom: clamp(24px, 3vw, 40px);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .supply-tabs::-webkit-scrollbar { display: none; }
+    .supply-tab {
+      padding: 12px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--grey-700);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .supply-tab.active,
+    .supply-tab[aria-selected="true"] {
+      color: var(--hyblue);
+      border-bottom-color: var(--hyblue);
+    }
+    .supply-panel { display: none; }
+    .supply-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3vw, 48px); align-items: start; }
+    .supply-panel__img {
+      background: var(--ior-navy);
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0;
+    }
+    .supply-panel__img-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      text-align: center;
+      padding: 16px;
+    }
+    .supply-panel__content { }
+    .supply-panel__h3 {
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 700;
+      color: var(--grey-900);
+      margin-bottom: 12px;
+    }
+    .supply-panel__desc {
+      font-size: clamp(14px, 1.3vw, 15px);
+      color: var(--grey-700);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .supply-specs {
+      border-top: 1px solid var(--grey-200);
+      margin-bottom: 20px;
+    }
+    .supply-spec {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 8px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--grey-100);
+      font-size: 13px;
+    }
+    .supply-spec__label { font-weight: 600; color: var(--grey-700); }
+    .supply-spec__value { color: var(--grey-900); }
+    .supply-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .supply-pill {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--ior-light);
+      color: var(--hyblue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 0;
+    }
+    /* ============================================================
+       IOR CONNECTION SECTION
+    ============================================================ */
+    .connection-section {
+      padding: var(--section-pad) 0;
+      background: var(--grey-50);
+    }
+    .connection-section .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+    }
+    .connection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 80px);
+      align-items: center;
+    }
+    .connection-points {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: clamp(24px, 3vw, 40px);
+    }
+    .connection-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      background: #fff;
+      border-left: 3px solid var(--hyblue);
+    }
+    .connection-point__icon {
+      width: 40px; height: 40px;
+      background: var(--ior-light);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      border-radius: 0;
+    }
+    .connection-point__title {
+      font-size: clamp(14px, 1.4vw, 16px);
+      font-weight: 700;
+      color: var(--grey-900);
+      margin-bottom: 4px;
+    }
+    .connection-section__img {
+      background: var(--ior-navy);
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0;
+    }
+    .connection-section__img-label {
+      color: rgba(255,255,255,.3);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 24px;
+    }
+    .connection-point__body {
+      font-size: 13px;
+      color: var(--grey-700);
+      line-height: 1.6;
+    }
+    /* ============================================================
+       GATED ASSET
+    ============================================================ */
+    .gated-asset {
+      padding: var(--section-pad) 0;
+      background: var(--ior-navy);
+    }
+    .gated-asset .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+    }
+    .gated-asset__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 80px);
+      align-items: start;
+    }
+    .gated-asset__info { color: #fff; }
+    .gated-asset__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ior-gold);
+      margin-bottom: 12px;
+    }
+    .gated-asset__h2 {
+      font-size: clamp(24px, 2.8vw, 38px);
+      font-weight: 900;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: clamp(16px, 2vw, 24px);
+    }
+    .gated-asset__bullets {
+      list-style: none;
+      margin-bottom: clamp(24px, 3vw, 40px);
+    }
+    .gated-asset__bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: clamp(13px, 1.2vw, 14px);
+      color: rgba(255,255,255,.8);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      line-height: 1.5;
+    }
+    .gated-asset__bullets li:last-child { border-bottom: none; }
+    .gated-asset__bullets li svg { flex-shrink: 0; margin-top: 2px; }
+    .gated-asset__form-wrap {
+      background: #fff;
+      padding: clamp(28px, 3vw, 44px);
+      border-top: 4px solid var(--hyblue);
+      border-radius: 0;
+    }
+    .gated-asset__form-title {
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 700;
+      color: var(--grey-900);
+      margin-bottom: 6px;
+    }
+    .gated-asset__form-sub {
+      font-size: 13px;
+      color: var(--grey-700);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .form-group label { font-size: 12px; font-weight: 600; color: var(--grey-700); letter-spacing: 0.04em; }
+    .form-group input {
+      padding: 10px 14px;
+      border: 1.5px solid var(--grey-200);
+      border-radius: 0;
+      font-size: 14px;
+      color: var(--grey-900);
+      transition: border-color var(--transition);
+      outline: none;
+    }
+    .form-group input:focus { border-color: var(--hyblue); }
+    .form-group input::placeholder { color: var(--grey-400); }
+    .gated-asset__form-note {
+      font-size: 11px;
+      color: var(--grey-400);
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+    /* ============================================================
+       STAT PROOF BAR (replaces testimonial)
+    ============================================================ */
+    .stat-proof-bar {
+      padding: clamp(32px, 4vw, 56px) 0;
+      background: var(--hyblue);
+    }
+    .stat-proof-bar .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+    }
+    .stat-proof-bar__inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.15);
+    }
+    .stat-proof-bar__item {
+      background: var(--hyblue);
+      padding: clamp(20px, 2.5vw, 32px) clamp(20px, 2.5vw, 32px);
+      text-align: center;
+    }
+    .stat-proof-bar__value {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .stat-proof-bar__label {
+      font-size: clamp(11px, 1vw, 13px);
+      font-weight: 600;
+      color: rgba(255,255,255,.75);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+    /* ============================================================
+       SECTION HEADINGS
+    ============================================================ */
+    .section-eyebrow {
+      font-size: clamp(11px, 1vw, 12px);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--hyblue);
+      margin-bottom: 12px;
+    }
+    .section-h2 {
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--grey-900);
+      letter-spacing: -0.02em;
+      margin-bottom: clamp(16px, 2vw, 24px);
+    }
+    .section-h2--white { color: #fff; }
+    .section-h2 .accent { color: var(--hyblue); }
+    /* ============================================================
+       RELATED CONTENT
+    ============================================================ */
+    .related-content {
+      padding: var(--section-pad) 0;
+      background: var(--grey-50);
+    }
+    .related-content .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+    }
+    .section-heading { margin-bottom: clamp(24px, 3vw, 40px); }
+    .section-heading .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--hyblue);
+      margin-bottom: 10px;
+    }
+    .section-heading h2 {
+      font-size: clamp(24px, 2.8vw, 36px);
+      font-weight: 900;
+      color: var(--grey-900);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-heading h2 .accent { color: var(--hyblue); }
+    .related-content__tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--grey-200);
+      margin-bottom: clamp(24px, 3vw, 40px);
+    }
+    .related-content__tab {
+      padding: 12px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--grey-700);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .related-content__tab.active,
+    .related-content__tab[aria-selected="true"] {
+      color: var(--hyblue);
+      border-bottom-color: var(--hyblue);
+    }
+    .related-tab-panel { display: none; }
+    .related-tab-panel.active { display: block; }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(16px, 2vw, 24px);
+      margin-bottom: clamp(24px, 3vw, 40px);
+    }
+    .related-card {
+      background: #fff;
+      border: 1px solid var(--grey-200);
+      border-radius: 0;
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+    .related-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+    .related-card__img {
+      height: 180px;
+      background: var(--ior-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .related-card__body { padding: clamp(16px, 2vw, 24px); }
+    .related-card__tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--hyblue);
+      margin-bottom: 8px;
+    }
+    .related-card__title {
+      font-size: clamp(14px, 1.4vw, 16px);
+      font-weight: 700;
+      color: var(--grey-900);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .related-card__excerpt {
+      font-size: clamp(13px, 1.2vw, 14px);
+      color: var(--grey-700);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .related-card__link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--hyblue);
+      transition: color var(--transition);
+    }
+    .related-card__link:hover { color: var(--hyblue-dark); }
+    .related-content__view-all { text-align: center; }
+    /* ============================================================
+       HUBSPOT FORM PLACEHOLDER
+    ============================================================ */
+    .hubspot-section { padding: var(--section-pad) 0; background: #fff; border-top: 1px solid var(--grey-100); }
+    .hubspot-section .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px); }
+    .hubspot-section__inner { max-width: 720px; }
+    .hubspot-section__sub { font-size: clamp(15px, 1.5vw, 17px); color: var(--grey-700); line-height: 1.7; margin-bottom: clamp(24px, 3vw, 40px); }
+    .hubspot-placeholder {
+      background: var(--grey-50);
+      border: 2px dashed var(--grey-100);
+      border-radius: 0;
+      padding: clamp(40px, 5vw, 80px) 24px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--grey-400);
+    }
+    /* ============================================================
+       FAQ ACCORDION
+    ============================================================ */
+    .faq-section {
+      padding: var(--section-pad) 0;
+      background: #fff;
+    }
+    .faq-section .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+    }
+    .faq-section__inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(32px, 5vw, 80px);
+      align-items: start;
+    }
+    .faq-section__heading { position: sticky; top: 80px; }
+    .faq-list { list-style: none; }
+    .faq-item {
+      border-bottom: 1px solid var(--grey-200);
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: clamp(16px, 2vw, 20px) 0;
+      font-size: clamp(14px, 1.4vw, 16px);
+      font-weight: 600;
+      color: var(--grey-900);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: color var(--transition);
+    }
+    .faq-question:hover { color: var(--hyblue); }
+    .faq-question[aria-expanded="true"] { color: var(--hyblue); }
+    .faq-chevron { flex-shrink: 0; transition: transform var(--transition); }
+    .faq-question[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      display: none;
+      padding-bottom: clamp(16px, 2vw, 20px);
+      font-size: clamp(14px, 1.3vw, 15px);
+      color: var(--grey-700);
+      line-height: 1.7;
+    }
+    .faq-answer.open { display: block; }
+    /* ============================================================
+       PRE-FOOTER CTA BAND
+    ============================================================ */
+    .pre-footer {
+      padding: clamp(48px, 6vw, 80px) 0;
+      background: var(--hyblue);
+    }
+    .pre-footer .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(24px, 3vw, 48px);
+      flex-wrap: wrap;
+    }
+    .pre-footer__text { flex: 1; min-width: 260px; }
+    .pre-footer__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 8px;
+    }
+    .pre-footer__h2 {
+      font-size: clamp(22px, 2.5vw, 34px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .pre-footer__ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .site-footer {
+      background: var(--ior-navy);
+      padding: clamp(48px, 6vw, 80px) 0 0;
+      color: rgba(255,255,255,.7);
+      font-size: 13px;
+    }
+    .site-footer .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+      gap: clamp(24px, 3vw, 48px);
+      padding-bottom: clamp(40px, 5vw, 64px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-brand__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .footer-brand__mark {
+      width: 32px; height: 32px;
+      background: var(--ior-blue);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 0;
+      flex-shrink: 0;
+    }
+    .footer-brand__wordmark { font-size: 16px; font-weight: 900; letter-spacing: -0.03em; color: #fff; }
+    .footer-brand__wordmark span { color: var(--ior-blue); }
+    .footer-brand__tagline {
+      font-size: 12px;
+      color: rgba(255,255,255,.5);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .footer-brand__legal {
+      font-size: 11px;
+      color: rgba(255,255,255,.35);
+      line-height: 1.6;
+    }
+    .footer-col__heading {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .footer-col__links { list-style: none; }
+    .footer-col__links li { margin-bottom: 8px; }
+    .footer-col__links a {
+      color: rgba(255,255,255,.6);
+      font-size: 13px;
+      transition: color var(--transition);
+    }
+    .footer-col__links a:hover { color: #fff; }
+    .footer-bottom {
+      padding: clamp(16px, 2vw, 24px) 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-bottom__copy {
+      font-size: 12px;
+      color: rgba(255,255,255,.4);
+    }
+    .footer-bottom__links {
+      display: flex;
+      gap: 16px;
+      list-style: none;
+    }
+    .footer-bottom__links a {
+      font-size: 12px;
+      color: rgba(255,255,255,.4);
+      transition: color var(--transition);
+    }
+    .footer-bottom__links a:hover { color: rgba(255,255,255,.8); }
+    /* ============================================================
+       MOBILE DRAWER
+    ============================================================ */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: var(--z-overlay);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: all; }
+    .mobile-drawer {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: min(360px, 90vw);
+      background: #fff;
+      z-index: var(--z-drawer);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .mobile-drawer.open { transform: translateX(0); }
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--grey-200);
+      flex-shrink: 0;
+    }
+    .drawer-close {
+      width: 36px; height: 36px;
+      background: var(--grey-100);
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .drawer-close:hover { background: var(--grey-200); }
+    .drawer-nav { padding: 8px 0; flex: 1; }
+    .drawer-nav__link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--grey-900);
+      border-bottom: 1px solid var(--grey-100);
+      transition: background var(--transition);
+    }
+    .drawer-nav__link:hover { background: var(--grey-50); }
+    .drawer-nav__link--active { color: var(--hyblue); }
+    .drawer-ctas {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid var(--grey-200);
+      flex-shrink: 0;
+    }
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .supply-panel.active { grid-template-columns: 1fr; }
+      .gated-asset__grid { grid-template-columns: 1fr; }
+      .connection-grid { grid-template-columns: 1fr; }
+      .hero-value-bar__inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .primary-nav__links { display: none; }
+      .primary-nav__ctas .btn--nav:not(:last-child) { display: none; }
+      .faq-section__inner { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .stat-proof-bar__inner { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-value-bar__inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="main-audit-container">
+  <!-- ============================================================
+       GLOBAL HEADER
+  ============================================================ -->
+  <header role="banner" aria-label="Global header">
+    <!-- Utility Bar -->
+    <div class="utility-bar" role="complementary" aria-label="Utility navigation">
+      <div class="utility-bar__inner">
+        <span class="utility-bar__brand">Australia's Remote Fuel Specialists -- Since 1984</span>
+        <div class="utility-bar__actions">
+          <a href="11a_Contact_Us.html" class="utility-bar__link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+            1800 IOR FUEL
+          </a>
+          <div class="utility-bar__divider" aria-hidden="true"></div>
+          <a href="11b_Customer_Portal.html" class="utility-bar__link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            Customer Portal
+          </a>
+          <div class="utility-bar__divider" aria-hidden="true"></div>
+          <a href="11a_Contact_Us.html" class="utility-bar__link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Primary Nav -->
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <div class="primary-nav__inner">
+        <a href="01_Homepage.html" class="nav-logo" aria-label="IOR -- Home">
+          <div class="nav-logo__mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="nav-logo__wordmark" aria-hidden="true">I<span>O</span>R</div>
+        </a>
+        <div class="primary-nav__links" role="list">
+          <a href="02_Fuel_Solutions_Hub.html" class="nav-link nav-link--active" role="listitem">
+            Fuel Solutions
+            <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <a href="04_Aviation.html" class="nav-link" role="listitem">
+            Aviation
+            <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <a href="05_Equipment_Infrastructure.html" class="nav-link" role="listitem">
+            Equipment
+            <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <a href="07_Digital_Platforms.html" class="nav-link" role="listitem">
+            Digital
+            <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <a href="08_Industries_Hub.html" class="nav-link" role="listitem">
+            Industries
+            <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <a href="09_About_IOR.html" class="nav-link" role="listitem">
+            About
+            <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+        </div>
+        <div class="primary-nav__ctas">
+          <a href="11a_Contact_Us.html" class="btn btn--outline btn--nav">Get a Quote &raquo;</a>
+          <a href="11b_Customer_Portal.html" class="btn btn--primary btn--nav">Customer Login &raquo;</a>
+          <button class="btn btn--outline btn--nav" id="drawerToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileDrawer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
+  <main id="main-content">
+    <!-- ============================================================
+         HERO -- FULL-WIDTH CENTRED (HYBLUE BLUE)
+    ============================================================ -->
+    <section class="hero" aria-labelledby="hero-h1">
+      <div class="hero__inner">
+        <div class="hero__logo" aria-hidden="true">
+          <div class="hero__logo-mark">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <span class="hero__logo-wordmark">HyBlue&#8482;</span>
+        </div>
+        <p class="hero__eyebrow">HyBlue&#8482; AdBlue&#174; by IOR</p>
+        <h1 class="hero__h1" id="hero-h1">Quality AdBlue. <span class="hero__h1-accent">Proudly Australian Made.</span></h1>
+        <p class="hero__body">VDA and ISO 22241 certified. Available in 10L containers, 210L drums, 1,000L IBCs, bulk delivery, and at IOR Diesel Network stops nationwide.</p>
+        <div class="cert-badges" aria-label="Certifications">
+          <span class="cert-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            VDA Certified
+          </span>
+          <span class="cert-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            ISO 22241 Certified
+          </span>
+          <span class="cert-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Australian Made
+          </span>
+          <span class="cert-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            IOR Logistics Network
+          </span>
+        </div>
+        <div class="hero__ctas">
+          <a href="#enquiry" class="btn btn--white">Enquire About HyBlue&#8482; &raquo;</a>
+          <a href="11a_Contact_Us.html" class="btn btn--ghost-white">Talk to a Specialist &raquo;</a>
+          <a href="#gated-asset" class="btn btn--ghost-white btn--sm">Download HyBlue Brochure &raquo;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         QUICK LINKS BAR
+    ============================================================ -->
+    <nav class="quick-links-bar" aria-label="Ground Fuels section navigation">
+      <div class="quick-links-bar__inner">
+        <a href="03a_Diesel_Network_v3.5.html" class="quick-links-bar__link">IOR Diesel Network</a>
+        <a href="03b_On_Site_Refuelling_v3.5.html" class="quick-links-bar__link">On-Site Refuelling</a>
+        <a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="quick-links-bar__link">Bulk Diesel Delivery</a>
+        <a href="03d_HyBlue_v3.5.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">HyBlue&#8482;</a>
+        <a href="03e_Oils_Lubricants_v3.5.html" class="quick-links-bar__link">Oils &amp; Lubricants</a>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         HERO VALUE BAR
+    ============================================================ -->
+    <div class="hero-value-bar" aria-label="HyBlue key value propositions">
+      <div class="hero-value-bar__inner">
+        <div class="hero-value-bar__item">
+          <div class="hero-value-bar__title">Made in Australia</div>
+          <div class="hero-value-bar__sub">Sovereign supply chain</div>
+        </div>
+        <div class="hero-value-bar__item">
+          <div class="hero-value-bar__title">Proven Reliability</div>
+          <div class="hero-value-bar__sub">VDA &amp; ISO 22241 certified</div>
+        </div>
+        <div class="hero-value-bar__item">
+          <div class="hero-value-bar__title">Dependable Deliveries</div>
+          <div class="hero-value-bar__sub">Scheduled &amp; vendor-managed</div>
+        </div>
+        <div class="hero-value-bar__item">
+          <div class="hero-value-bar__title">Nationwide Access</div>
+          <div class="hero-value-bar__sub">IOR Diesel Network stops</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SUPPLY OPTIONS (5-TAB)
+    ============================================================ -->
+    <section class="supply-section" aria-labelledby="supply-h2">
+      <div class="container">
+        <div class="supply-section__header">
+          <p class="section-eyebrow">Supply Options</p>
+          <h2 class="section-h2" id="supply-h2">The right format for <span class="accent">every operation.</span></h2>
+        </div>
+        <div class="supply-tabs" role="tablist" aria-label="HyBlue supply format tabs">
+          <button class="supply-tab active" role="tab" aria-selected="true" aria-controls="tab-10l" id="tab-btn-10l">10L Containers</button>
+          <button class="supply-tab" role="tab" aria-selected="false" aria-controls="tab-210l" id="tab-btn-210l">210L Drums</button>
+          <button class="supply-tab" role="tab" aria-selected="false" aria-controls="tab-ibc" id="tab-btn-ibc">1,000L IBCs</button>
+          <button class="supply-tab" role="tab" aria-selected="false" aria-controls="tab-bulk" id="tab-btn-bulk">Bulk Delivery</button>
+          <button class="supply-tab" role="tab" aria-selected="false" aria-controls="tab-stops" id="tab-btn-stops">IOR Diesel Stops</button>
+        </div>
+
+        <div id="tab-10l" class="supply-panel active" role="tabpanel" aria-labelledby="tab-btn-10l">
+          <div class="supply-panel__img" aria-label="HyBlue 10L containers (image placeholder)">
+            <p class="supply-panel__img-label">HyBlue 10L containers</p>
+          </div>
+          <div class="supply-panel__content">
+            <h3 class="supply-panel__h3">10L Containers</h3>
+            <p class="supply-panel__desc">Convenient HDPE containers with integrated spout for small fleets, workshops, and individual vehicles. Shelf life up to 18 months when stored correctly.</p>
+            <div class="supply-specs">
+              <div class="supply-spec"><span class="supply-spec__label">Volume</span><span class="supply-spec__value">10 litres</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Format</span><span class="supply-spec__value">HDPE container with integrated spout</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Shelf Life</span><span class="supply-spec__value">Up to 18 months (stored correctly)</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Best For</span><span class="supply-spec__value">Small fleets, workshops, individual vehicles</span></div>
+            </div>
+            <div class="supply-pills">
+              <span class="supply-pill">Workshops</span>
+              <span class="supply-pill">Small Fleets</span>
+              <span class="supply-pill">Agriculture</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-210l" class="supply-panel" role="tabpanel" aria-labelledby="tab-btn-210l">
+          <div class="supply-panel__img" aria-label="HyBlue 210L drums (image placeholder)">
+            <p class="supply-panel__img-label">HyBlue 210L drums</p>
+          </div>
+          <div class="supply-panel__content">
+            <h3 class="supply-panel__h3">210L Drums</h3>
+            <p class="supply-panel__desc">HDPE drums compatible with drum pumps, delivered direct to site in pallet quantities. Ideal for medium fleets, depots, and civil contractors.</p>
+            <div class="supply-specs">
+              <div class="supply-spec"><span class="supply-spec__label">Volume</span><span class="supply-spec__value">210 litres</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Format</span><span class="supply-spec__value">HDPE drum, compatible with drum pumps</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Delivery</span><span class="supply-spec__value">Direct to site, pallet quantities</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Best For</span><span class="supply-spec__value">Medium fleets, depots, civil contractors</span></div>
+            </div>
+            <div class="supply-pills">
+              <span class="supply-pill">Civil</span>
+              <span class="supply-pill">Medium Fleets</span>
+              <span class="supply-pill">Depots</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-ibc" class="supply-panel" role="tabpanel" aria-labelledby="tab-btn-ibc">
+          <div class="supply-panel__img" aria-label="HyBlue 1000L IBC (image placeholder)">
+            <p class="supply-panel__img-label">HyBlue 1,000L IBC</p>
+          </div>
+          <div class="supply-panel__content">
+            <h3 class="supply-panel__h3">1,000L IBCs</h3>
+            <p class="supply-panel__desc">Forklift-compatible, stackable IBCs delivered direct to site. Ideal for high-volume operations, large fleets, and mining applications.</p>
+            <div class="supply-specs">
+              <div class="supply-spec"><span class="supply-spec__label">Volume</span><span class="supply-spec__value">1,000 litres</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Format</span><span class="supply-spec__value">IBC, forklift-compatible, stackable</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Delivery</span><span class="supply-spec__value">Direct to site</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Best For</span><span class="supply-spec__value">High-volume operations, large fleets, mining</span></div>
+            </div>
+            <div class="supply-pills">
+              <span class="supply-pill">Mining</span>
+              <span class="supply-pill">Large Fleets</span>
+              <span class="supply-pill">High Volume</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-bulk" class="supply-panel" role="tabpanel" aria-labelledby="tab-btn-bulk">
+          <div class="supply-panel__img" aria-label="HyBlue bulk delivery (image placeholder)">
+            <p class="supply-panel__img-label">HyBlue bulk tanker delivery</p>
+          </div>
+          <div class="supply-panel__content">
+            <h3 class="supply-panel__h3">Bulk Delivery</h3>
+            <p class="supply-panel__desc">IOR tanker delivery with vendor-managed replenishment available via HyDip&#8482; integration. For major operations with continuous high consumption.</p>
+            <div class="supply-specs">
+              <div class="supply-spec"><span class="supply-spec__label">Volume</span><span class="supply-spec__value">From 5,000L</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Format</span><span class="supply-spec__value">IOR tanker delivery, vendor-managed</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Monitoring</span><span class="supply-spec__value">HyDip&#8482; integration available</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Best For</span><span class="supply-spec__value">Major operations, continuous high consumption</span></div>
+            </div>
+            <div class="supply-pills">
+              <span class="supply-pill">Mining</span>
+              <span class="supply-pill">Civil</span>
+              <span class="supply-pill">Agriculture</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-stops" class="supply-panel" role="tabpanel" aria-labelledby="tab-btn-stops">
+          <div class="supply-panel__img" aria-label="IOR Diesel Network stop (image placeholder)">
+            <p class="supply-panel__img-label">IOR Diesel Network stop</p>
+          </div>
+          <div class="supply-panel__content">
+            <h3 class="supply-panel__h3">IOR Diesel Stops</h3>
+            <p class="supply-panel__desc">HyBlue&#8482; available at 115+ IOR Diesel Network stops nationwide. Pump dispensing with RFID account access -- same IOR account as diesel.</p>
+            <div class="supply-specs">
+              <div class="supply-spec"><span class="supply-spec__label">Availability</span><span class="supply-spec__value">115+ IOR Diesel Network stops</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Format</span><span class="supply-spec__value">Pump dispensing, RFID account</span></div>
+              <div class="supply-spec"><span class="supply-spec__label">Account</span><span class="supply-spec__value">Same IOR account as diesel</span></div>
+            </div>
+            <div class="supply-pills">
+              <span class="supply-pill">Transport</span>
+              <span class="supply-pill">Fleet</span>
+              <span class="supply-pill">On the Road</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         IOR CONNECTION SECTION
+    ============================================================ -->
+    <section class="connection-section" aria-labelledby="connection-h2">
+      <div class="container">
+        <div class="connection-grid">
+          <div>
+            <p class="section-eyebrow">The IOR Ecosystem</p>
+            <h2 class="section-h2" id="connection-h2">HyBlue&#8482; is part of the <span class="accent">IOR ecosystem.</span></h2>
+            <p>Your HyBlue&#8482; account integrates with your IOR Diesel Network card. One account, one invoice, one supplier for diesel and AdBlue&#174; -- wherever you operate in Australia.</p>
+            <div class="connection-points">
+              <div class="connection-point">
+                <div class="connection-point__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--hyblue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+                <div>
+                  <div class="connection-point__title">IOR Diesel Network</div>
+                  <p class="connection-point__body">Access HyBlue&#8482; at 115+ IOR Diesel Network stops on your existing IOR account.</p>
+                </div>
+              </div>
+              <div class="connection-point">
+                <div class="connection-point__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--hyblue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <div>
+                  <div class="connection-point__title">HyDip&#8482; FMS</div>
+                  <p class="connection-point__body">Integrate HyBlue&#8482; bulk storage with HyDip&#8482; for automated level monitoring and vendor-managed replenishment.</p>
+                </div>
+              </div>
+              <div class="connection-point">
+                <div class="connection-point__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--hyblue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div>
+                  <div class="connection-point__title">Consolidated Invoicing</div>
+                  <p class="connection-point__body">Diesel and AdBlue&#174; on one invoice. One supplier, one relationship, one account.</p>
+                </div>
+              </div>
+            </div>
+            <a href="03a_Diesel_Network_v3.5.html" class="btn btn--primary">Explore the IOR Diesel Network &raquo;</a>
+          </div>
+          <div class="connection-section__placeholder" aria-hidden="true">
+            <div class="connection-section__img">
+              <p class="connection-section__img-label">IOR ecosystem diagram<br>(image placeholder)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         GATED ASSET -- HYBLUE BROCHURE
+    ============================================================ -->
+    <section class="gated-asset" id="gated-asset" aria-labelledby="gated-h2">
+      <div class="container">
+        <div class="gated-asset__grid">
+          <div class="gated-asset__info">
+            <p class="gated-asset__eyebrow">HyBlue&#8482; Brochure</p>
+            <h2 class="gated-asset__h2" id="gated-h2">Everything you need to know about HyBlue&#8482; AdBlue&#174;.</h2>
+            <ul class="gated-asset__bullets">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                HyBlue&#8482; manufacturing process and quality assurance
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                VDA and ISO 22241 certification documentation
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Full supply format range with specifications
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                IOR Diesel Network AdBlue&#174; availability map
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Ordering and account setup guide
+              </li>
+            </ul>
+          </div>
+          <div class="gated-asset__form-wrap">
+            <h3 class="gated-asset__form-title">Download HyBlue&#8482; Brochure</h3>
+            <p class="gated-asset__form-sub">Complete the form to download the IOR HyBlue&#8482; Brochure (PDF).</p>
+            <form action="#" method="post" aria-label="Download HyBlue Brochure" id="enquiry">
+              <input type="hidden" name="asset_filename" value="IOR-MAR-BRO-0231-HyBlue-Brochure_v20250828.pdf">
+      <!-- Also available: IOR-MAR-BRO-0201-Ground-Fuels-Capability-Brochure_v20251103.pdf -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="ga-first-name">First Name</label>
+                  <input type="text" id="ga-first-name" name="first_name" placeholder="Jane" required autocomplete="given-name">
+                </div>
+                <div class="form-group">
+                  <label for="ga-last-name">Last Name</label>
+                  <input type="text" id="ga-last-name" name="last_name" placeholder="Smith" required autocomplete="family-name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="ga-email">Work Email</label>
+                <input type="email" id="ga-email" name="email" placeholder="jane@company.com.au" required autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="ga-company">Company</label>
+                <input type="text" id="ga-company" name="company" placeholder="Company name" required autocomplete="organization">
+              </div>
+              <button type="submit" class="btn btn--primary">Download HyBlue&#8482; Brochure &raquo;</button>
+            </form>
+            <p class="gated-asset__form-note">By submitting this form you agree to IOR's Privacy Policy. We will not share your information with third parties.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         STAT PROOF BAR (replaces testimonial -- not confirmed)
+    ============================================================ -->
+    <section class="stat-proof-bar" aria-label="HyBlue social proof statistics">
+      <div class="container">
+        <div class="stat-proof-bar__inner">
+          <div class="stat-proof-bar__item">
+            <div class="stat-proof-bar__value">115+</div>
+            <div class="stat-proof-bar__label">Diesel Network stops stocking HyBlue&#8482;</div>
+          </div>
+          <div class="stat-proof-bar__item">
+            <div class="stat-proof-bar__value">Australian</div>
+            <div class="stat-proof-bar__label">Made -- sovereign supply chain</div>
+          </div>
+          <div class="stat-proof-bar__item">
+            <div class="stat-proof-bar__value">VDA &amp; ISO</div>
+            <div class="stat-proof-bar__label">22241 certified quality</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RELATED CONTENT (TABBED)
+    ============================================================ -->
+    <section class="related-content" aria-labelledby="related-h2">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Further Reading</div>
+          <h2 id="related-h2">Case studies &amp; insights for <span class="accent">HyBlue&#8482; AdBlue&#174;.</span></h2>
+        </div>
+        <div class="related-content__tabs" role="tablist" aria-label="Related content tabs">
+          <button class="related-content__tab active" role="tab" aria-selected="true" aria-controls="rc-cases" id="tab-cases">Case Studies</button>
+          <button class="related-content__tab" role="tab" aria-selected="false" aria-controls="rc-blog" id="tab-blog">Blog Posts</button>
+        </div>
+        <div id="rc-cases" class="related-tab-panel active" role="tabpanel" aria-labelledby="tab-cases">
+          <div class="related-grid">
+            <article class="related-card">
+              <div class="related-card__img" aria-label="Incitec Pivot AdBlue supply (image placeholder)"></div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Case Study</div>
+                <div class="related-card__title">Incitec Pivot: scaling on-site AdBlue&#174; supply by 800% in under 30 days.</div>
+                <div class="related-card__excerpt">How IOR's vendor-managed supply model allowed Incitec Pivot to scale without capital investment.</div>
+                <a href="https://www.ior.com.au/case-study-ior-plays-a-key-role-in-keeping-australia-moving/" class="related-card__link" rel="noopener" target="_blank">Read the case study &raquo;</a>
+              </div>
+            </article>
+            <article class="related-card">
+              <div class="related-card__img" aria-label="MPC Kinetic AdBlue supply (image placeholder)"></div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Case Study</div>
+                <div class="related-card__title">MPC Kinetic: reliable AdBlue&#174; supply to remote mine sites across Queensland.</div>
+                <div class="related-card__excerpt">Consistent HyBlue&#8482; supply to one of Australia's most challenging remote environments.</div>
+                <a href="#" class="related-card__link">Read the case study &raquo;</a>
+              </div>
+            </article>
+            <article class="related-card">
+              <div class="related-card__img" aria-label="Norwood Agriculture AdBlue supply (image placeholder)"></div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Case Study</div>
+                <div class="related-card__title">Norwood Agriculture: consolidating diesel and AdBlue&#174; supply under one IOR account.</div>
+                <div class="related-card__excerpt">How a Queensland agricultural operator simplified their fuel and DEF supply with a single IOR account.</div>
+                <a href="#" class="related-card__link">Read the case study &raquo;</a>
+              </div>
+            </article>
+          </div>
+          <div class="related-content__view-all">
+            <a href="09d_Case_Studies.html" class="btn btn--outline-dark" aria-label="View all IOR case studies">View All Case Studies &raquo;</a>
+          </div>
+        </div>
+        <div id="rc-blog" class="related-tab-panel" role="tabpanel" aria-labelledby="tab-blog">
+          <div class="related-grid">
+            <article class="related-card">
+              <div class="related-card__img" aria-label="What is AdBlue (image placeholder)"></div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Blog</div>
+                <div class="related-card__title">What is AdBlue&#174; and why does your diesel vehicle need it?</div>
+                <div class="related-card__excerpt">A plain-language guide to AdBlue&#174; (DEF), how SCR systems work, and why running out can stop your vehicle.</div>
+                <a href="#" class="related-card__link">Read more &raquo;</a>
+              </div>
+            </article>
+            <article class="related-card">
+              <div class="related-card__img" aria-label="Australian-made vs imported AdBlue (image placeholder)"></div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Blog</div>
+                <div class="related-card__title">Australian-made vs. imported AdBlue&#174;: why sovereign supply matters.</div>
+                <div class="related-card__excerpt">Why sourcing Australian-made AdBlue&#174; matters for supply chain resilience and quality assurance.</div>
+                <a href="#" class="related-card__link">Read more &raquo;</a>
+              </div>
+            </article>
+            <article class="related-card">
+              <div class="related-card__img" aria-label="AdBlue consumption guide (image placeholder)"></div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Blog</div>
+                <div class="related-card__title">How to calculate your AdBlue&#174; consumption and choose the right supply format.</div>
+                <div class="related-card__excerpt">A practical guide to estimating your DEF consumption and selecting the right supply format for your operation.</div>
+                <a href="#" class="related-card__link">Read more &raquo;</a>
+              </div>
+            </article>
+          </div>
+          <div class="related-content__view-all">
+            <a href="11c_News_Updates.html" class="btn btn--outline-dark" aria-label="View all IOR blog posts">View All Blog Posts &raquo;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         HUBSPOT FORM PLACEHOLDER
+    ============================================================ -->
+    <section class="hubspot-section" aria-labelledby="hs-h2">
+      <div class="container">
+        <div class="hubspot-section__inner">
+          <p class="section-eyebrow">Get in Touch</p>
+          <h2 class="section-h2" id="hs-h2">Speak with a HyBlue&#8482; specialist.</h2>
+          <p class="hubspot-section__sub">Complete the form below and a member of our team will be in touch within one business day.</p>
+          <!-- HubSpot embed: [FORM ID TBC] -->
+          <div class="hubspot-placeholder" aria-label="HubSpot form embed pending">
+            HubSpot Form -- Embed Code Pending
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FAQ ACCORDION
+    ============================================================ -->
+    <section class="faq-section" aria-labelledby="faq-h2">
+      <div class="container">
+        <div class="faq-section__inner">
+          <div class="faq-section__heading">
+            <p class="section-eyebrow">FAQs</p>
+            <h2 class="section-h2" id="faq-h2">Frequently asked questions about HyBlue&#8482; AdBlue&#174;.</h2>
+          </div>
+          <div class="faq-list" role="list">
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
+                What is AdBlue&#174;?
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-answer" id="faq-a1" role="region">
+                <p>AdBlue&#174; (also known as Diesel Exhaust Fluid or DEF) is a urea-water solution used in Selective Catalytic Reduction (SCR) systems to reduce NOx emissions from diesel engines. It is required in most modern Euro 5 and Euro 6 diesel vehicles.</p>
+              </div>
+            </div>
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
+                Is HyBlue&#8482; certified?
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-answer" id="faq-a2" role="region">
+                <p>Yes. HyBlue&#8482; is VDA certified and meets ISO 22241 quality standards. It is manufactured in Australia under strict quality control processes.</p>
+              </div>
+            </div>
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
+                Where can I buy HyBlue&#8482;?
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-answer" id="faq-a3" role="region">
+                <p>HyBlue&#8482; is available at 115+ IOR Diesel Network stops, via direct delivery in 10L containers, 210L drums, 1,000L IBCs, and bulk tanker delivery. Contact IOR to set up an account.</p>
+              </div>
+            </div>
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
+                Can I get HyBlue&#8482; on my IOR Diesel Network card?
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-answer" id="faq-a4" role="region">
+                <p>Yes. HyBlue&#8482; is available at IOR Diesel Network stops and can be charged to your existing IOR account. One account for diesel and AdBlue&#174;.</p>
+              </div>
+            </div>
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
+                What happens if I run out of AdBlue&#174;?
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-answer" id="faq-a5" role="region">
+                <p>Modern vehicles will reduce power or refuse to start if AdBlue&#174; runs out. IOR's vendor-managed supply and HyDip&#8482; monitoring can alert you before levels become critical.</p>
+              </div>
+            </div>
+            <div class="faq-item" role="listitem">
+              <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
+                Is HyBlue&#8482; compatible with all diesel vehicles?
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-answer" id="faq-a6" role="region">
+                <p>HyBlue&#8482; meets ISO 22241 and is compatible with all vehicles requiring DEF/AdBlue&#174;. Always check your vehicle manufacturer's specifications.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRE-FOOTER CTA BAND
+    ============================================================ -->
+    <section class="pre-footer" aria-label="Get started with IOR">
+      <div class="container">
+        <div class="pre-footer__text">
+          <p class="pre-footer__eyebrow">Ready to get started?</p>
+          <h2 class="pre-footer__h2">Australian-made AdBlue&#174; -- delivered to your site.</h2>
+        </div>
+        <div class="pre-footer__ctas">
+          <a href="#enquiry" class="btn btn--white">Enquire About HyBlue&#8482; &raquo;</a>
+          <a href="03_Ground_Fuels.html" class="btn btn--ghost-white">Explore Ground Fuels &raquo;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       SITE FOOTER
+  ============================================================ -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand__logo">
+            <div class="footer-brand__mark" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <span class="footer-brand__wordmark" aria-label="IOR">I<span>O</span>R</span>
+          </div>
+          <p class="footer-brand__tagline">Australia's Remote Fuel Specialists. Delivering reliable fuel solutions to remote and regional Australia since 1984.</p>
+          <p class="footer-brand__legal">IOR Pty Ltd &mdash; ABN 12 345 678 901<br>115+ locations across Australia.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__heading">Fuel Solutions</h3>
+          <ul class="footer-col__links">
+            <li><a href="03_Ground_Fuels.html">Ground Fuels</a></li>
+            <li><a href="03a_Diesel_Network_v3.5.html">IOR Diesel Network</a></li>
+            <li><a href="03b_On_Site_Refuelling_v3.5.html">On-Site Refuelling</a></li>
+            <li><a href="03c_Bulk_Diesel_Delivery_v3.5.html">Bulk Diesel Delivery</a></li>
+            <li><a href="03d_HyBlue_v3.5.html">HyBlue&#8482;</a></li>
+            <li><a href="03e_Oils_Lubricants_v3.5.html">Oils &amp; Lubricants</a></li>
+            <li><a href="04_Aviation.html">Aviation Fuel</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__heading">Industries</h3>
+          <ul class="footer-col__links">
+            <li><a href="08a_Mining.html">Mining</a></li>
+            <li><a href="08b_Agriculture.html">Agriculture</a></li>
+            <li><a href="08c_Civil_Construction.html">Civil &amp; Construction</a></li>
+            <li><a href="08d_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+            <li><a href="08e_Aviation_Industries.html">Aviation</a></li>
+            <li><a href="08f_Marine.html">Marine</a></li>
+            <li><a href="08_Industries_Hub.html">All Industries</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__heading">Digital</h3>
+          <ul class="footer-col__links">
+            <li><a href="07_Digital_Platforms.html">Digital Platforms</a></li>
+            <li><a href="07_Digital_Platforms.html#hydip">HyDip&#8482; FMS</a></li>
+            <li><a href="07_Digital_Platforms.html#fuelcharge">Fuelcharge</a></li>
+            <li><a href="11b_Customer_Portal.html">Customer Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__heading">Company</h3>
+          <ul class="footer-col__links">
+            <li><a href="09_About_IOR.html">About IOR</a></li>
+            <li><a href="09a_Our_Story.html">Our Story</a></li>
+            <li><a href="09b_Leadership.html">Leadership</a></li>
+            <li><a href="09d_Case_Studies.html">Case Studies</a></li>
+            <li><a href="10_Careers.html">Careers</a></li>
+            <li><a href="11c_News_Updates.html">News &amp; Updates</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__heading">Support</h3>
+          <ul class="footer-col__links">
+            <li><a href="11a_Contact_Us.html">Contact Us</a></li>
+            <li><a href="11b_Customer_Portal.html">Customer Portal</a></li>
+            <li><a href="11d_Safety_Compliance.html">Safety &amp; Compliance</a></li>
+            <li><a href="11e_Sustainability.html">Sustainability</a></li>
+            <li><a href="11f_FAQs.html">FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-bottom__copy">Copyright &copy; 2026 IOR Pty Ltd. All rights reserved.</p>
+        <ul class="footer-bottom__links">
+          <li><a href="11f_FAQs.html">Privacy Policy</a></li>
+          <li><a href="11f_FAQs.html">Terms of Use</a></li>
+          <li><a href="11d_Safety_Compliance.html">Safety</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MOBILE DRAWER
+  ============================================================ -->
+  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+  <nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="nav-logo__wordmark" aria-label="IOR">IOR</div>
+      <button class="drawer-close" id="drawerClose" aria-label="Close navigation menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-nav">
+      <a href="02_Fuel_Solutions_Hub.html" class="drawer-nav__link">Fuel Solutions</a>
+      <a href="03_Ground_Fuels.html" class="drawer-nav__link">Ground Fuels</a>
+      <a href="03a_Diesel_Network_v3.5.html" class="drawer-nav__link">IOR Diesel Network</a>
+      <a href="03b_On_Site_Refuelling_v3.5.html" class="drawer-nav__link">On-Site Refuelling</a>
+      <a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="drawer-nav__link">Bulk Diesel Delivery</a>
+      <a href="03d_HyBlue_v3.5.html" class="drawer-nav__link drawer-nav__link--active">HyBlue&#8482;</a>
+      <a href="03e_Oils_Lubricants_v3.5.html" class="drawer-nav__link">Oils &amp; Lubricants</a>
+      <a href="04_Aviation.html" class="drawer-nav__link">Aviation</a>
+      <a href="08_Industries_Hub.html" class="drawer-nav__link">Industries</a>
+      <a href="09_About_IOR.html" class="drawer-nav__link">About IOR</a>
+      <a href="10_Careers.html" class="drawer-nav__link">Careers</a>
+      <a href="11a_Contact_Us.html" class="drawer-nav__link">Contact Us</a>
+    </div>
+    <div class="drawer-ctas">
+      <a href="11a_Contact_Us.html" class="btn btn--primary">Enquire About HyBlue&#8482; &raquo;</a>
+      <a href="11b_Customer_Portal.html" class="btn btn--outline">Customer Login &raquo;</a>
+    </div>
+  </nav>
+</div>
+
+<script>
+  // MOBILE DRAWER
+  const drawerToggle  = document.getElementById('drawerToggle');
+  const drawerClose   = document.getElementById('drawerClose');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const mobileDrawer  = document.getElementById('mobileDrawer');
+
+  function openDrawer() {
+    mobileDrawer.classList.add('open');
+    drawerOverlay.classList.add('open');
+    mobileDrawer.setAttribute('aria-hidden', 'false');
+    drawerOverlay.setAttribute('aria-hidden', 'false');
+    drawerToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    mobileDrawer.classList.remove('open');
+    drawerOverlay.classList.remove('open');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
+    drawerOverlay.setAttribute('aria-hidden', 'true');
+    drawerToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  drawerToggle.addEventListener('click', openDrawer);
+  drawerClose.addEventListener('click', closeDrawer);
+  drawerOverlay.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+  // SUPPLY OPTION TABS
+  document.querySelectorAll('.supply-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const panelId = tab.getAttribute('aria-controls');
+      document.querySelectorAll('.supply-tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.supply-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const panel = document.getElementById(panelId);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // FAQ ACCORDION
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answerId = btn.getAttribute('aria-controls');
+      const answer   = document.getElementById(answerId);
+      document.querySelectorAll('.faq-question').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        const a = document.getElementById(b.getAttribute('aria-controls'));
+        if (a) a.classList.remove('open');
+      });
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        if (answer) answer.classList.add('open');
+      }
+    });
+  });
+
+  // RELATED CONTENT TABS
+  document.querySelectorAll('.related-content__tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const panelId = tab.getAttribute('aria-controls');
+      document.querySelectorAll('.related-content__tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.related-tab-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const panel = document.getElementById(panelId);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // QUICK LINKS BAR ACTIVE STATE
+  const qlLinks = document.querySelectorAll('.quick-links-bar__link');
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  qlLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.includes(currentPage)) {
+      link.classList.add('quick-links-bar__link--active');
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+</script>
+</body>
+</html>
