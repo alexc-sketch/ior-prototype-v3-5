@@ -1,1800 +1,1070 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>00 Master Index — IOR Website V2 Wireframe Set</title>
-  <style>
-
-    /* ============================================================
-       IOR DESIGN SYSTEM — ROOT CSS VARIABLES
-       Pasted in full per self-containment rule.
-       Source of truth: IOR_Design_System.html
-    ============================================================ */
-    :root {
-      --ior-blue:           #0355A3;
-      --ior-navy:           #0A4066;
-      --ior-white:          #FFFFFF;
-      --ior-near-black:     #231F20;
-      --ior-charcoal:       #383838;
-      --ior-mid-grey:       #94A9BA;
-      --ior-light-blue-bg:  #E0F1FF;
-      --ior-sky:            #7FBEE6;
-      --ior-teal:           #00D1CC;
-      --hyblue-blue:        #0069C6;
-      --hydip-blue:         #006AC6;
-      --aviation-gold:      #D98300;
-      --ior-success:        #2DA771;
-      --ior-warning:        #F5A623;
-      --ior-error:          #C0392B;
-
-      --font-primary:       'Avenir Next LT Pro', 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif;
-
-      --text-display-xl:    clamp(48px, 6vw, 80px);
-      --text-display-m:     clamp(28px, 3.5vw, 50px);
-      --text-display-s:     clamp(22px, 2.5vw, 40px);
-      --text-heading-l:     clamp(18px, 2vw, 26px);
-      --text-heading-m:     clamp(16px, 1.8vw, 22px);
-      --text-heading-s:     18px;
-      --text-body-l:        clamp(16px, 1.4vw, 20px);
-      --text-body-m:        16px;
-      --text-body-s:        14px;
-      --text-eyebrow:       18px;
-      --text-label:         16px;
-      --text-caption:       12px;
-
-      --lh-display:         1.05;
-      --lh-heading:         1.2;
-      --lh-body:            1.6;
-      --ls-eyebrow:         0.09em;
-      --ls-button:          0.04em;
-
-      --fw-black:           900;
-      --fw-bold:            800;
-      --fw-semibold:        700;
-      --fw-regular:         400;
-
-      --space-1:   4px;
-      --space-2:   8px;
-      --space-3:   12px;
-      --space-4:   16px;
-      --space-5:   20px;
-      --space-6:   24px;
-      --space-7:   28px;
-      --space-8:   32px;
-      --space-10:  40px;
-      --space-12:  48px;
-      --space-15:  60px;
-      --space-16:  64px;
-      --space-20:  80px;
-      --space-25:  100px;
-
-      --section-pad-y:      clamp(60px, 8vw, 100px);
-      --section-pad-x:      clamp(20px, 5vw, 100px);
-
-      --container-max:      1550px;
-      --content-max:        1300px;
-      --grid-gap:           24px;
-
-      --radius:             0px;
-      --border-color:       rgba(255, 255, 255, 0.25);
-      --border-color-light: rgba(3, 85, 163, 0.2);
-
-      --shadow-card:        0 4px 24px rgba(3, 85, 163, 0.10);
-      --shadow-card-hover:  0 8px 40px rgba(3, 85, 163, 0.20);
-
-      --transition-fast:    150ms ease;
-      --transition-base:    250ms ease;
-
-      --z-nav:    100;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { font-size: 16px; scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-primary);
-      font-size: var(--text-body-m);
-      font-weight: var(--fw-regular);
-      color: var(--ior-charcoal);
-      background-color: #F0F4F8;
-      line-height: var(--lh-body);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    ul, ol { list-style: none; }
-
-    /* ============================================================
-       WIREFRAME NAV BAR — TOOL LAYER
-    ============================================================ */
-    .wf-nav {
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      background-color: #1A1A2E;
-      border-bottom: 2px solid #E94560;
-      padding: 6px 16px;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 11px;
-      line-height: 1.4;
-      color: #A8B2D8;
-      user-select: none;
-    }
-    .wf-nav__links { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
-    .wf-nav__link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 3px 10px;
-      background-color: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: #CCD6F6;
-      text-decoration: none;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
-      white-space: nowrap;
-    }
-    .wf-nav__link:hover { background-color: #E94560; border-color: #E94560; color: #fff; }
-    .wf-nav__link--index::before { content: '⌂ '; }
-    .wf-nav__link--ds::before    { content: '◈ '; }
-    .wf-nav__divider { width: 1px; height: 16px; background-color: rgba(255,255,255,0.15); flex-shrink: 0; }
-    .wf-nav__module { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
-    .wf-nav__module-badge {
-      display: inline-block;
-      padding: 2px 8px;
-      background-color: #E94560;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .wf-nav__module-name { font-size: 11px; font-weight: 700; color: #CCD6F6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .wf-nav__module-file { font-size: 10px; color: #6A7497; white-space: nowrap; }
-    .wf-nav__legend { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-left: auto; }
-    .wf-nav__legend-label { font-size: 10px; color: #6A7497; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
-    .wf-nav__legend-items { display: flex; align-items: center; gap: 6px; }
-    .wf-nav__legend-item { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; color: #A8B2D8; white-space: nowrap; }
-    .wf-nav__legend-swatch { width: 10px; height: 10px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.15); }
-    .wf-nav__legend-swatch--standard { background-color: #FFE066; }
-    .wf-nav__legend-swatch--question { background-color: #FFD0D0; }
-    .wf-nav__legend-swatch--approved { background-color: #D4EDDA; }
-    @media (max-width: 640px) {
-      .wf-nav__legend-label { display: none; }
-      .wf-nav__module-file  { display: none; }
-    }
-
-    /* ============================================================
-       ANNOTATION SYSTEM
-    ============================================================ */
-    .annotation {
-      width: 100%;
-      background-color: #FFE066;
-      border-left: 4px solid #E6B800;
-      padding: var(--space-3) var(--space-5);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: var(--space-4);
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 11px;
-      line-height: 1.5;
-      color: #3D2E00;
-    }
-    .annotation__block-id   { font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap; }
-    .annotation__separator  { color: #9A7700; font-weight: 700; }
-    .annotation__description{ flex: 1; min-width: 200px; }
-    .annotation__intent     { font-style: italic; color: #5C4400; border-left: 1px solid #C9A200; padding-left: var(--space-3); }
-
-    /* ============================================================
-       MASTER INDEX — PAGE-SPECIFIC STYLES
-    ============================================================ */
-
-    /* Header */
-    .mi-header {
-      background-color: var(--ior-navy);
-      padding: var(--space-12) var(--section-pad-x);
-      border-bottom: 4px solid var(--ior-blue);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-8);
-    }
-
-    @media (min-width: 768px) {
-      .mi-header {
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
-      }
-    }
-
-    .mi-header__left {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-6);
-    }
-
-    .mi-header__logo {
-      width: 110px;
-      height: 52px;
-      background-color: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.05em;
-      font-family: 'Courier New', monospace;
-    }
-
-    .mi-header__kicker {
-      font-size: var(--text-body-s);
-      font-weight: var(--fw-semibold);
-      letter-spacing: var(--ls-eyebrow);
-      text-transform: uppercase;
-      color: var(--ior-sky);
-    }
-
-    .mi-header__title {
-      font-size: clamp(24px, 3.5vw, 44px);
-      font-weight: var(--fw-bold);
-      color: var(--ior-white);
-      line-height: var(--lh-display);
-    }
-
-    .mi-header__meta {
-      font-size: var(--text-body-s);
-      color: rgba(255,255,255,0.5);
-      line-height: var(--lh-body);
-      font-family: 'Courier New', monospace;
-    }
-
-    .mi-header__right {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-      flex-shrink: 0;
-    }
-
-    /* Status legend */
-    .mi-status-legend {
-      background-color: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: var(--space-5) var(--space-6);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-    }
-
-    .mi-status-legend__title {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      font-family: 'Courier New', monospace;
-      margin-bottom: var(--space-1);
-    }
-
-    .mi-status-legend__item {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      font-size: 12px;
-      color: rgba(255,255,255,0.75);
-      font-family: 'Courier New', monospace;
-    }
-
-    .mi-status-dot {
-      width: 10px;
-      height: 10px;
-      flex-shrink: 0;
-    }
-    .mi-status-dot--complete    { background-color: var(--ior-success); }
-    .mi-status-dot--in-progress { background-color: var(--ior-warning); }
-    .mi-status-dot--not-started { background-color: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); }
-
-    /* Body layout */
-    .mi-body {
-      max-width: 1400px;
-      margin-inline: auto;
-      padding: var(--space-12) var(--section-pad-x);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-10);
-    }
-
-    /* System files row (Design System — special treatment) */
-    .mi-system-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-4);
-    }
-    @media (min-width: 768px) {
-      .mi-system-row { grid-template-columns: 1fr 1fr; }
-    }
-
-    .mi-system-card {
-      background-color: var(--ior-navy);
-      border-left: 4px solid var(--ior-sky);
-      padding: var(--space-6) var(--space-8);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-6);
-      text-decoration: none;
-      color: inherit;
-      transition: background-color var(--transition-fast);
-    }
-    .mi-system-card:hover { background-color: var(--ior-blue); }
-
-    .mi-system-card__label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ior-sky);
-      margin-bottom: var(--space-2);
-      font-family: 'Courier New', monospace;
-    }
-    .mi-system-card:hover .mi-system-card__label { color: rgba(255,255,255,0.6); }
-
-    .mi-system-card__name {
-      font-size: var(--text-heading-m);
-      font-weight: var(--fw-bold);
-      color: var(--ior-white);
-      line-height: var(--lh-heading);
-    }
-
-    .mi-system-card__file {
-      font-size: var(--text-caption);
-      color: rgba(255,255,255,0.45);
-      font-family: 'Courier New', monospace;
-      margin-top: var(--space-2);
-    }
-
-    .mi-system-card__arrow {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-right: 2px solid var(--ior-sky);
-      border-top: 2px solid var(--ior-sky);
-      transform: rotate(45deg);
-      flex-shrink: 0;
-    }
-    .mi-system-card:hover .mi-system-card__arrow { border-color: rgba(255,255,255,0.7); }
-
-    /* Section divider label */
-    .mi-section-label {
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-      padding-bottom: var(--space-4);
-      border-bottom: 2px solid var(--ior-blue);
-    }
-
-    .mi-section-label__text {
-      font-size: var(--text-body-s);
-      font-weight: var(--fw-bold);
-      letter-spacing: var(--ls-eyebrow);
-      text-transform: uppercase;
-      color: var(--ior-blue);
-    }
-
-    .mi-section-label__count {
-      font-size: var(--text-caption);
-      font-weight: var(--fw-bold);
-      color: var(--ior-mid-grey);
-      font-family: 'Courier New', monospace;
-    }
-
-    /* Module grid */
-    .mi-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-6);
-    }
-
-    @media (min-width: 768px) {
-      .mi-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (min-width: 1200px) {
-      .mi-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    /* Module card */
-    .mi-card {
-      background-color: var(--ior-white);
-      border-top: 3px solid var(--ior-blue);
-      border-right: 1px solid var(--border-color-light);
-      border-bottom: 1px solid var(--border-color-light);
-      border-left: 1px solid var(--border-color-light);
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow var(--transition-base);
-    }
-    .mi-card:hover { box-shadow: var(--shadow-card-hover); }
-
-    /* Card header strip */
-    .mi-card__header {
-      padding: var(--space-5) var(--space-6);
-      background-color: var(--ior-light-blue-bg);
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: var(--space-4);
-      border-bottom: 1px solid var(--border-color-light);
-    }
-
-    .mi-card__number {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--ior-blue);
-      font-family: 'Courier New', monospace;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .mi-card__module-name {
-      font-size: var(--text-heading-m);
-      font-weight: var(--fw-bold);
-      color: var(--ior-navy);
-      line-height: var(--lh-heading);
-      flex: 1;
-    }
-
-    /* Status badge */
-    .mi-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding: 3px 8px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border-radius: var(--radius);
-      white-space: nowrap;
-      flex-shrink: 0;
-      font-family: 'Courier New', monospace;
-    }
-    .mi-badge--complete    { background-color: #D4EDDA; color: #0D3320; }
-    .mi-badge--in-progress { background-color: #FFF3CD; color: #5C3D00; }
-    .mi-badge--not-started { background-color: #F0F4F8; color: #94A9BA; border: 1px solid #CBD5E0; }
-    .mi-badge::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-    }
-    .mi-badge--complete::before    { background-color: var(--ior-success); }
-    .mi-badge--in-progress::before { background-color: var(--ior-warning); }
-    .mi-badge--not-started::before { background-color: #CBD5E0; }
-
-    /* Card body: page list */
-    .mi-card__body {
-      padding: var(--space-5) var(--space-6);
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .mi-card__file-label {
-      font-size: var(--text-caption);
-      color: var(--ior-mid-grey);
-      font-family: 'Courier New', monospace;
-      padding-bottom: var(--space-4);
-      border-bottom: 1px solid var(--border-color-light);
-      margin-bottom: var(--space-3);
-    }
-
-    /* Page row inside card */
-    .mi-page {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: var(--space-3);
-      align-items: baseline;
-      padding: var(--space-3) 0;
-      border-bottom: 1px solid var(--border-color-light);
-    }
-    .mi-page:last-child { border-bottom: none; }
-
-    .mi-page--hub {
-      grid-template-columns: 1fr auto;
-    }
-
-    .mi-page__left {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .mi-page__link {
-      font-size: var(--text-body-s);
-      font-weight: var(--fw-bold);
-      color: var(--ior-blue);
-      text-decoration: none;
-      transition: color var(--transition-fast);
-      line-height: var(--lh-heading);
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-    }
-    .mi-page__link:hover { color: var(--ior-navy); }
-    .mi-page__link:hover .mi-page__link-arrow { border-color: var(--ior-navy); }
-
-    .mi-page__link-arrow {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      border-right: 1.5px solid var(--ior-blue);
-      border-top: 1.5px solid var(--ior-blue);
-      transform: rotate(45deg);
-      flex-shrink: 0;
-    }
-
-    /* Hub page label indicator */
-    .mi-page__link--hub {
-      font-size: var(--text-body-m);
-      color: var(--ior-navy);
-    }
-    .mi-page__link--hub .mi-page__link-arrow { border-color: var(--ior-navy); width: 8px; height: 8px; }
-    .mi-page__link--hub:hover { color: var(--ior-blue); }
-    .mi-page__link--hub:hover .mi-page__link-arrow { border-color: var(--ior-blue); }
-
-    .mi-page__keyword {
-      font-size: 11px;
-      color: var(--ior-mid-grey);
-      font-family: 'Courier New', monospace;
-      font-style: italic;
-    }
-
-    .mi-page__slug {
-      font-size: 11px;
-      color: var(--ior-mid-grey);
-      font-family: 'Courier New', monospace;
-    }
-
-    .mi-page__right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 2px;
-    }
-
-    .mi-page__anchor {
-      font-size: 10px;
-      color: var(--ior-mid-grey);
-      font-family: 'Courier New', monospace;
-      white-space: nowrap;
-    }
-
-    /* Card footer: CTA to module */
-    .mi-card__footer {
-      padding: var(--space-5) var(--space-6);
-      background-color: var(--ior-light-blue-bg);
-      border-top: 1px solid var(--border-color-light);
-    }
-
-    .mi-card__open-link {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      font-size: var(--text-body-s);
-      font-weight: var(--fw-bold);
-      color: var(--ior-blue);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: color var(--transition-fast);
-    }
-    .mi-card__open-link:hover { color: var(--ior-navy); }
-
-    .mi-card__open-arrow {
-      display: inline-block;
-      width: 9px;
-      height: 9px;
-      border-right: 2px solid currentColor;
-      border-top: 2px solid currentColor;
-      transform: rotate(45deg);
-    }
-
-    /* Child page indentation */
-    .mi-page--child .mi-page__link {
-      padding-left: var(--space-4);
-      border-left: 2px solid var(--border-color-light);
-      font-weight: var(--fw-regular);
-      color: var(--ior-charcoal);
-    }
-    .mi-page--child .mi-page__link:hover { color: var(--ior-blue); border-left-color: var(--ior-blue); }
-    .mi-page--child .mi-page__link-arrow { border-color: var(--ior-mid-grey); }
-    .mi-page--child .mi-page__link:hover .mi-page__link-arrow { border-color: var(--ior-blue); }
-
-    /* Count summary strip */
-    .mi-summary {
-      background-color: var(--ior-navy);
-      padding: var(--space-6) var(--section-pad-x);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: var(--space-8);
-    }
-
-    .mi-summary__stat {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-1);
-    }
-
-    .mi-summary__number {
-      font-size: clamp(24px, 3vw, 36px);
-      font-weight: var(--fw-bold);
-      color: var(--ior-white);
-      line-height: 1;
-    }
-
-    .mi-summary__label {
-      font-size: var(--text-caption);
-      font-weight: var(--fw-bold);
-      color: var(--ior-sky);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-family: 'Courier New', monospace;
-    }
-
-    .mi-summary__divider {
-      width: 1px;
-      height: 40px;
-      background-color: rgba(255,255,255,0.2);
-    }
-
-    /* Footer */
-    .mi-footer {
-      background-color: #1A1A2E;
-      padding: var(--space-8) var(--section-pad-x);
-      border-top: 2px solid #E94560;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-4);
-    }
-
-    .mi-footer__text {
-      font-size: var(--text-caption);
-      color: #6A7497;
-      font-family: 'Courier New', monospace;
-      line-height: var(--lh-body);
-    }
-
-    .mi-footer__text strong { color: #CCD6F6; }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IOR Website V3.5 — Master Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ior-blue:    #0355A3;
+    --ior-navy:    #0A4066;
+    --ior-deep:    #0A1F3C;
+    --ior-sky:     #4DA8DA;
+    --ior-gold:    #D98300;
+    --ior-success: #1A6B3C;
+    --ior-warning: #D98300;
+    --text-primary:   #0A1F3C;
+    --text-secondary: #4A5568;
+    --text-muted:     #718096;
+    --border:    #E2E8F0;
+    --bg-light:  #F7F9FC;
+    --bg-white:  #FFFFFF;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── TOP BANNER ─────────────────────────────────────────── */
+  .proto-banner {
+    background: var(--ior-deep);
+    color: #fff;
+    text-align: center;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--ior-blue);
+  }
+  .proto-banner strong { color: var(--ior-sky); }
+
+  /* ── HEADER ─────────────────────────────────────────────── */
+  .idx-header {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .hdr-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 28px 32px 0;
+  }
+  .hdr-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 14px; }
+  .logo-sq {
+    width: 52px; height: 52px;
+    background: var(--ior-blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 900; color: #fff;
+    letter-spacing: -1px; flex-shrink: 0;
+  }
+  .logo-text h1 { font-size: 20px; font-weight: 800; color: var(--ior-deep); line-height: 1.2; }
+  .logo-text p  { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .hdr-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-ds {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: #5B2D8E; color: #fff; text-decoration: none;
+    padding: 10px 18px;
+    font-size: 13px; font-weight: 700; transition: background 0.2s;
+  }
+  .btn-ds:hover { background: #4a2475; }
+  .btn-home {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--ior-blue); color: #fff; text-decoration: none;
+    padding: 10px 18px;
+    font-size: 13px; font-weight: 700; transition: background 0.2s;
+  }
+  .btn-home:hover { background: var(--ior-navy); }
+
+  /* ── TABS ───────────────────────────────────────────────── */
+  .tabs {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 1px solid var(--border);
+    gap: 0;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    padding: 11px 18px;
+    font-size: 13px; font-weight: 600;
+    color: var(--text-muted);
+    background: none; border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer; white-space: nowrap;
+    transition: all 0.18s;
+    font-family: 'Inter', sans-serif;
+  }
+  .tab:hover { color: var(--ior-blue); }
+  .tab.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+
+  /* ── MAIN ───────────────────────────────────────────────── */
+  .main {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 36px 32px 80px;
+  }
+
+  /* ── INTRO BAR ──────────────────────────────────────────── */
+  .intro {
+    background: var(--ior-blue);
+    color: #fff;
+    padding: 24px 32px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .intro h2 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .intro p   { font-size: 13px; opacity: 0.85; max-width: 580px; }
+  .intro-stats { display: flex; gap: 28px; flex-shrink: 0; }
+  .istat strong { display: block; font-size: 30px; font-weight: 800; line-height: 1; }
+  .istat span   { font-size: 11px; opacity: 0.7; font-weight: 500; }
+
+  /* ── LEGEND ─────────────────────────────────────────────── */
+  .legend {
+    display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+    padding: 14px 20px; background: var(--bg-white);
+    border: 1px solid var(--border);
+    margin-bottom: 28px;
+  }
+  .legend-lbl { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+  .badge { font-size: 10px; font-weight: 700; padding: 2px 7px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .b-hub    { background: #DBEAFE; color: #1D4ED8; }
+  .b-done   { background: #DCFCE7; color: #15803D; }
+  .b-tbc    { background: #FEF9C3; color: #854D0E; }
+  .b-design { background: #F3E8FF; color: #6B21A8; }
+
+  /* ── SECTION BLOCK ──────────────────────────────────────── */
+  .sec-block { margin-bottom: 44px; }
+  .sec-hdr {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 14px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .sec-icon {
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 800; flex-shrink: 0;
+    color: #fff;
+  }
+  .sec-hdr h2 { font-size: 15px; font-weight: 700; }
+  .sec-count {
+    font-size: 11px; font-weight: 600; color: var(--text-muted);
+    background: var(--bg-light); padding: 2px 8px;
+    border: 1px solid var(--border);
+    margin-left: auto;
+  }
+
+  /* ── PAGE GRID ──────────────────────────────────────────── */
+  .pg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 10px;
+  }
+  .pg-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    padding: 14px 18px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.16s;
+    position: relative;
+    overflow: hidden;
+  }
+  .pg-card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--accent, var(--ior-blue));
+    opacity: 0; transition: opacity 0.16s;
+  }
+  .pg-card:hover {
+    border-color: var(--accent, var(--ior-blue));
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+  .pg-card:hover::before { opacity: 1; }
+  .pg-card.is-hub {
+    background: var(--bg-light);
+    border-color: var(--accent, var(--ior-blue));
+    border-width: 1.5px;
+  }
+  .pg-card.is-hub::before { opacity: 1; }
+  .c-icon { font-size: 18px; flex-shrink: 0; width: 28px; text-align: center; }
+  .c-body { flex: 1; min-width: 0; }
+  .c-title { font-size: 13px; font-weight: 600; line-height: 1.3; margin-bottom: 2px; }
+  .c-meta  { font-size: 11px; color: var(--text-muted); }
+  .c-arrow { font-size: 14px; color: var(--text-muted); flex-shrink: 0; transition: transform 0.16s, color 0.16s; }
+  .pg-card:hover .c-arrow { transform: translateX(3px); color: var(--accent, var(--ior-blue)); }
+
+  /* Design System special card */
+  .pg-card.is-ds {
+    background: #5B2D8E;
+    border-color: #5B2D8E;
+  }
+  .pg-card.is-ds .c-title { color: #fff; }
+  .pg-card.is-ds .c-meta  { color: rgba(255,255,255,0.65); }
+  .pg-card.is-ds .c-arrow { color: rgba(255,255,255,0.65); }
+  .pg-card.is-ds:hover { background: #4a2475; }
+  .pg-card.is-ds::before { display: none; }
+
+  /* ── ACCENT COLOURS PER SECTION ─────────────────────────── */
+  .s-blue    { --accent: #0355A3; }
+  .s-green   { --accent: #1A6B3C; }
+  .s-gold    { --accent: #D98300; }
+  .s-slate   { --accent: #2D4A6B; }
+  .s-rust    { --accent: #8B3A1A; }
+  .s-purple  { --accent: #5B2D8E; }
+  .s-teal    { --accent: #0A6B5A; }
+  .s-ind     { --accent: #0A7B5A; }
+  .s-about   { --accent: #1E40AF; }
+  .s-careers { --accent: #065F46; }
+  .s-news    { --accent: #0A4066; }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  .idx-footer {
+    background: var(--ior-deep);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 20px 32px;
+    font-size: 12px;
+  }
+  .idx-footer strong { color: #fff; }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hdr-top { flex-direction: column; align-items: flex-start; }
+    .intro { flex-direction: column; }
+    .intro-stats { justify-content: flex-start; }
+    .pg-grid { grid-template-columns: 1fr; }
+    .main { padding: 20px 16px 60px; }
+    .hdr-inner { padding: 20px 16px 0; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       WIREFRAME NAV BAR — TOOL LAYER — NOT PART OF IOR BRAND
-  ═══════════════════════════════════════════════════════════ -->
-  <div class="wf-nav" role="navigation" aria-label="Wireframe navigation">
-    <div class="wf-nav__links">
-      <a href="00_Master_Index.html" class="wf-nav__link wf-nav__link--index">Master Index</a>
-      <div class="wf-nav__divider" aria-hidden="true"></div>
-      <a href="IOR_Design_System.html" class="wf-nav__link wf-nav__link--ds">Design System</a>
-    </div>
-    <div class="wf-nav__divider" aria-hidden="true"></div>
-    <div class="wf-nav__module">
-      <span class="wf-nav__module-badge">INDEX</span>
-      <span class="wf-nav__module-name">Master Index — IOR Website V2 Wireframe Set</span>
-      <span class="wf-nav__module-file">00_Master_Index.html</span>
-    </div>
-    <div class="wf-nav__legend">
-      <span class="wf-nav__legend-label">Annotations:</span>
-      <div class="wf-nav__legend-items">
-        <span class="wf-nav__legend-item">
-          <span class="wf-nav__legend-swatch wf-nav__legend-swatch--standard" aria-hidden="true"></span>
-          Standard
-        </span>
-        <span class="wf-nav__legend-item">
-          <span class="wf-nav__legend-swatch wf-nav__legend-swatch--question" aria-hidden="true"></span>
-          Design Q
-        </span>
-        <span class="wf-nav__legend-item">
-          <span class="wf-nav__legend-swatch wf-nav__legend-swatch--approved" aria-hidden="true"></span>
-          Approved
-        </span>
+<!-- ── TOP BANNER ──────────────────────────────────────────────── -->
+<div class="proto-banner">
+  <strong>IOR Website V3.5 Prototype</strong> — Confidential. For client &amp; designer review only. &nbsp;|&nbsp; Wireframe v3.5 — April 2026
+</div>
+
+<!-- ── HEADER ──────────────────────────────────────────────────── -->
+<header class="idx-header">
+  <div class="hdr-inner">
+    <div class="hdr-top">
+      <div class="logo-wrap">
+        <div class="logo-sq">IOR</div>
+        <div class="logo-text">
+          <h1>IOR Website V3.5 Prototype</h1>
+          <p>Complete wireframe set — 33 pages across 12 modules — all navigable</p>
+        </div>
+      </div>
+      <div class="hdr-btns">
+        <a href="IOR_Design_System.html" class="btn-ds">Design System</a>
+        <a href="01_Homepage.html" class="btn-home">View Homepage &rarr;</a>
       </div>
     </div>
+
+    <!-- ── TABS ─────────────────────────────────────────────── -->
+    <nav class="tabs" aria-label="Filter by section">
+      <button class="tab active" onclick="showAll(this)">All Pages</button>
+      <button class="tab" onclick="filterSec(this,'s-blue')">Homepage</button>
+      <button class="tab" onclick="filterSec(this,'s-green')">Ground Fuels</button>
+      <button class="tab" onclick="filterSec(this,'s-gold')">Aviation</button>
+      <button class="tab" onclick="filterSec(this,'s-slate')">Equipment</button>
+      <button class="tab" onclick="filterSec(this,'s-rust')">Supply &amp; Trading</button>
+      <button class="tab" onclick="filterSec(this,'s-purple')">Digital Platforms</button>
+      <button class="tab" onclick="filterSec(this,'s-ind')">Industries</button>
+      <button class="tab" onclick="filterSec(this,'s-about')">About IOR</button>
+      <button class="tab" onclick="filterSec(this,'s-careers')">Careers</button>
+      <button class="tab" onclick="filterSec(this,'s-news')">News</button>
+      <button class="tab" onclick="filterSec(this,'s-teal')">Support &amp; Contact</button>
+    </nav>
   </div>
-  <!-- END WIREFRAME NAV BAR -->
+</header>
 
-  <!-- ============================================================
-       PAGE HEADER
-  ============================================================ -->
-  <header class="mi-header" aria-label="Wireframe set header">
-    <div class="mi-header__left">
-      <div class="mi-header__logo" aria-label="IOR logo placeholder">[IOR LOGO]</div>
-      <div>
-        <p class="mi-header__kicker">IOR Tier-1 Website Redesign — April 2026</p>
-        <h1 class="mi-header__title">IOR Website V2<br/>Wireframe Set</h1>
-      </div>
-      <p class="mi-header__meta">
-        12 module files · 50+ pages · 1 design system · All 33 pages complete<br>
-        Produced by: 3PM &nbsp;|&nbsp; Client: IOR &nbsp;|&nbsp; Stage: Wireframe Review
-      </p>
+<!-- ── MAIN ────────────────────────────────────────────────────── -->
+<main class="main">
+
+  <!-- INTRO BAR -->
+  <div class="intro">
+    <div>
+      <h2>IOR Website V3.5 — Complete Wireframe Prototype</h2>
+      <p>All pages are fully navigable. Click any card to open that page. Use the tabs above to filter by section. The Design System button shows all tokens, components and patterns.</p>
     </div>
-    <div class="mi-header__right">
-      <div class="mi-status-legend" aria-label="Status legend">
-        <div class="mi-status-legend__title">Status Legend</div>
-        <div class="mi-status-legend__item">
-          <span class="mi-status-dot mi-status-dot--complete" aria-hidden="true"></span>
-          Complete
-        </div>
-        <div class="mi-status-legend__item">
-          <span class="mi-status-dot mi-status-dot--in-progress" aria-hidden="true"></span>
-          In Progress
-        </div>
-        <div class="mi-status-legend__item">
-          <span class="mi-status-dot mi-status-dot--not-started" aria-hidden="true"></span>
-          Not Started
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ============================================================
-       ANNOTATION — PAGE HEADER BLOCK
-  ============================================================ -->
-  <div class="annotation">
-    <span class="annotation__block-id">MASTER INDEX — SYSTEM FILE</span>
-    <span class="annotation__separator">·</span>
-    <span class="annotation__description">Navigation hub for all 12 module wireframe files. Not a page design. Contains module cards with child page links, focus keywords, URL slugs, anchor IDs, and status badges.</span>
-    <span class="annotation__separator">·</span>
-    <span class="annotation__intent">INTENT: Allows client and internal reviewers to navigate the entire wireframe set without losing context. Every link opens the relevant module HTML file at the correct anchor. Not for client-facing distribution.</span>
-  </div>
-
-  <main aria-label="Wireframe module index">
-
-    <div class="mi-body">
-
-      <!-- ============================================================
-           SYSTEM FILES ROW
-      ============================================================ -->
-      <div>
-        <div class="mi-section-label" style="margin-bottom: 16px;">
-          <span class="mi-section-label__text">System Files</span>
-          <span class="mi-section-label__count">2 files — not page modules</span>
-        </div>
-        <div class="mi-system-row">
-
-          <a href="IOR_Design_System.html" class="mi-system-card" aria-label="Open Design System">
-            <div>
-              <div class="mi-system-card__label">CSS System</div>
-              <div class="mi-system-card__name">IOR Design System</div>
-              <div class="mi-system-card__file">IOR_Design_System.html</div>
-            </div>
-            <span class="mi-system-card__arrow" aria-hidden="true"></span>
-          </a>
-
-          <a href="00_Master_Index.html" class="mi-system-card" aria-label="Master Index (current file)" style="border-left-color: var(--ior-teal); cursor: default; opacity: 0.6;" onclick="return false;">
-            <div>
-              <div class="mi-system-card__label">Navigation Hub</div>
-              <div class="mi-system-card__name">Master Index</div>
-              <div class="mi-system-card__file">00_Master_Index.html &nbsp;← current file</div>
-            </div>
-            <span class="mi-system-card__arrow" aria-hidden="true" style="border-color: var(--ior-teal);"></span>
-          </a>
-
-        </div>
-      </div>
-
-      <!-- ============================================================
-           MODULE GRID
-      ============================================================ -->
-      <div>
-        <div class="mi-section-label" style="margin-bottom: 16px;">
-          <span class="mi-section-label__text">Page Modules</span>
-          <span class="mi-section-label__count">12 modules · 33 pages</span>
-        </div>
-
-        <div class="mi-grid">
-
-          <!-- ── MODULE 01: HOMEPAGE ─────────────────────────────── -->
-          <article class="mi-card" aria-label="Module 01: Homepage">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 01</div>
-                <div class="mi-card__module-name">Homepage</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">01_Homepage.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="01_Homepage.html#homepage" class="mi-page__link mi-page__link--hub">
-                    Homepage <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">commercial fuel network</span>
-                  <span class="mi-page__slug">/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#homepage</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="01_Homepage.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-          <!-- ── MODULE 02: FUEL SOLUTIONS HUB ─────────────────── -->
-          <article class="mi-card" aria-label="Module 02: Fuel Solutions Hub">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 02</div>
-                <div class="mi-card__module-name">Fuel Solutions Hub</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">02_Fuel_Solutions_Hub.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="02_Fuel_Solutions_Hub.html#fuel-solutions-hub" class="mi-page__link mi-page__link--hub">
-                    Fuel Solutions Hub <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel solutions australia</span>
-                  <span class="mi-page__slug">/fuel-solutions/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#fuel-solutions-hub</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="02_Fuel_Solutions_Hub.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-          <!-- ── MODULE 03: GROUND FUELS ────────────────────────── -->
-          <article class="mi-card" aria-label="Module 03: Ground Fuels">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 03</div>
-                <div class="mi-card__module-name">Ground Fuels</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">03_Ground_Fuels.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="03_Ground_Fuels.html#ground-fuels" class="mi-page__link mi-page__link--hub">
-                    Ground Fuels Hub <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">diesel fuel australia</span>
-                  <span class="mi-page__slug">/fuel-solutions/ground-fuels/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#ground-fuels</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="03_Ground_Fuels.html#diesel-network" class="mi-page__link">
-                    IOR Diesel Network <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">unattended fuel system</span>
-                  <span class="mi-page__slug">/fuel-solutions/ground-fuels/ior-diesel-network/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#diesel-network</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="03_Ground_Fuels.html#onsite-refuelling" class="mi-page__link">
-                    On-Site Refuelling <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">remote fuel delivery</span>
-                  <span class="mi-page__slug">/fuel-solutions/ground-fuels/on-site-refueling/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#onsite-refuelling</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="03_Ground_Fuels.html#bulk-diesel" class="mi-page__link">
-                    Bulk Diesel Delivery <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">bulk fuel delivery</span>
-                  <span class="mi-page__slug">/fuel-solutions/ground-fuels/bulk-diesel-delivery/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#bulk-diesel</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="03_Ground_Fuels.html#hyblue" class="mi-page__link">
-                    HyBlue™ (AdBlue®) <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">AdBlue supply</span>
-                  <span class="mi-page__slug">/fuel-solutions/ground-fuels/hyblue/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#hyblue</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="03_Ground_Fuels.html#oils-lubricants" class="mi-page__link">
-                    Oils &amp; Lubricants <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">commercial lubricants</span>
-                  <span class="mi-page__slug">/fuel-solutions/ground-fuels/oils-lubricants/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#oils-lubricants</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="03_Ground_Fuels.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-          <!-- ── MODULE 04: AVIATION ────────────────────────────── -->
-          <article class="mi-card" aria-label="Module 04: Aviation" style="border-top-color: var(--aviation-gold);">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 04</div>
-                <div class="mi-card__module-name">Aviation</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">04_Aviation.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="04_Aviation.html#aviation" class="mi-page__link mi-page__link--hub">
-                    Aviation Hub <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">aviation fuel supply</span>
-                  <span class="mi-page__slug">/fuel-solutions/aviation/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#aviation</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="04_Aviation.html#aviation-network" class="mi-page__link">
-                    IOR Aviation Network <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">aviation fuel network</span>
-                  <span class="mi-page__slug">/fuel-solutions/aviation/ior-aviation-network/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#aviation-network</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="04_Aviation.html#airport-fuelling" class="mi-page__link">
-                    Airport Fuelling Services <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">into-plane refuelling</span>
-                  <span class="mi-page__slug">/fuel-solutions/aviation/airport-fueling-services/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#airport-fuelling</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="04_Aviation.html#aviation-bulk" class="mi-page__link">
-                    Aviation Bulk Delivery <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">bulk aviation fuel</span>
-                  <span class="mi-page__slug">/fuel-solutions/aviation/bulk-refueling/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#aviation-bulk</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="04_Aviation.html#aviation-oils" class="mi-page__link">
-                    Aviation Oils &amp; Lubricants <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">aviation lubricants</span>
-                  <span class="mi-page__slug">/fuel-solutions/aviation/oils-lubricants/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#aviation-oils</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="04_Aviation.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-          <!-- ── MODULE 05: EQUIPMENT & INFRASTRUCTURE ──────────── -->
-          <article class="mi-card" aria-label="Module 05: Equipment and Infrastructure">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 05</div>
-                <div class="mi-card__module-name">Equipment &amp; Infrastructure</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">05_Equipment_Infrastructure.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="05_Equipment_Infrastructure.html#equipment-infrastructure" class="mi-page__link mi-page__link--hub">
-                    Equipment &amp; Infrastructure Hub <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel infrastructure</span>
-                  <span class="mi-page__slug">/fuel-solutions/equipment-infrastructure/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#equipment-infrastructure</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="05_Equipment_Infrastructure.html#fuel-storage-tanks" class="mi-page__link">
-                    Fuel Storage Tanks <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">self-bunded fuel tanks</span>
-                  <span class="mi-page__slug">/fuel-solutions/equipment-infrastructure/fuel-storage-tanks/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#fuel-storage-tanks</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="05_Equipment_Infrastructure.html#frac-tanks" class="mi-page__link">
-                    Frac Tanks <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">frac tanks Australia</span>
-                  <span class="mi-page__slug">/fuel-solutions/equipment-infrastructure/frac-tanks/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#frac-tanks</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="05_Equipment_Infrastructure.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-          <!-- ── MODULE 06: SUPPLY & TRADING ────────────────────── -->
-          <article class="mi-card" aria-label="Module 06: Supply and Trading">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 06</div>
-                <div class="mi-card__module-name">Supply &amp; Trading</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">06_Supply_Trading.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="06_Supply_Trading.html#supply-trading" class="mi-page__link mi-page__link--hub">
-                    Supply &amp; Trading Hub <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">sovereign fuel supply</span>
-                  <span class="mi-page__slug">/fuel-solutions/supply-trading/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#supply-trading</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="06_Supply_Trading.html#terminals" class="mi-page__link">
-                    Lytton &amp; Port Bonython Terminals <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel import terminals</span>
-                  <span class="mi-page__slug">/fuel-solutions/supply-trading/terminals/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#terminals</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="06_Supply_Trading.html#eromanga-refinery" class="mi-page__link">
-                    Eromanga Refinery <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">Eromanga oil refinery</span>
-                  <span class="mi-page__slug">/fuel-solutions/supply-trading/eromanga-refinery/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#eromanga-refinery</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="06_Supply_Trading.html#condensates" class="mi-page__link">
-                    Condensates <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">condensate supply</span>
-                  <span class="mi-page__slug">/fuel-solutions/supply-trading/condensates/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#condensates</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="06_Supply_Trading.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-          <!-- ── MODULE 07: DIGITAL PLATFORMS ──────────────────── -->
-          <article class="mi-card" aria-label="Module 07: Digital Platforms" style="border-top-color: var(--ior-teal);">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 07</div>
-                <div class="mi-card__module-name">Digital Platforms</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">07_Digital_Platforms.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="07_Digital_Platforms.html#digital-platforms" class="mi-page__link mi-page__link--hub">
-                    Digital Platforms Hub <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel management system</span>
-                  <span class="mi-page__slug">/digital-platforms/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#digital-platforms</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="07_Digital_Platforms.html#hydip" class="mi-page__link">
-                    HyDip™ FMS <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel management software</span>
-                  <span class="mi-page__slug">/digital-platforms/hydip/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#hydip</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="07_Digital_Platforms.html#fuelcharge" class="mi-page__link">
-                    Fuelcharge <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel card Australia</span>
-                  <span class="mi-page__slug">/digital-platforms/fuelcharge/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#fuelcharge</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="07_Digital_Platforms.html#customer-portal" class="mi-page__link">
-                    Customer Portal <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fleet fuel management</span>
-                  <span class="mi-page__slug">/digital-platforms/customer-portal/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#customer-portal</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="07_Digital_Platforms.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-          <!-- ── MODULE 08: INDUSTRIES ──────────────────────────── -->
-          <article class="mi-card" aria-label="Module 08: Industries We Serve">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 08</div>
-                <div class="mi-card__module-name">Industries We Serve</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">08_Industries_Hub.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="08_Industries_Hub.html#industries" class="mi-page__link mi-page__link--hub">
-                    Industries Hub <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">industrial fuel solutions</span>
-                  <span class="mi-page__slug">/industries/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#industries</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="08a_Transport_Logistics.html" class="mi-page__link">
-                    Transport &amp; Logistics <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">transport fuel solutions</span>
-                  <span class="mi-page__slug">/industries/transport-logistics/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#transport-logistics</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="08b_Oil_Gas.html" class="mi-page__link">
-                    Oil &amp; Gas <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">oil and gas fuel solutions</span>
-                  <span class="mi-page__slug">/industries/oil-gas/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#oil-gas</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="08c_Agriculture.html" class="mi-page__link">
-                    Agriculture &amp; Harvest <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">agricultural fuel delivery</span>
-                  <span class="mi-page__slug">/industries/agriculture-harvest/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#agriculture</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="08d_Mining.html" class="mi-page__link">
-                    Mining &amp; Resources <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">mining fuel supply</span>
-                  <span class="mi-page__slug">/industries/mining-resources/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#mining</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="08e_Livestock.html" class="mi-page__link">
-                    Livestock <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">livestock fuel</span>
-                  <span class="mi-page__slug">/industries/livestock/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#livestock</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="08f_Aviation_Industry.html" class="mi-page__link">
-                    Commercial &amp; General Aviation <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">aviation fuel supply</span>
-                  <span class="mi-page__slug">/industries/commercial-general-aviation/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#commercial-aviation</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="08g_Construction.html" class="mi-page__link">
-                    Construction &amp; Civil <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">construction fuel supply</span>
-                  <span class="mi-page__slug">/industries/construction-civil/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#construction</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="08h_Government_Defence.html" class="mi-page__link">
-                    Government &amp; Defence <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">government fuel supply</span>
-                  <span class="mi-page__slug">/industries/government-defence/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#government-defence</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="08_Industries_Hub.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-          <!-- ── MODULE 09: ABOUT IOR ───────────────────────────── -->
-          <article class="mi-card" aria-label="Module 09: About IOR">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 09</div>
-                <div class="mi-card__module-name">About IOR</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">09_About_IOR.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="09_About_IOR.html" class="mi-page__link mi-page__link--hub">
-                    About IOR Hub <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">Australian commercial fuel company</span>
-                  <span class="mi-page__slug">/about/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#about</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="09a_Our_Leadership.html" class="mi-page__link">
-                    Our Leadership <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel company leadership</span>
-                  <span class="mi-page__slug">/about/leadership/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#leadership</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="09b_Community.html" class="mi-page__link">
-                    Community &amp; Giving Back <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">corporate social responsibility Australia</span>
-                  <span class="mi-page__slug">/about/community/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#community</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="09c_Sustainability.html" class="mi-page__link">
-                    Sustainability, HSE &amp; ESG <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel company sustainability</span>
-                  <span class="mi-page__slug">/about/sustainability-hse-esg/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#sustainability</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="09d_Case_Studies.html" class="mi-page__link">
-                    Case Studies (List Page) <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">commercial fuel case studies</span>
-                  <span class="mi-page__slug">/case-studies/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#case-studies</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="09d_Case_Studies.html" class="mi-page__link">
-                    Case Study Detail (Template) <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">commercial fuel case studies</span>
-                  <span class="mi-page__slug">/case-studies/[slug]/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#case-study-detail</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="09_About_IOR.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-          <!-- ── MODULE 10: CAREERS ─────────────────────────────── -->
-          <article class="mi-card" aria-label="Module 10: Careers">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 10</div>
-                <div class="mi-card__module-name">Careers</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">10_Careers.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="10_Careers.html#careers" class="mi-page__link mi-page__link--hub">
-                    Careers Hub <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel industry jobs Australia</span>
-                  <span class="mi-page__slug">/careers/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#careers</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="10a_Entry_Pathways.html" class="mi-page__link">
-                    Entry Pathways <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel industry career pathways</span>
-                  <span class="mi-page__slug">/careers/entry-pathways/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#entry-pathways</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="10b_Apprentices.html" class="mi-page__link">
-                    Apprentices <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel industry apprenticeships</span>
-                  <span class="mi-page__slug">/careers/entry-pathways/apprentices/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#apprentices</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="10c_Graduates.html" class="mi-page__link">
-                    Graduates <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel industry graduate program</span>
-                  <span class="mi-page__slug">/careers/entry-pathways/graduates/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#graduates</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="10d_School_Based.html" class="mi-page__link">
-                    School Based <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">school-based traineeships</span>
-                  <span class="mi-page__slug">/careers/entry-pathways/school-based/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#school-based</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="10e_Working_Regionally.html" class="mi-page__link">
-                    Trainees <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel industry traineeships</span>
-                  <span class="mi-page__slug">/careers/entry-pathways/trainees/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#trainees</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="10_Careers.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-          <!-- ── MODULE 11: NEWS & UPDATES ──────────────────────── -->
-          <article class="mi-card" aria-label="Module 11: News and Updates">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 11</div>
-                <div class="mi-card__module-name">News &amp; Updates</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">11c_News_Updates.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="11c_News_Updates.html" class="mi-page__link mi-page__link--hub">
-                    News &amp; Updates (List Page) <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel industry news Australia</span>
-                  <span class="mi-page__slug">/news-updates/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#news-updates</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="11c_News_Updates.html" class="mi-page__link">
-                    News Article (Detail Template) <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">fuel industry news Australia</span>
-                  <span class="mi-page__slug">/news-updates/[slug]/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#article-detail</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="11c_News_Updates.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-          <!-- ── MODULE 12: SUPPORT & UTILITY ──────────────────── -->
-          <article class="mi-card" aria-label="Module 12: Support and Utility">
-            <div class="mi-card__header">
-              <div>
-                <div class="mi-card__number">MODULE 12</div>
-                <div class="mi-card__module-name">Support &amp; Contact</div>
-              </div>
-              <span class="mi-badge mi-badge--complete" aria-label="Status: Complete">Complete</span>
-            </div>
-            <div class="mi-card__body">
-              <div class="mi-card__file-label">11_Support_Hub.html</div>
-
-              <div class="mi-page mi-page--hub">
-                <div class="mi-page__left">
-                  <a href="11_Support_Hub.html" class="mi-page__link mi-page__link--hub">
-                    Support &amp; Contact Hub <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">IOR support</span>
-                  <span class="mi-page__slug">/support-contact/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#support-contact</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="11a_Contact_Us.html" class="mi-page__link">
-                    Contact Us <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">contact IOR</span>
-                  <span class="mi-page__slug">/support-contact/contact-us/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#contact-us</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="11b_Regional_Contacts.html" class="mi-page__link">
-                    Regional Contacts <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">IOR regional contacts</span>
-                  <span class="mi-page__slug">/support-contact/regional-depots/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#regional-contacts</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="11d_Find_Location.html" class="mi-page__link">
-                    Find a Location <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">find a diesel stop</span>
-                  <span class="mi-page__slug">/find-a-location/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#find-a-location</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="11e_Make_Payment.html" class="mi-page__link">
-                    Make a Payment <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">IOR make a payment</span>
-                  <span class="mi-page__slug">/make-a-payment/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#make-a-payment</span>
-                </div>
-              </div>
-
-              <div class="mi-page mi-page--child">
-                <div class="mi-page__left">
-                  <a href="11f_Policy_Downloads.html" class="mi-page__link">
-                    Policy &amp; Form Downloads <span class="mi-page__link-arrow" aria-hidden="true"></span>
-                  </a>
-                  <span class="mi-page__keyword">IOR policy forms</span>
-                  <span class="mi-page__slug">/policy-forms-downloads/</span>
-                </div>
-                <div class="mi-page__right">
-                  <span class="mi-page__anchor">#policy-downloads</span>
-                </div>
-              </div>
-
-            </div>
-            <div class="mi-card__footer">
-              <a href="11_Support_Hub.html" class="mi-card__open-link">
-                Open module <span class="mi-card__open-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </article>
-
-        </div><!-- /.mi-grid -->
-      </div>
-
-    </div><!-- /.mi-body -->
-
-  </main>
-
-  <!-- ============================================================
-       SUMMARY STRIP
-  ============================================================ -->
-  <div class="mi-summary" aria-label="Wireframe set summary">
-    <div class="mi-summary__stat">
-      <div class="mi-summary__number">12</div>
-      <div class="mi-summary__label">Module Files</div>
-    </div>
-    <div class="mi-summary__divider" aria-hidden="true"></div>
-    <div class="mi-summary__stat">
-      <div class="mi-summary__number">33</div>
-      <div class="mi-summary__label">Pages &amp; Templates</div>
-    </div>
-    <div class="mi-summary__divider" aria-hidden="true"></div>
-    <div class="mi-summary__stat">
-      <div class="mi-summary__number">4</div>
-      <div class="mi-summary__label">User Personas</div>
-    </div>
-    <div class="mi-summary__divider" aria-hidden="true"></div>
-    <div class="mi-summary__stat">
-      <div class="mi-summary__number">5</div>
-      <div class="mi-summary__label">Design Rules</div>
-    </div>
-    <div class="mi-summary__divider" aria-hidden="true"></div>
-    <div class="mi-summary__stat">
-      <div class="mi-summary__number">0</div>
-      <div class="mi-summary__label">Rounded Corners</div>
+    <div class="intro-stats">
+      <div class="istat"><strong>33</strong><span>Total Pages</span></div>
+      <div class="istat"><strong>12</strong><span>Modules</span></div>
+      <div class="istat"><strong>v3.5</strong><span>All Files</span></div>
     </div>
   </div>
 
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
-  <footer class="mi-footer" aria-label="Wireframe set footer">
-    <div class="mi-footer__text">
-      <strong>IOR Website V2 — Wireframe Set</strong> &nbsp;·&nbsp;
-      Produced by 3PM &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp;
-      For internal review only — not for client-facing distribution without approval
+  <!-- LEGEND -->
+  <div class="legend">
+    <span class="legend-lbl">Legend:</span>
+    <div class="legend-item"><span class="badge b-hub">HUB</span> Section hub page</div>
+    <div class="legend-item"><span class="badge b-done">DONE</span> Complete wireframe</div>
+    <div class="legend-item"><span class="badge b-tbc">TBC</span> Placeholder copy</div>
+    <div class="legend-item"><span class="badge b-design">DESIGN</span> Design reference</div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 01 — HOMEPAGE & GLOBAL                             -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-blue">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#0355A3;">H</div>
+      <h2>Homepage &amp; Global Components</h2>
+      <span class="sec-count">2 pages</span>
     </div>
-    <div class="mi-footer__text">
-      Design System v1.0 &nbsp;·&nbsp; All 12 modules use shared CSS from IOR_Design_System.html &nbsp;·&nbsp;
-      border-radius: 0 enforced site-wide
+    <div class="pg-grid">
+
+      <a href="01_Homepage.html" class="pg-card is-hub s-blue">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">Homepage</div>
+          <div class="c-meta">01_Homepage.html &middot; Hero, stat bar, solutions, industries</div>
+        </div>
+        <span class="badge b-hub">HUB</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="IOR_Design_System.html" class="pg-card is-ds s-blue">
+        <span class="c-icon">&#9670;</span>
+        <div class="c-body">
+          <div class="c-title">IOR Design System</div>
+          <div class="c-meta">IOR_Design_System.html &middot; Tokens, typography, components</div>
+        </div>
+        <span class="badge b-design">DESIGN</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
     </div>
-  </footer>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 02 — FUEL SOLUTIONS HUB                            -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-blue">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#0355A3;">F</div>
+      <h2>Fuel Solutions Hub</h2>
+      <span class="sec-count">1 page</span>
+    </div>
+    <div class="pg-grid">
+
+      <a href="02_Fuel_Solutions_Hub.html" class="pg-card is-hub s-blue">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">Fuel Solutions Hub</div>
+          <div class="c-meta">02_Fuel_Solutions_Hub.html &middot; Ground Fuels + Aviation 50/50, HyDip + Fuelcharge</div>
+        </div>
+        <span class="badge b-hub">HUB</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 03 — GROUND FUELS                                  -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-green">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#1A6B3C;">G</div>
+      <h2>Ground Fuels</h2>
+      <span class="sec-count">6 pages</span>
+    </div>
+    <div class="pg-grid">
+
+      <a href="03_Ground_Fuels.html#ground-fuels" class="pg-card is-hub s-green">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">Ground Fuels Hub</div>
+          <div class="c-meta">03_Ground_Fuels.html &middot; FMT accordion, Fuelcharge cross-sell, logo grid</div>
+        </div>
+        <span class="badge b-hub">HUB</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="03_Ground_Fuels.html#diesel-network" class="pg-card s-green">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">IOR Diesel Network</div>
+          <div class="c-meta">Network map, stop finder, coverage stats</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="03_Ground_Fuels.html#onsite-refuelling" class="pg-card s-green">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">On-Site Refuelling</div>
+          <div class="c-meta">Mobile refuelling, wet hosing, service specs</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="03_Ground_Fuels.html#bulk-diesel" class="pg-card s-green">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Bulk Diesel Delivery</div>
+          <div class="c-meta">Bulk tanker delivery, minimum orders, scheduling</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="03_Ground_Fuels.html#hyblue" class="pg-card s-green">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">HyBlue&#x2122; (AdBlue&reg;)</div>
+          <div class="c-meta">DEF/AdBlue supply, bulk and drum options</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="03_Ground_Fuels.html#oils-lubricants" class="pg-card s-green">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Oils &amp; Lubricants</div>
+          <div class="c-meta">Engine oils, hydraulic fluids, greases, drum supply</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 04 — AVIATION                                      -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-gold">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#D98300;">A</div>
+      <h2>Aviation</h2>
+      <span class="sec-count">5 pages</span>
+    </div>
+    <div class="pg-grid">
+
+      <a href="04_Aviation.html#aviation" class="pg-card is-hub s-gold">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">Aviation Hub</div>
+          <div class="c-meta">04_Aviation.html &middot; Gold identity, dark charcoal hero, 2&times;2 routing grid</div>
+        </div>
+        <span class="badge b-hub">HUB</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="04_Aviation.html#aviation-network" class="pg-card s-gold">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">IOR Aviation Network</div>
+          <div class="c-meta">Airstrip coverage, airport map, network stats</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="04_Aviation.html#airport-fuelling" class="pg-card s-gold">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Airport Fuelling Services</div>
+          <div class="c-meta">Avgas, Jet A-1, into-plane, bowser services</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="04_Aviation.html#aviation-bulk" class="pg-card s-gold">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Aviation Bulk Delivery</div>
+          <div class="c-meta">Remote airstrip bulk Jet A-1 delivery</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="04_Aviation.html#aviation-oils" class="pg-card s-gold">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Aviation Oils &amp; Lubricants</div>
+          <div class="c-meta">Piston engine oils, turbine oils, aviation greases</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 05 — EQUIPMENT & INFRASTRUCTURE                    -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-slate">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#2D4A6B;">E</div>
+      <h2>Equipment &amp; Infrastructure</h2>
+      <span class="sec-count">3 pages</span>
+    </div>
+    <div class="pg-grid">
+
+      <a href="05_Equipment_Infrastructure.html#equipment-infrastructure" class="pg-card is-hub s-slate">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">Equipment &amp; Infrastructure Hub</div>
+          <div class="c-meta">05_Equipment_Infrastructure.html &middot; Storage tanks, frac tanks, dispensing equipment</div>
+        </div>
+        <span class="badge b-hub">HUB</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="05_Equipment_Infrastructure.html#fuel-storage-tanks" class="pg-card s-slate">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Fuel Storage Tanks</div>
+          <div class="c-meta">Above-ground tanks, bunded tanks, sizing &amp; install</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="05_Equipment_Infrastructure.html#frac-tanks" class="pg-card s-slate">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Frac Tanks</div>
+          <div class="c-meta">Portable frac tanks for remote &amp; temporary sites</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 06 — SUPPLY & TRADING                              -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-rust">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#8B3A1A;">S</div>
+      <h2>Supply &amp; Trading</h2>
+      <span class="sec-count">4 pages</span>
+    </div>
+    <div class="pg-grid">
+
+      <a href="06_Supply_Trading.html#supply-trading" class="pg-card is-hub s-rust">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">Supply &amp; Trading Hub</div>
+          <div class="c-meta">06_Supply_Trading.html &middot; Terminals, refinery, condensates — upstream infrastructure</div>
+        </div>
+        <span class="badge b-hub">HUB</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="06_Supply_Trading.html#terminals" class="pg-card s-rust">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Lytton &amp; Port Bonython Terminals</div>
+          <div class="c-meta">IOR-owned terminal infrastructure, storage capacity</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="06_Supply_Trading.html#eromanga-refinery" class="pg-card s-rust">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Eromanga Refinery</div>
+          <div class="c-meta">Australia's only inland refinery, Stonepeak-backed</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="06_Supply_Trading.html#condensates" class="pg-card s-rust">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Condensates</div>
+          <div class="c-meta">Condensate trading — upstream supply chain</div>
+        </div>
+        <span class="badge b-tbc">TBC</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 07 — DIGITAL PLATFORMS                             -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-purple">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#5B2D8E;">D</div>
+      <h2>Digital Platforms</h2>
+      <span class="sec-count">4 pages</span>
+    </div>
+    <div class="pg-grid">
+
+      <a href="07_Digital_Platforms.html#digital-platforms" class="pg-card is-hub s-purple">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">Digital Platforms Hub</div>
+          <div class="c-meta">07_Digital_Platforms.html &middot; HyDip&#x2122; FMS, Fuelcharge, Customer Portal</div>
+        </div>
+        <span class="badge b-hub">HUB</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="07_Digital_Platforms.html#hydip" class="pg-card s-purple">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">HyDip&#x2122; Fuel Management System</div>
+          <div class="c-meta">Real-time tank monitoring, Request a Demo CTA</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="07_Digital_Platforms.html#fuelcharge" class="pg-card s-purple">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Fuelcharge</div>
+          <div class="c-meta">B2C pay-at-pump app, app store CTAs, 1-2-3 steps</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="07_Digital_Platforms.html#customer-portal" class="pg-card s-purple">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Customer Portal</div>
+          <div class="c-meta">Quadrant layout, 3-path conversion, portal screenshots</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 08 — INDUSTRIES WE SERVE                           -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-ind">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#0A7B5A;">I</div>
+      <h2>Industries We Serve</h2>
+      <span class="sec-count">9 pages</span>
+    </div>
+    <div class="pg-grid">
+
+      <a href="08_Industries_Hub.html#industries" class="pg-card is-hub s-ind">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">Industries Hub</div>
+          <div class="c-meta">08_Industries_Hub.html &middot; 8 industry cards, capability section, trust flow</div>
+        </div>
+        <span class="badge b-hub">HUB</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="08a_Transport_Logistics.html" class="pg-card s-ind">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Transport &amp; Logistics</div>
+          <div class="c-meta">Diesel network, on-site, HyDip&#x2122; FMS, case study</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="08b_Oil_Gas.html" class="pg-card s-ind">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Oil &amp; Gas</div>
+          <div class="c-meta">Remote supply, on-site infrastructure, fluid logistics</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="08c_Agriculture.html" class="pg-card s-ind">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Agriculture &amp; Harvest</div>
+          <div class="c-meta">Bulk delivery, seasonal supply, on-site storage</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="08d_Mining.html" class="pg-card s-ind">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Mining &amp; Resources</div>
+          <div class="c-meta">Remote-ready, high-volume, compliance, HyDip&#x2122; FMS</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="08e_Livestock.html" class="pg-card s-ind">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Livestock &amp; Rural Operations</div>
+          <div class="c-meta">Remote delivery, station storage, aviation fuels</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="08f_Aviation_Industry.html" class="pg-card s-ind">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Commercial &amp; General Aviation</div>
+          <div class="c-meta">JIG-compliant Jet A-1, Avgas, Fuelcharge self-serve</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="08g_Construction.html" class="pg-card s-ind">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Construction &amp; Civil</div>
+          <div class="c-meta">Project-based supply, temporary storage, mobile delivery</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="08h_Government_Defence.html" class="pg-card s-ind">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Government &amp; Defence</div>
+          <div class="c-meta">Sovereign supply, full audit trail, ISO-aligned</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 09 — ABOUT IOR                                     -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-about">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#1E40AF;">Ab</div>
+      <h2>About IOR</h2>
+      <span class="sec-count">5 pages</span>
+    </div>
+    <div class="pg-grid">
+
+      <a href="09_About_IOR.html" class="pg-card is-hub s-about">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">About IOR Hub</div>
+          <div class="c-meta">09_About_IOR.html &middot; Our story, leadership, community, sustainability, case studies</div>
+        </div>
+        <span class="badge b-hub">HUB</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="09a_Our_Leadership.html" class="pg-card s-about">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Our Leadership</div>
+          <div class="c-meta">Executive team profiles — Chris Werfel, Drew &amp; Bryce Morland, Dan Roberts</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="09b_Community.html" class="pg-card s-about">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Community &amp; Giving Back</div>
+          <div class="c-meta">LifeFlight, AgForce, Red Dust, Outback communities</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="09c_Sustainability.html" class="pg-card s-about">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Sustainability, HSE &amp; ESG</div>
+          <div class="c-meta">Safety, Environment, Governance — categorised accordions</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="09d_Case_Studies.html" class="pg-card s-about">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Case Studies</div>
+          <div class="c-meta">Listing page — MPC Kinetic, Tin Can Bay Marina, Flight Training Adelaide</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 10 — CAREERS                                       -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-careers">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#065F46;">C</div>
+      <h2>Careers — Go Far with IOR</h2>
+      <span class="sec-count">6 pages</span>
+    </div>
+    <div class="pg-grid">
+
+      <a href="10_Careers.html#careers" class="pg-card is-hub s-careers">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">Careers Hub</div>
+          <div class="c-meta">10_Careers.html &middot; EVP hub — Why IOR, perks, values, testimonials, pathway directory</div>
+        </div>
+        <span class="badge b-hub">HUB</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="10a_Entry_Pathways.html" class="pg-card s-careers">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Entry Pathways</div>
+          <div class="c-meta">Tabbed directory — Apprentices, Graduates, School-Based, Regional</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="10b_Apprentices.html" class="pg-card s-careers">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Apprentices &amp; Trades</div>
+          <div class="c-meta">Step-by-step apprenticeship journey — Easy as 1, 2, 3</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="10c_Graduates.html" class="pg-card s-careers">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Graduates &amp; Interns</div>
+          <div class="c-meta">3 streams: Technology, Shared Services, Operations</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="10d_School_Based.html" class="pg-card s-careers">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">School-Based &amp; Trainees</div>
+          <div class="c-meta">Info cards + FAQ accordion — requirements, benefits</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="10e_Working_Regionally.html" class="pg-card s-careers">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Working Regionally</div>
+          <div class="c-meta">Eromanga origin story, community investment, regional life</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 11 — NEWS & UPDATES                                -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-news">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#0A4066;">N</div>
+      <h2>News &amp; Updates</h2>
+      <span class="sec-count">2 pages</span>
+    </div>
+    <div class="pg-grid">
+
+      <a href="11c_News_Updates.html" class="pg-card is-hub s-news">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">News &amp; Updates — List Page</div>
+          <div class="c-meta">11c_News_Updates.html &middot; Category filter, sidebar, newsletter</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="11c_News_Updates.html#article-detail" class="pg-card s-news">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">News Article — Detail Template</div>
+          <div class="c-meta">Article detail template — related articles, share, breadcrumb</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODULE 12 — SUPPORT & CONTACT                             -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="sec-block" data-sec="s-teal">
+    <div class="sec-hdr">
+      <div class="sec-icon" style="background:#0A6B5A;">Su</div>
+      <h2>Support &amp; Contact</h2>
+      <span class="sec-count">6 pages</span>
+    </div>
+    <div class="pg-grid">
+
+      <a href="11_Support_Hub.html" class="pg-card is-hub s-teal">
+        <span class="c-icon">&#9632;</span>
+        <div class="c-body">
+          <div class="c-title">Support &amp; Contact Hub</div>
+          <div class="c-meta">11_Support_Hub.html &middot; Directory card grid — all support entry points</div>
+        </div>
+        <span class="badge b-hub">HUB</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="11a_Contact_Us.html" class="pg-card s-teal">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Contact Us</div>
+          <div class="c-meta">50/50 split layout, enquiry form, state selector</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="11b_Regional_Contacts.html" class="pg-card s-teal">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Regional Contacts</div>
+          <div class="c-meta">State-tabbed contact directory</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="11d_Find_Location.html" class="pg-card s-teal">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Find a Location</div>
+          <div class="c-meta">StorePoint map embed, diesel stops &amp; airports</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="11e_Make_Payment.html" class="pg-card s-teal">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Make a Payment</div>
+          <div class="c-meta">EFT &amp; BPAY details, payment instructions</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+      <a href="11f_Policy_Downloads.html" class="pg-card s-teal">
+        <span class="c-icon">&#9675;</span>
+        <div class="c-body">
+          <div class="c-title">Policy &amp; Form Downloads</div>
+          <div class="c-meta">Categorised accordions — SDS, forms, policies</div>
+        </div>
+        <span class="badge b-done">DONE</span>
+        <span class="c-arrow">&rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer class="idx-footer">
+  <p><strong>&copy; 2026 IOR</strong> &mdash; Website Prototype V3.5 &mdash; April 2026 &nbsp;|&nbsp; Confidential &mdash; For client &amp; designer review only</p>
+</footer>
+
+<!-- ── TAB FILTER SCRIPT ────────────────────────────────────────── -->
+<script>
+  function showAll(btn) {
+    document.querySelectorAll('.sec-block').forEach(function(b) { b.style.display = ''; });
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+  }
+  function filterSec(btn, cls) {
+    document.querySelectorAll('.sec-block').forEach(function(b) {
+      b.style.display = (b.getAttribute('data-sec') === cls) ? '' : 'none';
+    });
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+  }
+</script>
 
 </body>
 </html>
