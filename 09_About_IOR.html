@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IOR | Australian Commercial Fuel Company &amp; Sovereign Infrastructure</title>
+  <meta name="description" content="IOR is a leading Australian commercial fuel company and sovereign infrastructure company delivering reliable fuel solutions as a Tier-1 fuel partner nationwide." />
+  <style>
+    /* ============================================================
+       IOR DESIGN SYSTEM TOKENS — M5 About IOR Hub
+    ============================================================ */
+    :root {
+      --ior-blue:          #0355A3;
+      --ior-navy:          #0A4066;
+      --ior-white:         #FFFFFF;
+      --ior-near-black:    #231F20;
+      --ior-charcoal:      #383838;
+      --ior-mid-grey:      #94A9BA;
+      --ior-light-blue-bg: #E0F1FF;
+      --ior-sky:           #7FBEE6;
+      --ior-teal:          #00D1CC;
+      --aviation-gold:     #D98300;
+      --font-primary:      'Avenir Next LT Pro','Avenir Next','Avenir','Nunito Sans',sans-serif;
+      --text-display-xl:   clamp(44px,6vw,80px);
+      --text-display-m:    clamp(26px,3.5vw,50px);
+      --text-display-s:    clamp(20px,2.5vw,40px);
+      --text-heading-l:    clamp(18px,2vw,26px);
+      --text-heading-m:    clamp(15px,1.8vw,22px);
+      --text-heading-s:    18px;
+      --text-body-l:       clamp(16px,1.4vw,20px);
+      --text-body-m:       16px;
+      --text-body-s:       14px;
+      --text-eyebrow:      18px;
+      --text-caption:      12px;
+      --lh-display:        1.05;
+      --lh-heading:        1.2;
+      --lh-body:           1.6;
+      --ls-eyebrow:        0.09em;
+      --fw-bold:           800;
+      --fw-semibold:       700;
+      --fw-regular:        400;
+      --space-2:  8px;  --space-3: 12px; --space-4: 16px; --space-5: 20px;
+      --space-6: 24px;  --space-7: 28px; --space-8: 32px; --space-10: 40px;
+      --space-12: 48px; --space-15: 60px; --space-16: 64px; --space-20: 80px;
+      --space-25: 100px;
+      --section-pad-y:  clamp(50px,7vw,100px);
+      --section-pad-x:  clamp(20px,8vw,125px);
+      --content-max:    1300px;
+      --container-max:  1550px;
+      --grid-gap:       30px;
+      --border-color-light: rgba(3,85,163,0.18);
+      --transition-base: 250ms ease;
+      --transition-fast: 150ms ease;
+      --z-nav: 100; --z-drawer: 500; --z-overlay: 400;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--font-primary); color: var(--ior-charcoal); background: #fff; line-height: var(--lh-body); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* -- Layout */
+    .container { width: 100%; max-width: var(--container-max); margin-inline: auto; }
+    .inner     { width: 100%; max-width: var(--content-max);   margin-inline: auto; }
+    .section-pad { padding-block: var(--section-pad-y); padding-inline: var(--section-pad-x); }
+
+    /* -- Typography */
+    .eyebrow { font-size: var(--text-eyebrow); font-weight: var(--fw-semibold); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--ior-mid-grey); }
+    .eyebrow--white { color: rgba(255,255,255,.7); }
+
+    /* -- Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-primary); font-size: var(--text-body-m);
+      font-weight: var(--fw-bold); padding: 18px 28px;
+      border-radius: 0;
+      cursor: pointer; text-align: center; transition: all var(--transition-base);
+      text-decoration: none; white-space: nowrap; border: 2px solid transparent;
+    }
+    .btn--pill { border-radius: 500px; }
+    .btn__arrow { display: inline-block; width: 9px; height: 9px; flex-shrink: 0; border-right: 2px solid currentColor; border-top: 2px solid currentColor; transform: rotate(45deg); }
+    .btn--primary   { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
+    .btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
+    .btn--white     { background: #fff; color: var(--ior-blue); border-color: #fff; }
+    .btn--white:hover { background: var(--ior-sky); border-color: var(--ior-sky); }
+    .btn--outline   { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+    .btn--outline:hover { background: var(--ior-blue); color: #fff; }
+    .btn--outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+    .btn--outline-white:hover { background: rgba(255,255,255,.12); }
+    .btn--ghost     { background: none; border: none; color: var(--ior-blue); padding: 0; font-weight: var(--fw-bold); display: inline-flex; align-items: center; gap: 8px; }
+    .btn--ghost:hover { color: var(--ior-navy); }
+    .btn--lg        { padding: 22px 40px; font-size: 18px; }
+
+    /* -- Wireframe nav bar */
+    .wf-nav {
+      position: sticky; top: 0; z-index: 9999; background: #1A1A2E;
+      border-bottom: 2px solid #E94560; padding: 6px 16px;
+      display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+      font-family: 'Courier New', monospace; font-size: 11px; color: #A8B2D8;
+      user-select: none;
+    }
+    .wf-nav__links { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+    .wf-nav__link { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); color: #CCD6F6; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: .04em; transition: background 120ms, color 120ms; white-space: nowrap; }
+    .wf-nav__link:hover { background: #E94560; border-color: #E94560; color: #fff; }
+    .wf-nav__link--index::before { content: 'Home '; }
+    .wf-nav__div { width: 1px; height: 16px; background: rgba(255,255,255,.15); flex-shrink: 0; }
+    .wf-nav__mod { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
+    .wf-nav__badge { display: inline-block; padding: 2px 8px; background: #E94560; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
+    .wf-nav__name { font-size: 11px; font-weight: 700; color: #CCD6F6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .wf-nav__file { font-size: 10px; color: #6A7497; white-space: nowrap; }
+
+    /* -- Utility bar */
+    .utility-bar {
+      background: var(--ior-blue);
+      padding: 10px var(--section-pad-x);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; font-size: var(--text-body-m); color: #fff;
+    }
+    .utility-bar__actions { display: flex; align-items: center; gap: 20px; }
+    .utility-bar__link { display: inline-flex; align-items: center; gap: 6px; color: #fff; font-size: var(--text-body-m); text-decoration: none; transition: opacity var(--transition-fast); }
+    .utility-bar__link:hover { opacity: .8; }
+    .utility-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.4); }
+
+    /* -- Primary nav */
+    .primary-nav {
+      background: #fff; padding: 0 var(--section-pad-x);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; border-bottom: 1px solid rgba(3,85,163,.1);
+      position: sticky; top: 0; z-index: var(--z-nav);
+      transition: height var(--transition-base), box-shadow var(--transition-base);
+    }
+    .nav-logo { width: 90px; height: 42px; background: var(--ior-light-blue-bg); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--ior-mid-grey); letter-spacing: .04em; font-family: 'Courier New', monospace; flex-shrink: 0; }
+    .nav-links { display: none; align-items: center; gap: 24px; list-style: none; }
+    @media (min-width: 1200px) { .nav-links { display: flex; } }
+    .nav-link { font-size: var(--text-body-m); font-weight: var(--fw-bold); color: var(--ior-charcoal); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; padding-block: 8px; position: relative; transition: color var(--transition-fast); white-space: nowrap; }
+    .nav-link::after { content: ''; display: block; width: 7px; height: 7px; margin-top: -2px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); }
+    .nav-link:hover { color: var(--ior-blue); }
+    .nav-link--active::before { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: var(--ior-blue); }
+    .nav-ctas { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; width: 24px; cursor: pointer; }
+    .hamburger span { display: block; height: 2px; background: var(--ior-charcoal); width: 100%; transition: all var(--transition-base); }
+    .hamburger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger--open span:nth-child(2) { opacity: 0; }
+    .hamburger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    @media (min-width: 1200px) { .hamburger { display: none; } }
+
+    /* -- Drawer */
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: var(--z-overlay); opacity: 0; pointer-events: none; transition: opacity var(--transition-base); }
+    .drawer-overlay--open { opacity: 1; pointer-events: all; }
+    .drawer { position: fixed; top: 0; left: 0; bottom: 0; width: min(320px,90vw); background: #fff; z-index: var(--z-drawer); transform: translateX(-100%); transition: transform 350ms cubic-bezier(.4,0,.2,1); overflow-y: auto; display: flex; flex-direction: column; }
+    .drawer--open { transform: translateX(0); }
+    .drawer__head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--ior-navy); border-bottom: 2px solid var(--ior-blue); }
+    .drawer__close { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; cursor: pointer; background: none; border: none; font-family: inherit; }
+    .drawer__nav { padding: 8px 0; flex: 1; }
+    .drawer__link { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; font-size: var(--text-body-m); font-weight: var(--fw-bold); color: var(--ior-charcoal); border-bottom: 1px solid rgba(3,85,163,.08); cursor: pointer; transition: background var(--transition-fast); }
+    .drawer__link:hover { background: var(--ior-light-blue-bg); }
+    .drawer__link-chevron { width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform var(--transition-base); }
+    .drawer__link-chevron--open { transform: rotate(45deg); }
+    .drawer__sub { display: none; flex-direction: column; background: var(--ior-light-blue-bg); }
+    .drawer__sub--open { display: flex; }
+    .drawer__sub-link { padding: 10px 20px 10px 36px; font-size: var(--text-body-s); color: var(--ior-charcoal); border-bottom: 1px solid rgba(3,85,163,.06); text-decoration: none; transition: color var(--transition-fast); }
+    .drawer__sub-link:hover { color: var(--ior-blue); }
+    .drawer__ctas { padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; border-top: 2px solid var(--ior-blue); }
+
+    /* -- Hero */
+    .hero {
+      position: relative; min-height: clamp(440px,55vw,700px);
+      padding-block: clamp(60px,8vw,100px); padding-inline: var(--section-pad-x);
+      background-color: #0355A3;
+      display: flex; align-items: center; overflow: hidden;
+    }
+    .hero__content { position: relative; z-index: 2; display: flex; flex-direction: column; gap: clamp(24px,4vw,50px); max-width: 640px; }
+    .hero__headline { font-size: var(--text-display-xl); font-weight: var(--fw-bold); color: #fff; line-height: 1.05; }
+    .hero__sub { font-size: clamp(17px,2vw,24px); font-weight: var(--fw-bold); color: #fff; max-width: 560px; }
+
+    /* -- Timeline */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    @media (min-width: 900px) { .timeline { flex-direction: row; } }
+    .timeline__item {
+      flex: 1; padding: 28px 24px; border-left: 4px solid var(--ior-blue);
+      background: var(--ior-light-blue-bg); position: relative;
+    }
+    @media (min-width: 900px) {
+      .timeline__item { border-left: none; border-top: 4px solid var(--ior-blue); }
+      .timeline__item + .timeline__item { border-left: 1px solid rgba(3,85,163,.15); }
+    }
+    .timeline__year { font-size: clamp(20px,2.5vw,28px); font-weight: var(--fw-bold); color: var(--ior-blue); margin-bottom: 8px; }
+    .timeline__text { font-size: var(--text-body-m); color: var(--ior-charcoal); line-height: var(--lh-body); }
+
+    /* -- Stat bar */
+    .stat-bar { background: var(--ior-navy); padding: clamp(40px,6vw,80px) var(--section-pad-x); display: flex; flex-direction: column; gap: 32px; align-items: center; }
+    .stat-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; width: 100%; max-width: 1000px; }
+    @media (min-width: 768px) { .stat-grid { grid-template-columns: repeat(4,1fr); gap: 0; } }
+    .stat-item { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+    @media (min-width: 768px) { .stat-item { padding-inline: 20px; border-left: 1px solid rgba(255,255,255,.2); } .stat-item:first-child { border-left: none; } }
+    .stat-number { font-size: clamp(28px,4vw,44px); font-weight: var(--fw-bold); color: #fff; line-height: 1; }
+    .stat-label  { font-size: var(--text-heading-s); font-weight: var(--fw-bold); color: var(--ior-sky); }
+
+    /* -- Hub nav cards */
+    .hub-grid { display: grid; grid-template-columns: 1fr; gap: var(--grid-gap); }
+    @media (min-width: 600px)  { .hub-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1100px) { .hub-grid { grid-template-columns: repeat(4,1fr); } }
+    .hub-card {
+      display: flex; flex-direction: column; gap: 16px;
+      padding: 32px 28px; background: var(--ior-light-blue-bg);
+      border-top: 4px solid var(--ior-blue);
+      text-decoration: none; color: inherit;
+      transition: box-shadow var(--transition-base), transform var(--transition-base);
+    }
+    .hub-card:hover { box-shadow: 0 8px 32px rgba(3,85,163,.16); transform: translateY(-3px); }
+    .hub-card__icon { width: 56px; height: 56px; background: var(--ior-blue); display: flex; align-items: center; justify-content: center; }
+    .hub-card__icon-inner { width: 32px; height: 32px; background: rgba(255,255,255,.3); }
+    .hub-card__title { font-size: var(--text-heading-l); font-weight: var(--fw-bold); color: var(--ior-blue); }
+    .hub-card__body { font-size: var(--text-body-m); color: var(--ior-charcoal); line-height: var(--lh-body); }
+    .hub-card__cta { display: inline-flex; align-items: center; gap: 8px; font-size: var(--text-body-m); font-weight: var(--fw-bold); color: var(--ior-blue); margin-top: auto; }
+
+    /* -- Pre-footer CTA */
+    .pre-footer { background: var(--ior-blue); padding: clamp(40px,6vw,80px) var(--section-pad-x); }
+    .pre-footer__row { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+    @media (min-width: 768px) { .pre-footer__row { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .pre-footer__title { font-size: var(--text-display-s); font-weight: var(--fw-bold); color: #fff; }
+    .pre-footer__ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* -- Footer */
+    .site-footer { background: var(--ior-blue); padding: clamp(50px,7vw,100px) var(--section-pad-x) 0; }
+    .footer-nav-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 32px; }
+    @media (min-width: 768px)  { .footer-nav-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (min-width: 1200px) { .footer-nav-grid { grid-template-columns: repeat(6,1fr); gap: 24px; } }
+    .footer-col__title { font-size: var(--text-body-m); font-weight: var(--fw-bold); color: #fff; padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .footer-col__links { display: flex; flex-direction: column; gap: 14px; }
+    .footer-col__link { font-size: var(--text-body-s); color: rgba(255,255,255,.85); text-decoration: none; transition: color var(--transition-fast); }
+    .footer-col__link:hover { color: #fff; }
+    .footer-state-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+    .footer-state-pill { padding: 6px 12px; background: rgba(255,255,255,.15); font-size: var(--text-body-s); color: #fff; transition: background var(--transition-fast); text-decoration: none; }
+    .footer-state-pill:hover { background: rgba(255,255,255,.3); }
+    .footer-legal { margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.25); display: flex; flex-direction: column; gap: 12px; align-items: flex-start; padding-bottom: 32px; }
+    @media (min-width: 768px) { .footer-legal { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .footer-legal__text { font-size: var(--text-caption); color: rgba(255,255,255,.6); }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social__icon { width: 36px; height: 36px; background: rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; transition: background var(--transition-fast); font-size: 11px; color: #fff; font-family: 'Courier New', monospace; }
+    .footer-social__icon:hover { background: rgba(255,255,255,.3); }
+
+    /* -- Fade-up animation */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+    .fade-up--d1 { transition-delay: .10s; }
+    .fade-up--d2 { transition-delay: .20s; }
+    .fade-up--d3 { transition-delay: .30s; }
+    .fade-up--d4 { transition-delay: .40s; }
+  
+    /* Hero background override */
+    .hero{background-color:#0355A3;}
+  
+    /* Section background utility classes */
+    .content-narrow{max-width:900px;}
+    .sec-bg-light-blue{background:var(--ior-light-blue-bg);}
+    .sec-bg-white{background:#fff;}
+    .sec-pad-compact{padding:clamp(40px,5vw,80px) var(--section-pad-x);}
+  </style>
+</head>
+<body>
+
+<!-- WIREFRAME NAV BAR -->
+<div class="wf-nav" role="navigation" aria-label="Wireframe navigation">
+  <div class="wf-nav__links">
+    <a href="00_Master_Index.html" class="wf-nav__link wf-nav__link--index">Master Index</a>
+    <div class="wf-nav__div" aria-hidden="true"></div>
+    <a href="IOR_Design_System.html" class="wf-nav__link">Design System</a>
+  </div>
+  <div class="wf-nav__div" aria-hidden="true"></div>
+  <div class="wf-nav__mod">
+    <span class="wf-nav__badge">MODULE 05 — HUB</span>
+    <span class="wf-nav__name">About IOR Hub</span>
+    <span class="wf-nav__file">09_About_IOR.html</span>
+  </div>
+</div>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar" role="complementary" aria-label="Site utilities">
+  <span style="font-size:var(--text-body-m);color:#fff;">Announcement Message Placeholder</span>
+  <div class="utility-bar__actions">
+    <a href="12_Support_Utility.html#find-a-location" class="utility-bar__link">Find a Location</a>
+    <div class="utility-bar__divider" aria-hidden="true"></div>
+    <a href="12_Support_Utility.html#make-a-payment" class="utility-bar__link">Make a Payment</a>
+    <div class="utility-bar__divider" aria-hidden="true"></div>
+    <a href="tel:1300457467" class="utility-bar__link">1300 457 467</a>
+  </div>
+</div>
+
+<!-- PRIMARY NAV -->
+<nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+  <a href="01_Homepage_and_Global.html" class="nav-logo" aria-label="IOR home">[IOR LOGO]</a>
+  <ul class="nav-links" role="list" aria-label="Main menu">
+    <li><button class="nav-link" aria-haspopup="true" aria-expanded="false">Fuel Solutions</button></li>
+    <li><button class="nav-link" aria-haspopup="true" aria-expanded="false">Digital Platforms</button></li>
+    <li><button class="nav-link" aria-haspopup="true" aria-expanded="false">Industries We Serve</button></li>
+    <li><button class="nav-link nav-link--active" aria-haspopup="true" aria-expanded="false">About IOR</button></li>
+    <li><button class="nav-link" aria-haspopup="true" aria-expanded="false">Support &amp; Contact</button></li>
+  </ul>
+  <div class="nav-ctas">
+    <a href="#" class="btn btn--outline btn--pill" style="padding:10px 20px;font-size:14px;">Customer Login <span class="btn__arrow" aria-hidden="true"></span></a>
+    <a href="#" class="btn btn--primary btn--pill" style="padding:10px 20px;font-size:14px;">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+    <div class="hamburger" id="mob-hamburger" aria-label="Open menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <div class="drawer__head">
+    <span class="nav-logo" style="width:70px;height:33px;font-size:10px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);">[LOGO]</span>
+    <button class="drawer__close" id="drawerClose" aria-label="Close menu">&#x2715;</button>
+  </div>
+  <nav class="drawer__nav" aria-label="Mobile menu">
+    <div class="drawer__item">
+      <div class="drawer__link" role="button" tabindex="0">Fuel Solutions <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+      <div class="drawer__sub">
+        <a href="02_Fuel_Solutions_Hub.html" class="drawer__sub-link">Fuel Solutions Overview</a>
+        <a href="03_Ground_Fuels.html" class="drawer__sub-link">Ground Fuels</a>
+        <a href="04_Aviation.html" class="drawer__sub-link">Aviation</a>
+        <a href="05_Equipment_Infrastructure.html" class="drawer__sub-link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading.html" class="drawer__sub-link">Supply &amp; Trading</a>
+      </div>
+    </div>
+    <div class="drawer__item">
+      <div class="drawer__link" role="button" tabindex="0">Digital Platforms <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+      <div class="drawer__sub">
+        <a href="07_Digital_Platforms.html#hydip" class="drawer__sub-link">HyDip&#x2122; FMS</a>
+        <a href="07_Digital_Platforms.html#fuelcharge" class="drawer__sub-link">Fuelcharge App</a>
+        <a href="07_Digital_Platforms.html#customer-portal" class="drawer__sub-link">Customer Portal</a>
+      </div>
+    </div>
+    <div class="drawer__item">
+      <div class="drawer__link" role="button" tabindex="0">Industries We Serve <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+      <div class="drawer__sub">
+        <a href="08_Industries_Hub.html" class="drawer__sub-link">Industries Overview</a>
+        <a href="08a_Transport_Logistics.html" class="drawer__sub-link">Transport &amp; Logistics</a>
+        <a href="08b_Oil_Gas.html" class="drawer__sub-link">Oil &amp; Gas</a>
+        <a href="08c_Agriculture.html" class="drawer__sub-link">Agriculture &amp; Harvest</a>
+        <a href="08d_Mining.html" class="drawer__sub-link">Mining &amp; Resources</a>
+        <a href="08e_Livestock.html" class="drawer__sub-link">Livestock &amp; Rural</a>
+        <a href="08f_Aviation_Industry.html" class="drawer__sub-link">Commercial Aviation</a>
+        <a href="08g_Construction.html" class="drawer__sub-link">Construction &amp; Civil</a>
+        <a href="08h_Government_Defence.html" class="drawer__sub-link">Government &amp; Defence</a>
+      </div>
+    </div>
+    <div class="drawer__item">
+      <div class="drawer__link" role="button" tabindex="0">About IOR <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+      <div class="drawer__sub">
+        <a href="09_About_IOR.html" class="drawer__sub-link">About IOR</a>
+        <a href="09a_Our_Leadership.html" class="drawer__sub-link">Our Leadership</a>
+        <a href="09b_Community.html" class="drawer__sub-link">Community &amp; Giving Back</a>
+        <a href="09c_Sustainability.html" class="drawer__sub-link">Sustainability, HSE &amp; ESG</a>
+        <a href="09d_Case_Studies.html" class="drawer__sub-link">Case Studies</a>
+      </div>
+    </div>
+    <div class="drawer__item">
+      <div class="drawer__link" role="button" tabindex="0">Support &amp; Contact <span class="drawer__link-chevron" aria-hidden="true"></span></div>
+      <div class="drawer__sub">
+        <a href="12_Support_Utility.html#contact-us" class="drawer__sub-link">Contact Us</a>
+        <a href="12_Support_Utility.html#find-a-location" class="drawer__sub-link">Find a Location</a>
+        <a href="12_Support_Utility.html#make-a-payment" class="drawer__sub-link">Make a Payment</a>
+        <a href="12_Support_Utility.html#support-contact" class="drawer__sub-link">Help Centre &amp; FAQs</a>
+      </div>
+    </div>
+  </nav>
+  <div class="drawer__ctas">
+    <a href="#" class="btn btn--outline" style="justify-content:center;">Customer Login</a>
+    <a href="#" class="btn btn--primary" style="justify-content:center;">Apply for an Account</a>
+  </div>
+</div>
+
+<main id="about-hub-content" aria-label="About IOR Hub">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="About IOR hero">
+    <div class="hero__content">
+      <h1 class="hero__headline fade-up">Built on Australian soil.<br>Fuelling Australian industry.</h1>
+      <p class="hero__sub fade-up fade-up--d1">For over 40 years, IOR has delivered sovereign fuel infrastructure solutions to our nation's most demanding industries.</p>
+    </div>
+  </section>
+
+  <!-- LEGACY TIMELINE STRIP -->
+  <section aria-label="IOR legacy timeline" class="sec-bg-white sec-pad-compact">
+    <div class="inner">
+      <p class="eyebrow fade-up" style="margin-bottom:24px;">Our History</p>
+      <div class="timeline fade-up fade-up--d1">
+        <div class="timeline__item">
+          <div class="timeline__year">1984</div>
+          <div class="timeline__text">Founded in Queensland, establishing IOR as a regional fuel supply company serving Australia's rural and remote industries.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__year">1990s</div>
+          <div class="timeline__text">Expanded network across regional Australia, building the infrastructure backbone that underpins IOR's national reach today.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__year">2000s</div>
+          <div class="timeline__text">Acquired the Eromanga Refinery, securing sovereign supply chain capability for long-term enterprise contracts.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__year">2010s</div>
+          <div class="timeline__text">Launched digital platforms including HyDip&#x2122; FMS, transforming fuel management with real-time monitoring and automated reorder technology.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__year">2020s</div>
+          <div class="timeline__text">Stonepeak infrastructure partnership secured. Network reaches 115+ sites nationwide, cementing IOR's position as a Tier-1 fuel partner.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT INTRO SECTION -->
+  <section class="section-pad" aria-label="About IOR" class="sec-bg-light-blue">
+    <div class="inner">
+      <div class="fade-up" class="content-narrow">
+        <p class="eyebrow" style="margin-bottom:16px;">About IOR</p>
+        <h2 style="font-size:var(--text-display-m);font-weight:var(--fw-bold);color:var(--ior-blue);line-height:var(--lh-display);margin-bottom:24px;">A Tier-1 Fuel Partner for Regional, Rural and Remote Australia</h2>
+        <p style="font-size:var(--text-body-l);color:var(--ior-charcoal);line-height:var(--lh-body);">Since our founding in 1984 in Queensland, IOR has evolved into a Tier-1 fuel partner for regional, rural, and remote Australia. From the Eromanga Refinery to our extensive network of over 115 sites nationwide, our team is committed to powering the industries fundamental to our economy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAT BAR -->
+  <section class="stat-bar" aria-label="IOR at a glance">
+    <div class="stat-grid">
+      <div class="stat-item fade-up">
+        <div class="stat-number" data-count="1984">1984</div>
+        <div class="stat-label">Year Founded</div>
+      </div>
+      <div class="stat-item fade-up fade-up--d1">
+        <div class="stat-number">115+</div>
+        <div class="stat-label">Network Sites</div>
+      </div>
+      <div class="stat-item fade-up fade-up--d2">
+        <div class="stat-number" data-count="500">500+</div>
+        <div class="stat-label">Team Members</div>
+      </div>
+      <div class="stat-item fade-up fade-up--d3">
+        <div class="stat-number" data-count="40">40+</div>
+        <div class="stat-label">Years of Service</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HUB NAVIGATION CARDS -->
+  <section class="section-pad" aria-label="About IOR navigation" class="sec-bg-white">
+    <div class="inner">
+      <p class="eyebrow fade-up" style="margin-bottom:16px;">Explore About IOR</p>
+      <h2 class="fade-up fade-up--d1" style="font-size:var(--text-display-m);font-weight:var(--fw-bold);color:var(--ior-blue);line-height:var(--lh-display);margin-bottom:40px;">Our People, Values &amp; Commitments</h2>
+      <div class="hub-grid">
+        <a href="09a_Our_Leadership.html" class="hub-card fade-up">
+          <div class="hub-card__icon" aria-hidden="true"><div class="hub-card__icon-inner"></div></div>
+          <div class="hub-card__title">Our Leadership</div>
+          <div class="hub-card__body">Meet the experienced executive team driving IOR's growth, innovation, and commitment to customer excellence across Australia.</div>
+          <span class="hub-card__cta">Meet the Team <span class="btn__arrow" aria-hidden="true"></span></span>
+        </a>
+        <a href="09b_Community.html" class="hub-card fade-up fade-up--d1">
+          <div class="hub-card__icon" aria-hidden="true"><div class="hub-card__icon-inner"></div></div>
+          <div class="hub-card__title">Community &amp; Giving Back</div>
+          <div class="hub-card__body">Discover how IOR invests in the regional communities we serve through direct support, social engagement, and economic investment.</div>
+          <span class="hub-card__cta">Our Community <span class="btn__arrow" aria-hidden="true"></span></span>
+        </a>
+        <a href="09c_Sustainability.html" class="hub-card fade-up fade-up--d2">
+          <div class="hub-card__icon" aria-hidden="true"><div class="hub-card__icon-inner"></div></div>
+          <div class="hub-card__title">Sustainability, HSE &amp; ESG</div>
+          <div class="hub-card__body">Explore IOR's certified environmental management, zero-harm safety culture, and governance framework for responsible operations.</div>
+          <span class="hub-card__cta">Our Commitments <span class="btn__arrow" aria-hidden="true"></span></span>
+        </a>
+        <a href="09d_Case_Studies.html" class="hub-card fade-up fade-up--d3">
+          <div class="hub-card__icon" aria-hidden="true"><div class="hub-card__icon-inner"></div></div>
+          <div class="hub-card__title">Case Studies</div>
+          <div class="hub-card__body">Read how IOR has delivered complex, large-scale fuel supply solutions for enterprise clients across mining, aviation, and marine sectors.</div>
+          <span class="hub-card__cta">Read Case Studies <span class="btn__arrow" aria-hidden="true"></span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE-FOOTER CTA -->
+  <section class="pre-footer fade-up" aria-label="Get started with IOR">
+    <div class="pre-footer__row">
+      <h2 class="pre-footer__title">Ready to partner with IOR?</h2>
+      <div class="pre-footer__ctas">
+        <a href="#" class="btn btn--white btn--pill">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="12_Support_Utility.html#contact-us" class="btn btn--outline-white btn--pill">Talk to an IOR Specialist <span class="btn__arrow" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- CANONICAL FOOTER -->
+<footer class="site-footer" aria-label="Site footer">
+  <div class="footer-nav-grid">
+    <div>
+      <div class="footer-col__title">Contact</div>
+      <div class="footer-col__links">
+        <span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
+        <a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a>
+        <a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a>
+        <a href="12_Support_Utility.html#regional-contacts" class="footer-col__link">Regional Contacts</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Fuel Solutions</div>
+      <div class="footer-col__links">
+        <a href="03_Ground_Fuels.html" class="footer-col__link">Ground Fuels</a>
+        <a href="04_Aviation.html" class="footer-col__link">Aviation</a>
+        <a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading.html" class="footer-col__link">Supply &amp; Trading</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Digital Platforms</div>
+      <div class="footer-col__links">
+        <a href="07_Digital_Platforms.html#hydip" class="footer-col__link">HyDip&#x2122; FMS</a>
+        <a href="07_Digital_Platforms.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
+        <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Corporate</div>
+      <div class="footer-col__links">
+        <a href="09_About_IOR.html" class="footer-col__link">About IOR</a>
+        <a href="10_Careers.html" class="footer-col__link">Careers</a>
+        <a href="09d_Case_Studies.html" class="footer-col__link">Case Studies</a>
+        <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+        <a href="11_News_Updates.html" class="footer-col__link">News &amp; Updates</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Quick Actions</div>
+      <div class="footer-col__links">
+        <a href="#" class="footer-col__link">Apply for an Account</a>
+        <a href="12_Support_Utility.html#make-a-payment" class="footer-col__link">Make a Payment</a>
+        <a href="12_Support_Utility.html#contact-us" class="footer-col__link">Contact Us</a>
+        <a href="12_Support_Utility.html#support-contact" class="footer-col__link">Help Centre &amp; FAQs</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Find a Site By State</div>
+      <div class="footer-state-pills">
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">QLD</a>
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">NSW</a>
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">VIC</a>
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">SA</a>
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">WA</a>
+        <a href="12_Support_Utility.html#find-a-location" class="footer-state-pill">NT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">
+      Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      Site by 3PM
+    </p>
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
+      <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
+      <a href="#" class="footer-social__icon" aria-label="YouTube">&#x25B6;</a>
+    </div>
+  </div>
+</footer>
+
+<!-- DRAWER JAVASCRIPT -->
+<script>
+(function() {
+  var hamburger = document.getElementById('mob-hamburger');
+  var drawer    = document.getElementById('mobileDrawer');
+  var overlay   = document.getElementById('drawerOverlay');
+  var closeBtn  = document.getElementById('drawerClose');
+
+  function openDrawer() {
+    drawer.classList.add('drawer--open');
+    overlay.classList.add('drawer-overlay--open');
+    overlay.removeAttribute('aria-hidden');
+    hamburger.classList.add('hamburger--open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    closeBtn.focus();
+  }
+  function closeDrawer() {
+    drawer.classList.remove('drawer--open');
+    overlay.classList.remove('drawer-overlay--open');
+    overlay.setAttribute('aria-hidden', 'true');
+    hamburger.classList.remove('hamburger--open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.focus();
+  }
+
+  hamburger.addEventListener('click', openDrawer);
+  hamburger.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDrawer(); } });
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDrawer(); });
+
+  // Drawer accordion sub-menus
+  var drawerLinks = drawer.querySelectorAll('.drawer__link');
+  drawerLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      var sub = this.nextElementSibling;
+      if (!sub || !sub.classList.contains('drawer__sub')) return;
+      var isOpen = sub.classList.contains('drawer__sub--open');
+      // Close all
+      drawer.querySelectorAll('.drawer__sub--open').forEach(function(s) { s.classList.remove('drawer__sub--open'); });
+      drawer.querySelectorAll('.drawer__link-chevron--open').forEach(function(c) { c.classList.remove('drawer__link-chevron--open'); });
+      if (!isOpen) {
+        sub.classList.add('drawer__sub--open');
+        var chevron = this.querySelector('.drawer__link-chevron');
+        if (chevron) chevron.classList.add('drawer__link-chevron--open');
+      }
+    });
+  });
+
+  // Fade-up IntersectionObserver
+  var fadeEls = document.querySelectorAll('.fade-up');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(function(el) { observer.observe(el); });
+  } else {
+    fadeEls.forEach(function(el) { el.classList.add('is-visible'); });
+  }
+
+  // Stat counter animation
+  var statEls = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window && statEls.length) {
+    var statObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var duration = 1200;
+        var start = performance.now();
+        function tick(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          el.textContent = Math.floor(progress * target);
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(tick);
+        statObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    statEls.forEach(function(el) { statObserver.observe(el); });
+  }
+})();
+</script>
+
+</body>
+</html>
