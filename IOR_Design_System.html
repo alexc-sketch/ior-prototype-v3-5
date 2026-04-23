@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IOR Design System — Component Library & CSS Architecture</title>
+  <title>IOR Design System, Component Library & CSS Architecture</title>
   <style>
 
     /* ============================================================
-       IOR DESIGN SYSTEM — ROOT CSS VARIABLES
+       IOR DESIGN SYSTEM, ROOT CSS VARIABLES
        Last updated: April 2026
        Scope: Applied globally across all 12 module files.
        Import pattern: Copy this <style> block into each module,
@@ -17,12 +17,12 @@
     :root {
 
       /* ----------------------------------------------------------
-         COLOUR PALETTE — MASTERBRAND
+         COLOUR PALETTE, MASTERBRAND
       ---------------------------------------------------------- */
 
       /* Primary */
-      --ior-blue:           #0355A3;   /* Primary blue — CTAs, accents, headings */
-      --ior-navy:           #0A4066;   /* Dark navy — large backgrounds, footers */
+      --ior-blue:           #0355A3;   /* Primary blue, CTAs, accents, headings */
+      --ior-navy:           #0A4066;   /* Dark navy, large backgrounds, footers */
       --ior-white:          #FFFFFF;
       --ior-near-black:     #231F20;   /* Logo lockup, body text on light */
       --ior-charcoal:       #383838;   /* Body copy, card text */
@@ -31,7 +31,7 @@
       --ior-sky:            #7FBEE6;   /* Stat labels on navy, decorative accents */
 
       /* Accent */
-      --ior-teal:           #00D1CC;   /* Fuelcharge brand — use ONLY on Fuelcharge sections */
+      --ior-teal:           #00D1CC;   /* Fuelcharge brand, use ONLY on Fuelcharge sections */
 
       /* Sub-brand: HyBlue (contained to HyBlue page only) */
       --hyblue-blue:        #0069C6;
@@ -57,7 +57,7 @@
 
       /* Display / Hero */
       --text-display-xl:    clamp(48px, 6vw, 80px);
-      --text-display-l:     clamp(36px, 4.5vw, 60px);   /* Wireframe — not used in hero */
+      --text-display-l:     clamp(36px, 4.5vw, 60px);   /* Wireframe, not used in hero */
       --text-display-m:     clamp(28px, 3.5vw, 50px);   /* Section headlines */
       --text-display-s:     clamp(22px, 2.5vw, 40px);   /* Stat numbers, pull quotes */
 
@@ -120,7 +120,7 @@
       --grid-gap:           31px;     /* Primary card grid gap (matches Figma) */
       --grid-gap-sm:        20px;
 
-      /* Breakpoints (reference — used in @media queries below) */
+      /* Breakpoints (reference, used in @media queries below) */
       /* --bp-mobile:  375px  */
       /* --bp-tablet:  768px  */
       /* --bp-desktop: 1440px */
@@ -131,15 +131,15 @@
          Sharp geometry. Brutalist infrastructure aesthetic.
       ---------------------------------------------------------- */
 
-      --radius:             0px;     /* LOCKED — no rounded corners permitted */
+      --radius:             0px;     /* LOCKED, no rounded corners permitted */
       --border-width:       1px;
-      --border-color:       rgba(255, 255, 255, 0.25);   /* On dark backgrounds */
-      --border-color-light: rgba(3, 85, 163, 0.25);       /* On light backgrounds */
+      --border-colour:       rgba(255, 255, 255, 0.25);   /* On dark backgrounds */
+      --border-colour-light: rgba(3, 85, 163, 0.25);       /* On light backgrounds */
       --divider:            1px solid rgba(255,255,255,0.25);
 
       /* ----------------------------------------------------------
          ELEVATION / SHADOW
-         Used sparingly — only on interactive card hover states.
+         Used sparingly, only on interactive card hover states.
       ---------------------------------------------------------- */
 
       --shadow-card:     0 4px 24px rgba(3, 85, 163, 0.12);
@@ -187,8 +187,8 @@
       font-family: var(--font-primary);
       font-size: var(--text-body-m);
       font-weight: var(--fw-regular);
-      color: var(--ior-charcoal);
-      background-color: var(--ior-white);
+      colour: var(--ior-charcoal);
+      background-colour: var(--ior-white);
       line-height: var(--lh-body);
       -webkit-font-smoothing: antialiased;
     }
@@ -200,7 +200,7 @@
     }
 
     a {
-      color: inherit;
+      colour: inherit;
       text-decoration: none;
     }
 
@@ -271,7 +271,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--space-10);
-      align-items: center;
+      align-items: centre;
     }
 
     @media (min-width: 768px) {
@@ -280,8 +280,8 @@
 
     /* Flex utilities */
     .ior-flex        { display: flex; }
-    .ior-flex-center { display: flex; align-items: center; justify-content: center; }
-    .ior-flex-between { display: flex; align-items: center; justify-content: space-between; }
+    .ior-flex-centre { display: flex; align-items: centre; justify-content: centre; }
+    .ior-flex-between { display: flex; align-items: centre; justify-content: space-between; }
     .ior-flex-col    { display: flex; flex-direction: column; }
     .ior-gap-4       { gap: var(--space-4); }
     .ior-gap-6       { gap: var(--space-6); }
@@ -297,92 +297,92 @@
       font-weight: var(--fw-semibold);
       letter-spacing: var(--ls-eyebrow);
       text-transform: uppercase;
-      color: var(--ior-mid-grey);
+      colour: var(--ior-mid-grey);
       line-height: var(--lh-heading);
     }
 
     .ior-eyebrow--light {
-      color: var(--ior-sky);
+      colour: var(--ior-sky);
     }
 
     .ior-eyebrow--white {
-      color: rgba(255,255,255,0.7);
+      colour: rgba(255,255,255,0.7);
     }
 
     .ior-display-xl {
       font-size: var(--text-display-xl);
       font-weight: var(--fw-bold);
       line-height: var(--lh-display);
-      color: var(--ior-white);
+      colour: var(--ior-white);
     }
 
     .ior-display-l {
       font-size: var(--text-display-l);
       font-weight: var(--fw-bold);
       line-height: var(--lh-display);
-      color: var(--ior-blue);
+      colour: var(--ior-blue);
     }
 
     .ior-display-m {
       font-size: var(--text-display-m);
       font-weight: var(--fw-bold);
       line-height: var(--lh-display);
-      color: var(--ior-blue);
+      colour: var(--ior-blue);
     }
 
     .ior-display-m--white {
-      color: var(--ior-white);
+      colour: var(--ior-white);
     }
 
     .ior-display-s {
       font-size: var(--text-display-s);
       font-weight: var(--fw-bold);
       line-height: var(--lh-display);
-      color: var(--ior-white);
+      colour: var(--ior-white);
     }
 
     .ior-heading-l {
       font-size: var(--text-heading-l);
       font-weight: var(--fw-bold);
       line-height: var(--lh-heading);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
     }
 
     .ior-heading-m {
       font-size: var(--text-heading-m);
       font-weight: var(--fw-bold);
       line-height: var(--lh-heading);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
     }
 
     .ior-body-l {
       font-size: var(--text-body-l);
       font-weight: var(--fw-regular);
       line-height: var(--lh-body);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
     }
 
     .ior-body-m {
       font-size: var(--text-body-m);
       font-weight: var(--fw-regular);
       line-height: var(--lh-body);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
     }
 
     .ior-body-s {
       font-size: var(--text-body-s);
       font-weight: var(--fw-regular);
       line-height: var(--lh-body);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
     }
 
-    .ior-body--white  { color: var(--ior-white); }
-    .ior-body--blue   { color: var(--ior-blue); }
-    .ior-body--sky    { color: var(--ior-sky); }
+    .ior-body--white  { colour: var(--ior-white); }
+    .ior-body--blue   { colour: var(--ior-blue); }
+    .ior-body--sky    { colour: var(--ior-sky); }
 
-    /* Accent word — inline colour contrast */
-    .ior-accent-word       { color: var(--ior-teal); }
-    .ior-accent-word--blue { color: var(--ior-blue); }
+    /* Accent word, inline colour contrast */
+    .ior-accent-word       { colour: var(--ior-teal); }
+    .ior-accent-word--blue { colour: var(--ior-blue); }
 
     /* ============================================================
        BUTTON COMPONENTS
@@ -392,7 +392,7 @@
     /* Base button reset */
     .btn {
       display: inline-flex;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-2);
       font-family: var(--font-primary);
       font-size: var(--text-label);
@@ -402,10 +402,10 @@
       padding: var(--space-5) var(--space-7);
       border-radius: var(--radius);    /* LOCKED 0 */
       cursor: pointer;
-      text-align: center;
-      transition: background-color var(--transition-base),
-                  color var(--transition-base),
-                  border-color var(--transition-base),
+      text-align: centre;
+      transition: background-colour var(--transition-base),
+                  colour var(--transition-base),
+                  border-colour var(--transition-base),
                   box-shadow var(--transition-base);
       text-decoration: none;
       white-space: nowrap;
@@ -413,73 +413,73 @@
 
     /* --- Primary (solid blue) */
     .btn--primary {
-      background-color: var(--ior-blue);
-      color: var(--ior-white);
+      background-colour: var(--ior-blue);
+      colour: var(--ior-white);
       border: 2px solid var(--ior-blue);
     }
     .btn--primary:hover, .btn--primary:focus-visible {
-      background-color: var(--ior-navy);
-      border-color: var(--ior-navy);
+      background-colour: var(--ior-navy);
+      border-colour: var(--ior-navy);
       outline: none;
     }
 
     /* --- Primary on dark (solid white) */
     .btn--primary-white {
-      background-color: var(--ior-white);
-      color: var(--ior-blue);
+      background-colour: var(--ior-white);
+      colour: var(--ior-blue);
       border: 2px solid var(--ior-white);
     }
     .btn--primary-white:hover, .btn--primary-white:focus-visible {
-      background-color: var(--ior-sky);
-      border-color: var(--ior-sky);
-      color: var(--ior-navy);
+      background-colour: var(--ior-sky);
+      border-colour: var(--ior-sky);
+      colour: var(--ior-navy);
       outline: none;
     }
 
     /* --- Secondary (outline blue) */
     .btn--outline-blue {
-      background-color: transparent;
-      color: var(--ior-blue);
+      background-colour: transparent;
+      colour: var(--ior-blue);
       border: 2px solid var(--ior-blue);
     }
     .btn--outline-blue:hover, .btn--outline-blue:focus-visible {
-      background-color: var(--ior-blue);
-      color: var(--ior-white);
+      background-colour: var(--ior-blue);
+      colour: var(--ior-white);
       outline: none;
     }
 
-    /* --- Secondary (outline white) — on dark backgrounds */
+    /* --- Secondary (outline white), on dark backgrounds */
     .btn--outline-white {
-      background-color: transparent;
-      color: var(--ior-white);
+      background-colour: transparent;
+      colour: var(--ior-white);
       border: 2px solid var(--ior-white);
     }
     .btn--outline-white:hover, .btn--outline-white:focus-visible {
-      background-color: rgba(255,255,255,0.15);
+      background-colour: rgba(255,255,255,0.15);
       outline: none;
     }
 
     /* --- Navy fill */
     .btn--navy {
-      background-color: var(--ior-navy);
-      color: var(--ior-white);
+      background-colour: var(--ior-navy);
+      colour: var(--ior-white);
       border: 2px solid var(--ior-navy);
     }
     .btn--navy:hover, .btn--navy:focus-visible {
-      background-color: var(--ior-blue);
-      border-color: var(--ior-blue);
+      background-colour: var(--ior-blue);
+      border-colour: var(--ior-blue);
       outline: none;
     }
 
     /* --- Teal fill (Fuelcharge only) */
     .btn--teal {
-      background-color: var(--ior-teal);
-      color: var(--ior-navy);
+      background-colour: var(--ior-teal);
+      colour: var(--ior-navy);
       border: 2px solid var(--ior-teal);
     }
     .btn--teal:hover, .btn--teal:focus-visible {
-      background-color: #00b8b4;
-      border-color: #00b8b4;
+      background-colour: #00b8b4;
+      border-colour: #00b8b4;
       outline: none;
     }
 
@@ -487,18 +487,18 @@
     .btn--ghost {
       background: none;
       border: none;
-      color: var(--ior-blue);
+      colour: var(--ior-blue);
       padding: 0;
       font-weight: var(--fw-bold);
       display: inline-flex;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-2);
       text-decoration: none;
-      transition: color var(--transition-fast);
+      transition: colour var(--transition-fast);
     }
-    .btn--ghost:hover { color: var(--ior-navy); }
-    .btn--ghost--white { color: var(--ior-white); }
-    .btn--ghost--sky   { color: var(--ior-sky); }
+    .btn--ghost:hover { colour: var(--ior-navy); }
+    .btn--ghost--white { colour: var(--ior-white); }
+    .btn--ghost--sky   { colour: var(--ior-sky); }
 
     /* Button sizes */
     .btn--lg { padding: var(--space-6) var(--space-10); font-size: 18px; }
@@ -509,8 +509,8 @@
       display: inline-block;
       width: 10px;
       height: 10px;
-      border-right: 2px solid currentColor;
-      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColour;
+      border-top: 2px solid currentColour;
       transform: rotate(45deg);
       flex-shrink: 0;
     }
@@ -520,7 +520,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-4);
-      align-items: center;
+      align-items: centre;
     }
 
     /* ============================================================
@@ -529,10 +529,10 @@
 
     /* --- Utility bar (top bar) */
     .ior-utility-bar {
-      background-color: var(--ior-blue);
+      background-colour: var(--ior-blue);
       padding: var(--space-3) var(--section-pad-x);
       display: flex;
-      align-items: center;
+      align-items: centre;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: var(--space-4);
@@ -541,22 +541,22 @@
     .ior-utility-bar__announcement {
       font-size: var(--text-body-s);
       font-weight: var(--fw-regular);
-      color: var(--ior-white);
+      colour: var(--ior-white);
     }
 
     .ior-utility-bar__actions {
       display: flex;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-6);
     }
 
     .ior-utility-bar__link {
       display: inline-flex;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-2);
       font-size: var(--text-body-m);
       font-weight: var(--fw-regular);
-      color: var(--ior-white);
+      colour: var(--ior-white);
       text-decoration: none;
       transition: opacity var(--transition-fast);
     }
@@ -565,15 +565,15 @@
     .ior-utility-bar__divider {
       width: 1px;
       height: 16px;
-      background-color: rgba(255,255,255,0.4);
+      background-colour: rgba(255,255,255,0.4);
     }
 
     /* --- Primary navigation bar */
     .ior-nav {
-      background-color: var(--ior-white);
+      background-colour: var(--ior-white);
       padding: var(--space-5) var(--section-pad-x);
       display: flex;
-      align-items: center;
+      align-items: centre;
       justify-content: space-between;
       gap: var(--space-6);
       border-bottom: 1px solid rgba(3,85,163,0.1);
@@ -589,7 +589,7 @@
 
     .ior-nav__links {
       display: none;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-6);
       list-style: none;
     }
@@ -601,31 +601,31 @@
     .ior-nav__link {
       font-size: var(--text-body-m);
       font-weight: var(--fw-bold);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
       text-decoration: none;
       display: inline-flex;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-2);
       padding-block: var(--space-3);
       position: relative;
-      transition: color var(--transition-fast);
+      transition: colour var(--transition-fast);
     }
-    .ior-nav__link:hover { color: var(--ior-blue); }
+    .ior-nav__link:hover { colour: var(--ior-blue); }
 
     .ior-nav__link::after {
       content: '';
       display: block;
       width: 8px;
       height: 5px;
-      border-left: 2px solid currentColor;
-      border-bottom: 2px solid currentColor;
+      border-left: 2px solid currentColour;
+      border-bottom: 2px solid currentColour;
       transform: rotate(-45deg);
       margin-top: -3px;
     }
 
     .ior-nav__actions {
       display: flex;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-3);
       flex-shrink: 0;
     }
@@ -652,15 +652,15 @@
        HERO COMPONENTS
     ============================================================ */
 
-    /* --- Split hero (primary layout mandate — no full bleed overlays) */
+    /* --- Split hero (primary layout mandate, no full bleed overlays) */
     .ior-hero-split {
       padding-block: var(--section-pad-y);
       padding-inline: var(--section-pad-x);
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--space-10);
-      align-items: center;
-      background-color: var(--ior-white);
+      align-items: centre;
+      background-colour: var(--ior-white);
     }
 
     @media (min-width: 768px) {
@@ -677,11 +677,11 @@
 
     .ior-hero-split__media {
       position: relative;
-      background-color: var(--ior-light-blue-bg);
+      background-colour: var(--ior-light-blue-bg);
       min-height: 360px;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: centre;
+      justify-content: centre;
       overflow: hidden;
     }
 
@@ -689,18 +689,18 @@
     .ior-hero-banner {
       padding-block: var(--space-16) var(--space-10);
       padding-inline: var(--section-pad-x);
-      background-color: var(--ior-navy);
+      background-colour: var(--ior-navy);
       display: flex;
       flex-direction: column;
       gap: var(--space-6);
     }
 
     .ior-hero-banner--blue {
-      background-color: var(--ior-blue);
+      background-colour: var(--ior-blue);
     }
 
     .ior-hero-banner--light {
-      background-color: var(--ior-light-blue-bg);
+      background-colour: var(--ior-light-blue-bg);
     }
 
     /* --- Homepage hero (exception: uses photograph per Figma brief) */
@@ -709,11 +709,11 @@
       min-height: 600px;
       padding-block: var(--space-25);
       padding-inline: var(--section-pad-x);
-      background-color: var(--ior-navy);
+      background-colour: var(--ior-navy);
       background-size: cover;
-      background-position: center;
+      background-position: centre;
       display: flex;
-      align-items: center;
+      align-items: centre;
     }
 
     .ior-hero-homepage__overlay {
@@ -738,7 +738,7 @@
 
     /* --- Solution card (used in industry and solutions grids) */
     .ior-card-solution {
-      background-color: var(--ior-light-blue-bg);
+      background-colour: var(--ior-light-blue-bg);
       padding: 0;
       display: flex;
       flex-direction: column;
@@ -747,7 +747,7 @@
     .ior-card-solution:hover { box-shadow: var(--shadow-card-hover); }
 
     .ior-card-solution__icon-bar {
-      background-color: var(--ior-blue);
+      background-colour: var(--ior-blue);
       padding: var(--space-5);
       display: flex;
       align-items: flex-start;
@@ -757,10 +757,10 @@
     .ior-card-solution__icon {
       width: 50px;
       height: 50px;
-      background-color: rgba(255,255,255,0.2);
+      background-colour: rgba(255,255,255,0.2);
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: centre;
+      justify-content: centre;
     }
 
     .ior-card-solution__body {
@@ -774,13 +774,13 @@
     .ior-card-solution__title {
       font-size: var(--text-heading-m);
       font-weight: var(--fw-bold);
-      color: var(--ior-blue);
+      colour: var(--ior-blue);
       line-height: var(--lh-heading);
     }
 
     .ior-card-solution__body-text {
       font-size: var(--text-body-m);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
       line-height: var(--lh-body);
     }
 
@@ -794,9 +794,9 @@
     .ior-card-feature__image {
       width: 100%;
       aspect-ratio: 4 / 3;
-      background-color: var(--ior-light-blue-bg);
+      background-colour: var(--ior-light-blue-bg);
       overflow: hidden;
-      /* Sharp corners — no radius */
+      /* Sharp corners, no radius */
     }
 
     .ior-card-feature__image img {
@@ -827,10 +827,10 @@
 
     .ior-card-dark__tag {
       display: inline-flex;
-      align-items: center;
+      align-items: centre;
       padding: var(--space-3) var(--space-4);
       border: 1px solid rgba(255,255,255,0.6);
-      color: var(--ior-white);
+      colour: var(--ior-white);
       font-size: var(--text-body-s);
       font-weight: var(--fw-bold);
       width: fit-content;
@@ -838,7 +838,7 @@
 
     /* ============================================================
        PRODUCT PILL NAVIGATION
-       Interactive pill buttons — link between sub-products.
+       Interactive pill buttons, link between sub-products.
     ============================================================ */
 
     .ior-pills {
@@ -849,33 +849,33 @@
 
     .ior-pill {
       display: inline-flex;
-      align-items: center;
+      align-items: centre;
       padding: var(--space-3) var(--space-5);
       border: 1px solid var(--ior-blue);
-      background-color: transparent;
-      color: var(--ior-blue);
+      background-colour: transparent;
+      colour: var(--ior-blue);
       font-size: var(--text-body-s);
       font-weight: var(--fw-bold);
       text-decoration: none;
       border-radius: var(--radius);    /* LOCKED 0 */
-      transition: background-color var(--transition-fast),
-                  color var(--transition-fast);
+      transition: background-colour var(--transition-fast),
+                  colour var(--transition-fast);
       cursor: pointer;
     }
 
     .ior-pill:hover,
     .ior-pill--active {
-      background-color: var(--ior-blue);
-      color: var(--ior-white);
+      background-colour: var(--ior-blue);
+      colour: var(--ior-white);
     }
 
     .ior-pill--white {
-      border-color: rgba(255,255,255,0.6);
-      color: var(--ior-white);
+      border-colour: rgba(255,255,255,0.6);
+      colour: var(--ior-white);
     }
     .ior-pill--white:hover,
     .ior-pill--white.ior-pill--active {
-      background-color: rgba(255,255,255,0.2);
+      background-colour: rgba(255,255,255,0.2);
     }
 
     /* ============================================================
@@ -899,18 +899,18 @@
       padding: var(--space-5) var(--space-6);
       font-size: var(--text-body-m);
       font-weight: var(--fw-bold);
-      color: var(--ior-mid-grey);
+      colour: var(--ior-mid-grey);
       background: none;
       border: none;
       border-bottom: 3px solid transparent;
       margin-bottom: -2px;
       cursor: pointer;
-      transition: color var(--transition-fast), border-color var(--transition-fast);
+      transition: colour var(--transition-fast), border-colour var(--transition-fast);
     }
-    .ior-tab-btn:hover { color: var(--ior-blue); }
+    .ior-tab-btn:hover { colour: var(--ior-blue); }
     .ior-tab-btn--active {
-      color: var(--ior-blue);
-      border-bottom-color: var(--ior-blue);
+      colour: var(--ior-blue);
+      border-bottom-colour: var(--ior-blue);
     }
 
     .ior-tab-panel {
@@ -948,19 +948,19 @@
       padding: var(--space-5) var(--space-6);
       font-size: var(--text-body-m);
       font-weight: var(--fw-bold);
-      color: var(--ior-mid-grey);
+      colour: var(--ior-mid-grey);
       border-left: 3px solid transparent;
       cursor: pointer;
-      transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+      transition: colour var(--transition-fast), border-colour var(--transition-fast), background-colour var(--transition-fast);
     }
     .ior-split-interactive__item:hover {
-      color: var(--ior-blue);
-      background-color: var(--ior-light-blue-bg);
+      colour: var(--ior-blue);
+      background-colour: var(--ior-light-blue-bg);
     }
     .ior-split-interactive__item--active {
-      color: var(--ior-blue);
-      border-left-color: var(--ior-blue);
-      background-color: var(--ior-light-blue-bg);
+      colour: var(--ior-blue);
+      border-left-colour: var(--ior-blue);
+      background-colour: var(--ior-light-blue-bg);
     }
 
     .ior-split-interactive__panel {
@@ -973,7 +973,7 @@
     .ior-split-interactive__panel-image {
       width: 100%;
       aspect-ratio: 16 / 9;
-      background-color: var(--ior-light-blue-bg);
+      background-colour: var(--ior-light-blue-bg);
       overflow: hidden;
     }
 
@@ -998,26 +998,26 @@
       flex-direction: column;
       gap: var(--space-5);
       padding: var(--space-8);
-      background-color: var(--ior-light-blue-bg);
+      background-colour: var(--ior-light-blue-bg);
       position: relative;
     }
 
     .ior-step__number {
       font-size: var(--text-display-s);
       font-weight: var(--fw-bold);
-      color: var(--ior-blue);
+      colour: var(--ior-blue);
       line-height: 1;
     }
 
     .ior-step__title {
       font-size: var(--text-heading-m);
       font-weight: var(--fw-bold);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
     }
 
     .ior-step__body {
       font-size: var(--text-body-m);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
       line-height: var(--lh-body);
     }
 
@@ -1029,7 +1029,7 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 24px;
-      color: var(--ior-blue);
+      colour: var(--ior-blue);
       display: none;
     }
 
@@ -1054,29 +1054,29 @@
     .ior-stat {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-4);
-      text-align: center;
+      text-align: centre;
     }
 
     .ior-stat__number {
       font-size: clamp(32px, 4vw, 48px);
       font-weight: var(--fw-bold);
-      color: var(--ior-white);
+      colour: var(--ior-white);
       line-height: 1;
     }
 
     .ior-stat__label {
       font-size: var(--text-heading-s);
       font-weight: var(--fw-bold);
-      color: var(--ior-sky);
+      colour: var(--ior-sky);
     }
 
     .ior-stat__divider {
       width: 1px;
       height: 60px;
-      background-color: rgba(255,255,255,0.3);
-      align-self: center;
+      background-colour: rgba(255,255,255,0.3);
+      align-self: centre;
     }
 
     /* ============================================================
@@ -1089,49 +1089,49 @@
       flex-direction: column;
       gap: var(--space-6);
       padding: var(--space-10) var(--space-10);
-      background-color: var(--ior-light-blue-bg);
+      background-colour: var(--ior-light-blue-bg);
       border-left: 4px solid var(--ior-blue);
     }
 
     .ior-testimonial--dark {
-      background-color: var(--ior-navy);
-      border-left-color: var(--ior-sky);
+      background-colour: var(--ior-navy);
+      border-left-colour: var(--ior-sky);
     }
 
     .ior-testimonial__quote {
       font-size: var(--text-body-l);
       font-weight: var(--fw-regular);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
       line-height: var(--lh-body);
       font-style: italic;
     }
 
-    .ior-testimonial__quote--white { color: var(--ior-white); }
+    .ior-testimonial__quote--white { colour: var(--ior-white); }
 
     .ior-testimonial__attribution {
       font-size: var(--text-body-s);
       font-weight: var(--fw-bold);
-      color: var(--ior-blue);
+      colour: var(--ior-blue);
       text-transform: uppercase;
       letter-spacing: var(--ls-eyebrow);
     }
 
-    .ior-testimonial__attribution--sky { color: var(--ior-sky); }
+    .ior-testimonial__attribution--sky { colour: var(--ior-sky); }
 
     /* Logo strip */
     .ior-logo-strip {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
+      align-items: centre;
+      justify-content: centre;
       gap: var(--space-8);
     }
 
     .ior-logo-strip__item {
       width: 120px;
       height: 40px;
-      background-color: var(--ior-light-blue-bg);
-      /* Placeholder — replace with <img> once logos provided */
+      background-colour: var(--ior-light-blue-bg);
+      /* Placeholder, replace with <img> once logos provided */
     }
 
     /* Case study callout */
@@ -1140,17 +1140,17 @@
       grid-template-columns: 1fr;
       gap: var(--space-6);
       padding: var(--space-8);
-      background-color: var(--ior-light-blue-bg);
+      background-colour: var(--ior-light-blue-bg);
       border-top: 3px solid var(--ior-blue);
     }
 
     @media (min-width: 768px) {
-      .ior-case-study-callout { grid-template-columns: 1.5fr 1fr; align-items: center; }
+      .ior-case-study-callout { grid-template-columns: 1.5fr 1fr; align-items: centre; }
     }
 
     /* ============================================================
        GATED DOWNLOAD BLOCK
-       Triggers HubSpot popup — do not embed form on page.
+       Triggers HubSpot popup, do not embed form on page.
     ============================================================ */
 
     .ior-download-block {
@@ -1158,14 +1158,14 @@
       flex-direction: column;
       gap: var(--space-5);
       padding: var(--space-8);
-      background-color: var(--ior-navy);
+      background-colour: var(--ior-navy);
       border-left: 4px solid var(--ior-sky);
     }
 
     @media (min-width: 768px) {
       .ior-download-block {
         flex-direction: row;
-        align-items: center;
+        align-items: centre;
         justify-content: space-between;
       }
     }
@@ -1179,12 +1179,12 @@
     .ior-download-block__title {
       font-size: var(--text-heading-m);
       font-weight: var(--fw-bold);
-      color: var(--ior-white);
+      colour: var(--ior-white);
     }
 
     .ior-download-block__subtitle {
       font-size: var(--text-body-s);
-      color: var(--ior-sky);
+      colour: var(--ior-sky);
     }
 
     /* ============================================================
@@ -1196,30 +1196,30 @@
       display: flex;
       flex-direction: column;
       gap: 0;
-      border-top: 1px solid var(--border-color-light);
+      border-top: 1px solid var(--border-colour-light);
     }
 
     .ior-accordion__item {
-      border-bottom: 1px solid var(--border-color-light);
+      border-bottom: 1px solid var(--border-colour-light);
     }
 
     .ior-accordion__trigger {
       width: 100%;
       display: flex;
-      align-items: center;
+      align-items: centre;
       justify-content: space-between;
       padding: var(--space-6) 0;
       font-size: var(--text-body-m);
       font-weight: var(--fw-bold);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
       background: none;
       border: none;
       cursor: pointer;
       text-align: left;
       gap: var(--space-4);
-      transition: color var(--transition-fast);
+      transition: colour var(--transition-fast);
     }
-    .ior-accordion__trigger:hover { color: var(--ior-blue); }
+    .ior-accordion__trigger:hover { colour: var(--ior-blue); }
 
     .ior-accordion__icon {
       width: 20px;
@@ -1231,7 +1231,7 @@
     .ior-accordion__icon::after {
       content: '';
       position: absolute;
-      background-color: currentColor;
+      background-colour: currentColour;
       transition: transform var(--transition-base), opacity var(--transition-base);
     }
     .ior-accordion__icon::before { width: 12px; height: 2px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
@@ -1270,25 +1270,25 @@
     }
 
     .ior-routing-cell {
-      background-color: var(--ior-light-blue-bg);
+      background-colour: var(--ior-light-blue-bg);
       padding: var(--space-8);
       display: flex;
       flex-direction: column;
       gap: var(--space-6);
-      transition: background-color var(--transition-base), box-shadow var(--transition-base);
+      transition: background-colour var(--transition-base), box-shadow var(--transition-base);
       text-decoration: none;
-      color: inherit;
+      colour: inherit;
     }
     .ior-routing-cell:hover {
-      background-color: var(--ior-blue);
+      background-colour: var(--ior-blue);
     }
     .ior-routing-cell:hover .ior-routing-cell__title,
     .ior-routing-cell:hover .ior-routing-cell__body,
     .ior-routing-cell:hover .ior-pill {
-      color: var(--ior-white);
+      colour: var(--ior-white);
     }
     .ior-routing-cell:hover .ior-pill {
-      border-color: rgba(255,255,255,0.5);
+      border-colour: rgba(255,255,255,0.5);
     }
 
     .ior-routing-cell__label {
@@ -1296,19 +1296,19 @@
       font-weight: var(--fw-semibold);
       letter-spacing: var(--ls-eyebrow);
       text-transform: uppercase;
-      color: var(--ior-blue);
+      colour: var(--ior-blue);
     }
 
     .ior-routing-cell__title {
       font-size: var(--text-heading-l);
       font-weight: var(--fw-bold);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
       line-height: var(--lh-heading);
     }
 
     .ior-routing-cell__body {
       font-size: var(--text-body-m);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
       line-height: var(--lh-body);
     }
 
@@ -1318,11 +1318,11 @@
 
     .ior-map-teaser {
       position: relative;
-      background-color: var(--ior-navy);
+      background-colour: var(--ior-navy);
       min-height: 340px;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: centre;
+      justify-content: centre;
       overflow: hidden;
     }
 
@@ -1337,8 +1337,8 @@
         rgba(3,85,163,0.2) 20px
       );
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: centre;
+      justify-content: centre;
     }
 
     /* ============================================================
@@ -1358,37 +1358,37 @@
 
     .ior-quick-access__cell {
       display: flex;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-5);
       padding: var(--space-10) var(--space-8);
-      background-color: var(--ior-navy);
+      background-colour: var(--ior-navy);
       text-decoration: none;
-      transition: background-color var(--transition-base);
+      transition: background-colour var(--transition-base);
     }
-    .ior-quick-access__cell:hover { background-color: var(--ior-blue); }
+    .ior-quick-access__cell:hover { background-colour: var(--ior-blue); }
 
-    .ior-quick-access__cell--accent { background-color: var(--ior-teal); }
-    .ior-quick-access__cell--accent:hover { background-color: #00b8b4; }
+    .ior-quick-access__cell--accent { background-colour: var(--ior-teal); }
+    .ior-quick-access__cell--accent:hover { background-colour: #00b8b4; }
 
     .ior-quick-access__icon {
       width: 55px;
       height: 55px;
-      background-color: rgba(255,255,255,0.15);
+      background-colour: rgba(255,255,255,0.15);
       flex-shrink: 0;
     }
 
     .ior-quick-access__title {
       font-size: var(--text-heading-s);
       font-weight: var(--fw-bold);
-      color: var(--ior-white);
+      colour: var(--ior-white);
       display: flex;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-3);
     }
 
     .ior-quick-access__body {
       font-size: var(--text-body-m);
-      color: rgba(255,255,255,0.8);
+      colour: rgba(255,255,255,0.8);
       margin-top: var(--space-2);
     }
 
@@ -1397,7 +1397,7 @@
     ============================================================ */
 
     .ior-footer {
-      background-color: var(--ior-blue);
+      background-colour: var(--ior-blue);
       padding-block: var(--space-20);
       padding-inline: var(--section-pad-x);
     }
@@ -1414,7 +1414,7 @@
     @media (min-width: 768px) {
       .ior-footer__cta-row {
         flex-direction: row;
-        align-items: center;
+        align-items: centre;
         justify-content: space-between;
       }
     }
@@ -1422,7 +1422,7 @@
     .ior-footer__cta-row-title {
       font-size: clamp(24px, 3vw, 40px);
       font-weight: var(--fw-bold);
-      color: var(--ior-white);
+      colour: var(--ior-white);
       line-height: var(--lh-display);
     }
 
@@ -1448,7 +1448,7 @@
     .ior-footer__col-title {
       font-size: var(--text-body-m);
       font-weight: var(--fw-bold);
-      color: var(--ior-white);
+      colour: var(--ior-white);
       margin-bottom: var(--space-6);
     }
 
@@ -1461,11 +1461,11 @@
     .ior-footer__col-link {
       font-size: var(--text-body-s);
       font-weight: var(--fw-regular);
-      color: rgba(255,255,255,0.85);
+      colour: rgba(255,255,255,0.85);
       text-decoration: none;
-      transition: color var(--transition-fast);
+      transition: colour var(--transition-fast);
     }
-    .ior-footer__col-link:hover { color: var(--ior-white); }
+    .ior-footer__col-link:hover { colour: var(--ior-white); }
 
     .ior-footer__state-pills {
       display: flex;
@@ -1475,15 +1475,15 @@
 
     .ior-footer__state-pill {
       padding: var(--space-3) var(--space-4);
-      background-color: rgba(255,255,255,0.15);
+      background-colour: rgba(255,255,255,0.15);
       font-size: var(--text-body-s);
-      color: var(--ior-white);
+      colour: var(--ior-white);
       font-weight: var(--fw-regular);
       text-decoration: none;
-      transition: background-color var(--transition-fast);
+      transition: background-colour var(--transition-fast);
       border-radius: var(--radius); /* LOCKED 0 */
     }
-    .ior-footer__state-pill:hover { background-color: rgba(255,255,255,0.3); }
+    .ior-footer__state-pill:hover { background-colour: rgba(255,255,255,0.3); }
 
     .ior-footer__legal-row {
       display: flex;
@@ -1496,45 +1496,45 @@
     @media (min-width: 768px) {
       .ior-footer__legal-row {
         flex-direction: row;
-        align-items: center;
+        align-items: centre;
         justify-content: space-between;
       }
     }
 
     .ior-footer__legal-text {
       font-size: var(--text-caption);
-      color: rgba(255,255,255,0.7);
+      colour: rgba(255,255,255,0.7);
       line-height: var(--lh-body);
     }
 
     .ior-footer__social {
       display: flex;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-4);
     }
 
     .ior-footer__social-icon {
       width: 36px;
       height: 36px;
-      background-color: rgba(255,255,255,0.15);
+      background-colour: rgba(255,255,255,0.15);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color var(--transition-fast);
+      align-items: centre;
+      justify-content: centre;
+      transition: background-colour var(--transition-fast);
       text-decoration: none;
       border-radius: var(--radius); /* LOCKED 0 */
     }
-    .ior-footer__social-icon:hover { background-color: rgba(255,255,255,0.3); }
+    .ior-footer__social-icon:hover { background-colour: rgba(255,255,255,0.3); }
 
     /* ============================================================
        SECTION BACKGROUND UTILITIES
     ============================================================ */
 
-    .bg-white       { background-color: var(--ior-white); }
-    .bg-light-blue  { background-color: var(--ior-light-blue-bg); }
-    .bg-blue        { background-color: var(--ior-blue); }
-    .bg-navy        { background-color: var(--ior-navy); }
-    .bg-teal        { background-color: var(--ior-teal); }
+    .bg-white       { background-colour: var(--ior-white); }
+    .bg-light-blue  { background-colour: var(--ior-light-blue-bg); }
+    .bg-blue        { background-colour: var(--ior-blue); }
+    .bg-navy        { background-colour: var(--ior-navy); }
+    .bg-teal        { background-colour: var(--ior-teal); }
 
     /* ============================================================
        SECTION HEADLINE + BODY BLOCK
@@ -1548,9 +1548,9 @@
       max-width: 860px;
     }
 
-    .ior-section-header--centered {
-      text-align: center;
-      align-items: center;
+    .ior-section-header--centreed {
+      text-align: centre;
+      align-items: centre;
       max-width: 100%;
     }
 
@@ -1561,11 +1561,11 @@
 
     .img-placeholder {
       width: 100%;
-      background-color: var(--ior-light-blue-bg);
+      background-colour: var(--ior-light-blue-bg);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--ior-mid-grey);
+      align-items: centre;
+      justify-content: centre;
+      colour: var(--ior-mid-grey);
       font-size: var(--text-body-s);
       font-weight: var(--fw-bold);
       letter-spacing: 0.05em;
@@ -1606,17 +1606,17 @@
 
     .annotation {
       width: 100%;
-      background-color: #FFE066;
+      background-colour: #FFE066;
       border-left: 4px solid #E6B800;
       padding: var(--space-3) var(--space-5);
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
+      align-items: centre;
       gap: var(--space-4);
       font-family: 'Courier New', Courier, monospace;
       font-size: 11px;
       line-height: 1.5;
-      color: #3D2E00;
+      colour: #3D2E00;
       position: relative;
       z-index: var(--z-base);
     }
@@ -1629,7 +1629,7 @@
     }
 
     .annotation__separator {
-      color: #9A7700;
+      colour: #9A7700;
       font-weight: 700;
     }
 
@@ -1640,30 +1640,30 @@
 
     .annotation__intent {
       font-style: italic;
-      color: #5C4400;
+      colour: #5C4400;
       border-left: 1px solid #C9A200;
       padding-left: var(--space-3);
     }
 
     /* Design question variant */
     .annotation--question {
-      background-color: #FFD0D0;
-      border-left-color: #C0392B;
-      color: #4D0000;
+      background-colour: #FFD0D0;
+      border-left-colour: #C0392B;
+      colour: #4D0000;
     }
-    .annotation--question .annotation__separator { color: #8B0000; }
-    .annotation--question .annotation__intent    { color: #6B0000; border-left-color: #C0392B; }
+    .annotation--question .annotation__separator { colour: #8B0000; }
+    .annotation--question .annotation__intent    { colour: #6B0000; border-left-colour: #C0392B; }
 
     /* Approved / locked variant */
     .annotation--approved {
-      background-color: #D4EDDA;
-      border-left-color: #2DA771;
-      color: #0D3320;
+      background-colour: #D4EDDA;
+      border-left-colour: #2DA771;
+      colour: #0D3320;
     }
 
     /* ============================================================
        WIREFRAME NAV BAR
-       A tool-layer bar — NOT part of the IOR brand.
+       A tool-layer bar, NOT part of the IOR brand.
        Must appear as the very first element inside <body> on
        every module file. Sits above the IOR utility bar.
        Reviewers use it to navigate between modules without
@@ -1675,48 +1675,48 @@
       position: sticky;
       top: 0;
       z-index: 9999;                        /* Always above IOR nav (z-index: 100) */
-      background-color: #1A1A2E;            /* Deep charcoal-indigo — clearly not IOR brand */
-      border-bottom: 2px solid #E94560;     /* Hot-pink rule — signals "tool layer" */
+      background-colour: #1A1A2E;            /* Deep charcoal-indigo, clearly not IOR brand */
+      border-bottom: 2px solid #E94560;     /* Hot-pink rule, signals "tool layer" */
       padding: 6px 16px;
       display: flex;
-      align-items: center;
+      align-items: centre;
       flex-wrap: wrap;
       gap: 12px;
       font-family: 'Courier New', Courier, monospace;
       font-size: 11px;
       line-height: 1.4;
-      color: #A8B2D8;
+      colour: #A8B2D8;
       user-select: none;
     }
 
     /* Left cluster: navigation links */
     .wf-nav__links {
       display: flex;
-      align-items: center;
+      align-items: centre;
       gap: 4px;
       flex-shrink: 0;
     }
 
     .wf-nav__link {
       display: inline-flex;
-      align-items: center;
+      align-items: centre;
       gap: 5px;
       padding: 3px 10px;
-      background-color: rgba(255,255,255,0.06);
+      background-colour: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.12);
-      color: #CCD6F6;
+      colour: #CCD6F6;
       text-decoration: none;
       font-family: 'Courier New', Courier, monospace;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.04em;
-      transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+      transition: background-colour 120ms ease, colour 120ms ease, border-colour 120ms ease;
       white-space: nowrap;
     }
     .wf-nav__link:hover {
-      background-color: #E94560;
-      border-color: #E94560;
-      color: #fff;
+      background-colour: #E94560;
+      border-colour: #E94560;
+      colour: #fff;
     }
 
     .wf-nav__link--index::before { content: '⌂ '; }
@@ -1725,14 +1725,14 @@
     .wf-nav__divider {
       width: 1px;
       height: 16px;
-      background-color: rgba(255,255,255,0.15);
+      background-colour: rgba(255,255,255,0.15);
       flex-shrink: 0;
     }
 
     /* Centre cluster: current module identity */
     .wf-nav__module {
       display: flex;
-      align-items: center;
+      align-items: centre;
       gap: 8px;
       flex: 1;
       min-width: 0;
@@ -1741,8 +1741,8 @@
     .wf-nav__module-badge {
       display: inline-block;
       padding: 2px 8px;
-      background-color: #E94560;
-      color: #fff;
+      background-colour: #E94560;
+      colour: #fff;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -1754,7 +1754,7 @@
     .wf-nav__module-name {
       font-size: 11px;
       font-weight: 700;
-      color: #CCD6F6;
+      colour: #CCD6F6;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1762,7 +1762,7 @@
 
     .wf-nav__module-file {
       font-size: 10px;
-      color: #6A7497;
+      colour: #6A7497;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1771,7 +1771,7 @@
     /* Right cluster: annotation colour legend */
     .wf-nav__legend {
       display: flex;
-      align-items: center;
+      align-items: centre;
       gap: 10px;
       flex-shrink: 0;
       margin-left: auto;
@@ -1779,7 +1779,7 @@
 
     .wf-nav__legend-label {
       font-size: 10px;
-      color: #6A7497;
+      colour: #6A7497;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       white-space: nowrap;
@@ -1787,16 +1787,16 @@
 
     .wf-nav__legend-items {
       display: flex;
-      align-items: center;
+      align-items: centre;
       gap: 6px;
     }
 
     .wf-nav__legend-item {
       display: inline-flex;
-      align-items: center;
+      align-items: centre;
       gap: 5px;
       font-size: 10px;
-      color: #A8B2D8;
+      colour: #A8B2D8;
       white-space: nowrap;
     }
 
@@ -1807,9 +1807,9 @@
       border: 1px solid rgba(255,255,255,0.15);
     }
 
-    .wf-nav__legend-swatch--standard { background-color: #FFE066; }
-    .wf-nav__legend-swatch--question { background-color: #FFD0D0; }
-    .wf-nav__legend-swatch--approved { background-color: #D4EDDA; }
+    .wf-nav__legend-swatch--standard { background-colour: #FFE066; }
+    .wf-nav__legend-swatch--question { background-colour: #FFD0D0; }
+    .wf-nav__legend-swatch--approved { background-colour: #D4EDDA; }
 
     /* Responsive: collapse legend label on narrow viewports */
     @media (max-width: 640px) {
@@ -1819,7 +1819,7 @@
 
     /* ============================================================
        DESIGN SYSTEM DOCUMENTATION PAGE STYLES
-       (Only needed in this file — not in module files)
+       (Only needed in this file, not in module files)
     ============================================================ */
 
     .ds-page {
@@ -1829,7 +1829,7 @@
     }
 
     .ds-header {
-      background-color: var(--ior-navy);
+      background-colour: var(--ior-navy);
       padding: var(--space-12) var(--section-pad-x);
       border-bottom: 4px solid var(--ior-blue);
     }
@@ -1839,26 +1839,26 @@
       font-weight: var(--fw-bold);
       letter-spacing: var(--ls-eyebrow);
       text-transform: uppercase;
-      color: var(--ior-sky);
+      colour: var(--ior-sky);
       margin-bottom: var(--space-4);
     }
 
     .ds-header__title {
       font-size: clamp(28px, 4vw, 48px);
       font-weight: var(--fw-bold);
-      color: var(--ior-white);
+      colour: var(--ior-white);
       line-height: var(--lh-display);
       margin-bottom: var(--space-6);
     }
 
     .ds-header__meta {
       font-size: var(--text-body-s);
-      color: rgba(255,255,255,0.6);
+      colour: rgba(255,255,255,0.6);
     }
 
     .ds-nav {
       background: var(--ior-white);
-      border-bottom: 1px solid var(--border-color-light);
+      border-bottom: 1px solid var(--border-colour-light);
       padding: var(--space-4) var(--section-pad-x);
       position: sticky;
       top: 0;
@@ -1872,14 +1872,14 @@
       padding: var(--space-2) var(--space-4);
       font-size: 13px;
       font-weight: var(--fw-bold);
-      color: var(--ior-blue);
+      colour: var(--ior-blue);
       text-decoration: none;
       border: 1px solid var(--ior-blue);
       transition: all var(--transition-fast);
     }
     .ds-nav__link:hover {
       background: var(--ior-blue);
-      color: var(--ior-white);
+      colour: var(--ior-white);
     }
 
     .ds-main {
@@ -1894,7 +1894,7 @@
     .ds-section-title {
       font-size: var(--text-display-s);
       font-weight: var(--fw-bold);
-      color: var(--ior-navy);
+      colour: var(--ior-navy);
       border-bottom: 3px solid var(--ior-blue);
       padding-bottom: var(--space-4);
       margin-bottom: var(--space-10);
@@ -1903,10 +1903,10 @@
     .ds-subsection-title {
       font-size: var(--text-heading-l);
       font-weight: var(--fw-bold);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
       margin-bottom: var(--space-6);
       padding-bottom: var(--space-3);
-      border-bottom: 1px solid var(--border-color-light);
+      border-bottom: 1px solid var(--border-colour-light);
     }
 
     .ds-token-grid {
@@ -1917,7 +1917,7 @@
 
     .ds-token {
       background: var(--ior-white);
-      border: 1px solid var(--border-color-light);
+      border: 1px solid var(--border-colour-light);
       padding: var(--space-5);
       display: flex;
       flex-direction: column;
@@ -1932,13 +1932,13 @@
     .ds-token__name {
       font-size: 12px;
       font-weight: var(--fw-bold);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
       font-family: 'Courier New', monospace;
     }
 
     .ds-token__value {
       font-size: 11px;
-      color: var(--ior-mid-grey);
+      colour: var(--ior-mid-grey);
       font-family: 'Courier New', monospace;
     }
 
@@ -1949,7 +1949,7 @@
       align-items: flex-start;
       background: var(--ior-white);
       padding: var(--space-8);
-      border: 1px solid var(--border-color-light);
+      border: 1px solid var(--border-colour-light);
     }
 
     .ds-component-row--dark {
@@ -1959,7 +1959,7 @@
     .ds-type-specimen {
       background: var(--ior-white);
       padding: var(--space-8);
-      border: 1px solid var(--border-color-light);
+      border: 1px solid var(--border-colour-light);
       display: flex;
       flex-direction: column;
       gap: var(--space-6);
@@ -1970,13 +1970,13 @@
       flex-direction: column;
       gap: var(--space-2);
       padding-bottom: var(--space-6);
-      border-bottom: 1px solid var(--border-color-light);
+      border-bottom: 1px solid var(--border-colour-light);
     }
     .ds-type-row:last-child { border-bottom: none; }
 
     .ds-type-meta {
       font-size: 11px;
-      color: var(--ior-mid-grey);
+      colour: var(--ior-mid-grey);
       font-family: 'Courier New', monospace;
     }
 
@@ -1993,26 +1993,26 @@
       padding: var(--space-5) var(--space-6);
       background: var(--ior-white);
       border-left: 4px solid var(--ior-blue);
-      border-top: 1px solid var(--border-color-light);
-      border-right: 1px solid var(--border-color-light);
-      border-bottom: 1px solid var(--border-color-light);
+      border-top: 1px solid var(--border-colour-light);
+      border-right: 1px solid var(--border-colour-light);
+      border-bottom: 1px solid var(--border-colour-light);
     }
 
     .ds-rule--locked {
-      border-left-color: #C0392B;
+      border-left-colour: #C0392B;
       background: #FFF5F5;
     }
 
     .ds-rule__number {
       font-size: var(--text-heading-l);
       font-weight: var(--fw-bold);
-      color: var(--ior-blue);
+      colour: var(--ior-blue);
       line-height: 1;
       flex-shrink: 0;
       width: 32px;
     }
 
-    .ds-rule--locked .ds-rule__number { color: #C0392B; }
+    .ds-rule--locked .ds-rule__number { colour: #C0392B; }
 
     .ds-rule__content {
       display: flex;
@@ -2023,18 +2023,18 @@
     .ds-rule__title {
       font-size: var(--text-body-m);
       font-weight: var(--fw-bold);
-      color: var(--ior-charcoal);
+      colour: var(--ior-charcoal);
     }
 
     .ds-rule__desc {
       font-size: var(--text-body-s);
-      color: var(--ior-mid-grey);
+      colour: var(--ior-mid-grey);
       line-height: var(--lh-body);
     }
 
     .ds-code {
       background: #1E293B;
-      color: #7DD3FC;
+      colour: #7DD3FC;
       padding: var(--space-6);
       font-family: 'Courier New', monospace;
       font-size: 12px;
@@ -2043,9 +2043,9 @@
       margin-top: var(--space-4);
     }
 
-    .ds-code .comment { color: #64748B; }
-    .ds-code .prop    { color: #A78BFA; }
-    .ds-code .val     { color: #86EFAC; }
+    .ds-code .comment { colour: #64748B; }
+    .ds-code .prop    { colour: #A78BFA; }
+    .ds-code .val     { colour: #86EFAC; }
 
     .ds-module-table {
       width: 100%;
@@ -2054,8 +2054,8 @@
     }
 
     .ds-module-table th {
-      background-color: var(--ior-navy);
-      color: var(--ior-white);
+      background-colour: var(--ior-navy);
+      colour: var(--ior-white);
       font-weight: var(--fw-bold);
       padding: var(--space-4) var(--space-5);
       text-align: left;
@@ -2064,19 +2064,19 @@
 
     .ds-module-table td {
       padding: var(--space-4) var(--space-5);
-      border-bottom: 1px solid var(--border-color-light);
-      color: var(--ior-charcoal);
+      border-bottom: 1px solid var(--border-colour-light);
+      colour: var(--ior-charcoal);
       vertical-align: top;
     }
 
     .ds-module-table tr:nth-child(even) td {
-      background-color: #F7F9FC;
+      background-colour: #F7F9FC;
     }
 
     .ds-module-table .code {
       font-family: 'Courier New', monospace;
       font-size: 11px;
-      color: var(--ior-blue);
+      colour: var(--ior-blue);
     }
 
     .ds-badge {
@@ -2089,19 +2089,19 @@
       border-radius: var(--radius);
     }
 
-    .ds-badge--blue   { background: var(--ior-blue);   color: white; }
-    .ds-badge--navy   { background: var(--ior-navy);   color: white; }
-    .ds-badge--teal   { background: var(--ior-teal);   color: var(--ior-navy); }
-    .ds-badge--gold   { background: var(--aviation-gold); color: white; }
-    .ds-badge--grey   { background: var(--ior-mid-grey); color: white; }
-    .ds-badge--red    { background: #C0392B; color: white; }
+    .ds-badge--blue   { background: var(--ior-blue);   colour: white; }
+    .ds-badge--navy   { background: var(--ior-navy);   colour: white; }
+    .ds-badge--teal   { background: var(--ior-teal);   colour: var(--ior-navy); }
+    .ds-badge--gold   { background: var(--aviation-gold); colour: white; }
+    .ds-badge--grey   { background: var(--ior-mid-grey); colour: white; }
+    .ds-badge--red    { background: #C0392B; colour: white; }
 
   </style>
 </head>
 <body class="ds-page">
 
   <!-- ═══════════════════════════════════════════════════════════
-       WIREFRAME NAV BAR — TOOL LAYER — NOT PART OF IOR BRAND
+       WIREFRAME NAV BAR, TOOL LAYER, NOT PART OF IOR BRAND
   ═══════════════════════════════════════════════════════════ -->
   <div class="wf-nav" role="navigation" aria-label="Wireframe navigation">
     <div class="wf-nav__links">
@@ -2112,7 +2112,7 @@
     <div class="wf-nav__divider" aria-hidden="true"></div>
     <div class="wf-nav__module">
       <span class="wf-nav__module-badge">SYSTEM</span>
-      <span class="wf-nav__module-name">IOR Design System — Component Library &amp; CSS Architecture</span>
+      <span class="wf-nav__module-name">IOR Design System, Component Library &amp; CSS Architecture</span>
       <span class="wf-nav__module-file">IOR_Design_System.html</span>
     </div>
     <div class="wf-nav__legend">
@@ -2139,7 +2139,7 @@
        DESIGN SYSTEM HEADER
   ============================================================ -->
   <header class="ds-header">
-    <div class="ds-header__kicker">IOR Tier-1 Website Redesign — 2026</div>
+    <div class="ds-header__kicker">IOR Tier-1 Website Redesign, 2026</div>
     <h1 class="ds-header__title">IOR Design System</h1>
     <p class="ds-header__meta">
       CSS Architecture · Component Library · Annotation System · Module Map<br>
@@ -2174,7 +2174,7 @@
     ============================================================ -->
     <section id="non-negotiables" aria-label="Non-negotiable design rules">
       <h2 class="ds-section-title">Non-Negotiable Design Rules</h2>
-      <p style="font-size:var(--text-body-m);color:var(--ior-mid-grey);margin-bottom:var(--space-8);">
+      <p style="font-size:var(--text-body-m);colour:var(--ior-mid-grey);margin-bottom:var(--space-8);">
         These 5 rules apply to every file, every page, every component. No exceptions. Violations must be flagged in peer review.
       </p>
       <div class="ds-rule-list">
@@ -2182,7 +2182,7 @@
         <div class="ds-rule ds-rule--locked">
           <div class="ds-rule__number">1</div>
           <div class="ds-rule__content">
-            <div class="ds-rule__title">No rounded corners — sharp geometry only</div>
+            <div class="ds-rule__title">No rounded corners, sharp geometry only</div>
             <div class="ds-rule__desc">
               <code>border-radius: 0</code> is set as <code>--radius: 0px</code> in the root variables and applied via the <code>.btn</code>, <code>.ior-pill</code>, and all card/container components. Never override this. The brutalised industrial geometry reflects IOR's heavy infrastructure positioning.
             </div>
@@ -2194,7 +2194,7 @@
           <div class="ds-rule__content">
             <div class="ds-rule__title">No full-bleed hero images with dark overlay</div>
             <div class="ds-rule__desc">
-              The Homepage is the <em>only</em> exception (per Figma brief — approved). All other pages must use: <strong>split layouts</strong> (left content, right media), <strong>abstract/geometric backgrounds</strong>, or <strong>reduced-height banners</strong> (<code>.ior-hero-banner</code>). The cookie-cutter "dark photo + centred white headline" pattern is explicitly rejected.
+              The Homepage is the <em>only</em> exception (per Figma brief, approved). All other pages must use: <strong>split layouts</strong> (left content, right media), <strong>abstract/geometric backgrounds</strong>, or <strong>reduced-height banners</strong> (<code>.ior-hero-banner</code>). The cookie-cutter "dark photo + centred white headline" pattern is explicitly rejected.
             </div>
           </div>
         </div>
@@ -2202,7 +2202,7 @@
         <div class="ds-rule ds-rule--locked">
           <div class="ds-rule__number">3</div>
           <div class="ds-rule__content">
-            <div class="ds-rule__title">No Lorem Ipsum — brief copy only</div>
+            <div class="ds-rule__title">No Lorem Ipsum, brief copy only</div>
             <div class="ds-rule__desc">
               Every text block must use copy provided in the Design Direction document, Copy Scaffolding document, or UX Journey Mapping document. If copy is not provided for a section, insert a <code>.annotation--question</code> bar clearly flagging the gap. Do not fabricate filler copy.
             </div>
@@ -2214,7 +2214,7 @@
           <div class="ds-rule__content">
             <div class="ds-rule__title">Every block must have a full-width annotation bar</div>
             <div class="ds-rule__desc">
-              The <code>.annotation</code> component (defined in this file) must appear immediately above every content block in every module file. Format: <strong>BLOCK [N] — [NAME] · [SPEC] · [DESIGN INTENT]</strong>. See the Annotation System section for full usage rules.
+              The <code>.annotation</code> component (defined in this file) must appear immediately above every content block in every module file. Format: <strong>BLOCK [N], [NAME] · [SPEC] · [DESIGN INTENT]</strong>. See the Annotation System section for full usage rules.
             </div>
           </div>
         </div>
@@ -2222,9 +2222,9 @@
         <div class="ds-rule ds-rule--locked">
           <div class="ds-rule__number">5</div>
           <div class="ds-rule__content">
-            <div class="ds-rule__title">No generic AI layout patterns — follow the brief block order exactly</div>
+            <div class="ds-rule__title">No generic AI layout patterns, follow the brief block order exactly</div>
             <div class="ds-rule__desc">
-              The block order for every page is specified in the Copy Scaffolding and Design Direction documents. Follow it exactly. If a page's brief specifies "Interactive Split-Content Block" — implement the <code>.ior-split-interactive</code> component. Do not substitute a simpler static grid. If unsure, flag with <code>.annotation--question</code>.
+              The block order for every page is specified in the Copy Scaffolding and Design Direction documents. Follow it exactly. If a page's brief specifies "Interactive Split-Content Block", implement the <code>.ior-split-interactive</code> component. Do not substitute a simpler static grid. If unsure, flag with <code>.annotation--question</code>.
             </div>
           </div>
         </div>
@@ -2236,7 +2236,7 @@
          2. COLOUR TOKENS
     ============================================================ -->
     <section id="tokens" aria-label="Colour tokens">
-      <h2 class="ds-section-title">Colour Tokens — Masterbrand</h2>
+      <h2 class="ds-section-title">Colour Tokens, Masterbrand</h2>
 
       <h3 class="ds-subsection-title">Primary Palette</h3>
       <div class="ds-token-grid">
@@ -2245,14 +2245,14 @@
           <div class="ds-token__swatch" style="background:#0355A3;"></div>
           <div class="ds-token__name">--ior-blue</div>
           <div class="ds-token__value">#0355A3</div>
-          <div class="ds-token__desc" style="font-size:11px;color:var(--ior-mid-grey);margin-top:4px;">Primary blue. CTAs, accents, headings, nav links.</div>
+          <div class="ds-token__desc" style="font-size:11px;colour:var(--ior-mid-grey);margin-top:4px;">Primary blue. CTAs, accents, headings, nav links.</div>
         </div>
 
         <div class="ds-token">
           <div class="ds-token__swatch" style="background:#0A4066;"></div>
           <div class="ds-token__name">--ior-navy</div>
           <div class="ds-token__value">#0A4066</div>
-          <div class="ds-token__desc" style="font-size:11px;color:var(--ior-mid-grey);margin-top:4px;">Dark navy. Large section backgrounds, footers, hero banners.</div>
+          <div class="ds-token__desc" style="font-size:11px;colour:var(--ior-mid-grey);margin-top:4px;">Dark navy. Large section backgrounds, footers, hero banners.</div>
         </div>
 
         <div class="ds-token">
@@ -2265,42 +2265,42 @@
           <div class="ds-token__swatch" style="background:#231F20;"></div>
           <div class="ds-token__name">--ior-near-black</div>
           <div class="ds-token__value">#231F20</div>
-          <div class="ds-token__desc" style="font-size:11px;color:var(--ior-mid-grey);margin-top:4px;">Logo lockup only. Do not use as general body text.</div>
+          <div class="ds-token__desc" style="font-size:11px;colour:var(--ior-mid-grey);margin-top:4px;">Logo lockup only. Do not use as general body text.</div>
         </div>
 
         <div class="ds-token">
           <div class="ds-token__swatch" style="background:#383838;"></div>
           <div class="ds-token__name">--ior-charcoal</div>
           <div class="ds-token__value">#383838</div>
-          <div class="ds-token__desc" style="font-size:11px;color:var(--ior-mid-grey);margin-top:4px;">Body copy on light backgrounds, card text.</div>
+          <div class="ds-token__desc" style="font-size:11px;colour:var(--ior-mid-grey);margin-top:4px;">Body copy on light backgrounds, card text.</div>
         </div>
 
         <div class="ds-token">
           <div class="ds-token__swatch" style="background:#94A9BA;"></div>
           <div class="ds-token__name">--ior-mid-grey</div>
           <div class="ds-token__value">#94A9BA</div>
-          <div class="ds-token__desc" style="font-size:11px;color:var(--ior-mid-grey);margin-top:4px;">Eyebrow labels, muted/secondary text on light.</div>
+          <div class="ds-token__desc" style="font-size:11px;colour:var(--ior-mid-grey);margin-top:4px;">Eyebrow labels, muted/secondary text on light.</div>
         </div>
 
         <div class="ds-token">
           <div class="ds-token__swatch" style="background:#E0F1FF;"></div>
           <div class="ds-token__name">--ior-light-blue-bg</div>
           <div class="ds-token__value">#E0F1FF</div>
-          <div class="ds-token__desc" style="font-size:11px;color:var(--ior-mid-grey);margin-top:4px;">Section backgrounds, industry cards, step blocks.</div>
+          <div class="ds-token__desc" style="font-size:11px;colour:var(--ior-mid-grey);margin-top:4px;">Section backgrounds, industry cards, step blocks.</div>
         </div>
 
         <div class="ds-token">
           <div class="ds-token__swatch" style="background:#7FBEE6;"></div>
           <div class="ds-token__name">--ior-sky</div>
           <div class="ds-token__value">#7FBEE6</div>
-          <div class="ds-token__desc" style="font-size:11px;color:var(--ior-mid-grey);margin-top:4px;">Stat labels on navy, eyebrow text on dark backgrounds.</div>
+          <div class="ds-token__desc" style="font-size:11px;colour:var(--ior-mid-grey);margin-top:4px;">Stat labels on navy, eyebrow text on dark backgrounds.</div>
         </div>
 
         <div class="ds-token">
           <div class="ds-token__swatch" style="background:#00D1CC;"></div>
           <div class="ds-token__name">--ior-teal</div>
           <div class="ds-token__value">#00D1CC</div>
-          <div class="ds-token__desc" style="font-size:11px;color:var(--ior-mid-grey);margin-top:4px;"><strong>Fuelcharge brand only.</strong> Do not use elsewhere.</div>
+          <div class="ds-token__desc" style="font-size:11px;colour:var(--ior-mid-grey);margin-top:4px;"><strong>Fuelcharge brand only.</strong> Do not use elsewhere.</div>
         </div>
 
       </div>
@@ -2311,7 +2311,7 @@
     ============================================================ -->
     <section id="sub-brands" aria-label="Sub-brand colour rules">
       <h2 class="ds-section-title">Sub-Brand & Sub-Hub Colour Rules</h2>
-      <p style="font-size:var(--text-body-m);color:var(--ior-mid-grey);margin-bottom:var(--space-8);">
+      <p style="font-size:var(--text-body-m);colour:var(--ior-mid-grey);margin-bottom:var(--space-8);">
         IOR operates as a Masterbrand. Sub-brands have distinct colours that are <strong>strictly contained</strong> to their own pages.
       </p>
       <table class="ds-module-table">
@@ -2355,14 +2355,14 @@
           </tr>
           <tr>
             <td><strong>HyBlue™</strong></td>
-            <td><span class="ds-badge" style="background:#0069C6;color:white;">HyBlue Blue</span></td>
+            <td><span class="ds-badge" style="background:#0069C6;colour:white;">HyBlue Blue</span></td>
             <td class="code">#0069C6</td>
             <td><strong>HyBlue page only.</strong> Never use as a general accent. Do NOT use IOR standard navy on this page.</td>
             <td>White on HyBlue blue, or HyBlue blue on white.</td>
           </tr>
           <tr>
             <td><strong>HyDip™</strong></td>
-            <td><span class="ds-badge" style="background:#006AC6;color:white;">HyDip Blue</span></td>
+            <td><span class="ds-badge" style="background:#006AC6;colour:white;">HyDip Blue</span></td>
             <td class="code">#006AC6</td>
             <td><strong>HyDip page only.</strong> Never use as a general accent.</td>
             <td>SaaS product page aesthetic.</td>
@@ -2383,7 +2383,7 @@
     ============================================================ -->
     <section id="typography" aria-label="Typography scale">
       <h2 class="ds-section-title">Typography Scale</h2>
-      <p style="font-size:var(--text-body-s);font-family:'Courier New';color:var(--ior-mid-grey);margin-bottom:var(--space-6);">
+      <p style="font-size:var(--text-body-s);font-family:'Courier New';colour:var(--ior-mid-grey);margin-bottom:var(--space-6);">
         Font: Avenir Next LT Pro (brand specified). Fallback: 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif.
       </p>
 
@@ -2436,7 +2436,7 @@
 
         <div class="ds-type-row">
           <div class="ds-type-meta">--text-caption · 12px · fw-regular · Class: .ior-caption [Legal, small print]</div>
-          <div style="font-size:var(--text-caption);color:var(--ior-mid-grey);">Site by 3PM. IOR is a registered trademark.</div>
+          <div style="font-size:var(--text-caption);colour:var(--ior-mid-grey);">Site by 3PM. IOR is a registered trademark.</div>
         </div>
 
       </div>
@@ -2504,7 +2504,7 @@
           <div class="ds-token__value">100px</div>
         </div>
       </div>
-      <p style="margin-top:var(--space-6);font-size:var(--text-body-s);color:var(--ior-mid-grey);">
+      <p style="margin-top:var(--space-6);font-size:var(--text-body-s);colour:var(--ior-mid-grey);">
         Section padding: <code>--section-pad-y: clamp(60px, 8vw, 100px)</code> &nbsp;|&nbsp; <code>--section-pad-x: clamp(20px, 8vw, 125px)</code><br>
         Card grid gap: <code>--grid-gap: 31px</code> (matches Figma spec)
       </p>
@@ -2515,8 +2515,8 @@
     ============================================================ -->
     <section id="buttons" aria-label="Button components">
       <h2 class="ds-section-title">Button Components</h2>
-      <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:var(--space-8);">
-        All buttons: <code>border-radius: 0</code> (LOCKED). Arrow icon rendered via CSS <code>.btn__arrow</code> pseudo-element — no SVG dependency.
+      <p style="font-size:var(--text-body-s);colour:var(--ior-mid-grey);margin-bottom:var(--space-8);">
+        All buttons: <code>border-radius: 0</code> (LOCKED). Arrow icon rendered via CSS <code>.btn__arrow</code> pseudo-element, no SVG dependency.
       </p>
 
       <h3 class="ds-subsection-title">On Light Backgrounds</h3>
@@ -2524,7 +2524,7 @@
         <a href="#" class="btn btn--primary">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
         <a href="#" class="btn btn--outline-blue">Customer Login <span class="btn__arrow" aria-hidden="true"></span></a>
         <a href="#" class="btn btn--ghost">Find Out More <span class="btn__arrow" aria-hidden="true"></span></a>
-        <a href="#" class="btn btn--primary btn--lg">Apply Now — Large <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="#" class="btn btn--primary btn--lg">Apply Now, Large <span class="btn__arrow" aria-hidden="true"></span></a>
         <a href="#" class="btn btn--outline-blue btn--sm">Small Outline</a>
       </div>
 
@@ -2562,7 +2562,7 @@
       <h2 class="ds-section-title">Navigation Components</h2>
 
       <h3 class="ds-subsection-title">Utility Bar (Top Bar)</h3>
-      <div style="border:1px solid var(--border-color-light);">
+      <div style="border:1px solid var(--border-colour-light);">
         <div class="ior-utility-bar">
           <span class="ior-utility-bar__announcement">Announcement Message Placeholder</span>
           <div class="ior-utility-bar__actions">
@@ -2576,10 +2576,10 @@
       </div>
 
       <h3 class="ds-subsection-title" style="margin-top:var(--space-8);">Primary Navigation Bar</h3>
-      <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:var(--space-4);">Sticky. Hides link list below 1200px and shows hamburger. IOR logo placeholder shown as block.</p>
-      <div style="border:1px solid var(--border-color-light);position:relative;">
+      <p style="font-size:var(--text-body-s);colour:var(--ior-mid-grey);margin-bottom:var(--space-4);">Sticky. Hides link list below 1200px and shows hamburger. IOR logo placeholder shown as block.</p>
+      <div style="border:1px solid var(--border-colour-light);position:relative;">
         <nav class="ior-nav" aria-label="Primary navigation" style="position:relative;">
-          <div class="ior-nav__logo" style="height:46px;background:var(--ior-light-blue-bg);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ior-mid-grey);font-weight:700;">[IOR LOGO]</div>
+          <div class="ior-nav__logo" style="height:46px;background:var(--ior-light-blue-bg);display:flex;align-items:centre;justify-content:centre;font-size:11px;colour:var(--ior-mid-grey);font-weight:700;">[IOR LOGO]</div>
           <ul class="ior-nav__links" role="list">
             <li><a href="#" class="ior-nav__link">Fuel Solutions</a></li>
             <li><a href="#" class="ior-nav__link">Digital Platforms</a></li>
@@ -2603,12 +2603,12 @@
     ============================================================ -->
     <section id="hero-patterns" aria-label="Hero layout patterns">
       <h2 class="ds-section-title">Hero Layout Patterns</h2>
-      <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:var(--space-8);">
+      <p style="font-size:var(--text-body-s);colour:var(--ior-mid-grey);margin-bottom:var(--space-8);">
         Three approved hero patterns. Full-bleed overlay hero is reserved for Homepage only (per Figma brief).
       </p>
 
-      <h3 class="ds-subsection-title">Pattern A — Split Hero (Hub pages, product landing pages)</h3>
-      <div style="border:1px solid var(--border-color-light);overflow:hidden;">
+      <h3 class="ds-subsection-title">Pattern A, Split Hero (Hub pages, product landing pages)</h3>
+      <div style="border:1px solid var(--border-colour-light);overflow:hidden;">
         <div class="ior-hero-split" style="background:var(--ior-white);">
           <div class="ior-hero-split__content">
             <p class="ior-eyebrow">Fuel Solutions Australia</p>
@@ -2619,12 +2619,12 @@
               <a href="#" class="btn btn--outline-blue">Register Your Interest <span class="btn__arrow" aria-hidden="true"></span></a>
             </div>
           </div>
-          <div class="ior-hero-split__media img-placeholder" style="min-height:320px;font-size:13px;">[VIDEO MONTAGE — Network sites, tanks, aviation, bulk delivery]</div>
+          <div class="ior-hero-split__media img-placeholder" style="min-height:320px;font-size:13px;">[VIDEO MONTAGE, Network sites, tanks, aviation, bulk delivery]</div>
         </div>
       </div>
 
-      <h3 class="ds-subsection-title" style="margin-top:var(--space-10);">Pattern B — Reduced-Height Banner (Spoke pages)</h3>
-      <div style="border:1px solid var(--border-color-light);overflow:hidden;">
+      <h3 class="ds-subsection-title" style="margin-top:var(--space-10);">Pattern B, Reduced-Height Banner (Spoke pages)</h3>
+      <div style="border:1px solid var(--border-colour-light);overflow:hidden;">
         <div class="ior-hero-banner">
           <p class="ior-eyebrow ior-eyebrow--light">Ground Fuels</p>
           <h1 class="ior-display-m ior-display-m--white">Ground Fuel Solutions For Australian Industry.</h1>
@@ -2635,9 +2635,9 @@
         </div>
       </div>
 
-      <h3 class="ds-subsection-title" style="margin-top:var(--space-10);">Pattern C — Homepage Hero (Full-bleed photograph + overlay — APPROVED EXCEPTION ONLY)</h3>
-      <div style="border:1px solid var(--border-color-light);overflow:hidden;">
-        <div class="ior-hero-homepage" style="background-color:var(--ior-navy);min-height:400px;">
+      <h3 class="ds-subsection-title" style="margin-top:var(--space-10);">Pattern C, Homepage Hero (Full-bleed photograph + overlay, APPROVED EXCEPTION ONLY)</h3>
+      <div style="border:1px solid var(--border-colour-light);overflow:hidden;">
+        <div class="ior-hero-homepage" style="background-colour:var(--ior-navy);min-height:400px;">
           <div class="ior-hero-homepage__overlay"></div>
           <div class="ior-hero-homepage__content">
             <h1 class="ior-display-xl">Fuelling<br/>Australia's<br/>Industries</h1>
@@ -2665,7 +2665,7 @@
       <div class="ior-grid-3" style="margin-bottom:var(--space-10);">
         <div class="ior-card-solution">
           <div class="ior-card-solution__icon-bar" style="justify-content:space-between;align-items:flex-end;">
-            <h3 class="ior-card-solution__title" style="color:white;font-size:var(--text-heading-m);">Transport &amp; Logistics</h3>
+            <h3 class="ior-card-solution__title" style="colour:white;font-size:var(--text-heading-m);">Transport &amp; Logistics</h3>
             <div class="ior-card-solution__icon">[ICON]</div>
           </div>
           <div class="ior-card-solution__body">
@@ -2675,7 +2675,7 @@
         </div>
         <div class="ior-card-solution">
           <div class="ior-card-solution__icon-bar" style="justify-content:space-between;align-items:flex-end;">
-            <h3 class="ior-card-solution__title" style="color:white;font-size:var(--text-heading-m);">Mining &amp; Resources</h3>
+            <h3 class="ior-card-solution__title" style="colour:white;font-size:var(--text-heading-m);">Mining &amp; Resources</h3>
             <div class="ior-card-solution__icon">[ICON]</div>
           </div>
           <div class="ior-card-solution__body">
@@ -2685,7 +2685,7 @@
         </div>
         <div class="ior-card-solution">
           <div class="ior-card-solution__icon-bar" style="justify-content:space-between;align-items:flex-end;">
-            <h3 class="ior-card-solution__title" style="color:white;font-size:var(--text-heading-m);">Agriculture &amp; Harvest</h3>
+            <h3 class="ior-card-solution__title" style="colour:white;font-size:var(--text-heading-m);">Agriculture &amp; Harvest</h3>
             <div class="ior-card-solution__icon">[ICON]</div>
           </div>
           <div class="ior-card-solution__body">
@@ -2698,21 +2698,21 @@
       <h3 class="ds-subsection-title">Feature / News Card (.ior-card-feature)</h3>
       <div class="ior-grid-3">
         <div class="ior-card-feature">
-          <div class="ior-card-feature__image img-placeholder" style="height:200px;">[Image — 4:3]</div>
+          <div class="ior-card-feature__image img-placeholder" style="height:200px;">[Image, 4:3]</div>
           <div class="ior-card-feature__body">
             <h3 class="ior-heading-l">IOR White Sands NOW OPEN!</h3>
             <a href="#" class="btn btn--ghost">Read Article <span class="btn__arrow" aria-hidden="true"></span></a>
           </div>
         </div>
         <div class="ior-card-feature">
-          <div class="ior-card-feature__image img-placeholder" style="height:200px;">[Image — 4:3]</div>
+          <div class="ior-card-feature__image img-placeholder" style="height:200px;">[Image, 4:3]</div>
           <div class="ior-card-feature__body">
             <h3 class="ior-heading-l">IOR Aviation Lands in Camden!</h3>
             <a href="#" class="btn btn--ghost">Read Article <span class="btn__arrow" aria-hidden="true"></span></a>
           </div>
         </div>
         <div class="ior-card-feature">
-          <div class="ior-card-feature__image img-placeholder" style="height:200px;">[Image — 4:3]</div>
+          <div class="ior-card-feature__image img-placeholder" style="height:200px;">[Image, 4:3]</div>
           <div class="ior-card-feature__body">
             <h3 class="ior-heading-l">Stewart Morland Takes Top Prize at Surat Basin Energy Awards</h3>
             <a href="#" class="btn btn--ghost">Read Article <span class="btn__arrow" aria-hidden="true"></span></a>
@@ -2720,7 +2720,7 @@
         </div>
       </div>
 
-      <h3 class="ds-subsection-title" style="margin-top:var(--space-10);">Dark Card — Digital Platforms (.ior-card-dark)</h3>
+      <h3 class="ds-subsection-title" style="margin-top:var(--space-10);">Dark Card, Digital Platforms (.ior-card-dark)</h3>
       <div class="ior-grid-3" style="background:var(--ior-navy);padding:var(--space-6);">
         <div class="ior-card-dark" style="background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%),var(--ior-navy);">
           <div class="ior-card-dark__tag">For Fleet Managers</div>
@@ -2750,7 +2750,7 @@
       <h2 class="ds-section-title">Interactive Components</h2>
 
       <h3 class="ds-subsection-title">Tabbed Interface (.ior-tabs)</h3>
-      <div style="background:var(--ior-white);padding:var(--space-8);border:1px solid var(--border-color-light);">
+      <div style="background:var(--ior-white);padding:var(--space-8);border:1px solid var(--border-colour-light);">
         <div class="ior-tabs">
           <div class="ior-tabs__nav" role="tablist">
             <button class="ior-tab-btn ior-tab-btn--active" role="tab" aria-selected="true">Diesel Network</button>
@@ -2762,7 +2762,7 @@
             <div class="ior-split" style="gap:var(--space-8);">
               <div>
                 <h3 class="ior-heading-l" style="margin-bottom:var(--space-5);">Open 24/7 on major transport routes.</h3>
-                <p class="ior-body-m">Built for trucks — high-clearance canopies, wide drive-through layouts, and fast-flow bowsers across 125+ unmanned sites.</p>
+                <p class="ior-body-m">Built for trucks, high-clearance canopies, wide drive-through layouts, and fast-flow bowsers across 125+ unmanned sites.</p>
               </div>
               <div class="img-placeholder" style="height:220px;">[Diesel Network Image]</div>
             </div>
@@ -2771,8 +2771,8 @@
       </div>
 
       <h3 class="ds-subsection-title" style="margin-top:var(--space-10);">Interactive Split-Content Block (.ior-split-interactive)</h3>
-      <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:var(--space-4);">Mandated for On-Site Refuelling, Airport Fuelling Services. Left item click updates right panel.</p>
-      <div style="background:var(--ior-white);padding:var(--space-8);border:1px solid var(--border-color-light);">
+      <p style="font-size:var(--text-body-s);colour:var(--ior-mid-grey);margin-bottom:var(--space-4);">Mandated for On-Site Refuelling, Airport Fuelling Services. Left item click updates right panel.</p>
+      <div style="background:var(--ior-white);padding:var(--space-8);border:1px solid var(--border-colour-light);">
         <div class="ior-split-interactive">
           <div class="ior-split-interactive__list" role="list">
             <div class="ior-split-interactive__item ior-split-interactive__item--active">Always On (24/7)</div>
@@ -2804,7 +2804,7 @@
           <div class="ior-step">
             <div class="ior-step__number">01</div>
             <div class="ior-step__title">Apply online in minutes.</div>
-            <div class="ior-step__body">Complete the IOR account application via ApplyEasy — no paperwork required.</div>
+            <div class="ior-step__body">Complete the IOR account application via ApplyEasy, no paperwork required.</div>
           </div>
           <div class="ior-step">
             <div class="ior-step__number">02</div>
@@ -2823,7 +2823,7 @@
       </div>
 
       <h3 class="ds-subsection-title" style="margin-top:var(--space-10);">Accordion (.ior-accordion)</h3>
-      <div style="background:var(--ior-white);padding:var(--space-8);border:1px solid var(--border-color-light);">
+      <div style="background:var(--ior-white);padding:var(--space-8);border:1px solid var(--border-colour-light);">
         <div class="ior-accordion">
           <div class="ior-accordion__item ior-accordion__item--open">
             <button class="ior-accordion__trigger" aria-expanded="true">
@@ -2857,7 +2857,7 @@
 
       <h3 class="ds-subsection-title" style="margin-top:var(--space-10);">Stat Bar (.ior-stats)</h3>
       <div style="background:var(--ior-navy);padding:var(--space-10) var(--space-8);">
-        <p class="ior-eyebrow ior-eyebrow--light" style="text-align:center;margin-bottom:var(--space-10);">Four Decades of Keeping Australia Moving</p>
+        <p class="ior-eyebrow ior-eyebrow--light" style="text-align:centre;margin-bottom:var(--space-10);">Four Decades of Keeping Australia Moving</p>
         <div class="ior-stats">
           <div class="ior-stat">
             <div class="ior-stat__number">190M+</div>
@@ -2898,8 +2898,8 @@
           <a href="#" class="ior-quick-access__cell ior-quick-access__cell--accent">
             <div class="ior-quick-access__icon" aria-hidden="true" style="background:rgba(19,17,77,0.15);"></div>
             <div>
-              <div class="ior-quick-access__title" style="color:#13114D;">Fuelcharge <span class="btn__arrow" aria-hidden="true"></span></div>
-              <div class="ior-quick-access__body" style="color:#13114D;">Fuel now. Pay at the pump.</div>
+              <div class="ior-quick-access__title" style="colour:#13114D;">Fuelcharge <span class="btn__arrow" aria-hidden="true"></span></div>
+              <div class="ior-quick-access__body" style="colour:#13114D;">Fuel now. Pay at the pump.</div>
             </div>
           </a>
         </div>
@@ -2916,11 +2916,11 @@
       <div class="ior-grid-2" style="gap:var(--space-6);">
         <div class="ior-testimonial">
           <p class="ior-testimonial__quote">"The best thing about the IOR situation is I know the people that own the company... I couldn't ask for any more from a supplier."</p>
-          <div class="ior-testimonial__attribution">Ken Easter, Owner &amp; CEO — K.S. Easter Transport</div>
+          <div class="ior-testimonial__attribution">Ken Easter, Owner &amp; CEO, K.S. Easter Transport</div>
         </div>
         <div class="ior-testimonial ior-testimonial--dark">
           <p class="ior-testimonial__quote ior-testimonial__quote--white">"Fundamentally, you have to do business with people who do what they say they're going to do, and that's absolutely been the case between Alliance and IOR."</p>
-          <div class="ior-testimonial__attribution ior-testimonial__attribution--sky">Lee Schofield, CEO — Alliance Airlines</div>
+          <div class="ior-testimonial__attribution ior-testimonial__attribution--sky">Lee Schofield, CEO, Alliance Airlines</div>
         </div>
       </div>
 
@@ -2928,14 +2928,14 @@
       <div class="ior-download-block">
         <div class="ior-download-block__text">
           <div class="ior-download-block__title">Download the Ground Fuels Capability Brochure</div>
-          <div class="ior-download-block__subtitle">PDF · Opens HubSpot form — do not embed the form on-page</div>
+          <div class="ior-download-block__subtitle">PDF · Opens HubSpot form, do not embed the form on-page</div>
         </div>
         <a href="#" class="btn btn--primary-white">Download Now <span class="btn__arrow" aria-hidden="true"></span></a>
       </div>
 
       <h3 class="ds-subsection-title" style="margin-top:var(--space-8);">Logo Strip (.ior-logo-strip)</h3>
-      <div style="padding:var(--space-8);background:var(--ior-white);border:1px solid var(--border-color-light);">
-        <p class="ior-eyebrow" style="text-align:center;margin-bottom:var(--space-8);">Trusted by Australia's Leading Organisations</p>
+      <div style="padding:var(--space-8);background:var(--ior-white);border:1px solid var(--border-colour-light);">
+        <p class="ior-eyebrow" style="text-align:centre;margin-bottom:var(--space-8);">Trusted by Australia's Leading Organisations</p>
         <div class="ior-logo-strip">
           <div class="ior-logo-strip__item"></div>
           <div class="ior-logo-strip__item"></div>
@@ -2944,7 +2944,7 @@
           <div class="ior-logo-strip__item"></div>
           <div class="ior-logo-strip__item"></div>
         </div>
-        <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);text-align:center;margin-top:var(--space-6);">Placeholder blocks — replace with client logos when provided. Do not use competitor logos as stand-ins.</p>
+        <p style="font-size:var(--text-body-s);colour:var(--ior-mid-grey);text-align:centre;margin-top:var(--space-6);">Placeholder blocks, replace with client logos when provided. Do not use competitor logos as stand-ins.</p>
       </div>
     </section>
 
@@ -2953,22 +2953,22 @@
     ============================================================ -->
     <section id="annotation" aria-label="Annotation system">
       <h2 class="ds-section-title">Annotation System</h2>
-      <p style="font-size:var(--text-body-m);color:var(--ior-charcoal);margin-bottom:var(--space-6);">
+      <p style="font-size:var(--text-body-m);colour:var(--ior-charcoal);margin-bottom:var(--space-6);">
         Non-negotiable Rule 4: every content block in every module file must be preceded by an <code>.annotation</code> bar. Three variants exist.
       </p>
 
       <h3 class="ds-subsection-title">Standard Annotation (Default)</h3>
       <div class="annotation">
-        <span class="annotation__block-id">BLOCK 3 — ROUTING MATRIX</span>
+        <span class="annotation__block-id">BLOCK 3, ROUTING MATRIX</span>
         <span class="annotation__separator">·</span>
         <span class="annotation__description">4 cells: Ground Fuels / Aviation / Equipment &amp; Infrastructure / Supply &amp; Trading. Each cell contains a sub-title, body copy, and product pill row linking to child spoke pages.</span>
         <span class="annotation__separator">·</span>
         <span class="annotation__intent">DESIGN INTENT: Asymmetric grid. Acts as high-speed traffic controller routing Revenue Engine and Specialist personas to relevant product hubs. On hover: cell background transitions to --ior-blue, text inverts to white.</span>
       </div>
 
-      <h3 class="ds-subsection-title" style="margin-top:var(--space-6);">Design Question Annotation (Red — copy or design unclear)</h3>
+      <h3 class="ds-subsection-title" style="margin-top:var(--space-6);">Design Question Annotation (Red, copy or design unclear)</h3>
       <div class="annotation annotation--question">
-        <span class="annotation__block-id">DESIGN QUESTION — BLOCK 7</span>
+        <span class="annotation__block-id">DESIGN QUESTION, BLOCK 7</span>
         <span class="annotation__separator">·</span>
         <span class="annotation__description">Copy scaffolding does not specify body copy for the Condensates page Section 2. Client input required before this block can be built.</span>
         <span class="annotation__separator">·</span>
@@ -2977,7 +2977,7 @@
 
       <h3 class="ds-subsection-title" style="margin-top:var(--space-6);">Approved / Locked Annotation (Green)</h3>
       <div class="annotation annotation--approved">
-        <span class="annotation__block-id">APPROVED — BLOCK 1 — HERO (HOMEPAGE ONLY)</span>
+        <span class="annotation__block-id">APPROVED, BLOCK 1, HERO (HOMEPAGE ONLY)</span>
         <span class="annotation__separator">·</span>
         <span class="annotation__description">Full-bleed photograph with 70% blue overlay. Approved exception per Figma brief. Copy locked: "Fuelling Australia's Industries".</span>
         <span class="annotation__separator">·</span>
@@ -2985,10 +2985,10 @@
       </div>
 
       <div class="ds-code" style="margin-top:var(--space-8);">
-<span class="comment">/* Annotation HTML pattern — copy exactly for each block */</span>
+<span class="comment">/* Annotation HTML pattern, copy exactly for each block */</span>
 
 &lt;div class="annotation"&gt;
-  &lt;span class="annotation__block-id"&gt;<span class="val">BLOCK [N] — [BLOCK NAME]</span>&lt;/span&gt;
+  &lt;span class="annotation__block-id"&gt;<span class="val">BLOCK [N], [BLOCK NAME]</span>&lt;/span&gt;
   &lt;span class="annotation__separator"&gt;·&lt;/span&gt;
   &lt;span class="annotation__description"&gt;<span class="val">[Content description: what is in this block, how many columns, what components]</span>&lt;/span&gt;
   &lt;span class="annotation__separator"&gt;·</span>&lt;/span&gt;
@@ -3007,8 +3007,8 @@
          13. MODULE MAP
     ============================================================ -->
     <section id="module-map" aria-label="Module map">
-      <h2 class="ds-section-title">Module Map — Final Approved Structure</h2>
-      <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:var(--space-8);">
+      <h2 class="ds-section-title">Module Map, Final Approved Structure</h2>
+      <p style="font-size:var(--text-body-s);colour:var(--ior-mid-grey);margin-bottom:var(--space-8);">
         12 module files + Design System + Master Index. Focus keyword updated: Fuel Solutions Hub = "fuel solutions australia".
       </p>
       <table class="ds-module-table">
@@ -3128,12 +3128,12 @@
          14. IMPORT GUIDE
     ============================================================ -->
     <section id="import" aria-label="Import guide for module files">
-      <h2 class="ds-section-title">Import Guide — How to Use This File in Each Module</h2>
+      <h2 class="ds-section-title">Import Guide, How to Use This File in Each Module</h2>
       <p style="font-size:var(--text-body-m);margin-bottom:var(--space-6);">
         Copy the entire <code>&lt;style&gt;</code> block from this file into the <code>&lt;head&gt;</code> of each module file. Do not link externally (wireframe self-containment). Then follow this shell structure for every module:
       </p>
       <div class="ds-code">
-<span class="comment">&lt;!-- MODULE FILE SHELL — copy into every .html module --&gt;</span>
+<span class="comment">&lt;!-- MODULE FILE SHELL, copy into every .html module --&gt;</span>
 <span class="comment">&lt;!-- Fill in MODULE_NAME and FILE_NAME before saving --&gt;</span>
 
 &lt;!DOCTYPE html&gt;
@@ -3141,16 +3141,16 @@
 &lt;head&gt;
   &lt;meta charset="UTF-8" /&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
-  &lt;title&gt;<span class="val">[Page Title] — IOR Wireframe</span>&lt;/title&gt;
+  &lt;title&gt;<span class="val">[Page Title], IOR Wireframe</span>&lt;/title&gt;
   &lt;style&gt;
     <span class="comment">/* === PASTE FULL IOR DESIGN SYSTEM CSS HERE === */</span>
-    <span class="comment">/* Includes .wf-nav styles — do not strip them out */</span>
+    <span class="comment">/* Includes .wf-nav styles, do not strip them out */</span>
   &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 
   <span class="comment">&lt;!-- ═══════════════════════════════════════════════════════════
-       WIREFRAME NAV BAR — TOOL LAYER — NOT PART OF IOR BRAND
+       WIREFRAME NAV BAR, TOOL LAYER, NOT PART OF IOR BRAND
        Must be the very first element inside &lt;body&gt;.
        Update wf-nav__module-name and wf-nav__module-file per module.
   ═══════════════════════════════════════════════════════════ --&gt;</span>
@@ -3168,8 +3168,8 @@
     &lt;!-- Centre: current module identity --&gt;
     &lt;div class="wf-nav__module"&gt;
       &lt;span class="wf-nav__module-badge"&gt;MODULE&lt;/span&gt;
-      &lt;span class="wf-nav__module-name"&gt;<span class="val">[Module Name — e.g. Ground Fuels Sub-Hub]</span>&lt;/span&gt;
-      &lt;span class="wf-nav__module-file"&gt;<span class="val">[File name — e.g. 03_Ground_Fuels.html]</span>&lt;/span&gt;
+      &lt;span class="wf-nav__module-name"&gt;<span class="val">[Module Name, e.g. Ground Fuels Sub-Hub]</span>&lt;/span&gt;
+      &lt;span class="wf-nav__module-file"&gt;<span class="val">[File name, e.g. 03_Ground_Fuels.html]</span>&lt;/span&gt;
     &lt;/div&gt;
 
     &lt;!-- Right: annotation colour legend --&gt;
@@ -3205,7 +3205,7 @@
 
     <span class="comment">&lt;!-- Repeat this pattern for every content block: --&gt;</span>
     &lt;div class="annotation"&gt;
-      &lt;span class="annotation__block-id"&gt;<span class="val">BLOCK 1 — HERO</span>&lt;/span&gt;
+      &lt;span class="annotation__block-id"&gt;<span class="val">BLOCK 1, HERO</span>&lt;/span&gt;
       &lt;span class="annotation__separator"&gt;·&lt;/span&gt;
       &lt;span class="annotation__description"&gt;<span class="val">[Content spec: components, columns, copy source]</span>&lt;/span&gt;
       &lt;span class="annotation__separator"&gt;·&lt;/span&gt;
@@ -3260,8 +3260,8 @@
 
   <!-- Fixed back link (not needed in this file, shown for reference) -->
   <footer style="background:var(--ior-navy);padding:var(--space-8) var(--section-pad-x);margin-top:var(--space-20);">
-    <p style="color:rgba(255,255,255,0.5);font-size:var(--text-body-s);text-align:center;">
-      IOR Design System v1.0 &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; For internal use only — wireframe stage &nbsp;·&nbsp; Not for client-facing distribution without review
+    <p style="colour:rgba(255,255,255,0.5);font-size:var(--text-body-s);text-align:centre;">
+      IOR Design System v1.0 &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; For internal use only, wireframe stage &nbsp;·&nbsp; Not for client-facing distribution without review
     </p>
   </footer>
 
