@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuel Industry Graduate Program | Corporate Graduate Program Australia</title>
+  <meta name="description" content="Join IOR's fuel industry graduate program to jumpstart your early career. Experience real responsibility in a trusted corporate graduate program.">
+  <link rel="stylesheet" href="ior-global.css">
+  <style>
+    /* ── Reset & tokens ── */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --ior-blue:#0355A3;--ior-navy:#0A4066;--ior-gold:#D98300;
+      --ior-near-black:#1A1A1A;--ior-charcoal:#3D3D3D;--ior-mid-grey:#6B6B6B;
+      --ior-light-blue-bg:#E0F1FF;--ior-white:#FFFFFF;
+      --text-display-xl:clamp(40px,5vw,72px);
+      --text-display-l:clamp(32px,4vw,56px);
+      --text-display-m:clamp(26px,3vw,40px);
+      --text-display-s:clamp(22px,2.5vw,32px);
+      --text-heading-l:clamp(20px,2vw,28px);
+      --text-heading-m:clamp(18px,1.8vw,24px);
+      --text-body-l:18px;--text-body-m:16px;--text-body-s:14px;
+      --fw-bold:700;--fw-semi:600;--fw-reg:400;
+      --lh-display:1.1;--lh-heading:1.3;--lh-body:1.6;
+      --section-pad:clamp(60px,8vw,100px);
+      --grid-gap:clamp(20px,3vw,32px);
+      --border-color-light:#E5E5E5;
+      --transition-fast:0.2s ease;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ior-near-black);background:#fff;}
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    ul{list-style:none;}
+
+    /* ── Utility bar ── */
+    .utility-bar{background:#0A4066;padding:8px 0;}
+    .utility-bar .container{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+    .utility-bar__announcement{font-size:var(--text-body-s);color:rgba(255,255,255,.85);}
+    .utility-bar__actions{display:flex;align-items:center;gap:0;}
+    .utility-bar__link{font-size:var(--text-body-s);color:rgba(255,255,255,.85);padding:4px 12px;transition:color var(--transition-fast);}
+    .utility-bar__link:hover{color:#fff;}
+    .utility-bar__divider{width:1px;height:14px;background:rgba(255,255,255,.3);}
+
+    /* ── Primary nav ── */
+    .primary-nav{background:#fff;border-bottom:1px solid var(--border-color-light);position:sticky;top:0;z-index:100;}
+    .primary-nav .container{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,48px);display:flex;align-items:center;gap:32px;height:64px;}
+    .nav-logo{font-size:12px;font-weight:var(--fw-bold);color:var(--ior-blue);width:70px;height:33px;background:var(--ior-light-blue-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .nav-links{display:flex;gap:4px;flex:1;}
+    .nav-links li a,.nav-links li button{font-size:var(--text-body-m);font-weight:var(--fw-semi);color:var(--ior-near-black);padding:8px 12px;border:none;background:none;cursor:pointer;transition:color var(--transition-fast);}
+    .nav-links li a:hover,.nav-links li button:hover{color:var(--ior-blue);}
+    .nav-links li a.active{color:var(--ior-blue);}
+    .nav-ctas{display:flex;gap:8px;align-items:center;margin-left:auto;}
+    .hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ior-near-black);padding:8px;}
+    @media(max-width:900px){.nav-links{display:none;}.hamburger{display:block;}}
+
+    /* ── Buttons ── */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-size:var(--text-body-m);font-weight:var(--fw-semi);border:2px solid transparent;cursor:pointer;transition:all var(--transition-fast);border-radius:0;text-decoration:none;}
+    .btn--sm{padding:8px 18px;font-size:var(--text-body-s);}
+    .btn--pill{border-radius:500px;}
+    .btn--primary{background:var(--ior-blue);color:#fff;border-color:var(--ior-blue);}
+    .btn--primary:hover{background:#024a8f;border-color:#024a8f;}
+    .btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+    .btn--ghost:hover{border-color:#fff;color:#fff;}
+    .btn--outline{background:transparent;color:var(--ior-blue);border-color:var(--ior-blue);}
+    .btn--outline:hover{background:var(--ior-blue);color:#fff;}
+    .btn--outline-white{background:transparent;color:#fff;border-color:#fff;}
+    .btn--outline-white:hover{background:#fff;color:var(--ior-blue);}
+    .btn__arrow{display:inline-block;transition:transform var(--transition-fast);}
+    .btn:hover .btn__arrow{transform:translateX(4px);}
+
+    /* ── Wireframe nav ── */
+    .wf-nav{background:#1a1a2e;padding:8px 24px;display:flex;align-items:center;gap:16px;font-size:12px;flex-wrap:wrap;}
+    .wf-nav a{color:#7ec8e3;text-decoration:none;}
+    .wf-nav a:hover{color:#fff;}
+    .wf-nav__module{color:#aaa;margin-left:auto;}
+
+    /* ── Hero ── */
+    .hero{background-color:var(--ior-blue);padding:clamp(80px,10vw,140px) clamp(16px,4vw,48px);position:relative;overflow:hidden;}
+    .hero__inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);align-items:center;}
+    @media(max-width:768px){.hero__inner{grid-template-columns:1fr;}}
+    .hero__content{display:flex;flex-direction:column;gap:24px;}
+    .hero__eyebrow{font-size:var(--text-body-s);font-weight:var(--fw-semi);color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:0.1em;}
+    .hero__h1{font-size:clamp(36px,4.5vw,64px);font-weight:var(--fw-bold);color:#fff;line-height:var(--lh-display);}
+    .hero__sub{font-size:var(--text-body-l);color:rgba(255,255,255,.85);line-height:var(--lh-body);}
+    .hero__ctas{display:flex;gap:12px;flex-wrap:wrap;}
+    .hero__img{aspect-ratio:4/3;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:12px;color:rgba(255,255,255,.5);font-family:'Courier New',monospace;}
+
+    /* ── Breadcrumb ── */
+    .breadcrumb{background:#F5F5F5;padding:12px clamp(16px,4vw,48px);}
+    .breadcrumb__inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:8px;font-size:var(--text-body-s);color:var(--ior-mid-grey);}
+    .breadcrumb__link{color:var(--ior-blue);transition:color var(--transition-fast);}
+    .breadcrumb__link:hover{color:var(--ior-navy);}
+    .breadcrumb__sep{color:var(--ior-mid-grey);}
+    .breadcrumb__current{color:var(--ior-charcoal);font-weight:var(--fw-semi);}
+
+    /* ── Section ── */
+    .section-pad{padding:var(--section-pad) clamp(16px,4vw,48px);}
+    .inner{max-width:1280px;margin:0 auto;}
+    .sec-bg-white{background:#fff;}
+    .sec-bg-light{background:#F8F8F8;}
+    .sec-bg-light-blue{background:var(--ior-light-blue-bg);}
+    .sec-bg-navy{background:var(--ior-navy);}
+    .eyebrow{font-size:var(--text-body-s);font-weight:var(--fw-semi);color:var(--ior-blue);text-transform:uppercase;letter-spacing:0.1em;}
+    .section-heading{font-size:var(--text-display-m);font-weight:var(--fw-bold);color:var(--ior-near-black);line-height:var(--lh-display);margin-bottom:40px;}
+    .section-heading--white{color:#fff;}
+    .section-body{font-size:var(--text-body-m);color:var(--ior-charcoal);line-height:var(--lh-body);max-width:800px;}
+
+    /* ── Stat bar ── */
+    .stat-bar{background:var(--ior-navy);padding:clamp(40px,5vw,60px) clamp(16px,4vw,48px);}
+    .stat-bar__inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--grid-gap);}
+    @media(max-width:700px){.stat-bar__inner{grid-template-columns:repeat(2,1fr);}}
+    .stat-item{text-align:center;}
+    .stat-item__num{font-size:clamp(36px,4vw,56px);font-weight:var(--fw-bold);color:#fff;line-height:1;}
+    .stat-item__label{font-size:var(--text-body-s);color:rgba(255,255,255,.7);margin-top:8px;text-transform:uppercase;letter-spacing:0.05em;}
+
+    /* ── Pathway cards ── */
+    .pathway-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--grid-gap);}
+    .pathway-card{background:#fff;border:1px solid var(--border-color-light);padding:28px 24px;display:flex;flex-direction:column;gap:16px;transition:transform var(--transition-fast),box-shadow var(--transition-fast);}
+    .pathway-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12);}
+    .pathway-card__icon{width:48px;height:48px;background:var(--ior-light-blue-bg);display:flex;align-items:center;justify-content:center;}
+    .pathway-card__icon svg{width:24px;height:24px;}
+    .pathway-card__heading{font-size:var(--text-heading-m);font-weight:var(--fw-bold);color:var(--ior-near-black);}
+    .pathway-card__desc{font-size:var(--text-body-s);color:var(--ior-charcoal);line-height:var(--lh-body);flex:1;}
+    .pathway-card__cta{font-size:var(--text-body-s);font-weight:var(--fw-semi);color:var(--ior-blue);display:flex;align-items:center;gap:6px;}
+    .pathway-card__cta .cta-arrow{display:inline-block;transition:transform var(--transition-fast);}
+    .pathway-card:hover .cta-arrow{transform:translateX(4px);}
+
+    /* ── Values strip ── */
+    .values-strip{background:var(--ior-light-blue-bg);padding:clamp(40px,5vw,60px) clamp(16px,4vw,48px);}
+    .values-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap);}
+    @media(max-width:700px){.values-grid{grid-template-columns:1fr;}}
+    .value-card{background:#fff;padding:28px 24px;border-top:4px solid var(--ior-blue);}
+    .value-card__heading{font-size:var(--text-heading-m);font-weight:var(--fw-bold);color:var(--ior-blue);margin-bottom:12px;}
+    .value-card__body{font-size:var(--text-body-s);color:var(--ior-charcoal);line-height:var(--lh-body);}
+
+    /* ── Pre-footer CTA ── */
+    .pre-footer{background:var(--ior-navy);padding:clamp(60px,8vw,100px) clamp(16px,4vw,48px);text-align:center;}
+    .pre-footer__inner{max-width:800px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px;}
+    .pre-footer__heading{font-size:var(--text-display-m);font-weight:var(--fw-bold);color:#fff;line-height:var(--lh-display);}
+    .pre-footer__ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+
+    /* ── Back to index ── */
+    .back-to-index{background:#F5F5F5;padding:16px clamp(16px,4vw,48px);border-top:1px solid var(--border-color-light);}
+    .back-to-index__inner{max-width:1280px;margin:0 auto;}
+    .back-to-index__link{font-size:var(--text-body-s);color:var(--ior-blue);font-weight:var(--fw-semi);display:inline-flex;align-items:center;gap:6px;}
+    .back-to-index__link:hover{color:var(--ior-navy);}
+
+    /* ── Testimonial ── */
+    .testimonial-band{background:var(--ior-light-blue-bg);padding:clamp(50px,6vw,80px) clamp(16px,4vw,48px);border-left:6px solid var(--ior-blue);}
+    .testimonial-band__inner{max-width:900px;margin:0 auto;}
+    .testimonial-band__quote{font-size:var(--text-heading-l);font-weight:var(--fw-semi);color:var(--ior-near-black);line-height:var(--lh-heading);font-style:italic;margin-bottom:20px;}
+    .testimonial-band__attr{font-size:var(--text-body-m);color:var(--ior-mid-grey);font-weight:var(--fw-semi);}
+
+    /* ── Step strip ── */
+    .step-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--grid-gap);}
+    @media(max-width:700px){.step-strip{grid-template-columns:repeat(2,1fr);}}
+    .step-item{display:flex;flex-direction:column;gap:12px;}
+    .step-item__num{width:44px;height:44px;background:var(--ior-blue);color:#fff;font-size:var(--text-heading-m);font-weight:var(--fw-bold);display:flex;align-items:center;justify-content:center;}
+    .step-item__title{font-size:var(--text-heading-m);font-weight:var(--fw-bold);color:var(--ior-near-black);}
+    .step-item__desc{font-size:var(--text-body-s);color:var(--ior-charcoal);line-height:var(--lh-body);}
+
+    /* ── Role cards ── */
+    .role-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--grid-gap);}
+    @media(max-width:600px){.role-grid{grid-template-columns:1fr;}}
+    .role-card{background:#fff;border:1px solid var(--border-color-light);padding:28px 24px;display:flex;flex-direction:column;gap:16px;transition:transform var(--transition-fast),box-shadow var(--transition-fast);}
+    .role-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12);}
+    .role-card__title{font-size:var(--text-heading-m);font-weight:var(--fw-bold);color:var(--ior-blue);}
+    .role-card__desc{font-size:var(--text-body-m);color:var(--ior-charcoal);line-height:var(--lh-body);flex:1;}
+
+    /* ── Apply section ── */
+    .apply-section{background:var(--ior-light-blue-bg);padding:clamp(50px,6vw,80px) clamp(16px,4vw,48px);}
+    .apply-section__inner{max-width:700px;margin:0 auto;text-align:center;display:flex;flex-direction:column;gap:20px;align-items:center;}
+
+    /* ── Graduate stream cards ── */
+    .stream-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap);}
+    @media(max-width:700px){.stream-grid{grid-template-columns:1fr;}}
+    .stream-card{background:#fff;border:1px solid var(--border-color-light);padding:28px 24px;display:flex;flex-direction:column;gap:16px;border-top:4px solid var(--ior-blue);transition:transform var(--transition-fast),box-shadow var(--transition-fast);}
+    .stream-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12);}
+    .stream-card__title{font-size:var(--text-heading-m);font-weight:var(--fw-bold);color:var(--ior-blue);}
+    .stream-card__desc{font-size:var(--text-body-m);color:var(--ior-charcoal);line-height:var(--lh-body);flex:1;}
+    .stream-card__cta{font-size:var(--text-body-s);font-weight:var(--fw-semi);color:var(--ior-blue);display:flex;align-items:center;gap:6px;}
+    .stream-card:hover .cta-arrow{transform:translateX(4px);}
+
+    /* ── Program strip ── */
+    .program-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap);}
+    @media(max-width:700px){.program-strip{grid-template-columns:1fr;}}
+    .program-item{background:var(--ior-light-blue-bg);padding:28px 24px;display:flex;flex-direction:column;gap:12px;}
+    .program-item__title{font-size:var(--text-heading-m);font-weight:var(--fw-bold);color:var(--ior-blue);}
+    .program-item__desc{font-size:var(--text-body-m);color:var(--ior-charcoal);line-height:var(--lh-body);}
+
+    /* ── Info cards ── */
+    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--grid-gap);}
+    @media(max-width:700px){.info-grid{grid-template-columns:1fr;}}
+    .info-card{background:#fff;border:1px solid var(--border-color-light);padding:28px 24px;display:flex;flex-direction:column;gap:12px;}
+    .info-card__title{font-size:var(--text-heading-m);font-weight:var(--fw-bold);color:var(--ior-near-black);}
+    .info-card__body{font-size:var(--text-body-m);color:var(--ior-charcoal);line-height:var(--lh-body);}
+
+    /* ── Accordion ── */
+    .accordion{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border-color-light);}
+    .accordion__item{border-bottom:1px solid var(--border-color-light);}
+    .accordion__trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;background:none;border:none;cursor:pointer;text-align:left;}
+    .accordion__title{font-size:var(--text-heading-m);font-weight:var(--fw-bold);color:var(--ior-near-black);}
+    .accordion__icon{width:24px;height:24px;flex-shrink:0;background:var(--ior-blue);position:relative;}
+    .accordion__icon::before,.accordion__icon::after{content:'';position:absolute;background:#fff;}
+    .accordion__icon::before{width:12px;height:2px;top:50%;left:50%;transform:translate(-50%,-50%);}
+    .accordion__icon::after{width:2px;height:12px;top:50%;left:50%;transform:translate(-50%,-50%);transition:transform 0.3s ease,opacity 0.3s ease;}
+    .accordion__trigger[aria-expanded="true"] .accordion__icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+    .accordion__panel{max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+    .accordion__panel.is-open{max-height:400px;}
+    .accordion__body{padding:0 0 24px;display:flex;flex-direction:column;gap:8px;}
+    .accordion__q{font-size:var(--text-body-m);font-weight:var(--fw-semi);color:var(--ior-near-black);}
+    .accordion__a{font-size:var(--text-body-m);color:var(--ior-charcoal);line-height:var(--lh-body);}
+
+    /* ── Locations strip ── */
+    .locations-strip{display:flex;flex-wrap:wrap;gap:12px;}
+    .location-pill{background:var(--ior-light-blue-bg);color:var(--ior-blue);font-size:var(--text-body-s);font-weight:var(--fw-semi);padding:8px 18px;border:1px solid rgba(3,85,163,.2);}
+
+    /* ── Body copy section ── */
+    .body-copy-section{padding:var(--section-pad) clamp(16px,4vw,48px);}
+    .body-copy-section .inner{max-width:800px;}
+    .body-copy-section p{font-size:var(--text-body-l);color:var(--ior-charcoal);line-height:var(--lh-body);margin-bottom:20px;}
+    .body-copy-section p:last-child{margin-bottom:0;}
+    .body-copy-section h3{font-size:var(--text-heading-l);font-weight:var(--fw-bold);color:var(--ior-near-black);margin-bottom:12px;margin-top:8px;}
+
+    /* ── Drawer ── */
+    .drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+    .drawer-overlay.is-open{opacity:1;pointer-events:auto;}
+    .drawer{position:fixed;top:0;right:0;height:100%;width:min(320px,90vw);background:var(--ior-navy);z-index:201;transform:translateX(100%);transition:transform 0.3s ease;overflow-y:auto;}
+    .drawer.is-open{transform:translateX(0);}
+    .drawer__head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.1);}
+    .drawer__close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:4px;}
+    .drawer__nav{padding:20px;}
+    .drawer__link{display:block;padding:12px 0;font-size:var(--text-body-m);color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.1);}
+    .drawer__link:hover{color:#fff;}
+    .drawer__ctas{padding:20px;display:flex;flex-direction:column;gap:10px;}
+
+    /* ── Footer ── */
+    .site-footer{background:var(--ior-navy);padding:clamp(50px,6vw,80px) clamp(16px,4vw,48px) 0;}
+    .footer-nav-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:var(--grid-gap);padding-bottom:clamp(40px,5vw,60px);}
+    @media(max-width:900px){.footer-nav-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:500px){.footer-nav-grid{grid-template-columns:repeat(2,1fr);}}
+    .footer-col__title{font-size:var(--text-body-s);font-weight:var(--fw-bold);color:#fff;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;}
+    .footer-col__links{display:flex;flex-direction:column;gap:8px;}
+    .footer-col__link{font-size:var(--text-body-s);color:rgba(255,255,255,.7);transition:color var(--transition-fast);}
+    .footer-col__link:hover{color:#fff;}
+    .footer-legal{max-width:1280px;margin:0 auto;padding:20px 0;border-top:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+    .footer-legal__copy{font-size:var(--text-body-s);color:rgba(255,255,255,.5);}
+    .footer-legal__links{display:flex;gap:16px;}
+    .footer-legal__link{font-size:var(--text-body-s);color:rgba(255,255,255,.5);transition:color var(--transition-fast);}
+    .footer-legal__link:hover{color:#fff;}
+
+    /* ── Animations ── */
+    .fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .fade-up.is-visible{opacity:1;transform:translateY(0);}
+    .fade-up--d1{transition-delay:0.1s;}
+    .fade-up--d2{transition-delay:0.2s;}
+    .fade-up--d3{transition-delay:0.3s;}
+  </style>
+
+</head>
+<body>
+
+<!-- WIREFRAME NAV -->
+<nav class="wf-nav">
+  <a href="00_Master_Index.html">&#8592; Master Index</a>
+  <a href="IOR_Design_System.html">Design System</a>
+  <span class="wf-nav__module">MODULE 06 &middot; Careers &middot; 10c_Graduates.html</span>
+</nav>
+
+<div class="utility-bar">
+  <div class="container">
+    <span class="utility-bar__announcement">Australia's fuel and energy partner — 115+ network sites nationally</span>
+    <div class="utility-bar__actions">
+      <a href="11d_Find_Location.html" class="utility-bar__link">Find a Location</a>
+      <div class="utility-bar__divider"></div>
+      <a href="11e_Make_Payment.html" class="utility-bar__link">Make a Payment</a>
+      <div class="utility-bar__divider"></div>
+      <a href="tel:1300457467" class="utility-bar__link">1300 457 467</a>
+    </div>
+  </div>
+</div>
+
+<nav class="primary-nav">
+  <div class="container">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <ul class="nav-links">
+      <li><a href="#">Fuel Solutions &#9662;</a></li>
+      <li><a href="#">Digital Platforms &#9662;</a></li>
+      <li><a href="#">Industries We Serve &#9662;</a></li>
+      <li><a href="#">About IOR &#9662;</a></li>
+      <li><a href="#">Support &amp; Contact &#9662;</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="#" class="btn btn--ghost btn--sm btn--pill">Customer Login</a>
+      <a href="#" class="btn btn--primary btn--sm btn--pill">Apply for an Account</a>
+    </div>
+    <button class="hamburger" id="mob-hamburger" aria-label="Open navigation menu">&#9776;</button>
+  </div>
+</nav>
+
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<div class="drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <div class="drawer__head">
+    <span class="nav-logo">[IOR]</span>
+    <button class="drawer__close" id="drawerClose" aria-label="Close navigation menu">&#10005;</button>
+  </div>
+  <nav class="drawer__nav" aria-label="Mobile menu">
+    <a href="01_Homepage_and_Global.html" class="drawer__link">Home</a>
+    <a href="02_Fuel_Solutions_Hub.html" class="drawer__link">Fuel Solutions</a>
+    <a href="07_Digital_Platforms.html" class="drawer__link">Digital Platforms</a>
+    <a href="08_Industries_Hub.html" class="drawer__link">Industries We Serve</a>
+    <a href="09_About_IOR.html" class="drawer__link">About IOR</a>
+    <a href="10_Careers.html" class="drawer__link active">Careers</a>
+    <a href="11_Contact_Us.html" class="drawer__link">Support &amp; Contact</a>
+  </nav>
+  <div class="drawer__ctas">
+    <a href="#" class="btn btn--primary btn--pill" style="width:100%;justify-content:center;">Apply for an Account</a>
+    <a href="#" class="btn btn--outline-white btn--pill" style="width:100%;justify-content:center;">Customer Login</a>
+  </div>
+</div>
+
+
+<!-- HERO -->
+<section class="hero" aria-label="Graduate program hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow fade-up">Graduates &amp; Interns</p>
+      <h1 class="hero__h1 fade-up fade-up--d1">Fuel Industry Graduate Program</h1>
+      <p class="hero__sub fade-up fade-up--d2">Launch Your Career with IOR&rsquo;s Graduate Program</p>
+      <div class="hero__ctas fade-up fade-up--d3">
+        <a href="#streams" class="btn btn--primary btn--pill">Explore Graduate Opportunities <span class="btn__arrow">&#8594;</span></a>
+      </div>
+    </div>
+    <div class="hero__img fade-up fade-up--d2">[IMAGE &mdash; Graduate team photography]</div>
+  </div>
+</section>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb__inner">
+    <a href="01_Homepage_and_Global.html" class="breadcrumb__link">Home</a>
+    <span class="breadcrumb__sep" aria-hidden="true">&#8250;</span>
+    <a href="10_Careers.html" class="breadcrumb__link">Careers</a>
+    <span class="breadcrumb__sep" aria-hidden="true">&#8250;</span>
+    <a href="10a_Entry_Pathways.html" class="breadcrumb__link">Entry Pathways</a>
+    <span class="breadcrumb__sep" aria-hidden="true">&#8250;</span>
+    <span class="breadcrumb__current">Graduates &amp; Interns</span>
+  </div>
+</nav>
+
+<!-- BODY COPY -->
+<section class="body-copy-section sec-bg-white" aria-label="Graduate program overview">
+  <div class="inner">
+    <div class="fade-up">
+      <p>At IOR, we offer a leading fuel industry graduate program designed for ambitious early careers professionals. As a proudly Australian, community-focused company, we provide graduates with genuine responsibility from the start &mdash; no coffee runs, just impactful work.</p>
+      <p>IOR has been fuelling regional and remote Australia since 1984, and our graduate program is how we invest in the next generation of leaders who will carry that legacy forward.</p>
+      <h3>Real Roles. Real Impact.</h3>
+      <p>Dylan began his journey with IOR through our graduate program and quickly took ownership of his projects. Hear how we empower graduates to contribute meaningfully from day one and build strong, rewarding careers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GRADUATE STREAM CARDS -->
+<section class="section-pad sec-bg-light" id="streams" aria-label="Graduate streams">
+  <div class="inner">
+    <p class="eyebrow fade-up" style="margin-bottom:16px;">Three Streams</p>
+    <h2 class="section-heading fade-up fade-up--d1">Choose Your Stream</h2>
+    <div class="stream-grid">
+      <div class="stream-card fade-up">
+        <div class="stream-card__title">Technology</div>
+        <div class="stream-card__desc">Work on digital fuel management systems, data platforms, and infrastructure technology projects</div>
+        <a href="#" class="stream-card__cta">Learn More <span class="cta-arrow">&#8594;</span></a>
+      </div>
+      <div class="stream-card fade-up fade-up--d1">
+        <div class="stream-card__title">Corporate</div>
+        <div class="stream-card__desc">Finance, commercial strategy, marketing, and business operations across IOR&rsquo;s national network</div>
+        <a href="#" class="stream-card__cta">Learn More <span class="cta-arrow">&#8594;</span></a>
+      </div>
+      <div class="stream-card fade-up fade-up--d2">
+        <div class="stream-card__title">Operations</div>
+        <div class="stream-card__desc">Field-based rotations across fuel distribution, logistics, and site management in regional Australia</div>
+        <a href="#" class="stream-card__cta">Learn More <span class="cta-arrow">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM STRUCTURE STRIP -->
+<section class="section-pad sec-bg-white" aria-label="Program structure">
+  <div class="inner">
+    <p class="eyebrow fade-up" style="margin-bottom:16px;">How It Works</p>
+    <h2 class="section-heading fade-up fade-up--d1">Program Structure</h2>
+    <div class="program-strip">
+      <div class="program-item fade-up">
+        <div class="program-item__title">12-Month Rotation</div>
+        <div class="program-item__desc">Structured rotations across your chosen stream</div>
+      </div>
+      <div class="program-item fade-up fade-up--d1">
+        <div class="program-item__title">Dedicated Mentor</div>
+        <div class="program-item__desc">Senior leader assigned from day one</div>
+      </div>
+      <div class="program-item fade-up fade-up--d2">
+        <div class="program-item__title">Real Projects</div>
+        <div class="program-item__desc">Ownership of live business initiatives from week one</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-band fade-up" aria-label="Graduate testimonial">
+  <div class="testimonial-band__inner">
+    <p class="testimonial-band__quote">&ldquo;From day one, I was given real work. Not shadowing &mdash; actual projects with actual outcomes. IOR backs you to deliver.&rdquo;</p>
+    <p class="testimonial-band__attr">Dylan &mdash; Graduate, Technology Stream</p>
+  </div>
+</section>
+
+<!-- PRE-FOOTER CTA -->
+<section class="pre-footer" aria-label="Graduate program CTA">
+  <div class="pre-footer__inner">
+    <h2 class="pre-footer__heading fade-up">Ready to Apply?</h2>
+    <div class="pre-footer__ctas fade-up fade-up--d1">
+      <a href="mailto:careers@ior.com.au" class="btn btn--primary btn--pill">Apply for the Graduate Program <span class="btn__arrow">&#8594;</span></a>
+      <a href="10a_Entry_Pathways.html" class="btn btn--outline-white btn--pill">View All Entry Pathways <span class="btn__arrow">&#8594;</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="back-to-index">
+  <div class="back-to-index__inner">
+    <a href="00_Master_Index.html" class="back-to-index__link">&#8592; Back to Master Index</a>
+  </div>
+</div>
+
+<footer class="site-footer" aria-label="Site footer">
+  <div class="footer-nav-grid">
+    <!-- Contact -->
+    <div>
+      <div class="footer-col__title">Contact</div>
+      <div class="footer-col__links">
+        <span class="footer-col__link" style="line-height:1.5;color:rgba(255,255,255,.7);">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
+        <a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a>
+        <a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a>
+        <a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Contacts</a>
+      </div>
+    </div>
+    <!-- Fuel Solutions -->
+    <div>
+      <div class="footer-col__title">Fuel Solutions</div>
+      <div class="footer-col__links">
+        <a href="03_Ground_Fuels.html" class="footer-col__link">Ground Fuels</a>
+        <a href="04_Aviation.html" class="footer-col__link">Aviation</a>
+        <a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading.html" class="footer-col__link">Supply &amp; Trading</a>
+      </div>
+    </div>
+    <!-- Digital Platforms -->
+    <div>
+      <div class="footer-col__title">Digital Platforms</div>
+      <div class="footer-col__links">
+        <a href="07_Digital_Platforms.html#hydip" class="footer-col__link">HyDip&#8482; FMS</a>
+        <a href="07_Digital_Platforms.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
+        <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
+      </div>
+    </div>
+    <!-- Corporate -->
+    <div>
+      <div class="footer-col__title">Corporate</div>
+      <div class="footer-col__links">
+        <a href="09_About_IOR.html" class="footer-col__link">About IOR</a>
+        <a href="10_Careers.html" class="footer-col__link">Careers</a>
+        <a href="09a_Case_Studies.html" class="footer-col__link">Case Studies</a>
+        <a href="09d_Sustainability_HSE_ESG.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+        <a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a>
+      </div>
+    </div>
+    <!-- Quick Actions -->
+    <div>
+      <div class="footer-col__title">Quick Actions</div>
+      <div class="footer-col__links">
+        <a href="#" class="footer-col__link">Apply for an Account</a>
+        <a href="11e_Make_Payment.html" class="footer-col__link">Make a Payment</a>
+        <a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a>
+        <a href="11_Support_Contact.html" class="footer-col__link">Help Centre &amp; FAQs</a>
+      </div>
+    </div>
+    <!-- Find a Site By State -->
+    <div>
+      <div class="footer-col__title">Find a Site By State</div>
+      <div class="footer-state-pills">
+        <a href="11d_Find_Location.html" class="footer-state-pill">QLD</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">NSW</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">VIC</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">SA</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">WA</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">NT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">
+      Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      Site by 3PM
+    </p>
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
+      <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
+      <a href="#" class="footer-social__icon" aria-label="Instagram">ig</a>
+      <a href="#" class="footer-social__icon" aria-label="YouTube">yt</a>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    /* Mobile drawer */
+    (function(){
+      var btn = document.getElementById('mob-hamburger');
+      var drawer = document.getElementById('mobileDrawer');
+      var overlay = document.getElementById('drawerOverlay');
+      var close = document.getElementById('drawerClose');
+      function open(){drawer.classList.add('is-open');overlay.classList.add('is-open');document.body.style.overflow='hidden';}
+      function closeD(){drawer.classList.remove('is-open');overlay.classList.remove('is-open');document.body.style.overflow='';}
+      if(btn) btn.addEventListener('click',open);
+      if(close) close.addEventListener('click',closeD);
+      if(overlay) overlay.addEventListener('click',closeD);
+    })();
+    /* Scroll animations */
+    (function(){
+      var els = document.querySelectorAll('.fade-up');
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');}});
+      },{threshold:0.1});
+      els.forEach(function(el){io.observe(el);});
+    })();
+    /* Stat counters */
+    (function(){
+      var counters = document.querySelectorAll('[data-count]');
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){
+            var el = e.target;
+            var target = parseInt(el.getAttribute('data-count'),10);
+            var suffix = el.getAttribute('data-suffix')||'';
+            var prefix = el.getAttribute('data-prefix')||'';
+            var duration = 1500;
+            var start = performance.now();
+            function tick(now){
+              var progress = Math.min((now-start)/duration,1);
+              var val = Math.round(progress*target);
+              el.textContent = prefix+val+suffix;
+              if(progress<1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+            io.unobserve(el);
+          }
+        });
+      },{threshold:0.5});
+      counters.forEach(function(el){io.observe(el);});
+    })();
+    /* Accordion */
+    document.querySelectorAll('.accordion__trigger').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var expanded = this.getAttribute('aria-expanded')==='true';
+        document.querySelectorAll('.accordion__trigger').forEach(function(b){
+          b.setAttribute('aria-expanded','false');
+          var p = document.getElementById(b.getAttribute('aria-controls'));
+          if(p) p.classList.remove('is-open');
+        });
+        if(!expanded){
+          this.setAttribute('aria-expanded','true');
+          var p = document.getElementById(this.getAttribute('aria-controls'));
+          if(p) p.classList.add('is-open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
