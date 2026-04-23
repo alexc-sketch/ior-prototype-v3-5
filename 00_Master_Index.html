@@ -95,19 +95,42 @@
   }
   .btn-home:hover { background: var(--ior-navy); }
 
-  /* ── TABS — sticky with scroll shadow ───────────────────── */
+  /* ── TABS — sticky with scroll arrows ──────────────────── */
   .tabs-wrap {
     position: relative;
+    display: flex;
+    align-items: stretch;
   }
-  .tabs-wrap::after {
-    content: '';
+  /* Fade gradients — left and right */
+  .tabs-fade-left,
+  .tabs-fade-right {
     position: absolute;
-    right: 0; top: 0; bottom: 1px;
-    width: 48px;
-    background: linear-gradient(to right, transparent, var(--bg-white));
+    top: 0; bottom: 1px;
+    width: 40px;
     pointer-events: none;
-    z-index: 2;
+    z-index: 3;
+    transition: opacity 0.2s;
   }
+  .tabs-fade-left  { left: 32px;  background: linear-gradient(to right, var(--bg-white), transparent); opacity: 0; }
+  .tabs-fade-right { right: 32px; background: linear-gradient(to left,  var(--bg-white), transparent); opacity: 1; }
+  .tabs-wrap.at-start .tabs-fade-left  { opacity: 0; }
+  .tabs-wrap.at-end   .tabs-fade-right { opacity: 0; }
+  /* Scroll arrow buttons */
+  .tabs-scroll-btn {
+    flex-shrink: 0;
+    width: 32px;
+    background: var(--bg-white);
+    border: none;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ior-blue);
+    z-index: 4;
+    transition: background 0.15s;
+    padding: 0;
+  }
+  .tabs-scroll-btn:hover { background: #f0f4f8; }
+  .tabs-scroll-btn:disabled { opacity: 0.25; cursor: default; }
   .tabs {
     display: flex;
     overflow-x: auto;
@@ -336,7 +359,12 @@
 
     <!-- ── TABS ─────────────────────────────────────────────── -->
     <nav aria-label="Filter by section">
-      <div class="tabs-wrap">
+      <div class="tabs-wrap at-start" id="tabsWrap">
+        <div class="tabs-fade-left" aria-hidden="true"></div>
+        <div class="tabs-fade-right" aria-hidden="true"></div>
+        <button class="tabs-scroll-btn" id="tabScrollLeft" aria-label="Scroll tabs left" disabled>
+          <svg width="7" height="12" viewBox="0 0 7 12" fill="none" aria-hidden="true"><path d="M6 1L1 6L6 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <div class="tabs" id="tabsNav" role="tablist">
           <button class="tab active" onclick="showAll(this)" role="tab" aria-selected="true">
             <span class="tab-dot" style="background:#0355A3;"></span>All Pages
@@ -351,7 +379,7 @@
             <span class="tab-dot" style="background:#D98300;"></span>Aviation
           </button>
           <button class="tab" onclick="filterSec(this,'s-slate')" role="tab">
-            <span class="tab-dot" style="background:#2D4A6B;"></span>Equipment
+            <span class="tab-dot" style="background:#2D4A6B;"></span>Equipment &amp; Infrastructure
           </button>
           <button class="tab" onclick="filterSec(this,'s-rust')" role="tab">
             <span class="tab-dot" style="background:#8B3A1A;"></span>Supply &amp; Trading
@@ -375,6 +403,9 @@
             <span class="tab-dot" style="background:#0A6B5A;"></span>Support &amp; Contact
           </button>
         </div>
+        <button class="tabs-scroll-btn" id="tabScrollRight" aria-label="Scroll tabs right">
+          <svg width="7" height="12" viewBox="0 0 7 12" fill="none" aria-hidden="true"><path d="M1 1L6 6L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
     </nav>
   </div>
@@ -1171,6 +1202,35 @@
     if (e.key === 'ArrowRight' && idx < tabs.length - 1) { tabs[idx+1].focus(); }
     if (e.key === 'ArrowLeft'  && idx > 0)               { tabs[idx-1].focus(); }
   });
+
+  // Tab bar scroll arrow buttons
+  (function() {
+    var nav   = document.getElementById('tabsNav');
+    var wrap  = document.getElementById('tabsWrap');
+    var btnL  = document.getElementById('tabScrollLeft');
+    var btnR  = document.getElementById('tabScrollRight');
+    if (!nav || !wrap || !btnL || !btnR) return;
+
+    function updateArrows() {
+      var sl = nav.scrollLeft;
+      var maxSl = nav.scrollWidth - nav.clientWidth;
+      btnL.disabled = sl <= 2;
+      btnR.disabled = sl >= maxSl - 2;
+      wrap.classList.toggle('at-start', sl <= 2);
+      wrap.classList.toggle('at-end',   sl >= maxSl - 2);
+    }
+
+    btnL.addEventListener('click', function() {
+      nav.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+    btnR.addEventListener('click', function() {
+      nav.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+
+    nav.addEventListener('scroll', updateArrows);
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+  })();
 </script>
 
 </body>
