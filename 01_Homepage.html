@@ -206,6 +206,8 @@
       font-size: var(--text-body-m); text-decoration: none; transition: opacity var(--transition-fast);
     }
     .utility-bar__link:hover { opacity: .8; }
+    .nav-chevron { display:inline-flex; align-items:center; margin-left:5px; transition:transform 200ms ease; }
+    .nav-link[aria-expanded="true"] .nav-chevron { transform:rotate(180deg); }
     .utility-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.4); }
     .u-icon {
       width: 16px; height: 16px; background: #fff;
@@ -886,30 +888,33 @@
 <header aria-label="Global header — default state">
   <!-- Utility bar -->
   <div class="utility-bar" role="complementary" aria-label="Utility navigation">
-    <span style="font-size:var(--text-body-m);color:#fff;">📢 Announcement Message Placeholder</span>
+    <span style="font-size:var(--text-body-m);color:#fff;">Announcement Message Placeholder</span>
     <div class="utility-bar__actions">
-      <a href="12_Support_Utility.html#find-a-location" class="utility-bar__link">
-        📍 Find a Location
+      <a href="11d_Find_Location.html" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Find a Location
       </a>
       <div class="utility-bar__divider" aria-hidden="true"></div>
-      <a href="12_Support_Utility.html#make-a-payment" class="utility-bar__link">
-        ✉️ Make a Payment
+      <a href="11e_Make_Payment.html" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Make a Payment
       </a>
       <div class="utility-bar__divider" aria-hidden="true"></div>
       <a href="tel:1300457467" class="utility-bar__link">
-        📞 1300 457 467
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        1300 457 467
       </a>
     </div>
   </div>
   <!-- Primary nav -->
   <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
-    <a href="01_Homepage_and_Global.html" class="nav-logo" aria-label="IOR home">[IOR LOGO]</a>
+    <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">[IOR LOGO]</a>
     <ul class="nav-links" role="list" aria-label="Main menu">
-      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="fuel">Fuel Solutions</button></li>
-      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="digital">Digital Platforms</button></li>
-      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="industries">Industries We Serve</button></li>
-      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="about">About IOR</button></li>
-      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="support">Support &amp; Contact</button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="fuel">Fuel Solutions <span class="nav-chevron" aria-hidden="true"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="digital">Digital Platforms <span class="nav-chevron" aria-hidden="true"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="industries">Industries We Serve <span class="nav-chevron" aria-hidden="true"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="about">About IOR <span class="nav-chevron" aria-hidden="true"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
+      <li><button class="nav-link" aria-haspopup="true" aria-expanded="false" data-menu="support">Support &amp; Contact <span class="nav-chevron" aria-hidden="true"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button></li>
     </ul>
     <div class="nav-ctas">
       <a href="#" class="btn btn--outline" style="padding:10px 20px;font-size:14px;">Customer Login <span class="btn__arrow" aria-hidden="true"></span></a>
@@ -984,7 +989,7 @@
             <a href="03_Ground_Fuels.html#hyblue"            class="mega-col__link"><span class="mi">🟦</span>HyBlue™ (AdBlue®)</a>
             <a href="03_Ground_Fuels.html#oils-lubricants"   class="mega-col__link"><span class="mi">🛢️</span>Oils &amp; Lubricants</a>
             <a href="12_Support_Utility.html#find-a-location" class="mega-col__link map-action"><span class="mi">📍</span>Find a Diesel Stop</a>
-            <a href="03_Ground_Fuels.html#ground-fuels" class="mega-col__link mega-col__link--cta">View All Ground Fuels →</a>
+            <a href="03_Ground_Fuels.html" class="mega-col__link mega-col__link--cta">Explore Ground Fuels</a>
           </div>
         </div>
         <!-- Column 2: Aviation — GOLD accent -->
@@ -999,28 +1004,26 @@
             <a href="04_Aviation.html#aviation-bulk"     class="mega-col__link"><span class="mi">🚁</span>Aviation Bulk Delivery</a>
             <a href="04_Aviation.html#aviation-oils"     class="mega-col__link"><span class="mi">🧴</span>Aviation Oils &amp; Lubricants</a>
             <a href="12_Support_Utility.html#find-a-location" class="mega-col__link map-action map-action--gold"><span class="mi">📍</span>Find an Airport</a>
-            <a href="04_Aviation.html#aviation" class="mega-col__link mega-col__link--cta mega-col__link--cta-gold">View All Aviation →</a>
+            <a href="04_Aviation.html" class="mega-col__link mega-col__link--cta mega-col__link--cta-gold">Explore Aviation</a>
           </div>
         </div>
         <!-- Column 3: Equipment & Infrastructure -->
         <div class="mega-col">
           <div class="mega-col__title">Equipment &amp; Infrastructure</div>
           <div class="mega-col__links">
-            <a href="05_Equipment_Infrastructure.html#fuel-storage-tanks" class="mega-col__link"><span class="mi">🏗️</span>Fuel Storage Tanks</a>
-            <a href="05_Equipment_Infrastructure.html#frac-tanks"         class="mega-col__link"><span class="mi">🔧</span>Frac Tanks</a>
-            <a href="05_Equipment_Infrastructure.html#equipment-infrastructure" class="mega-col__link"><span class="mi">📦</span>Equipment Hub</a>
-            <a href="05_Equipment_Infrastructure.html#equipment-infrastructure" class="mega-col__link mega-col__link--cta">View All Equipment →</a>
+            <a href="05_Equipment_Infrastructure.html#fuel-storage-tanks" class="mega-col__link"><span class="mi">&#x1F3D7;</span>Fuel Storage Tanks</a>
+            <a href="05_Equipment_Infrastructure.html#frac-tanks"         class="mega-col__link"><span class="mi">&#x1F527;</span>Frac Tanks</a>
+            <a href="05_Equipment_Infrastructure.html" class="mega-col__link mega-col__link--cta">Explore Equipment &amp; Infrastructure</a>
           </div>
         </div>
         <!-- Column 4: Supply & Trading -->
         <div class="mega-col">
           <div class="mega-col__title">Supply &amp; Trading</div>
           <div class="mega-col__links">
-            <a href="06_Supply_Trading.html#terminals"        class="mega-col__link"><span class="mi">🏭</span>Lytton &amp; Port Bonython</a>
-            <a href="06_Supply_Trading.html#eromanga-refinery"class="mega-col__link"><span class="mi">🔬</span>Eromanga Refinery</a>
-            <a href="06_Supply_Trading.html#condensates"      class="mega-col__link"><span class="mi">💧</span>Condensates</a>
-            <a href="06_Supply_Trading.html#supply-trading"   class="mega-col__link"><span class="mi">🔗</span>Supply &amp; Trading Hub</a>
-            <a href="06_Supply_Trading.html#supply-trading" class="mega-col__link mega-col__link--cta">View All Supply &amp; Trading →</a>
+            <a href="06_Supply_Trading.html#terminals"        class="mega-col__link">Lytton &amp; Port Bonython</a>
+            <a href="06_Supply_Trading.html#eromanga-refinery" class="mega-col__link">Eromanga Refinery</a>
+            <a href="06_Supply_Trading.html#condensates"       class="mega-col__link">Condensates</a>
+            <a href="06_Supply_Trading.html" class="mega-col__link mega-col__link--cta">Explore Supply &amp; Trading</a>
           </div>
         </div>
         <div class="mega-footer">
@@ -1119,7 +1122,7 @@
           </div>
         </div>
         <div class="mega-footer">
-          <a href="08_Industries.html#industries" class="mega-cta-link"><span style="font-size:14px;" aria-hidden="true">🌐</span> View All Industries</a>
+          <a href="08_Industries_Hub.html" class="mega-cta-link">Explore Industries We Serve</a>
         </div>
       </div>
     </div>
@@ -1281,18 +1284,21 @@
     <span class="ann__int">APPROVED per Figma. Fast-lane for Utility User persona. Mobile: collapses to icon-only or hidden behind hamburger.</span>
   </div>
   <div class="utility-bar" role="complementary" aria-label="Site utilities">
-    <span style="font-size:var(--text-body-m);">📢 Announcement Message Placeholder</span>
+    <span style="font-size:var(--text-body-m);">Announcement Message Placeholder</span>
     <div class="utility-bar__actions">
-      <a href="12_Support_Utility.html#find-a-location" class="utility-bar__link">
-        📍 Find a Location
+      <a href="11d_Find_Location.html" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Find a Location
       </a>
       <div class="utility-bar__divider" aria-hidden="true"></div>
-      <a href="12_Support_Utility.html#make-a-payment" class="utility-bar__link">
-        ✉️ Make a Payment
+      <a href="11e_Make_Payment.html" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Make a Payment
       </a>
       <div class="utility-bar__divider" aria-hidden="true"></div>
       <a href="tel:1300457467" class="utility-bar__link">
-        📞 1300 457 467
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        1300 457 467
       </a>
     </div>
   </div>
@@ -1788,8 +1794,8 @@
       <h2 class="pre-footer__title">We're here to help</h2>
       <div class="pre-footer__ctas">
         <a href="#" class="btn btn--white">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
-        <a href="12_Support_Utility.html#contact-us" class="btn btn--outline-white">Make an Enquiry <span class="btn__arrow" aria-hidden="true"></span></a>
-        <a href="12_Support_Utility.html#support-contact" class="btn btn--outline-white">Need Help? <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="11a_Contact_Us.html" class="btn btn--outline-white">Make an Enquiry <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="11_Support_Hub.html" class="btn btn--outline-white">Need Help? <span class="btn__arrow" aria-hidden="true"></span></a>
       </div>
     </div>
     <div class="pre-footer__divider"></div>
@@ -1797,34 +1803,25 @@
 
 </main><!-- /#homepage-content -->
 
-<!-- ════════════════════════════════════════════════════════════
-     SECTION 3 — GLOBAL FOOTER (FULL SPECIFICATION)
-═══════════════════════════════════════════════════════════ -->
-<div class="spec-section" id="footer-spec">
-  <div class="spec-section__title">
-    <span class="spec-section__tag">Section 3</span>
-    Global Footer — Desktop &amp; Mobile Specification
-  </div>
-</div>
-
-<!-- ── BLOCK 3.1 — FOOTER DESKTOP ───────────────────────── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 3.1 — FOOTER DESKTOP (6-COLUMN GRID)</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">Background: #0355A3. 6 columns: Contact · Fuel Solutions · Digital Platforms · Corporate · Quick Actions · Find a Site By State (state pills). Each column: bold white title with bottom border, then link list. Bottom bar: copyright + legal links (left) + social icon row (right). 375px: 2-column grid. 768px: 3-column. 1200px+: 6-column. DESIGN RULE: Figma shows border-radius:9999px on social icons and state pills — STRIPPED per Rule 1.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Persistent footer present on every page. Provides secondary navigation and SEO link structure. Quick Actions column deflects high-friction tasks (Apply, Pay) away from phone support. Find a Site By State enables direct regional routing without opening the full Find a Location map.</span>
-</div>
 <footer class="site-footer" aria-label="Site footer">
   <div class="footer-nav-grid">
     <!-- Contact -->
     <div>
       <div class="footer-col__title">Contact</div>
       <div class="footer-col__links">
-        <span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
-        <a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a>
-        <a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a>
-        <a href="12_Support_Utility.html#regional-contacts" class="footer-col__link">Regional Contacts</a>
+        <span class="footer-col__link" style="line-height:1.6;display:flex;align-items:flex-start;gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
+        </span>
+        <a href="tel:1300457467" class="footer-col__link" style="display:flex;align-items:center;gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          1300 457 467
+        </a>
+        <a href="mailto:enquiries@ior.com.au" class="footer-col__link" style="display:flex;align-items:center;gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          enquiries@ior.com.au
+        </a>
+        <a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Contacts</a>
       </div>
     </div>
     <!-- Fuel Solutions -->
@@ -1916,7 +1913,7 @@
       <div class="footer-acc-panel">
         <div class="footer-col__links" style="padding-bottom:12px;">
           <span class="footer-col__link" style="display:block;">IOR Head Office, 99 Southgate Ave, Cannon Hill Qld 4170</span>
-          <a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a>
+          <a href="tel:1300457467" class="footer-col__link">1300 457 467</a>
           <a href="mailto:enquiries@ior.com.au" class="footer-col__link">enquiries@ior.com.au</a>
         </div>
       </div>
