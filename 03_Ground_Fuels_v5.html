@@ -616,6 +616,7 @@
       color: var(--charcoal); line-height: 1.2;
     }
     .section-heading h2 .accent { color: var(--ior-blue); }
+    .section-heading h2 .highlight { color: var(--ior-blue); }
     .section-heading p { font-size: clamp(14px, 1.4vw, 16px); color: var(--mid-grey); margin-top: 12px; max-width: 600px; }
 
     /* - Fade-up animation - */
@@ -632,7 +633,7 @@
       .nav-ctas .btn:not(.hamburger) { display: none; }
     }
     @media (max-width: 900px) {
-      .stat-bar .container { grid-template-columns: repeat(2, 1fr); }
+      .stat-bar .container { grid-template-columns: repeat(2, 1fr); gap: 0; }
     }
     @media (max-width: 768px) {
       .stat-bar .container { grid-template-columns: 1fr; gap: 24px; }
@@ -691,14 +692,19 @@
     .proto-bar__sep { width: 1px; height: 10px; background: rgba(255,255,255,.15); }
 
   /* ── FMT Accordion ─────────────────────────────────────────── */
-  .fmt-accordion { padding: clamp(50px,7vw,80px) 0; background: var(--grey-50); }
+  .fmt-accordion { padding: clamp(50px,7vw,80px) 0; background: #0d1f33; }
   .fmt-accordion__layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
   @media(max-width:900px){ .fmt-accordion__layout { grid-template-columns: 1fr; } }
   .fmt-accordion__image-panel { position: sticky; top: 100px; }
   .fmt-accordion__img-wrap { border-radius: 0; overflow: hidden; }
-  .fmt-accordion__img-placeholder { background: var(--grey-200,#e5e7eb); min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 24px; text-align: center; }
-  .fmt-accordion__img-title { font-weight: 700; font-size: 14px; color: var(--ior-navy); }
-  .fmt-accordion__img-desc { font-size: 12px; color: #6b7280; }
+  .fmt-accordion__img-placeholder { background: rgba(255,255,255,.06); border: 1px dashed rgba(255,255,255,.2); min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 24px; text-align: center; }
+  .fmt-accordion__img-title { font-weight: 700; font-size: 14px; color: rgba(255,255,255,.7); }
+  .fmt-accordion__img-desc { font-size: 12px; color: rgba(255,255,255,.45); }
+  .fmt-accordion__caption { margin-bottom: 32px; }
+  .fmt-accordion__caption .eyebrow { color: rgba(255,255,255,.45); }
+  .fmt-accordion__caption h2 { color: #fff; font-size: clamp(20px,2.2vw,26px); line-height: 1.3; margin: 8px 0 10px; }
+  .fmt-accordion__caption h2 .highlight { color: var(--ior-blue); }
+  .fmt-accordion__caption p { color: rgba(255,255,255,.65); font-size: 15px; line-height: 1.6; }
   .fmt-row { border-bottom: 1px solid rgba(0,0,0,.08); cursor: pointer; }
   .fmt-row__header { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; gap: 12px; }
   .fmt-row__left { display: flex; align-items: center; gap: 14px; }
@@ -1062,12 +1068,16 @@
     <div class="stat-bar" aria-label="Key statistics">
       <div class="container">
         <div class="stat-item">
-          <div class="stat-item__number">40+</div>
-          <div class="stat-item__label">Years Fuelling Australia</div>
+          <div class="stat-item__number">115+</div>
+          <div class="stat-item__label">Network Sites Nationally</div>
         </div>
         <div class="stat-item">
-          <div class="stat-item__number">115+</div>
-          <div class="stat-item__label">Diesel Stops Nationally</div>
+          <div class="stat-item__number">190M+</div>
+          <div class="stat-item__label">Litres Storage Capacity</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">40+</div>
+          <div class="stat-item__label">Years in Operation</div>
         </div>
         <div class="stat-item">
           <div class="stat-item__number">24/7</div>
@@ -1118,6 +1128,11 @@
     ============================================================ -->
     <section class="fmt-accordion" aria-labelledby="fmt-heading">
       <div class="container">
+        <div class="fmt-accordion__caption fade-up">
+          <p class="eyebrow">Ground Fuel Solutions</p>
+          <h2 id="fmt-heading">Everything your fleet needs &mdash; in one <span class="highlight">place.</span></h2>
+          <p>From the nation&rsquo;s largest unmanned diesel network to on-site tank infrastructure and premium lubricants &mdash; IOR delivers the complete ground fuel solution.</p>
+        </div>
         <div class="fmt-accordion__layout">
           <div class="fmt-accordion__image-panel" aria-hidden="true">
             <div class="fmt-accordion__img-wrap">
@@ -1128,11 +1143,6 @@
             </div>
           </div>
           <div class="fmt-accordion__content-panel">
-            <div class="section-heading fade-up">
-              <p class="eyebrow">Ground Fuel Solutions</p>
-              <h2 id="fmt-heading">Everything your fleet needs &mdash; in one <span class="highlight">place.</span></h2>
-              <p>From the nation&rsquo;s largest unmanned diesel network to on-site tank infrastructure and premium lubricants &mdash; IOR delivers the complete ground fuel solution.</p>
-            </div>
             <div class="fmt-accordion__rows" id="fmtRows">
               <!-- Row 1: Diesel Network -->
               <div class="fmt-row active" data-icon="&#9981;" data-img-desc="Night shot, lit canopy, truck fuelling" data-img-title="IOR Diesel Network Stop" onclick="toggleFmt(this)">
