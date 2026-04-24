@@ -584,13 +584,10 @@
     .hubspot-section__sub { font-size: clamp(15px, 1.5vw, 17px); color: var(--grey-700); line-height: 1.7; margin-bottom: clamp(24px, 3vw, 40px); }
     .hubspot-placeholder {
       background: var(--grey-50);
-      border: 2px dashed var(--grey-100);
+      border: 1px solid var(--grey-100);
       border-radius: 0;
       padding: clamp(40px, 5vw, 80px) 24px;
-      text-align: center;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--grey-400);
+      min-height: 220px;
     }
     /* ============================================================
        FAQ ACCORDION
@@ -963,10 +960,71 @@
     .btn--outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
     .btn--outline-white:hover { background: rgba(255,255,255,.1); }
 
+
+    /* ============================================================
+       PROTOTYPE NAV BAR  —  dev-only strip (remove on production launch)
+    ============================================================ */
+    .proto-bar {
+      background: #111827;
+      color: rgba(255,255,255,.75);
+      font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+      font-size: 11px;
+      letter-spacing: .04em;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .proto-bar__inner {
+      max-width: 1920px;
+      margin: 0 auto;
+      padding: 6px clamp(16px, 3vw, 40px);
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .proto-bar__label {
+      color: #F59E0B;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .proto-bar__links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .proto-bar__link {
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: color .2s ease;
+    }
+    .proto-bar__link:hover { color: #fff; text-decoration: underline; }
+    .proto-bar__sep { width: 1px; height: 10px; background: rgba(255,255,255,.15); }
+
   </style>
 </head>
 <body>
 <div class="main-audit-container">
+
+  <!-- PROTOTYPE NAV BAR — dev/admin only; remove on production launch -->
+  <div class="proto-bar" role="navigation" aria-label="Prototype navigation">
+    <div class="proto-bar__inner">
+      <span class="proto-bar__label">Prototype</span>
+      <div class="proto-bar__links">
+        <a href="00_Master_Index.html" class="proto-bar__link" aria-label="Back to Master Index">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Master Index
+        </a>
+        <span class="proto-bar__sep" aria-hidden="true"></span>
+        <a href="IOR_Design_System.html" class="proto-bar__link" aria-label="Open the IOR Design System">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Design System
+        </a>
+        <span class="proto-bar__sep" aria-hidden="true"></span>
+        <a href="00_Global_Components.html" class="proto-bar__link" aria-label="Open the Global Components reference">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l9 4.5v11L12 22l-9-4.5v-11L12 2z"/><line x1="12" y1="22" x2="12" y2="12"/><polyline points="21 6.5 12 12 3 6.5"/></svg>
+          Global Components
+        </a>
+      </div>
+    </div>
+  </div>
+
 
   <!-- GLOBAL HEADER -- shell verbatim from 01_Homepage.html -->
   <header role="banner" aria-label="Global header">
@@ -1323,8 +1381,8 @@
           <h2 class="section-h2" id="hs-h2">Get in touch with an IOR specialist.</h2>
           <p class="hubspot-section__sub">Complete the form below and a member of our team will be in touch within one business day.</p>
           <!-- HubSpot embed: [FORM ID TBC] -->
-          <div class="hubspot-placeholder" aria-label="HubSpot form embed pending">
-            HubSpot Form &mdash; Embed Code Pending
+          <div class="hubspot-placeholder" data-hubspot-form aria-live="polite">
+            <!-- HubSpot form embed target — populated at runtime -->
           </div>
         </div>
       </div>
