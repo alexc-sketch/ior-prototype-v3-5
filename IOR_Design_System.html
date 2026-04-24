@@ -2184,7 +2184,7 @@
           <div class="ds-rule__content">
             <div class="ds-rule__title">No rounded corners — sharp geometry only</div>
             <div class="ds-rule__desc">
-              <code>border-radius: 0</code> is set as <code>--radius: 0px</code> in the root variables and applied via the <code>.btn</code>, <code>.ior-pill</code>, and all card/container components. Never override this. The brutalised industrial geometry reflects IOR's heavy infrastructure positioning.
+              <code>border-radius: 0</code> is set as <code>--radius: 0px</code> in the root variables and applied via the <code>.btn</code>, <code>.ior-pill</code>, and all card/container components. Never override this. The sharp industrial geometry reflects IOR's heavy infrastructure positioning. <strong>Note (2026-04 update):</strong> rounded corners on image boxes, card thumbnails, and media containers have historically been overused across IOR surfaces and read as dated. Reduce them significantly — default to square corners on every image, thumbnail, and media frame unless there is an explicit approved exception. The only permitted radius in the system is <code>.btn--pill { border-radius: 500px; }</code>.
             </div>
           </div>
         </div>
@@ -2225,6 +2225,26 @@
             <div class="ds-rule__title">No generic AI layout patterns — follow the brief block order exactly</div>
             <div class="ds-rule__desc">
               The block order for every page is specified in the Copy Scaffolding and Design Direction documents. Follow it exactly. If a page's brief specifies "Interactive Split-Content Block" — implement the <code>.ior-split-interactive</code> component. Do not substitute a simpler static grid. If unsure, flag with <code>.annotation--question</code>.
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-rule ds-rule--locked">
+          <div class="ds-rule__number">6</div>
+          <div class="ds-rule__content">
+            <div class="ds-rule__title">No gradients on the site header — flat solid colour only</div>
+            <div class="ds-rule__desc">
+              The global site header (utility bar + primary nav) must use <strong>flat solid colours only</strong>. Any <code>linear-gradient()</code>, <code>radial-gradient()</code>, or faded background treatments on the header are prohibited and must be removed. The only acceptable header backgrounds are: <code>var(--ior-dark)</code> on the utility bar and <code>#fff</code> on the primary nav (with a solid <code>border-bottom</code>). Rationale: flat chrome reads as confident and industrial; gradients on chrome read as dated and consumer-grade. This rule applies to every page, every breakpoint, including the mobile drawer.
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-rule ds-rule--review" style="background:rgba(217,131,0,.06);border-left:4px solid var(--ior-gold,#D98300);">
+          <div class="ds-rule__number">7</div>
+          <div class="ds-rule__content">
+            <div class="ds-rule__title">Header blue tone — flagged for design review</div>
+            <div class="ds-rule__desc">
+              <strong>Status: under review (2026-04).</strong> The current header / utility-bar blue (<code>var(--ior-dark) = #0A4066</code>) has been flagged as reading too bright and too uniformly saturated across large surface areas. A darker, more neutral navy (closer to <code>var(--ior-navy) = #0A1628</code>) is being evaluated for the global header. <strong>Do not change production files until a final tone is confirmed by design review.</strong> Until then, continue to use <code>var(--ior-dark)</code> on the utility bar as currently specced, but do not propagate the tone to new large-surface treatments without approval.
             </div>
           </div>
         </div>
