@@ -266,8 +266,6 @@
     .quick-links-bar {
       background: #fff;
       border-bottom: 2px solid var(--grey-200);
-      position: sticky;
-      top: 64px;
       z-index: calc(var(--z-nav) - 1);
     }
     .quick-links-bar__inner {
@@ -850,12 +848,8 @@
     /* ============================================================
        HUBSPOT FORM PLACEHOLDER
     ============================================================ */
-    .hubspot-section {
-      padding: var(--section-pad) 0;
-      background: #fff;
-      border-top: 1px solid var(--grey-100);
-    }
-    .hubspot-section__inner { max-width: 720px; }
+    
+    
     .section-eyebrow {
       font-size: 11px; font-weight: 700;
       letter-spacing: .12em; text-transform: uppercase;
@@ -868,19 +862,8 @@
       color: var(--grey-900);
       margin-bottom: 12px;
     }
-    .hubspot-section__sub {
-      font-size: clamp(15px, 1.5vw, 17px);
-      color: var(--grey-700);
-      line-height: 1.7;
-      margin-bottom: clamp(24px, 3vw, 40px);
-    }
-    .hubspot-placeholder {
-      background: var(--grey-50);
-      border: 1px solid var(--grey-200);
-      border-radius: 0;
-      padding: clamp(40px, 5vw, 80px) 24px;
-      min-height: 220px;
-    }
+    
+    
 
 
     /* ============================================================
@@ -919,6 +902,27 @@
     .proto-bar__link:hover { color: #fff; text-decoration: underline; }
     .proto-bar__sep { width: 1px; height: 10px; background: rgba(255,255,255,.15); }
 
+  
+    /* ---- Lead Capture Block ---- */
+    .lead-capture-section { padding: 80px 0; background: var(--grey-50); }
+    .lead-capture__card { background: #fff; border-top: 4px solid var(--ior-blue); box-shadow: 0 4px 24px rgba(10,22,40,.10); padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .lead-capture__eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--ior-blue); margin-bottom: 12px; }
+    .lead-capture__h2 { font-size: clamp(22px, 2.5vw, 30px); font-weight: 900; color: var(--grey-900); margin-bottom: 16px; }
+    .lead-capture__sub { font-size: 16px; color: var(--grey-700); margin-bottom: 32px; line-height: 1.6; }
+    .lead-capture__callouts { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .lead-capture__callouts li { font-size: 15px; color: var(--grey-800); display: flex; align-items: center; gap: 8px; }
+    .lead-capture__callouts li span.dot { width: 8px; height: 8px; background: var(--ior-blue); display: inline-block; flex-shrink: 0; }
+    .lead-capture__form-wrapper { background: var(--grey-50); padding: 32px; border: 1px solid var(--grey-100); }
+    .hs-form-placeholder-light { background: var(--grey-100); border: 1px dashed var(--grey-400); padding: 40px 24px; text-align: center; }
+    .hs-form-placeholder-light p { font-size: 13px; color: var(--grey-400); font-style: italic; }
+    @media (max-width: 768px) { .lead-capture__card { grid-template-columns: 1fr; padding: 24px; } }
+
+      /* Utility classes replacing inline styles */
+    .hero-accent { color: var(--ior-sky); }
+    .dot--highlight { fill: #e8a020; filter: drop-shadow(0 0 6px rgba(232,160,32,.8)); }
+    .map-caption { position: absolute; bottom: 8px; left: 24px; font-size: 10px; color: rgba(255,255,255,.3); font-style: italic; }
+    .map-teaser__eyebrow--sky { color: var(--ior-sky); }
+    .quick-links-bar__label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--grey-400); padding: 14px 12px 14px 0; white-space: nowrap; }
   </style>
 </head>
 <body>
@@ -949,7 +953,7 @@
 
 
   <!-- GLOBAL HEADER — shell verbatim from 01_Homepage.html -->
-  <header aria-label="Global header">
+  <header role="banner" aria-label="Global header">
 
     <!-- Utility Bar -->
     <div class="utility-bar" role="complementary" aria-label="Utility navigation">
@@ -1011,7 +1015,7 @@
     <!-- Quick Links Bar (spoke-level sibling nav) -->
     <nav class="quick-links-bar" aria-label="Ground Fuels section navigation">
       <div class="quick-links-bar__inner">
-        <span style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-400);padding:14px 12px 14px 0;white-space:nowrap;">Ground Fuels:</span>
+        <span class="quick-links-bar__label">Ground Fuels:</span>
         <a href="03a_Diesel_Network_v3.5.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">IOR Diesel Network</a>
         <a href="03b_On_Site_Refuelling_v3.5.html" class="quick-links-bar__link">On-Site Refuelling</a>
         <a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="quick-links-bar__link">Bulk Diesel Delivery</a>
@@ -1025,12 +1029,12 @@
       <div class="container">
         <div class="hero-map__text fade-up">
           <div class="eyebrow">IOR Diesel Network</div>
-          <h1 id="hero-h1">The network that <span style="color:var(--ior-sky);">never sleeps.</span></h1>
+          <h1 id="hero-h1">The network that <span class="hero-accent">never sleeps.</span></h1>
           <p>115+ unmanned 24/7 diesel stops on Australia&rsquo;s major transport corridors. Open when you need it, built for trucks, completely cashless.</p>
           <div class="hero-map__ctas">
             <a href="11d_Find_Location.html" class="btn btn--primary btn--pill" aria-label="Find a Diesel Stop">Find a Diesel Stop &raquo;</a>
             <a href="#" class="btn btn--outline btn--pill" aria-label="Apply for an IOR account">Apply for an Account &raquo;</a>
-            <a href="IOR-MAR-BRO-0231-Diesel-Network-Brochure_v20250828.pdf" target="_blank" rel="noopener" class="btn btn--ghost btn--pill" style="font-size:13px;" aria-label="Download Network Directory PDF">
+            <a href="IOR-MAR-BRO-0231-Diesel-Network-Brochure_v20250828.pdf" target="_blank" rel="noopener" class="btn btn--ghost btn--pill btn--sm" aria-label="Download Network Directory PDF">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               Download Network Directory
             </a>
@@ -1093,7 +1097,7 @@
             <circle class="dot" cx="128" cy="148" r="5"/>
             <circle class="dot" cx="112" cy="162" r="4"/>
             <circle class="dot" cx="148" cy="185" r="4"/>
-            <circle class="dot" cx="298" cy="230" r="5" style="fill:#e8a020;filter:drop-shadow(0 0 6px rgba(232,160,32,.8));"/>
+            <circle class="dot dot--highlight" cx="298" cy="230" r="5"/>
             <circle class="dot" cx="340" cy="185" r="4"/>
             <circle class="dot" cx="295" cy="155" r="5"/>
             <line x1="340" y1="330" x2="395" y2="280" stroke="rgba(100,180,255,.15)" stroke-width="1" stroke-dasharray="4,6"/>
@@ -1107,7 +1111,7 @@
             <line x1="248" y1="100" x2="220" y2="75" stroke="rgba(100,180,255,.15)" stroke-width="1" stroke-dasharray="4,6"/>
             <line x1="162" y1="258" x2="118" y2="265" stroke="rgba(100,180,255,.15)" stroke-width="1" stroke-dasharray="4,6"/>
           </svg>
-          <div style="position:absolute;bottom:8px;left:24px;font-size:10px;color:rgba(255,255,255,.3);font-style:italic;">Abstract representation. Actual site locations may vary.</div>
+          <div class="map-caption">Abstract representation. Actual site locations may vary.</div>
         </div>
       </div>
     </section>
@@ -1137,7 +1141,7 @@
       <div class="container">
         <div class="map-teaser__inner">
           <div>
-            <div class="map-teaser__eyebrow" style="color:var(--ior-sky);">National Coverage</div>
+            <div class="map-teaser__eyebrow map-teaser__eyebrow--sky">National Coverage</div>
             <h2 class="map-teaser__heading" id="map-h2">Find your nearest IOR Diesel Stop.</h2>
             <p class="map-teaser__body">Search by location, route, or available amenities. 115+ stops from Darwin to Traralgon, on Australia&rsquo;s major transport corridors.</p>
             <a href="11d_Find_Location.html" class="btn btn--primary btn--pill" aria-label="Find a Diesel Stop near you">Find a Diesel Stop &raquo;</a>
@@ -1289,15 +1293,27 @@
     </section>
 
     <!-- HubSpot Form Placeholder (global spoke-page requirement) -->
-    <section class="hubspot-section" aria-labelledby="hs-h2">
+        <!-- ============================================================
+         LEAD CAPTURE BLOCK (split-layout)
+    ============================================================ -->
+    <section id="lead-capture" class="lead-capture-section fade-up" data-silo="ground-fuels" aria-labelledby="lc-h2-03a">
       <div class="container">
-        <div class="hubspot-section__inner">
-          <p class="section-eyebrow">Get in Touch</p>
-          <h2 class="section-h2" id="hs-h2">Talk to an IOR Diesel Network specialist.</h2>
-          <p class="hubspot-section__sub">Complete the form below and a member of our fuel team will be in touch within one business day to help set up your account and RFID tags.</p>
-          <!-- HubSpot embed: [FORM ID TBC] -->
-          <div class="hubspot-placeholder" data-hubspot-form aria-live="polite">
-            <!-- HubSpot form embed target — populated at runtime -->
+        <div class="lead-capture__card">
+          <div class="lead-capture__content">
+            <div class="lead-capture__eyebrow">Get in Touch</div>
+            <h2 class="lead-capture__h2" id="lc-h2-03a">Set up your IOR Diesel Network account today.</h2>
+            <p class="lead-capture__sub">Complete the form and a member of our fuel team will be in touch within one business day to help set up your account and RFID tags.</p>
+            <ul class="lead-capture__callouts" aria-label="Key benefits">
+              <li><span class="dot" aria-hidden="true"></span>115+ unmanned diesel stops across major transport corridors</li>
+              <li><span class="dot" aria-hidden="true"></span>RFID tag access — 24/7 fuelling, no cash or receipts</li>
+              <li><span class="dot" aria-hidden="true"></span>Consolidated monthly invoicing across your entire fleet</li>
+            </ul>
+          </div>
+          <div class="lead-capture__form-wrapper">
+          <div class="hs-form-placeholder-light" aria-label="HubSpot enquiry form -- embed pending">
+            <!-- HubSpot embed: Ground Fuels form [FORM ID TBC] -->
+            <p>HubSpot Form &mdash; Embed Code Pending</p>
+          </div>
           </div>
         </div>
       </div>
