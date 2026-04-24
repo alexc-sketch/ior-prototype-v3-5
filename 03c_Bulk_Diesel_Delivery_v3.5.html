@@ -623,17 +623,11 @@
     /* ============================================================
        HUBSPOT FORM PLACEHOLDER
     ============================================================ */
-    .hubspot-section { padding: var(--section-pad) 0; background: #fff; border-top: 1px solid var(--grey-100); }
-    .hubspot-section .container { max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
-    .hubspot-section__inner { max-width: 720px; }
-    .hubspot-section__sub { font-size: clamp(15px, 1.5vw, 17px); color: var(--grey-700); line-height: 1.7; margin-bottom: clamp(24px, 3vw, 40px); }
-    .hubspot-placeholder {
-      background: var(--grey-50);
-      border: 1px solid var(--grey-100);
-      border-radius: 0;
-      padding: clamp(40px, 5vw, 80px) 24px;
-      min-height: 220px;
-    }
+    
+    
+    
+    
+    
     /* ============================================================
        FAQ ACCORDION
     ============================================================ */
@@ -933,6 +927,19 @@
     .proto-bar__link:hover { color: #fff; text-decoration: underline; }
     .proto-bar__sep { width: 1px; height: 10px; background: rgba(255,255,255,.15); }
 
+      /* ---- Lead Capture Block ---- */
+    .lead-capture-section { padding: 80px 0; background: var(--grey-50); }
+    .lead-capture__card { background: #fff; border-top: 4px solid var(--ior-blue); box-shadow: 0 4px 24px rgba(10,22,40,.10); padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .lead-capture__eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--ior-blue); margin-bottom: 12px; }
+    .lead-capture__h2 { font-size: clamp(22px, 2.5vw, 30px); font-weight: 900; color: var(--grey-900); margin-bottom: 16px; }
+    .lead-capture__sub { font-size: 16px; color: var(--grey-700); margin-bottom: 32px; line-height: 1.6; }
+    .lead-capture__callouts { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .lead-capture__callouts li { font-size: 15px; color: var(--grey-800); display: flex; align-items: center; gap: 8px; }
+    .lead-capture__callouts li span.dot { width: 8px; height: 8px; background: var(--ior-blue); display: inline-block; flex-shrink: 0; }
+    .lead-capture__form-wrapper { background: var(--grey-50); padding: 32px; border: 1px solid var(--grey-100); }
+    .hs-form-placeholder-light { background: var(--grey-100); border: 1px dashed var(--grey-400); padding: 40px 24px; text-align: center; }
+    .hs-form-placeholder-light p { font-size: 13px; color: var(--grey-400); font-style: italic; }
+    @media (max-width: 768px) { .lead-capture__card { grid-template-columns: 1fr; padding: 24px; } }
   </style>
 </head>
 <body>
@@ -1293,15 +1300,27 @@
     <!-- ============================================================
          HUBSPOT FORM PLACEHOLDER
     ============================================================ -->
-    <section class="hubspot-section" aria-labelledby="hs-h2">
+        <!-- ============================================================
+         LEAD CAPTURE BLOCK (split-layout)
+    ============================================================ -->
+    <section id="lead-capture" class="lead-capture-section fade-up" data-silo="ground-fuels" aria-labelledby="lc-h2-03c">
       <div class="container">
-        <div class="hubspot-section__inner">
-          <p class="section-eyebrow">Get in Touch</p>
-          <h2 class="section-h2" id="hs-h2">Speak with a bulk delivery specialist.</h2>
-          <p class="hubspot-section__sub">Complete the form below and a member of our team will be in touch within one business day.</p>
-          <!-- HubSpot embed: [FORM ID TBC] -->
-          <div class="hubspot-placeholder" data-hubspot-form aria-live="polite">
-            <!-- HubSpot form embed target — populated at runtime -->
+        <div class="lead-capture__card">
+          <div class="lead-capture__content">
+            <div class="lead-capture__eyebrow">Request a Quote</div>
+            <h2 class="lead-capture__h2" id="lc-h2-03c">Lock in reliable bulk diesel delivery for your operation.</h2>
+            <p class="lead-capture__sub">Tell us about your location, volume requirements, and delivery frequency. Our team will respond within one business day.</p>
+            <ul class="lead-capture__callouts" aria-label="Key benefits">
+              <li><span class="dot" aria-hidden="true"></span>Bulk diesel delivered direct to your site across Australia</li>
+              <li><span class="dot" aria-hidden="true"></span>Vendor-managed inventory available &mdash; never run dry</li>
+              <li><span class="dot" aria-hidden="true"></span>Consolidated invoicing and compliance documentation</li>
+            </ul>
+          </div>
+          <div class="lead-capture__form-wrapper">
+            <div class="hs-form-placeholder-light" aria-label="HubSpot enquiry form -- embed pending">
+              <!-- HubSpot embed: Ground Fuels form [FORM ID TBC] -->
+              <p>HubSpot Form &mdash; Embed Code Pending</p>
+            </div>
           </div>
         </div>
       </div>
