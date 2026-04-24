@@ -110,7 +110,7 @@
     line-height: 1.15;
     margin-bottom: clamp(12px, 1.5vw, 20px);
   }
-  .hero__h1 .highlight { color: var(--ior-light); }
+  .hero__h1 .highlight { color: var(--ior-blue); }
   .hero__sub {
     font-size: clamp(15px, 1.5vw, 17px);
     color: rgba(255,255,255,.8);
@@ -347,6 +347,11 @@
   .steps-section { padding: var(--section-pad) 0; background: var(--grey-50); }
   .steps-section h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--grey-900); margin-bottom: 40px; text-align: center; }
   .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step-card { background: #fff; padding: 40px; border-top: 4px solid var(--ior-blue); }
+  .step-card__num { font-size: 48px; font-weight: 900; color: rgba(3,85,163,.15); line-height: 1; margin-bottom: 16px; }
+  .step-card__title { font-size: 18px; font-weight: 800; color: var(--grey-900); margin-bottom: 10px; }
+  .step-card__desc { font-size: 14px; color: var(--grey-700); line-height: 1.6; }
+
   .step-box { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); padding: 32px; text-align: center; }
   .step-box__num { font-size: 48px; font-weight: 900; color: var(--ior-sky); line-height: 1; margin-bottom: 16px; }
   .step-box__title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
@@ -354,6 +359,50 @@
   .steps-ctas { display: flex; justify-content: center; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
   @media (max-width: 768px) { .steps-grid { grid-template-columns: 1fr; } }
 
+  .lead-capture-section { padding: clamp(50px, 7vw, 80px) 0; background: var(--grey-50); }
+  .lead-capture__card {
+    background: #fff;
+    border-top: 4px solid var(--silo-accent-color);
+    box-shadow: 0 4px 24px rgba(10,22,40,.10);
+    padding: clamp(28px, 4vw, 48px);
+    display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 48px);
+  }
+  .lead-capture__eyebrow {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .12em; color: var(--silo-accent-color); margin-bottom: 12px;
+  }
+  .lead-capture__h2 {
+    font-size: clamp(22px, 2.5vw, 30px); font-weight: 900;
+    color: var(--grey-900); margin-bottom: 16px;
+  }
+  .lead-capture__sub {
+    font-size: 16px; color: var(--grey-700); margin-bottom: 32px; line-height: 1.6;
+  }
+  .lead-capture__callouts {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .lead-capture__callouts li {
+    font-size: 15px; color: var(--grey-800);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .lead-capture__callouts li span.dot {
+    width: 8px; height: 8px; background: var(--silo-accent-color);
+    display: inline-block; flex-shrink: 0;
+  }
+  .lead-capture__form-wrapper {
+    background: var(--grey-50); padding: 32px;
+    border: 1px solid var(--grey-100);
+  }
+  .hs-form-placeholder-light {
+    background: #fff; border: 2px dashed var(--grey-200);
+    padding: clamp(32px, 4vw, 60px) clamp(20px, 3vw, 40px);
+    text-align: center; color: var(--grey-400);
+    font-size: 14px; font-weight: 600; letter-spacing: .04em;
+  }
+  @media (max-width: 768px) {
+    .lead-capture__card { grid-template-columns: 1fr; padding: 24px; }
+  }
   /* -- Cross-Sell Split -- */
   .cross-sell-split { padding: var(--section-pad) 0; background: #fff; }
   .cross-sell-split .container { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--grey-100); }
@@ -1864,42 +1913,27 @@
     </div>
   </div>
 </section><!-- LEAD CAPTURE -->
-<section class="hubspot-section" id="lead-capture" data-silo="ground-fuels" aria-labelledby="lead-capture-heading">
-  <div class="hubspot-section__split">
-    <!-- LEFT: asset + callouts -->
-    <div class="hubspot-section__asset">
-      <div class="hubspot-section__eyebrow">Gated Asset</div>
-      <h2 class="hubspot-section__title" id="lead-capture-heading">
-        Get the Ground Fuels Capability Brochure + talk to our team.
-      </h2>
-      <p class="hubspot-section__sub">
-        Everything you need to evaluate IOR&rsquo;s ground fuel solutions &mdash; network coverage,
-        on-site infrastructure, bulk delivery, HyBlue and lubricants &mdash; in one document.
-      </p>
-      <ul class="hubspot-section__callouts">
-        <li>Full product range overview</li>
-        <li>Network coverage maps</li>
-        <li>Account application guide</li>
-      </ul>
-      <!-- PDF preview card -->
-      <div class="tc-pdf-preview">
-        <div class="tc-pdf-preview__cover">
-          <div class="tc-pdf-preview__cover-icon">&#128196;</div>
-          <div class="tc-pdf-preview__cover-title">IOR Ground Fuels<br>Capability Brochure</div>
-        </div>
-        <div class="tc-pdf-preview__meta">
-          <div class="tc-pdf-preview__meta-icon">&#128196;</div>
-          <div class="tc-pdf-preview__meta-text">
-            <div class="tc-pdf-preview__meta-name">Ground Fuels Capability Brochure</div>
-            <div class="tc-pdf-preview__meta-file">IOR-MAR-BRO-0201-Ground-Fuels-Capability-Brochure_v20251103.pdf</div>
-          </div>
+<section id="lead-capture" class="lead-capture-section fade-up" data-silo="ground-fuels" aria-labelledby="lc-h2">
+  <div class="container">
+    <div class="lead-capture__card">
+      <div class="lead-capture__content">
+        <div class="lead-capture__eyebrow">Get in Touch</div>
+        <h2 class="lead-capture__h2" id="lc-h2">Talk to an IOR Ground Fuels specialist</h2>
+        <p class="lead-capture__sub">Tell us about your fleet and fuel requirements. A member of our team will be in touch within one business day.</p>
+        <ul class="lead-capture__callouts" aria-label="Key benefits">
+          <li><span class="dot" aria-hidden="true"></span>Access to 115+ IOR diesel stops nationally</li>
+          <li><span class="dot" aria-hidden="true"></span>Dedicated account manager for your fleet</li>
+          <li><span class="dot" aria-hidden="true"></span>Real-time fuel tracking via HyDip&#8482; FMS</li>
+        </ul>
+      </div>
+      <div class="lead-capture__form-wrapper">
+        <!-- HubSpot embed: replace this placeholder with the HubSpot embed script -->
+        <!-- Form URL: https://[hubspot-form-url] -->
+        <!-- Portal ID: [portal-id] | Form ID: [form-id] -->
+        <div class="hs-form-placeholder-light" aria-label="HubSpot enquiry form -- embed pending">
+          <p>HubSpot Form &mdash; Embed Code Pending</p>
         </div>
       </div>
-    </div>
-    <!-- RIGHT: HubSpot form embed -->
-    <div class="hubspot-section__form" data-hubspot-form="ground-fuels-hub" aria-label="Ground Fuels enquiry form">
-      <!-- HubSpot embed script drops in here -->
-      <!-- Form ID: TBC -- Ground Fuels Hub form -->
     </div>
   </div>
 </section>
