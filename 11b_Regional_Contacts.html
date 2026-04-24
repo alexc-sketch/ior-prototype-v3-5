@@ -268,28 +268,34 @@
   }
 
   /* ── AUSTRALIA MAP COMPONENT ── */
-  .aus-map-section { padding: 60px 0 20px; background: #fff; }
-  .aus-map-section__inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-  .aus-map-section__heading { font-size: 1.6rem; font-weight: 800; color: var(--grey-900, #1a1a1a); margin-bottom: 8px; text-align: center; }
-  .aus-map-section__sub { font-size: .95rem; color: #666; text-align: center; margin-bottom: 40px; }
-  .aus-map-wrap { display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
-  .aus-map-svg-wrap { flex: 0 0 auto; max-width: 520px; width: 100%; }
+  /* ── REGIONAL MAP + CONTACTS SPLIT ── */
+  .aus-map-section { padding: 60px 0 0; background: #fff; }
+  .aus-map-section__inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .aus-map-section__heading { font-size: 1.6rem; font-weight: 800; color: var(--grey-900, #1a1a1a); margin-bottom: 8px; }
+  .aus-map-section__sub { font-size: .95rem; color: #666; margin-bottom: 40px; }
+  /* Two-column split: map left (40%), contacts right (60%) */
+  .aus-map-split { display: grid; grid-template-columns: 40% 1fr; gap: 0; align-items: stretch; min-height: 560px; }
+  .aus-map-left { position: sticky; top: 80px; padding: 0 32px 40px 0; }
+  .aus-map-svg-wrap { width: 100%; }
   .aus-map-svg-wrap svg { width: 100%; height: auto; }
   .aus-state { fill: #E8EEF4; stroke: #fff; stroke-width: 2; cursor: pointer; transition: fill .2s; }
   .aus-state:hover { fill: #C5D8EC; }
   .aus-state.active { fill: var(--ior-blue, #0355A3); }
-  .aus-state.active:hover { fill: #0244820; }
-  .aus-map-legend { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
-  .aus-map-legend__item { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 8px; cursor: pointer; border: 1.5px solid transparent; transition: all .2s; font-size: .9rem; font-weight: 600; color: #444; }
+  .aus-map-legend { display: flex; flex-direction: column; gap: 6px; margin-top: 16px; }
+  .aus-map-legend__item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; cursor: pointer; border: 1.5px solid transparent; transition: all .2s; font-size: .85rem; font-weight: 600; color: #444; }
   .aus-map-legend__item:hover { border-color: #C5D8EC; background: #F0F6FB; }
   .aus-map-legend__item.active { border-color: var(--ior-blue, #0355A3); background: #EBF3FB; color: var(--ior-blue, #0355A3); }
-  .aus-map-legend__dot { width: 12px; height: 12px; border-radius: 50%; background: #C5D8EC; flex-shrink: 0; }
+  .aus-map-legend__dot { width: 10px; height: 10px; border-radius: 50%; background: #C5D8EC; flex-shrink: 0; }
   .aus-map-legend__item.active .aus-map-legend__dot { background: var(--ior-blue, #0355A3); }
-  @media (max-width: 768px) {
-    .aus-map-wrap { flex-direction: column; align-items: center; }
-    .aus-map-svg-wrap { max-width: 340px; }
-    .aus-map-legend { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  /* Right panel: tab strip + contact cards */
+  .aus-map-right { border-left: 1px solid #e5e5e5; padding: 0 0 40px 40px; }
+  @media (max-width: 900px) {
+    .aus-map-split { grid-template-columns: 1fr; }
+    .aus-map-left { position: static; padding: 0 0 24px 0; }
+    .aus-map-right { border-left: none; border-top: 1px solid #e5e5e5; padding: 24px 0 0 0; }
+    .aus-map-legend { flex-direction: row; flex-wrap: wrap; }
   }
+
 
 </style>
 </head>
@@ -358,40 +364,15 @@
     </div>
   </section>
 
-    <!-- ── AUSTRALIA MAP ── -->
-  <!-- ╔══════════════════════════════════════════════════════════════════════╗
-       ║  ELEMENTOR IMPLEMENTATION NOTE — WordPress Developer                ║
-       ║                                                                      ║
-       ║  This section requires an interactive Australian states map.         ║
-       ║  Recommended Elementor implementation:                               ║
-       ║                                                                      ║
-       ║  OPTION A (Preferred): JetEngine / JetElements "Map" widget          ║
-       ║    - Use the Interactive SVG Map add-on for Elementor                ║
-       ║    - Plugin: "Interactive Geo Maps" (interactivegeo.com) or          ║
-       ║      "MapSVG" — both have Elementor widgets                          ║
-       ║    - Each state (QLD/NSW/VIC/SA/WA/NT) should be a clickable         ║
-       ║      region that scrolls to / filters the contact tab below          ║
-       ║                                                                      ║
-       ║  OPTION B (Fallback): Static image + Elementor Image Hotspot widget  ║
-       ║    - Use a flat SVG/PNG map of Australia                             ║
-       ║    - Add hotspot pins for each state using Elementor Pro             ║
-       ║      Image Hotspot widget                                            ║
-       ║    - Each hotspot click scrolls to the relevant tab panel            ║
-       ║                                                                      ║
-       ║  INTERACTION REQUIREMENT:                                            ║
-       ║    - Clicking a state on the map must activate the corresponding     ║
-       ║      tab in the "State Tabs" section below                           ║
-       ║    - Active state should highlight in IOR Blue (#0355A3)             ║
-       ║    - Default active state on page load: QLD                          ║
-       ║                                                                      ║
-       ║  PROTOTYPE PLACEHOLDER BELOW — replace with live Elementor widget    ║
-       ╚══════════════════════════════════════════════════════════════════════╝ -->
+    <!-- ── AUSTRALIA MAP + REGIONAL CONTACTS ── -->
   <section class="aus-map-section">
     <div class="aus-map-section__inner">
       <h2 class="aus-map-section__heading">Find Your Regional Contact</h2>
-      <p class="aus-map-section__sub">Select a state on the map or use the tabs below to find your nearest IOR office or regional site.</p>
-      <div class="aus-map-wrap">
-        <div class="aus-map-svg-wrap">
+      <p class="aus-map-section__sub">Select a state on the map to find your nearest IOR office or regional site.</p>
+      <div class="aus-map-split">
+        <!-- LEFT: Interactive map -->
+        <div class="aus-map-left">
+          <div class="aus-map-svg-wrap">
           <!-- Simplified SVG outline of Australian states -->
           <svg viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of Australia — select a state">
             <!-- Western Australia -->
@@ -429,7 +410,8 @@
             &#9888; Prototype placeholder — replace with Interactive Geo Maps or MapSVG Elementor widget in WordPress
           </p>
         </div>
-        <div class="aus-map-legend" role="list" aria-label="State selector">
+          <p style="font-size:.72rem;color:#bbb;margin-top:6px;">&#9888; Prototype placeholder — replace with Interactive Geo Maps or MapSVG Elementor widget in WordPress</p>
+          <div class="aus-map-legend" role="list" aria-label="State selector">
           <div class="aus-map-legend__item active" data-state="qld" role="listitem" tabindex="0" aria-pressed="true">
             <span class="aus-map-legend__dot"></span> Queensland (QLD)
           </div>
@@ -449,13 +431,10 @@
             <span class="aus-map-legend__dot"></span> Northern Territory (NT)
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-<section class="section">
-    <div class="section__inner">
-      <div class="tab-strip" role="tablist" aria-label="State tabs">
+        </div>
+        <!-- RIGHT: State tabs + contact cards -->
+        <div class="aus-map-right">
+          <div class="tab-strip" role="tablist" aria-label="State tabs">
         <button class="tab-btn active" role="tab" aria-selected="true" data-tab="qld">QLD</button>
         <button class="tab-btn" role="tab" aria-selected="false" data-tab="nsw">NSW</button>
         <button class="tab-btn" role="tab" aria-selected="false" data-tab="vic">VIC</button>
@@ -529,8 +508,11 @@
           <div class="regional-card__contact"><a href="tel:08XXXXXXXX">08 XXXX XXXX</a></div>
         </div>
       </div>
+        </div>
+      </div>
     </div>
   </section>
+
 
   <section class="prefooter">
     <div class="prefooter__inner">

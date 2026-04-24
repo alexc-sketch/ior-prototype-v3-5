@@ -2182,9 +2182,9 @@
         <div class="ds-rule ds-rule--locked">
           <div class="ds-rule__number">1</div>
           <div class="ds-rule__content">
-            <div class="ds-rule__title">No rounded corners — sharp geometry only</div>
+            <div class="ds-rule__title">Sharp corners on image boxes — rounded corners permitted on UI elements</div>
             <div class="ds-rule__desc">
-              <code>border-radius: 0</code> is set as <code>--radius: 0px</code> in the root variables and applied via the <code>.btn</code>, <code>.ior-pill</code>, and all card/container components. Never override this. The sharp industrial geometry reflects IOR's heavy infrastructure positioning. <strong>Note (2026-04 update):</strong> rounded corners on image boxes, card thumbnails, and media containers have historically been overused across IOR surfaces and read as dated. Reduce them significantly — default to square corners on every image, thumbnail, and media frame unless there is an explicit approved exception. The only permitted radius in the system is <code>.btn--pill { border-radius: 500px; }</code>.
+              Rounded corners are <strong>permitted</strong> on UI elements such as buttons, pill badges, form inputs, legend items, and interactive controls — these benefit from softness to signal interactivity. However, rounded corners are <strong>strictly prohibited</strong> on image boxes, card thumbnails, hero images, and all media containers. Feedback confirmed that rounded image boxes are overused and feel dated on this brand. Default to <code>border-radius: 0</code> on every <code>&lt;img&gt;</code>, <code>.card__img</code>, <code>.hero__img</code>, and <code>.media-frame</code>. The only permitted large radius is <code>.btn--pill { border-radius: 500px; }</code> for pill-shaped buttons.
             </div>
           </div>
         </div>
