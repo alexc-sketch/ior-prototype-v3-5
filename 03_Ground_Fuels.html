@@ -993,6 +993,37 @@
   @media (max-width: 768px) {
     .related-grid { grid-template-columns: 1fr; }
   }
+
+  /* ── VIDEO HERO ── */
+  .hero-video { position: relative; min-height: clamp(420px, 55vw, 680px); display: flex; align-items: center; overflow: hidden; background: var(--ior-navy); }
+  .hero-video__media { position: absolute; inset: 0; z-index: 0; }
+  .hero-video__vid { width: 100%; height: 100%; object-fit: cover; }
+  .hero-video__overlay { position: absolute; inset: 0; background: rgba(10,22,40,.55); }
+  .hero-video__content { position: relative; z-index: 1; padding: clamp(60px,8vw,100px) 0; max-width: 680px; }
+  .hero-video__content h1 { font-size: clamp(28px,3.5vw,52px); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 16px; }
+  .hero-video__content .hero-sub { font-size: 17px; color: rgba(255,255,255,.8); line-height: 1.6; margin-bottom: 28px; max-width: 520px; }
+  .hero-video__content .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  @media (max-width: 640px) { .hero-video { min-height: 380px; } .hero-video__content { padding: 48px 0; } }
+
+  /* ── LEAD CAPTURE SPLIT-LAYOUT ── */
+  .lead-capture-section { background: var(--ior-blue); padding: clamp(48px,6vw,80px) 0; }
+  .lead-capture__card { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,4vw,64px); align-items: start; }
+  @media (max-width: 768px) { .lead-capture__card { grid-template-columns: 1fr; } }
+  .lead-capture__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 12px; }
+  .lead-capture__h2 { font-size: clamp(22px,2.5vw,34px); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+  .lead-capture__sub { font-size: 15px; color: rgba(255,255,255,.8); line-height: 1.6; margin-bottom: 24px; }
+  .lead-capture__callouts { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .lead-capture__callouts li { font-size: 14px; color: rgba(255,255,255,.85); padding-left: 18px; position: relative; }
+  .lead-capture__callouts li::before { content: '\2014'; position: absolute; left: 0; color: rgba(255,255,255,.4); }
+  .lead-capture__form-wrapper { background: #fff; padding: 32px; }
+  .hs-form-placeholder-light { min-height: 200px; border: 1px solid var(--grey-200,#E0E8F0); display: flex; align-items: center; justify-content: center; background: var(--grey-50,#F4F8FC); }
+
+  /* ── FAQ FOOTER (Still Have Questions) ── */
+  .faq-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; background: #fff; border: 1px solid var(--grey-100,#E0E8F0); padding: 24px 32px; margin-top: 32px; }
+  .faq-footer__text h4 { font-size: 15px; font-weight: 700; color: var(--grey-900); margin-bottom: 4px; }
+  .faq-footer__text p { font-size: 13px; color: var(--grey-700); }
+  .faq-footer__actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; flex-shrink: 0; }
+  .faq-footer__help-link { font-size: 13px; color: var(--ior-blue); text-decoration: underline; text-underline-offset: 4px; }
 </style>
 </head>
 <body>
@@ -1000,17 +1031,6 @@
 <!-- ============================================================
      WIREFRAME NAV BAR
 ============================================================ -->
-<nav class="wf-nav">
-  <a href="00_Master_Index.html">&#8592; Master Index</a>
-  <a href="IOR_Design_System.html">Design System</a>
-  <span class="wf-nav__module">MODULE 03 &middot; Ground Fuels &middot; 03_Ground_Fuels.html</span>
-  <div class="wf-nav__legend">
-    ANNOTATIONS:
-    <span class="wf-swatch wf-swatch--std"></span> Standard
-    <span class="wf-swatch wf-swatch--dq"></span> Design Q
-    <span class="wf-swatch wf-swatch--ok"></span> Approved
-  </div>
-</nav>
 
 <!-- ============================================================
      PAGE 1: GROUND FUELS HUB
@@ -1028,80 +1048,123 @@
 </div>
 <div id="ground-fuels-hub">
 
-<!-- BLOCK 1: UTILITY BAR -->
-<div class="ann"><strong>BLOCK 1 &mdash; UTILITY BAR &middot; Global component</strong> Identical to Module 01. Hidden at scrollY &gt;80px.</div>
-<div class="utility-bar">
-  <div class="container">
-    <div class="utility-announce">&#128226; Announcement Message Placeholder</div>
-    <div>
-      <a href="#">&#128205; Find a Location</a>
-      <a href="#">&#9993;&#65039; Make a Payment</a>
-      <a href="#">&#128222; 1300 457 467</a>
+  <div class="proto-bar" role="navigation" aria-label="Prototype navigation">
+    <div class="proto-bar__inner">
+      <span class="proto-bar__label">Prototype</span>
+      <div class="proto-bar__links">
+        <a href="00_Master_Index.html" class="proto-bar__link" aria-label="Back to Master Index">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Master Index
+        </a>
+        <span class="proto-bar__sep" aria-hidden="true"></span>
+        <a href="IOR_Design_System.html" class="proto-bar__link" aria-label="Open the IOR Design System">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Design System
+        </a>
+        <span class="proto-bar__sep" aria-hidden="true"></span>
+        <a href="00_Global_Components.html" class="proto-bar__link" aria-label="Open the Global Components reference">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l9 4.5v11L12 22l-9-4.5v-11L12 2z"/><line x1="12" y1="22" x2="12" y2="12"/><polyline points="21 6.5 12 12 3 6.5"/></svg>
+          Global Components
+        </a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- BLOCK 2: PRIMARY NAV -->
-<div class="ann"><strong>BLOCK 2 &mdash; PRIMARY NAV &middot; "Fuel Solutions" active</strong> Sticky. 72px default, 56px scrolled. Full mega menu spec in 01_Homepage_and_Global.html.</div>
-<div class="primary-nav">
-  <div class="container">
-    <div class="logo-placeholder">[IOR LOGO]</div>
-    <nav class="nav-links">
-      <a href="#" class="nav-link nav-link--active">Fuel Solutions &#9660;</a>
-      <a href="#" class="nav-link">Digital Platforms &#9660;</a>
-      <a href="#" class="nav-link">Industries We Serve &#9660;</a>
-      <a href="#" class="nav-link">About IOR &#9660;</a>
-      <a href="#" class="nav-link">Support &amp; Contact &#9660;</a>
+
+  <!-- GLOBAL HEADER — shell verbatim from 01_Homepage.html -->
+  <header role="banner" aria-label="Global header">
+
+    <!-- Utility Bar -->
+    <div class="utility-bar" role="complementary" aria-label="Utility navigation">
+      <div class="utility-bar__inner">
+        <span class="utility-bar__brand">Australia&rsquo;s Remote Fuel Specialists &mdash; Since 1984</span>
+        <div class="utility-bar__actions">
+          <a href="11d_Find_Location.html" class="utility-bar__link" aria-label="Find a Location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Find a Location
+          </a>
+          <div class="utility-bar__divider" aria-hidden="true"></div>
+          <a href="11e_Make_Payment.html" class="utility-bar__link" aria-label="Make a Payment">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Make a Payment
+          </a>
+          <div class="utility-bar__divider" aria-hidden="true"></div>
+          <a href="tel:1300457467" class="utility-bar__link" aria-label="Call IOR on 1300 457 467">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            1300 457 467
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Primary Nav -->
+    <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+      <div class="nav-inner">
+        <a href="01_Homepage.html" class="nav-logo" aria-label="IOR — Home">
+          <div class="nav-logo__mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <span class="nav-logo__wordmark">IOR</span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="02_Fuel_Solutions_Hub.html" class="nav-link nav-link--active">Fuel Solutions</a></li>
+          <li><a href="07_Digital_Platforms.html" class="nav-link">Digital Platforms</a></li>
+          <li><a href="08_Industries_Hub.html" class="nav-link">Industries We Serve</a></li>
+          <li><a href="09_About_IOR.html" class="nav-link">About IOR</a></li>
+          <li><a href="10_Careers.html" class="nav-link">Careers</a></li>
+          <li><a href="11_Support_Hub.html" class="nav-link">Support</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="#" class="btn btn--login btn--pill btn--sm" aria-label="Customer Login">Customer Login</a>
+          <a href="#" class="btn btn--primary btn--pill btn--sm" aria-label="Apply for an Account">Apply for an Account</a>
+          <button class="hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileDrawer">
+            <span class="hamburger__line" aria-hidden="true"></span>
+            <span class="hamburger__line" aria-hidden="true"></span>
+            <span class="hamburger__line" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
     </nav>
-    <div class="nav-actions">
-      <a href="#" class="btn btn--login">Customer Login</a>
-      <a href="#" class="btn btn--primary btn--sm">Apply for an Account</a>
-    </div>
-  </div>
-</div>
 
+  </header>
 <!-- QUICK LINKS BAR: Ground Fuels Hub -->
-<div class="ann"><strong>QUICK LINKS BAR &middot; Hub-level: links to sibling Fuel Solutions hubs</strong> Slim dark bar below nav. Shows sibling hub links. Active page not shown. Persistent across all pages in this module. <em>INTENT: Allows cross-hub navigation without returning to Fuel Solutions Hub. Reduces pogo-sticking.</em></div>
-<nav class="quick-links-bar">
+<!-- ============================================================
+     QUICK LINKS BAR — cross-module navigation (Ground Fuels Hub)
+     Per quick-links logic: Aviation | Equipment & Infrastructure | Supply & Trading
+============================================================ -->
+<nav class="quick-links-bar" aria-label="Also in Fuel Solutions">
   <div class="container">
     <span class="quick-links-bar__label">Also in Fuel Solutions:</span>
     <div class="quick-links-bar__links">
-      <a href="02_Fuel_Solutions_Hub_V2.html" class="quick-links-bar__link">&#9992; Aviation</a>
-      <a href="#" class="quick-links-bar__link">&#127981; Equipment &amp; Infrastructure</a>
-      <a href="#" class="quick-links-bar__link">&#128202; Supply &amp; Trading</a>
+      <a href="04_Aviation_Hub_v3.5.html" class="quick-links-bar__link">&#9992; Aviation</a>
+      <a href="05_Equipment_Infrastructure.html" class="quick-links-bar__link">&#127981; Equipment &amp; Infrastructure</a>
+      <a href="06_Supply_Trading.html" class="quick-links-bar__link">&#128202; Supply &amp; Trading</a>
     </div>
   </div>
 </nav>
 
-<!-- BLOCK 3: HERO -->
-<div class="ann"><strong>BLOCK 3 &mdash; HERO &middot; REDUCED-HEIGHT BANNER (PATTERN B)</strong> Left: headline, body copy, dual CTAs. Right: image placeholder (road train or industrial site). Border-top: 4px IOR Blue. No full-bleed overlay. 375px: stacked. 768px+: 50/50 split. VALUE PROPOSITION must appear here: "Reliable, high-volume commercial diesel and AdBlue supply designed to eliminate downtime." <em>INTENT: Revenue Engine arrives from Fuel Solutions Hub or direct search. Reduced-height signals this is a hub page, not a campaign page. Dual CTAs capture both ready-to-apply and still-evaluating visitors.</em></div>
-<div class="hero-banner">
-  <div class="container">
-    <div class="hero-banner__text fade-up">
-      <div class="eyebrow">Ground Fuel Solutions</div>
-      <h1>Ground Fuel Solutions For <span class="accent">Australian Industry.</span></h1>
-      <p>Reliable, high-volume commercial diesel and AdBlue supply designed to eliminate downtime and keep your fleet moving.</p>
-      <div class="hero-ctas">
-        <a href="#" class="btn btn--primary">Apply for an Account</a>
-        <a href="#" class="btn btn--outline">Talk to a Fuel Expert</a>
-      </div>
-      <div class="pills" style="margin-top:24px;">
-        <span class="pill">Diesel Network</span>
-        <span class="pill">On-Site Refuelling</span>
-        <span class="pill">Bulk Delivery</span>
-        <span class="pill">HyBlue&#8482;</span>
-        <span class="pill">Oils &amp; Lubes</span>
-      </div>
-    </div>
-    <div class="hero-banner__img fade-up">
-      <div class="img-icon">&#128666;</div>
-      <div>IMAGE PLACEHOLDER<br>Road train on outback highway<br><em>Landscape, high-contrast, dusk or golden hour</em></div>
+<!-- ============================================================
+     BLOCK 3: HERO — Full-bleed video hero
+============================================================ -->
+<section class="hero-video" aria-label="Ground Fuels hero">
+  <div class="hero-video__media" aria-hidden="true">
+    <!-- VIDEO PLACEHOLDER: replace src with production video asset -->
+    <video class="hero-video__vid" autoplay muted loop playsinline poster="">
+      <source src="" type="video/mp4">
+    </video>
+    <div class="hero-video__overlay" aria-hidden="true"></div>
+  </div>
+  <div class="hero-video__content container fade-up">
+    <p class="eyebrow" style="color:var(--ior-sky,#64B4FF);">Ground Fuels</p>
+    <h1>Australia&rsquo;s most trusted ground fuel network.</h1>
+    <p class="hero-sub">115+ diesel stops, on-site refuelling, bulk delivery, HyBlue&#8482; AdBlue&#174;, and premium lubricants &mdash; one account, one team, nationwide.</p>
+    <div class="hero-ctas">
+      <a href="#lead-capture" class="btn btn--primary">Apply for an Account &raquo;</a>
+      <a href="#fmt-accordion" class="btn btn--outline-light">Explore Products &darr;</a>
     </div>
   </div>
-</div>
-
+</section>
 <!-- BLOCK 4: STAT BAR -->
-<div class="ann"><strong>BLOCK 4 &mdash; STAT BAR &middot; 3 stats only</strong> IOR Blue background. Confirms scale before product selector. <em>INTENT: Rapid proof of scale for Revenue Engine evaluating IOR vs Ampol/BP.</em></div>
 <div class="stat-bar">
   <div class="container">
     <div class="stat-item"><div class="stat-item__number">40+</div><div class="stat-item__label">Years Fuelling Australia</div></div>
@@ -1111,7 +1174,6 @@
 </div>
 
 <!-- BLOCK 5: FMT ACCORDION PRODUCT OVERVIEW -->
-<div class="ann"><strong>BLOCK 5 &mdash; FMT-STYLE ACCORDION PRODUCT OVERVIEW &middot; Client brief: "Everything your fleet needs in one place"</strong> Left: persistent image panel (sticky, updates on accordion expand). Right: 5 expandable accordion rows. Each row shows: Value (why it matters) / What (what it is) / Who (who it's for) in a 3-column grid when expanded. Product pills and CTA link below. First row open by default. Inspired by FMT (fmtweb.com.au) accordion interaction. 375px: image panel hidden, accordion full-width. <em>INTENT: Revenue Engine self-segments by expanding the product relevant to their operation. Value/What/Who structure ensures every visitor understands the problem being solved before seeing the product detail.</em></div>
 <section class="fmt-accordion fade-up">
   <div class="container">
     <div class="fmt-accordion__image-panel">
@@ -1278,7 +1340,6 @@
 </div>
 
 <!-- BLOCK 7: TESTIMONIAL -->
-<div class="ann"><strong>BLOCK 7 &mdash; TESTIMONIAL &middot; Confirmed: Incitec Pivot Limited</strong> Single full-width testimonial card. Jeanne Johns, MD &amp; CEO. Case study link to live URL. Logo placeholder. <em>INTENT: Social proof after product selector. Incitec Pivot covers industrial/mining persona. High-credibility enterprise client.</em></div>
 <section class="testimonial-section">
   <div class="container" style="grid-template-columns:1fr;">
     <div class="testimonial-card fade-up" style="max-width:800px;margin:0 auto;">
@@ -1295,103 +1356,63 @@
   </div>
 </section>
 
-<!-- BLOCK 8: EASY 1-2-3 STEPS -->
-<div class="ann"><strong>BLOCK 8 &mdash; EASY AS 1-2-3 CONVERSION BLOCK</strong> Dark navy background. 3 steps. Dual CTAs below. Repeated CTA placement per standard page checklist. <em>INTENT: Conversion block for Revenue Engine who has evaluated the product selector and is ready to act. Reduces perceived friction of applying.</em></div>
-<section class="steps-section">
+<!-- ============================================================
+     BLOCK 8: 1-2-3 STEPS — Global Component (from 00_Global_Components.html#steps)
+============================================================ -->
+<section class="steps-section" aria-labelledby="gf-steps-heading">
   <div class="container">
-    <h2>Ready to power your business with IOR?</h2>
+    <div class="section-heading fade-up" style="text-align:center;">
+      <h2 id="gf-steps-heading">Ready to power your business with IOR?</h2>
+    </div>
     <div class="steps-grid">
-      <div class="step-box fade-up"><div class="step-box__num">1</div><div class="step-box__title">Apply online in minutes.</div><div class="step-box__copy">Complete our simple online application. No paperwork, no branch visit required.</div></div>
-      <div class="step-box fade-up"><div class="step-box__num">2</div><div class="step-box__title">Fast credit assessment.</div><div class="step-box__copy">Our team reviews your application quickly. Most accounts are approved within 24-48 hours.</div></div>
-      <div class="step-box fade-up"><div class="step-box__num">3</div><div class="step-box__title">Receive your tags and start fuelling.</div><div class="step-box__copy">Your RFID tags arrive ready to use. Access the full IOR network from day one.</div></div>
+      <div class="step-card fade-up">
+        <div class="step-card__num">01</div>
+        <div class="step-card__title">Apply for an Account</div>
+        <div class="step-card__desc">Complete our simple online application. Most accounts are approved within one business day.</div>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-card__num">02</div>
+        <div class="step-card__title">Set Up Your Fleet</div>
+        <div class="step-card__desc">Add your vehicles and drivers to the IOR Customer Portal. Set spend limits and fuel type restrictions.</div>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-card__num">03</div>
+        <div class="step-card__title">Fuel Anywhere, Anytime</div>
+        <div class="step-card__desc">Access 115+ IOR diesel stops across Australia. Track every transaction in real time via HyDip&#8482; FMS.</div>
+      </div>
     </div>
-    <div class="steps-ctas">
-      <a href="#" class="btn btn--primary">Apply Now</a>
-      <a href="#" class="btn btn--outline">Not sure? Contact Us Now</a>
+    <div class="steps-ctas fade-up">
+      <a href="#lead-capture" class="btn btn--primary" aria-label="Apply for an IOR Account">Apply for an Account &raquo;</a>
+      <a href="11_Support_Hub.html" class="btn btn--outline-dark" aria-label="Talk to an IOR specialist">Talk to a Specialist &raquo;</a>
     </div>
   </div>
 </section>
-
-<!-- RELATED CONTENT LOOP GRID: Ground Fuels Hub -->
-<div class="ann"><strong>RELATED CONTENT LOOP GRID &middot; Tabbed: Case Studies + Blog Posts</strong> Light grey background. 3-column card grid. <em>INTENT: Hub-level content grid surfacing the strongest cross-product case studies and educational content.</em></div>
-<section class="related-content">
+<!-- ============================================================
+     LEAD CAPTURE — Split-layout (Global Component pattern)
+     data-silo="ground-fuels" | gated asset: Ground Fuels Capability Brochure
+============================================================ -->
+<section id="lead-capture" class="lead-capture-section fade-up" data-silo="ground-fuels" aria-labelledby="gf-lc-h2">
   <div class="container">
-    <div class="section-heading fade-up">
-      <div class="eyebrow">Further Reading</div>
-      <h2>Case studies &amp; insights from <span class="accent">IOR customers.</span></h2>
-    </div>
-    <div class="related-content__tabs">
-      <button class="related-content__tab active" data-tab="rc-gfh-cases">Case Studies</button>
-      <button class="related-content__tab" data-tab="rc-gfh-blog">Blog Posts</button>
-    </div>
-    <div id="rc-gfh-cases" class="related-tab-panel active">
-      <div class="related-grid">
-        <div class="related-card fade-up">
-          <div class="related-card__img">IMAGE PLACEHOLDER<br>K.S. Easter Transport road train</div>
-          <div class="related-card__body">
-            <div class="related-card__tag">Case Study</div>
-            <div class="related-card__title">K.S. Easter Transport: eliminating fuel admin across a 40-truck national fleet.</div>
-            <div class="related-card__excerpt">Ken Easter explains how consolidating to IOR removed cash handling, simplified invoicing, and gave his drivers access to 110+ stops nationwide.</div>
-            <a href="https://youtu.be/Hd7vpJlYBCA" class="related-card__link">Watch the story &#8594;</a>
-          </div>
-        </div>
-        <div class="related-card fade-up">
-          <div class="related-card__img">IMAGE PLACEHOLDER<br>Incitec Pivot industrial facility</div>
-          <div class="related-card__body">
-            <div class="related-card__tag">Case Study</div>
-            <div class="related-card__title">Incitec Pivot: scaling AdBlue supply by 800% during Australia&#8217;s national shortage.</div>
-            <div class="related-card__excerpt">When demand surged, IOR&#8217;s sovereign supply chain and logistics network kept one of Australia&#8217;s largest industrial companies moving.</div>
-            <a href="https://www.ior.com.au/case-study-ior-plays-a-key-role-in-keeping-australia-moving/" class="related-card__link">Read the case study &#8594;</a>
-          </div>
-        </div>
-        <div class="related-card fade-up">
-          <div class="related-card__img">IMAGE PLACEHOLDER<br>MPC Kinetic remote mine site</div>
-          <div class="related-card__body">
-            <div class="related-card__tag">Case Study</div>
-            <div class="related-card__title">MPC Kinetic: reliable fuel supply in one of Australia&#8217;s harshest remote environments.</div>
-            <div class="related-card__excerpt">How IOR delivered on-site fuel and logistics support for a major mining services contractor operating in remote Queensland.</div>
-            <a href="#" class="related-card__link">Read the case study &#8594;</a>
-          </div>
+    <div class="lead-capture__card">
+      <div class="lead-capture__content">
+        <div class="lead-capture__eyebrow">Get the Brochure</div>
+        <h2 class="lead-capture__h2" id="gf-lc-h2">Get the Ground Fuels Capability Brochure + talk to our team.</h2>
+        <p class="lead-capture__sub">Download our full capability statement or speak with a specialist. Most accounts are approved within 24&ndash;48 hours.</p>
+        <ul class="lead-capture__callouts" aria-label="Key benefits">
+          <li>Full product &amp; service capability overview</li>
+          <li>Network coverage map &amp; site directory</li>
+          <li>Fleet account &amp; RFID access information</li>
+        </ul>
+      </div>
+      <div class="lead-capture__form-wrapper">
+        <!-- HubSpot embed: [FORM ID TBC — ground-fuels-hub] -->
+        <div class="hs-form-placeholder-light" aria-label="HubSpot enquiry form &mdash; embed pending">
+          <p style="font-size:13px;color:#666;text-align:center;">HubSpot Form &mdash; Embed Code Pending</p>
         </div>
       </div>
-      <div class="related-content__view-all"><a href="#" class="btn btn--outline-dark">View All Case Studies &#8594;</a></div>
-    </div>
-    <div id="rc-gfh-blog" class="related-tab-panel" style="display:none;">
-      <div class="related-grid">
-        <div class="related-card fade-up">
-          <div class="related-card__img">IMAGE PLACEHOLDER<br>Fuel management dashboard</div>
-          <div class="related-card__body">
-            <div class="related-card__tag">Blog</div>
-            <div class="related-card__title">The complete guide to fuel management for Australian fleet operators.</div>
-            <div class="related-card__excerpt">From RFID access control to vendor-managed inventory and real-time reporting &mdash; everything you need to know about modern fuel management.</div>
-            <a href="#" class="related-card__link">Read more &#8594;</a>
-          </div>
-        </div>
-        <div class="related-card fade-up">
-          <div class="related-card__img">IMAGE PLACEHOLDER<br>IOR tanker on outback road</div>
-          <div class="related-card__body">
-            <div class="related-card__tag">Blog</div>
-            <div class="related-card__title">Why remote Australian operations need a specialist fuel supplier, not a service station.</div>
-            <div class="related-card__excerpt">The operational and logistical differences between retail fuel and a managed fuel supply relationship &mdash; and why it matters for remote sites.</div>
-            <a href="#" class="related-card__link">Read more &#8594;</a>
-          </div>
-        </div>
-        <div class="related-card fade-up">
-          <div class="related-card__img">IMAGE PLACEHOLDER<br>IOR account application on laptop</div>
-          <div class="related-card__body">
-            <div class="related-card__tag">Blog</div>
-            <div class="related-card__title">How to choose the right fuel account for your business: a buyer&#8217;s guide.</div>
-            <div class="related-card__excerpt">A practical checklist for evaluating fuel suppliers &mdash; covering network coverage, pricing transparency, reporting tools, and support.</div>
-            <a href="#" class="related-card__link">Read more &#8594;</a>
-          </div>
-        </div>
-      </div>
-      <div class="related-content__view-all"><a href="#" class="btn btn--outline-dark">View All Blog Posts &#8594;</a></div>
     </div>
   </div>
 </section>
-
-<!-- FAQ: GROUND FUELS HUB -->
 <section class="faq-section" style="padding:var(--section-pad) 0;background:var(--grey-50);border-top:1px solid var(--grey-100);">
   <div class="container">
     <div class="section-heading fade-up">
@@ -1407,22 +1428,79 @@
       <div class="faq-item"><button class="faq-question">How do I choose the right fuel solution for my business?<span class="faq-chevron">&#9660;</span></button><div class="faq-answer"><p>The right solution depends on your volume, site access, and operational requirements. Use the product matrix above to explore each option, or contact an IOR fuel specialist for a tailored recommendation. Most customers combine two or more solutions under a single account.</p></div></div>
     </div>
   </div>
+
+              <!-- Still have questions? routing box — Global Component -->
+              <div class="faq-footer fade-up">
+                <div class="faq-footer__text">
+                  <h4>Still have questions?</h4>
+                  <p>Submit an enquiry to our local team or search our full knowledge base.</p>
+                </div>
+                <div class="faq-footer__actions">
+                  <a href="11_Support_Hub.html" class="faq-footer__help-link" aria-label="Browse the IOR Help Centre">Browse Help Centre</a>
+                  <a href="11a_Contact_Us.html" class="btn btn--outline-dark btn--sm" aria-label="Ask IOR a question">Ask us here &rarr;</a>
+                </div>
+              </div>
 </section>
 
 <!-- FOOTER -->
-<div class="ann"><strong>GLOBAL FOOTER &middot; Identical across all modules &mdash; see 01_Homepage_and_Global.html for full spec</strong></div>
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand"><div class="footer-brand__logo">[IOR LOGO]</div><p class="footer-brand__tagline">Fuelling Australian industry for over 40 years. 100% Australian owned and operated.</p></div>
-      <div class="footer-col"><h4>Fuel Solutions</h4><ul><li><a href="#">Ground Fuels</a></li><li><a href="#">Aviation</a></li><li><a href="#">Equipment</a></li><li><a href="#">Supply &amp; Trading</a></li></ul></div>
-      <div class="footer-col"><h4>Digital Platforms</h4><ul><li><a href="#">HyDip&#8482; FMS</a></li><li><a href="#">Fuelcharge</a></li><li><a href="#">Customer Portal</a></li></ul></div>
-      <div class="footer-col"><h4>About IOR</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Our Leadership</a></li><li><a href="#">Case Studies</a></li><li><a href="#">Careers</a></li></ul></div>
-      <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Contact Us</a></li><li><a href="#">Find a Location</a></li><li><a href="#">Make a Payment</a></li><li><a href="#">Help Centre</a></li></ul></div>
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-nav-grid">
+      <div>
+        <div class="footer-col__title">Contact</div>
+        <div class="footer-col__li"><a href="tel:1300457467" class="footer-col__link">1300 457 467</a></div>
+        <div class="footer-col__li"><a href="mailto:accounts@ior.com.au" class="footer-col__link">accounts@ior.com.au</a></div>
+        <div class="footer-col__li"><a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a></div>
+        <div class="footer-col__li"><a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Offices</a></div>
+      </div>
+      <div>
+        <div class="footer-col__title">Fuel Solutions</div>
+        <div class="footer-col__li"><a href="03a_Diesel_Network_v3.5.html" class="footer-col__link">IOR Diesel Network</a></div>
+        <div class="footer-col__li"><a href="03b_On_Site_Refuelling_v3.5.html" class="footer-col__link">On-Site Refuelling</a></div>
+        <div class="footer-col__li"><a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="footer-col__link">Bulk Diesel Delivery</a></div>
+        <div class="footer-col__li"><a href="04_Aviation.html" class="footer-col__link">Aviation Fuel</a></div>
+        <div class="footer-col__li"><a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a></div>
+        <div class="footer-col__li"><a href="06_Supply_Trading.html" class="footer-col__link">Supply &amp; Trading</a></div>
+      </div>
+      <div>
+        <div class="footer-col__title">Digital Platforms</div>
+        <div class="footer-col__li"><a href="07_Digital_Platforms.html" class="footer-col__link">HyDip&#8482; FMS</a></div>
+        <div class="footer-col__li"><a href="07_Digital_Platforms.html" class="footer-col__link">Fuelcharge App</a></div>
+        <div class="footer-col__li"><a href="07_Digital_Platforms.html" class="footer-col__link">Customer Portal</a></div>
+      </div>
+      <div>
+        <div class="footer-col__title">Industries</div>
+        <div class="footer-col__li"><a href="08a_Transport_Logistics.html" class="footer-col__link">Transport &amp; Logistics</a></div>
+        <div class="footer-col__li"><a href="08c_Agriculture.html" class="footer-col__link">Agriculture</a></div>
+        <div class="footer-col__li"><a href="08d_Mining.html" class="footer-col__link">Mining &amp; Resources</a></div>
+        <div class="footer-col__li"><a href="08f_Aviation_Industry.html" class="footer-col__link">Aviation</a></div>
+        <div class="footer-col__li"><a href="08_Industries_Hub.html" class="footer-col__link">All Industries</a></div>
+      </div>
+      <div>
+        <div class="footer-col__title">About IOR</div>
+        <div class="footer-col__li"><a href="09_About_IOR.html" class="footer-col__link">Our Story</a></div>
+        <div class="footer-col__li"><a href="09a_Our_Leadership.html" class="footer-col__link">Leadership</a></div>
+        <div class="footer-col__li"><a href="09b_Community.html" class="footer-col__link">Community</a></div>
+        <div class="footer-col__li"><a href="09c_Sustainability.html" class="footer-col__link">Sustainability</a></div>
+        <div class="footer-col__li"><a href="10_Careers.html" class="footer-col__link">Careers</a></div>
+      </div>
+      <div>
+        <div class="footer-col__title">Support</div>
+        <div class="footer-col__li"><a href="11_Support_Hub.html" class="footer-col__link">Support Hub</a></div>
+        <div class="footer-col__li"><a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a></div>
+        <div class="footer-col__li"><a href="11d_Find_Location.html" class="footer-col__link">Find a Location</a></div>
+        <div class="footer-col__li"><a href="11e_Make_Payment.html" class="footer-col__link">Make a Payment</a></div>
+        <div class="footer-col__li"><a href="11f_Policy_Downloads.html" class="footer-col__link">Policy &amp; Downloads</a></div>
+      </div>
     </div>
-    <div class="footer-bottom"><span>&#169; 2025 IOR Petroleum. All rights reserved.</span><div><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms &amp; Conditions</a> &nbsp;|&nbsp; <a href="#">Modern Slavery Statement</a></div></div>
-  </div>
-</footer>
+    <div class="footer-legal">
+      <span class="footer-legal__copy">&copy; 2026 IOR. All rights reserved.</span>
+      <div class="footer-legal__links">
+        <a href="#" class="footer-legal__link">Privacy Policy</a>
+        <a href="#" class="footer-legal__link">Terms of Use</a>
+        <a href="#" class="footer-legal__link">Accessibility</a>
+      </div>
+    </div>
+  </footer>
 </div><!-- /ground-fuels-hub -->
 
 
