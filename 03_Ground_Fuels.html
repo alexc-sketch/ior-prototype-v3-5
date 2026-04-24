@@ -1426,5 +1426,211 @@
 </div><!-- /ground-fuels-hub -->
 
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // IntersectionObserver fade-up + carousel entrance
+  const fadeEls = document.querySelectorAll('.fade-up, .logo-carousel-wrap');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // Product Selector (Ground Fuels Hub)
+  const psNav = document.getElementById('psNav');
+  if (psNav) {
+    psNav.querySelectorAll('.ps-nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        psNav.querySelectorAll('.ps-nav-item').forEach(i => i.classList.remove('active'));
+        document.querySelectorAll('.ps-panel').forEach(p => p.classList.remove('active'));
+        item.classList.add('active');
+        const panel = document.getElementById(item.dataset.panel);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  }
+
+  // Interactive Split Content (On-Site Refuelling)
+  const splitNav = document.getElementById('splitNav');
+  if (splitNav) {
+    splitNav.querySelectorAll('.split-nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        splitNav.querySelectorAll('.split-nav-item').forEach(i => i.classList.remove('active'));
+        document.querySelectorAll('#on-site-refuelling .split-panel').forEach(p => p.classList.remove('active'));
+        item.classList.add('active');
+        const panel = document.getElementById(item.dataset.panel);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  }
+
+  // Interactive Split Content (Bulk Diesel)
+  const splitNavBulk = document.getElementById('splitNavBulk');
+  if (splitNavBulk) {
+    splitNavBulk.querySelectorAll('.split-nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        splitNavBulk.querySelectorAll('.split-nav-item').forEach(i => i.classList.remove('active'));
+        document.querySelectorAll('#bulk-diesel-delivery .split-panel').forEach(p => p.classList.remove('active'));
+        item.classList.add('active');
+        const panel = document.getElementById(item.dataset.panel);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  }
+
+  // Tab navigation (Oils & Lubricants)
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabGroup = btn.closest('.product-tabs-section');
+      tabGroup.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      tabGroup.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const panel = tabGroup.querySelector('#' + btn.dataset.tab);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // FMT Accordion — Ground Fuels Hub product matrix
+  function toggleFmt(row) {
+    const rows = document.querySelectorAll('.fmt-row');
+    const isActive = row.classList.contains('active');
+    // Close all rows
+    rows.forEach(r => r.classList.remove('active'));
+    // Open clicked row if it wasn't already open
+    if (!isActive) {
+      row.classList.add('active');
+    }
+    // Update image panel
+    const activeRow = document.querySelector('.fmt-row.active');
+    const imgIcon = document.getElementById('fmtImgIcon');
+    const imgTitle = document.getElementById('fmtImgTitle');
+    const imgDesc = document.getElementById('fmtImgDesc');
+    if (activeRow && imgIcon && imgTitle && imgDesc) {
+      imgIcon.textContent = activeRow.dataset.icon || '';
+      imgTitle.textContent = 'IMAGE PLACEHOLDER';
+      imgDesc.innerHTML = activeRow.dataset.imgTitle + '<br><em>' + activeRow.dataset.imgDesc + '</em>';
+    }
+  }
+  // Set first row active on load and sync image panel
+  (function() {
+    const firstRow = document.querySelector('.fmt-row.active');
+    if (firstRow) {
+      const imgIcon = document.getElementById('fmtImgIcon');
+      const imgDesc = document.getElementById('fmtImgDesc');
+      if (imgIcon) imgIcon.textContent = firstRow.dataset.icon || '\u26fd';
+      if (imgDesc) imgDesc.innerHTML = firstRow.dataset.imgTitle + '<br><em>' + firstRow.dataset.imgDesc + '</em>';
+    }
+  })();
+
+  // Related Content Loop Grid tabs (all pages)
+  document.querySelectorAll('.related-content__tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const section = btn.closest('.related-content');
+      section.querySelectorAll('.related-content__tab').forEach(b => b.classList.remove('active'));
+      section.querySelectorAll('.related-tab-panel').forEach(p => { p.classList.remove('active'); p.style.display = 'none'; });
+      btn.classList.add('active');
+      const panel = document.getElementById(btn.dataset.tab);
+      if (panel) { panel.classList.add('active'); panel.style.display = ''; }
+    });
+  });
+
+  // HyBlue supply tabs
+  document.querySelectorAll('.hyblue-supply__tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const section = btn.closest('.hyblue-supply');
+      section.querySelectorAll('.hyblue-supply__tab').forEach(b => b.classList.remove('active'));
+      section.querySelectorAll('.hyblue-supply__panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const key = btn.dataset.hbTab || btn.getAttribute('data-hb-tab');
+      const panel = document.getElementById(key);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // FAQ accordion (all pages)
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all in same list
+      const list = item.closest('.faq-list');
+      if (list) {
+        list.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      }
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Single Form Dual Purpose — Oils & Lubricants pages
+  // Buttons with data-form-intent scroll to the shared form and update its heading + hidden field
+  document.querySelectorAll('[data-form-intent]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const intent = btn.getAttribute('data-form-intent');
+      const formSection = document.getElementById('shared-form-' + btn.closest('[id]').id);
+      if (!formSection) return;
+      const heading = formSection.querySelector('.tc-right__title');
+      const sub = formSection.querySelector('.tc-right__sub');
+      const hidden = formSection.querySelector('input[name="conversion_type"]');
+      if (intent === 'download') {
+        if (heading) heading.textContent = 'Register to Download';
+        if (sub) sub.textContent = 'Complete the form below. Your download link will appear immediately after submission.';
+        if (hidden) hidden.value = 'catalogue_download';
+      } else if (intent === 'contact') {
+        if (heading) heading.textContent = 'Talk to a Specialist';
+        if (sub) sub.textContent = "Tell us a bit about your operation and we'll have an IOR expert contact you within one business day.";
+        if (hidden) hidden.value = 'contact_rep';
+      }
+    });
+  });
+
+
+  // Sticky quick links bar — appears after scrolling past the hero on each page
+  // Each page section has its own .quick-links-bar; we show the one inside the
+  // currently-visible page section once the user scrolls past the hero.
+  const allQlBars = document.querySelectorAll('.quick-links-bar');
+  const allPageSections = Array.from(document.querySelectorAll('[id]')).filter(el =>
+    el.classList.contains('page-section') ||
+    ['ground-fuels-hub','diesel-network','on-site-refuelling','bulk-diesel-delivery','hyblue','oils-lubricants-ground'].includes(el.id)
+  );
+
+  function updateStickyBar() {
+    const scrollY = window.scrollY;
+    // Hide all bars first
+    allQlBars.forEach(bar => bar.classList.remove('qlb--visible'));
+    // Find which page section is currently in view
+    let activeSection = null;
+    allPageSections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 120) activeSection = section;
+    });
+    if (!activeSection) return;
+    // Find the quick-links-bar inside (or immediately after) this section
+    const bar = activeSection.querySelector('.quick-links-bar');
+    if (!bar) return;
+    // Only show if user has scrolled past the hero (first 300px of section)
+    const sectionTop = activeSection.getBoundingClientRect().top + scrollY;
+    if (scrollY > sectionTop + 300) {
+      bar.classList.add('qlb--visible');
+    }
+  }
+
+  window.addEventListener('scroll', updateStickyBar, { passive: true });
+  updateStickyBar();
+
+}); // end DOMContentLoaded
+</script>
 </body>
 </html>
