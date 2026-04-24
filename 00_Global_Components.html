@@ -32,11 +32,13 @@
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+  html { overflow-x: hidden; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: var(--grey-50);
     color: var(--grey-900);
     line-height: 1.6;
+    overflow-x: hidden;
   }
   a { color: inherit; text-decoration: none; }
   ul { list-style: none; }
@@ -175,7 +177,8 @@
     background: #fff;
     border: 1px solid var(--grey-200);
     margin-bottom: 16px;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
   .gc-preview__label {
     background: var(--grey-100);
@@ -523,7 +526,7 @@
           <tr><th>Rule</th><th>Requirement</th><th>Status</th></tr>
         </thead>
         <tbody>
-          <tr><td><code>border-radius</code></td><td><code>0</code> on ALL elements. Only exception: <code>.btn--pill { border-radius: 500px; }</code> via CSS class only &mdash; never inline <code>style=</code></td><td class="fail">Zero tolerance</td></tr>
+          <tr><td><code>border-radius</code></td><td><strong>Prohibited</strong> on image boxes, card thumbnails, hero images, and media containers &mdash; always <code>0</code>. <strong>Permitted</strong> on UI elements: buttons, pill badges, form inputs, legend items. Only large radius allowed: <code>.btn--pill { border-radius: 500px; }</code> via CSS class only &mdash; never inline <code>style=</code></td><td class="warn">Image boxes: zero tolerance. UI elements: permitted.</td></tr>
           <tr><td>Gradients</td><td>Zero gradient declarations anywhere</td><td class="fail">Zero tolerance</td></tr>
           <tr><td>Emoji</td><td>Zero emoji characters &mdash; SVG icons only</td><td class="fail">Zero tolerance</td></tr>
           <tr><td><code>clamp()</code></td><td>Minimum 20 instances per page for all typography and spacing</td><td class="warn">Min 20</td></tr>
@@ -540,7 +543,7 @@
           <tr><td>Copyright</td><td><code>&amp;copy; 2026 IOR. All rights reserved.</code></td><td class="warn">Required</td></tr>
           <tr><td>IOR Petroleum</td><td>Never use &mdash; company name is <code>IOR</code> only</td><td class="fail">Zero tolerance</td></tr>
           <tr><td>Founding year</td><td><code>1984</code> or <code>40+ years</code> in hero body copy</td><td class="warn">Required</td></tr>
-          <tr><td>Quick links position</td><td>After hero <code>&lt;/section&gt;</code>, before stat bar. Sticky <code>top: 64px</code>.</td><td class="warn">Required</td></tr>
+          <tr><td>Quick links position</td><td>After hero <code>&lt;/section&gt;</code>, before stat bar. <strong>Not sticky</strong> — scrolls with page content. The primary nav (<code>.primary-nav</code>) is the only sticky element (<code>top: 0</code>).</td><td class="warn">Required</td></tr>
           <tr><td>File naming</td><td><code>[code]_[Name]_v3.5.html</code> e.g. <code>03b_On_Site_Refuelling_v3.5.html</code></td><td class="warn">Required</td></tr>
           <tr><td>Master Index</td><td>Each PR updates only its own card in <code>00_Master_Index.html</code></td><td class="warn">Required</td></tr>
         </tbody>
@@ -584,6 +587,65 @@
       </div>
     </section>
 
+
+    <!-- ========================================================
+         PRIMARY NAV
+    ======================================================== -->
+    <section class="gc-section" id="primary-nav">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">Primary Nav</h2>
+        <span class="gc-section__badge">Global Shell</span>
+      </div>
+      <p class="gc-section__desc">White 92px nav bar. IOR logo left. Five mega-menu items centre. Two CTA buttons right. Do not add, remove, or reorder nav items. Do not modify the mega-menu HTML structure.</p>
+
+      <div class="gc-rule">
+        <strong>Nav CTA specification (Figma-confirmed):</strong>
+        <ul style="margin: 8px 0 0 16px; line-height: 2;">
+          <li><strong>Customer Login</strong> &mdash; <code>.btn .btn--outline .btn--pill</code> &mdash; border: 1px solid <code>#0355A3</code>, text <code>#0355A3</code>, background transparent, padding <code>22px 28px</code>, <code>border-radius: 500px</code>, <code>font-weight: 800</code></li>
+          <li><strong>Apply for an Account</strong> &mdash; <code>.btn .btn--primary .btn--pill</code> &mdash; background <code>#0355A3</code>, text white, padding <code>22px 28px</code>, <code>border-radius: 500px</code>, <code>font-weight: 800</code></li>
+          <li><strong>Font:</strong> Avenir Next LT Pro (licensed). Web fallback stack: <code>'Avenir Next', 'Nunito', 'Inter', sans-serif</code></li>
+          <li><strong>Arrow icon:</strong> 10×10px rotated square outline (chevron-right equivalent) in matching colour</li>
+        </ul>
+      </div>
+
+      <div class="gc-rule">
+        <strong>Five nav items (order locked):</strong> Fuel Solutions | Digital Platforms | Industries We Serve | About IOR | Support &amp; Contact. Each triggers a mega-menu panel on hover/focus. Do not rename or reorder.
+      </div>
+
+      <div class="gc-rule">
+        <strong>Elementor note:</strong> In WordPress, implement using Elementor Pro Nav Menu widget with custom mega-menu panels via Elementor Popup or JetMenu. The prototype nav is a static HTML reference only.
+      </div>
+
+      <div class="gc-preview">
+        <div class="gc-preview__label">Live Preview — Nav CTAs (Figma spec)</div>
+        <div class="gc-preview__inner" style="padding: 20px 24px; display: flex; align-items: center; gap: 8px; background: #fff;">
+          <a href="#" class="btn btn--outline btn--pill btn--sm" style="padding: 11px 28px; font-weight: 800; border-radius: 500px;" aria-label="Customer Login">Customer Login</a>
+          <a href="#" class="btn btn--primary btn--pill btn--sm" style="padding: 11px 28px; font-weight: 800; border-radius: 500px;" aria-label="Apply for an Account">Apply for an Account</a>
+        </div>
+      </div>
+
+      <p class="gc-section__desc" style="margin-top: 12px;">The full primary nav (utility bar + nav bar + mega menus) is embedded in <code>IOR_Global_Template_Shell_v4.html</code>. Copy the entire <code>&lt;header&gt;</code> block verbatim — do not modify it.</p>
+    </section>
+
+    <!-- ========================================================
+         MOBILE DRAWER
+    ======================================================== -->
+    <section class="gc-section" id="mobile-drawer">
+      <div class="gc-section__header">
+        <h2 class="gc-section__title">Mobile Drawer</h2>
+        <span class="gc-section__badge">Global Shell</span>
+      </div>
+      <p class="gc-section__desc">Off-canvas slide-in navigation for viewports below 1024px. Triggered by the hamburger button in the nav bar. Contains all five nav items as accordion-style expandable sections, plus the two CTA buttons.</p>
+
+      <div class="gc-rule">
+        <strong>Do not modify the drawer HTML.</strong> The drawer is locked in <code>IOR_Global_Template_Shell_v4.html</code>. Copy the <code>&lt;div class="drawer"&gt;</code> block verbatim. The JS that opens/closes it is in the global script block at the bottom of the shell.
+      </div>
+
+      <div class="gc-rule">
+        <strong>Elementor note:</strong> In WordPress, the mobile drawer is replaced by Elementor Pro&#39;s responsive nav menu with hamburger toggle. Ensure the two CTA buttons (Customer Login + Apply for an Account) are included in the mobile menu as full-width pill buttons.
+      </div>
+    </section>
+
     <!-- ========================================================
          QUICK LINKS BAR
     ======================================================== -->
@@ -592,7 +654,7 @@
         <h2 class="gc-section__title">Quick Links Bar</h2>
         <span class="gc-section__badge">Global Shell</span>
       </div>
-      <p class="gc-section__desc">Sticky sub-navigation bar. Position: immediately after the hero <code>&lt;/section&gt;</code>, before the stat bar. Sticky at <code>top: 64px</code>. Set <code>aria-current="page"</code> and <code>quick-links-bar__link--active</code> on the current page link.</p>
+      <p class="gc-section__desc">Contextual in-page link strip. Position: immediately after the hero <code>&lt;/section&gt;</code>, before the stat bar. <strong>Not sticky</strong> — it scrolls away with the page. Only the primary nav is sticky. Set <code>aria-current="page"</code> and <code>quick-links-bar__link--active</code> on the current page link.</p>
       <div class="gc-rule">
         <strong>Ground Fuels quick links</strong> must always list all 5 spokes in order: IOR Diesel Network | On-Site Refuelling | Bulk Diesel Delivery | HyBlue&#8482; | Oils &amp; Lubricants. All links use <code>_v3.5.html</code> filenames.
       </div>
