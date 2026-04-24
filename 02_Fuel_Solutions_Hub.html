@@ -587,6 +587,145 @@
     .wholesale-card--supply .wholesale-card__cta:hover { background: var(--ior-navy); color: #fff; }
 
     /* ============================================================
+       GROUP LABELS (sit above paired tiles inside a group)
+       Used for: Hardware & Management group, Fuelcharge standalone
+    ============================================================ */
+    .group-label {
+      display: flex; align-items: center; gap: 14px;
+      margin: clamp(36px, 5vw, 56px) 0 clamp(14px, 1.6vw, 18px);
+      max-width: var(--container-max); margin-inline: auto;
+    }
+    .group-label__line { flex: 1; height: 1px; background: var(--border-color-light); }
+    .group-label__text {
+      font-size: 11px; font-weight: 800; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--mid-grey);
+    }
+
+    /* Tighten the visual pairing inside the Hardware & Management group:
+       HyDip strip (top) and Equipment card (bottom) sit flush with no margin between. */
+    .hardware-group .digital-strip { margin-bottom: 0; }
+    .hardware-group .wholesale-card { border-top: none; }
+
+    /* ============================================================
+       FUELCHARGE STANDALONE (the "shiny" B2C app block)
+       Distinct from infrastructure tiles: deeper navy backdrop,
+       teal accent, slightly larger padding, app-store badge slot.
+    ============================================================ */
+    .fuelcharge-feature {
+      background: linear-gradient(0deg, var(--ior-teal-navy, #13114D) 0%, var(--ior-teal-navy, #13114D) 100%);
+      /* solid colour using gradient syntax to satisfy the "flat solid only" rule visually */
+      color: #fff;
+      padding: clamp(28px, 3.6vw, 44px) clamp(28px, 3.6vw, 48px);
+      display: grid; grid-template-columns: auto 1fr auto; gap: clamp(20px, 3vw, 36px);
+      align-items: center; position: relative; overflow: hidden;
+      max-width: var(--container-max); margin-inline: auto;
+    }
+    .fuelcharge-feature::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px; background: var(--ior-teal, #00D1CC);
+    }
+    .fuelcharge-feature__brand { flex-shrink: 0; }
+    .fuelcharge-feature__brand svg { display: block; }
+    .fuelcharge-feature__body { min-width: 0; }
+    .fuelcharge-feature__eyebrow {
+      font-size: 11px; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--ior-teal, #00D1CC);
+      margin-bottom: 6px;
+    }
+    .fuelcharge-feature__title {
+      font-size: clamp(22px, 2.4vw, 30px); font-weight: 800;
+      color: #fff; margin-bottom: 8px; line-height: 1.2;
+    }
+    .fuelcharge-feature__sub {
+      font-size: clamp(13px, 1.3vw, 15px); color: rgba(255,255,255,.85);
+      margin-bottom: 14px; line-height: 1.55; max-width: 540px;
+    }
+    .fuelcharge-feature__pills { display: flex; flex-wrap: wrap; gap: 7px; }
+    .fuelcharge-feature__pill {
+      display: inline-flex; align-items: center;
+      padding: 6px 12px; font-size: 12px; font-weight: 700;
+      color: #fff; border: 1.5px solid rgba(0,209,204,.5);
+      text-decoration: none; transition: all var(--transition-fast);
+      min-height: 32px;
+    }
+    .fuelcharge-feature__pill:hover { background: var(--ior-teal, #00D1CC); color: var(--ior-teal-navy, #13114D); border-color: var(--ior-teal, #00D1CC); }
+    .fuelcharge-feature__cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 14px 24px; font-size: 14px; font-weight: 800;
+      background: var(--ior-teal, #00D1CC); color: var(--ior-teal-navy, #13114D);
+      transition: all .2s; white-space: nowrap; flex-shrink: 0;
+      min-height: 44px; text-decoration: none;
+    }
+    .fuelcharge-feature__cta:hover { background: #fff; color: var(--ior-teal-navy, #13114D); }
+
+    /* ============================================================
+       SUPPLY & TRADING — FULL-WIDTH "SECURITY OF SUPPLY" BILLBOARD
+       Brand-trust bumper. Not a clickable tile in the same sense:
+       enterprise buyers don't "click to buy" a refinery.
+    ============================================================ */
+    .supply-billboard {
+      background: var(--ior-navy, #0A1628); color: #fff;
+      padding: clamp(48px, 6vw, 80px) var(--section-pad-x);
+      position: relative; overflow: hidden;
+      border-top: 4px solid var(--ior-navy-accent, #1E3A5F);
+    }
+    .supply-billboard__inner {
+      max-width: var(--container-max); margin-inline: auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+    }
+    .supply-billboard__eyebrow {
+      font-size: 11px; font-weight: 800; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(255,255,255,.7);
+      margin-bottom: 12px;
+    }
+    .supply-billboard__title {
+      font-size: clamp(28px, 3.4vw, 44px); font-weight: 800;
+      color: #fff; line-height: 1.15; margin-bottom: 16px;
+    }
+    .supply-billboard__title .accent { color: var(--ior-sky, #64B4FF); }
+    .supply-billboard__body {
+      font-size: clamp(14px, 1.4vw, 17px); line-height: 1.65;
+      color: rgba(255,255,255,.88); margin-bottom: 24px; max-width: 520px;
+    }
+    .supply-billboard__pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .supply-billboard__pill {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 7px 14px; font-size: 13px; font-weight: 700;
+      color: #fff; border: 1.5px solid rgba(255,255,255,.35);
+      text-decoration: none; transition: all var(--transition-fast);
+      min-height: 36px;
+    }
+    .supply-billboard__pill:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+    .supply-billboard__cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; font-size: 14px; font-weight: 800;
+      background: #fff; color: var(--ior-navy, #0A1628);
+      transition: all .2s; white-space: nowrap;
+      min-height: 44px; text-decoration: none;
+    }
+    .supply-billboard__cta:hover { background: var(--ior-sky, #64B4FF); color: var(--ior-navy, #0A1628); }
+    .supply-billboard__stats {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 32px;
+    }
+    .supply-billboard__stat {
+      border-left: 2px solid var(--ior-sky, #64B4FF);
+      padding: 4px 0 4px 16px;
+    }
+    .supply-billboard__stat-num {
+      font-size: clamp(28px, 3vw, 40px); font-weight: 800;
+      color: #fff; line-height: 1; margin-bottom: 6px;
+    }
+    .supply-billboard__stat-label {
+      font-size: 13px; color: rgba(255,255,255,.75); line-height: 1.4;
+    }
+    @media (max-width: 900px) {
+      .supply-billboard__inner { grid-template-columns: 1fr; }
+      .fuelcharge-feature { grid-template-columns: 1fr; }
+      .fuelcharge-feature__cta { width: 100%; justify-content: center; }
+    }
+
+    /* ============================================================
        TESTIMONIAL BLOCK
     ============================================================ */
     .testimonial-section {
@@ -635,6 +774,17 @@
     .map-section {
       background: var(--ior-deep); padding: var(--section-pad) 0;
     }
+    /* Hide Storepoint widget's search/header bar so the map itself is the affordance.
+       Per client (Grace, IOR): "hide the site-bar so you just see the map of Australia
+       with loads of dots on it." Keep the map and clusters interactive. */
+    #storepoint-widget .storepoint-search-form,
+    #storepoint-widget .storepoint-header,
+    #storepoint-widget .storepoint-tab-bar,
+    #storepoint-widget [class*="sp-search"],
+    #storepoint-widget [class*="sp-header"],
+    #storepoint-widget [class*="sp-tab"] {
+      display: none !important;
+    }
     .map-section .container {
       display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(24px, 4vw, 48px); align-items: start;
     }
@@ -680,8 +830,12 @@
     /* ============================================================
        PRE-FOOTER CTA
     ============================================================ */
+    /* Pre-footer sits flush against the site-footer (both share the IOR blue background),
+       so vertical padding is condensed to avoid the large empty blue gap between the
+       "We're here to help" CTAs and the footer column titles. */
     .pre-footer {
-      background: var(--ior-blue); padding: var(--section-pad) var(--section-pad-x);
+      background: var(--ior-blue);
+      padding: clamp(40px, 5vw, 56px) var(--section-pad-x) clamp(20px, 2.5vw, 28px);
     }
     .pre-footer__row {
       max-width: var(--container-max); margin-inline: auto;
@@ -694,15 +848,18 @@
     .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
     .pre-footer__divider {
       max-width: var(--container-max); margin-inline: auto;
-      height: 1px; background: rgba(255,255,255,.2); margin-top: clamp(24px, 3vw, 40px);
+      height: 1px; background: rgba(255,255,255,.2);
+      margin-top: clamp(20px, 2.5vw, 28px);
     }
 
     /* ============================================================
        GLOBAL FOOTER
     ============================================================ */
+    /* Reduced top padding because the pre-footer block already provides vertical breathing
+       room and a divider line directly above. Keeps the visual rhythm tight. */
     .site-footer {
       background: var(--ior-blue); color: #fff;
-      padding: clamp(60px, 8vw, 80px) clamp(20px, 8vw, 80px) clamp(40px, 5vw, 60px);
+      padding: clamp(28px, 3.5vw, 40px) clamp(20px, 8vw, 80px) clamp(40px, 5vw, 60px);
     }
     .footer-nav-grid {
       max-width: var(--container-max); margin-inline: auto;
@@ -1262,51 +1419,97 @@
 
     </div><!-- /solutions-top-row -->
 
-    <!-- MIDDLE ROW: HyDip FMS — full-width strip -->
-    <div class="digital-strip" aria-label="HyDip FMS digital platform">
-      <div class="digital-strip__brand">
-        <svg width="120" height="36" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HyDip FMS logo">
-          <rect width="120" height="36" fill="#0A4066"/>
-          <text x="10" y="24" font-family="Avenir Next LT Pro, Avenir Next, sans-serif" font-size="14" font-weight="800" fill="#7FBEE6">HyDip</text>
-          <text x="62" y="24" font-family="Avenir Next LT Pro, Avenir Next, sans-serif" font-size="10" font-weight="700" fill="rgba(255,255,255,0.7)">FMS</text>
-          <rect x="56" y="10" width="2" height="16" fill="rgba(127,190,230,0.4)"/>
-        </svg>
-      </div>
-      <div class="digital-strip__body">
-        <div class="digital-strip__eyebrow">Digital Platforms</div>
-        <div class="digital-strip__title">HyDip&#8482; Fuel Management System</div>
-        <p class="digital-strip__sub">Real-time visibility over every litre — across ground fuels and aviation. Stops losses before they become a problem.</p>
-        <nav class="digital-strip__pills" aria-label="HyDip FMS features">
-          <a href="07_Digital_Platforms.html#hydip-monitoring" class="digital-strip__pill">Real-Time Monitoring</a>
-          <a href="07_Digital_Platforms.html#hydip-dip"        class="digital-strip__pill">Dip Monitoring</a>
-          <a href="07_Digital_Platforms.html#hydip-alerts"     class="digital-strip__pill">Automated Alerts</a>
-          <a href="07_Digital_Platforms.html#hydip-compliance" class="digital-strip__pill">Compliance Reports</a>
-        </nav>
-      </div>
-      <a href="07_Digital_Platforms.html#hydip" class="digital-strip__cta" aria-label="Explore HyDip FMS">Explore HyDip FMS &raquo;</a>
+    <!-- ============================================================
+         GROUP 2 — HARDWARE & MANAGEMENT
+         HyDip + Equipment & Infrastructure paired together.
+         (You need a tank to put a HyDip sensor on; they belong side by side.)
+    ============================================================ -->
+    <div class="group-label" aria-hidden="true">
+      <span class="group-label__line"></span>
+      <span class="group-label__text">Hardware &amp; Management</span>
+      <span class="group-label__line"></span>
     </div>
 
-    <!-- LOWER ROW: Fuelcharge — full-width strip -->
-    <div class="digital-strip digital-strip--fuelcharge" aria-label="Fuelcharge digital platform">
-      <div class="digital-strip__brand">
-        <svg width="140" height="36" viewBox="0 0 140 36" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fuelcharge logo">
-          <rect width="140" height="36" fill="#13114D"/>
-          <polygon points="18,8 26,18 20,18 26,28 14,16 20,16" fill="#00D1CC"/>
-          <text x="34" y="24" font-family="Avenir Next LT Pro, Avenir Next, sans-serif" font-size="14" font-weight="800" fill="#FFFFFF">Fuelcharge</text>
+    <div class="hardware-group">
+      <!-- HyDip FMS — full-width strip -->
+      <div class="digital-strip" aria-label="HyDip FMS digital platform">
+        <div class="digital-strip__brand">
+          <svg width="120" height="36" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HyDip FMS logo">
+            <rect width="120" height="36" fill="#0A4066"/>
+            <text x="10" y="24" font-family="Avenir Next LT Pro, Avenir Next, sans-serif" font-size="14" font-weight="800" fill="#7FBEE6">HyDip</text>
+            <text x="62" y="24" font-family="Avenir Next LT Pro, Avenir Next, sans-serif" font-size="10" font-weight="700" fill="rgba(255,255,255,0.7)">FMS</text>
+            <rect x="56" y="10" width="2" height="16" fill="rgba(127,190,230,0.4)"/>
+          </svg>
+        </div>
+        <div class="digital-strip__body">
+          <div class="digital-strip__eyebrow">Fuel Management Software</div>
+          <div class="digital-strip__title">HyDip&#8482; Fuel Management System</div>
+          <p class="digital-strip__sub">Real-time visibility over every litre — across ground fuels and aviation. Stops losses before they become a problem.</p>
+          <nav class="digital-strip__pills" aria-label="HyDip FMS features">
+            <a href="07_Digital_Platforms.html#hydip-monitoring" class="digital-strip__pill">Real-Time Monitoring</a>
+            <a href="07_Digital_Platforms.html#hydip-dip"        class="digital-strip__pill">Dip Monitoring</a>
+            <a href="07_Digital_Platforms.html#hydip-alerts"     class="digital-strip__pill">Automated Alerts</a>
+            <a href="07_Digital_Platforms.html#hydip-compliance" class="digital-strip__pill">Compliance Reports</a>
+          </nav>
+        </div>
+        <a href="07_Digital_Platforms.html#hydip" class="digital-strip__cta" aria-label="Explore HyDip FMS">Explore HyDip FMS &raquo;</a>
+      </div>
+
+      <!-- Equipment & Infrastructure (paired below HyDip) -->
+      <div class="wholesale-card" aria-label="Equipment and Infrastructure">
+        <div class="wholesale-card__left">
+          <div class="wholesale-card__eyebrow">On-Site Hardware</div>
+          <svg class="wholesale-card__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="32" height="32" fill="#E8F1FB"/>
+            <rect x="6" y="18" width="20" height="8" stroke="#5C6B7A" stroke-width="1.6" fill="none"/>
+            <rect x="10" y="14" width="12" height="4" stroke="#5C6B7A" stroke-width="1.6" fill="none"/>
+            <path d="M14 18V14M18 18V14" stroke="#5C6B7A" stroke-width="1.4"/>
+            <path d="M8 18V12l8-6 8 6v6" stroke="#5C6B7A" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+          </svg>
+          <h3>Equipment &amp; Infrastructure</h3>
+          <p>Remote operations can't afford fuel downtime. IOR designs, installs, and maintains scalable on-site fuel infrastructure at zero capital cost — the tanks HyDip lives on.</p>
+          <nav class="product-pills" aria-label="Equipment sub-services">
+            <a href="05_Equipment_Infrastructure.html#storage-tanks" class="product-pill">Fuel Storage Tanks</a>
+            <a href="05_Equipment_Infrastructure.html#frac-tanks"    class="product-pill">Frac Tanks</a>
+            <a href="05_Equipment_Infrastructure.html#self-bunded"   class="product-pill">Self-Bunded Tanks</a>
+            <a href="05_Equipment_Infrastructure.html#fms"           class="product-pill">Fuel Management Systems</a>
+          </nav>
+        </div>
+        <a href="05_Equipment_Infrastructure.html" class="wholesale-card__cta" aria-label="Explore Equipment and Infrastructure">Explore Equipment &raquo;</a>
+      </div>
+    </div><!-- /hardware-group -->
+
+    <!-- ============================================================
+         GROUP 3 — FUELCHARGE (standalone B2C app)
+         Visually distinct from heavy B2B infrastructure tiles above.
+         Deeper navy backdrop with teal accent makes the "app" feel obvious.
+    ============================================================ -->
+    <div class="group-label" aria-hidden="true">
+      <span class="group-label__line"></span>
+      <span class="group-label__text">For Drivers &middot; The IOR App</span>
+      <span class="group-label__line"></span>
+    </div>
+
+    <div class="fuelcharge-feature" aria-label="Fuelcharge — the IOR driver app">
+      <div class="fuelcharge-feature__brand">
+        <svg width="160" height="44" viewBox="0 0 160 44" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fuelcharge app logo">
+          <rect width="160" height="44" fill="#13114D"/>
+          <polygon points="22,10 32,22 25,22 32,34 16,20 25,20" fill="#00D1CC"/>
+          <text x="42" y="28" font-family="Avenir Next LT Pro, Avenir Next, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">Fuelcharge</text>
         </svg>
       </div>
-      <div class="digital-strip__body">
-        <div class="digital-strip__eyebrow">Digital Platforms</div>
-        <div class="digital-strip__title">Fuelcharge</div>
-        <p class="digital-strip__sub">No tag, no problem. The Fuelcharge app gives drivers instant access to IOR diesel stops — no fuel card required.</p>
-        <nav class="digital-strip__pills" aria-label="Fuelcharge features">
-          <a href="07_Digital_Platforms.html#fuelcharge-no-card" class="digital-strip__pill">No Card Required</a>
-          <a href="07_Digital_Platforms.html#fuelcharge-network" class="digital-strip__pill">115+ Diesel Stops</a>
-          <a href="07_Digital_Platforms.html#fuelcharge-access"  class="digital-strip__pill">Instant Access</a>
-          <a href="07_Digital_Platforms.html#fuelcharge-app"     class="digital-strip__pill">iOS &amp; Android</a>
+      <div class="fuelcharge-feature__body">
+        <div class="fuelcharge-feature__eyebrow">B2C App &middot; iOS &amp; Android</div>
+        <div class="fuelcharge-feature__title">No tag. No card. Just fuel.</div>
+        <p class="fuelcharge-feature__sub">The Fuelcharge app gives drivers instant access to every IOR Diesel Stop in the network — pay through the phone, skip the fleet card setup, get back on the road.</p>
+        <nav class="fuelcharge-feature__pills" aria-label="Fuelcharge features">
+          <a href="07_Digital_Platforms.html#fuelcharge-no-card" class="fuelcharge-feature__pill">No Card Required</a>
+          <a href="07_Digital_Platforms.html#fuelcharge-network" class="fuelcharge-feature__pill">115+ Diesel Stops</a>
+          <a href="07_Digital_Platforms.html#fuelcharge-access"  class="fuelcharge-feature__pill">Instant Access</a>
+          <a href="07_Digital_Platforms.html#fuelcharge-app"     class="fuelcharge-feature__pill">iOS &amp; Android</a>
         </nav>
       </div>
-      <a href="07_Digital_Platforms.html#fuelcharge" class="digital-strip__cta" aria-label="Explore Fuelcharge">Explore Fuelcharge &raquo;</a>
+      <a href="07_Digital_Platforms.html#fuelcharge" class="fuelcharge-feature__cta" aria-label="Explore the Fuelcharge app">Explore the App &raquo;</a>
     </div>
 
     <div class="solutions-ecosystem">
@@ -1317,61 +1520,43 @@
 </section>
 
 <!-- ============================================================
-     BLOCK 8 — SUPPLY & TRADING + EQUIPMENT & INFRASTRUCTURE
-     Both formatted as matching horizontal wholesale cards
+     BLOCK 8 — SUPPLY & TRADING
+     Full-width "Security of Supply" billboard / brand-trust bumper.
+     Enterprise buyers don't "click to buy" a refinery — this section
+     is brand proof and infrastructure trust, not a routing tile.
 ============================================================ -->
-<section class="wholesale-section" aria-labelledby="wholesale-heading">
-  <div class="container">
-    <div class="wholesale-section__header">
-      <span class="eyebrow eyebrow--blue">Wholesale &amp; Infrastructure</span>
-      <h2 id="wholesale-heading">The backbone behind every IOR solution.</h2>
-      <p>Sovereign supply infrastructure and scalable on-site fuel systems — built for Australia's most demanding operations.</p>
+<section class="supply-billboard" aria-labelledby="supply-billboard-heading">
+  <div class="supply-billboard__inner">
+    <div class="supply-billboard__copy">
+      <div class="supply-billboard__eyebrow">Security of Supply</div>
+      <h2 class="supply-billboard__title" id="supply-billboard-heading">Australia's only <span class="accent">independent</span> fuel company.</h2>
+      <p class="supply-billboard__body">Sovereign import terminals, an Australian-owned refinery, and the trading desk that keeps the network supplied — IOR doesn't rely on third-party distributors. When the country's supply chain wobbles, our customers don't.</p>
+      <nav class="supply-billboard__pills" aria-label="Supply and Trading infrastructure">
+        <a href="06_Supply_Trading.html#lytton-terminal"   class="supply-billboard__pill">Lytton Terminal</a>
+        <a href="06_Supply_Trading.html#port-bonython"     class="supply-billboard__pill">Port Bonython</a>
+        <a href="06_Supply_Trading.html#eromanga-refinery" class="supply-billboard__pill">Eromanga Refinery</a>
+        <a href="06_Supply_Trading.html#condensates"       class="supply-billboard__pill">Condensates &amp; Trading</a>
+      </nav>
+      <a href="06_Supply_Trading.html" class="supply-billboard__cta" aria-label="Learn more about IOR Supply and Trading">Learn more about Supply &amp; Trading &raquo;</a>
     </div>
-
-    <!-- Supply & Trading -->
-    <div class="wholesale-card wholesale-card--supply" aria-label="Supply and Trading">
-      <div class="wholesale-card__left">
-        <div class="wholesale-card__eyebrow">Wholesale Supply</div>
-        <svg class="wholesale-card__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="32" height="32" fill="rgba(10,64,102,.1)"/>
-          <path d="M4 24h24M8 24V16h6v8M18 24V12h6v12" stroke="#0A4066" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M4 16l12-8 12 8" stroke="#0A4066" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <h3>Supply &amp; Trading</h3>
-        <p>Sovereign supply infrastructure that underpins every IOR fuel solution — from Lytton to Eromanga.</p>
-        <nav class="product-pills" aria-label="Supply and Trading sub-services">
-          <a href="06_Supply_Trading.html#lytton-terminal"   class="product-pill product-pill--supply">Lytton Terminal</a>
-          <a href="06_Supply_Trading.html#port-bonython"     class="product-pill product-pill--supply">Port Bonython</a>
-          <a href="06_Supply_Trading.html#eromanga-refinery" class="product-pill product-pill--supply">Eromanga Refinery</a>
-          <a href="06_Supply_Trading.html#condensates"       class="product-pill product-pill--supply">Condensates</a>
-        </nav>
+    <div class="supply-billboard__stats" aria-label="Supply and Trading at a glance">
+      <div class="supply-billboard__stat">
+        <div class="supply-billboard__stat-num">2</div>
+        <div class="supply-billboard__stat-label">Sovereign import terminals (Lytton + Port Bonython)</div>
       </div>
-      <a href="06_Supply_Trading.html" class="wholesale-card__cta" aria-label="Explore Supply and Trading — Lytton and Port Bonython Terminals">Lytton &amp; Port Bonython Terminals &raquo;</a>
-    </div>
-
-    <!-- Equipment & Infrastructure -->
-    <div class="wholesale-card" aria-label="Equipment and Infrastructure">
-      <div class="wholesale-card__left">
-        <div class="wholesale-card__eyebrow">Wholesale</div>
-        <svg class="wholesale-card__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="32" height="32" fill="#E8F1FB"/>
-          <rect x="6" y="18" width="20" height="8" stroke="#5C6B7A" stroke-width="1.6" fill="none"/>
-          <rect x="10" y="14" width="12" height="4" stroke="#5C6B7A" stroke-width="1.6" fill="none"/>
-          <path d="M14 18V14M18 18V14" stroke="#5C6B7A" stroke-width="1.4"/>
-          <path d="M8 18V12l8-6 8 6v6" stroke="#5C6B7A" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
-        </svg>
-        <h3>Equipment &amp; Infrastructure</h3>
-        <p>Remote operations can't afford fuel downtime. IOR designs, installs, and maintains scalable on-site fuel infrastructure at zero capital cost — from self-bunded tanks to complete fuel management systems.</p>
-        <nav class="product-pills" aria-label="Equipment sub-services">
-          <a href="05_Equipment_Infrastructure.html#storage-tanks" class="product-pill">Fuel Storage Tanks</a>
-          <a href="05_Equipment_Infrastructure.html#frac-tanks"    class="product-pill">Frac Tanks</a>
-          <a href="05_Equipment_Infrastructure.html#self-bunded"   class="product-pill">Self-Bunded Tanks</a>
-          <a href="05_Equipment_Infrastructure.html#fms"           class="product-pill">Fuel Management Systems</a>
-        </nav>
+      <div class="supply-billboard__stat">
+        <div class="supply-billboard__stat-num">1</div>
+        <div class="supply-billboard__stat-label">Australian-owned refinery (Eromanga, QLD)</div>
       </div>
-      <a href="05_Equipment_Infrastructure.html" class="wholesale-card__cta" aria-label="Explore Equipment and Infrastructure">Explore Equipment &raquo;</a>
+      <div class="supply-billboard__stat">
+        <div class="supply-billboard__stat-num">100%</div>
+        <div class="supply-billboard__stat-label">Australian-owned and operated supply chain</div>
+      </div>
+      <div class="supply-billboard__stat">
+        <div class="supply-billboard__stat-num">24/7</div>
+        <div class="supply-billboard__stat-label">Trading desk &amp; supply continuity</div>
+      </div>
     </div>
-
   </div>
 </section>
 
@@ -1446,15 +1631,17 @@
           <div class="map-stat__label">Australian Refinery</div>
         </div>
       </div>
-      <p>From metropolitan highways to remote mine sites, IOR's network covers the routes that matter. Every site is open 24/7, every transaction feeds into the IOR Customer Portal.</p>
-      <a href="11d_Find_Location.html" class="btn btn--primary" aria-label="View the IOR network map">View the Network Map <span class="btn__arrow" aria-hidden="true"></span></a>
+      <p>From metropolitan highways to remote mine sites, IOR's network covers the routes that matter. Every site is open 24/7, every transaction feeds into the IOR Customer Portal. Use the live map opposite to find your nearest Diesel Stop or airport.</p>
     </div>
     <div class="map-widget" aria-label="IOR network map">
       <!-- STOREPOINT WIDGET EMBED — ID: 169b243d6de664 -->
       <div id="storepoint-widget"></div>
       <script>
+        /* Hide Storepoint search/header chrome via widget options where supported,
+           and via CSS rules above as a defensive fallback. The map dots remain
+           interactive but the search bar and tabs are suppressed. */
         window.Storepoint=window.Storepoint||{_q:[],on:function(e,c){this._q.push([e,c])}};
-        window.loadStorepoint=function(){new StorepointWidget('169b243d6de664','#storepoint-widget',{});};
+        window.loadStorepoint=function(){new StorepointWidget('169b243d6de664','#storepoint-widget',{hideSearch:true,hideHeader:true,hideTabs:true});};
         !function(){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://widget.storepoint.co/embed.js";t.onload=function(){"function"==typeof window.loadStorepoint&&window.loadStorepoint()};document.head.appendChild(t);}();
       </script>
     </div>
