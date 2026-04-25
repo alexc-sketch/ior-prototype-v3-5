@@ -241,25 +241,27 @@
     }
     @media (max-width: 640px) { .utility-cards__grid { grid-template-columns: 1fr; } }
 
-    /* Fuelcharge card — branded */
+    /* Fuelcharge card — IOR standard card styling */
     .fc-card {
-      background: var(--fuelcharge-dark);
+      background: #fff;
+      border: 1px solid var(--grey-200);
+      border-top: 3px solid var(--ior-blue);
       padding: clamp(28px, 3.5vw, 44px);
       display: flex; flex-direction: column;
     }
     .fc-card__logo { margin-bottom: 20px; }
     .fc-card__logo img { height: 28px; width: auto; }
-    .fc-card__eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--fuelcharge-teal); margin-bottom: 10px; }
-    .fc-card__title { font-size: clamp(20px, 2vw, 26px); font-weight: 800; color: #fff; margin-bottom: 12px; }
-    .fc-card__body { font-size: clamp(14px, 1.4vw, 15px); color: rgba(255,255,255,.8); line-height: 1.7; margin-bottom: 24px; flex: 1; }
+    .fc-card__eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 10px; }
+    .fc-card__title { font-size: clamp(20px, 2vw, 26px); font-weight: 800; color: var(--ior-navy); margin-bottom: 12px; }
+    .fc-card__body { font-size: clamp(14px, 1.4vw, 15px); color: var(--grey-700); line-height: 1.7; margin-bottom: 24px; flex: 1; }
     .fc-card__ctas { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
     .fc-badge-btn {
       display: inline-flex; align-items: center;
-      background: #000; border: 1px solid rgba(255,255,255,.2);
       padding: 0; overflow: hidden; min-height: 44px;
     }
-    .fc-badge-btn img { height: 44px; width: auto; display: block; }
-    .fc-learn-more { font-size: 14px; font-weight: 700; color: var(--fuelcharge-teal); display: inline-flex; align-items: center; gap: 4px; min-height: 44px; }
+    .fc-badge-btn img { height: 40px; width: auto; display: block; transition: opacity 150ms ease; }
+    .fc-badge-btn:hover img { opacity: 0.85; }
+    .fc-learn-more { font-size: 14px; font-weight: 700; color: var(--ior-blue); display: inline-flex; align-items: center; gap: 4px; min-height: 44px; }
     .fc-learn-more:hover { text-decoration: underline; }
 
     /* Fleet Account card */
@@ -304,6 +306,27 @@
     .download-card__title { font-size: clamp(18px, 1.8vw, 22px); font-weight: 800; color: #fff; margin-bottom: 10px; }
     .download-card__body { font-size: clamp(14px, 1.4vw, 15px); color: rgba(255,255,255,.75); line-height: 1.7; margin-bottom: 24px; }
     .download-card__note { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 12px; }
+
+    /* ============================================================
+       FAQ ACCORDION
+    ============================================================ */
+    .faq-section { padding: clamp(40px,5vw,72px) var(--section-pad-x); background: var(--grey-50); border-top: 1px solid var(--grey-200); }
+    .faq-section__inner { max-width: var(--content-max); margin-inline: auto; }
+    .faq-section__heading { margin-bottom: clamp(24px, 3vw, 40px); }
+    .faq-section__heading h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: var(--ior-navy); }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--grey-200); }
+    .faq-question { width: 100%; text-align: left; padding: clamp(12px,1.5vw,18px) 0; font-size: clamp(14px,1.4vw,16px); font-weight: 600; color: var(--grey-900); background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: color var(--transition); min-height: 44px; }
+    .faq-question:hover, .faq-question[aria-expanded="true"] { color: var(--ior-blue); }
+    .faq-chevron { flex-shrink: 0; transition: transform var(--transition); }
+    .faq-question[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { overflow: hidden; max-height: 0; transition: max-height .35s ease; }
+    .faq-answer p { font-size: 15px; color: var(--grey-700); line-height: 1.7; padding-bottom: 20px; }
+    .faq-footer { margin-top: 32px; padding: 24px 32px; background: #fff; border: 1px solid var(--grey-200); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .faq-footer__text h4 { font-size: 15px; font-weight: 700; color: var(--grey-900); margin-bottom: 4px; }
+    .faq-footer__text p { font-size: 13px; color: var(--grey-700); }
+    .faq-footer__actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; flex-shrink: 0; }
+    .faq-footer__help-link { font-size: 13px; color: var(--ior-blue); text-decoration: underline; text-underline-offset: 4px; }
 
     /* ============================================================
        PRE-FOOTER — canonical IOR
@@ -449,12 +472,12 @@
     ============================================================ -->
     <section class="utility-hero" aria-labelledby="utility-h1">
       <div class="utility-hero__inner">
-        <span class="eyebrow eyebrow--sky">National Fuel Network</span>
-        <h1 id="utility-h1">Find fuel for your fleet or flight.</h1>
-        <p>Search our integrated network of 24/7 diesel truck stops and aviation refuelling locations across Australia.</p>
+        <span class="eyebrow eyebrow--sky">NETWORK LOCATOR</span>
+        <h1 id="utility-h1">Find an IOR Location.</h1>
+        <p>Search for diesel stops, aviation fuel sites, depots, and offices near you.</p>
         <div class="hero-ctas">
-          <a href="#map-section" class="btn btn--primary" aria-label="Apply for an IOR account">Apply Now <span class="btn__arrow" aria-hidden="true"></span></a>
-          <a href="11a_Contact_Usv5.html" class="btn btn--outline-white" aria-label="Register your interest with IOR">Register Your Interest</a>
+          <a href="#" class="btn btn--primary" aria-label="Apply for an IOR account">Apply Now <span class="btn__arrow" aria-hidden="true"></span></a>
+          <a href="#" class="btn btn--outline-white" aria-label="Register your interest with IOR">Register Your Interest</a>
         </div>
       </div>
     </section>
@@ -576,17 +599,82 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         6. FAQ ACCORDION — map-specific questions
+    ============================================================ -->
+    <section class="faq-section fade-up" aria-labelledby="faq-heading">
+      <div class="faq-section__inner">
+        <div class="faq-section__heading">
+          <p class="eyebrow eyebrow--blue">FREQUENTLY ASKED QUESTIONS</p>
+          <h2 id="faq-heading">Map &amp; Network Questions</h2>
+        </div>
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+              How do I filter for Truck Wash sites?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-1" role="region">
+              <p>Use the filter panel on the left side of the map to select &ldquo;Truck Wash&rdquo; under the Amenities category. The map will update to show only sites with truck wash facilities. You can combine multiple filters &mdash; for example, Truck Wash + B-Double Access &mdash; to narrow your search further.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+              Does the map show live fuel outages or site closures?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-2" role="region">
+              <p>The map reflects our current network of active sites. In the event of a temporary outage or planned maintenance, affected sites may be marked accordingly. For real-time status, IOR account holders can check site availability through the Customer Portal or contact our team on 1300 457 467.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+              Can I access IOR diesel stops without an account?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-3" role="region">
+              <p>Yes. IOR diesel stops are accessible via the Fuelcharge app, which allows you to locate sites, unlock pumps, and pay directly from your smartphone &mdash; no account required. Download Fuelcharge from the App Store or Google Play. For volume pricing and consolidated invoicing, apply for a fleet account using the button above.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+              How do I find aviation fuel locations on the map?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-4" role="region">
+              <p>Select &ldquo;Aviation&rdquo; from the fuel type filter in the map panel. This will display IOR&rsquo;s 32+ aviation locations, including airports offering Jet A-1, Avgas, and into-plane services. Click any marker for site details, available fuel grades, and contact information. You can also download the Aviation Network Directory above for a complete offline reference.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="faq-footer">
+          <div class="faq-footer__text">
+            <h4>Still have a question?</h4>
+            <p>Our team is available to help with network and access queries.</p>
+          </div>
+          <div class="faq-footer__actions">
+            <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--sm" aria-label="Contact IOR">Contact Us <span class="btn__arrow" aria-hidden="true"></span></a>
+            <a href="11_Support_Hubv5.html" class="faq-footer__help-link" aria-label="Visit the IOR Help Centre">Visit Help Centre &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ============================================================
        PRE-FOOTER — canonical IOR
   ============================================================ -->
-  <section class="pre-footer" aria-label="Get started with IOR">
+  <section class="pre-footer" aria-label="We're here to help">
     <div class="pre-footer__row">
-      <h2 class="pre-footer__title">Ready to get started?</h2>
+      <h2 class="pre-footer__title">We&rsquo;re here to help</h2>
       <div class="pre-footer__ctas">
-        <a href="#" class="btn btn--white" aria-label="Apply for an IOR account">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
-        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white" aria-label="Contact IOR">Contact Us <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--white" aria-label="Get in touch with IOR">Contact Us <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="11_Support_Hubv5.html" class="btn btn--outline-white" aria-label="Visit the support hub">Need Help? <span class="btn__arrow" aria-hidden="true"></span></a>
       </div>
     </div>
     <div class="pre-footer__divider"></div>
@@ -739,6 +827,20 @@
     });
   });
 
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.closest('.faq-list').querySelectorAll('.faq-question').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.style.maxHeight = '0';
+      });
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        btn.nextElementSibling.style.maxHeight = btn.nextElementSibling.scrollHeight + 'px';
+      }
+    });
+  });
   /* Fade-up intersection observer */
   const fadeObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-up--visible'); fadeObs.unobserve(e.target); } });
