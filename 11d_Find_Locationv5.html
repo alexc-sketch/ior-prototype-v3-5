@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find your nearest IOR diesel stop or aviation fuel location. 115+ diesel sites and 32+ airports across Australia. Search by location or corridor.">
+  <meta name="keywords" content="Find IOR diesel stop, aviation fuel locations Australia, IOR network map, fuel near me">
+  <title>Find an IOR Diesel Stop or Airport | IOR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* --- Design Tokens ----------------------------------------------------- */
+    :root {
+      --ior-blue:            #0355A3;
+      --ior-navy:            #0B1F3A;
+      --ior-sky:             #7FBEE6;
+      --ior-teal:            #00D1CC;
+      --ior-light-blue-bg:   #E0F1FF;
+      --ior-light:           #EBF4FF;
+      --charcoal:            #1A1A2E;
+      --grey-50:             #F8F9FA;
+      --grey-100:            #F1F3F5;
+      --grey-200:            #E9ECEF;
+      --grey-500:            #868E96;
+      --grey-700:            #495057;
+      --border-color-light:  #E9ECEF;
+      --container-max:       1200px;
+      --content-max:         1120px;
+      --section-pad-x:       clamp(16px, 5vw, 80px);
+      --transition-base:     0.2s ease;
+      --s800:                #0B1F3A;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--charcoal); background: #fff; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+    /* --- Utility Bar ------------------------------------------------------- */
+    .utility-bar { background: var(--ior-blue); color: #fff; padding: clamp(6px, 0.8vw, 10px) var(--section-pad-x); }
+    .utility-bar__inner { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .utility-bar__actions { display: flex; align-items: center; gap: 20px; }
+    .utility-bar__link { color: #fff; opacity: .9; font-weight: 400; display: flex; align-items: center; gap: 6px; font-size: 13px; transition: opacity var(--transition-base); }
+    .utility-bar__link:hover { opacity: 1; text-decoration: underline; }
+    .utility-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.3); }
+    .utility-bar__phone { font-weight: 700; font-size: 13px; color: #fff; display: flex; align-items: center; gap: 6px; }
+
+    /* --- Primary Nav ------------------------------------------------------- */
+    .primary-nav { background: #fff; border-bottom: 1px solid var(--border-color-light); position: sticky; top: 0; z-index: 900; transition: height .3s ease, box-shadow .3s ease; height: 72px; display: flex; align-items: center; }
+    .primary-nav--scrolled { height: 56px; box-shadow: 0 2px 20px rgba(0,0,0,.10); }
+    .primary-nav--scrolled .nav-logo svg { width: 70px; }
+    .primary-nav__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--section-pad-x); display: flex; align-items: center; gap: 0; width: 100%; }
+    .nav-logo { display: flex; align-items: center; margin-right: 40px; flex-shrink: 0; }
+    .nav-logo svg { width: 88px; height: auto; transition: width .3s ease; }
+    .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; }
+    .nav-link { font-size: 14px; font-weight: 600; color: var(--charcoal); padding: 8px 12px; display: flex; align-items: center; gap: 4px; cursor: pointer; border: none; background: none; font-family: inherit; transition: color var(--transition-base); white-space: nowrap; }
+    .nav-link:hover, .nav-link[aria-expanded="true"] { color: var(--ior-blue); }
+    .nav-link__chevron { width: 14px; height: 14px; transition: transform .2s ease; }
+    .nav-link[aria-expanded="true"] .nav-link__chevron { transform: rotate(180deg); }
+    .nav-cta { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--charcoal); border-radius: 0; transition: transform .3s ease, opacity .3s ease; }
+
+    /* --- Mega Panels ------------------------------------------------------- */
+    .mega-panel { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border-top: 2px solid var(--ior-blue); box-shadow: 0 16px 48px rgba(0,0,0,.12); padding: 40px var(--section-pad-x); display: none; z-index: 800; }
+    .mega-panel--visible { display: block; }
+    .mega-panel__grid { max-width: var(--container-max); margin-inline: auto; display: grid; gap: 32px; }
+    .mega-panel__grid--4col { grid-template-columns: repeat(4, 1fr); }
+    .mega-panel__grid--3col { grid-template-columns: repeat(3, 1fr); }
+    .mega-panel__grid--2col { grid-template-columns: repeat(2, 1fr); }
+    .mega-col__heading { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--grey-500); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--grey-200); }
+    .mega-col__links { display: flex; flex-direction: column; gap: 8px; }
+    .mega-col__link { font-size: 14px; color: var(--charcoal); padding: 4px 0; transition: color var(--transition-base); }
+    .mega-col__link:hover { color: var(--ior-blue); }
+
+    /* --- Buttons ----------------------------------------------------------- */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; font-family: inherit; font-size: 14px; font-weight: 700; border: 2px solid transparent; cursor: pointer; transition: background var(--transition-base), color var(--transition-base), border-color var(--transition-base); border-radius: 0; text-decoration: none; white-space: nowrap; }
+    .btn--primary { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
+    .btn--primary:hover { background: #024a8f; border-color: #024a8f; }
+    .btn--outline-white { background: transparent; color: #fff; border-color: #fff; }
+    .btn--outline-white:hover { background: rgba(255,255,255,.1); }
+    .btn--white { background: #fff; color: var(--ior-blue); border-color: #fff; }
+    .btn--white:hover { background: #f0f0f0; }
+    .btn--outline-blue { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+    .btn--outline-blue:hover { background: var(--ior-light); }
+    .btn--sm { padding: 8px 16px; font-size: 13px; }
+    .btn--pill { border-radius: 500px; }
+    .btn--lg { padding: 14px 28px; font-size: 15px; }
+
+    /* --- Quick Links Bar --------------------------------------------------- */
+    .quick-links-bar { background: var(--ior-light-blue-bg); border-bottom: 1px solid rgba(3,85,163,.12); padding: 10px var(--section-pad-x); }
+    .quick-links-bar__inner { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .quick-links-bar__label { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ior-navy); margin-right: 8px; white-space: nowrap; }
+    .quick-links-bar__link { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; font-size: 13px; font-weight: 600; color: var(--ior-blue); border: 1px solid rgba(3,85,163,.2); background: #fff; transition: background var(--transition-base), border-color var(--transition-base); white-space: nowrap; }
+    .quick-links-bar__link:hover { background: var(--ior-light); border-color: var(--ior-blue); }
+
+    /* --- Utility Hero ------------------------------------------------------ */
+    .utility-hero { background: var(--ior-navy); padding: clamp(48px, 7vw, 80px) var(--section-pad-x); }
+    .utility-hero__inner { max-width: var(--content-max); margin-inline: auto; }
+    .utility-hero .eyebrow { color: var(--ior-sky); margin-bottom: 12px; }
+    .utility-hero h1 { font-size: clamp(28px, 4vw, 52px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 16px; }
+    .utility-hero p { font-size: clamp(15px, 1.5vw, 18px); color: rgba(255,255,255,.85); max-width: 640px; margin-bottom: 28px; }
+    .utility-hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* --- Map Section ------------------------------------------------------- */
+    .map-section { background: var(--grey-50); padding: clamp(40px, 5vw, 64px) var(--section-pad-x); }
+    .map-section__inner { max-width: var(--container-max); margin-inline: auto; }
+    .map-mode-switcher { display: flex; gap: 0; margin-bottom: 24px; border: 2px solid var(--ior-blue); width: fit-content; }
+    .map-mode-btn { padding: 10px 28px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; border: none; background: #fff; color: var(--ior-navy); transition: background var(--transition-base), color var(--transition-base); }
+    .map-mode-btn.active { background: var(--ior-blue); color: #fff; }
+    .map-mode-btn:hover:not(.active) { background: var(--ior-light); }
+    .map-container { width: 100%; min-height: 520px; background: var(--grey-100); border: 1px solid var(--grey-200); overflow: hidden; }
+    .map-container #storepoint-widget { width: 100%; min-height: 520px; }
+    @media (max-width: 768px) { .map-container { min-height: 400px; } .map-container #storepoint-widget { min-height: 400px; } }
+
+    /* --- Below-Map Utility Cards ------------------------------------------- */
+    .utility-cards-section { background: #fff; padding: clamp(40px, 5vw, 64px) var(--section-pad-x); }
+    .utility-cards-section__inner { max-width: var(--content-max); margin-inline: auto; }
+    .utility-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .utility-card { background: var(--grey-50); border: 1px solid var(--grey-200); padding: 36px 32px; display: flex; flex-direction: column; gap: 16px; transition: box-shadow var(--transition-base); }
+    .utility-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); }
+    .utility-card__icon { font-size: 36px; line-height: 1; }
+    .utility-card h4 { font-size: 20px; font-weight: 800; color: var(--ior-navy); }
+    .utility-card p { font-size: 15px; color: var(--grey-700); line-height: 1.6; }
+    .utility-card__ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; }
+    @media (max-width: 640px) { .utility-cards-grid { grid-template-columns: 1fr; } }
+
+    /* --- Download Strip ---------------------------------------------------- */
+    .download-strip { background: var(--ior-navy); padding: clamp(48px, 6vw, 72px) var(--section-pad-x); }
+    .download-strip__inner { max-width: var(--content-max); margin-inline: auto; }
+    .download-strip__heading { text-align: center; margin-bottom: clamp(32px, 4vw, 48px); }
+    .download-strip__heading h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .download-strip__heading p { font-size: clamp(14px, 1.3vw, 16px); color: rgba(255,255,255,.8); max-width: 560px; margin-inline: auto; }
+    .download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .download-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); padding: 36px 32px; display: flex; flex-direction: column; gap: 16px; transition: background var(--transition-base); }
+    .download-card:hover { background: rgba(255,255,255,.10); }
+    .download-card__asset-id { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ior-sky); }
+    .download-card h3 { font-size: 20px; font-weight: 800; color: #fff; }
+    .download-card p { font-size: 15px; color: rgba(255,255,255,.8); line-height: 1.6; }
+    .download-card__cta { margin-top: auto; padding-top: 8px; }
+    @media (max-width: 640px) { .download-grid { grid-template-columns: 1fr; } }
+
+    /* --- FAQ Section ------------------------------------------------------- */
+    .faq-section { background: var(--grey-50); padding: clamp(48px, 6vw, 80px) var(--section-pad-x); }
+    .faq-section__inner { max-width: var(--content-max); margin-inline: auto; }
+    .faq-section__heading { text-align: center; margin-bottom: clamp(32px, 4vw, 48px); }
+    .faq-section__heading h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: var(--ior-navy); margin-bottom: 12px; }
+    .faq-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--grey-200); background: #fff; }
+    .faq-item { border-bottom: 1px solid var(--grey-200); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; background: none; border: none; font-family: inherit; font-size: 16px; font-weight: 700; color: var(--ior-navy); cursor: pointer; text-align: left; transition: background var(--transition-base); }
+    .faq-question:hover { background: var(--grey-50); }
+    .faq-question__icon { flex-shrink: 0; width: 20px; height: 20px; transition: transform .3s ease; }
+    .faq-question[aria-expanded="true"] .faq-question__icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .faq-answer__inner { padding: 0 24px 20px; font-size: 15px; color: var(--grey-700); line-height: 1.7; }
+
+    /* --- Pre-footer -------------------------------------------------------- */
+    .pre-footer { background: var(--ior-blue); padding: clamp(40px, 5vw, 56px) var(--section-pad-x); }
+    .pre-footer__row { max-width: var(--content-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .pre-footer__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .pre-footer__body { font-size: clamp(14px, 1.3vw, 16px); color: rgba(255,255,255,.85); max-width: 480px; }
+    .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .pre-footer__divider { max-width: var(--content-max); margin-inline: auto; height: 1px; background: rgba(255,255,255,.15); margin-top: clamp(32px, 4vw, 48px); }
+
+    /* --- Site Footer ------------------------------------------------------- */
+    .site-footer { background: var(--ior-blue); color: #fff; padding: clamp(28px, 3vw, 40px) var(--section-pad-x) clamp(20px, 2.5vw, 32px); }
+    .footer-nav-grid { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .footer-col__heading { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 14px; }
+    .footer-col__links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-col__link { font-size: 13px; color: rgba(255,255,255,.75); transition: color var(--transition-base); }
+    .footer-col__link:hover { color: #fff; }
+    .footer-legal { max-width: var(--container-max); margin-inline: auto; padding-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-legal__copy { font-size: 12px; color: rgba(255,255,255,.5); }
+    .footer-legal__links { display: flex; gap: 16px; }
+    .footer-legal__link { font-size: 12px; color: rgba(255,255,255,.5); transition: color var(--transition-base); }
+    .footer-legal__link:hover { color: #fff; }
+    .footer-social { display: flex; gap: 12px; align-items: center; }
+    .footer-social__icon { color: rgba(255,255,255,.6); transition: color var(--transition-base); display: flex; align-items: center; }
+    .footer-social__icon:hover { color: #fff; }
+    @media (max-width: 1200px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 480px) { .footer-nav-grid { grid-template-columns: 1fr; } }
+
+    /* --- Mobile Drawer ----------------------------------------------------- */
+    .mobile-drawer { position: fixed; top: 0; left: 0; width: 320px; max-width: 90vw; height: 100vh; background: var(--ior-navy); z-index: 1100; transform: translateX(-100%); transition: transform .35s cubic-bezier(.4,0,.2,1); overflow-y: auto; display: flex; flex-direction: column; }
+    .mobile-drawer.drawer--open { transform: translateX(0); }
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1050; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .drawer-overlay--open { opacity: 1; pointer-events: all; }
+    .drawer__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .drawer__logo svg { width: 72px; height: auto; }
+    .drawer__close { background: none; border: none; color: rgba(255,255,255,.7); cursor: pointer; padding: 4px; display: flex; align-items: center; }
+    .drawer__nav { padding: 12px 0; flex: 1; }
+    .drawer__link { display: flex; align-items: center; justify-content: space-between; padding: 13px 20px; font-size: 15px; font-weight: 600; color: rgba(255,255,255,.9); border: none; background: none; width: 100%; text-align: left; font-family: inherit; cursor: pointer; transition: background var(--transition-base); }
+    .drawer__link:hover { background: rgba(255,255,255,.06); }
+    .drawer__link-chevron { width: 16px; height: 16px; transition: transform .25s ease; flex-shrink: 0; }
+    .drawer__link-chevron--open { transform: rotate(180deg); }
+    .drawer__sub { max-height: 0; overflow: hidden; transition: max-height .3s ease; background: rgba(0,0,0,.2); }
+    .drawer__sub--open { max-height: 600px; }
+    .drawer__sub-link { display: block; padding: 10px 20px 10px 36px; font-size: 14px; color: rgba(255,255,255,.7); transition: color var(--transition-base); }
+    .drawer__sub-link:hover { color: #fff; }
+    .drawer__footer { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,.1); display: flex; flex-direction: column; gap: 10px; }
+
+    /* --- Proto-bar --------------------------------------------------------- */
+    .proto-bar { background: #111827; color: rgba(255,255,255,.75); font-family: 'SF Mono', 'Menlo', 'Consolas', monospace; font-size: 11px; letter-spacing: .04em; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .proto-bar__inner { max-width: 1920px; margin: 0 auto; padding: 6px clamp(16px, 3vw, 40px); display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .proto-bar__label { color: #F59E0B; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .proto-bar__links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .proto-bar__link { color: rgba(255,255,255,.75); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color .2s ease; }
+    .proto-bar__link:hover { color: #fff; text-decoration: underline; }
+    .proto-bar__sep { width: 1px; height: 10px; background: rgba(255,255,255,.15); }
+
+    /* --- Fade-up animation ------------------------------------------------- */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-up--visible { opacity: 1; transform: translateY(0); }
+
+    /* --- Responsive nav ---------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; margin-left: auto; }
+    }
+    @media (max-width: 768px) {
+      .quick-links-bar__inner { overflow-x: auto; flex-wrap: nowrap; }
+      .utility-hero__ctas { flex-direction: column; }
+      .map-mode-switcher { width: 100%; }
+      .map-mode-btn { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+<div class="main-audit-container">
+
+  <!-- Proto-bar -->
+  <div class="proto-bar" role="navigation" aria-label="Prototype navigation">
+    <div class="proto-bar__inner">
+      <span class="proto-bar__label">Prototype</span>
+      <div class="proto-bar__links">
+        <a href="00_Master_Index.html" class="proto-bar__link">&#8592; Master Index</a>
+        <span class="proto-bar__sep" aria-hidden="true"></span>
+        <a href="IOR_Design_System.html" class="proto-bar__link">Design System</a>
+        <span class="proto-bar__sep" aria-hidden="true"></span>
+        <a href="00_Global_Components.html" class="proto-bar__link">Global Components</a>
+        <span class="proto-bar__sep" aria-hidden="true"></span>
+        <a href="11_Support_Hub.html" class="proto-bar__link">Support Hub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Utility Bar -->
+  <div class="utility-bar" role="complementary" aria-label="Site utilities">
+    <div class="utility-bar__inner">
+      <div class="utility-bar__actions">
+        <a href="11d_Find_Locationv5.html" class="utility-bar__link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Find a Location
+        </a>
+        <span class="utility-bar__divider" aria-hidden="true"></span>
+        <a href="11e_Make_Paymentv5.html" class="utility-bar__link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Make a Payment
+        </a>
+      </div>
+      <a href="tel:1300457467" class="utility-bar__phone">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        1300 457 467
+      </a>
+    </div>
+  </div>
+
+  <!-- Primary Nav -->
+  <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+    <div class="primary-nav__inner">
+      <a href="00_Master_Index.html" class="nav-logo" aria-label="IOR Home">
+        <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="8" height="32" x="4" y="4" fill="#0355A3"/>
+          <path d="M18 4h16c8.837 0 16 7.163 16 16s-7.163 16-16 16H18V4z" fill="#0355A3"/>
+          <path d="M18 12h14c4.418 0 8 3.582 8 8s-3.582 8-8 8H18V12z" fill="#fff"/>
+          <path d="M56 36L68 4l12 32" stroke="#0355A3" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="59" y1="26" x2="77" y2="26" stroke="#0355A3" stroke-width="6" stroke-linecap="round"/>
+          <rect x="86" y="4" width="30" height="7" fill="#0355A3"/>
+          <rect x="86" y="14.5" width="30" height="7" fill="#0355A3"/>
+          <rect x="86" y="25" width="30" height="7" fill="#0355A3"/>
+        </svg>
+      </a>
+      <div class="nav-links">
+        <button class="nav-link" data-menu="ground" aria-expanded="false" aria-haspopup="true">
+          Ground Fuels
+          <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <button class="nav-link" data-menu="aviation" aria-expanded="false" aria-haspopup="true">
+          Aviation
+          <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <button class="nav-link" data-menu="digital" aria-expanded="false" aria-haspopup="true">
+          Digital Platforms
+          <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <button class="nav-link" data-menu="supply" aria-expanded="false" aria-haspopup="true">
+          Supply &amp; Logistics
+          <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <button class="nav-link" data-menu="equipment" aria-expanded="false" aria-haspopup="true">
+          Equipment
+          <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <a href="11_Support_Hub.html" class="nav-link">Support</a>
+      </div>
+      <div class="nav-cta">
+        <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--pill btn--sm">Get in Touch</a>
+      </div>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mega Panel: Ground Fuels -->
+    <div class="mega-panel" id="mega-ground" role="region" aria-label="Ground Fuels menu">
+      <div class="mega-panel__grid mega-panel__grid--4col">
+        <div><div class="mega-col__heading">On-Site Refuelling</div><div class="mega-col__links"><a href="03b_On_Site_Refuelling_v3.5.html" class="mega-col__link">On-Site Refuelling</a><a href="#" class="mega-col__link">Bulk Diesel Delivery</a><a href="#" class="mega-col__link">Wet Hosing</a></div></div>
+        <div><div class="mega-col__heading">Diesel Network</div><div class="mega-col__links"><a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a><a href="#" class="mega-col__link">Diesel Network Directory</a><a href="#" class="mega-col__link">Truck Stop Locator</a></div></div>
+        <div><div class="mega-col__heading">Fleet Solutions</div><div class="mega-col__links"><a href="#" class="mega-col__link">Fleet Accounts</a><a href="#" class="mega-col__link">Volume Pricing</a><a href="#" class="mega-col__link">Consolidated Invoicing</a></div></div>
+        <div><div class="mega-col__heading">Industries</div><div class="mega-col__links"><a href="#" class="mega-col__link">Mining &amp; Resources</a><a href="#" class="mega-col__link">Transport &amp; Logistics</a><a href="#" class="mega-col__link">Agriculture</a><a href="#" class="mega-col__link">Construction</a></div></div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Aviation -->
+    <div class="mega-panel" id="mega-aviation" role="region" aria-label="Aviation menu">
+      <div class="mega-panel__grid mega-panel__grid--4col">
+        <div><div class="mega-col__heading">Aviation Fuel</div><div class="mega-col__links"><a href="#" class="mega-col__link">Jet A-1</a><a href="#" class="mega-col__link">Avgas 100LL</a><a href="#" class="mega-col__link">Into-Plane Service</a></div></div>
+        <div><div class="mega-col__heading">Airport Network</div><div class="mega-col__links"><a href="11d_Find_Locationv5.html" class="mega-col__link">Find an Airport</a><a href="#" class="mega-col__link">Aviation Directory</a><a href="#" class="mega-col__link">Remote Locations</a></div></div>
+        <div><div class="mega-col__heading">Services</div><div class="mega-col__links"><a href="#" class="mega-col__link">Charter &amp; GA</a><a href="#" class="mega-col__link">FIFO Operations</a><a href="#" class="mega-col__link">Emergency Supply</a></div></div>
+        <div><div class="mega-col__heading">Compliance</div><div class="mega-col__links"><a href="#" class="mega-col__link">Quality Assurance</a><a href="#" class="mega-col__link">Fuel Testing</a><a href="#" class="mega-col__link">Safety Data Sheets</a></div></div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Digital Platforms -->
+    <div class="mega-panel" id="mega-digital" role="region" aria-label="Digital Platforms menu">
+      <div class="mega-panel__grid mega-panel__grid--3col">
+        <div><div class="mega-col__heading">HyDip FMS</div><div class="mega-col__links"><a href="07a_HyDip_FMS_v4.html" class="mega-col__link">HyDip Overview</a><a href="#" class="mega-col__link">Features</a><a href="#" class="mega-col__link">Login to HyDip</a></div></div>
+        <div><div class="mega-col__heading">Fuelcharge</div><div class="mega-col__links"><a href="07b_Fuelcharge_App_v4.html" class="mega-col__link">Fuelcharge App</a><a href="#" class="mega-col__link">App Store</a><a href="#" class="mega-col__link">Google Play</a></div></div>
+        <div><div class="mega-col__heading">Customer Portal</div><div class="mega-col__links"><a href="07c_Customer_Portal_v4.html" class="mega-col__link">Customer Portal</a><a href="#" class="mega-col__link">Login</a><a href="#" class="mega-col__link">Register</a></div></div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Supply & Logistics -->
+    <div class="mega-panel" id="mega-supply" role="region" aria-label="Supply and Logistics menu">
+      <div class="mega-panel__grid mega-panel__grid--2col">
+        <div><div class="mega-col__heading">Supply Chain</div><div class="mega-col__links"><a href="#" class="mega-col__link">Fuel Supply</a><a href="#" class="mega-col__link">Logistics Network</a><a href="#" class="mega-col__link">Emergency Supply</a></div></div>
+        <div><div class="mega-col__heading">Partnerships</div><div class="mega-col__links"><a href="#" class="mega-col__link">Supplier Partners</a><a href="#" class="mega-col__link">Carrier Network</a><a href="#" class="mega-col__link">Become a Partner</a></div></div>
+      </div>
+    </div>
+
+    <!-- Mega Panel: Equipment -->
+    <div class="mega-panel" id="mega-equipment" role="region" aria-label="Equipment menu">
+      <div class="mega-panel__grid mega-panel__grid--2col">
+        <div><div class="mega-col__heading">Fuel Equipment</div><div class="mega-col__links"><a href="#" class="mega-col__link">Tanks &amp; Bowsers</a><a href="#" class="mega-col__link">Pumps &amp; Meters</a><a href="#" class="mega-col__link">Hose Reels</a></div></div>
+        <div><div class="mega-col__heading">Installation</div><div class="mega-col__links"><a href="#" class="mega-col__link">Site Assessment</a><a href="#" class="mega-col__link">Installation Services</a><a href="#" class="mega-col__link">Maintenance</a></div></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+
+  <!-- Mobile Drawer -->
+  <nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="drawer__header">
+      <a href="00_Master_Index.html" class="drawer__logo" aria-label="IOR Home">
+        <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="8" height="32" x="4" y="4" fill="#fff"/>
+          <path d="M18 4h16c8.837 0 16 7.163 16 16s-7.163 16-16 16H18V4z" fill="#fff"/>
+          <path d="M18 12h14c4.418 0 8 3.582 8 8s-3.582 8-8 8H18V12z" fill="#0B1F3A"/>
+          <path d="M56 36L68 4l12 32" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="59" y1="26" x2="77" y2="26" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+          <rect x="86" y="4" width="30" height="7" fill="#fff"/>
+          <rect x="86" y="14.5" width="30" height="7" fill="#fff"/>
+          <rect x="86" y="25" width="30" height="7" fill="#fff"/>
+        </svg>
+      </a>
+      <button class="drawer__close" id="drawer-close" aria-label="Close navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="drawer__nav">
+      <button class="drawer__link" data-drawer="drawer-ground" aria-expanded="false">
+        Ground Fuels
+        <svg class="drawer__link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="drawer__sub" id="drawer-ground">
+        <a href="03b_On_Site_Refuelling_v3.5.html" class="drawer__sub-link">On-Site Refuelling</a>
+        <a href="11d_Find_Locationv5.html" class="drawer__sub-link">Find a Location</a>
+        <a href="#" class="drawer__sub-link">Fleet Accounts</a>
+      </div>
+      <button class="drawer__link" data-drawer="drawer-aviation" aria-expanded="false">
+        Aviation
+        <svg class="drawer__link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="drawer__sub" id="drawer-aviation">
+        <a href="#" class="drawer__sub-link">Jet A-1</a>
+        <a href="#" class="drawer__sub-link">Avgas 100LL</a>
+        <a href="11d_Find_Locationv5.html" class="drawer__sub-link">Find an Airport</a>
+      </div>
+      <button class="drawer__link" data-drawer="drawer-digital" aria-expanded="false">
+        Digital Platforms
+        <svg class="drawer__link-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="drawer__sub" id="drawer-digital">
+        <a href="07a_HyDip_FMS_v4.html" class="drawer__sub-link">HyDip FMS</a>
+        <a href="07b_Fuelcharge_App_v4.html" class="drawer__sub-link">Fuelcharge App</a>
+        <a href="07c_Customer_Portal_v4.html" class="drawer__sub-link">Customer Portal</a>
+      </div>
+      <a href="11_Support_Hub.html" class="drawer__link">Support</a>
+    </div>
+    <div class="drawer__footer">
+      <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--pill">Get in Touch</a>
+      <a href="tel:1300457467" class="btn btn--outline-white btn--pill">1300 457 467</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- 1. Utility Hero -->
+    <section class="utility-hero" aria-labelledby="hero-heading">
+      <div class="utility-hero__inner">
+        <p class="eyebrow">NETWORK LOCATOR</p>
+        <h1 id="hero-heading">Find an IOR Location.</h1>
+        <p>Search for diesel stops, aviation fuel sites, depots, and offices near you.</p>
+        <div class="utility-hero__ctas">
+          <a href="#" class="btn btn--white btn--lg">Apply Now</a>
+          <a href="#" class="btn btn--outline-white btn--lg">Register Your Interest</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Quick Links Bar -->
+    <div class="quick-links-bar" aria-label="Page quick links">
+      <div class="quick-links-bar__inner">
+        <span class="quick-links-bar__label">Explore:</span>
+        <a href="#map-section" class="quick-links-bar__link">IOR Diesel Network</a>
+        <a href="#map-section" class="quick-links-bar__link">IOR Aviation Network</a>
+        <a href="07b_Fuelcharge_App_v4.html" class="quick-links-bar__link">Fuelcharge</a>
+        <a href="11_Support_Hub.html" class="quick-links-bar__link">Support &amp; Contact</a>
+      </div>
+    </div>
+
+    <!-- 3. Interactive Map & Mode Switcher -->
+    <section class="map-section" id="map-section" aria-labelledby="map-heading">
+      <div class="map-section__inner">
+        <!-- Mode Switcher -->
+        <div class="map-mode-switcher" role="group" aria-label="Map mode switcher">
+          <button class="map-mode-btn active" id="mode-ground" aria-pressed="true">Ground Fuels</button>
+          <button class="map-mode-btn" id="mode-aviation" aria-pressed="false">Aviation</button>
+        </div>
+        <!-- Storepoint Map Embed -->
+        <div class="map-container" aria-label="IOR location map">
+          <div id="storepoint-widget"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Below-Map Utility Cards -->
+    <section class="utility-cards-section" aria-labelledby="utility-cards-heading">
+      <div class="utility-cards-section__inner">
+        <div class="utility-cards-grid">
+          <!-- Card 1: Fuelcharge -->
+          <div class="utility-card fade-up">
+            <div class="utility-card__icon" aria-hidden="true">&#128241;</div>
+            <h4>Pay at the Pump</h4>
+            <p>Download Fuelcharge to find sites, unlock pumps, and pay &#8212; no account required.</p>
+            <div class="utility-card__ctas">
+              <a href="#" class="btn btn--outline-blue btn--sm">&#8595; App Store</a>
+              <a href="#" class="btn btn--outline-blue btn--sm">&#8595; Google Play</a>
+              <a href="07b_Fuelcharge_App_v4.html" class="btn btn--primary btn--sm">Learn More &#8594;</a>
+            </div>
+          </div>
+          <!-- Card 2: Fleet Account -->
+          <div class="utility-card fade-up">
+            <div class="utility-card__icon" aria-hidden="true">&#128179;</div>
+            <h4>Open a Fleet Account</h4>
+            <p>Get volume pricing, consolidated invoicing, and dedicated account support for your fleet.</p>
+            <div class="utility-card__ctas">
+              <a href="#" class="btn btn--primary btn--sm">Apply for an Account &#8594;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Direct Download Strip -->
+    <section class="download-strip" aria-labelledby="download-heading">
+      <div class="download-strip__inner">
+        <div class="download-strip__heading fade-up">
+          <h2 id="download-heading">Download Our Network Directories</h2>
+          <p>Comprehensive guides to every IOR location across Australia &#8212; available as direct PDF downloads.</p>
+        </div>
+        <div class="download-grid">
+          <!-- Asset 1: Diesel Network Directory -->
+          <div class="download-card fade-up">
+            <div class="download-card__asset-id">IOR-MAR-BRO-0232</div>
+            <h3>Diesel Network Directory</h3>
+            <p>Download the complete guide including all 24/7 truck stop locations, B-double access, and amenities.</p>
+            <div class="download-card__cta">
+              <a href="IOR-MAR-BRO-0232-Diesel-Network-Directory_v20260203.pdf" class="btn btn--white" target="_blank" rel="noopener">
+                Download Diesel Directory &#8595;
+              </a>
+            </div>
+          </div>
+          <!-- Asset 2: Aviation Network Directory -->
+          <div class="download-card fade-up">
+            <div class="download-card__asset-id">IOR-MAR-BRO-0332</div>
+            <h3>Aviation Network Directory</h3>
+            <p>Download the complete aviation location list including Jet A-1, Avgas, and into-plane service availability.</p>
+            <div class="download-card__cta">
+              <a href="IOR-MAR-BRO-0332-Aviation-Network-Directory_v20250812-1.pdf" class="btn btn--white" target="_blank" rel="noopener">
+                Download Aviation Directory &#8595;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FAQ Accordion -->
+    <section class="faq-section" aria-labelledby="faq-heading">
+      <div class="faq-section__inner">
+        <div class="faq-section__heading fade-up">
+          <h2 id="faq-heading">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list" role="list">
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              How do I filter for Truck Wash sites on the map?
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer__inner">Use the filter options in the Storepoint map widget to select &#8220;Truck Wash&#8221; from the amenities list. This will highlight all IOR diesel stops that include truck wash facilities. You can combine filters to find sites with multiple amenities.</div>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Does the map show live fuel outages or supply disruptions?
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer__inner">The map displays our current network of active locations. For real-time supply status or to report a site issue, please contact our support team directly on 1300 457 467. IOR account holders can also check status updates via the Customer Portal.</div>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Can I search for IOR locations along a specific highway corridor?
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer__inner">Yes &#8212; use the search bar in the map widget to enter a town, postcode, or highway name. The map will centre on that location and display nearby IOR sites. For a full corridor listing, download the Diesel Network Directory above.</div>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              How do I switch between the Diesel and Aviation networks on the map?
+              <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer__inner">Use the Ground Fuels / Aviation tab switcher directly above the map. Selecting &#8220;Aviation&#8221; will filter the Storepoint widget to show IOR&#8217;s 32+ airport locations. Selecting &#8220;Ground Fuels&#8221; returns to the full diesel network of 115+ sites.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pre-footer -->
+  <section class="pre-footer" aria-labelledby="prefooter-heading">
+    <div class="pre-footer__row">
+      <div>
+        <h2 class="pre-footer__title" id="prefooter-heading">Ready to fuel your fleet?</h2>
+        <p class="pre-footer__body">Open a fleet account today and access IOR&#8217;s nationwide network with volume pricing and dedicated support.</p>
+      </div>
+      <div class="pre-footer__ctas">
+        <a href="#" class="btn btn--white">Apply for an Account</a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white">Contact Us</a>
+      </div>
+    </div>
+    <div class="pre-footer__divider"></div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-nav-grid">
+      <div class="footer-col">
+        <div class="footer-col__heading">Ground Fuels</div>
+        <div class="footer-col__links">
+          <a href="03b_On_Site_Refuelling_v3.5.html" class="footer-col__link">On-Site Refuelling</a>
+          <a href="#" class="footer-col__link">Bulk Diesel Delivery</a>
+          <a href="11d_Find_Locationv5.html" class="footer-col__link">Find a Location</a>
+          <a href="#" class="footer-col__link">Fleet Accounts</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Aviation</div>
+        <div class="footer-col__links">
+          <a href="#" class="footer-col__link">Jet A-1</a>
+          <a href="#" class="footer-col__link">Avgas 100LL</a>
+          <a href="11d_Find_Locationv5.html" class="footer-col__link">Airport Locations</a>
+          <a href="#" class="footer-col__link">Aviation Directory</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Digital Platforms</div>
+        <div class="footer-col__links">
+          <a href="07a_HyDip_FMS_v4.html" class="footer-col__link">HyDip FMS</a>
+          <a href="07b_Fuelcharge_App_v4.html" class="footer-col__link">Fuelcharge App</a>
+          <a href="07c_Customer_Portal_v4.html" class="footer-col__link">Customer Portal</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Supply &amp; Logistics</div>
+        <div class="footer-col__links">
+          <a href="#" class="footer-col__link">Fuel Supply</a>
+          <a href="#" class="footer-col__link">Logistics Network</a>
+          <a href="#" class="footer-col__link">Emergency Supply</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Support</div>
+        <div class="footer-col__links">
+          <a href="11_Support_Hub.html" class="footer-col__link">Support Hub</a>
+          <a href="11a_Contact_Usv5.html" class="footer-col__link">Contact Us</a>
+          <a href="11b_Regional_Contactsv5.html" class="footer-col__link">Regional Contacts</a>
+          <a href="11e_Make_Paymentv5.html" class="footer-col__link">Make a Payment</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__heading">Company</div>
+        <div class="footer-col__links">
+          <a href="09_About_IOR.html" class="footer-col__link">About IOR</a>
+          <a href="#" class="footer-col__link">Careers</a>
+          <a href="11f_Privacy_Policyv5.html" class="footer-col__link">Privacy Policy</a>
+          <a href="#" class="footer-col__link">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p class="footer-legal__copy">&copy; 2025 IOR Petroleum Pty Ltd. ABN 36 009 653 070. All rights reserved.</p>
+      <div class="footer-legal__links">
+        <a href="11f_Privacy_Policyv5.html" class="footer-legal__link">Privacy Policy</a>
+        <a href="#" class="footer-legal__link">Terms &amp; Conditions</a>
+        <a href="#" class="footer-legal__link">Site by 3PM</a>
+      </div>
+      <div class="footer-social" aria-label="Social media links">
+        <a href="#" class="footer-social__icon" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="footer-social__icon" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="footer-social__icon" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="footer-social__icon" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /main-audit-container -->
+
+<!-- Storepoint Widget -->
+<script>
+window.Storepoint=window.Storepoint||{_q:[],on:function(e,c){this._q.push([e,c])}};
+window.loadStorepoint=function(){new StorepointWidget('169b243d6de664','#storepoint-widget',{});};
+!function(){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://widget.storepoint.co/embed.js";t.onload=function(){"function"==typeof window.loadStorepoint&&window.loadStorepoint()};document.head.appendChild(t);}();
+</script>
+
+<script>
+  /* Sticky nav scroll */
+  const nav = document.getElementById('primary-nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('primary-nav--scrolled', window.scrollY > 80); }, { passive: true });
+
+  /* Mega panel toggles */
+  const navBtns = document.querySelectorAll('.nav-link[data-menu]');
+  const megaPanels = document.querySelectorAll('.mega-panel');
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const menuId = btn.getAttribute('data-menu');
+      const panel = document.getElementById('mega-' + menuId);
+      const isOpen = panel.classList.contains('mega-panel--visible');
+      megaPanels.forEach(p => p.classList.remove('mega-panel--visible'));
+      navBtns.forEach(b => b.setAttribute('aria-expanded', 'false'));
+      if (!isOpen) { panel.classList.add('mega-panel--visible'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.primary-nav')) {
+      megaPanels.forEach(p => p.classList.remove('mega-panel--visible'));
+      navBtns.forEach(b => b.setAttribute('aria-expanded', 'false'));
+    }
+  });
+
+  /* Mobile drawer */
+  const hamburger = document.getElementById('hamburger-btn');
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('drawer-overlay');
+  const drawerClose = document.getElementById('drawer-close');
+  function openDrawer() { drawer.classList.add('drawer--open'); overlay.classList.add('drawer-overlay--open'); drawer.removeAttribute('aria-hidden'); hamburger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+  function closeDrawer() { drawer.classList.remove('drawer--open'); overlay.classList.remove('drawer-overlay--open'); drawer.setAttribute('aria-hidden', 'true'); hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+  hamburger.addEventListener('click', openDrawer);
+  drawerClose.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+
+  /* Drawer sub-menu expansion */
+  document.querySelectorAll('.drawer__link[data-drawer]').forEach(link => {
+    link.addEventListener('click', () => {
+      const subId = link.getAttribute('data-drawer');
+      const sub = document.getElementById(subId);
+      const chevron = link.querySelector('.drawer__link-chevron');
+      const isOpen = sub.classList.contains('drawer__sub--open');
+      document.querySelectorAll('.drawer__sub').forEach(s => s.classList.remove('drawer__sub--open'));
+      document.querySelectorAll('.drawer__link-chevron').forEach(c => c.classList.remove('drawer__link-chevron--open'));
+      document.querySelectorAll('.drawer__link[data-drawer]').forEach(l => l.setAttribute('aria-expanded', 'false'));
+      if (!isOpen) { sub.classList.add('drawer__sub--open'); chevron.classList.add('drawer__link-chevron--open'); link.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+
+  /* Map mode switcher */
+  const modeGround = document.getElementById('mode-ground');
+  const modeAviation = document.getElementById('mode-aviation');
+  modeGround.addEventListener('click', () => {
+    modeGround.classList.add('active'); modeGround.setAttribute('aria-pressed', 'true');
+    modeAviation.classList.remove('active'); modeAviation.setAttribute('aria-pressed', 'false');
+  });
+  modeAviation.addEventListener('click', () => {
+    modeAviation.classList.add('active'); modeAviation.setAttribute('aria-pressed', 'true');
+    modeGround.classList.remove('active'); modeGround.setAttribute('aria-pressed', 'false');
+  });
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.closest('.faq-list').querySelectorAll('.faq-question').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.style.maxHeight = '0';
+      });
+      if (!expanded) { btn.setAttribute('aria-expanded', 'true'); btn.nextElementSibling.style.maxHeight = btn.nextElementSibling.scrollHeight + 'px'; }
+    });
+  });
+
+  /* Fade-up IntersectionObserver */
+  const fadeObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-up--visible'); fadeObs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+</script>
+</body>
+</html>
