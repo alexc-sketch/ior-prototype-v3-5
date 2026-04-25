@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Make a Payment | IOR&#174;</title>
-  <meta name="description" content="Pay your IOR fuel account online. Fast, secure, and simple. Access the payment portal here.">
+  <meta name="description" content="Pay your IOR fuel account securely online via American Express, Mastercard, or Visa. Fast, secure, and simple.">
   <meta name="keywords" content="IOR Make a payment, Pay fuel account online, secure payment">
   <!--
   ╔══════════════════════════════════════════════════════════════════════════╗
@@ -341,7 +341,16 @@
     .payment-card__title { font-size: 16px; font-weight: 800; color: var(--ior-navy); }
     .payment-card__copy { font-size: 14px; color: var(--grey-700); line-height: 1.5; }
     .payment-card__cta { margin-top: auto; }
-    .payment-portal-callout { max-width: 800px; margin: 24px auto 0; background: var(--ior-light); border: 1px solid rgba(3,85,163,.15); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    /* What You Need Ready checklist */
+    .payment-checklist { max-width: 560px; margin: 0 auto clamp(28px, 3.5vw, 40px); }
+    .payment-checklist__title { font-size: clamp(13px, 1.2vw, 15px); font-weight: 800; color: var(--grey-900); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+    .payment-checklist__list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .payment-checklist__list li { display: flex; align-items: center; gap: 10px; font-size: clamp(13px, 1.2vw, 15px); color: var(--grey-700); }
+    .payment-checklist__list li::before { content: ''; width: 8px; height: 8px; background: var(--ior-blue); flex-shrink: 0; }
+    /* EFT block */
+    .eft-block { max-width: 800px; margin: clamp(24px, 3vw, 36px) auto 0; padding: 20px 24px; background: var(--grey-100); border-left: 3px solid var(--ior-blue); }
+    .eft-block p { font-size: clamp(13px, 1.2vw, 15px); color: var(--grey-700); line-height: 1.6; }
+    .payment-portal-callout { margin-top: 32px; margin: 24px auto 0; background: var(--ior-light); border: 1px solid rgba(3,85,163,.15); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
     .payment-portal-callout__text { font-size: 14px; color: var(--ior-navy); font-weight: 600; }
     .payment-portal-callout__link { font-size: 14px; font-weight: 800; color: var(--ior-blue); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 
@@ -446,7 +455,7 @@
       <div class="utility-hero__inner">
         <p class="eyebrow eyebrow--sky">SECURE ONLINE PAYMENT</p>
         <h1 id="utility-h1">Make a payment.</h1>
-        <p>Pay your IOR fuel account online. Fast, secure, and simple. Have your account and invoice details ready.</p>
+        <p>Pay your IOR fuel account securely online. Fast, secure, and simple. Please have your account and invoice details ready.</p>
       </div>
     </section>
 
@@ -472,8 +481,18 @@
       <div class="payment-section__inner">
         <div class="payment-section__heading fade-up">
           <p class="eyebrow eyebrow--blue">PAYMENT PORTAL</p>
-          <h2 id="payment-heading">Pay via our secure portal.</h2>
-          <p>Access the IOR secure payment gateway to settle your account via credit card. All transactions are encrypted and processed securely.</p>
+          <h2 id="payment-heading">Pay your account securely online.</h2>
+          <p>Pay your account securely online via American Express, Mastercard or Visa. Click the links below to make a payment &#8211; please note that fees will apply.</p>
+        </div>
+
+        <!-- What You Need Ready checklist -->
+        <div class="payment-checklist fade-up">
+          <p class="payment-checklist__title">What you need ready:</p>
+          <ul class="payment-checklist__list">
+            <li>Your IOR Account Number</li>
+            <li>Your Invoice Reference Number</li>
+            <li>A valid Credit or Debit Card</li>
+          </ul>
         </div>
 
         <!-- Payment Cards Grid -->
@@ -511,6 +530,11 @@
 
         </div><!-- /payment-cards -->
 
+        <!-- EFT / Direct Debit alternative -->
+        <div class="eft-block fade-up">
+          <p>To pay your account via EFT Transfer or direct debit, reach out to our dedicated credit team on 07 3895 4440.</p>
+        </div>
+
         <!-- Customer Portal Cross-sell Callout (client requested) -->
         <div class="payment-portal-callout fade-up" role="complementary" aria-label="Customer Portal cross-sell">
           <p class="payment-portal-callout__text">
@@ -531,13 +555,13 @@
     <section class="support-cta-section" aria-labelledby="support-cta-heading">
       <div class="support-cta-section__inner">
         <div class="support-cta-section__text fade-up">
-          <h2 id="support-cta-heading">Need help with your account?</h2>
-          <p>If you have questions regarding your invoice, require a copy of a past statement, or need to update your direct debit details, our local accounts team is ready to assist.</p>
+          <h2 id="support-cta-heading">Need assistance?</h2>
+          <p>If you need assistance making an online payment, or you wish to confirm the bank details included on your invoice for EFT payments, please don&#8217;t hesitate to get in touch.</p>
         </div>
         <div class="support-cta-section__actions fade-up">
-          <a href="tel:1300457467" class="btn btn--white btn--pill" aria-label="Call IOR Accounts on 1300 457 467">
+          <a href="tel:0738954440" class="btn btn--white btn--pill" aria-label="Call IOR Credit Team on 07 3895 4440">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call Accounts: 1300 457 467
+            Call Credit Team: 07 3895 4440
           </a>
           <a href="mailto:accounts@ior.com.au" class="btn btn--outline-white btn--pill" aria-label="Email the IOR Accounts team">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
