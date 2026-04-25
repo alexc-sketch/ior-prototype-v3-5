@@ -79,7 +79,7 @@
     .nav-link:hover, .nav-link[aria-expanded="true"] { color: var(--ior-blue); background: var(--grey-50); }
     .nav-chevron { display: flex; align-items: center; transition: transform .2s; }
     .nav-link[aria-expanded="true"] .nav-chevron { transform: rotate(180deg); }
-    .nav-cta { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+    .nav-ctas { margin-left: auto; display: flex; align-items: center; gap: 8px; }
     .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--grey-900); transition: .3s; border-radius: var(--radius-none); }
 
@@ -169,26 +169,39 @@
     .bio-hero__bio p + p { margin-top: 16px; }
 
     /* ============================================================
-       RELATED CONTENT (Section 3)
+       RELATED CONTENT — TABBED GRID
+       Source: 00_Global_Components.html
     ============================================================ */
-    .related-content { background: var(--grey-50); padding: 80px 0; }
-    .related-content__inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-    .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
-    .section-title { font-size: clamp(24px, 3vw, 32px); font-weight: 700; color: var(--ior-navy); margin-bottom: 32px; }
-    .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--grey-200); margin-bottom: 32px; }
-    .tab-btn { font-size: 14px; font-weight: 600; color: var(--grey-600); padding: 12px 24px; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color .2s, border-color .2s; }
-    .tab-btn:hover { color: var(--ior-blue); }
-    .tab-btn.is-active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
-    .tab-panel { display: none; }
-    .tab-panel.is-active { display: block; }
-    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .content-card { background: var(--white); border: 1px solid var(--grey-200); overflow: hidden; transition: box-shadow .25s, transform .25s; }
-    .content-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.1); transform: translateY(-3px); }
-    .content-card__img { width: 100%; aspect-ratio: 16/9; background: var(--grey-100); display: flex; align-items: center; justify-content: center; color: var(--grey-600); font-size: 13px; }
-    .content-card__body { padding: 20px; }
-    .content-card__tag { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 8px; }
-    .content-card__title { font-size: 16px; font-weight: 600; color: var(--ior-navy); margin-bottom: 8px; line-height: 1.4; }
-    .content-card__meta { font-size: 13px; color: var(--grey-600); }
+    .related-content { padding: clamp(40px,5vw,72px) 0; background: var(--grey-50); }
+    .related-content__tabs { display: flex; border-bottom: 2px solid var(--grey-200); margin-bottom: 28px; }
+    .related-content__tab {
+      font-size: 14px; font-weight: 600; color: var(--grey-400);
+      padding: 10px 20px; border: none; background: none; cursor: pointer;
+      border-bottom: 2px solid transparent; margin-bottom: -2px;
+      transition: color var(--transition), border-color var(--transition);
+      min-height: 44px;
+    }
+    .related-content__tab.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+    .related-tab-panel { display: none; }
+    .related-tab-panel.active { display: block; }
+    .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,2vw,20px); }
+    @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
+    .related-card { background: #fff; border: 1px solid var(--grey-200); }
+    .related-card__img {
+      background: var(--grey-100); aspect-ratio: 16/9;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .related-card__img-logo {
+      width: 28px; height: 28px; background: var(--ior-blue);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .related-card__body { padding: 18px; }
+    .related-card__tag { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 6px; }
+    .related-card__title { font-size: 14px; font-weight: 700; color: var(--grey-900); line-height: 1.4; margin-bottom: 6px; }
+    .related-card__excerpt { font-size: 13px; color: var(--grey-700); line-height: 1.6; margin-bottom: 14px; }
+    .related-card__link { font-size: 13px; font-weight: 700; color: var(--ior-blue); }
+    .related-card__link:hover { text-decoration: underline; }
+    .related-content__view-all { text-align: center; margin-top: 28px; }
 
     /* ============================================================
        PRE-FOOTER (Section 4)
@@ -231,8 +244,9 @@
       .bio-hero__inner { grid-template-columns: 1fr; gap: 32px; }
       .bio-hero__image { aspect-ratio: 4/3; }
       .bio-hero__image-placeholder { aspect-ratio: 4/3; }
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; margin-left: auto; }
+      .nav-links { display: none; }
+      .nav-ctas .btn:not(.hamburger) { display: none; }
+      .hamburger { display: flex; }
       .footer-nav-grid { grid-template-columns: repeat(2, 1fr); }
       .cards-grid { grid-template-columns: 1fr; }
       .pre-footer__row { flex-direction: column; align-items: flex-start; }
@@ -328,12 +342,13 @@
         </li>
         <li><a href="11a_Contact_Usv5.html" class="nav-link">Support</a></li>
       </ul>
-      <div class="nav-cta">
-        <a href="#lead-capture" class="btn btn--primary btn--pill btn--sm">Get in Touch</a>
+      <div class="nav-ctas">
+        <a href="#" class="btn btn--outline btn--pill btn--sm" aria-label="Customer Login">Customer Login</a>
+        <a href="#" class="btn btn--primary btn--pill btn--sm" aria-label="Apply for an Account">Apply for an Account</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <button class="hamburger" id="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
-        <span></span><span></span><span></span>
-      </button>
     </div>
 
     <!-- Mega: Ground Fuels -->
@@ -509,83 +524,97 @@
       </div>
     </section>
 
-    <!-- SECTION 3: RELATED CONTENT (Tabbed Grid from 00_Global_Components.html#related-content) -->
-    <section class="related-content" aria-label="Latest from IOR">
-      <div class="related-content__inner">
-        <p class="section-eyebrow fade-up">LATEST FROM IOR</p>
-        <h2 class="section-title fade-up">Insights &amp; Resources</h2>
-        <div class="tab-nav" role="tablist" aria-label="Content type">
-          <button class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="tab-case-studies" id="btn-case-studies">Case Studies</button>
-          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-blog" id="btn-blog">Blog Posts</button>
+    <!-- SECTION 3: RELATED CONTENT — TABBED GRID (Source: 00_Global_Components.html) -->
+    <section class="related-content" aria-labelledby="rc-heading">
+      <div class="container">
+        <div class="section-heading fade-up">
+          <p class="eyebrow eyebrow--blue">Latest from IOR</p>
+          <h2 id="rc-heading">Resources &amp; <span class="highlight">insights</span></h2>
         </div>
-        <!-- Case Studies Panel -->
-        <div class="tab-panel is-active" id="tab-case-studies" role="tabpanel" aria-labelledby="btn-case-studies">
-          <div class="cards-grid">
-            <article class="content-card fade-up">
-              <div class="content-card__img" aria-hidden="true">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="0"/><path d="M3 9h18M9 21V9"/></svg>
+        <div class="related-content__tabs" role="tablist" aria-label="Content type">
+          <button class="related-content__tab active" role="tab" aria-selected="true" aria-controls="rc-cases" id="rc-tab-cs">Case Studies</button>
+          <button class="related-content__tab" role="tab" aria-selected="false" aria-controls="rc-blog" id="rc-tab-blog">Blog Posts</button>
+        </div>
+        <!-- Case Studies tab -- max 3 cards -->
+        <div class="related-tab-panel active" id="rc-cases" role="tabpanel" aria-labelledby="rc-tab-cs">
+          <div class="related-grid">
+            <article class="related-card">
+              <div class="related-card__img" aria-label="Case study image placeholder">
+                <div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
               </div>
-              <div class="content-card__body">
-                <p class="content-card__tag">Case Study</p>
-                <h3 class="content-card__title">Reliable Diesel Supply for a Major Mining Operation</h3>
-                <p class="content-card__meta">Ground Fuels &#183; 5 min read</p>
-              </div>
-            </article>
-            <article class="content-card fade-up">
-              <div class="content-card__img" aria-hidden="true">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="0"/><path d="M3 9h18M9 21V9"/></svg>
-              </div>
-              <div class="content-card__body">
-                <p class="content-card__tag">Case Study</p>
-                <h3 class="content-card__title">Fleet Fuelling Solution for a National Transport Operator</h3>
-                <p class="content-card__meta">Ground Fuels &#183; 4 min read</p>
+              <div class="related-card__body">
+                <p class="related-card__tag">Case Study</p>
+                <h3 class="related-card__title">[Case Study Title 1]</h3>
+                <p class="related-card__excerpt">[Brief excerpt &mdash; 1&ndash;2 sentences describing the case study outcome.]</p>
+                <a href="#" class="related-card__link" aria-label="Read case study 1">Read Case Study &rarr;</a>
               </div>
             </article>
-            <article class="content-card fade-up">
-              <div class="content-card__img" aria-hidden="true">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="0"/><path d="M3 9h18M9 21V9"/></svg>
+            <article class="related-card">
+              <div class="related-card__img" aria-label="Case study image placeholder">
+                <div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
               </div>
-              <div class="content-card__body">
-                <p class="content-card__tag">Case Study</p>
-                <h3 class="content-card__title">On-Site Refuelling for a Remote Construction Project</h3>
-                <p class="content-card__meta">Ground Fuels &#183; 6 min read</p>
+              <div class="related-card__body">
+                <p class="related-card__tag">Case Study</p>
+                <h3 class="related-card__title">[Case Study Title 2]</h3>
+                <p class="related-card__excerpt">[Brief excerpt &mdash; 1&ndash;2 sentences describing the case study outcome.]</p>
+                <a href="#" class="related-card__link" aria-label="Read case study 2">Read Case Study &rarr;</a>
+              </div>
+            </article>
+            <article class="related-card">
+              <div class="related-card__img" aria-label="Case study image placeholder">
+                <div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+              </div>
+              <div class="related-card__body">
+                <p class="related-card__tag">Case Study</p>
+                <h3 class="related-card__title">[Case Study Title 3]</h3>
+                <p class="related-card__excerpt">[Brief excerpt &mdash; 1&ndash;2 sentences describing the case study outcome.]</p>
+                <a href="#" class="related-card__link" aria-label="Read case study 3">Read Case Study &rarr;</a>
               </div>
             </article>
           </div>
+          <div class="related-content__view-all">
+            <a href="#" class="btn btn--outline btn--sm" aria-label="View all case studies">View All Case Studies &rarr;</a>
+          </div>
         </div>
-        <!-- Blog Panel -->
-        <div class="tab-panel" id="tab-blog" role="tabpanel" aria-labelledby="btn-blog">
-          <div class="cards-grid">
-            <article class="content-card fade-up">
-              <div class="content-card__img" aria-hidden="true">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <!-- Blog Posts tab -- max 3 cards -->
+        <div class="related-tab-panel" id="rc-blog" role="tabpanel" aria-labelledby="rc-tab-blog">
+          <div class="related-grid">
+            <article class="related-card">
+              <div class="related-card__img" aria-label="Blog post image placeholder">
+                <div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
               </div>
-              <div class="content-card__body">
-                <p class="content-card__tag">Blog</p>
-                <h3 class="content-card__title">How IOR Supports Australia&#8217;s Agricultural Sector</h3>
-                <p class="content-card__meta">Ground Fuels &#183; 3 min read</p>
-              </div>
-            </article>
-            <article class="content-card fade-up">
-              <div class="content-card__img" aria-hidden="true">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              </div>
-              <div class="content-card__body">
-                <p class="content-card__tag">Blog</p>
-                <h3 class="content-card__title">The Future of Ground Fuels in Australia</h3>
-                <p class="content-card__meta">Ground Fuels &#183; 4 min read</p>
+              <div class="related-card__body">
+                <p class="related-card__tag">Blog</p>
+                <h3 class="related-card__title">[Blog Post Title 1]</h3>
+                <p class="related-card__excerpt">[Brief excerpt &mdash; 1&ndash;2 sentences summarising the blog post.]</p>
+                <a href="#" class="related-card__link" aria-label="Read blog post 1">Read Article &rarr;</a>
               </div>
             </article>
-            <article class="content-card fade-up">
-              <div class="content-card__img" aria-hidden="true">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <article class="related-card">
+              <div class="related-card__img" aria-label="Blog post image placeholder">
+                <div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
               </div>
-              <div class="content-card__body">
-                <p class="content-card__tag">Blog</p>
-                <h3 class="content-card__title">Why Reliable Fuel Supply Matters for Remote Operations</h3>
-                <p class="content-card__meta">Ground Fuels &#183; 5 min read</p>
+              <div class="related-card__body">
+                <p class="related-card__tag">Blog</p>
+                <h3 class="related-card__title">[Blog Post Title 2]</h3>
+                <p class="related-card__excerpt">[Brief excerpt &mdash; 1&ndash;2 sentences summarising the blog post.]</p>
+                <a href="#" class="related-card__link" aria-label="Read blog post 2">Read Article &rarr;</a>
               </div>
             </article>
+            <article class="related-card">
+              <div class="related-card__img" aria-label="Blog post image placeholder">
+                <div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+              </div>
+              <div class="related-card__body">
+                <p class="related-card__tag">Blog</p>
+                <h3 class="related-card__title">[Blog Post Title 3]</h3>
+                <p class="related-card__excerpt">[Brief excerpt &mdash; 1&ndash;2 sentences summarising the blog post.]</p>
+                <a href="#" class="related-card__link" aria-label="Read blog post 3">Read Article &rarr;</a>
+              </div>
+            </article>
+          </div>
+          <div class="related-content__view-all">
+            <a href="#" class="btn btn--outline btn--sm" aria-label="View all blog posts">View All Blog Posts &rarr;</a>
           </div>
         </div>
       </div>
@@ -737,15 +766,19 @@
       });
     });
 
-    // Tab switching
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const panelId = btn.getAttribute('aria-controls');
-        btn.closest('.related-content__inner').querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-selected', 'false'); });
-        btn.closest('.related-content__inner').querySelectorAll('.tab-panel').forEach(p => p.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-selected', 'true');
-        document.getElementById(panelId).classList.add('is-active');
+    // Related Content — Tabbed Grid (canonical from 00_Global_Components.html)
+    document.querySelectorAll('.related-content__tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const panel = tab.getAttribute('aria-controls');
+        tab.closest('.related-content').querySelectorAll('.related-content__tab').forEach(t => {
+          t.classList.remove('active'); t.setAttribute('aria-selected', 'false');
+        });
+        tab.closest('.related-content').querySelectorAll('.related-tab-panel').forEach(p => {
+          p.classList.remove('active'); p.style.display = 'none';
+        });
+        tab.classList.add('active'); tab.setAttribute('aria-selected', 'true');
+        const el = document.getElementById(panel);
+        if (el) { el.classList.add('active'); el.style.display = 'block'; }
       });
     });
 
