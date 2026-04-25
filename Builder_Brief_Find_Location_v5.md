@@ -79,20 +79,21 @@ window.loadStorepoint=function(){new StorepointWidget('169b243d6de664','#storepo
 - **Copy:** Get volume pricing, consolidated invoicing, and dedicated account support for your fleet.
 - **CTA:** Apply for an Account →
 
-### 5. Gated Download Strip (Dual Assets)
-- **Layout:** Use a dark background strip (`var(--ior-navy)` or `var(--s800)`) with a split 2-column layout to house the two gated directory downloads.
+### 5. Direct Download Strip (Dual Assets)
+- **Layout:** Use a dark background strip (`var(--ior-navy)` or `var(--s800)`) with a split 2-column layout to house the two directory downloads.
+- **Auditor Note:** Per client revision, these are **direct, minimalistic downloads**. Do NOT use a HubSpot form or gated modal. Link directly to the PDF files provided in the repository.
 
 **Asset 1 (Left):**
 - **Title:** Diesel Network Directory
 - **Subcopy:** Download the complete guide including all 24/7 truck stop locations, B-double access, and amenities.
 - **Asset ID:** IOR-MAR-BRO-0232
-- **CTA:** Download Diesel Directory ↓ (Triggers HubSpot form modal or links to gated landing page)
+- **CTA:** Download Diesel Directory ↓ (Links directly to `IOR-MAR-BRO-0232-Diesel-Network-Directory_v20260203.pdf` with `target="_blank"`)
 
 **Asset 2 (Right):**
 - **Title:** Aviation Network Directory
 - **Subcopy:** Download the complete aviation location list including Jet A-1, Avgas, and into-plane service availability.
 - **Asset ID:** IOR-MAR-BRO-0332
-- **CTA:** Download Aviation Directory ↓ (Triggers HubSpot form modal or links to gated landing page)
+- **CTA:** Download Aviation Directory ↓ (Links directly to `IOR-MAR-BRO-0332-Aviation-Network-Directory_v20250812-1.pdf` with `target="_blank"`)
 
 ### 6. FAQ Accordion
 - **Style:** Inject the standard Global FAQ accordion component here.
@@ -105,5 +106,5 @@ window.loadStorepoint=function(){new StorepointWidget('169b243d6de664','#storepo
 
 ## 4. Asset Checklist for Builder
 - [x] Storepoint HTML snippet provided in brief.
-- [x] Gated Asset IDs provided (IOR-MAR-BRO-0232, IOR-MAR-BRO-0332).
+- [x] Direct Asset PDFs provided in repo (`IOR-MAR-BRO-0232-Diesel-Network-Directory_v20260203.pdf` and `IOR-MAR-BRO-0332-Aviation-Network-Directory_v20250812-1.pdf`).
 - [x] Base Template to Duplicate/Use: `IOR_Utility_Template_Shell_v5.html`
