@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IOR Prototype — Project Status Dashboard</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ior-navy:   #0A4066;
+      --ior-blue:   #0355A3;
+      --ior-gold:   #C9A84C;
+      --white:      #FFFFFF;
+      --grey-50:    #F8F9FA;
+      --grey-100:   #F1F3F5;
+      --grey-200:   #E9ECEF;
+      --grey-500:   #ADB5BD;
+      --grey-700:   #495057;
+      --grey-900:   #212529;
+
+      --green-bg:   #ECFDF5;
+      --green-text: #065F46;
+      --green-dot:  #10B981;
+
+      --amber-bg:   #FFFBEB;
+      --amber-text: #92400E;
+      --amber-dot:  #F59E0B;
+
+      --red-bg:     #FEF2F2;
+      --red-text:   #991B1B;
+      --red-dot:    #EF4444;
+
+      --blue-bg:    #EFF6FF;
+      --blue-text:  #1E40AF;
+      --blue-dot:   #3B82F6;
+
+      --purple-bg:  #F5F3FF;
+      --purple-text:#4C1D95;
+      --purple-dot: #8B5CF6;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--grey-50);
+      color: var(--grey-900);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .dash-header {
+      background: var(--ior-navy);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--ior-gold);
+    }
+    .dash-header__brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .dash-header__logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+    .dash-header__logo span {
+      color: var(--ior-gold);
+    }
+    .dash-header__sep {
+      width: 1px;
+      height: 24px;
+      background: rgba(255,255,255,0.2);
+    }
+    .dash-header__title {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .dash-header__meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .dash-header__updated {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+    .dash-header__link {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ior-gold);
+      text-decoration: none;
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 5px 12px;
+      border-radius: 0;
+      transition: background 0.2s;
+    }
+    .dash-header__link:hover { background: rgba(201,168,76,0.1); }
+
+    /* ── LAYOUT ── */
+    .dash-body {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+    }
+
+    /* ── SUMMARY STRIP ── */
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .summary-card {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      padding: 20px 24px;
+      border-top: 3px solid transparent;
+    }
+    .summary-card--green  { border-top-color: var(--green-dot); }
+    .summary-card--amber  { border-top-color: var(--amber-dot); }
+    .summary-card--red    { border-top-color: var(--red-dot); }
+    .summary-card--blue   { border-top-color: var(--blue-dot); }
+    .summary-card--purple { border-top-color: var(--purple-dot); }
+    .summary-card__num {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .summary-card--green  .summary-card__num { color: var(--green-dot); }
+    .summary-card--amber  .summary-card__num { color: var(--amber-dot); }
+    .summary-card--red    .summary-card__num { color: var(--red-dot); }
+    .summary-card--blue   .summary-card__num { color: var(--blue-dot); }
+    .summary-card--purple .summary-card__num { color: var(--purple-dot); }
+    .summary-card__label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--grey-700);
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      margin-top: 40px;
+    }
+    .section-header:first-of-type { margin-top: 0; }
+    .section-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--grey-700);
+    }
+    .section-count {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--grey-500);
+      background: var(--grey-100);
+      padding: 2px 8px;
+      border-radius: 0;
+    }
+
+    /* ── TABLE ── */
+    .dash-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      margin-bottom: 8px;
+    }
+    .dash-table th {
+      background: var(--grey-50);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--grey-700);
+      padding: 10px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--grey-200);
+    }
+    .dash-table td {
+      padding: 13px 16px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--grey-100);
+      vertical-align: middle;
+    }
+    .dash-table tr:last-child td { border-bottom: none; }
+    .dash-table tr:hover td { background: var(--grey-50); }
+
+    /* ── BADGES ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 10px;
+      border-radius: 0;
+      white-space: nowrap;
+    }
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .badge--done    { background: var(--green-bg);  color: var(--green-text);  }
+    .badge--done::before    { background: var(--green-dot); }
+    .badge--review  { background: var(--amber-bg);  color: var(--amber-text);  }
+    .badge--review::before  { background: var(--amber-dot); }
+    .badge--pending { background: var(--red-bg);    color: var(--red-text);    }
+    .badge--pending::before { background: var(--red-dot); }
+    .badge--pr      { background: var(--blue-bg);   color: var(--blue-text);   }
+    .badge--pr::before      { background: var(--blue-dot); }
+    .badge--brief   { background: var(--purple-bg); color: var(--purple-text); }
+    .badge--brief::before   { background: var(--purple-dot); }
+
+    /* ── LINKS ── */
+    .page-link {
+      font-weight: 600;
+      color: var(--ior-blue);
+      text-decoration: none;
+    }
+    .page-link:hover { text-decoration: underline; }
+    .pr-link {
+      font-size: 12px;
+      color: var(--grey-700);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .pr-link:hover { color: var(--ior-blue); text-decoration: underline; }
+    .brief-link {
+      font-size: 12px;
+      color: var(--purple-dot);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .brief-link:hover { text-decoration: underline; }
+
+    /* ── FILE NAME ── */
+    .filename {
+      font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--grey-700);
+      background: var(--grey-100);
+      padding: 2px 6px;
+    }
+
+    /* ── NOTES ── */
+    .note-cell {
+      font-size: 12px;
+      color: var(--grey-700);
+      max-width: 320px;
+    }
+    .note-cell .warn {
+      color: var(--amber-text);
+      font-weight: 600;
+    }
+    .note-cell .block {
+      color: var(--red-text);
+      font-weight: 600;
+    }
+
+    /* ── BLOCKERS PANEL ── */
+    .blockers-panel {
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-left: 4px solid var(--amber-dot);
+      padding: 20px 24px;
+      margin-top: 40px;
+    }
+    .blockers-panel h3 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--amber-text);
+      margin-bottom: 14px;
+    }
+    .blocker-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--grey-900);
+    }
+    .blocker-item:last-child { margin-bottom: 0; }
+    .blocker-num {
+      font-weight: 800;
+      color: var(--amber-dot);
+      flex-shrink: 0;
+      width: 18px;
+    }
+
+    /* ── FOOTER ── */
+    .dash-footer {
+      background: var(--ior-navy);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0;
+    }
+    .dash-footer p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+    .dash-footer a {
+      color: var(--ior-gold);
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .dash-body { padding: 24px 16px 60px; }
+      .summary-strip { grid-template-columns: repeat(2, 1fr); }
+      .dash-header { padding: 0 16px; }
+      .dash-header__meta { display: none; }
+      .dash-table { font-size: 12px; }
+      .dash-table th, .dash-table td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="dash-header">
+  <a class="dash-header__brand" href="00_Master_Index.html">
+    <span class="dash-header__logo">IOR<span>.</span></span>
+    <div class="dash-header__sep"></div>
+    <span class="dash-header__title">Prototype Status Dashboard</span>
+  </a>
+  <div class="dash-header__meta">
+    <span class="dash-header__updated">Last updated: 25 Apr 2026</span>
+    <a class="dash-header__link" href="00_Master_Index.html">← Master Index</a>
+    <a class="dash-header__link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pulls" target="_blank" rel="noopener">GitHub PRs ↗</a>
+  </div>
+</header>
+
+<!-- BODY -->
+<main class="dash-body">
+
+  <!-- SUMMARY STRIP -->
+  <div class="summary-strip">
+    <div class="summary-card summary-card--green">
+      <div class="summary-card__num">5</div>
+      <div class="summary-card__label">Live on Main</div>
+    </div>
+    <div class="summary-card summary-card--blue">
+      <div class="summary-card__num">5</div>
+      <div class="summary-card__label">Open PRs</div>
+    </div>
+    <div class="summary-card summary-card--amber">
+      <div class="summary-card__num">3</div>
+      <div class="summary-card__label">Awaiting Audit</div>
+    </div>
+    <div class="summary-card summary-card--purple">
+      <div class="summary-card__num">3</div>
+      <div class="summary-card__label">Brief Ready</div>
+    </div>
+    <div class="summary-card summary-card--red">
+      <div class="summary-card__num">2</div>
+      <div class="summary-card__label">Blockers</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: LIVE ON MAIN -->
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--green-dot);"></div>
+    <h2>Live on Main — Approved &amp; Merged</h2>
+    <span class="section-count">5 pages</span>
+  </div>
+  <table class="dash-table">
+    <thead>
+      <tr>
+        <th>Page</th>
+        <th>File</th>
+        <th>Status</th>
+        <th>Preview</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Utility Template Shell v5</strong></td>
+        <td><span class="filename">IOR_Utility_Template_Shell_v5.html</span></td>
+        <td><span class="badge badge--done">Live</span></td>
+        <td><a class="page-link" href="IOR_Utility_Template_Shell_v5.html" target="_blank">View ↗</a></td>
+        <td class="note-cell">Master base template for all utility pages. Do not modify without a new brief.</td>
+      </tr>
+      <tr>
+        <td><strong>Make a Payment v5</strong></td>
+        <td><span class="filename">11e_Make_Paymentv5.html</span></td>
+        <td><span class="badge badge--done">Live</span></td>
+        <td><a class="page-link" href="11e_Make_Paymentv5.html" target="_blank">View ↗</a></td>
+        <td class="note-cell">AMEX + Visa/MC gateway cards. Copy audited 18/18. Brief: <a class="brief-link" href="Builder_Brief_Utility_Shell_Make_Payment_v5.md">Brief ↗</a></td>
+      </tr>
+      <tr>
+        <td><strong>Regional Contacts v5</strong></td>
+        <td><span class="filename">11b_Regional_Contactsv5.html</span></td>
+        <td><span class="badge badge--done">Live</span></td>
+        <td><a class="page-link" href="11b_Regional_Contactsv5.html" target="_blank">View ↗</a></td>
+        <td class="note-cell">Interactive SVG map. FAQ removed. "Still Have Questions?" block updated to canonical template.</td>
+      </tr>
+      <tr>
+        <td><strong>Find a Location v5</strong></td>
+        <td><span class="filename">11d_Find_Locationv5.html</span></td>
+        <td><span class="badge badge--done">Live</span></td>
+        <td><a class="page-link" href="11d_Find_Locationv5.html" target="_blank">View ↗</a></td>
+        <td class="note-cell">Storepoint map embed. Mode switcher removed. Design upgrade PR #78 open. Brief: <a class="brief-link" href="Builder_Brief_Find_Location_v5.md">Brief ↗</a></td>
+      </tr>
+      <tr>
+        <td><strong>Privacy Policy v5</strong></td>
+        <td><span class="filename">11f_Privacy_Policyv5.html</span></td>
+        <td><span class="badge badge--done">Live</span></td>
+        <td><a class="page-link" href="11f_Privacy_Policyv5.html" target="_blank">View ↗</a></td>
+        <td class="note-cell">Ultra-minimal shell. No quick-links, no pre-footer, no FAQ routing. Brief: <a class="brief-link" href="Builder_Brief_Privacy_Policy_v5.md">Brief ↗</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 2: OPEN PRs -->
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--blue-dot);"></div>
+    <h2>Open Pull Requests — Awaiting Audit or Merge</h2>
+    <span class="section-count">5 PRs</span>
+  </div>
+  <table class="dash-table">
+    <thead>
+      <tr>
+        <th>PR</th>
+        <th>Page / Feature</th>
+        <th>Branch</th>
+        <th>Audit Status</th>
+        <th>Action Required</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/82" target="_blank">#82</a></td>
+        <td><strong>Contact Us v5</strong> — <span class="filename">11a_Contact_Usv5.html</span></td>
+        <td><span class="filename">feature/11a-contact-us-v5</span></td>
+        <td><span class="badge badge--review">Awaiting Audit</span></td>
+        <td class="note-cell"><span class="warn">Auditor:</span> Run full Golden Rules + brief compliance check. Brief: <a class="brief-link" href="Builder_Brief_Contact_Us_v5.md">Brief ↗</a></td>
+      </tr>
+      <tr>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/81" target="_blank">#81</a></td>
+        <td><strong>Leadership Bio Template v5</strong> — <span class="filename">09a_Leadership_Bio_Template_v5.html</span></td>
+        <td><span class="filename">feature/leadership-bio-v5</span></td>
+        <td><span class="badge badge--done">Approved</span></td>
+        <td class="note-cell"><span class="warn">Ready to merge.</span> All 15 checks pass. R1 false positive confirmed resolved.</td>
+      </tr>
+      <tr>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/79" target="_blank">#79</a></td>
+        <td><strong>Docs: Leadership Bio Brief</strong></td>
+        <td><span class="filename">feature/leadership-bio-brief</span></td>
+        <td><span class="badge badge--review">Awaiting Audit</span></td>
+        <td class="note-cell">Docs-only PR. Low risk. Check for Master Index conflicts before merging.</td>
+      </tr>
+      <tr>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/78" target="_blank">#78</a></td>
+        <td><strong>Find a Location v5 — Design Upgrade</strong> (hybrid hero, stats bar, icons)</td>
+        <td><span class="filename">feature/find-location-v5-upgrade</span></td>
+        <td><span class="badge badge--review">Awaiting Audit</span></td>
+        <td class="note-cell">Design improvement brief issued. Check Golden Rules + visual compliance.</td>
+      </tr>
+      <tr>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/72" target="_blank">#72</a></td>
+        <td><strong>HyDip FMS v5 Rebuild</strong> — <span class="filename">07a_HyDip_FMS_v5.html</span></td>
+        <td><span class="filename">feature/hydip-v5</span></td>
+        <td><span class="badge badge--review">Awaiting Audit</span></td>
+        <td class="note-cell">8-section rebuild. Oldest open PR — prioritise after #81 and #82.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 3: BRIEF READY -->
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--purple-dot);"></div>
+    <h2>Brief Ready — Awaiting Builder</h2>
+    <span class="section-count">3 pages</span>
+  </div>
+  <table class="dash-table">
+    <thead>
+      <tr>
+        <th>Page</th>
+        <th>Target File</th>
+        <th>Brief</th>
+        <th>Status</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Support &amp; Contact Hub v5</strong></td>
+        <td><span class="filename">11_Support_Hubv5.html</span></td>
+        <td><a class="brief-link" href="Builder_Brief_Support_Hub_v5.md">Brief ↗</a></td>
+        <td><span class="badge badge--brief">Brief Ready</span></td>
+        <td class="note-cell"><span class="block">Blocker:</span> Builder 2 referenced a non-existent PR. File not on any branch. Must submit fresh PR to <span class="filename">feature/support-hub-v5</span>.</td>
+      </tr>
+      <tr>
+        <td><strong>Contact Us v5</strong></td>
+        <td><span class="filename">11a_Contact_Usv5.html</span></td>
+        <td><a class="brief-link" href="Builder_Brief_Contact_Us_v5.md">Brief ↗</a></td>
+        <td><span class="badge badge--pr">PR Open (#82)</span></td>
+        <td class="note-cell">PR #82 submitted. Awaiting audit. Zendesk form, 2-col layout, amber emergency block.</td>
+      </tr>
+      <tr>
+        <td><strong>Case Study Template v5</strong></td>
+        <td><span class="filename">CS_Template_v5.html</span></td>
+        <td><a class="brief-link" href="Builder_Brief_Case_Study_Template_v5.md">Brief ↗</a></td>
+        <td><span class="badge badge--brief">Brief Ready</span></td>
+        <td class="note-cell">Dummy data: Tin Can Bay Marina. Images in <span class="filename">assets/case-studies/</span>. 3 PDFs committed.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- BLOCKERS -->
+  <div class="blockers-panel">
+    <h3>⚠ Active Blockers</h3>
+    <div class="blocker-item">
+      <span class="blocker-num">1</span>
+      <span><strong>Support Hub v5 not submitted:</strong> Builder 2 claimed PR #12 was merged, but no such PR exists. <code>11_Support_Hubv5.html</code> is not on any branch. Builder 2 must push to <code>feature/support-hub-v5</code> and open a new PR immediately.</span>
+    </div>
+    <div class="blocker-item">
+      <span class="blocker-num">2</span>
+      <span><strong>Stale PRs #55, #34, #29, #25, #2:</strong> These older PRs are still open and may conflict with current main. Builders must rebase onto current main before any merge. Recommend closing #34 and #29 if their changes are already captured in later commits.</span>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="dash-footer">
+  <p>IOR Prototype v5 — Status Dashboard · <a href="00_Master_Index.html">Master Index</a> · <a href="https://github.com/alexc-sketch/ior-prototype-v3-5" target="_blank">GitHub Repo ↗</a></p>
+  <p>For questions, contact the project lead. Do not modify this file manually — update via the Auditor workflow.</p>
+</footer>
+
+</body>
+</html>
