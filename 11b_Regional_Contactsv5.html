@@ -245,39 +245,89 @@
     .pre-footer__divider { max-width: var(--content-max); margin: clamp(24px, 3vw, 36px) auto 0; border: none; border-top: 1px solid rgba(255,255,255,.2); }
 
     /* Global Footer */
-    .site-footer { background: var(--ior-deep); color: rgba(255,255,255,.75); padding: clamp(40px, 5vw, 64px) var(--section-pad-x) 0; }
-    .footer-nav-grid { max-width: var(--content-max); margin-inline: auto; display: grid; grid-template-columns: 2fr repeat(4, 1fr) 1.2fr; gap: clamp(20px, 3vw, 40px); padding-bottom: clamp(32px, 4vw, 48px); }
-    @media (max-width: 1024px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 640px) { .footer-nav-grid { grid-template-columns: repeat(2, 1fr); } }
-    .footer-col__title { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: #fff; margin-bottom: 14px; }
-    .footer-col__links { display: flex; flex-direction: column; gap: 6px; }
-    .footer-col__link { font-size: 13px; color: rgba(255,255,255,.7); transition: color var(--transition-fast); display: flex; align-items: center; gap: 6px; min-height: 28px; }
-    .footer-col__link:hover { color: #fff; }
-    .footer-col__link--icon { gap: 8px; }
-    .footer-col__link--address { cursor: default; }
-    .footer-state-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-    .footer-state-pill { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.25); padding: 4px 10px; transition: all var(--transition-fast); border-radius: 500px; }
-    .footer-state-pill:hover { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.5); }
-    .footer-legal { max-width: var(--content-max); margin-inline: auto; border-top: 1px solid rgba(255,255,255,.1); padding: 20px 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    .footer-legal__text { font-size: 12px; color: rgba(255,255,255,.5); }
-    .footer-legal__link--muted { color: rgba(255,255,255,.5); text-decoration: underline; text-underline-offset: 2px; }
-    .footer-legal__link--muted:hover { color: rgba(255,255,255,.8); }
+    .site-footer { background: var(--ior-blue); color: #fff; padding: clamp(28px, 3.5vw, 40px) clamp(20px, 8vw, 80px) clamp(40px, 5vw, 60px); }
+    .footer-nav-grid { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; padding-bottom: 40px; }
+    .footer-col__title { font-size: clamp(13px, 1.3vw, 16px); font-weight: 800; color: #fff; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .footer-col__links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col__link { font-size: clamp(12px, 1.2vw, 14px); color: rgba(255,255,255,.8); min-height: 44px; display: flex; align-items: center; }
+    .footer-col__link:hover { color: #fff; text-decoration: underline; }
+    .footer-col__link--address { line-height: 1.6; display: flex; align-items: flex-start; gap: 8px; }
+    .footer-col__link--icon { display: flex; align-items: center; gap: 8px; }
+    .footer-col__link--icon svg { flex-shrink: 0; margin-top: 2px; }
+    .footer-state-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .footer-state-pill { display: inline-flex; align-items: center; padding: 4px 12px; border: 1px solid rgba(255,255,255,.4); color: #fff; font-size: 13px; font-weight: 700; transition: all var(--transition-fast); min-height: 44px; }
+    .footer-state-pill:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+    .footer-legal { max-width: var(--container-max); margin-inline: auto; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.2); flex-wrap: wrap; gap: 16px; }
+    .footer-legal__text { font-size: 12px; color: rgba(255,255,255,.6); }
+    .footer-legal__link--muted { color: rgba(255,255,255,.6); text-decoration: underline; }
     .footer-social { display: flex; gap: 10px; }
-    .footer-social__icon { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.25); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.7); font-size: 13px; font-weight: 700; transition: all var(--transition-fast); }
-    .footer-social__icon:hover { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.5); }
+    .footer-social__icon { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; transition: all var(--transition-fast); }
+    .footer-social__icon:hover { background: rgba(255,255,255,.15); border-color: #fff; }
 
-    /* Fade-up animation */
-    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 500ms ease, transform 500ms ease; }
-    .fade-up--visible { opacity: 1; transform: translateY(0); }
+    /* Fade-up */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-up--visible { opacity: 1; transform: none; }
 
-    @media (max-width: 768px) {
-      .hamburger { display: flex; }
-      .nav-links, .nav-ctas .btn:not(.hamburger) { display: none; }
-      .map-col { position: static; }
-      .national-cta__inner { flex-direction: column; align-items: flex-start; }
-      .faq-footer { flex-direction: column; align-items: flex-start; }
-      .pre-footer__row { flex-direction: column; align-items: flex-start; }
+    /* Responsive */
+    @media (max-width: 1200px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } .hamburger { display: flex; } .nav-links { display: none; } .nav-ctas .btn:not(.hamburger) { display: none; } }
+    @media (max-width: 900px) { .stat-bar .container { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .stat-bar .container { grid-template-columns: 1fr; gap: 24px; } .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 20px; } .stat-item:last-child { border-bottom: none; } .footer-nav-grid { grid-template-columns: 1fr 1fr; } .pre-footer__row { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 480px) { .footer-nav-grid { grid-template-columns: 1fr; } }
+
+    /* Proto-bar */
+    .proto-bar { background: #111827; color: rgba(255,255,255,.75); font-family: 'SF Mono', 'Menlo', 'Consolas', monospace; font-size: 11px; letter-spacing: .04em; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .proto-bar__inner { max-width: 1920px; margin: 0 auto; padding: 6px clamp(16px, 3vw, 40px); display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .proto-bar__label { color: #F59E0B; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .proto-bar__links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .proto-bar__link { color: rgba(255,255,255,.75); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color .2s ease; }
+    .proto-bar__link:hover { color: #fff; text-decoration: underline; }
+    .proto-bar__sep { width: 1px; height: 10px; background: rgba(255,255,255,.15); }
+  
+    /* ─── Utility Shell Additions ─────────────────────────────────────────── */
+    /* Minimal Utility Hero */
+    .utility-hero { background: var(--ior-navy); padding: clamp(48px, 7vw, 80px) var(--section-pad-x); }
+    .utility-hero__inner { max-width: var(--content-max); margin-inline: auto; }
+    .utility-hero .eyebrow { color: var(--ior-sky); margin-bottom: 12px; }
+    .utility-hero h1 { font-size: clamp(28px, 4vw, 52px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 16px; }
+    .utility-hero p { font-size: clamp(15px, 1.5vw, 18px); color: rgba(255,255,255,.85); max-width: 640px; }
+
+    /* Payment Gateway Cards */
+    .payment-section { background: var(--grey-50); padding: clamp(48px, 6vw, 80px) var(--section-pad-x); }
+    .payment-section__inner { max-width: var(--content-max); margin-inline: auto; }
+    .payment-section__heading { text-align: center; margin-bottom: clamp(32px, 4vw, 48px); }
+    .payment-section__heading h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: var(--ior-navy); margin-bottom: 12px; }
+    .payment-section__heading p { font-size: clamp(14px, 1.3vw, 16px); color: var(--grey-700); max-width: 560px; margin-inline: auto; }
+    .payment-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 800px; margin-inline: auto; }
+    .payment-card { background: #fff; border: 1px solid var(--grey-200); padding: 36px 32px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; transition: box-shadow var(--transition-base); }
+    .payment-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.10); }
+    .payment-card__logo { height: 56px; display: flex; align-items: center; justify-content: center; }
+    .payment-card__logo img, .payment-card__logo svg { max-height: 56px; max-width: 177px; width: auto; }
+    .payment-card__title { font-size: 16px; font-weight: 800; color: var(--ior-navy); }
+    .payment-card__copy { font-size: 14px; color: var(--grey-700); line-height: 1.5; }
+    .payment-card__cta { margin-top: auto; }
+    .payment-portal-callout { max-width: 800px; margin: 24px auto 0; background: var(--ior-light); border: 1px solid rgba(3,85,163,.15); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .payment-portal-callout__text { font-size: 14px; color: var(--ior-navy); font-weight: 600; }
+    .payment-portal-callout__link { font-size: 14px; font-weight: 800; color: var(--ior-blue); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+
+    /* Support CTA Block */
+    .support-cta-section { background: var(--ior-navy); padding: clamp(48px, 6vw, 72px) var(--section-pad-x); }
+    .support-cta-section__inner { max-width: var(--content-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .support-cta-section__text h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .support-cta-section__text p { font-size: clamp(14px, 1.3vw, 16px); color: rgba(255,255,255,.85); max-width: 560px; }
+    .support-cta-section__actions { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+
+    /* FAQ Routing Section */
+    .faq-routing-section { background: var(--grey-50); border-top: 1px solid var(--grey-200); padding: clamp(32px, 4vw, 48px) var(--section-pad-x); }
+    .faq-routing-section .container { max-width: var(--content-max); margin-inline: auto; }
+    .faq-routing-section .faq-footer { margin-top: 0; }
+
+    /* Utility page responsive */
+    @media (max-width: 640px) {
+      .payment-cards { grid-template-columns: 1fr; }
+      .payment-portal-callout { flex-direction: column; align-items: flex-start; }
+      .support-cta-section__inner { flex-direction: column; align-items: flex-start; }
     }
+    /* ─── End Utility Shell Additions ─────────────────────────────────────── */
   </style>
 </head>
 <body>
@@ -639,58 +689,6 @@
       </div>
     </section>
 
-    <!-- 5. FAQ ACCORDION + STILL HAVE QUESTIONS -->
-    <section class="faq-section" aria-labelledby="faq-heading">
-      <div class="faq-section__inner">
-        <div class="faq-section__heading fade-up">
-          <h2 id="faq-heading">Frequently Asked Questions</h2>
-        </div>
-        <div class="faq-list fade-up" role="list">
-
-          <div class="faq-item" role="listitem">
-            <button class="faq-question" aria-expanded="false">
-              How do I find my local IOR representative?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Select your state on the map above to view the contact cards for your region. Each card lists the representative&#8217;s name, title, phone number, email address, and service area. For general enquiries, you can also call our national line on 1300 457 467.</div>
-            </div>
-          </div>
-
-          <div class="faq-item" role="listitem">
-            <button class="faq-question" aria-expanded="false">
-              What is a Service Area and why is no address listed?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Many of our regional and aviation representatives are field-based and do not operate from a public-facing corporate office. Rather than listing a home address or car park, we list their Service Area &#8212; the geographic region they cover. To arrange a meeting, please contact them directly by phone or email.</div>
-            </div>
-          </div>
-
-          <div class="faq-item" role="listitem">
-            <button class="faq-question" aria-expanded="false">
-              I need fuel urgently outside business hours. What should I do?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">For urgent after-hours supply emergencies, call our national support line on 1300 457 467. Our central team is available to assist with emergency supply situations.</div>
-            </div>
-          </div>
-
-          <div class="faq-item" role="listitem">
-            <button class="faq-question" aria-expanded="false">
-              How do I open an IOR account?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-answer__inner">Contact your local representative using the details above, or reach out to our national team via the Contact Us page. Our team will guide you through the account application process and connect you with the right fuel solution for your operation.</div>
-            </div>
-          </div>
-
-        </div><!-- /faq-list -->
-      </div>
-    </section>
-
     <!-- Still Have Questions? routing block -->
     <section class="faq-routing-section" aria-labelledby="faq-routing-heading">
       <div class="container">
@@ -700,8 +698,8 @@
             <p>Submit an enquiry to our local team or search our full knowledge base.</p>
           </div>
           <div class="faq-footer__actions">
-            <a href="11_Support_Hub.html" class="faq-footer__help-link" aria-label="Browse the IOR Help Centre">Browse Help Centre</a>
-            <a href="11_Support_Hub.html#contact-us" class="btn btn--outline btn--sm" aria-label="Ask IOR a question">Ask us here &rarr;</a>
+            <a href="11_Support_Hubv5.html" class="faq-footer__help-link" aria-label="Browse the IOR Help Centre">Browse Help Centre</a>
+            <a href="11a_Contact_Usv5.html" class="btn btn--outline btn--sm" aria-label="Ask IOR a question">Ask us here &rarr;</a>
           </div>
         </div>
       </div>
@@ -724,11 +722,11 @@
   <!-- Global Footer: 6-column canonical -->
   <footer class="site-footer" aria-label="Site footer">
     <div class="footer-nav-grid">
-      <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link footer-col__link--address"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Level 4, 97 Creek St, Brisbane QLD 4000</span><a href="tel:1300457467" class="footer-col__link footer-col__link--icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link footer-col__link--icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>enquiries@ior.com.au</a><a href="11b_Regional_Contactsv5.html" class="footer-col__link">Regional Contacts</a></div></div>
+      <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link footer-col__link--address"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Level 4, 97 Creek St, Brisbane QLD 4000</span><a href="tel:1300457467" class="footer-col__link footer-col__link--icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link footer-col__link--icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>enquiries@ior.com.au</a><a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Contacts</a></div></div>
       <div><div class="footer-col__title">Fuel Solutions</div><div class="footer-col__links"><a href="03_Ground_Fuels.html" class="footer-col__link">Ground Fuels</a><a href="04_Aviation.html" class="footer-col__link">Aviation</a><a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a><a href="06_Supply_Trading.html" class="footer-col__link">Supply &amp; Trading</a></div></div>
       <div><div class="footer-col__title">Digital Platforms</div><div class="footer-col__links"><a href="07a_HyDip_FMS_v4.html" class="footer-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v4.html" class="footer-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v4.html" class="footer-col__link">Customer Portal</a></div></div>
       <div><div class="footer-col__title">Corporate</div><div class="footer-col__links"><a href="09_About_IOR.html" class="footer-col__link">About IOR</a><a href="10_Careers.html" class="footer-col__link">Careers</a><a href="09d_Case_Studies.html" class="footer-col__link">Case Studies</a><a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a><a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a></div></div>
-      <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="11e_Make_Paymentv5.html" class="footer-col__link">Make a Payment</a><a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a><a href="11_Support_Hub.html" class="footer-col__link">Help Centre &amp; FAQs</a></div></div>
+      <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="11e_Make_Payment.html" class="footer-col__link">Make a Payment</a><a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a><a href="11_Support_Hub.html" class="footer-col__link">Help Centre &amp; FAQs</a></div></div>
       <div><div class="footer-col__title">Find a Site By State</div><div class="footer-state-pills"><a href="11d_Find_Location.html" class="footer-state-pill">QLD</a><a href="11d_Find_Location.html" class="footer-state-pill">NSW</a><a href="11d_Find_Location.html" class="footer-state-pill">VIC</a><a href="11d_Find_Location.html" class="footer-state-pill">SA</a><a href="11d_Find_Location.html" class="footer-state-pill">WA</a><a href="11d_Find_Location.html" class="footer-state-pill">NT</a></div></div>
     </div>
     <div class="footer-legal">
