@@ -119,6 +119,15 @@
     .canopy-hero__copy p { font-size: clamp(15px, 1.5vw, 18px); color: rgba(255,255,255,.85); max-width: 600px; margin-bottom: 32px; line-height: 1.6; }
     .canopy-hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 
+    /* ─── Network Stat Bar ────────────────────────────────────────── */
+    .stat-bar { background: var(--ior-blue); padding: clamp(24px, 3vw, 36px) var(--section-pad-x); }
+    .stat-bar__inner { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stat-item { text-align: center; padding: 0 16px; border-right: 1px solid rgba(255,255,255,.2); }
+    .stat-item:last-child { border-right: none; }
+    .stat-item__value { display: block; font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 6px; }
+    .stat-item__label { display: block; font-size: clamp(11px, 1.1vw, 13px); font-weight: 700; color: rgba(255,255,255,.75); text-transform: uppercase; letter-spacing: .06em; }
+    @media (max-width: 640px) { .stat-bar__inner { grid-template-columns: repeat(2, 1fr); } .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 16px; } .stat-item:nth-child(2n) { border-bottom: 1px solid rgba(255,255,255,.2); } .stat-item:nth-last-child(-n+2) { border-bottom: none; } }
+
     /* ─── Map Section ──────────────────────────────────────────── */
     .map-section { background: var(--grey-50); padding: clamp(40px, 5vw, 64px) var(--section-pad-x); }
     .map-section__inner { max-width: var(--container-max); margin-inline: auto; }
@@ -420,20 +429,42 @@
   </nav>
 
   <!-- Main Content -->
-  <main id="main-content">
-    <!-- ─── 1. Hero (full-width copy, navy bg) ───────────────────────────────────── -->
+  <main id="main-content">    <!-- ─── 1. Hero (full-width copy, navy bg) ───────────────────────────────────── -->
     <section class="canopy-hero" aria-labelledby="hero-heading">
       <div class="canopy-hero__inner">
         <div class="canopy-hero__copy">
           <span class="eyebrow">NATIONAL FUEL NETWORK</span>
-          <h1 id="hero-heading">Find fuel for your fleet or flight.</h1>
-          <p>Search our integrated network of 24/7 diesel truck stops and aviation refuelling locations across Australia.</p>
+          <h1 id="hero-heading">The network that never sleeps.</h1>
+          <p>115+ unmanned 24/7 diesel stops on Australia's major transport corridors. Open when you need it, built for trucks, completely cashless.</p>
           <div class="canopy-hero__ctas">
-            <a href="#" class="btn btn--white btn--lg" aria-label="Apply for an IOR account">Apply Now</a>
-            <a href="#" class="btn btn--outline-white btn--lg" aria-label="Register your interest with IOR">Register Your Interest</a>
+            <a href="#map-section" class="btn btn--white btn--lg" aria-label="Find a diesel stop">Find a Diesel Stop</a>
+            <a href="#" class="btn btn--outline-white btn--lg" aria-label="Apply for an IOR account">Apply for an Account</a>
           </div>
         </div>
-      </div>    </section>
+      </div>
+    </section>
+
+    <!-- ─── 1b. Network Stat Bar ──────────────────────────────────────────── -->
+    <div class="stat-bar" aria-label="IOR network statistics">
+      <div class="stat-bar__inner">
+        <div class="stat-item">
+          <span class="stat-item__value">115+</span>
+          <span class="stat-item__label">Diesel Stops</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__value">24/7</span>
+          <span class="stat-item__label">Automated Access</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__value">1984</span>
+          <span class="stat-item__label">Fuelling Australia Since</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__value">National</span>
+          <span class="stat-item__label">Coverage</span>
+        </div>
+      </div>
+    </div>
 
     <!-- ─── 2. Quick Links Bar ─────────────────────────────────────────────── -->    <div class="quick-links-bar" aria-label="Page quick links">
       <div class="quick-links-bar__inner">
