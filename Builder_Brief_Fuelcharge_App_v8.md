@@ -118,3 +118,19 @@
 - **Nav & Footer:** Must use the canonical Utility Shell v5 components. Do not apply Fuelcharge branding to the global header or footer.
 - **Golden Rules:** `border-radius: 0` on all cards and containers. No inline styles. No operating hours.
 - **Reference:** [Global Components Library](https://alexc-sketch.github.io/ior-prototype-v3-5/00_Global_Components.html)
+
+---
+
+## 🔧 4. ELEMENTOR AGENCY HANDOFF NOTES
+
+These items are prototype placeholders in the HTML build. Each must be replaced before go-live in Elementor.
+
+| Item | Prototype State | Elementor Action Required |
+|---|---|---|
+| **YouTube — Tab 1** | Placeholder ID `VIDEO_ID_1` | Replace with the real YouTube video ID for *Introducing Fuelcharge* |
+| **YouTube — Tab 2** | Placeholder ID `VIDEO_ID_2` | Replace with the real YouTube video ID for *How to use the Fuelcharge Payment Terminal* |
+| **QR Code** | Inline SVG placeholder pattern | Replace with a real scannable Fuelcharge download QR code — use the Elementor QR Code widget or an ACF image field |
+| **App Store link** | `href="#"` | Replace with the real iOS App Store URL for Fuelcharge |
+| **Google Play link** | `href="#"` | Replace with the real Google Play Store URL for Fuelcharge |
+| **Flip Cards** | CSS 3D `perspective` / `rotateY` hover | Implement using the Elementor **Flip Box** widget. Override `border-radius` to `0` in the widget Advanced CSS. Do not use the default rounded style. |
+| **Fuelcharge branding boundary** | `#13114D` and `#00D1CC` applied to page body sections only | Global nav (utility bar, primary nav, mobile drawer) and footer must remain canonical IOR colours — do not apply Fuelcharge brand colours to these components |
