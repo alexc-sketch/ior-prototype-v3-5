@@ -22,9 +22,11 @@ This page must be built using the new `IOR_Utility_Template_Shell_v5.html` as th
 
 ## 2. SEO & Meta Data
 
+- **Staging Link:** `https://alexc-sketch.github.io/ior-prototype-v3-5/11d_Find_Locationv5.html`
 - **Meta Title:** Find an IOR Diesel Stop or Airport | IOR
 - **Meta Description:** Find your nearest IOR diesel stop or aviation fuel location. 115+ diesel sites and 32+ airports across Australia. Search by location or corridor.
-- **Target Keywords:** Find IOR diesel stop, aviation fuel locations Australia, IOR network map, fuel near me.
+- **Focus Keyword:** Find IOR diesel stop
+- **Secondary Keywords:** aviation fuel locations Australia, IOR network map, fuel near me
 
 ---
 
@@ -32,14 +34,21 @@ This page must be built using the new `IOR_Utility_Template_Shell_v5.html` as th
 
 *(Auditor: Please ensure the builder matches this exact top-to-bottom component flow)*
 
-### 1. Minimal Utility Hero
-- **Style:** Solid brand color (`var(--ior-navy)`).
-- **Eyebrow:** NETWORK LOCATOR
-- **H1:** Find an IOR Location.
-- **Subcopy:** Search for diesel stops, aviation fuel sites, depots, and offices near you.
-- **CTAs (2 Buttons):**
-  - Primary Button: Apply Now (Links to account application)
-  - Outline White Button: Register Your Interest
+### 1. Utility Hero — "Canopy Overhang" Treatment
+- **Style:** Solid brand color (`var(--ior-navy)`) background.
+- **Layout:** 2-column split (Left: Copy, Right: Map Overlay + Image).
+- **Left Column (Copy):**
+  - **Eyebrow:** NATIONAL FUEL NETWORK
+  - **H1:** Find fuel for your fleet or flight.
+  - **Subcopy:** Search our integrated network of 24/7 diesel truck stops and aviation refuelling locations across Australia.
+  - **CTAs (2 Buttons):**
+    - Primary Button: Apply Now (Links to account application)
+    - Outline White Button: Register Your Interest
+- **Right Column (Map Overlay):**
+  - Use `assets/icons/Map2.svg` (Australia map with white dots) as a decorative background graphic or positioned element behind the hero image.
+- **Hero Image (Canopy Overhang):**
+  - Use `assets/images/Charlton-HERO-IORcopy.webp`.
+  - **Crucial Design Detail:** The image must be positioned using negative margin (e.g., `margin-bottom: -80px`) or absolute positioning so that the canopy roof physically "sticks out" and overlaps the section below it. This breaks the boxed-in feel and adds depth.
 
 ### 2. Quick Links Bar ("Explore:")
 - **Style:** The standard sticky horizontal link bar.
@@ -68,43 +77,45 @@ window.loadStorepoint=function(){new StorepointWidget('169b243d6de664','#storepo
 - **Layout:** A clean 2-column grid (`grid-template-columns: 1fr 1fr`) sitting below the map. Do not include the State links.
 
 **Card 1: Fuelcharge (Pay at the Pump)**
-- **Icon:** 📱
+- **Branding:** Use official Fuelcharge branding (dark `#1A1A2E` background, orange `#FF6B2B` accents).
+- **Eyebrow:** FUELCHARGE
 - **H4:** Pay at the Pump
 - **Copy:** Download Fuelcharge to find sites, unlock pumps, and pay — no account required.
-- **CTAs:** ⬇ App Store | ⬇ Google Play | Learn More →
+- **CTAs:** ⬇ App Store | ⬇ Google Play | Learn More → (Ghost/Text Link)
 
 **Card 2: Fleet Account**
-- **Icon:** 💳
+- **Eyebrow:** CUSTOMER PORTAL
 - **H4:** Open a Fleet Account
 - **Copy:** Get volume pricing, consolidated invoicing, and dedicated account support for your fleet.
 - **CTA:** Apply for an Account →
 
-### 5. Direct Download Strip (Dual Assets)
-- **Layout:** Use a dark background strip (`var(--ior-navy)` or `var(--s800)`) with a split 2-column layout to house the two directory downloads.
-- **Auditor Note:** Per client revision, these are **direct, minimalistic downloads**. Do NOT use a HubSpot form or gated modal. Link directly to the PDF files provided in the repository.
+### 5. Gated Download Strip (Dual Assets)
+- **Layout:** Use a dark background strip (`var(--ior-navy)`) with a split 2-column layout to house the two directory downloads.
+- **Auditor Note:** These are **gated downloads**. Do NOT link directly to PDFs. The buttons must trigger a HubSpot form (use `href="#"` and a `<!-- HUBSPOT FORM TRIGGER -->` comment for the builder).
 
 **Asset 1 (Left):**
+- **Icon:** Full fuel pump SVG (`assets/icons/icon-fuel-pump.svg`)
 - **Title:** Diesel Network Directory
 - **Subcopy:** Download the complete guide including all 24/7 truck stop locations, B-double access, and amenities.
-- **Asset ID:** IOR-MAR-BRO-0232
-- **CTA:** Download Diesel Directory ↓ (Links directly to `IOR-MAR-BRO-0232-Diesel-Network-Directory_v20260203.pdf` with `target="_blank"`)
+- **CTA:** Download Diesel Directory ↓ (Triggers HubSpot Form)
 
 **Asset 2 (Right):**
+- **Icon:** Airplane SVG (`assets/icons/icon-airplane.svg`)
 - **Title:** Aviation Network Directory
 - **Subcopy:** Download the complete aviation location list including Jet A-1, Avgas, and into-plane service availability.
-- **Asset ID:** IOR-MAR-BRO-0332
-- **CTA:** Download Aviation Directory ↓ (Links directly to `IOR-MAR-BRO-0332-Aviation-Network-Directory_v20250812-1.pdf` with `target="_blank"`)
+- **CTA:** Download Aviation Directory ↓ (Triggers HubSpot Form)
 
 ### 6. FAQ Accordion
 - **Style:** Inject the standard Global FAQ accordion component here.
-- **Content:** Populate with 3-4 map-specific questions (e.g., "How do I filter for Truck Wash sites?", "Does the map show live fuel outages?").
+- **Content:** Populate with 4 map-specific questions (e.g., "How do I filter for Truck Wash sites?", "Can I access IOR locations without a fleet account?").
 
 ### 7. Global Footer
-- **Style:** Append the standard v4.0 6-column global footer.
+- **Style:** Append the canonical v5 6-column global footer (from `11a_Contact_Usv5.html`).
 
 ---
 
 ## 4. Asset Checklist for Builder
 - [x] Storepoint HTML snippet provided in brief.
-- [x] Direct Asset PDFs provided in repo (`IOR-MAR-BRO-0232-Diesel-Network-Directory_v20260203.pdf` and `IOR-MAR-BRO-0332-Aviation-Network-Directory_v20250812-1.pdf`).
+- [x] Hero Image: `assets/images/Charlton-HERO-IORcopy.webp`
+- [x] Map Overlay: `assets/icons/Map2.svg`
 - [x] Base Template to Duplicate/Use: `IOR_Utility_Template_Shell_v5.html`
