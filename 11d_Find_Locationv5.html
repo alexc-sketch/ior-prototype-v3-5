@@ -63,7 +63,9 @@
     .nav-link:hover, .nav-link[aria-expanded="true"] { color: var(--ior-blue); }
     .nav-link__chevron { width: 14px; height: 14px; transition: transform .2s ease; }
     .nav-link[aria-expanded="true"] .nav-link__chevron { transform: rotate(180deg); }
-    .nav-cta { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .nav-ctas { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .btn--outline { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+    .btn--outline:hover { background: var(--ior-blue); color: #fff; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--charcoal); border-radius: 0; transition: transform .3s ease, opacity .3s ease; }
 
@@ -109,13 +111,19 @@
     .quick-links-bar__link { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; font-size: 13px; font-weight: 600; color: var(--ior-blue); border: 1px solid rgba(3,85,163,.2); background: #fff; transition: background var(--transition-base), border-color var(--transition-base); white-space: nowrap; }
     .quick-links-bar__link:hover { background: var(--ior-light); border-color: var(--ior-blue); }
 
-    /* ─── Utility Hero ───────────────────────────────────────────────────── */
-    .utility-hero { background: var(--ior-navy); padding: clamp(48px, 7vw, 80px) var(--section-pad-x); }
-    .utility-hero__inner { max-width: var(--content-max); margin-inline: auto; }
-    .utility-hero .eyebrow { color: var(--ior-sky); margin-bottom: 12px; }
-    .utility-hero h1 { font-size: clamp(28px, 4vw, 52px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 16px; }
-    .utility-hero p { font-size: clamp(15px, 1.5vw, 18px); color: rgba(255,255,255,.85); max-width: 640px; margin-bottom: 28px; }
-    .utility-hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    /* ─── Canopy Overhang Hero ──────────────────────────────────────────── */
+    .canopy-hero { background: var(--ior-navy); overflow: visible; position: relative; }
+    .canopy-hero__inner { max-width: var(--container-max); margin-inline: auto; padding: clamp(48px, 7vw, 80px) var(--section-pad-x) 0; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: flex-end; }
+    .canopy-hero__copy { padding-bottom: clamp(48px, 7vw, 80px); }
+    .canopy-hero__copy .eyebrow { color: var(--ior-sky); margin-bottom: 12px; }
+    .canopy-hero__copy h1 { font-size: clamp(28px, 4vw, 56px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 20px; }
+    .canopy-hero__copy p { font-size: clamp(15px, 1.5vw, 18px); color: rgba(255,255,255,.85); max-width: 520px; margin-bottom: 32px; line-height: 1.6; }
+    .canopy-hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .canopy-hero__visual { position: relative; display: flex; align-items: flex-end; justify-content: center; overflow: visible; }
+    .canopy-hero__map { position: absolute; right: 0; bottom: 0; width: 80%; opacity: 0.18; pointer-events: none; }
+    .canopy-hero__map img { width: 100%; height: auto; }
+    .canopy-hero__photo { position: relative; z-index: 2; margin-bottom: -80px; width: 100%; max-width: 560px; }
+    .canopy-hero__photo img { width: 100%; height: auto; display: block; }
 
     /* ─── Map Mode Switcher ──────────────────────────────────────────────── */
     .map-mode-bar { background: #fff; border-bottom: 1px solid var(--grey-200); padding: 0 var(--section-pad-x); }
@@ -125,7 +133,7 @@
     .map-mode-btn.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
 
     /* ─── Map Section ────────────────────────────────────────────────────── */
-    .map-section { background: var(--grey-50); padding-bottom: clamp(40px, 5vw, 64px); }
+    .map-section { background: var(--grey-50); padding-top: clamp(80px, 10vw, 120px); padding-bottom: clamp(40px, 5vw, 64px); }
     .map-section__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--section-pad-x); }
     .map-container { width: 100%; min-height: 520px; background: var(--grey-100); border: 1px solid var(--grey-200); overflow: hidden; }
     .map-container #storepoint-widget { width: 100%; min-height: 520px; }
@@ -234,12 +242,18 @@
 
     /* ─── Responsive ─────────────────────────────────────────────────────── */
     @media (max-width: 1024px) {
-      .nav-links, .nav-cta { display: none; }
+      .nav-links { display: none; }
+      .nav-ctas .btn:not(.hamburger) { display: none; }
       .hamburger { display: flex; }
       .footer-nav-grid { grid-template-columns: repeat(6, 1fr); }
     }
-    @media (max-width: 768px) { .utility-hero__ctas { flex-direction: column; } }
-    @media (max-width: 640px) { .footer-nav-grid { grid-template-columns: repeat(6, 1fr); } }
+    @media (max-width: 900px) {
+      .canopy-hero__inner { grid-template-columns: 1fr; }
+      .canopy-hero__visual { display: none; }
+      .canopy-hero__copy { padding-bottom: clamp(40px, 6vw, 64px); }
+    }
+    @media (max-width: 768px) { .canopy-hero__ctas { flex-direction: column; } }
+    @media (max-width: 640px) { .footer-nav-grid { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
@@ -308,8 +322,9 @@
         </button>
         <a href="11_Support_Hubv5.html" class="nav-link">Support</a>
       </div>
-      <div class="nav-cta">
-        <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--pill btn--sm">Get in Touch</a>
+      <div class="nav-ctas">
+        <a href="#" class="btn btn--outline btn--pill btn--sm" aria-label="Customer Login">Customer Login</a>
+        <a href="#" class="btn btn--primary btn--pill btn--sm" aria-label="Apply for an Account">Apply for an Account</a>
       </div>
       <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
         <span></span><span></span><span></span>
@@ -428,22 +443,34 @@
   </nav>
 
   <!-- Main Content -->
-  <main id="main-content">
-
-    <!-- ─── 1. Minimal Utility Hero ──────────────────────────────────────── -->
-    <section class="utility-hero" aria-labelledby="hero-heading">
-      <div class="utility-hero__inner">
-        <p class="eyebrow">NATIONAL FUEL NETWORK</p>
-        <h1 id="hero-heading">Find fuel for your fleet or flight.</h1>
-        <p>Search our integrated network of 24/7 diesel truck stops and aviation refuelling locations across Australia.</p>
-        <div class="utility-hero__ctas">
-          <a href="#" class="btn btn--white btn--lg">Apply Now</a>
-          <a href="#" class="btn btn--outline-white btn--lg">Register Your Interest</a>
+  <main id="main-content">    <!-- ─── 1. Canopy Overhang Hero (2-col split, navy bg) ─────────────────────── -->
+    <!-- ELEMENTOR NOTE: margin-bottom: -80px on .canopy-hero__photo creates the canopy overhang -->
+    <!-- The photo physically overlaps the section below, breaking the boxed-in feel -->
+    <section class="canopy-hero" aria-labelledby="hero-heading">
+      <div class="canopy-hero__inner">
+        <!-- Left: Copy -->
+        <div class="canopy-hero__copy">
+          <span class="eyebrow">NATIONAL FUEL NETWORK</span>
+          <h1 id="hero-heading">Find fuel for your fleet or flight.</h1>
+          <p>Search our integrated network of 24/7 diesel truck stops and aviation refuelling locations across Australia.</p>
+          <div class="canopy-hero__ctas">
+            <a href="#" class="btn btn--white btn--lg" aria-label="Apply for an IOR account">Apply Now</a>
+            <a href="#" class="btn btn--outline-white btn--lg" aria-label="Register your interest with IOR">Register Your Interest</a>
+          </div>
+        </div>
+        <!-- Right: Map overlay + Canopy image -->
+        <!-- Map2.svg sits behind the photo as a decorative element -->
+        <!-- Charlton-HERO-IORcopy.webp uses margin-bottom: -80px to overhang the next section -->
+        <div class="canopy-hero__visual" aria-hidden="true">
+          <div class="canopy-hero__map">
+            <img src="assets/icons/Map2.svg" alt="" aria-hidden="true" loading="eager">
+          </div>
+          <div class="canopy-hero__photo">
+            <img src="assets/images/Charlton-HERO-IORcopy.webp" alt="IOR Charlton fuel stop — canopy overhang" loading="eager" width="960" height="411">
+          </div>
         </div>
       </div>
-    </section>
-
-    <!-- ─── 2. Quick Links Bar ───────────────────────────────────────────── -->
+    </section><!-- ─── 2. Quick Links Bar ───────────────────────────────────────────── -->
     <div class="quick-links-bar" aria-label="Page quick links">
       <div class="quick-links-bar__inner">
         <span class="quick-links-bar__label">Explore:</span>
