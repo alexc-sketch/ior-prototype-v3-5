@@ -503,6 +503,40 @@
     .footer-col__links--pb { padding-bottom: 12px; }
     .footer-col__link--block { display: block; }
     .footer-mobile-legal { padding: 16px 0; border-top: 1px solid rgba(255,255,255,.2); margin-top: 8px; }
+    /* Fix A/B — annotation block inline styles extracted to classes */
+    .ann-wrap { background:#f7f9fc; padding:16px var(--section-pad-x); }
+    .ann-box { background:#fff; border:2px dashed var(--ior-mid-grey); }
+    .ann-box--narrow { max-width:700px; }
+    .ann-box--narrower { max-width:640px; }
+    .ann-box--mobile { max-width:380px; }
+    .ann-bar { background:rgba(3,85,163,.06); padding:6px 16px; font-family:'Courier New',monospace; font-size:10px; color:var(--ior-mid-grey); }
+    .ann-mega-panel { position:relative; top:auto; box-shadow:none; border-top:3px solid var(--ior-blue); }
+    .ann-footer-label { font-family:'Courier New',monospace; font-size:10px; color:var(--ior-mid-grey); padding-right:16px; align-self:center; }
+    .ann-cta-gold { background:var(--aviation-gold); }
+    .ann-title--teal { color:var(--ior-teal); border-bottom-color:var(--ior-teal); }
+    .ann-cta--teal { color:var(--ior-teal); }
+    .ann-col-desc { font-size:var(--text-body-s); color:var(--ior-mid-grey); margin-bottom:12px; }
+    .ann-phone-border { margin-top:16px; padding-top:16px; border-top:1px solid var(--border-color-light); }
+    .ann-gold-label { font-size:10px; font-weight:400; color:var(--aviation-gold); font-family:'Courier New',monospace; }
+    .ann-mobile-bar { background:#fff; padding:0 20px; display:flex; align-items:center; justify-content:space-between; height:60px; border-bottom:1px solid rgba(3,85,163,.1); }
+    .ann-mobile-logo { width:70px; height:33px; font-size:10px; }
+    .ann-mobile-logo--light { background:rgba(255,255,255,.1); color:rgba(255,255,255,.7); }
+    .ann-mobile-drawer { border-top:2px solid var(--ior-blue); }
+    .ann-mobile-footer { background:rgba(3,85,163,.06); padding:6px 16px; font-family:'Courier New',monospace; font-size:10px; color:var(--ior-mid-grey); }
+    .ann-ok-note { background:#fff3cd; border-color:#f5a623; }
+    /* Fix C — Fuelcharge QA bar arrow color */
+    .btn__arrow--dark { border-color:#13114D; }
+    /* Fix B — remaining annotation block inline styles */
+    .ann-mobile-footer-wrap { background:#f7f9fc; padding:16px var(--section-pad-x); }
+    .ann-mobile-footer-inner { max-width:380px; background:var(--ior-blue); padding:20px 20px 0; }
+    .ann-mobile-footer-label { font-family:'Courier New',monospace; font-size:10px; color:rgba(255,255,255,.4); padding-bottom:12px; }
+    .ann-mobile-footer-note { background:rgba(3,85,163,.06); padding:6px; font-family:'Courier New',monospace; font-size:10px; color:rgba(255,255,255,.4); }
+    .ann-variants-wrap { background:#f7f9fc; padding:16px var(--section-pad-x) 40px; }
+    .ann-variants-inner { display:flex; flex-direction:column; gap:4px; max-width:900px; }
+    .ann-drawer-logo { width:70px; height:33px; font-size:10px; background:rgba(255,255,255,.1); color:rgba(255,255,255,.7); }
+    .ann-badge-label { font-size:12px; color:var(--ior-mid-grey); font-family:'Courier New',monospace; }
+    .cs-row--gap { gap:10px; align-items:center; }
+    .cs-row--gap-mt { gap:10px; align-items:center; margin-top:4px; }
     .hero__content {
       position: relative; z-index: 2; display: flex; flex-direction: column;
       gap: clamp(24px,4vw,50px); max-width: 640px;
@@ -994,12 +1028,12 @@
   <div class="utility-bar" role="complementary" aria-label="Utility navigation">
     <span class="utility-bar__announce">Announcement Message Placeholder</span>
     <div class="utility-bar__actions">
-      <a href="11d_Find_Location.html" class="utility-bar__link">
+      <a href="11d_Find_Locationv5.html" class="utility-bar__link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Find a Location
       </a>
       <div class="utility-bar__divider" aria-hidden="true"></div>
-      <a href="11e_Make_Payment.html" class="utility-bar__link">
+      <a href="11e_Make_Paymentv5.html" class="utility-bar__link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
         Make a Payment
       </a>
@@ -1201,7 +1235,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
   </nav>
 </header>
@@ -1225,26 +1258,26 @@
   <span class="ann__sep">·</span>
   <span class="ann__int">INTENT: Routes Revenue Engine persona directly to capability spokes. Aviation column uses --aviation-gold (#D98300) per sub-brand governance. "Find a Diesel Stop" and "Find an Airport" are CTA links (not plain links) — use Max Mega Menu custom item styling. See developer note above.</span>
 </div>
-<div class="ann ann--ok" style="background:#fff3cd;border-color:#f5a623;">
+<div class="ann ann--ok ann-ok-note">
   <span class="ann__id">DEVELOPER NOTE — MAX MEGA MENU</span>
   <span class="ann__sep">·</span>
   <span class="ann__desc">This panel is implemented via Max Mega Menu (megamenu.com). Configure: 4-column tabbed layout, Aviation column = gold header color. "Find a Diesel Stop" and "Find an Airport" = custom item type "CTA Button". Full config in megamenu.com docs → Elementor widget → Custom Item Styling.</span>
 </div>
-<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
-  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
-    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — FUEL SOLUTIONS — triggered by hover/click on "Fuel Solutions" nav item</div>
-    <div class="mega-panel mega-panel--visible" style="position:relative;top:auto;box-shadow:none;border-top:3px solid var(--ior-blue);">
+<div class="ann-wrap">
+  <div class="ann-box">
+    <div class="ann-bar">MEGA MENU — FUEL SOLUTIONS — triggered by hover/click on "Fuel Solutions" nav item</div>
+    <div class="mega-panel mega-panel--visible ann-mega-panel">
       <div class="mega-grid mega-grid--4">
         <!-- Column 1: Ground Fuels -->
         <div class="mega-col">
           <div class="mega-col__title">Ground Fuels</div>
           <div class="mega-col__links">
-            <a href="03_Ground_Fuels.html#diesel-network"    class="mega-col__link"><span class="mi">⛽</span>IOR Diesel Network</a>
-            <a href="03_Ground_Fuels.html#onsite-refuelling" class="mega-col__link"><span class="mi">🚛</span>On-Site Refuelling</a>
-            <a href="03_Ground_Fuels.html#bulk-diesel"       class="mega-col__link"><span class="mi">🔄</span>Bulk Diesel Delivery</a>
-            <a href="03_Ground_Fuels.html#hyblue"            class="mega-col__link"><span class="mi">🟦</span>HyBlue™ (AdBlue®)</a>
-            <a href="03_Ground_Fuels.html#oils-lubricants"   class="mega-col__link"><span class="mi">🛢️</span>Oils &amp; Lubricants</a>
-            <a href="11d_Find_Location.html" class="mega-col__link map-action"><span class="mi">📍</span>Find a Diesel Stop</a>
+            <a href="03_Ground_Fuels.html#diesel-network"    class="mega-col__link">IOR Diesel Network</a>
+            <a href="03_Ground_Fuels.html#onsite-refuelling" class="mega-col__link">On-Site Refuelling</a>
+            <a href="03_Ground_Fuels.html#bulk-diesel"       class="mega-col__link">Bulk Diesel Delivery</a>
+            <a href="03_Ground_Fuels.html#hyblue"            class="mega-col__link">HyBlue&#8482; (AdBlue&#174;)</a>
+            <a href="03_Ground_Fuels.html#oils-lubricants"   class="mega-col__link">Oils &amp; Lubricants</a>
+            <a href="11d_Find_Locationv5.html" class="mega-col__link map-action">Find a Diesel Stop</a>
             <a href="03_Ground_Fuels.html" class="mega-col__link mega-col__link--cta">Explore Ground Fuels</a>
           </div>
         </div>
@@ -1252,14 +1285,14 @@
         <div class="mega-col">
           <div class="mega-col__title mega-col__title--gold">
             Aviation
-            <span style="font-size:10px;font-weight:400;color:var(--aviation-gold);font-family:'Courier New',monospace;">[GOLD — #D98300]</span>
+            <span class="ann-gold-label">[GOLD — #D98300]</span>
           </div>
           <div class="mega-col__links">
-            <a href="04_Aviation.html#aviation-network"  class="mega-col__link"><span class="mi">✈️</span>IOR Aviation Network</a>
-            <a href="04_Aviation.html#airport-fuelling"  class="mega-col__link"><span class="mi">🛫</span>Airport Fuelling Services</a>
-            <a href="04_Aviation.html#aviation-bulk"     class="mega-col__link"><span class="mi">🚁</span>Aviation Bulk Delivery</a>
-            <a href="04_Aviation.html#aviation-oils"     class="mega-col__link"><span class="mi">🧴</span>Aviation Oils &amp; Lubricants</a>
-            <a href="11d_Find_Location.html" class="mega-col__link map-action map-action--gold"><span class="mi">📍</span>Find an Airport</a>
+            <a href="04_Aviation.html#aviation-network"  class="mega-col__link">IOR Aviation Network</a>
+            <a href="04_Aviation.html#airport-fuelling"  class="mega-col__link">Airport Fuelling Services</a>
+            <a href="04_Aviation.html#aviation-bulk"     class="mega-col__link">Aviation Bulk Delivery</a>
+            <a href="04_Aviation.html#aviation-oils"     class="mega-col__link">Aviation Oils &amp; Lubricants</a>
+            <a href="11d_Find_Locationv5.html" class="mega-col__link map-action map-action--gold">Find an Airport</a>
             <a href="04_Aviation.html" class="mega-col__link mega-col__link--cta mega-col__link--cta-gold">Explore Aviation</a>
           </div>
         </div>
@@ -1267,8 +1300,8 @@
         <div class="mega-col">
           <div class="mega-col__title">Equipment &amp; Infrastructure</div>
           <div class="mega-col__links">
-            <a href="05_Equipment_Infrastructure.html#fuel-storage-tanks" class="mega-col__link"><span class="mi">&#x1F3D7;</span>Fuel Storage Tanks</a>
-            <a href="05_Equipment_Infrastructure.html#frac-tanks"         class="mega-col__link"><span class="mi">&#x1F527;</span>Frac Tanks</a>
+            <a href="05_Equipment_Infrastructure.html#fuel-storage-tanks" class="mega-col__link">Fuel Storage Tanks</a>
+            <a href="05_Equipment_Infrastructure.html#frac-tanks"         class="mega-col__link">Frac Tanks</a>
             <a href="05_Equipment_Infrastructure.html" class="mega-col__link mega-col__link--cta">Explore Equipment &amp; Infrastructure</a>
           </div>
         </div>
@@ -1283,13 +1316,11 @@
           </div>
         </div>
         <div class="mega-footer">
-          <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);padding-right:16px;align-self:center;">FOOTER CTA LINKS (Max Mega Menu custom item type — not plain links):</div>
-          <a href="11d_Find_Location.html" class="mega-cta-link">
-            <span style="font-size:14px;" aria-hidden="true">📍</span>
+          <div class="ann-footer-label">FOOTER CTA LINKS (Max Mega Menu custom item type — not plain links):</div>
+          <a href="11d_Find_Locationv5.html" class="mega-cta-link">
             Find a Diesel Stop
           </a>
-          <a href="11d_Find_Location.html" class="mega-cta-link" style="background:var(--aviation-gold);">
-            <span style="font-size:14px;" aria-hidden="true">📍</span>
+          <a href="11d_Find_Locationv5.html" class="mega-cta-link ann-cta-gold">
             Find an Airport
           </a>
         </div>
@@ -1306,38 +1337,38 @@
   <span class="ann__sep">·</span>
   <span class="ann__int">INTENT: Separates HyDip and Customer Portal as distinct products per V2 direction document. Positions IOR as SaaS competitor against SmartFill and Fuellox. Fuelcharge column targets Utility User persona (no login required).</span>
 </div>
-<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
-  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
-    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — DIGITAL PLATFORMS</div>
-    <div class="mega-panel mega-panel--visible" style="position:relative;top:auto;box-shadow:none;border-top:3px solid var(--ior-blue);">
+<div class="ann-wrap">
+  <div class="ann-box">
+    <div class="ann-bar">MEGA MENU — DIGITAL PLATFORMS</div>
+    <div class="mega-panel mega-panel--visible ann-mega-panel">
       <div class="mega-grid mega-grid--3">
         <div class="mega-col">
-          <div class="mega-col__title">💻 HyDip™ Fuel Management System</div>
-          <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:12px;">Real-time tank monitoring, automated reorder triggers, and compliance reporting.</p>
+          <div class="mega-col__title">HyDip&#8482; Fuel Management System</div>
+          <p class="ann-col-desc">Real-time tank monitoring, automated reorder triggers, and compliance reporting.</p>
           <div class="mega-col__links">
-            <a href="07_Digital_Platforms.html#hydip" class="mega-col__link"><span class="mi">💻</span>About HyDip™ FMS</a>
-            <a href="https://www.hydip.com/accounts/login/" class="mega-col__link" target="_blank" rel="noopener"><span class="mi">🔑</span>Sign In to HyDip</a>
-            <a href="https://status.hydip.com/" class="mega-col__link" target="_blank" rel="noopener"><span class="mi">🟢</span>Server Status</a>
+            <a href="07_Digital_Platforms.html#hydip" class="mega-col__link">About HyDip&#8482; FMS</a>
+            <a href="https://www.hydip.com/accounts/login/" class="mega-col__link" target="_blank" rel="noopener noreferrer">Sign In to HyDip</a>
+            <a href="https://status.hydip.com/" class="mega-col__link" target="_blank" rel="noopener noreferrer">Server Status</a>
             <a href="07_Digital_Platforms.html#hydip" class="mega-col__link mega-col__link--cta">Learn More →</a>
           </div>
         </div>
         <div class="mega-col">
-          <div class="mega-col__title" style="color:var(--ior-teal);border-bottom-color:var(--ior-teal);">📱 Fuelcharge</div>
-          <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:12px;">No account required. Pay at the pump at IOR diesel stops and regional airstrips.</p>
+          <div class="mega-col__title ann-title--teal">Fuelcharge</div>
+          <p class="ann-col-desc">No account required. Pay at the pump at IOR diesel stops and regional airstrips.</p>
           <div class="mega-col__links">
-            <a href="07_Digital_Platforms.html#fuelcharge" class="mega-col__link"><span class="mi">📱</span>About Fuelcharge</a>
-            <a href="#" class="mega-col__link"><span class="mi">📲</span>Download App (iOS)</a>
-            <a href="#" class="mega-col__link"><span class="mi">📲</span>Download App (Android)</a>
-            <a href="07_Digital_Platforms.html#fuelcharge" class="mega-col__link mega-col__link--cta" style="color:var(--ior-teal);">Learn More →</a>
+            <a href="07_Digital_Platforms.html#fuelcharge" class="mega-col__link">About Fuelcharge</a>
+            <a href="#" class="mega-col__link">Download App (iOS)</a>
+            <a href="#" class="mega-col__link">Download App (Android)</a>
+            <a href="07_Digital_Platforms.html#fuelcharge" class="mega-col__link mega-col__link--cta ann-cta--teal">Learn More &rarr;</a>
           </div>
         </div>
         <div class="mega-col">
-          <div class="mega-col__title">🔑 Customer Portal</div>
-          <p style="font-size:var(--text-body-s);color:var(--ior-mid-grey);margin-bottom:12px;">Real-time fuel visibility, fraud prevention, and account management for IOR customers.</p>
+          <div class="mega-col__title">Customer Portal</div>
+          <p class="ann-col-desc">Real-time fuel visibility, fraud prevention, and account management for IOR customers.</p>
           <div class="mega-col__links">
-            <a href="07_Digital_Platforms.html#customer-portal" class="mega-col__link"><span class="mi">🌐</span>About the Portal</a>
-            <a href="#" class="mega-col__link"><span class="mi">🔑</span>Login Now</a>
-            <a href="#" class="mega-col__link"><span class="mi">✅</span>Apply for an Account</a>
+            <a href="07_Digital_Platforms.html#customer-portal" class="mega-col__link">About the Portal</a>
+            <a href="#" class="mega-col__link">Login Now</a>
+            <a href="#" class="mega-col__link">Apply for an Account</a>
             <a href="07_Digital_Platforms.html#customer-portal" class="mega-col__link mega-col__link--cta">Learn More →</a>
           </div>
         </div>
@@ -1354,27 +1385,27 @@
   <span class="ann__sep">·</span>
   <span class="ann__int">INTENT: Empathy Hub — Revenue Engine persona self-segments by industry before reaching product spokes. Secondary SEO keyword capture via industry-specific URL structure.</span>
 </div>
-<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
-  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
-    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — INDUSTRIES WE SERVE</div>
-    <div class="mega-panel mega-panel--visible" style="position:relative;top:auto;box-shadow:none;border-top:3px solid var(--ior-blue);">
-      <div class="mega-grid mega-grid--2" style="max-width:700px;">
+<div class="ann-wrap">
+  <div class="ann-box">
+    <div class="ann-bar">MEGA MENU — INDUSTRIES WE SERVE</div>
+    <div class="mega-panel mega-panel--visible ann-mega-panel">
+      <div class="mega-grid mega-grid--2 ann-box--narrow">
         <div class="mega-col">
           <div class="mega-col__title">Industries We Serve</div>
           <div class="mega-col__links">
-            <a href="08_Industries.html#transport-logistics" class="mega-col__link"><span class="mi">🚛</span>Transport &amp; Logistics</a>
-            <a href="08_Industries.html#mining"             class="mega-col__link"><span class="mi">⛏️</span>Mining &amp; Resources</a>
-            <a href="08_Industries.html#agriculture"        class="mega-col__link"><span class="mi">🌾</span>Agriculture &amp; Harvest</a>
-            <a href="08_Industries.html#construction"       class="mega-col__link"><span class="mi">🏗️</span>Construction &amp; Civil</a>
+            <a href="08_Industries.html#transport-logistics" class="mega-col__link">Transport &amp; Logistics</a>
+            <a href="08_Industries.html#mining"             class="mega-col__link">Mining &amp; Resources</a>
+            <a href="08_Industries.html#agriculture"        class="mega-col__link">Agriculture &amp; Harvest</a>
+            <a href="08_Industries.html#construction"       class="mega-col__link">Construction &amp; Civil</a>
           </div>
         </div>
         <div class="mega-col">
           <div class="mega-col__title">&nbsp;</div>
           <div class="mega-col__links">
-            <a href="08_Industries.html#government-defence"  class="mega-col__link"><span class="mi">🛡️</span>Government &amp; Defence</a>
-            <a href="08_Industries.html#livestock"           class="mega-col__link"><span class="mi">🐄</span>Livestock</a>
-            <a href="08_Industries.html#commercial-aviation" class="mega-col__link"><span class="mi">✈️</span>Commercial Aviation</a>
-            <a href="08_Industries.html#oil-gas"             class="mega-col__link"><span class="mi">🛢️</span>Oil &amp; Gas</a>
+            <a href="08_Industries.html#government-defence"  class="mega-col__link">Government &amp; Defence</a>
+            <a href="08_Industries.html#livestock"           class="mega-col__link">Livestock</a>
+            <a href="08_Industries.html#commercial-aviation" class="mega-col__link">Commercial Aviation</a>
+            <a href="08_Industries.html#oil-gas"             class="mega-col__link">Oil &amp; Gas</a>
           </div>
         </div>
         <div class="mega-footer">
@@ -1393,27 +1424,27 @@
   <span class="ann__sep">·</span>
   <span class="ann__int">INTENT: Authority Hub — Stonepeak-backed scale proof for Revenue Engine persona evaluating tender. Case Studies elevated to primary trust-building tool, not buried in blog. Careers routes Candidate persona from social media entry.</span>
 </div>
-<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
-  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
-    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — ABOUT IOR</div>
-    <div class="mega-panel mega-panel--visible" style="position:relative;top:auto;box-shadow:none;border-top:3px solid var(--ior-blue);">
-      <div class="mega-grid mega-grid--2" style="max-width:640px;">
+<div class="ann-wrap">
+  <div class="ann-box">
+    <div class="ann-bar">MEGA MENU — ABOUT IOR</div>
+    <div class="mega-panel mega-panel--visible ann-mega-panel">
+      <div class="mega-grid mega-grid--2 ann-box--narrower">
         <div class="mega-col">
           <div class="mega-col__title">About IOR</div>
           <div class="mega-col__links">
-            <a href="09_About_IOR.html"          class="mega-col__link"><span class="mi">🏢</span>About IOR</a>
-            <a href="09a_Our_Leadership.html"     class="mega-col__link"><span class="mi">👥</span>Our Leadership</a>
-            <a href="09_About_IOR.html#community"      class="mega-col__link"><span class="mi">🤝</span>Community &amp; Giving Back</a>
-            <a href="09c_Sustainability.html" class="mega-col__link"><span class="mi">🌿</span>Sustainability, HSE &amp; ESG</a>
+            <a href="09_About_IOR.html"          class="mega-col__link">About IOR</a>
+            <a href="09a_Our_Leadership.html"     class="mega-col__link">Our Leadership</a>
+            <a href="09_About_IOR.html#community"      class="mega-col__link">Community &amp; Giving Back</a>
+            <a href="09c_Sustainability.html" class="mega-col__link">Sustainability, HSE &amp; ESG</a>
           </div>
         </div>
         <div class="mega-col">
           <div class="mega-col__title">Resources</div>
           <div class="mega-col__links">
-            <a href="09d_Case_Studies.html"           class="mega-col__link"><span class="mi">📋</span>Case Studies</a>
-            <a href="11c_News_Updates.html"    class="mega-col__link"><span class="mi">📰</span>News &amp; Updates</a>
-            <a href="10_Careers.html#careers"              class="mega-col__link"><span class="mi">💼</span>Careers</a>
-            <a href="11f_Policy_Downloads.html" class="mega-col__link"><span class="mi">📄</span>Policy &amp; Form Downloads</a>
+            <a href="09d_Case_Studies.html"           class="mega-col__link">Case Studies</a>
+            <a href="11c_News_Updates.html"    class="mega-col__link">News &amp; Updates</a>
+            <a href="10_Careers.html#careers"              class="mega-col__link">Careers</a>
+            <a href="11f_Policy_Downloads.html" class="mega-col__link">Policy &amp; Form Downloads</a>
           </div>
         </div>
       </div>
@@ -1429,22 +1460,22 @@
   <span class="ann__sep">·</span>
   <span class="ann__int">INTENT: Utility Hub — deflects low-value enquiries to self-serve. Designed specifically for Utility User persona on mobile. Phone number CTA satisfies immediate support need without form friction.</span>
 </div>
-<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
-  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
-    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — SUPPORT & CONTACT</div>
-    <div class="mega-panel mega-panel--visible" style="position:relative;top:auto;box-shadow:none;border-top:3px solid var(--ior-blue);">
+<div class="ann-wrap">
+  <div class="ann-box">
+    <div class="ann-bar">MEGA MENU — SUPPORT &amp; CONTACT</div>
+    <div class="mega-panel mega-panel--visible ann-mega-panel">
       <div class="mega-grid mega-grid--1">
         <div class="mega-col">
           <div class="mega-col__title">Support &amp; Contact</div>
           <div class="mega-col__links">
-            <a href="11_Support_Hub.html"  class="mega-col__link"><span class="mi">❓</span>Help Centre &amp; FAQs</a>
-            <a href="11a_Contact_Us.html"       class="mega-col__link"><span class="mi">📞</span>Contact Us</a>
-            <a href="11b_Regional_Contacts.html"class="mega-col__link"><span class="mi">📍</span>Regional Contacts</a>
-            <a href="11f_Policy_Downloads.html" class="mega-col__link"><span class="mi">📄</span>Policy &amp; Form Downloads</a>
-            <a href="11d_Find_Location.html"  class="mega-col__link map-action"><span class="mi">🗺️</span>Find a Location</a>
+            <a href="11_Support_Hubv5.html"  class="mega-col__link">Help Centre &amp; FAQs</a>
+            <a href="11a_Contact_Usv5.html"       class="mega-col__link">Contact Us</a>
+            <a href="11b_Regional_Contactsv5.html"class="mega-col__link">Regional Contacts</a>
+            <a href="11f_Policy_Downloads.html" class="mega-col__link">Policy &amp; Form Downloads</a>
+            <a href="11d_Find_Locationv5.html"  class="mega-col__link map-action">Find a Location</a>
           </div>
-          <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border-color-light);">
-            <a href="tel:1300457467" class="mega-cta-link">📞 1300 457 467</a>
+          <div class="ann-phone-border">
+            <a href="tel:1300457467" class="mega-cta-link">1300 457 467</a>
           </div>
         </div>
       </div>
@@ -1460,18 +1491,18 @@
   <span class="ann__sep">·</span>
   <span class="ann__int">INTENT: Full navigation accessible on mobile without horizontal scroll. Candidate persona enters from social media on mobile — drawer must feel fast and un-intimidating. Sub-menus as accordions prevent cognitive overload. Focus trap inside drawer for accessibility.</span>
 </div>
-<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
-  <div style="background:#fff;border:2px dashed var(--ior-mid-grey);max-width:380px;">
-    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MOBILE STATE — viewport &lt; 1200px</div>
+<div class="ann-wrap">
+  <div class="ann-box ann-box--mobile">
+    <div class="ann-bar">MOBILE STATE — viewport &lt; 1200px</div>
     <!-- Mock mobile nav bar -->
-    <div style="background:#fff;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:1px solid rgba(3,85,163,.1);">
-      <span class="nav-logo" style="width:70px;height:33px;font-size:10px;">[LOGO]</span>
-      <button class="hamburger" aria-label="Open menu" style="display:flex;"><span></span><span></span><span></span></button>
+    <div class="ann-mobile-bar">
+      <span class="nav-logo ann-mobile-logo">[LOGO]</span>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
     <!-- Drawer demo (static) -->
-    <div style="border-top:2px solid var(--ior-blue);">
+    <div class="ann-mobile-drawer">
       <div class="drawer__head">
-        <span class="nav-logo" style="width:70px;height:33px;font-size:10px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);">[LOGO]</span>
+        <span class="nav-logo ann-mobile-logo ann-mobile-logo--light">[LOGO]</span>
         <button class="drawer__close" aria-label="Close menu">✕</button>
       </div>
       <div class="drawer__nav">
@@ -1504,11 +1535,11 @@
         </div>
       </div>
       <div class="drawer__ctas">
-        <a href="#" class="btn btn--outline" style="justify-content:center;">Customer Login</a>
-        <a href="#" class="btn btn--primary" style="justify-content:center;">Apply for an Account</a>
+        <a href="#" class="btn btn--outline ann-mobile-drawer-cta">Customer Login</a>
+        <a href="#" class="btn btn--primary ann-mobile-drawer-cta">Apply for an Account</a>
       </div>
     </div>
-    <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">
+    <div class="ann-mobile-footer">
       ANIMATION: translateX(-100% → 0) · 350ms cubic-bezier(.4,0,.2,1) · OVERLAY: rgba(0,0,0,.5) · FOCUS TRAP: yes · ESC closes drawer
     </div>
   </div>
@@ -1542,7 +1573,7 @@
   <div class="utility-bar" role="complementary" aria-label="Site utilities">
     <span class="utility-bar__announce">Announcement Message Placeholder</span>
     <div class="utility-bar__actions">
-      <a href="11d_Find_Location.html" class="utility-bar__link">
+      <a href="11d_Find_Locationv5.html" class="utility-bar__link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Find a Location
       </a>
@@ -1627,7 +1658,7 @@
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#13114D" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
       </div>
       <div class="qa-text">
-        <div class="qa-title qa-title--dark">Fuelcharge <span class="btn__arrow" aria-hidden="true" style="border-color:#13114D;"></span></div>
+        <div class="qa-title qa-title--dark">Fuelcharge <span class="btn__arrow btn__arrow--dark" aria-hidden="true"></span></div>
         <div class="qa-body qa-body--dark">Fuel now. Pay at the pump.</div>
       </div>
     </a>
@@ -2165,9 +2196,9 @@
   <span class="ann__sep">·</span>
   <span class="ann__int">INTENT: Prevents footer from dominating mobile viewport. Candidate persona and Utility User on mobile need fast access to Apply and Contact without scrolling through all 6 columns. Contact expanded by default as highest-urgency column for on-the-road users.</span>
 </div>
-<div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
-  <div style="max-width:380px;background:var(--ior-blue);padding:20px 20px 0;">
-    <div style="font-family:'Courier New',monospace;font-size:10px;color:rgba(255,255,255,.4);padding-bottom:12px;">MOBILE FOOTER — viewport &lt; 768px</div>
+<div class="ann-mobile-footer-wrap">
+  <div class="ann-mobile-footer-inner">
+    <div class="ann-mobile-footer-label">MOBILE FOOTER — viewport &lt; 768px</div>
     <!-- Accordion demo -->
     <div class="footer-acc-item footer-acc-item--open">
       <button class="footer-acc-trigger">
@@ -2197,7 +2228,7 @@
     <div class="footer-mobile-legal">
       <p class="footer-legal__text">&copy; 2026 IOR. All rights reserved.</p>
     </div>
-    <div style="background:rgba(3,85,163,.06);padding:6px;font-family:'Courier New',monospace;font-size:10px;color:rgba(255,255,255,.4);">
+    <div class="ann-mobile-footer-note">
       JS: .footer-acc-trigger click → toggle .footer-acc-item--open on parent · Contact pre-expanded on load
     </div>
   </div>
@@ -2333,17 +2364,17 @@
 </div>
 <div class="cs-section" style="padding-top:0;padding-bottom:24px;">
   <h3 class="cs-title">4.4 Page Badges</h3>
-  <div class="cs-row" style="gap:10px;align-items:center;">
+  <div class="cs-row cs-row--gap">
     <span class="page-badge page-badge--hub">HUB</span>
-    <span style="font-size:12px;color:var(--ior-mid-grey);font-family:'Courier New',monospace;">→ Secondary hub landing page (e.g. Fuel Solutions, Digital Platforms)</span>
+    <span class="ann-badge-label">&rarr; Secondary hub landing page (e.g. Fuel Solutions, Digital Platforms)</span>
   </div>
-  <div class="cs-row" style="gap:10px;align-items:center;margin-top:4px;">
+  <div class="cs-row cs-row--gap-mt">
     <span class="page-badge page-badge--spoke">SPOKE</span>
-    <span style="font-size:12px;color:var(--ior-mid-grey);font-family:'Courier New',monospace;">→ Child product or service page (e.g. IOR Diesel Network, Airport Fuelling Services)</span>
+    <span class="ann-badge-label">&rarr; Child product or service page (e.g. IOR Diesel Network, Airport Fuelling Services)</span>
   </div>
-  <div class="cs-row" style="gap:10px;align-items:center;margin-top:4px;">
+  <div class="cs-row cs-row--gap-mt">
     <span class="page-badge page-badge--utility">UTILITY</span>
-    <span style="font-size:12px;color:var(--ior-mid-grey);font-family:'Courier New',monospace;">→ Transactional utility page (e.g. Make a Payment, Find a Location, Policy Downloads)</span>
+    <span class="ann-badge-label">&rarr; Transactional utility page (e.g. Make a Payment, Find a Location, Policy Downloads)</span>
   </div>
 </div>
 
@@ -2355,8 +2386,8 @@
   <span class="ann__sep">·</span>
   <span class="ann__int">INTENT: Non-Negotiable Rule 4 enforcement. Every content block on every module page must have a preceding annotation bar. Use Design Question variant when copy or design direction is unclear. Use Approved variant for locked decisions that must not be changed in downstream modules.</span>
 </div>
-<div style="background:#f7f9fc;padding:16px var(--section-pad-x) 40px;">
-  <div style="display:flex;flex-direction:column;gap:4px;max-width:900px;">
+<div class="ann-variants-wrap">
+  <div class="ann-variants-inner">
     <div class="ann">
       <span class="ann__id">BLOCK X — [BLOCK NAME]</span>
       <span class="ann__sep">·</span>
@@ -2387,7 +2418,7 @@
 <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
 <div class="drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
   <div class="drawer__head">
-    <span class="nav-logo" style="width:70px;height:33px;font-size:10px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);">[IOR]</span>
+    <span class="nav-logo ann-drawer-logo">[IOR]</span>
     <button class="drawer__close" id="drawerClose" aria-label="Close navigation menu">✕</button>
   </div>
   <nav class="drawer__nav" aria-label="Mobile navigation">
@@ -2436,10 +2467,10 @@
     <div class="drawer__item">
       <div class="drawer__link" data-sub="sub-support">Support &amp; Contact <span class="drawer__link-chevron" aria-hidden="true"></span></div>
       <div class="drawer__sub" id="sub-support">
-        <a href="11a_Contact_Us.html"        class="drawer__sub-link">Contact Us</a>
-        <a href="11b_Regional_Contacts.html" class="drawer__sub-link">Regional Contacts</a>
-        <a href="11d_Find_Location.html"   class="drawer__sub-link">Find a Location</a>
-        <a href="11e_Make_Payment.html"    class="drawer__sub-link">Make a Payment</a>
+        <a href="11a_Contact_Usv5.html"        class="drawer__sub-link">Contact Us</a>
+        <a href="11b_Regional_Contactsv5.html" class="drawer__sub-link">Regional Contacts</a>
+        <a href="11d_Find_Locationv5.html"   class="drawer__sub-link">Find a Location</a>
+        <a href="11e_Make_Paymentv5.html"    class="drawer__sub-link">Make a Payment</a>
       </div>
     </div>
   </nav>
