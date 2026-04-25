@@ -14,7 +14,7 @@
 **FOCUS KEYWORD:** IOR Make a payment  
 **SECONDARY KEYWORDS:** Pay fuel account online, secure payment  
 **META TITLE:** Make a Payment | IOR  
-**META DESCRIPTION:** Pay your IOR fuel account online. Fast, secure, and simple. Access the payment portal here.  
+**META DESCRIPTION:** Pay your IOR fuel account securely online via American Express, Mastercard, or Visa. Fast, secure, and simple.  
 
 ---
 
@@ -60,14 +60,14 @@ A strictly utilitarian, frictionless page. The user is here to do one thing: pay
 Please build the page using this exact top-to-bottom component flow:
 
 #### 1. Minimal Utility Hero (Inherited from Shell)
-- **Style:** Keep it slim and distraction-free using the new Utility Shell hero format.
+- **Style:** A slim, minimal hero section (no heavy background videos needed, just a solid dark background `var(--ior-navy)` or a very subtle abstract texture).
 - **Eyebrow:** SECURE ONLINE PAYMENT
 - **H1:** Make a payment.
-- **Subcopy:** Pay your IOR fuel account online. Fast, secure, and simple. Have your account and invoice details ready.
+- **Subcopy:** Pay your IOR fuel account securely online. Fast, secure, and simple. Please have your account and invoice details ready.
 - **Primary CTA:** None needed in the hero (the action is directly below).
 
 #### 2. Quick Links Bar ("Explore:")
-- **Style:** The standard horizontal link bar from global components.
+- **Style:** The standard Quick Links bar.
 - **Label:** Explore:
 - **Links Required:** 
   1. Contact Us (Links to `/support-contact/contact-us/`)
@@ -76,20 +76,18 @@ Please build the page using this exact top-to-bottom component flow:
   4. Find a Location (Links to `/locations/`)
 
 #### 3. Payment Information & Gateway Links (The Core Interaction)
-- **Visual Reference:** Look at `06_Support_and_Utility.html#make-a-payment` for layout inspiration, but strictly follow the asset/exclusion rules below.
-- **Header (H2):** Pay via our secure portal.
-- **Body Copy:** Access the IOR secure payment gateway to settle your account via credit card. All transactions are encrypted and processed securely.
-- **Bullet Points (What you need):**
+- **Visual Reference:** A clean, centered white card sitting on `var(--grey-50)`. It needs to look highly secure (e.g., utilize a padlock icon).
+- **Header (H2):** Pay your account securely online.
+- **Body Copy:** Pay your account securely online via American Express, Mastercard or Visa. Click the links below to make a payment – please note that fees will apply.
+- **Bullet Points (What you need ready):**
   - Your IOR Account Number
   - Your Invoice Reference Number
   - A valid Credit or Debit Card
-- **The Payment Gateway Buttons:** You must build clear, highly visible routing buttons/cards for the two payment gateways.
-  - Use the provided AMEX SVG/PNG paired with the AMEX Payment Link.
-  - Use the provided Visa/Mastercard SVG/PNG paired with the Visa/MC Payment Link.
-- **Primary CTA (Button):** Proceed to Secure Payment → (Dev Note: Link this to your external Stripe/payment gateway).
-- **Alternative Payment Methods:** Include a small accordion or secondary text block below the button.
-  - *EFT Details:* "To pay via Electronic Funds Transfer, please refer to the BSB and Account Number printed at the bottom of your IOR invoice."
-- **Client Feedback Integration:** The client explicitly stated they liked the "View your invoices in the Customer Portal" component from the previous design. You MUST include this block (e.g., as a secondary card or clean callout box below the payment links) to cross-pollinate traffic to the portal.
+- **The Payment Links (Buttons):** (Dev Note: Use the provided SVGs/PNGs for the card logos).
+  - Button 1: Pay via AMEX → (Link to external AMEX URL)
+  - Button 2: Pay via Visa / Mastercard → (Link to external Visa/MC URL)
+- **Alternative Payment Methods (EFT / Direct Debit block below the buttons):** 
+  - *Copy:* "To pay your account via EFT Transfer or direct debit, reach out to our dedicated credit team on 07 3895 4440."
 
 #### 🚨 STRICT EXCLUSION RULES
 DO NOT include the security text block from the old utility file. Remove the following text completely:
@@ -101,27 +99,29 @@ DO NOT include the security text block from the old utility file. Remove the fol
 - [Remove] Rounded corners on image/logo boxes
 
 #### 4. Support Contact CTA
-- **Style:** Use a standard split-screen or full-width call-to-action block.
-- **Header (H2):** Need help with your account?
-- **Copy:** If you have questions regarding your invoice, require a copy of a past statement, or need to update your direct debit details, our local accounts team is ready to assist.
-- **Buttons:** 
-  - Primary Button: Call Accounts: 1300 457 467
+- **Style:** A split-screen or full-width CTA block (like the Pre-Footer CTA).
+- **Header (H2):** Need assistance?
+- **Copy:** If you need assistance making an online payment, or you wish to confirm the bank details included on your invoice for EFT payments, please don’t hesitate to get in touch.
+- **CTAs:** 
+  - Primary Button: Call Credit Team: 07 3895 4440
   - Secondary Button (btn--outline): Email Accounts Team (Links to `accounts@ior.com.au`)
 
 #### 5. "Still Have Questions?" Block (Inherited from Shell)
 - **Header (H4):** Still have questions?
 - **Copy:** Submit an enquiry to our local team or search our full knowledge base.
-- **Buttons:** Browse Help Centre | Ask us here →
+- **Links/Buttons:** 
+  - Ghost Link: Browse Help Centre
+  - Outline Button: Ask us here →
 
 #### 6. Global Footer (Inherited from Shell)
-- **Style:** The standard v4.0 6-column global footer closes out the page.
+- **Style:** Standard 6-Column Global Footer.
 
 ---
 
 ## 4. Designer Notes (Elementor Build Strategy)
 
 - **Trust Factors:** Because this is a payment page, ensure the design feels airtight. Use exact spacing, strict alignments, and subtle borders.
-- **Icons:** Use recognizable, trustworthy icons (e.g., a subtle lock icon next to the "Proceed to Secure Payment" button).
+- **Icons:** Use recognizable, trustworthy icons (e.g., a subtle lock icon next to the H2). Make sure the AMEX and Visa/Mastercard logos are crisp and properly aligned within their respective payment buttons.
 - **Distraction-Free:** Keep the content strictly to the point. Do not add related blog posts or marketing cross-sells to this page.
 - **Navigation:** All pages derived from a shell file must always use the navigation (utility bar and main navigation) and footer components provided in the shell file. The shell file should be considered the definitive template for these elements.
 
