@@ -85,6 +85,8 @@
     .btn--white:hover { background: #f0f0f0; }
     .btn--outline-blue { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
     .btn--outline-blue:hover { background: var(--ior-light); }
+    .btn--ghost { background: transparent; color: var(--ior-blue); border-color: transparent; padding-left: 0; padding-right: 0; }
+    .btn--ghost:hover { color: #024a8f; }
     .btn--sm { padding: 8px 16px; font-size: 13px; }
     .btn--pill { border-radius: 500px; }
     .btn--lg { padding: 14px 28px; font-size: 15px; }
@@ -107,7 +109,6 @@
     /* --- Map Section ------------------------------------------------------- */
     .map-section { background: var(--grey-50); padding: clamp(40px, 5vw, 64px) var(--section-pad-x); }
     .map-section__inner { max-width: var(--container-max); margin-inline: auto; }
-    /* map-mode-switcher removed */
 
     .map-container { width: 100%; min-height: 520px; background: var(--grey-100); border: 1px solid var(--grey-200); overflow: hidden; }
     .map-container #storepoint-widget { width: 100%; min-height: 520px; }
@@ -125,7 +126,7 @@
     .utility-card__ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; }
     @media (max-width: 640px) { .utility-cards-grid { grid-template-columns: 1fr; } }
 
-    /* --- Download Strip ---------------------------------------------------- */
+    /* --- Download Strip (Gated — Dark Background) -------------------------- */
     .download-strip { background: var(--ior-navy); padding: clamp(48px, 6vw, 72px) var(--section-pad-x); }
     .download-strip__inner { max-width: var(--content-max); margin-inline: auto; }
     .download-strip__heading { text-align: center; margin-bottom: clamp(32px, 4vw, 48px); }
@@ -156,97 +157,67 @@
     .faq-answer__inner { padding: 0 24px 20px; font-size: 15px; color: var(--grey-700); line-height: 1.7; }
 
     /* --- Pre-footer -------------------------------------------------------- */
-    .pre-footer { background: var(--ior-blue); padding: clamp(40px, 5vw, 56px) var(--section-pad-x); }
-    .pre-footer__row { max-width: var(--content-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .pre-footer__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .pre-footer__body { font-size: clamp(14px, 1.3vw, 16px); color: rgba(255,255,255,.85); max-width: 480px; }
-    .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-    .pre-footer__divider { max-width: var(--content-max); margin-inline: auto; height: 1px; background: rgba(255,255,255,.15); margin-top: clamp(32px, 4vw, 48px); }
+    .pre-footer { background: var(--ior-navy); padding: clamp(48px, 6vw, 72px) var(--section-pad-x); }
+    .pre-footer__row { max-width: var(--content-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .pre-footer__title { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .pre-footer__body { font-size: clamp(14px, 1.3vw, 16px); color: rgba(255,255,255,.8); max-width: 520px; }
+    .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+    .pre-footer__divider { max-width: var(--content-max); margin: clamp(32px, 4vw, 48px) auto 0; border: none; border-top: 1px solid rgba(255,255,255,.12); }
 
     /* --- Site Footer ------------------------------------------------------- */
-    .site-footer { background: var(--ior-blue); color: #fff; padding: clamp(28px, 3vw, 40px) var(--section-pad-x) clamp(20px, 2.5vw, 32px); }
-    .footer-nav-grid { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.12); }
-    .footer-col__heading { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 14px; }
-    .footer-col__links { display: flex; flex-direction: column; gap: 8px; }
-    .footer-col__link { font-size: 13px; color: rgba(255,255,255,.75); transition: color var(--transition-base); }
+    .site-footer { background: var(--ior-blue); color: #fff; padding: clamp(40px, 5vw, 64px) var(--section-pad-x) clamp(24px, 3vw, 32px); }
+    .footer-nav-grid { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; margin-bottom: clamp(32px, 4vw, 48px); }
+    .footer-col__heading { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .footer-col__links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col__link { font-size: 13px; color: rgba(255,255,255,.8); transition: color var(--transition-base); }
     .footer-col__link:hover { color: #fff; }
-    .footer-legal { max-width: var(--container-max); margin-inline: auto; padding-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-legal { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: clamp(16px, 2vw, 24px); border-top: 1px solid rgba(255,255,255,.12); }
     .footer-legal__copy { font-size: 12px; color: rgba(255,255,255,.5); }
     .footer-legal__links { display: flex; gap: 16px; }
     .footer-legal__link { font-size: 12px; color: rgba(255,255,255,.5); transition: color var(--transition-base); }
     .footer-legal__link:hover { color: #fff; }
-    .footer-social { display: flex; gap: 12px; align-items: center; }
-    .footer-social__icon { color: rgba(255,255,255,.6); transition: color var(--transition-base); display: flex; align-items: center; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social__icon { color: rgba(255,255,255,.6); transition: color var(--transition-base); }
     .footer-social__icon:hover { color: #fff; }
-    @media (max-width: 1200px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 480px) { .footer-nav-grid { grid-template-columns: 1fr; } }
 
     /* --- Mobile Drawer ----------------------------------------------------- */
-    .mobile-drawer { position: fixed; top: 0; left: 0; width: 320px; max-width: 90vw; height: 100vh; background: var(--ior-navy); z-index: 1100; transform: translateX(-100%); transition: transform .35s cubic-bezier(.4,0,.2,1); overflow-y: auto; display: flex; flex-direction: column; }
-    .mobile-drawer.drawer--open { transform: translateX(0); }
-    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1050; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
     .drawer-overlay--open { opacity: 1; pointer-events: all; }
-    .drawer__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .mobile-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(360px, 90vw); background: var(--ior-navy); z-index: 1100; transform: translateX(100%); transition: transform .35s ease; display: flex; flex-direction: column; overflow-y: auto; }
+    .mobile-drawer.drawer--open { transform: translateX(0); }
+    .drawer__header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid rgba(255,255,255,.12); }
     .drawer__logo svg { width: 72px; height: auto; }
-    .drawer__close { background: none; border: none; color: rgba(255,255,255,.7); cursor: pointer; padding: 4px; display: flex; align-items: center; }
-    .drawer__nav { padding: 12px 0; flex: 1; }
-    .drawer__link { display: flex; align-items: center; justify-content: space-between; padding: 13px 20px; font-size: 15px; font-weight: 600; color: rgba(255,255,255,.9); border: none; background: none; width: 100%; text-align: left; font-family: inherit; cursor: pointer; transition: background var(--transition-base); }
+    .drawer__close { background: none; border: none; color: #fff; cursor: pointer; padding: 4px; }
+    .drawer__nav { flex: 1; padding: 16px 0; }
+    .drawer__link { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; font-size: 15px; font-weight: 600; color: #fff; background: none; border: none; width: 100%; font-family: inherit; cursor: pointer; transition: background var(--transition-base); }
     .drawer__link:hover { background: rgba(255,255,255,.06); }
-    .drawer__link-chevron { width: 16px; height: 16px; transition: transform .25s ease; flex-shrink: 0; }
+    .drawer__link-chevron { width: 16px; height: 16px; transition: transform .2s ease; }
     .drawer__link-chevron--open { transform: rotate(180deg); }
     .drawer__sub { max-height: 0; overflow: hidden; transition: max-height .3s ease; background: rgba(0,0,0,.2); }
-    .drawer__sub--open { max-height: 600px; }
-    .drawer__sub-link { display: block; padding: 10px 20px 10px 36px; font-size: 14px; color: rgba(255,255,255,.7); transition: color var(--transition-base); }
+    .drawer__sub--open { max-height: 400px; }
+    .drawer__sub-link { display: block; padding: 10px 24px 10px 36px; font-size: 14px; color: rgba(255,255,255,.8); transition: color var(--transition-base); }
     .drawer__sub-link:hover { color: #fff; }
-    .drawer__footer { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,.1); display: flex; flex-direction: column; gap: 10px; }
+    .drawer__footer { padding: 20px 24px; border-top: 1px solid rgba(255,255,255,.12); display: flex; flex-direction: column; gap: 10px; }
 
-    /* --- Proto-bar --------------------------------------------------------- */
-    .proto-bar { background: #111827; color: rgba(255,255,255,.75); font-family: 'SF Mono', 'Menlo', 'Consolas', monospace; font-size: 11px; letter-spacing: .04em; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .proto-bar__inner { max-width: 1920px; margin: 0 auto; padding: 6px clamp(16px, 3vw, 40px); display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-    .proto-bar__label { color: #F59E0B; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
-    .proto-bar__links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-    .proto-bar__link { color: rgba(255,255,255,.75); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color .2s ease; }
-    .proto-bar__link:hover { color: #fff; text-decoration: underline; }
-    .proto-bar__sep { width: 1px; height: 10px; background: rgba(255,255,255,.15); }
-
-    /* --- Fade-up animation ------------------------------------------------- */
+    /* --- Fade-up Animation ------------------------------------------------- */
     .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
-    .fade-up--visible { opacity: 1; transform: translateY(0); }
+    .fade-up--visible { opacity: 1; transform: none; }
 
-    /* --- Responsive nav ---------------------------------------------------- */
-    @media (max-width: 1024px) {
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; margin-left: auto; }
-    }
+    /* --- Responsive -------------------------------------------------------- */
+    @media (max-width: 1024px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 768px) {
-      .quick-links-bar__inner { overflow-x: auto; flex-wrap: nowrap; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
       .utility-hero__ctas { flex-direction: column; }
-      .map-mode-switcher { width: 100%; }
-      .map-mode-btn { flex: 1; }
     }
+    @media (max-width: 640px) { .footer-nav-grid { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
-<div class="main-audit-container">
-
-  <!-- Proto-bar -->
-  <div class="proto-bar" role="navigation" aria-label="Prototype navigation">
-    <div class="proto-bar__inner">
-      <span class="proto-bar__label">Prototype</span>
-      <div class="proto-bar__links">
-        <a href="00_Master_Index.html" class="proto-bar__link">&#8592; Master Index</a>
-        <span class="proto-bar__sep" aria-hidden="true"></span>
-        <a href="IOR_Design_System.html" class="proto-bar__link">Design System</a>
-        <span class="proto-bar__sep" aria-hidden="true"></span>
-        <a href="00_Global_Components.html" class="proto-bar__link">Global Components</a>
-        <span class="proto-bar__sep" aria-hidden="true"></span>
-        <a href="11_Support_Hub.html" class="proto-bar__link">Support Hub</a>
-      </div>
-    </div>
-  </div>
+<div id="main-audit-container">
 
   <!-- Utility Bar -->
-  <div class="utility-bar" role="complementary" aria-label="Site utilities">
+  <div class="utility-bar">
     <div class="utility-bar__inner">
       <div class="utility-bar__actions">
         <a href="11d_Find_Locationv5.html" class="utility-bar__link">
@@ -302,7 +273,7 @@
           Equipment
           <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <a href="11_Support_Hub.html" class="nav-link">Support</a>
+        <a href="11_Support_Hubv5.html" class="nav-link">Support</a>
       </div>
       <div class="nav-cta">
         <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--pill btn--sm">Get in Touch</a>
@@ -408,7 +379,7 @@
         <a href="07b_Fuelcharge_App_v4.html" class="drawer__sub-link">Fuelcharge App</a>
         <a href="07c_Customer_Portal_v4.html" class="drawer__sub-link">Customer Portal</a>
       </div>
-      <a href="11_Support_Hub.html" class="drawer__link">Support</a>
+      <a href="11_Support_Hubv5.html" class="drawer__link">Support</a>
     </div>
     <div class="drawer__footer">
       <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--pill">Get in Touch</a>
@@ -419,12 +390,12 @@
   <!-- Main Content -->
   <main id="main-content">
 
-    <!-- 1. Utility Hero -->
+    <!-- 1. Minimal Utility Hero -->
     <section class="utility-hero" aria-labelledby="hero-heading">
       <div class="utility-hero__inner">
         <p class="eyebrow">NETWORK LOCATOR</p>
         <h1 id="hero-heading">Find an IOR Location.</h1>
-        <p>Search for diesel stops, aviation fuel sites, depots, and offices near you.</p>
+        <p>Search for diesel stops, aviation fuel sites, regional offices, and depots near you.</p>
         <div class="utility-hero__ctas">
           <a href="#" class="btn btn--white btn--lg">Apply Now</a>
           <a href="#" class="btn btn--outline-white btn--lg">Register Your Interest</a>
@@ -439,25 +410,26 @@
         <a href="#map-section" class="quick-links-bar__link">IOR Diesel Network</a>
         <a href="#map-section" class="quick-links-bar__link">IOR Aviation Network</a>
         <a href="07b_Fuelcharge_App_v4.html" class="quick-links-bar__link">Fuelcharge</a>
-        <a href="11_Support_Hub.html" class="quick-links-bar__link">Support &amp; Contact</a>
+        <a href="11_Support_Hubv5.html" class="quick-links-bar__link">Support &amp; Contact</a>
       </div>
     </div>
 
-    <!-- 3. Interactive Map & Mode Switcher -->
+    <!-- 3. Interactive Map Section -->
     <section class="map-section" id="map-section" aria-labelledby="map-heading">
       <div class="map-section__inner">
-        <!-- Storepoint Map Embed -->
+        <!-- Storepoint Map Embed — exact script from brief -->
         <div class="map-container" aria-label="IOR location map">
           <div id="storepoint-widget"></div>
         </div>
       </div>
     </section>
 
-    <!-- 4. Below-Map Utility Cards -->
+    <!-- 4. Below-Map Utility Cards (2-Column Grid) -->
     <section class="utility-cards-section" aria-labelledby="utility-cards-heading">
       <div class="utility-cards-section__inner">
         <div class="utility-cards-grid">
-          <!-- Card 1: Fuelcharge -->
+
+          <!-- Card 1: Fuelcharge App — Pay at the Pump -->
           <div class="utility-card fade-up">
             <div class="utility-card__icon" aria-hidden="true">&#128241;</div>
             <h4>Pay at the Pump</h4>
@@ -465,9 +437,10 @@
             <div class="utility-card__ctas">
               <a href="#" class="btn btn--outline-blue btn--sm">&#8595; App Store</a>
               <a href="#" class="btn btn--outline-blue btn--sm">&#8595; Google Play</a>
-              <a href="07b_Fuelcharge_App_v4.html" class="btn btn--primary btn--sm">Learn More &#8594;</a>
+              <a href="07b_Fuelcharge_App_v4.html" class="btn btn--ghost btn--sm">Learn More &#8594;</a>
             </div>
           </div>
+
           <!-- Card 2: Fleet Account -->
           <div class="utility-card fade-up">
             <div class="utility-card__icon" aria-hidden="true">&#128179;</div>
@@ -477,40 +450,47 @@
               <a href="#" class="btn btn--primary btn--sm">Apply for an Account &#8594;</a>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- 5. Direct Download Strip -->
+    <!-- 5. Gated Download Strip (Dark Background, 2-Columns) -->
+    <!-- NOTE FOR BUILDER: Download buttons trigger HubSpot form modal / gated landing page. Replace href="#" with HubSpot form embed or gated landing page URL. -->
     <section class="download-strip" aria-labelledby="download-heading">
       <div class="download-strip__inner">
         <div class="download-strip__heading fade-up">
           <h2 id="download-heading">Download Our Network Directories</h2>
-          <p>Comprehensive guides to every IOR location across Australia &#8212; available as direct PDF downloads.</p>
+          <p>Comprehensive guides to every IOR location across Australia &#8212; complete your details to access.</p>
         </div>
         <div class="download-grid">
+
           <!-- Asset 1: Diesel Network Directory -->
           <div class="download-card fade-up">
             <div class="download-card__asset-id">IOR-MAR-BRO-0232</div>
             <h3>Diesel Network Directory</h3>
             <p>Download the complete guide including all 24/7 truck stop locations, B-double access, and amenities.</p>
             <div class="download-card__cta">
-              <a href="IOR-MAR-BRO-0232-Diesel-Network-Directory_v20260203.pdf" class="btn btn--white" target="_blank" rel="noopener">
+              <!-- HUBSPOT FORM TRIGGER — replace href="#" with HubSpot gated form URL or JS modal trigger -->
+              <a href="#" class="btn btn--white">
                 Download Diesel Directory &#8595;
               </a>
             </div>
           </div>
+
           <!-- Asset 2: Aviation Network Directory -->
           <div class="download-card fade-up">
             <div class="download-card__asset-id">IOR-MAR-BRO-0332</div>
             <h3>Aviation Network Directory</h3>
             <p>Download the complete aviation location list including Jet A-1, Avgas, and into-plane service availability.</p>
             <div class="download-card__cta">
-              <a href="IOR-MAR-BRO-0332-Aviation-Network-Directory_v20250812-1.pdf" class="btn btn--white" target="_blank" rel="noopener">
+              <!-- HUBSPOT FORM TRIGGER — replace href="#" with HubSpot gated form URL or JS modal trigger -->
+              <a href="#" class="btn btn--white">
                 Download Aviation Directory &#8595;
               </a>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -522,6 +502,7 @@
           <h2 id="faq-heading">Frequently Asked Questions</h2>
         </div>
         <div class="faq-list" role="list">
+
           <div class="faq-item" role="listitem">
             <button class="faq-question" aria-expanded="false">
               How do I filter for Truck Wash sites on the map?
@@ -531,6 +512,7 @@
               <div class="faq-answer__inner">Use the filter options in the Storepoint map widget to select &#8220;Truck Wash&#8221; from the amenities list. This will highlight all IOR diesel stops that include truck wash facilities. You can combine filters to find sites with multiple amenities.</div>
             </div>
           </div>
+
           <div class="faq-item" role="listitem">
             <button class="faq-question" aria-expanded="false">
               Does the map show live fuel outages or supply disruptions?
@@ -540,6 +522,7 @@
               <div class="faq-answer__inner">The map displays our current network of active locations. For real-time supply status or to report a site issue, please contact our support team directly on 1300 457 467. IOR account holders can also check status updates via the Customer Portal.</div>
             </div>
           </div>
+
           <div class="faq-item" role="listitem">
             <button class="faq-question" aria-expanded="false">
               Can I search for IOR locations along a specific highway corridor?
@@ -549,15 +532,17 @@
               <div class="faq-answer__inner">Yes &#8212; use the search bar in the map widget to enter a town, postcode, or highway name. The map will centre on that location and display nearby IOR sites. For a full corridor listing, download the Diesel Network Directory above.</div>
             </div>
           </div>
+
           <div class="faq-item" role="listitem">
             <button class="faq-question" aria-expanded="false">
-              How do I switch between the Diesel and Aviation networks on the map?
+              Can I access IOR locations without a fleet account?
               <svg class="faq-question__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
             <div class="faq-answer">
-              <div class="faq-answer__inner">Use the Ground Fuels / Aviation tab switcher directly above the map. Selecting &#8220;Aviation&#8221; will filter the Storepoint widget to show IOR&#8217;s 32+ airport locations. Selecting &#8220;Ground Fuels&#8221; returns to the full diesel network of 115+ sites.</div>
+              <div class="faq-answer__inner">Yes &#8212; most IOR diesel stops offer 24/7 unmanned access via the Fuelcharge app. Simply download the app, locate your nearest site on the map, and pay at the pump without needing a fleet account. For volume pricing and consolidated invoicing, an IOR fleet account is recommended.</div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -619,7 +604,7 @@
       <div class="footer-col">
         <div class="footer-col__heading">Support</div>
         <div class="footer-col__links">
-          <a href="11_Support_Hub.html" class="footer-col__link">Support Hub</a>
+          <a href="11_Support_Hubv5.html" class="footer-col__link">Support Hub</a>
           <a href="11a_Contact_Usv5.html" class="footer-col__link">Contact Us</a>
           <a href="11b_Regional_Contactsv5.html" class="footer-col__link">Regional Contacts</a>
           <a href="11e_Make_Paymentv5.html" class="footer-col__link">Make a Payment</a>
@@ -653,7 +638,7 @@
 
 </div><!-- /main-audit-container -->
 
-<!-- Storepoint Widget -->
+<!-- Storepoint Widget — exact script from brief -->
 <script>
 window.Storepoint=window.Storepoint||{_q:[],on:function(e,c){this._q.push([e,c])}};
 window.loadStorepoint=function(){new StorepointWidget('169b243d6de664','#storepoint-widget',{});};
@@ -708,18 +693,6 @@ window.loadStorepoint=function(){new StorepointWidget('169b243d6de664','#storepo
       document.querySelectorAll('.drawer__link[data-drawer]').forEach(l => l.setAttribute('aria-expanded', 'false'));
       if (!isOpen) { sub.classList.add('drawer__sub--open'); chevron.classList.add('drawer__link-chevron--open'); link.setAttribute('aria-expanded', 'true'); }
     });
-  });
-
-  /* Map mode switcher */
-  const modeGround = document.getElementById('mode-ground');
-  const modeAviation = document.getElementById('mode-aviation');
-  modeGround.addEventListener('click', () => {
-    modeGround.classList.add('active'); modeGround.setAttribute('aria-pressed', 'true');
-    modeAviation.classList.remove('active'); modeAviation.setAttribute('aria-pressed', 'false');
-  });
-  modeAviation.addEventListener('click', () => {
-    modeAviation.classList.add('active'); modeAviation.setAttribute('aria-pressed', 'true');
-    modeGround.classList.remove('active'); modeGround.setAttribute('aria-pressed', 'false');
   });
 
   /* FAQ accordion */
