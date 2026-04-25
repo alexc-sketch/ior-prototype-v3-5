@@ -97,10 +97,9 @@ Copy the full utility bar + primary nav + mobile drawer from `IOR_Utility_Templa
 **Subcopy:** HyDip™ is IOR's purpose-built Fuel Management System. Real-time per-asset tracking, automated Fuel Tax Credit reporting, accounting integration, and a live fleet dashboard — all in one platform built for Australian operators.
 
 **CTA 1 (Primary/Yellow):** `Enquire Now ↓` — anchors to `#hd-form` (the HubSpot form section)  
-**CTA 2 (Outline/White):** `Customer Login` — links to `https://cloud.hydip.com` (opens in new tab, `rel="noopener noreferrer"`)
+**CTA 2 (Outline/White):** `Customer Login` — links to `https://www.hydip.com/accounts/login/` (opens in new tab, `rel="noopener noreferrer"`)
 
-> ⚠️ **CLIENT CONFIRMATION REQUIRED — DO NOT BUILD UNTIL RESOLVED**
-> `cloud.hydip.com` returns a 403 and may be IP-restricted or not yet public. Existing approved pages (Homepage, Ground Fuels) use `https://www.hydip.com/accounts/login/` for the HyDip sign-in link. Confirm with IOR/HyDip team which URL is the correct production customer login before actioning this brief. If the correct URL differs from `cloud.hydip.com`, update this line before handing to the builder. In the interim, the builder must use `href="#"` with an HTML comment `<!-- TODO: confirm HyDip customer login URL with client (Auditor Notes Item 5) -->`.
+> ✅ **Confirmed 26 Apr 2026** — `https://www.hydip.com/accounts/login/` is the correct production customer login URL. Use this URL verbatim. `cloud.hydip.com` is NOT the correct target.
 
 **CSS class:** `hd-hero` on the `<section>`. Centre-align all children with `text-align: center`. Max-width container `960px` centred.
 
