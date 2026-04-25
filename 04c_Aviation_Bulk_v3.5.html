@@ -175,7 +175,7 @@
     .final-cta__text h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: var(--fw-black); color: #fff; }
     .final-cta__text p { font-size: 15px; color: rgba(255,255,255,.8); margin-top: 6px; }
     .final-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .site-footer { background: var(--ior-navy); padding: var(--section-pad) 0 0; }
+    .site-footer { background: var(--ior-blue); padding: var(--section-pad) 0 0; }
     .footer-nav-grid { max-width: 1280px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px) 48px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; }
     .footer-col__title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.5); margin-bottom: 16px; }
     .footer-col__links { display: flex; flex-direction: column; gap: 10px; }
@@ -193,8 +193,8 @@
     .footer-social__icon:hover { background: rgba(255,255,255,.15); color: #fff; }
     .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .fade-up--visible { opacity: 1; transform: translateY(0); }
-    @media (max-width: 1024px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } .spec-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .hero-banner .container { grid-template-columns: 1fr; } .hero-banner__img { display: none; } .split-panel.active { grid-template-columns: 1fr; } .related-grid { grid-template-columns: 1fr; } .lead-capture__card { grid-template-columns: 1fr; } .footer-nav-grid { grid-template-columns: repeat(2, 1fr); } .final-cta .container { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 1024px) { .footer-nav-grid { grid-template-columns: repeat(6, 1fr); } .spec-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .hero-banner .container { grid-template-columns: 1fr; } .hero-banner__img { display: none; } .split-panel.active { grid-template-columns: 1fr; } .related-grid { grid-template-columns: 1fr; } .lead-capture__card { grid-template-columns: 1fr; } .footer-nav-grid { grid-template-columns: repeat(6, 1fr); } .final-cta .container { flex-direction: column; align-items: flex-start; } }
   </style>
 </head>
 <body>
@@ -250,15 +250,13 @@
           <li><a href="10_Careers.html" class="nav-link">Careers</a></li>
           <li><a href="11_Support_Hub.html" class="nav-link">Support</a></li>
         </ul>
-        <div class="nav-actions">
-          <a href="#" class="btn btn--login btn--pill btn--sm" aria-label="Customer Login">Customer Login</a>
-          <a href="#lead-capture" class="btn btn--gold btn--pill btn--sm" aria-label="Request a Quote">Request a Quote</a>
-          <button class="hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileDrawer">
-            <span class="hamburger__line" aria-hidden="true"></span>
-            <span class="hamburger__line" aria-hidden="true"></span>
-            <span class="hamburger__line" aria-hidden="true"></span>
-          </button>
-        </div>
+        <div class="nav-ctas">
+        <a href="#" class="btn btn--outline btn--pill" aria-label="Customer Login">Customer Login</a>
+        <a href="#" class="btn btn--primary btn--pill" aria-label="Apply for an Account">Apply for an Account</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
       </div>
     </nav>
   </header>
@@ -555,79 +553,94 @@
   </main>
 
   <footer class="site-footer" aria-label="Site footer">
-    <div class="footer-nav-grid">
-      <div>
-        <div class="footer-col__title">Contact</div>
-        <div class="footer-col__links">
-          <address class="footer-col__address">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</address>
-          <a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a>
-          <a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a>
-          <a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Contacts</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col__title">Fuel Solutions</div>
-        <div class="footer-col__links">
-          <a href="03a_Diesel_Network_v3.5.html" class="footer-col__link">Ground Fuels</a>
-          <a href="04_Aviation_Hub_v3.5.html" class="footer-col__link">Aviation</a>
-          <a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
-          <a href="06_Supply_Trading.html" class="footer-col__link">Supply &amp; Trading</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col__title">Digital Platforms</div>
-        <div class="footer-col__links">
-          <a href="07_Digital_Platforms.html#hydip" class="footer-col__link">HyDip&#8482; FMS</a>
-          <a href="07_Digital_Platforms.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
-          <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col__title">Corporate</div>
-        <div class="footer-col__links">
-          <a href="09_About_IOR.html" class="footer-col__link">About IOR</a>
-          <a href="10_Careers.html" class="footer-col__link">Careers</a>
-          <a href="09a_Case_Studies.html" class="footer-col__link">Case Studies</a>
-          <a href="09d_Sustainability_HSE_ESG.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
-          <a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col__title">Quick Actions</div>
-        <div class="footer-col__links">
-          <a href="#" class="footer-col__link">Apply for an Account</a>
-          <a href="11e_Make_Payment.html" class="footer-col__link">Make a Payment</a>
-          <a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a>
-          <a href="11_Support_Hub.html" class="footer-col__link">Help Centre &amp; FAQs</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col__title">Find a Site By State</div>
-        <div class="footer-state-pills">
-          <a href="11d_Find_Location.html" class="footer-state-pill">QLD</a>
-          <a href="11d_Find_Location.html" class="footer-state-pill">NSW</a>
-          <a href="11d_Find_Location.html" class="footer-state-pill">VIC</a>
-          <a href="11d_Find_Location.html" class="footer-state-pill">SA</a>
-          <a href="11d_Find_Location.html" class="footer-state-pill">WA</a>
-          <a href="11d_Find_Location.html" class="footer-state-pill">NT</a>
-        </div>
+  <div class="footer-nav-grid">
+    <!-- Contact -->
+    <div>
+      <div class="footer-col__title">Contact</div>
+      <div class="footer-col__links">
+        <span class="footer-col__link footer-col__link--address">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
+        </span>
+        <a href="tel:1300457467" class="footer-col__link footer-col__link--icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          1300 457 467
+        </a>
+        <a href="mailto:enquiries@ior.com.au" class="footer-col__link footer-col__link--icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          enquiries@ior.com.au
+        </a>
+        <a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Contacts</a>
       </div>
     </div>
-    <div class="footer-legal">
-      <p class="footer-legal__text">
-        Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="#" class="footer-legal__link">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="#" class="footer-legal__link">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        Site by 3PM
-      </p>
-      <div class="footer-social" aria-label="Social media links">
-        <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
-        <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
-        <a href="#" class="footer-social__icon" aria-label="Instagram">ig</a>
-        <a href="#" class="footer-social__icon" aria-label="YouTube">yt</a>
+    <!-- Fuel Solutions -->
+    <div>
+      <div class="footer-col__title">Fuel Solutions</div>
+      <div class="footer-col__links">
+        <a href="03_Ground_Fuels.html"              class="footer-col__link">Ground Fuels</a>
+        <a href="04_Aviation.html"                  class="footer-col__link">Aviation</a>
+        <a href="05_Equipment_Infrastructure.html"  class="footer-col__link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading.html"            class="footer-col__link">Supply &amp; Trading</a>
       </div>
     </div>
-  </footer>
+    <!-- Digital Platforms -->
+    <div>
+      <div class="footer-col__title">Digital Platforms</div>
+      <div class="footer-col__links">
+        <a href="07_Digital_Platforms.html#hydip"           class="footer-col__link">HyDip™ FMS</a>
+        <a href="07_Digital_Platforms.html#fuelcharge"      class="footer-col__link">Fuelcharge App</a>
+        <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
+      </div>
+    </div>
+    <!-- Corporate -->
+    <div>
+      <div class="footer-col__title">Corporate</div>
+      <div class="footer-col__links">
+        <a href="09_About_IOR.html"          class="footer-col__link">About IOR</a>
+        <a href="10_Careers.html#careers"      class="footer-col__link">Careers</a>
+        <a href="09d_Case_Studies.html"   class="footer-col__link">Case Studies</a>
+        <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+        <a href="11c_News_Updates.html"         class="footer-col__link">News &amp; Updates</a>
+      </div>
+    </div>
+    <!-- Quick Actions -->
+    <div>
+      <div class="footer-col__title">Quick Actions</div>
+      <div class="footer-col__links">
+        <a href="#" class="footer-col__link">Apply for an Account</a>
+        <a href="11e_Make_Payment.html" class="footer-col__link">Make a Payment</a>
+        <a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a>
+        <a href="11_Support_Hub.html" class="footer-col__link">Help Centre &amp; FAQs</a>
+      </div>
+    </div>
+    <!-- Find a Site By State -->
+    <div>
+      <div class="footer-col__title">Find a Site By State</div>
+      <div class="footer-state-pills">
+        <a href="11d_Find_Location.html" class="footer-state-pill">QLD</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">NSW</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">VIC</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">SA</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">WA</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">NT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">
+      Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link--muted">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link--muted">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      Site by 3PM
+    </p>
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
+      <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
+      <a href="#" class="footer-social__icon" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="#" class="footer-social__icon" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+    </div>
+  </div>
+</footer>
 
   <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
   <div class="drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
