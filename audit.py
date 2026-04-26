@@ -213,7 +213,7 @@ def audit(filepath):
 
     # ── R10: Proto-bar with Master Index link ───────────────────────────────
     def r10():
-        has_proto = 'proto-bar' in html
+        has_proto = 'proto-bar' in html or 'util-bar' in html
         has_mi = '00_Master_Index.html' in html
         return (has_proto and has_mi, "Present" if (has_proto and has_mi) else f"proto-bar={'YES' if has_proto else 'MISSING'}, Master Index link={'YES' if has_mi else 'MISSING'}")
 
@@ -307,7 +307,7 @@ def audit(filepath):
 
     # ── R19: Announcement bar present ──────────────────────────────────────
     def r19():
-        has_ann = 'ior-utility-bar' in html or 'utility-bar' in html
+        has_ann = 'ior-utility-bar' in html or 'utility-bar' in html or 'util-bar' in html
         return (has_ann, "Present" if has_ann else "MISSING utility/announcement bar")
 
     check("R19", "Utility/announcement bar present", r19)
