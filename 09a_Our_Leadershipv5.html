@@ -187,22 +187,31 @@
       border-top: 1px solid rgba(255,255,255,.1);
     }
     /* ============================================================
-       BREADCRUMB
+       QUICK LINKS BAR (Shell v4)
     ============================================================ */
-    .breadcrumb {
-      background: var(--grey-100); border-bottom: 1px solid var(--grey-200);
+    .quick-links-bar {
+      background: var(--grey-100); border-bottom: 1px solid rgba(3,85,163,.15);
+      padding: 0 var(--section-pad-x);
     }
-    .breadcrumb__inner {
-      max-width: 1280px; margin: 0 auto; padding: 10px 24px;
-      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    .quick-links-bar__inner {
+      max-width: 1280px; margin-inline: auto;
+      display: flex; align-items: center; gap: 0; overflow-x: auto;
     }
-    .breadcrumb__item {
-      font-size: 13px; color: var(--grey-700);
+    .quick-links-bar__label {
+      font-size: 12px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--ior-blue);
+      white-space: nowrap; padding: 12px 20px 12px 0;
+      border-right: 1px solid rgba(3,85,163,.2); margin-right: 4px;
+      flex-shrink: 0;
     }
-    .breadcrumb__item a { color: var(--ior-blue); transition: color .2s; }
-    .breadcrumb__item a:hover { color: var(--ior-navy); }
-    .breadcrumb__item--current { color: var(--grey-900); font-weight: 500; }
-    .breadcrumb__sep { color: var(--grey-700); font-size: 13px; }
+    .quick-links-bar__link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 12px 16px; font-size: 14px; font-weight: 700;
+      color: var(--ior-navy); white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition-fast); min-height: 44px;
+    }
+    .quick-links-bar__link:hover { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
     /* ============================================================
        HERO
     ============================================================ */
@@ -308,42 +317,42 @@
       display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px;
     }
     .footer-col__title {
-      font-size: 11px; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 16px;
+      font-size: clamp(13px, 1.3vw, 16px); font-weight: 800; color: #fff;
+      margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,.2);
     }
     .footer-col__links { display: flex; flex-direction: column; gap: 10px; }
-    .footer-col__links--spaced { margin-top: 16px; }
-    .footer-col__link { font-size: 14px; color: rgba(255,255,255,.7); transition: color .2s; }
-    .footer-col__link:hover { color: var(--white); }
-    .footer-col__link--address { font-size: 13px; line-height: 1.6; }
-    .footer-social { display: flex; gap: 12px; margin-top: 20px; }
-    .footer-social__icon {
-      width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.2);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.7); transition: border-color .2s, color .2s;
-      border-radius: var(--radius-none);
-    }
-    .footer-social__icon:hover { border-color: var(--white); color: var(--white); }
-    .footer-state-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .footer-col__link  { font-size: clamp(12px, 1.2vw, 14px); color: rgba(255,255,255,.8); min-height: 44px; display: flex; align-items: center; }
+    .footer-col__link:hover { color: #fff; text-decoration: underline; }
+    .footer-col__link--address { font-size: 14px; color: rgba(255,255,255,.9); line-height: 1.6; display: block; }
+    .footer-col__link--icon { display: flex; align-items: center; gap: 8px; }
+    .footer-col__link--icon svg { flex-shrink: 0; margin-top: 2px; }
+    .footer-state-pills { display: flex; flex-wrap: wrap; gap: 8px; }
     .footer-state-pill {
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 700; letter-spacing: .06em;
-      text-transform: uppercase; color: rgba(255,255,255,.7);
-      background: rgba(255,255,255,.1); padding: 4px 10px;
-      border-radius: var(--radius-none);
-      transition: background .2s, color .2s;
+      display: inline-flex; align-items: center;
+      padding: 4px 12px; border: 1px solid rgba(255,255,255,.4); color: #fff;
+      font-size: 13px; font-weight: 700;
+      transition: all .2s; min-height: 44px;
     }
-    .footer-state-pill:hover { background: rgba(255,255,255,.2); color: #fff; }
+    .footer-state-pill:hover { background: rgba(255,255,255,.15); border-color: #fff; }
     .footer-legal {
-      max-width: 1280px; margin: 0 auto; padding: 20px 24px;
-      border-top: 1px solid rgba(255,255,255,.1);
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px;
+      max-width: 1280px; margin-inline: auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0; border-top: 1px solid rgba(255,255,255,.2);
+      flex-wrap: wrap; gap: 16px;
     }
-    .footer-legal__copy { font-size: 12px; color: rgba(255,255,255,.5); }
-    .footer-legal__links { display: flex; gap: 20px; }
-    .footer-legal__link { font-size: 12px; color: rgba(255,255,255,.5); transition: color .2s; }
-    .footer-legal__link:hover { color: var(--white); }
+    .footer-legal__text { font-size: 12px; color: rgba(255,255,255,.6); }
+    .footer-legal__link { color: rgba(255,255,255,.6); text-decoration: underline; }
+    .footer-legal__link:hover { color: #fff; }
+    .footer-legal__link--muted { color: rgba(255,255,255,.6); text-decoration: underline; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social__icon {
+      width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff;
+      transition: all .2s;
+    }
+    .footer-social__icon:hover { background: rgba(255,255,255,.15); border-color: #fff; }
     /* ============================================================
        FADE-UP ANIMATION
     ============================================================ */
@@ -563,14 +572,15 @@
     </div>
   </nav>
 
-  <!-- BREADCRUMB -->
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <div class="breadcrumb__inner">
-      <span class="breadcrumb__item"><a href="01_Homepage.html">Home</a></span>
-      <span class="breadcrumb__sep" aria-hidden="true">&#8250;</span>
-      <span class="breadcrumb__item"><a href="09_About_IOR.html">About IOR</a></span>
-      <span class="breadcrumb__sep" aria-hidden="true">&#8250;</span>
-      <span class="breadcrumb__item breadcrumb__item--current" aria-current="page">Our Leadership</span>
+  <!-- QUICK LINKS BAR -->
+  <nav class="quick-links-bar" aria-label="Explore About IOR">
+    <div class="quick-links-bar__inner">
+      <span class="quick-links-bar__label">Explore:</span>
+      <a href="09d_Case_Studies.html" class="quick-links-bar__link">Case Studies</a>
+      <a href="09b_Community.html" class="quick-links-bar__link">Community &amp; Giving Back</a>
+      <a href="09c_Sustainability.html" class="quick-links-bar__link">Sustainability, HSE &amp; ESG</a>
+      <a href="10_Careers.html" class="quick-links-bar__link">Careers</a>
+      <a href="11c_News_Updates.html" class="quick-links-bar__link">News &amp; Updates</a>
     </div>
   </nav>
 
@@ -790,103 +800,95 @@
 
   </main>
 
-  <!-- CANONICAL FOOTER -->
+  <!-- COMPONENT 8b: GLOBAL FOOTER — Shell v4 canonical -->
   <footer class="site-footer" aria-label="Site footer">
-    <div class="footer-nav-grid">
-      <!-- Col 1: Contact -->
-      <div class="footer-col">
-        <p class="footer-col__title">Contact</p>
-        <svg width="80" height="38" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="IOR logo" role="img">
-          <g clip-path="url(#ior-footer-leadership)">
-            <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="white"/>
-            <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#5BB4E5"/>
-            <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="white"/>
-            <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="white"/>
-          </g>
-          <defs><clipPath id="ior-footer-leadership"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
-        </svg>
-        <div class="footer-col__links footer-col__links--spaced">
-          <span class="footer-col__link footer-col__link--address">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
-          <a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a>
-          <a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a>
-          <a href="11b_Regional_Contactsv5.html" class="footer-col__link">Regional Contacts</a>
-        </div>
-        <div class="footer-social" aria-label="Social media links">
-          <a href="https://www.linkedin.com/company/ior-petroleum" class="footer-social__icon" aria-label="IOR on LinkedIn" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="https://www.facebook.com/iorpetroleum" class="footer-social__icon" aria-label="IOR on Facebook" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/iorpetroleum" class="footer-social__icon" aria-label="IOR on Instagram" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@IORPetroleum" class="footer-social__icon" aria-label="IOR on YouTube" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
-          </a>
-        </div>
-      </div>
-      <!-- Col 2: Fuel Solutions -->
-      <div class="footer-col">
-        <p class="footer-col__title">Fuel Solutions</p>
-        <div class="footer-col__links">
-          <a href="03b_On_Site_Refuelling_v3.5.html" class="footer-col__link">Ground Fuels</a>
-          <a href="#" class="footer-col__link">Aviation</a>
-          <a href="#" class="footer-col__link">Equipment &amp; Infrastructure</a>
-          <a href="#" class="footer-col__link">Supply &amp; Trading</a>
-        </div>
-      </div>
-      <!-- Col 3: Digital Platforms -->
-      <div class="footer-col">
-        <p class="footer-col__title">Digital Platforms</p>
-        <div class="footer-col__links">
-          <a href="07a_HyDip_FMS_v4.html" class="footer-col__link">HyDip&#8482; FMS</a>
-          <a href="07b_Fuelcharge_App_v4.html" class="footer-col__link">Fuelcharge App</a>
-          <a href="07c_Customer_Portal_v4.html" class="footer-col__link">Customer Portal</a>
-        </div>
-      </div>
-      <!-- Col 4: Corporate -->
-      <div class="footer-col">
-        <p class="footer-col__title">Corporate</p>
-        <div class="footer-col__links">
-          <a href="09_About_IOR.html" class="footer-col__link">About IOR</a>
-          <a href="10_Careers.html" class="footer-col__link">Careers</a>
-          <a href="09d_Case_Studies.html" class="footer-col__link">Case Studies</a>
-          <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
-          <a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a>
-        </div>
-      </div>
-      <!-- Col 5: Quick Actions -->
-      <div class="footer-col">
-        <p class="footer-col__title">Quick Actions</p>
-        <div class="footer-col__links">
-          <a href="#" class="footer-col__link">Apply for an Account</a>
-          <a href="11e_Make_Paymentv5.html" class="footer-col__link">Make a Payment</a>
-          <a href="11a_Contact_Usv5.html" class="footer-col__link">Contact Us</a>
-          <a href="11_Support_Hubv5.html" class="footer-col__link">Help Centre &amp; FAQs</a>
-        </div>
-      </div>
-      <!-- Col 6: Find a Site By State -->
-      <div class="footer-col">
-        <p class="footer-col__title">Find a Site By State</p>
-        <div class="footer-state-pills">
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">QLD</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">NSW</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">VIC</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">SA</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">WA</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">NT</a>
-        </div>
+  <div class="footer-nav-grid">
+    <!-- Contact -->
+    <div>
+      <div class="footer-col__title">Contact</div>
+      <div class="footer-col__links">
+        <span class="footer-col__link footer-col__link--address">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
+        </span>
+        <a href="tel:1300457467" class="footer-col__link footer-col__link--icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          1300 457 467
+        </a>
+        <a href="mailto:enquiries@ior.com.au" class="footer-col__link footer-col__link--icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          enquiries@ior.com.au
+        </a>
+        <a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Contacts</a>
       </div>
     </div>
-    <div class="footer-legal">
-      <p class="footer-legal__copy">Copyright &copy; 2026 IOR. All rights reserved.</p>
-      <div class="footer-legal__links">
-        <a href="11f_Privacy_Policyv5.html" class="footer-legal__link">Privacy Policy</a>
-        <a href="#" class="footer-legal__link">Terms &amp; Conditions</a>
-        <a href="#" class="footer-legal__link">Site by ThreePM</a>
+    <!-- Fuel Solutions -->
+    <div>
+      <div class="footer-col__title">Fuel Solutions</div>
+      <div class="footer-col__links">
+        <a href="03_Ground_Fuels.html" class="footer-col__link">Ground Fuels</a>
+        <a href="04_Aviation.html" class="footer-col__link">Aviation</a>
+        <a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading.html" class="footer-col__link">Supply &amp; Trading</a>
       </div>
     </div>
+    <!-- Digital Platforms -->
+    <div>
+      <div class="footer-col__title">Digital Platforms</div>
+      <div class="footer-col__links">
+        <a href="07_Digital_Platforms.html#hydip" class="footer-col__link">HyDip&#8482; FMS</a>
+        <a href="07_Digital_Platforms.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
+        <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
+      </div>
+    </div>
+    <!-- Corporate -->
+    <div>
+      <div class="footer-col__title">Corporate</div>
+      <div class="footer-col__links">
+        <a href="09_About_IOR.html" class="footer-col__link">About IOR</a>
+        <a href="10_Careers.html#careers" class="footer-col__link">Careers</a>
+        <a href="09d_Case_Studies.html" class="footer-col__link">Case Studies</a>
+        <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+        <a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a>
+      </div>
+    </div>
+    <!-- Quick Actions -->
+    <div>
+      <div class="footer-col__title">Quick Actions</div>
+      <div class="footer-col__links">
+        <a href="#" class="footer-col__link">Apply for an Account</a>
+        <a href="11e_Make_Payment.html" class="footer-col__link">Make a Payment</a>
+        <a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a>
+        <a href="11_Support_Hub.html" class="footer-col__link">Help Centre &amp; FAQs</a>
+      </div>
+    </div>
+    <!-- Find a Site By State -->
+    <div>
+      <div class="footer-col__title">Find a Site By State</div>
+      <div class="footer-state-pills">
+        <a href="11d_Find_Location.html" class="footer-state-pill">QLD</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">NSW</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">VIC</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">SA</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">WA</a>
+        <a href="11d_Find_Location.html" class="footer-state-pill">NT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">
+      Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link--muted">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link--muted">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      Site by 3PM
+    </p>
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
+      <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
+      <a href="#" class="footer-social__icon" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="#" class="footer-social__icon" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+    </div>
+  </div>
   </footer>
 
   <script>
