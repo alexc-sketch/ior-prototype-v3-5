@@ -230,7 +230,7 @@
     .footer-legal__link { font-size: 12px; color: rgba(255,255,255,.5); transition: color .2s; }
     .footer-legal__link:hover { color: var(--white); }
     .footer-state-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.6); background: rgba(255,255,255,.06); padding: 4px 10px; border-radius: var(--radius-pill); }
-    .footer-state-pill__dot { width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; }
+    .footer-state-pill__dot { width: 6px; height: 6px; border-radius: 0; background: #4ADE80; }
 
     /* ============================================================
        RESPONSIVE
@@ -259,6 +259,24 @@
     /* Fade-up animation */
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
     .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* Logo Carousel */
+    .logo-carousel-wrap { background: var(--ior-light-blue-bg, #EBF4FB); padding: 28px clamp(20px,8vw,125px); }
+    .logo-carousel-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ior-mid-grey, #6B7280); margin-bottom: 16px; }
+    .logo-carousel-track-outer { overflow: hidden; }
+    .logo-carousel-track { display: flex; gap: 40px; animation: carousel-scroll 28s linear infinite; width: max-content; }
+    .logo-carousel-track:hover { animation-play-state: paused; }
+    .logo-placeholder { width: 120px; height: 44px; background: rgba(0,0,0,.08); display: flex; align-items: center; justify-content: center; font-size: 11px; color: #999; flex-shrink: 0; }
+    @keyframes carousel-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .logo-carousel-track { animation: none; } }
+
+    /* Quick Links Bar */
+    .quick-links-bar { background: var(--ior-light-blue-bg, #EBF4FB); border-bottom: 1px solid var(--ior-border, #D1D5DB); padding: 10px clamp(20px,8vw,125px); }
+    .quick-links-bar__inner { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .quick-links-bar__label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ior-mid-grey, #6B7280); white-space: nowrap; }
+    .quick-links-bar__links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .quick-links-bar__links a { font-size: 13px; color: var(--ior-navy, #0A4066); text-decoration: none; font-weight: 500; transition: color .15s; }
+    .quick-links-bar__links a:hover { color: var(--ior-blue, #0355A3); }
   </style>
 </head>
 <body>
@@ -372,7 +390,7 @@
     <!-- Mega: Digital Platforms -->
     <div class="mega-panel" id="mega-digital" role="region" aria-label="Digital Platforms menu">
       <div class="mega-inner mega-inner--3col">
-        <div class="mega-col"><p class="mega-col__title">Platforms</p><div class="mega-col__links"><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v4.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Platforms</p><div class="mega-col__links"><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a></div></div>
         <div class="mega-col"><p class="mega-col__title">Features</p><div class="mega-col__links"><a href="#" class="mega-col__link">Fuel Monitoring</a><a href="#" class="mega-col__link">Reporting &amp; Analytics</a><a href="#" class="mega-col__link">Fleet Management</a></div></div>
         <div class="mega-col"><p class="mega-col__title">Resources</p><div class="mega-col__links"><a href="#" class="mega-col__link">Product Brochures</a><a href="#" class="mega-col__link">Case Studies</a></div></div>
       </div>
@@ -437,7 +455,7 @@
         </button>
         <div class="drawer__sub" id="drawer-digital">
           <a href="07a_HyDip_FMSv6.html" class="drawer__sub-link">HyDip&#8482; FMS</a>
-          <a href="07b_Fuelcharge_App_v4.html" class="drawer__sub-link">Fuelcharge App</a>
+          <a href="07b_Fuelcharge_App_v8.html" class="drawer__sub-link">Fuelcharge App</a>
           <a href="07c_Customer_Portalv5.html" class="drawer__sub-link">Customer Portal</a>
         </div>
       </div>
@@ -464,6 +482,19 @@
   </nav>
 
   <main id="main-content">
+<!-- Quick Links Bar -->
+<section class="quick-links-bar" id="quick-links" aria-label="Quick navigation">
+  <div class="quick-links-bar__inner">
+    <span class="quick-links-bar__label">Explore:</span>
+    <nav class="quick-links-bar__links" aria-label="Quick links">
+      <a href="09a_Our_Leadershipv5.html">Our Leadership</a>
+      <a href="09_About_IOR.html">About IOR</a>
+      <a href="09b_Community.html">Community</a>
+      <a href="09c_Sustainability.html">Sustainability</a>
+    </nav>
+  </div>
+</section>
+
 
     <!-- SECTION 1: BACK LINK -->
     <div class="back-link-bar">
@@ -623,7 +654,32 @@
   </main>
 
   <!-- SECTION 4: PRE-FOOTER -->
-  <section class="pre-footer" aria-label="We're here to help">
+  <!-- Logo Carousel -->
+<div class="logo-carousel-wrap" aria-label="Trusted by" role="region">
+  <p class="logo-carousel-label">Trusted by leading Australian businesses</p>
+  <div class="logo-carousel-track-outer">
+    <div class="logo-carousel-track" aria-hidden="true">
+      <div class="logo-placeholder">Client Logo 1</div>
+      <div class="logo-placeholder">Client Logo 2</div>
+      <div class="logo-placeholder">Client Logo 3</div>
+      <div class="logo-placeholder">Client Logo 4</div>
+      <div class="logo-placeholder">Client Logo 5</div>
+      <div class="logo-placeholder">Client Logo 6</div>
+      <div class="logo-placeholder">Client Logo 7</div>
+      <div class="logo-placeholder">Client Logo 8</div>
+      <div class="logo-placeholder">Client Logo 1</div>
+      <div class="logo-placeholder">Client Logo 2</div>
+      <div class="logo-placeholder">Client Logo 3</div>
+      <div class="logo-placeholder">Client Logo 4</div>
+      <div class="logo-placeholder">Client Logo 5</div>
+      <div class="logo-placeholder">Client Logo 6</div>
+      <div class="logo-placeholder">Client Logo 7</div>
+      <div class="logo-placeholder">Client Logo 8</div>
+    </div>
+  </div>
+</div>
+
+<section class="pre-footer" aria-label="We're here to help">
     <div class="pre-footer__row">
       <h2 class="pre-footer__title">We&#8217;re here to help</h2>
       <div class="pre-footer__ctas">
@@ -684,7 +740,7 @@
         <p class="footer-col__title">Digital Platforms</p>
         <div class="footer-col__links">
           <a href="07a_HyDip_FMSv6.html" class="footer-col__link">HyDip&#8482; FMS</a>
-          <a href="07b_Fuelcharge_App_v4.html" class="footer-col__link">Fuelcharge App</a>
+          <a href="07b_Fuelcharge_App_v8.html" class="footer-col__link">Fuelcharge App</a>
           <a href="07c_Customer_Portalv5.html" class="footer-col__link">Customer Portal</a>
         </div>
       </div>
