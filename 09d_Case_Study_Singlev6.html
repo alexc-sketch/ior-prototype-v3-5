@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modernising the Tin Can Bay Marina | IOR Case Study</title>
+  <meta name="description" content="How IOR transformed a 172-berth marina by installing HyDip® dispensing technology and the Fuelcharge app, generating 24/7 unmanned sales.">
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       GOLDEN RULES AUDIT HEADER
+       R1: No operating hours anywhere in this file
+       R2: border-radius:0 on all containers/cards — .cs-pill excepted (explicitly permitted per brief)
+       R3: Zero CSS gradients EXCEPT .cs-hero__scrim (photographic legibility scrim — explicitly permitted per brief)
+       R4: No inline style= on body elements
+       R5: No blue overlay on hero — full-bleed photo only
+       R6: No word "depot"
+       R7: All global components present (proto-bar, nav, drawer, pre-footer, footer)
+       R8: Dual nav CTAs — Customer Login + Apply for an Account
+       R9: Protected files untouched
+  ═══════════════════════════════════════════════════════════════ -->
+
+  <style>
+    /* ─── CSS CUSTOM PROPERTIES (from Shell v4) ─── */
+    :root {
+      --ior-navy:          #0A4066;
+      --ior-blue:          #0355A3;
+      --ior-light-blue:    #0072CE;
+      --ior-gold:          #F5A623;
+      --ior-dark:          #231F20;
+      --ior-text:          #1a1a1a;
+      --ior-muted:         #6b7280;
+      --ior-border:        #e5e7eb;
+      --ior-bg-light:      #f9fafb;
+      --radius:            0px;
+      --transition:        250ms ease;
+      --max-w:             1200px;
+      --gutter:            clamp(20px, 5vw, 80px);
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; color: var(--ior-text); background: #fff; line-height: 1.6; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+
+    /* ─── PROTO-BAR ─── */
+    .proto-bar { background: #1a1a2e; padding: 6px clamp(16px,4vw,60px); display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: monospace; position: relative; z-index: 9999; }
+    .proto-bar__label { color: #f59e0b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+    .proto-bar__links { display: flex; gap: 0; flex-wrap: wrap; }
+    .proto-bar__link { color: rgba(255,255,255,0.7); padding: 2px 10px; transition: color var(--transition); }
+    .proto-bar__link:hover { color: #fff; }
+    .proto-bar__sep { color: rgba(255,255,255,0.3); padding: 2px 0; }
+    .proto-bar__inner { display: flex; align-items: center; gap: 8px; width: 100%; }
+
+    /* ─── UTILITY BAR ─── */
+    .util-bar { background: var(--ior-navy); padding: 6px clamp(20px,8vw,125px); display: flex; justify-content: flex-end; align-items: center; gap: 16px; }
+    .util-bar__link { color: rgba(255,255,255,0.8); font-size: 12px; transition: color var(--transition); }
+    .util-bar__link:hover { color: #fff; }
+    .util-bar__sep { color: rgba(255,255,255,0.3); font-size: 12px; }
+
+    /* ─── PRIMARY NAV ─── */
+    .primary-nav { background: #fff; border-bottom: 1px solid var(--ior-border); position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; padding: 0 clamp(20px,8vw,125px); height: clamp(60px,6vw,72px); transition: all var(--transition); }
+    .primary-nav--scrolled { height: 56px; box-shadow: 0 2px 20px rgba(0,0,0,.10); }
+    .nav-logo { display: flex; align-items: center; margin-right: auto; }
+    .nav-logo svg { height: clamp(28px,3vw,36px); width: auto; }
+    .nav-links { display: flex; list-style: none; gap: 4px; align-items: center; }
+    .nav-link { font-size: 14px; font-weight: 500; color: var(--ior-dark); padding: 8px 12px; border-radius: 0; transition: color var(--transition); display: flex; align-items: center; gap: 4px; }
+    .nav-link:hover, .nav-link[aria-expanded="true"] { color: var(--ior-blue); }
+    .nav-chevron { display: inline-flex; transition: transform var(--transition); }
+    .nav-link[aria-expanded="true"] .nav-chevron { transform: rotate(180deg); }
+    .nav-ctas { display: flex; gap: 8px; margin-left: 20px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; padding: 9px 20px; border-radius: 0; transition: all var(--transition); text-decoration: none; white-space: nowrap; letter-spacing: 0.02em; }
+    .btn--primary { background: var(--ior-blue); color: #fff; border: 2px solid var(--ior-blue); }
+    .btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
+    .btn--outline { background: transparent; color: var(--ior-blue); border: 2px solid var(--ior-blue); }
+    .btn--outline:hover { background: var(--ior-blue); color: #fff; }
+    .btn--pill { border-radius: 500px; }
+
+    /* ─── MEGA MENU ─── */
+    .mega-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 998; opacity: 0; pointer-events: none; transition: opacity var(--transition); }
+    .mega-overlay.is-active { opacity: 1; pointer-events: auto; }
+    .mega-panel { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border-top: 3px solid var(--ior-blue); box-shadow: 0 8px 32px rgba(0,0,0,.12); z-index: 999; display: none; padding: clamp(24px,3vw,40px) clamp(20px,8vw,125px); }
+    .mega-panel.is-open { display: block; }
+    .mega-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+    .mega-col__title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ior-muted); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--ior-border); }
+    .mega-col__links { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .mega-col__link { font-size: 14px; color: var(--ior-dark); padding: 4px 0; transition: color var(--transition); }
+    .mega-col__link:hover { color: var(--ior-blue); }
+    .mega-col__link--cta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--ior-blue); margin-top: 12px; }
+    .mega-col__link--cta:hover { color: var(--ior-navy); }
+    .mega-featured { background: var(--ior-navy); padding: 24px; }
+    .mega-featured__eyebrow { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ior-gold); margin-bottom: 8px; }
+    .mega-featured__title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.3; }
+    .mega-featured__body { font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 16px; line-height: 1.5; }
+    .mega-cta-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #fff; background: var(--ior-blue); padding: 10px 18px; transition: background var(--transition); }
+    .mega-cta-link:hover { background: var(--ior-light-blue); }
+
+    /* ─── MOBILE DRAWER ─── */
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1099; opacity: 0; pointer-events: none; transition: opacity var(--transition); }
+    .drawer-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .drawer { position: fixed; top: 0; right: -100%; width: min(380px, 100vw); height: 100vh; background: #fff; z-index: 1100; overflow-y: auto; transition: right 0.3s ease; display: flex; flex-direction: column; }
+    .drawer.is-open { right: 0; }
+    .drawer__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--ior-border); }
+    .drawer__close { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: var(--ior-dark); }
+    .drawer__nav { padding: 16px 0; flex: 1; }
+    .drawer__section { border-bottom: 1px solid var(--ior-border); }
+    .drawer__toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; font-size: 15px; font-weight: 600; color: var(--ior-dark); }
+    .drawer__chevron { transition: transform var(--transition); }
+    .drawer__toggle[aria-expanded="true"] .drawer__chevron { transform: rotate(180deg); }
+    .drawer__sub { display: none; padding: 0 20px 12px; }
+    .drawer__sub.is-open { display: block; }
+    .drawer__sub-link { display: block; font-size: 14px; color: var(--ior-muted); padding: 6px 0; border-bottom: 1px solid #f3f4f6; }
+    .drawer__sub-link:hover { color: var(--ior-blue); }
+    .drawer__ctas { padding: 20px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--ior-border); margin-top: auto; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--ior-dark); transition: all var(--transition); }
+    @media (max-width: 1024px) {
+      .nav-links, .nav-ctas { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── QUICK LINKS BAR ─── */
+    .quick-links-bar { background: #fff; border-bottom: 1px solid var(--ior-border); padding: 0 clamp(20px,8vw,125px); display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .quick-links-bar::-webkit-scrollbar { display: none; }
+    .qlb__label { font-size: 12px; font-weight: 600; color: var(--ior-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 8px; white-space: nowrap; padding: 12px 0; }
+    .qlb__link { font-size: 13px; color: var(--ior-dark); padding: 12px 12px; white-space: nowrap; border-bottom: 2px solid transparent; transition: all var(--transition); }
+    .qlb__link:hover, .qlb__link--active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+
+    /* ─── CASE STUDY HERO ─── */
+    .cs-hero {
+      position: relative;
+      min-height: clamp(400px, 55vw, 650px);
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .cs-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    /* PERMITTED GRADIENT — photographic legibility scrim only (per brief Section 1) */
+    .cs-hero__scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
+    }
+    .cs-hero__content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 80px);
+      max-width: 900px;
+    }
+    .cs-hero__eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ior-gold);
+      margin-bottom: 12px;
+    }
+    .cs-hero__h1 {
+      font-size: clamp(28px, 4.5vw, 52px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      max-width: 800px;
+    }
+
+    /* ─── STAT BAR ─── */
+    .stat-bar {
+      background: var(--ior-blue);
+      padding: clamp(32px, 4vw, 56px) clamp(20px, 5vw, 80px);
+    }
+    .stat-bar__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .stat-card__number {
+      display: block;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+    .stat-card__label {
+      display: block;
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── NARRATIVE LAYOUT (70/30) ─── */
+    .cs-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 48px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: clamp(40px, 5vw, 80px) clamp(20px, 5vw, 80px);
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .cs-layout {
+        grid-template-columns: 1fr;
+      }
+      .cs-sidebar {
+        position: static !important;
+        order: -1;
+      }
+    }
+
+    /* ─── BODY CONTENT ─── */
+    .cs-body { font-size: 16px; line-height: 1.75; color: var(--ior-text); }
+    .cs-body p { margin-bottom: 16px; }
+    .cs-body h2 {
+      font-size: clamp(20px, 2.5vw, 26px);
+      color: var(--ior-navy);
+      margin: 32px 0 12px;
+      padding-top: 8px;
+      border-top: 2px solid var(--ior-blue);
+    }
+    .cs-body h2:first-child {
+      margin-top: 0;
+      border-top: none;
+    }
+    /* Branded bullets */
+    .cs-body ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 16px 0;
+    }
+    .cs-body ul li {
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .cs-body ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: var(--ior-blue);
+    }
+    /* Inline blockquotes */
+    .cs-body blockquote {
+      border-left: 4px solid var(--ior-blue);
+      margin: 24px 0;
+      padding: 16px 20px;
+      background: #f0f6ff;
+      font-style: italic;
+      color: var(--ior-navy);
+    }
+    /* Responsive tables */
+    .cs-body .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 24px 0;
+    }
+    .cs-body table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 500px;
+    }
+    .cs-body th {
+      background: var(--ior-navy);
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 14px;
+    }
+    .cs-body td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 14px;
+    }
+    .cs-body tr:nth-child(even) td {
+      background: #f9fafb;
+    }
+
+    /* ─── SIDEBAR ─── */
+    .cs-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+    .cs-sidebar__block {
+      background: var(--ior-bg-light);
+      border: 1px solid var(--ior-border);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .cs-sidebar__label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ior-muted);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .cs-sidebar__value {
+      font-size: 15px;
+      color: var(--ior-navy);
+      font-weight: 500;
+    }
+    .cs-sidebar__pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    /* PERMITTED border-radius — pills explicitly allowed per brief */
+    .cs-pill {
+      display: inline-block;
+      padding: 6px 14px;
+      background: var(--ior-blue);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 500px;
+    }
+
+    /* ─── TESTIMONIAL ─── */
+    .cs-testimonial {
+      background: var(--ior-navy);
+      padding: clamp(56px, 7vw, 96px) clamp(20px, 5vw, 80px);
+      text-align: center;
+    }
+    .cs-testimonial__inner {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .cs-testimonial__mark {
+      display: block;
+      font-size: 120px;
+      line-height: 0.6;
+      color: var(--ior-blue);
+      font-family: Georgia, serif;
+      margin-bottom: 24px;
+    }
+    .cs-testimonial__quote {
+      font-size: clamp(18px, 2.2vw, 24px);
+      color: #fff;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .cs-testimonial__attr {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+    }
+    .cs-testimonial__attr strong {
+      color: #fff;
+    }
+
+    /* ─── RELATED CASE STUDIES ─── */
+    .cs-related {
+      background: var(--ior-bg-light);
+      padding: clamp(48px, 6vw, 80px) clamp(20px, 5vw, 80px);
+    }
+    .cs-related__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cs-related__header {
+      margin-bottom: 32px;
+    }
+    .cs-related__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ior-blue);
+      margin-bottom: 8px;
+    }
+    .cs-related__title {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      color: var(--ior-navy);
+    }
+    .cs-related__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) {
+      .cs-related__grid { grid-template-columns: 1fr; }
+    }
+    .cs-card {
+      background: #fff;
+      border: 1px solid var(--ior-border);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow var(--transition);
+    }
+    .cs-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.10); }
+    .cs-card__img {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: var(--ior-navy);
+    }
+    .cs-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .cs-card:hover .cs-card__img img { transform: scale(1.04); }
+    .cs-card__body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-card__cat {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ior-blue);
+      margin-bottom: 8px;
+    }
+    .cs-card__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ior-navy);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .cs-card__excerpt {
+      font-size: 14px;
+      color: var(--ior-muted);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+    .cs-card__link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ior-blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap var(--transition);
+    }
+    .cs-card:hover .cs-card__link { gap: 8px; }
+
+    /* ─── PRE-FOOTER ─── */
+    .pre-footer { background: var(--ior-navy); padding: clamp(48px,6vw,80px) clamp(20px,8vw,125px); }
+    .pre-footer__row { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; max-width: var(--max-w); margin: 0 auto 32px; }
+    .pre-footer__title { font-size: clamp(22px,3vw,32px); font-weight: 700; color: #fff; }
+    .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .pre-footer__divider { border: none; border-top: 1px solid rgba(255,255,255,0.15); max-width: var(--max-w); margin: 0 auto; }
+
+    /* ─── SITE FOOTER — Shell v4 canonical ─── */
+    .site-footer { background: var(--ior-blue); color: #fff; padding: clamp(28px,3.5vw,40px) clamp(20px,8vw,125px) clamp(40px,5vw,60px); }
+    .footer-nav-grid { max-width: 1400px; margin-inline: auto; display: grid; grid-template-columns: repeat(6,1fr); gap: 32px; padding-bottom: 40px; }
+    .footer-col__title { font-size: clamp(13px,1.3vw,16px); font-weight: 800; color: #fff; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .footer-col__links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col__link { font-size: clamp(12px,1.2vw,14px); color: rgba(255,255,255,.8); min-height: 44px; display: flex; align-items: center; text-decoration: none; }
+    .footer-col__link:hover { color: #fff; text-decoration: underline; }
+    .footer-state-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .footer-state-pill { display: inline-flex; align-items: center; padding: 4px 12px; border: 1px solid rgba(255,255,255,.4); color: #fff; font-size: 13px; font-weight: 700; transition: all var(--transition); min-height: 44px; text-decoration: none; }
+    .footer-state-pill:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+    .footer-legal { max-width: 1400px; margin-inline: auto; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.2); flex-wrap: wrap; gap: 16px; }
+    .footer-legal__text { font-size: 12px; color: rgba(255,255,255,.6); }
+    .footer-legal__link--muted { color: rgba(255,255,255,.6); text-decoration: underline; }
+    .footer-legal__link--muted:hover { color: #fff; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social__icon { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; color: #fff; transition: all var(--transition); }
+    .footer-social__icon:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+    @media (max-width: 1200px) { .footer-nav-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 768px) { .footer-nav-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer-nav-grid { grid-template-columns: 1fr; } }
+
+    /* ─── BREADCRUMB ─── */
+    .cs-breadcrumb {
+      background: var(--ior-bg-light);
+      border-bottom: 1px solid var(--ior-border);
+      padding: 10px clamp(20px, 5vw, 80px);
+    }
+    .cs-breadcrumb__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--ior-muted);
+    }
+    .cs-breadcrumb__link { color: var(--ior-blue); transition: color var(--transition); }
+    .cs-breadcrumb__link:hover { color: var(--ior-navy); }
+    .cs-breadcrumb__sep { color: var(--ior-border); }
+
+    /* ─── VARIANT SWITCHER (prototype only) ─── */
+    .variant-switcher {
+      background: #fffbeb;
+      border-bottom: 2px solid #f59e0b;
+      padding: 10px clamp(20px, 5vw, 80px);
+    }
+    .variant-switcher__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .variant-switcher__label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #92400e;
+    }
+    .variant-btn {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border: 1px solid #d97706;
+      color: #92400e;
+      background: #fff;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .variant-btn:hover, .variant-btn.is-active {
+      background: #f59e0b;
+      color: #fff;
+      border-color: #f59e0b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ PROTO-BAR ═══ -->
+  <div class="proto-bar" role="navigation" aria-label="Prototype navigation">
+    <div class="proto-bar__inner">
+      <span class="proto-bar__label">Prototype</span>
+      <div class="proto-bar__links">
+        <a href="00_Master_Index.html" class="proto-bar__link">&#8592; Master Index</a>
+        <span class="proto-bar__sep" aria-hidden="true">|</span>
+        <a href="IOR_Design_System.html" class="proto-bar__link">Design System</a>
+        <span class="proto-bar__sep" aria-hidden="true">|</span>
+        <a href="00_Global_Components.html" class="proto-bar__link">Global Components</a>
+        <span class="proto-bar__sep" aria-hidden="true">|</span>
+        <a href="IOR_Global_Template_Shell_v4.html" class="proto-bar__link">Shell v4 Template</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ VARIANT SWITCHER (prototype only — remove in production) ═══ -->
+  <div class="variant-switcher" role="navigation" aria-label="Case study variant switcher">
+    <div class="variant-switcher__inner">
+      <span class="variant-switcher__label">Test Variant:</span>
+      <button class="variant-btn is-active" data-variant="tcb">Tin Can Bay Marina</button>
+      <button class="variant-btn" data-variant="fta">Flight Training Adelaide</button>
+      <button class="variant-btn" data-variant="mpc">MPC Kinetic</button>
+    </div>
+  </div>
+
+  <!-- ═══ UTILITY BAR ═══ -->
+  <div class="util-bar" role="navigation" aria-label="Utility navigation">
+    <a href="07c_Customer_Portalv5.html" class="util-bar__link">Customer Portal</a>
+    <span class="util-bar__sep" aria-hidden="true">|</span>
+    <a href="11d_Find_Locationv5.html" class="util-bar__link">Find a Location</a>
+    <span class="util-bar__sep" aria-hidden="true">|</span>
+    <a href="11_Support_Hubv5.html" class="util-bar__link">Support &amp; Contact</a>
+  </div>
+
+  <!-- ═══ PRIMARY NAV ═══ -->
+  <header role="banner">
+  <!-- Utility Bar -->
+  <div class="utility-bar" role="complementary" aria-label="Site utilities">
+    <div class="utility-bar__inner">
+      <a href="11d_Find_Locationv5.html" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Find a Location
+      </a>
+      <div class="utility-bar__divider" aria-hidden="true"></div>
+      <a href="11e_Make_Paymentv5.html" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Make a Payment
+      </a>
+      <div class="utility-bar__divider" aria-hidden="true"></div>
+      <a href="tel:1300457467" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        1300 457 467
+      </a>
+    </div>
+  </div>
+  <!-- Primary Nav (Sticky) -->
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">
+        <svg width="90" height="42" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g clip-path="url(#ior-logo-clip-nav)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/></g><defs><clipPath id="ior-logo-clip-nav"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg>
+      </a>
+      <ul class="nav-links" role="list">
+        <li>
+          <button class="nav-link" data-menu="fuel-solutions" aria-expanded="false" aria-controls="mega-fuel-solutions">
+            Fuel Solutions <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link" data-menu="digital-platforms" aria-expanded="false" aria-controls="mega-digital-platforms">
+            Digital Platforms <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link" data-menu="industries" aria-expanded="false" aria-controls="mega-industries">
+            Industries We Serve <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link" data-menu="about-ior" aria-expanded="false" aria-controls="mega-about-ior">
+            About IOR <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link" data-menu="support-contact" aria-expanded="false" aria-controls="mega-support-contact">
+            Support &amp; Contact <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+        </li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="#" class="btn btn--outline btn--pill btn--sm" aria-label="Customer Login">Customer Login</a>
+        <a href="#" class="btn btn--primary btn--pill btn--sm" aria-label="Apply for an Account">Apply for an Account</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mega Menus -->
+    <div class="mega-panel" id="mega-fuel-solutions" role="region" aria-label="Fuel Solutions menu">
+      <div class="mega-inner mega-inner--4col">
+        <div class="mega-col">
+          <p class="mega-col__title">Ground Fuels</p>
+          <div class="mega-col__links">
+            <a href="03_Ground_Fuels.html" class="mega-col__link">Ground Fuels Hub</a>
+            <a href="#" class="mega-col__link">IOR Diesel Stops</a>
+            <a href="#" class="mega-col__link">On-Site Refuelling</a>
+            <a href="#" class="mega-col__link">Bulk Diesel Delivery</a>
+            <a href="#" class="mega-col__link">HyBlue&#8482; AdBlue</a>
+            <a href="#" class="mega-col__link">Oils &amp; Lubricants</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">Aviation Fuels</p>
+          <div class="mega-col__links">
+            <a href="04_Aviation_Hub.html" class="mega-col__link">Aviation Hub</a>
+            <a href="#" class="mega-col__link">Aviation Network</a>
+            <a href="#" class="mega-col__link">Airport Fuelling</a>
+            <a href="#" class="mega-col__link">Aviation Bulk Delivery</a>
+            <a href="#" class="mega-col__link">Aviation Oils</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">Speciality</p>
+          <div class="mega-col__links">
+            <a href="#" class="mega-col__link">Marine Fuels</a>
+            <a href="#" class="mega-col__link">Rail Fuels</a>
+            <a href="#" class="mega-col__link">Emergency Fuel</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">Quick Actions</p>
+          <div class="mega-col__links">
+            <a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a>
+            <a href="#" class="mega-col__link">Get a Quote</a>
+            <a href="#" class="mega-col__link">Apply for an Account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mega-panel" id="mega-digital-platforms" role="region" aria-label="Digital Platforms menu">
+      <div class="mega-inner mega-inner--3col">
+        <div class="mega-col">
+          <p class="mega-col__title">Platforms</p>
+          <div class="mega-col__links">
+            <a href="07_Digital_Platformsv5.html" class="mega-col__link">Digital Platforms Hub</a>
+            <a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a>
+            <a href="07b_Fuelcharge_App_v8.html" class="mega-col__link">Fuelcharge App</a>
+            <a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">Features</p>
+          <div class="mega-col__links">
+            <a href="#" class="mega-col__link">Fleet Management</a>
+            <a href="#" class="mega-col__link">Real-Time Reporting</a>
+            <a href="#" class="mega-col__link">Tank Monitoring</a>
+            <a href="#" class="mega-col__link">Payment Integration</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">Get Started</p>
+          <div class="mega-col__links">
+            <a href="#" class="mega-col__link">Request a Demo</a>
+            <a href="#" class="mega-col__link">Apply for an Account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mega-panel" id="mega-industries" role="region" aria-label="Industries We Serve menu">
+      <div class="mega-inner mega-inner--4col">
+        <div class="mega-col">
+          <p class="mega-col__title">Primary Industries</p>
+          <div class="mega-col__links">
+            <a href="#" class="mega-col__link">Mining &amp; Resources</a>
+            <a href="#" class="mega-col__link">Agriculture</a>
+            <a href="#" class="mega-col__link">Construction</a>
+            <a href="#" class="mega-col__link">Transport &amp; Logistics</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">Aviation &amp; Marine</p>
+          <div class="mega-col__links">
+            <a href="#" class="mega-col__link">General Aviation</a>
+            <a href="#" class="mega-col__link">Commercial Aviation</a>
+            <a href="#" class="mega-col__link">Marine &amp; Boating</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">Government &amp; Defence</p>
+          <div class="mega-col__links">
+            <a href="#" class="mega-col__link">Government Fleets</a>
+            <a href="#" class="mega-col__link">Defence</a>
+            <a href="#" class="mega-col__link">Emergency Services</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">Case Studies</p>
+          <div class="mega-col__links">
+            <a href="09d_Case_Study_Singlev6.html" class="mega-col__link">View Case Studies</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mega-panel" id="mega-about-ior" role="region" aria-label="About IOR menu">
+      <div class="mega-inner mega-inner--3col">
+        <div class="mega-col">
+          <p class="mega-col__title">Company</p>
+          <div class="mega-col__links">
+            <a href="09_About_IOR.html" class="mega-col__link">About IOR</a>
+            <a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a>
+            <a href="#" class="mega-col__link">Our History</a>
+            <a href="#" class="mega-col__link">Community &amp; Giving Back</a>
+            <a href="#" class="mega-col__link">Sustainability, HSE &amp; ESG</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">Careers</p>
+          <div class="mega-col__links">
+            <a href="10_Careers.html" class="mega-col__link">Work at IOR</a>
+            <a href="#" class="mega-col__link">Current Vacancies</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">News</p>
+          <div class="mega-col__links">
+            <a href="#" class="mega-col__link">News &amp; Updates</a>
+            <a href="#" class="mega-col__link">Blog</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mega-panel" id="mega-support-contact" role="region" aria-label="Support &amp; Contact menu">
+      <div class="mega-inner mega-inner--3col">
+        <div class="mega-col">
+          <p class="mega-col__title">Get Help</p>
+          <div class="mega-col__links">
+            <a href="11_Support_Hubv5.html" class="mega-col__link">Help Centre &amp; FAQs</a>
+            <a href="11a_Contact_Usv5.html" class="mega-col__link">Contact Us</a>
+            <a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">Accounts</p>
+          <div class="mega-col__links">
+            <a href="#" class="mega-col__link">Apply for an Account</a>
+            <a href="#" class="mega-col__link">Customer Login</a>
+            <a href="11e_Make_Paymentv5.html" class="mega-col__link">Make a Payment</a>
+          </div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__title">Find Us</p>
+          <div class="mega-col__links">
+            <a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a>
+            <a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Mobile Drawer -->
+  <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+  <div class="drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="drawer__header">
+      <svg width="70" height="33" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="IOR" role="img"><g clip-path="url(#ior-logo-drawer)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#fff"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#5BB4E5"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#fff"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#fff"/></g><defs><clipPath id="ior-logo-drawer"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg>
+      <button class="drawer__close" id="drawer-close" aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="drawer__nav" aria-label="Mobile navigation">
+      <div class="drawer__item">
+        <button class="drawer__link" data-drawer-menu="fs">Fuel Solutions <span class="drawer__chevron" aria-hidden="true">&#8250;</span></button>
+        <div class="drawer__sub" id="drawer-fs">
+          <a href="03_Ground_Fuels.html" class="drawer__sub-link">Ground Fuels Hub</a>
+          <a href="#" class="drawer__sub-link">IOR Diesel Stops</a>
+          <a href="#" class="drawer__sub-link">On-Site Refuelling</a>
+          <a href="#" class="drawer__sub-link">Bulk Diesel Delivery</a>
+          <a href="#" class="drawer__sub-link">HyBlue&#8482; AdBlue</a>
+          <a href="#" class="drawer__sub-link">Oils &amp; Lubricants</a>
+          <a href="04_Aviation_Hub.html" class="drawer__sub-link">Aviation Hub</a>
+          <a href="#" class="drawer__sub-link">Aviation Network</a>
+          <a href="#" class="drawer__sub-link">Airport Fuelling</a>
+          <a href="#" class="drawer__sub-link">Aviation Bulk Delivery</a>
+        </div>
+      </div>
+      <div class="drawer__item">
+        <button class="drawer__link" data-drawer-menu="dp">Digital Platforms <span class="drawer__chevron" aria-hidden="true">&#8250;</span></button>
+        <div class="drawer__sub" id="drawer-dp">
+          <a href="07_Digital_Platformsv5.html" class="drawer__sub-link">Digital Platforms Hub</a>
+          <a href="07a_HyDip_FMSv6.html" class="drawer__sub-link">HyDip&#8482; FMS</a>
+          <a href="07b_Fuelcharge_App_v8.html" class="drawer__sub-link">Fuelcharge App</a>
+          <a href="07c_Customer_Portalv5.html" class="drawer__sub-link">Customer Portal</a>
+        </div>
+      </div>
+      <div class="drawer__item">
+        <button class="drawer__link" data-drawer-menu="ind">Industries We Serve <span class="drawer__chevron" aria-hidden="true">&#8250;</span></button>
+        <div class="drawer__sub" id="drawer-ind">
+          <a href="#" class="drawer__sub-link">Mining &amp; Resources</a>
+          <a href="#" class="drawer__sub-link">Agriculture</a>
+          <a href="#" class="drawer__sub-link">Construction</a>
+          <a href="#" class="drawer__sub-link">Transport &amp; Logistics</a>
+          <a href="#" class="drawer__sub-link">General Aviation</a>
+          <a href="#" class="drawer__sub-link">Marine &amp; Boating</a>
+          <a href="#" class="drawer__sub-link">Government Fleets</a>
+        </div>
+      </div>
+      <div class="drawer__item">
+        <button class="drawer__link" data-drawer-menu="abt">About IOR <span class="drawer__chevron" aria-hidden="true">&#8250;</span></button>
+        <div class="drawer__sub" id="drawer-abt">
+          <a href="09_About_IOR.html" class="drawer__sub-link">About IOR</a>
+          <a href="09a_Our_Leadershipv5.html" class="drawer__sub-link">Our Leadership</a>
+          <a href="#" class="drawer__sub-link">Our History</a>
+          <a href="10_Careers.html" class="drawer__sub-link">Careers</a>
+          <a href="#" class="drawer__sub-link">News &amp; Updates</a>
+        </div>
+      </div>
+      <div class="drawer__item">
+        <button class="drawer__link" data-drawer-menu="sup">Support &amp; Contact <span class="drawer__chevron" aria-hidden="true">&#8250;</span></button>
+        <div class="drawer__sub" id="drawer-sup">
+          <a href="11_Support_Hubv5.html" class="drawer__sub-link">Help Centre &amp; FAQs</a>
+          <a href="11a_Contact_Usv5.html" class="drawer__sub-link">Contact Us</a>
+          <a href="11b_Regional_Contactsv5.html" class="drawer__sub-link">Regional Contacts</a>
+          <a href="11d_Find_Locationv5.html" class="drawer__sub-link">Find a Location</a>
+          <a href="11e_Make_Paymentv5.html" class="drawer__sub-link">Make a Payment</a>
+        </div>
+      </div>
+    </nav>
+    <div class="drawer__cta">
+      <a href="#" class="btn btn--white btn--pill">Customer Login</a>
+      <a href="#" class="btn btn--primary btn--pill">Apply for an Account</a>
+    </div>
+  </div>
+</header>
+
+  <!-- ═══ MOBILE DRAWER ═══ -->
+  <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+  <nav class="drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="drawer__header">
+      <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">
+        <svg width="70" height="32" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g clip-path="url(#ior-logo-clip-drawer-cs6)">
+            <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/>
+            <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/>
+            <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/>
+            <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/>
+          </g>
+          <defs><clipPath id="ior-logo-clip-drawer-cs6"><rect width="97.6627" height="45.9834"/></clipPath></defs>
+        </svg>
+      </a>
+      <button class="drawer__close" id="drawer-close" aria-label="Close navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="drawer__nav" aria-label="Mobile navigation links">
+      <div class="drawer__section">
+        <button class="drawer__toggle" aria-expanded="false" aria-controls="drawer-fuel">Fuel Solutions <span class="drawer__chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="drawer__sub" id="drawer-fuel">
+          <a href="03_Ground_Fuels_v5.html" class="drawer__sub-link">Ground Fuels</a>
+          <a href="#" class="drawer__sub-link">Aviation</a>
+          <a href="05_Equipment_Infrastructure.html" class="drawer__sub-link">Equipment &amp; Infrastructure</a>
+          <a href="06_Supply_Trading.html" class="drawer__sub-link">Supply &amp; Trading</a>
+        </div>
+      </div>
+      <div class="drawer__section">
+        <button class="drawer__toggle" aria-expanded="false" aria-controls="drawer-digital">Digital Platforms <span class="drawer__chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="drawer__sub" id="drawer-digital">
+          <a href="#" class="drawer__sub-link">HyDip™ FMS</a>
+          <a href="07b_Fuelcharge_App_v8.html" class="drawer__sub-link">Fuelcharge App</a>
+          <a href="07c_Customer_Portalv5.html" class="drawer__sub-link">Customer Portal</a>
+        </div>
+      </div>
+      <div class="drawer__section">
+        <button class="drawer__toggle" aria-expanded="false" aria-controls="drawer-industries">Industries We Serve <span class="drawer__chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="drawer__sub" id="drawer-industries">
+          <a href="08a_Transport_Logistics.html" class="drawer__sub-link">Transport &amp; Logistics</a>
+          <a href="08d_Mining.html" class="drawer__sub-link">Mining</a>
+          <a href="08c_Agriculture.html" class="drawer__sub-link">Agriculture</a>
+          <a href="08f_Aviation_Industry.html" class="drawer__sub-link">Aviation</a>
+          <a href="08g_Construction.html" class="drawer__sub-link">Construction &amp; Civil</a>
+          <a href="08h_Government_Defence.html" class="drawer__sub-link">Government &amp; Defence</a>
+        </div>
+      </div>
+      <div class="drawer__section">
+        <button class="drawer__toggle" aria-expanded="false" aria-controls="drawer-about">About IOR <span class="drawer__chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="drawer__sub" id="drawer-about">
+          <a href="09_About_IOR.html" class="drawer__sub-link">Our Story</a>
+          <a href="09a_Our_Leadershipv5.html" class="drawer__sub-link">Leadership</a>
+          <a href="09d_Case_Studies.html" class="drawer__sub-link">Case Studies</a>
+          <a href="10_Careers.html" class="drawer__sub-link">Careers</a>
+        </div>
+      </div>
+      <div class="drawer__section">
+        <button class="drawer__toggle" aria-expanded="false" aria-controls="drawer-support">Support &amp; Contact <span class="drawer__chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+        <div class="drawer__sub" id="drawer-support">
+          <a href="11_Support_Hubv5.html" class="drawer__sub-link">Support Hub</a>
+          <a href="11a_Contact_Usv5.html" class="drawer__sub-link">Contact Us</a>
+          <a href="11b_Regional_Contactsv5.html" class="drawer__sub-link">Regional Contacts</a>
+          <a href="11d_Find_Locationv5.html" class="drawer__sub-link">Find a Location</a>
+          <a href="11e_Make_Paymentv5.html" class="drawer__sub-link">Make a Payment</a>
+        </div>
+      </div>
+    </nav>
+    <div class="drawer__ctas">
+      <a href="07c_Customer_Portalv5.html" class="btn btn--outline" aria-label="Log in to the IOR Customer Portal">Customer Login</a>
+      <a href="11a_Contact_Usv5.html" class="btn btn--primary" aria-label="Apply for an IOR fuel account">Apply for an Account</a>
+    </div>
+  </nav>
+
+  <!-- ═══ BREADCRUMB ═══ -->
+  <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+    <div class="cs-breadcrumb__inner">
+      <a href="01_Homepage.html" class="cs-breadcrumb__link">Home</a>
+      <span class="cs-breadcrumb__sep" aria-hidden="true">/</span>
+      <a href="09_About_IOR.html" class="cs-breadcrumb__link">About IOR</a>
+      <span class="cs-breadcrumb__sep" aria-hidden="true">/</span>
+      <a href="09d_Case_Studies.html" class="cs-breadcrumb__link">Case Studies</a>
+      <span class="cs-breadcrumb__sep" aria-hidden="true">/</span>
+      <span id="breadcrumb-current" aria-current="page">Modernising the Tin Can Bay Marina</span>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 1 — DYNAMIC CASE STUDY HERO
+       Full-bleed photo + bottom-up gradient scrim (PERMITTED per brief)
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="cs-hero" aria-labelledby="cs-hero-h1" id="cs-hero-section">
+    <div class="cs-hero__bg" id="cs-hero-bg" aria-hidden="true"></div>
+    <div class="cs-hero__scrim" aria-hidden="true"></div>
+    <div class="cs-hero__content">
+      <span class="cs-hero__eyebrow" id="cs-hero-eyebrow">Marine &amp; Ports</span>
+      <h1 class="cs-hero__h1" id="cs-hero-h1">Modernising the Tin Can Bay Marina</h1>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 2 — FAST FACTS STAT BAR
+       var(--ior-blue) solid — auto-fit grid handles 2, 3, or 4 stats
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="stat-bar" aria-label="Fast facts" id="cs-stat-bar">
+    <div class="stat-bar__grid" id="cs-stat-grid">
+      <!-- Populated by JS variant switcher -->
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 3 — NARRATIVE (70/30 SPLIT)
+       Left: WYSIWYG body · Right: sticky sidebar
+  ═══════════════════════════════════════════════════════════════ -->
+  <section aria-label="Case study narrative">
+    <div class="cs-layout">
+      <!-- Left: Main Body -->
+      <div class="cs-body" id="cs-body-content">
+        <!-- Populated by JS variant switcher -->
+      </div>
+
+      <!-- Right: Sticky Sidebar -->
+      <aside class="cs-sidebar" aria-label="Case study details">
+        <div class="cs-sidebar__block">
+          <p class="cs-sidebar__label">Location</p>
+          <p class="cs-sidebar__value" id="cs-location">Great Sandy Strait, QLD</p>
+        </div>
+        <div class="cs-sidebar__block" id="cs-products-block">
+          <p class="cs-sidebar__label">Products Used</p>
+          <div class="cs-sidebar__pills" id="cs-products-pills">
+            <!-- Populated by JS variant switcher -->
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 4 — TESTIMONIAL BLOCK
+       var(--ior-navy) solid · conditional hide if quote empty
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="cs-testimonial" data-cs-testimonial aria-label="Customer testimonial" id="cs-testimonial-section">
+    <div class="cs-testimonial__inner">
+      <span class="cs-testimonial__mark" aria-hidden="true">&ldquo;</span>
+      <blockquote class="cs-testimonial__quote" id="cs-testimonial-quote">
+        I drive past the fuel dock on my day off and see customers using Fuelcharge to pay online. I can see the transactions and know that I&#8217;m making money even when the site is unmanned.
+      </blockquote>
+      <p class="cs-testimonial__attr" id="cs-testimonial-attr">
+        <strong>Chris Rippon</strong> &#8212; Proprietor, Tin Can Bay Marina
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 5 — RELATED CASE STUDIES GRID
+       3-card grid · Loop Grid Excerpt copy
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="cs-related" aria-label="Related case studies">
+    <div class="cs-related__inner">
+      <div class="cs-related__header">
+        <p class="cs-related__eyebrow">More Case Studies</p>
+        <h2 class="cs-related__title">See how IOR delivers for Australian business</h2>
+      </div>
+      <div class="cs-related__grid">
+        <!-- Card 1: Tin Can Bay Marina -->
+        <article class="cs-card">
+          <div class="cs-card__img">
+            <img src="assets/case-studies/tcb_wide.jpg" alt="Tin Can Bay Marina fuel dock" loading="lazy" width="600" height="338">
+          </div>
+          <div class="cs-card__body">
+            <p class="cs-card__cat">Marine &amp; Ports</p>
+            <h3 class="cs-card__title">Modernising the Tin Can Bay Marina</h3>
+            <p class="cs-card__excerpt">How IOR transformed a 172-berth marina by installing HyDip&#174; dispensing technology and the Fuelcharge app, generating 24/7 unmanned sales.</p>
+            <a href="09d_Case_Study_Singlev6.html" class="cs-card__link">Read case study &#8594;</a>
+          </div>
+        </article>
+        <!-- Card 2: Flight Training Adelaide -->
+        <article class="cs-card">
+          <div class="cs-card__img">
+            <img src="assets/case-studies/fta_hero.jpg" alt="Flight Training Adelaide aircraft at Parafield Airport" loading="lazy" width="600" height="338">
+          </div>
+          <div class="cs-card__body">
+            <p class="cs-card__cat">Aviation</p>
+            <h3 class="cs-card__title">IOR Supports the Next Generation of Australian Pilots</h3>
+            <p class="cs-card__excerpt">IOR partnered with Flight Training Adelaide to deliver reliable aviation fuel supply at Parafield Airport, supporting their fleet of training aircraft around the clock.</p>
+            <a href="09d_Case_Study_Singlev6.html" class="cs-card__link">Read case study &#8594;</a>
+          </div>
+        </article>
+        <!-- Card 3: MPC Kinetic -->
+        <article class="cs-card">
+          <div class="cs-card__img">
+            <img src="assets/case-studies/mpc_hero.jpg" alt="MPC Kinetic remote pipeline construction site" loading="lazy" width="600" height="338">
+          </div>
+          <div class="cs-card__body">
+            <p class="cs-card__cat">Mining &amp; Resources</p>
+            <h3 class="cs-card__title">Fuelling MPC Kinetic&#8217;s Remote Operations</h3>
+            <p class="cs-card__excerpt">When MPC Kinetic needed a reliable fuel supply partner for remote civil and mining projects, IOR delivered a tailored bulk diesel solution with real-time monitoring.</p>
+            <a href="09d_Case_Study_Singlev6.html" class="cs-card__link">Read case study &#8594;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 6 — PRE-FOOTER + FOOTER
+       Verbatim from IOR_Global_Template_Shell_v4.html
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="pre-footer" aria-label="We're here to help">
+    <div class="pre-footer__row">
+      <h2 class="pre-footer__title">We&rsquo;re here to help</h2>
+      <div class="pre-footer__ctas">
+        <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--pill">Apply for an Account</a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--outline btn--pill">Make an Enquiry</a>
+        <a href="11_Support_Hubv5.html" class="btn btn--outline btn--pill">Need Help?</a>
+      </div>
+    </div>
+    <hr class="pre-footer__divider">
+  </section>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-nav-grid">
+      <div>
+        <p class="footer-col__title">Contact</p>
+        <div class="footer-col__links">
+          <a href="tel:1300457467" class="footer-col__link">1300 IOR IOR</a>
+          <a href="mailto:enquiries@ior.com.au" class="footer-col__link">enquiries@ior.com.au</a>
+          <a href="11a_Contact_Usv5.html" class="footer-col__link">Contact Us</a>
+          <a href="11b_Regional_Contactsv5.html" class="footer-col__link">Regional Contacts</a>
+          <a href="11e_Make_Paymentv5.html" class="footer-col__link">Make a Payment</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col__title">Fuel Solutions</p>
+        <div class="footer-col__links">
+          <a href="03_Ground_Fuels_v5.html" class="footer-col__link">Ground Fuels</a>
+          <a href="#" class="footer-col__link">Aviation</a>
+          <a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
+          <a href="06_Supply_Trading.html" class="footer-col__link">Supply &amp; Trading</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col__title">Digital Platforms</p>
+        <div class="footer-col__links">
+          <a href="#" class="footer-col__link">HyDip™ FMS</a>
+          <a href="07b_Fuelcharge_App_v8.html" class="footer-col__link">Fuelcharge App</a>
+          <a href="07c_Customer_Portalv5.html" class="footer-col__link">Customer Portal</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col__title">Corporate</p>
+        <div class="footer-col__links">
+          <a href="09_About_IOR.html" class="footer-col__link">About IOR</a>
+          <a href="09a_Our_Leadershipv5.html" class="footer-col__link">Leadership</a>
+          <a href="09b_Community.html" class="footer-col__link">Community</a>
+          <a href="09c_Sustainability.html" class="footer-col__link">Sustainability</a>
+          <a href="10_Careers.html" class="footer-col__link">Careers</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col__title">Quick Actions</p>
+        <div class="footer-col__links">
+          <a href="11d_Find_Locationv5.html" class="footer-col__link">Find a Location</a>
+          <a href="07c_Customer_Portalv5.html" class="footer-col__link">Customer Login</a>
+          <a href="11a_Contact_Usv5.html" class="footer-col__link">Apply for an Account</a>
+          <a href="11_Support_Hubv5.html" class="footer-col__link">Support Hub</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col__title">Find a Site By State</p>
+        <div class="footer-state-pills">
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">QLD</a>
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">NSW</a>
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">VIC</a>
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">SA</a>
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">WA</a>
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">NT</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p class="footer-legal__text">&copy; 2026 IOR Petroleum Pty Ltd. All rights reserved. ABN 32 009 344 058. Site by 3PM</p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/company/ior-petroleum" class="footer-social__icon" aria-label="IOR on LinkedIn" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.facebook.com/iorpetroleum" class="footer-social__icon" aria-label="IOR on Facebook" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ═══════════════════════════════════════════════════════════════
+       CASE STUDY VARIANT DATA
+       All 3 case studies pre-loaded for prototype testing
+    ═══════════════════════════════════════════════════════════════ */
+    const CS_VARIANTS = {
+      tcb: {
+        title: 'Modernising the Tin Can Bay Marina',
+        category: 'Marine &amp; Ports',
+        location: 'Great Sandy Strait, QLD',
+        heroImage: 'assets/case-studies/tcb_hero.jpg',
+        stats: [
+          { number: '172', label: 'Marina Berths Serviced' },
+          { number: '24/7', label: 'Unmanned Fuel Access' },
+          { number: '1', label: 'Consolidated App (Fuelcharge)' }
+        ],
+        products: ['Fuelcharge', 'HyDip™ FMS', 'Self-Bunded Tanks'],
+        testimonialQuote: 'I drive past the fuel dock on my day off and see customers using Fuelcharge to pay online. I can see the transactions and know that I\u2019m making money even when the site is unmanned.',
+        testimonialAttr: '<strong>Chris Rippon</strong> \u2014 Proprietor, Tin Can Bay Marina',
+        body: `
+          <h2>The Challenge</h2>
+          <p>Tin Can Bay Marina is situated approximately 210 km north of Brisbane, at the southern end of the Great Sandy Strait. The marina currently services 172 short and long term berths, fishing charters, commercial and recreational boaters. In need of renovation and an update, Tin Can Bay Marina contacted IOR and together began working on improvements to the marina fuel facility.</p>
+          <h2>HyDip Fuel Management and Payment Technology</h2>
+          <p>IOR installed HyDip&#174; fuel dispensing and payment technology allowing the marina to track their fuel usage and sell fuel 24/7. This technology also enables their customers to access fuel via tag on account, or via the Fuelcharge App.</p>
+          <p>IOR delivered a full solution:</p>
+          <ul>
+            <li>Installed HyDip&#174; fuel dispensing and payment technology.</li>
+            <li>A new self-bunded diesel tank was installed.</li>
+            <li>The underground unleaded tank was tested and recertified.</li>
+            <li>New underground piping between the tanks and dispensers was installed.</li>
+            <li>New wiring and electrical controls were installed.</li>
+            <li>New signage, placarding &amp; safety documentation was installed around the facility.</li>
+          </ul>
+          <p>Tin Can Bay Marina can now monitor fuel sales and usage through HyDip&#174;. Customers are also benefitting by using the Fuelcharge app which provides flexible 24/7 access to fuel even when the site is unmanned.</p>
+        `
+      },
+      fta: {
+        title: 'IOR Supports the Next Generation of Australian Pilots',
+        category: 'Aviation',
+        location: 'Toowoomba Wellcamp Airport, QLD',
+        heroImage: 'assets/case-studies/fta_hero.jpg',
+        stats: [
+          { number: '3', label: 'Planes Refuelled Simultaneously' },
+          { number: '55,000L', label: 'Tank Capacity' },
+          { number: '363', label: 'Days Operational Per Year' }
+        ],
+        products: ['Aviation Fuel', 'Aviation Network', 'HyDip™ FMS'],
+        testimonialQuote: 'We prioritise safety and efficiency in our training program so we were looking for a fuel supplier who shared those priorities and could look at different supply options to deliver a quality product. IOR have been very responsive to our needs and I am very happy with our relationship.',
+        testimonialAttr: '<strong>Pierre Steyn</strong> \u2014 Chief Operating Officer, FTA Queensland',
+        body: `
+          <p>In a strong move for regional Queensland, in early 2020 the Qantas Group Pilot Training Academy was established at the Toowoomba Wellcamp Airport. IOR has assisted Academy operator Flight Training Adelaide (FTA) and Airport owner and operator Wagner Corporation in establishing and operating a state-of-the-art refuelling facility.</p>
+          <h2>Summary</h2>
+          <ul>
+            <li>Proudly Australian, IOR is delighted to demonstrate its entrepreneurial and innovative capability to meet FTA&#8217;s needs at the Toowoomba Wellcamp Airport facility.</li>
+            <li>New facility extends IOR&#8217;s long standing commitment to Toowoomba and South-West Queensland.</li>
+            <li>IOR Infrastructure has drawn on over a decade&#8217;s experience to develop this unique customer solution for high quality, reliable fuel storage and supply.</li>
+          </ul>
+          <h2>Background</h2>
+          <p>In January 2020, Qantas Group CEO Alan Joyce and Queensland Premier Annastacia Palaszczuk opened the Qantas Group Pilot Training Academy at Toowoomba&#8217;s Wellcamp International Airport. The new purpose-built facility is located at the privately owned Toowoomba Wellcamp Airport.</p>
+          <p>Qantas appointed Flight Training Adelaide (FTA) as the training provider for the Toowoomba site. FTA is a world-class training provider for the Australian aviation industry and some of the world&#8217;s leading airlines &#8212; focussed on producing future airline captains, rather than simply training students to obtain a licence.</p>
+          <h2>How IOR Added Value</h2>
+          <p>The unique aviation offering stems from IOR&#8217;s commitment to partnering with customers to understand their needs, and IOR Infrastructure&#8217;s extensive experience in providing value-adding, reliable and high-quality fuel management solutions.</p>
+          <p>IOR personnel trained the FTA staff in the use of the facility, which features a 55,000 Litre tank used 363 days per year. The facility is enhanced with IOR&#8217;s proprietary fuel management technology; HyDip, providing FTA with real-time visibility on their fuel tank levels and complete oversight over fuel usage.</p>
+          <p>This includes the ability to monitor fuel offtake rates so that fuel deliveries may be arranged automatically, preventing the risk of stockouts.</p>
+        `
+      },
+      mpc: {
+        title: 'Fuelling MPC Kinetic\u2019s Remote Operations',
+        category: 'Mining &amp; Resources',
+        location: 'Tanami Desert, Northern Territory',
+        heroImage: 'assets/case-studies/mpc_hero.jpg',
+        stats: [
+          { number: '440km', label: 'Pipeline Constructed' },
+          { number: '350+', label: 'Workforce Supported' },
+          { number: '4', label: 'Remote Camps Serviced' }
+        ],
+        products: ['Bulk Diesel Delivery', 'HyDip™ FMS', 'Self-Bunded Tanks'],
+        testimonialQuote: 'The team at IOR provided the highest level of support during MPC Kinetic\u2019s construction of the Tanami Gas Pipeline. In one of the harshest regions in Australia, IOR were always there to help us overcome the challenging logistics behind fuel supply for such a remote project location. When you need a fuel supplier you can rely on, IOR are certainly the team to turn to.',
+        testimonialAttr: '<strong>Brendan McGuckin</strong> \u2014 Project Manager, MPC Kinetic',
+        body: `
+          <h2>About MPC Kinetic</h2>
+          <p>MPC Kinetic provides upstream services to the Australian energy and resources industries and have constructed more than 8,000 kilometres of new pipe networks in Australia.</p>
+          <p>MPC Kinetic are experts in large diametre pipeline construction for resource developers as well as state and local governments. Their team of in-house specialists has been responsible for delivering some of the longest and largest pipeline projects in the country.</p>
+          <h2>Tanami Natural Gas Pipeline</h2>
+          <p>In June 2018, MPC Kinetic was contracted to construct the 440 kilometre Tanami Natural Gas Pipeline. Presenting MPC Kinetic with their initiation into the Northern Territory, the 8-inch pipeline follows Tanami Road and passes through isolated pastoral, Aboriginal freehold, and Crown land in the middle of Australia. The workforce of 350+ team members was responsible for site preparation, logistics, construction and installation, and testing.</p>
+          <h2>The Challenge</h2>
+          <p>To safely deliver the project on time, MPC Kinetic required a fuel supplier that they could rely on to maintain supply to their isolated camps along the Tanami Road. The terrain and sheer distances between camps required a supplier with their own fleet and the flexibility to adapt to changing environments.</p>
+          <h2>The Solution</h2>
+          <p>IOR provided a comprehensive fuel supply and storage solution perfectly matched to the harsh environment. We deployed multiple self-bunded tanks across four remote camps and ensured consistent bulk diesel delivery.</p>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Location</th>
+                  <th>Distance from Alice Springs</th>
+                  <th>Storage Provided</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Camp 1</td><td>150km</td><td>1x 100kL, 1x 10kL Self-Bunded Tanks</td></tr>
+                <tr><td>Camp 2</td><td>260km</td><td>1x 100kL, 1x 10kL Self-Bunded Tanks</td></tr>
+                <tr><td>Camp 3</td><td>375km</td><td>1x 100kL, 1x 10kL Self-Bunded Tanks</td></tr>
+                <tr><td>Camp 4</td><td>500km</td><td>1x 100kL, 1x 10kL Self-Bunded Tanks</td></tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      }
+    };
+
+    /* ═══ VARIANT SWITCHER ═══ */
+    function loadVariant(key) {
+      const v = CS_VARIANTS[key];
+      if (!v) return;
+
+      // Hero
+      document.getElementById('cs-hero-bg').style.backgroundImage = 'url(' + v.heroImage + ')';
+      document.getElementById('cs-hero-eyebrow').innerHTML = v.category;
+      document.getElementById('cs-hero-h1').textContent = v.title;
+      document.getElementById('breadcrumb-current').textContent = v.title;
+      document.title = v.title.replace(/&amp;/g,'&') + ' | IOR Case Study';
+
+      // Stat bar
+      const statGrid = document.getElementById('cs-stat-grid');
+      statGrid.innerHTML = v.stats.map(s =>
+        '<div class="stat-card"><span class="stat-card__number">' + s.number + '</span><span class="stat-card__label">' + s.label + '</span></div>'
+      ).join('');
+
+      // Body
+      document.getElementById('cs-body-content').innerHTML = v.body;
+
+      // Sidebar
+      document.getElementById('cs-location').textContent = v.location;
+      const pillsEl = document.getElementById('cs-products-pills');
+      pillsEl.innerHTML = v.products.map(p => '<span class="cs-pill">' + p + '</span>').join('');
+
+      // Testimonial
+      const quoteEl = document.getElementById('cs-testimonial-quote');
+      const attrEl = document.getElementById('cs-testimonial-attr');
+      const testimonialSection = document.querySelector('[data-cs-testimonial]');
+      quoteEl.textContent = v.testimonialQuote;
+      attrEl.innerHTML = v.testimonialAttr;
+      // Conditional hide if quote is empty
+      if (!v.testimonialQuote || v.testimonialQuote.trim() === '') {
+        testimonialSection.setAttribute('hidden', '');
+      } else {
+        testimonialSection.removeAttribute('hidden');
+      }
+
+      // Update active button
+      document.querySelectorAll('.variant-btn').forEach(btn => {
+        btn.classList.toggle('is-active', btn.dataset.variant === key);
+      });
+    }
+
+    // Variant switcher buttons
+    document.querySelectorAll('.variant-btn').forEach(btn => {
+      btn.addEventListener('click', () => loadVariant(btn.dataset.variant));
+    });
+
+    // Load default variant on page load
+    loadVariant('tcb');
+
+    /* ═══ MEGA MENU ═══ */
+    const navLinks = document.querySelectorAll('.nav-link[data-menu]');
+    const megaPanels = document.querySelectorAll('.mega-panel');
+    const megaOverlay = document.getElementById('mega-overlay');
+    let activeMenu = null;
+
+    function openMenu(key) {
+      closeAllMenus();
+      const panel = document.getElementById('mega-' + key);
+      const btn = document.querySelector('[data-menu="' + key + '"]');
+      if (!panel || !btn) return;
+      panel.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+      megaOverlay.classList.add('is-active');
+      activeMenu = key;
+    }
+
+    function closeAllMenus() {
+      megaPanels.forEach(p => p.classList.remove('is-open'));
+      navLinks.forEach(b => b.setAttribute('aria-expanded', 'false'));
+      megaOverlay.classList.remove('is-active');
+      activeMenu = null;
+    }
+
+    navLinks.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const key = btn.dataset.menu;
+        if (activeMenu === key) { closeAllMenus(); } else { openMenu(key); }
+      });
+    });
+
+    megaOverlay.addEventListener('click', closeAllMenus);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAllMenus(); });
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.primary-nav') && !e.target.closest('.mega-panel')) closeAllMenus();
+    });
+
+    /* ═══ MOBILE DRAWER ═══ */
+    const drawer = document.getElementById('mobile-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+    const drawerOpen = document.getElementById('drawer-open');
+    const drawerClose = document.getElementById('drawer-close');
+
+    function openDrawer() {
+      drawer.classList.add('is-open');
+      drawerOverlay.classList.add('is-open');
+      drawer.setAttribute('aria-hidden', 'false');
+      drawerOpen.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      drawer.classList.remove('is-open');
+      drawerOverlay.classList.remove('is-open');
+      drawer.setAttribute('aria-hidden', 'true');
+      drawerOpen.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    drawerOpen.addEventListener('click', openDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', closeDrawer);
+
+    document.querySelectorAll('.drawer__toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const subId = btn.getAttribute('aria-controls');
+        const sub = document.getElementById(subId);
+        const isOpen = sub.classList.contains('is-open');
+        document.querySelectorAll('.drawer__sub').forEach(s => s.classList.remove('is-open'));
+        document.querySelectorAll('.drawer__toggle').forEach(b => b.setAttribute('aria-expanded', 'false'));
+        if (!isOpen) {
+          sub.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* ═══ STICKY NAV SCROLL STATE ═══ */
+    const nav = document.querySelector('.primary-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('primary-nav--scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    /* ═══ CONDITIONAL TESTIMONIAL CHECK ON LOAD ═══ */
+    (function checkTestimonial() {
+      const quoteEl = document.getElementById('cs-testimonial-quote');
+      const section = document.querySelector('[data-cs-testimonial]');
+      if (quoteEl && section && quoteEl.textContent.trim() === '') {
+        section.setAttribute('hidden', '');
+      }
+    })();
+  </script>
+
+</body>
+</html>
