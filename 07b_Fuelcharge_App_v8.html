@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuelcharge — Pay for Fuel Faster at 100+ IOR Sites | IOR</title>
+  <meta name="description" content="Fuelcharge is IOR's mobile app for cashless fuel access. No credit application. Download, register a card, and refuel at 100+ IOR sites — 24/7.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* ─── DESIGN TOKENS ─────────────────────────────────────────────────── */
+    :root {
+      --ior-blue:           #0355A3;
+      --ior-sky:            #7FBEE6;
+      --ior-navy:           #1A1A2E;
+      --ior-deep:           #0D1117;
+      --ior-light-blue-bg:  #EBF4FB;
+      --charcoal:           #231F20;
+      --border-color-light: rgba(3,85,163,.15);
+      --fc-dark:            #13114D;
+      --fc-teal:            #00D1CC;
+      --fc-cream:           #FCFCED;
+      --section-pad-x:      clamp(20px, 8vw, 80px);
+      --container-max:      1280px;
+      --transition-fast:    150ms ease;
+      --transition-base:    250ms ease;
+      --z-nav:              100;
+    }
+
+    /* ─── RESET & BASE ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Avenir Next LT Pro', 'Avenir Next', 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--charcoal); background: #fff; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    button { background: none; border: none; cursor: pointer; font: inherit; }
+
+    /* ─── BUTTONS ───────────────────────────────────────────────────────── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; font-size: 15px; font-weight: 700; border: 2px solid transparent; transition: all var(--transition-fast); min-height: 44px; border-radius: 0; }
+    .btn--primary     { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
+    .btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
+    .btn--outline     { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+    .btn--outline:hover { background: var(--ior-blue); color: #fff; }
+    .btn--outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+    .btn--outline-white:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+    .btn--pill        { border-radius: 500px; }
+    .btn--sm          { padding: 8px 18px; font-size: 13px; min-height: 36px; }
+    .btn--fc          { background: var(--fc-teal); color: var(--fc-dark); border-color: var(--fc-teal); }
+    .btn--fc:hover    { background: #00b8b4; border-color: #00b8b4; }
+
+    /* ─── PROTO BAR ─────────────────────────────────────────────────────── */
+    .proto-bar { background: #111827; color: rgba(255,255,255,.75); font-family: 'SF Mono', 'Menlo', 'Consolas', monospace; font-size: 11px; letter-spacing: .04em; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .proto-bar__inner { max-width: 1920px; margin: 0 auto; padding: 6px clamp(16px, 3vw, 40px); display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .proto-bar__label { color: #F59E0B; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .proto-bar__links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .proto-bar__link { color: rgba(255,255,255,.75); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color .2s ease; }
+    .proto-bar__link:hover { color: #fff; text-decoration: underline; }
+    .proto-bar__sep { width: 1px; height: 10px; background: rgba(255,255,255,.15); }
+
+    /* ─── UTILITY BAR ───────────────────────────────────────────────────── */
+    .utility-bar { background: var(--ior-blue); color: #fff; padding: clamp(6px, 0.8vw, 8px) var(--section-pad-x); display: flex; justify-content: space-between; align-items: center; font-size: clamp(12px, 1.2vw, 14px); gap: 16px; flex-wrap: wrap; }
+    .utility-bar__actions { display: flex; align-items: center; gap: 20px; }
+    .utility-bar__link { color: #fff; opacity: .9; font-weight: 400; display: flex; align-items: center; gap: 5px; min-height: 44px; }
+    .utility-bar__link:hover { opacity: 1; text-decoration: underline; }
+    .utility-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.4); }
+
+    /* ─── PRIMARY NAV ───────────────────────────────────────────────────── */
+    .primary-nav { position: sticky; top: 0; z-index: var(--z-nav); background: #fff; border-bottom: 1px solid var(--border-color-light); transition: box-shadow var(--transition-base); }
+    .primary-nav--scrolled { box-shadow: 0 2px 16px rgba(0,0,0,.1); }
+    .primary-nav__inner { max-width: 1920px; margin: 0 auto; padding: 0 var(--section-pad-x); display: flex; align-items: center; gap: 32px; height: 68px; }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; }
+    .nav-link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; font-size: 14px; font-weight: 700; color: var(--charcoal); border-radius: 0; min-height: 44px; transition: color var(--transition-fast); }
+    .nav-link:hover, .nav-link[aria-expanded="true"] { color: var(--ior-blue); }
+    .nav-chevron { display: inline-block; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform var(--transition-fast); margin-top: -2px; }
+    .nav-link[aria-expanded="true"] .nav-chevron { transform: rotate(180deg); }
+    .nav-ctas { display: flex; gap: 8px; margin-left: auto; align-items: center; }
+    /* Mega Menu */
+    .mega-panel { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border-top: 3px solid var(--ior-blue); box-shadow: 0 8px 32px rgba(0,0,0,.12); z-index: calc(var(--z-nav) - 1); display: none; }
+    .mega-panel--visible { display: block; }
+    .mega-grid { display: grid; gap: 0; max-width: var(--container-max); margin: 0 auto; padding: 32px var(--section-pad-x); }
+    .mega-grid--4 { grid-template-columns: repeat(4, 1fr); }
+    .mega-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .mega-grid--2 { grid-template-columns: repeat(2, 1fr); }
+    .mega-col__title { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
+    .mega-col__links { display: flex; flex-direction: column; gap: 6px; }
+    .mega-col__link { font-size: 14px; color: var(--charcoal); padding: 4px 0; transition: color var(--transition-fast); }
+    .mega-col__link:hover { color: var(--ior-blue); }
+    .mega-footer { border-top: 1px solid var(--border-color-light); padding-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .mega-cta-link { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; font-size: 14px; font-weight: 800; background: var(--ior-blue); color: #fff; transition: background var(--transition-fast); min-height: 44px; }
+    .mega-cta-link:hover { background: var(--ior-navy); }
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; min-width: 44px; min-height: 44px; justify-content: center; align-items: center; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--charcoal); transition: all var(--transition-fast); }
+    /* Drawer */
+    .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 200; opacity: 0; pointer-events: none; transition: opacity var(--transition-base); }
+    .drawer-overlay--open { opacity: 1; pointer-events: all; }
+    .drawer { position: fixed; top: 0; left: 0; bottom: 0; width: min(360px, 90vw); background: var(--ior-deep); z-index: 201; transform: translateX(-100%); transition: transform 350ms cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; overflow-y: auto; }
+    .drawer--open { transform: translateX(0); }
+    .drawer__head { background: var(--ior-navy); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--ior-blue); }
+    .drawer__close { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; padding: 8px; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+    .drawer__nav { flex: 1; padding: 8px 0; }
+    .drawer__item { border-bottom: 1px solid rgba(255,255,255,.08); }
+    .drawer__link { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; font-size: 15px; font-weight: 700; color: #fff; cursor: pointer; min-height: 44px; }
+    .drawer__link-chevron { display: inline-block; width: 8px; height: 8px; border-right: 2px solid rgba(255,255,255,.6); border-bottom: 2px solid rgba(255,255,255,.6); transform: rotate(45deg); transition: transform var(--transition-fast); }
+    .drawer__link-chevron--open { transform: rotate(-135deg); }
+    .drawer__sub { display: none; background: rgba(0,0,0,.2); }
+    .drawer__sub--open { display: block; }
+    .drawer__sub-link { display: flex; align-items: center; padding: 10px 20px 10px 32px; font-size: 14px; color: rgba(255,255,255,.8); min-height: 44px; }
+    .drawer__sub-link:hover { color: #fff; background: rgba(255,255,255,.05); }
+    .drawer__ctas { padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(255,255,255,.1); }
+
+    /* ─── QUICK LINKS BAR ───────────────────────────────────────────────── */
+    .quick-links-bar { background: var(--ior-light-blue-bg); border-bottom: 1px solid rgba(3,85,163,.15); padding: 0 var(--section-pad-x); }
+    .quick-links-bar__inner { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; gap: 0; overflow-x: auto; }
+    .quick-links-bar__label { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ior-blue); white-space: nowrap; padding: 12px 20px 12px 0; border-right: 1px solid rgba(3,85,163,.2); margin-right: 4px; flex-shrink: 0; }
+    .quick-links-bar__link { display: inline-flex; align-items: center; gap: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: var(--ior-navy); white-space: nowrap; border-bottom: 2px solid transparent; transition: all var(--transition-fast); min-height: 44px; }
+    .quick-links-bar__link:hover { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+
+    /* ─── SECTION 1: FC HERO ────────────────────────────────────────────── */
+    .fc-hero { background: var(--fc-dark); padding: clamp(56px, 8vw, 96px) var(--section-pad-x); }
+    .fc-hero__inner { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+    .fc-hero__copy { }
+    .fc-hero__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--fc-teal); margin-bottom: 16px; }
+    .fc-hero__h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 700; line-height: 1.05; color: #fff; margin-bottom: clamp(16px, 2vw, 24px); }
+    .fc-hero__sub { font-size: clamp(15px, 1.6vw, 18px); color: rgba(255,255,255,.8); line-height: 1.7; margin-bottom: clamp(28px, 3.5vw, 40px); max-width: 520px; }
+    .fc-hero__badges { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+    .fc-hero__badge { display: inline-flex; align-items: center; gap: 10px; background: #000; color: #fff; padding: 10px 18px; min-height: 48px; font-size: 14px; font-weight: 700; border: 1px solid rgba(255,255,255,.2); transition: background var(--transition-fast); }
+    .fc-hero__badge:hover { background: #1a1a1a; }
+    .fc-hero__badge svg { flex-shrink: 0; }
+    .fc-hero__qr { display: flex; align-items: center; gap: 12px; }
+    .fc-hero__qr-box { width: 72px; height: 72px; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .fc-hero__qr-label { font-size: 12px; color: rgba(255,255,255,.6); font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+    .fc-hero__microcopy { font-size: 13px; color: rgba(255,255,255,.5); margin-top: 14px; }
+    .fc-hero__visual { display: flex; align-items: center; justify-content: center; }
+    .fc-hero__mockup { max-height: 520px; width: auto; filter: drop-shadow(0 24px 48px rgba(0,0,0,.5)); }
+
+    /* ─── SECTION 2: FLIP CARDS ─────────────────────────────────────────── */
+    .flip-section { background: var(--fc-cream); padding: clamp(48px, 6vw, 80px) var(--section-pad-x); }
+    .flip-section__inner { max-width: var(--container-max); margin-inline: auto; }
+    .flip-section__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
+    .flip-section__heading { font-size: clamp(24px, 3vw, 38px); font-weight: 700; color: var(--fc-dark); margin-bottom: clamp(32px, 4vw, 48px); }
+    .flip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .flip-card { height: 260px; perspective: 1000px; }
+    .flip-card__inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; }
+    .flip-card:hover .flip-card__inner { transform: rotateY(180deg); }
+    .flip-card__front, .flip-card__back { position: absolute; inset: 0; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 24px; border: 1px solid rgba(3,85,163,.12); }
+    .flip-card__front { background: #fff; }
+    .flip-card__back { background: var(--fc-dark); color: #fff; transform: rotateY(180deg); }
+    .flip-card__icon { width: 48px; height: 48px; margin-bottom: 16px; color: var(--fc-teal); }
+    .flip-card__title { font-size: 18px; font-weight: 700; color: var(--fc-dark); text-align: center; }
+    .flip-card__back-text { font-size: 15px; line-height: 1.6; text-align: center; color: rgba(255,255,255,.9); }
+
+    /* ─── SECTION 3: NETWORK MAP TEASER ────────────────────────────────── */
+    .map-teaser { background: var(--fc-dark); padding: clamp(48px, 6vw, 80px) var(--section-pad-x); }
+    .map-teaser__inner { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+    .map-teaser__copy { }
+    .map-teaser__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--fc-teal); margin-bottom: 12px; }
+    .map-teaser__h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 20px; }
+    .map-teaser__body { font-size: clamp(15px, 1.5vw, 17px); color: rgba(255,255,255,.8); line-height: 1.7; margin-bottom: 32px; }
+    .map-teaser__visual { display: flex; align-items: center; justify-content: center; }
+    .map-teaser__img { max-height: 420px; width: auto; filter: drop-shadow(0 16px 32px rgba(0,0,0,.4)); }
+
+    /* ─── SECTION 4: APP FLOW ───────────────────────────────────────────── */
+    .app-flow { background: #fff; padding: clamp(48px, 6vw, 80px) var(--section-pad-x); }
+    .app-flow__inner { max-width: var(--container-max); margin-inline: auto; }
+    .app-flow__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
+    .app-flow__heading { font-size: clamp(24px, 3vw, 38px); font-weight: 700; color: var(--fc-dark); margin-bottom: clamp(32px, 4vw, 48px); }
+    .app-flow__layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
+    .flow-tabs { display: flex; flex-direction: column; gap: 0; }
+    .flow-tab { border: 1px solid var(--border-color-light); border-bottom: none; }
+    .flow-tab:last-child { border-bottom: 1px solid var(--border-color-light); }
+    .flow-tab__btn { width: 100%; display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; text-align: left; cursor: pointer; transition: background var(--transition-fast); min-height: 44px; }
+    .flow-tab__btn:hover { background: var(--fc-cream); }
+    .flow-tab__btn[aria-selected="true"] { background: var(--fc-dark); color: #fff; border-left: 4px solid var(--fc-teal); }
+    .flow-tab__num { font-size: 28px; font-weight: 700; color: var(--fc-teal); line-height: 1; flex-shrink: 0; width: 36px; }
+    .flow-tab__btn[aria-selected="true"] .flow-tab__num { color: var(--fc-teal); }
+    .flow-tab__text { }
+    .flow-tab__title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .flow-tab__body { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,.75); display: none; }
+    .flow-tab__btn[aria-selected="true"] .flow-tab__body { display: block; }
+    .flow-tab__btn:not([aria-selected="true"]) .flow-tab__title { color: var(--fc-dark); }
+    .flow-media { position: sticky; top: 88px; }
+    .flow-panel { display: none; }
+    .flow-panel.active { display: block; }
+    .flow-video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; }
+    .flow-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .flow-device-wrap { display: flex; align-items: center; justify-content: center; padding: 24px; background: var(--fc-cream); }
+    .flow-device-img { max-height: 420px; width: auto; filter: drop-shadow(0 12px 24px rgba(0,0,0,.2)); }
+
+    /* ─── SECTION 5: SOCIAL PROOF ───────────────────────────────────────── */
+    .social-proof { background: var(--fc-cream); padding: clamp(48px, 6vw, 80px) var(--section-pad-x); }
+    .social-proof__inner { max-width: 860px; margin-inline: auto; text-align: center; }
+    .social-proof__quote { font-size: clamp(18px, 2.2vw, 26px); font-weight: 700; color: var(--fc-dark); line-height: 1.5; margin-bottom: 24px; quotes: "\201C" "\201D"; }
+    .social-proof__quote::before { content: open-quote; color: var(--fc-teal); font-size: 1.4em; line-height: 0; vertical-align: -0.4em; margin-right: 4px; }
+    .social-proof__quote::after { content: close-quote; color: var(--fc-teal); font-size: 1.4em; line-height: 0; vertical-align: -0.4em; margin-left: 4px; }
+    .social-proof__attr { font-size: 14px; font-weight: 700; color: var(--ior-blue); text-transform: uppercase; letter-spacing: .05em; }
+
+    /* ─── SECTION 6: FAQ ────────────────────────────────────────────────── */
+    .faq-section { background: #fff; padding: clamp(48px, 6vw, 80px) var(--section-pad-x); }
+    .faq-section__inner { max-width: 860px; margin-inline: auto; }
+    .faq-section__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
+    .faq-section__heading { font-size: clamp(24px, 3vw, 36px); font-weight: 700; color: var(--fc-dark); margin-bottom: clamp(28px, 3.5vw, 40px); }
+    .faq-list { border-top: 1px solid var(--border-color-light); }
+    .faq-item { border-bottom: 1px solid var(--border-color-light); }
+    .faq-question { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; text-align: left; font-size: 16px; font-weight: 700; color: var(--fc-dark); cursor: pointer; min-height: 44px; }
+    .faq-question__icon { flex-shrink: 0; width: 20px; height: 20px; border: 2px solid var(--ior-blue); display: flex; align-items: center; justify-content: center; transition: transform var(--transition-fast); color: var(--ior-blue); font-size: 16px; line-height: 1; }
+    .faq-question[aria-expanded="true"] .faq-question__icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-answer__inner { padding: 0 0 18px; font-size: 15px; color: #444; line-height: 1.7; }
+    .faq-support { margin-top: 40px; padding: 28px 32px; background: var(--fc-cream); border-left: 4px solid var(--fc-teal); }
+    .faq-support p { font-size: 15px; color: var(--charcoal); line-height: 1.7; }
+    .faq-support a { color: var(--ior-blue); font-weight: 700; text-decoration: underline; }
+
+    /* ─── PRE-FOOTER CTA STRIP ──────────────────────────────────────────── */
+    .pre-footer { background: var(--ior-navy); padding: clamp(48px, 6vw, 72px) var(--section-pad-x); text-align: center; }
+    .pre-footer__inner { max-width: 640px; margin-inline: auto; }
+    .pre-footer__heading { font-size: clamp(22px, 2.8vw, 34px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .pre-footer__sub { font-size: clamp(14px, 1.4vw, 16px); color: rgba(255,255,255,.75); margin-bottom: 28px; line-height: 1.6; }
+    .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+    /* ─── GLOBAL FOOTER ─────────────────────────────────────────────────── */
+    .site-footer { background: var(--ior-blue); color: #fff; padding: clamp(28px, 3.5vw, 40px) clamp(20px, 8vw, 80px) clamp(40px, 5vw, 60px); }
+    .footer-nav-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; max-width: var(--container-max); margin: 0 auto 40px; }
+    .footer-col__title { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 14px; }
+    .footer-col__links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-col__link { font-size: 14px; color: rgba(255,255,255,.8); transition: color var(--transition-fast); }
+    .footer-col__link:hover { color: #fff; }
+    .footer-bottom { max-width: var(--container-max); margin: 0 auto; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.15); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { display: flex; align-items: center; }
+    .footer-legal { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .footer-legal__text { font-size: 12px; color: rgba(255,255,255,.5); }
+    .footer-legal__link { font-size: 12px; color: rgba(255,255,255,.6); transition: color var(--transition-fast); }
+    .footer-legal__link:hover { color: #fff; }
+    .footer-social { display: flex; align-items: center; gap: 16px; }
+    .footer-social__icon { color: rgba(255,255,255,.6); transition: color var(--transition-fast); display: flex; align-items: center; min-height: 44px; }
+    .footer-social__icon:hover { color: #fff; }
+
+    /* ─── FADE-UP ANIMATION ─────────────────────────────────────────────── */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-up--visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────────────── */
+    @media (max-width: 1200px) {
+      .footer-nav-grid { grid-template-columns: repeat(3, 1fr); }
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+      .nav-ctas .btn:not(.hamburger) { display: none; }
+    }
+    @media (max-width: 900px) {
+      .fc-hero__inner { grid-template-columns: 1fr; }
+      .fc-hero__visual { display: none; }
+      .flip-grid { grid-template-columns: 1fr; }
+      .map-teaser__inner { grid-template-columns: 1fr; }
+      .map-teaser__visual { display: none; }
+      .app-flow__layout { grid-template-columns: 1fr; }
+      .flow-media { position: static; }
+    }
+    @media (max-width: 600px) {
+      .footer-nav-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── PROTO BAR ──────────────────────────────────────────────────────── -->
+  <div class="proto-bar" role="navigation" aria-label="Prototype navigation">
+    <div class="proto-bar__inner">
+      <span class="proto-bar__label">Prototype</span>
+      <div class="proto-bar__links">
+        <a href="00_Master_Index.html" class="proto-bar__link">&#8592; Master Index</a>
+        <span class="proto-bar__sep" aria-hidden="true"></span>
+        <a href="IOR_Design_System.html" class="proto-bar__link">Design System</a>
+        <span class="proto-bar__sep" aria-hidden="true"></span>
+        <a href="00_Global_Components.html" class="proto-bar__link">Global Components</a>
+        <span class="proto-bar__sep" aria-hidden="true"></span>
+        <a href="07_Digital_Platformsv5.html" class="proto-bar__link">Digital Platforms Hub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── UTILITY BAR ────────────────────────────────────────────────────── -->
+  <div class="utility-bar" role="complementary" aria-label="Site utilities">
+    <div class="utility-bar__actions">
+      <a href="11d_Find_Locationv5.html" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Find a Location
+      </a>
+      <div class="utility-bar__divider" aria-hidden="true"></div>
+      <a href="tel:1800467867" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        1800 IOR IOR
+      </a>
+    </div>
+  </div>
+
+  <!-- ─── PRIMARY NAV ────────────────────────────────────────────────────── -->
+  <header class="primary-nav" id="primary-nav" role="banner">
+    <div class="primary-nav__inner">
+      <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">
+        <svg width="70" height="33" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g clip-path="url(#ior-logo-fc8)">
+            <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/>
+            <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#7FBEE6"/>
+            <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/>
+            <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/>
+          </g>
+          <defs><clipPath id="ior-logo-fc8"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
+        </svg>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <button class="nav-link" data-menu="ground-fuels" aria-expanded="false" aria-haspopup="true">Ground Fuels <span class="nav-chevron" aria-hidden="true"></span></button>
+        <button class="nav-link" data-menu="aviation" aria-expanded="false" aria-haspopup="true">Aviation <span class="nav-chevron" aria-hidden="true"></span></button>
+        <button class="nav-link" data-menu="digital" aria-expanded="false" aria-haspopup="true">Digital Platforms <span class="nav-chevron" aria-hidden="true"></span></button>
+        <button class="nav-link" data-menu="supply" aria-expanded="false" aria-haspopup="true">Supply &amp; Trading <span class="nav-chevron" aria-hidden="true"></span></button>
+        <button class="nav-link" data-menu="equipment" aria-expanded="false" aria-haspopup="true">Equipment <span class="nav-chevron" aria-hidden="true"></span></button>
+        <a href="11_Support_Hubv5.html" class="nav-link">Support</a>
+      </nav>
+      <div class="nav-ctas">
+        <a href="#" class="btn btn--outline btn--pill btn--sm" aria-label="Customer Login">Customer Login</a>
+        <a href="#" class="btn btn--primary btn--pill btn--sm" aria-label="Apply for an Account">Apply for an Account</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+      </div>
+      <!-- Mega Menus -->
+      <div class="mega-panel" id="mega-ground-fuels" role="region" aria-label="Ground Fuels menu"><div class="mega-grid mega-grid--4"><div><div class="mega-col__title">Diesel Network</div><div class="mega-col__links"><a href="03a_Diesel_Network_v3.5.html" class="mega-col__link">IOR Diesel Stops</a><a href="03b_On_Site_Refuelling_v3.5.html" class="mega-col__link">On-Site Refuelling</a><a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="mega-col__link">Bulk Diesel Delivery</a></div></div><div><div class="mega-col__title">Speciality Fuels</div><div class="mega-col__links"><a href="03d_HyBlue_v3.5.html" class="mega-col__link">HyBlue&#8482; AdBlue</a><a href="03e_Oils_Lubricants_v3.5.html" class="mega-col__link">Oils &amp; Lubricants</a></div></div><div><div class="mega-col__title">Solutions</div><div class="mega-col__links"><a href="03_Ground_Fuels.html" class="mega-col__link mega-col__link--cta">View All Ground Fuels &rarr;</a></div></div><div class="mega-footer"><a href="#lead-capture" class="mega-cta-link">Get a Quote &rarr;</a><a href="11d_Find_Location.html" class="mega-cta-link">Find a Diesel Stop &rarr;</a></div></div></div>
+      <div class="mega-panel" id="mega-aviation" role="region" aria-label="Aviation menu"><div class="mega-grid mega-grid--4"><div><div class="mega-col__title mega-col__title--gold">Aviation Network</div><div class="mega-col__links"><a href="04a_Aviation_Network_v3.5.html" class="mega-col__link">Aviation Network</a><a href="04b_Airport_Fuelling_v3.5.html" class="mega-col__link">Airport Fuelling</a><a href="04c_Aviation_Bulk_v3.5.html" class="mega-col__link">Aviation Bulk Delivery</a><a href="04d_Aviation_Oils_v3.5.html" class="mega-col__link">Aviation Oils</a></div></div><div><div class="mega-col__title mega-col__title--gold">Hub</div><div class="mega-col__links"><a href="04_Aviation_Hub_v3.5.html" class="mega-col__link mega-col__link--cta">View All Aviation &rarr;</a></div></div><div class="mega-footer"><a href="#lead-capture" class="mega-cta-link">Aviation Enquiry &rarr;</a></div></div></div>
+      <div class="mega-panel" id="mega-digital" role="region" aria-label="Digital Platforms menu"><div class="mega-grid mega-grid--3"><div><div class="mega-col__title">Platforms</div><div class="mega-col__links"><a href="07a_HyDip_FMS_v4.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v4.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v4.html" class="mega-col__link">Customer Portal</a></div></div><div class="mega-footer"><a href="#lead-capture" class="mega-cta-link">Digital Enquiry &rarr;</a></div></div></div>
+      <div class="mega-panel" id="mega-supply" role="region" aria-label="Supply and Trading menu"><div class="mega-grid mega-grid--2"><div><div class="mega-col__title">Supply</div><div class="mega-col__links"><a href="#" class="mega-col__link">Wholesale Fuel Supply</a><a href="#" class="mega-col__link">Supply Chain Solutions</a></div></div><div class="mega-footer"><a href="#lead-capture" class="mega-cta-link">Supply Enquiry &rarr;</a></div></div></div>
+      <div class="mega-panel" id="mega-equipment" role="region" aria-label="Equipment menu"><div class="mega-grid mega-grid--2"><div><div class="mega-col__title">Equipment</div><div class="mega-col__links"><a href="#" class="mega-col__link">Fuel Storage Tanks</a><a href="#" class="mega-col__link">Dispensing Equipment</a><a href="#" class="mega-col__link">Installation Services</a></div></div><div class="mega-footer"><a href="#lead-capture" class="mega-cta-link">Equipment Enquiry &rarr;</a></div></div></div>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+  <nav class="drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="drawer__head">
+      <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">
+        <svg width="70" height="33" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g clip-path="url(#ior-logo-drawer-fc8)">
+            <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#fff"/>
+            <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#7FBEE6"/>
+            <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#fff"/>
+            <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#fff"/>
+          </g>
+          <defs><clipPath id="ior-logo-drawer-fc8"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
+        </svg>
+      </a>
+      <button class="drawer__close" id="drawer-close" aria-label="Close mobile menu">&times;</button>
+    </div>
+    <nav class="drawer__nav" aria-label="Mobile navigation links">
+      <div class="drawer__item"><button class="drawer__link" data-drawer="gf-drawer" aria-expanded="false">Ground Fuels <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="gf-drawer"><a href="03_Ground_Fuels.html" class="drawer__sub-link">Ground Fuels Hub</a><a href="03a_Diesel_Network_v3.5.html" class="drawer__sub-link">IOR Diesel Stops</a><a href="03b_On_Site_Refuelling_v3.5.html" class="drawer__sub-link">On-Site Refuelling</a><a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="drawer__sub-link">Bulk Diesel Delivery</a></div></div>
+      <div class="drawer__item"><button class="drawer__link" data-drawer="av-drawer" aria-expanded="false">Aviation <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="av-drawer"><a href="04_Aviation_Hub_v3.5.html" class="drawer__sub-link">Aviation Hub</a><a href="04a_Aviation_Network_v3.5.html" class="drawer__sub-link">Aviation Network</a></div></div>
+      <div class="drawer__item"><button class="drawer__link" data-drawer="dig-drawer" aria-expanded="false">Digital Platforms <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="dig-drawer"><a href="07_Digital_Platformsv5.html" class="drawer__sub-link">Digital Platforms Hub</a><a href="07a_HyDip_FMS_v4.html" class="drawer__sub-link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="drawer__sub-link">Fuelcharge App</a><a href="07c_Customer_Portal_v4.html" class="drawer__sub-link">Customer Portal</a></div></div>
+      <div class="drawer__item"><a href="11_Support_Hubv5.html" class="drawer__link">Support</a></div>
+    </nav>
+    <div class="drawer__ctas">
+      <a href="#" class="btn btn--primary" aria-label="Get in touch with IOR">Get in Touch</a>
+      <a href="11d_Find_Locationv5.html" class="btn btn--outline-white" aria-label="Find an IOR location">Find a Location</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 1: FRICTIONLESS B2C APP HERO                               -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="fc-hero" aria-labelledby="fc-h1">
+      <div class="fc-hero__inner">
+        <div class="fc-hero__copy">
+          <p class="fc-hero__eyebrow">FUELCHARGE APP</p>
+          <h1 class="fc-hero__h1" id="fc-h1">Fuel. Scan. Pay. Done.</h1>
+          <p class="fc-hero__sub">The ultimate pay-at-the-pump app. No credit application or account setup required. Download Fuelcharge, register a card, and refuel at our national network — 24/7, even in the most remote locations.</p>
+          <div class="fc-hero__badges">
+            <!-- App Store Badge -->
+            <a href="#" class="fc-hero__badge" aria-label="Download on the App Store">
+              <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.462 12.756c-.028-3.28 2.683-4.875 2.806-4.95-1.527-2.23-3.903-2.536-4.745-2.566-2.017-.207-3.953 1.2-4.978 1.2-1.04 0-2.636-1.175-4.337-1.143C2.99 5.33 1.04 6.33 0 8.01c-2.12 3.675-.54 9.1 1.52 12.08 1.01 1.46 2.21 3.09 3.79 3.03 1.52-.063 2.1-.98 3.94-.98 1.83 0 2.36.98 3.97.95 1.64-.03 2.68-1.49 3.68-2.96 1.17-1.69 1.65-3.35 1.67-3.44-.04-.02-3.19-1.22-3.22-4.93zm-3.01-9.07c.83-1.02 1.4-2.42 1.24-3.83-1.2.05-2.68.81-3.54 1.82-.77.89-1.45 2.33-1.27 3.7 1.34.1 2.71-.68 3.57-1.71z" fill="#fff"/></svg>
+              <span>App Store</span>
+            </a>
+            <!-- Google Play Badge -->
+            <a href="#" class="fc-hero__badge" aria-label="Get it on Google Play">
+              <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1.22.22C.9.56.71 1.08.71 1.75v18.5c0 .67.19 1.19.51 1.53l.08.08 10.36-10.36v-.24L1.3.14l-.08.08z" fill="#fff"/><path d="M15.11 14.56l-3.45-3.45v-.24l3.45-3.45.08.04 4.09 2.32c1.17.66 1.17 1.75 0 2.42l-4.09 2.32-.08.04z" fill="#fff"/><path d="M15.19 14.52L11.66 11 1.22 21.44c.39.41 1.02.46 1.74.05l12.23-6.97" fill="#fff"/><path d="M15.19 7.48L2.96.51C2.24.1 1.61.15 1.22.56L11.66 11l3.53-3.52z" fill="#fff"/></svg>
+              <span>Google Play</span>
+            </a>
+          </div>
+          <!-- QR Code -->
+          <div class="fc-hero__qr">
+            <div class="fc-hero__qr-box" aria-label="QR code to download Fuelcharge">
+              <!-- Placeholder QR pattern — replace with real QR code in Elementor -->
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="56" height="56" fill="white"/>
+                <rect x="4" y="4" width="20" height="20" fill="#13114D"/>
+                <rect x="8" y="8" width="12" height="12" fill="white"/>
+                <rect x="10" y="10" width="8" height="8" fill="#13114D"/>
+                <rect x="32" y="4" width="20" height="20" fill="#13114D"/>
+                <rect x="36" y="8" width="12" height="12" fill="white"/>
+                <rect x="38" y="10" width="8" height="8" fill="#13114D"/>
+                <rect x="4" y="32" width="20" height="20" fill="#13114D"/>
+                <rect x="8" y="36" width="12" height="12" fill="white"/>
+                <rect x="10" y="38" width="8" height="8" fill="#13114D"/>
+                <rect x="32" y="32" width="4" height="4" fill="#13114D"/>
+                <rect x="38" y="32" width="4" height="4" fill="#13114D"/>
+                <rect x="44" y="32" width="4" height="4" fill="#13114D"/>
+                <rect x="32" y="38" width="4" height="4" fill="#13114D"/>
+                <rect x="44" y="38" width="4" height="4" fill="#13114D"/>
+                <rect x="38" y="44" width="4" height="4" fill="#13114D"/>
+                <rect x="44" y="44" width="4" height="4" fill="#13114D"/>
+              </svg>
+            </div>
+            <span class="fc-hero__qr-label">Scan to Download</span>
+          </div>
+          <p class="fc-hero__microcopy">100% free to download on iOS &amp; Android.</p>
+        </div>
+        <div class="fc-hero__visual" aria-hidden="true">
+          <img src="assets/images/fuelcharge/fuelcharge-screen-lytton-hero.png" alt="Fuelcharge app showing IOR Lytton location screen" class="fc-hero__mockup" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 2: QUICK LINKS BAR                                          -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <nav class="quick-links-bar" aria-label="Page quick links">
+      <div class="quick-links-bar__inner">
+        <span class="quick-links-bar__label">Explore:</span>
+        <a href="07a_HyDip_FMS_v4.html" class="quick-links-bar__link">HyDip&#8482;</a>
+        <a href="07c_Customer_Portal_v4.html" class="quick-links-bar__link">Customer Portal</a>
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 3: AUDIENCE FLIP CARDS                                      -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="flip-section" aria-labelledby="flip-heading">
+      <div class="flip-section__inner">
+        <p class="flip-section__eyebrow">WHO IT'S FOR</p>
+        <h2 class="flip-section__heading" id="flip-heading">Built for every journey.</h2>
+        <div class="flip-grid">
+
+          <!-- Card 1: Vehicles & 4WD -->
+          <div class="flip-card fade-up">
+            <div class="flip-card__inner">
+              <div class="flip-card__front">
+                <svg class="flip-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="16" width="40" height="20" rx="0" ry="0"/><path d="M4 28h40"/><circle cx="12" cy="36" r="4"/><circle cx="36" cy="36" r="4"/><path d="M4 20l6-8h28l6 8"/></svg>
+                <p class="flip-card__title">Vehicles &amp; 4WD</p>
+              </div>
+              <div class="flip-card__back">
+                <p class="flip-card__back-text">Pay for fuel faster and continue your adventure. All major caravan routes covered.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Aviation -->
+          <div class="flip-card fade-up">
+            <div class="flip-card__inner">
+              <div class="flip-card__front">
+                <svg class="flip-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 30l8-4 4-14 6 2-4 12 8-4 2-8 4 2-2 8 8 4-2 6-10-2-4 12-6-2 4-12-8 4z"/></svg>
+                <p class="flip-card__title">Aviation</p>
+              </div>
+              <div class="flip-card__back">
+                <p class="flip-card__back-text">Pay for fuel faster and spend more time in the air. Simply select your pump and pre-authorise from your smart device.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Marine -->
+          <div class="flip-card fade-up">
+            <div class="flip-card__inner">
+              <div class="flip-card__front">
+                <svg class="flip-card__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 32c4-4 8-4 12 0s8 4 12 0 8-4 12 0"/><path d="M12 20V12h24v8"/><path d="M24 12V6"/><path d="M8 20h32l-4 12H12L8 20z"/></svg>
+                <p class="flip-card__title">Marine</p>
+              </div>
+              <div class="flip-card__back">
+                <p class="flip-card__back-text">A better solution for refuelling your vessel. Authorise marine fuel from your phone, eliminating the need to carry physical cards or cash to the dock.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 4: NETWORK MAP TEASER                                       -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="map-teaser" aria-labelledby="map-heading">
+      <div class="map-teaser__inner">
+        <div class="map-teaser__copy fade-up">
+          <p class="map-teaser__eyebrow">NATIONAL FUEL NETWORK</p>
+          <h2 class="map-teaser__h2" id="map-heading">Find fuel wherever the journey takes you.</h2>
+          <p class="map-teaser__body">Access over 100+ diesel stops and 30+ airports nation-wide. Use the in-app locator to find your nearest location, check live amenity availability, and get directions right to the bowser.</p>
+          <a href="11d_Find_Locationv5.html" class="btn btn--fc btn--pill">Explore the Network Map &rarr;</a>
+        </div>
+        <div class="map-teaser__visual fade-up" aria-hidden="true">
+          <img src="assets/images/fuelcharge/fuelcharge-screen-australia-map.png" alt="Australia map showing IOR Fuelcharge network locations" class="map-teaser__img" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 5: EASY-AS-1-2-3 APP FLOW                                  -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="app-flow" aria-labelledby="flow-heading">
+      <div class="app-flow__inner">
+        <p class="app-flow__eyebrow">HOW IT WORKS</p>
+        <h2 class="app-flow__heading" id="flow-heading">Three steps to pay for fuel.</h2>
+        <div class="app-flow__layout">
+
+          <!-- Left: Vertical Tab Accordion -->
+          <div class="flow-tabs" role="tablist" aria-label="App flow steps">
+
+            <div class="flow-tab">
+              <button class="flow-tab__btn" role="tab" id="tab-1" aria-selected="true" aria-controls="panel-1">
+                <span class="flow-tab__num" aria-hidden="true">1</span>
+                <div class="flow-tab__text">
+                  <div class="flow-tab__title">Scan the QR Code</div>
+                  <div class="flow-tab__body">Pull up to the pump. Open Fuelcharge on your phone and scan the QR code located directly on the bowser.</div>
+                </div>
+              </button>
+            </div>
+
+            <div class="flow-tab">
+              <button class="flow-tab__btn" role="tab" id="tab-2" aria-selected="false" aria-controls="panel-2">
+                <span class="flow-tab__num" aria-hidden="true">2</span>
+                <div class="flow-tab__text">
+                  <div class="flow-tab__title">Select Your Pump</div>
+                  <div class="flow-tab__body">Choose your pump number and fuel type. Looking to top up? Simply select a pre-authorised amount above what your tank holds. You won't be charged for fuel you don't receive.</div>
+                </div>
+              </button>
+            </div>
+
+            <div class="flow-tab">
+              <button class="flow-tab__btn" role="tab" id="tab-3" aria-selected="false" aria-controls="panel-3">
+                <span class="flow-tab__num" aria-hidden="true">3</span>
+                <div class="flow-tab__text">
+                  <div class="flow-tab__title">Pay &amp; Go</div>
+                  <div class="flow-tab__body">Authorise payment in the app. Your receipt is sent instantly to your phone and email.</div>
+                </div>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Right: Dynamic Media Panel -->
+          <div class="flow-media">
+
+            <div class="flow-panel active" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+              <div class="flow-video-wrap">
+                <iframe src="https://www.youtube.com/embed/jfEqkJmzyBM" title="Introducing Fuelcharge" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              </div>
+            </div>
+
+            <div class="flow-panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
+              <div class="flow-video-wrap">
+                <iframe src="https://www.youtube.com/embed/4XD3FZOAnr4" title="How to use the Fuelcharge Payment Terminal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              </div>
+            </div>
+
+            <div class="flow-panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3">
+              <div class="flow-device-wrap">
+                <img src="assets/images/fuelcharge/fuelcharge-screen-authorize-pump.png" alt="Fuelcharge app showing Authorize and unlock pump screen" class="flow-device-img" loading="lazy">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 6: SOCIAL PROOF                                             -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="social-proof" aria-labelledby="proof-heading">
+      <div class="social-proof__inner fade-up">
+        <h2 class="sr-only" id="proof-heading">Customer testimonial</h2>
+        <blockquote>
+          <p class="social-proof__quote">I drive past the fuel dock on my day off and see customers using Fuelcharge to pay online. I can see the transactions and know that I'm making money even when the site is unmanned.</p>
+          <footer class="social-proof__attr">Chris Rippon — Proprietor, Tin Can Bay Marina</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 7: FAQ ACCORDION & SUPPORT                                  -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="faq-section" aria-labelledby="faq-heading">
+      <div class="faq-section__inner">
+        <p class="faq-section__eyebrow">SUPPORT</p>
+        <h2 class="faq-section__heading" id="faq-heading">Frequently asked questions</h2>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Do I need an IOR account to use Fuelcharge?
+              <span class="faq-question__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer__inner">No. Fuelcharge works without an IOR account — pay via credit/debit card as a casual user. For fleet operators, connect Fuelcharge to an IOR account for consolidated billing, driver controls, and HyDip&#8482; integration.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Where can I download my tax receipts?
+              <span class="faq-question__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer__inner">All receipts are stored in the Fuelcharge app under Transaction History. You can email individual receipts or export a CSV of all transactions for a selected date range directly from the app.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              Is Fuelcharge available at all IOR Aviation locations?
+              <span class="faq-question__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer__inner">Fuelcharge is available at a growing number of IOR Aviation sites. Use the in-app map or the Find a Location page on our website to check which sites are Fuelcharge-enabled before your flight.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              What payment methods does Fuelcharge accept?
+              <span class="faq-question__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer__inner">Fuelcharge accepts Visa, Mastercard, American Express, and Apple Pay/Google Pay. IOR fleet account holders can also charge transactions directly to their account for consolidated monthly billing.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false">
+              How do I set driver spend limits for my fleet?
+              <span class="faq-question__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer__inner">Fleet managers can set per-driver, per-day, or per-fill spend limits directly from the Fuelcharge Fleet Dashboard online. Limits take effect immediately and can be adjusted at any time.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="faq-support" role="complementary" aria-label="Support contact">
+          <p>Need assistance? Call our support team directly on <a href="tel:1800414012">1800 414 012</a> or contact us at <a href="mailto:enquiries@ior.com.au">enquiries@ior.com.au</a></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- PRE-FOOTER CTA STRIP                                                -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="pre-footer" aria-labelledby="prefooter-heading">
+      <div class="pre-footer__inner">
+        <h2 class="pre-footer__heading" id="prefooter-heading">Ready to fuel smarter?</h2>
+        <p class="pre-footer__sub">Download Fuelcharge today and join thousands of drivers, pilots, and mariners across Australia's national fuel network.</p>
+        <div class="pre-footer__ctas">
+          <a href="#" class="btn btn--fc btn--pill">Download on App Store</a>
+          <a href="#" class="btn btn--outline-white btn--pill">Get it on Google Play</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── GLOBAL FOOTER ──────────────────────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-nav-grid">
+      <!-- Contact -->
+      <div>
+        <div class="footer-col__title">Contact</div>
+        <div class="footer-col__links">
+          <a href="tel:1800467867" class="footer-col__link">1800 IOR IOR</a>
+          <a href="mailto:enquiries@ior.com.au" class="footer-col__link">enquiries@ior.com.au</a>
+          <a href="11_Support_Hubv5.html#contact-us" class="footer-col__link">Contact Form</a>
+        </div>
+      </div>
+      <!-- Ground Fuels -->
+      <div>
+        <div class="footer-col__title">Ground Fuels</div>
+        <div class="footer-col__links">
+          <a href="03_Ground_Fuels.html" class="footer-col__link">Ground Fuels Hub</a>
+          <a href="03a_Diesel_Network_v3.5.html" class="footer-col__link">IOR Diesel Stops</a>
+          <a href="03b_On_Site_Refuelling_v3.5.html" class="footer-col__link">On-Site Refuelling</a>
+          <a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="footer-col__link">Bulk Diesel Delivery</a>
+        </div>
+      </div>
+      <!-- Aviation -->
+      <div>
+        <div class="footer-col__title">Aviation</div>
+        <div class="footer-col__links">
+          <a href="04_Aviation_Hub_v3.5.html" class="footer-col__link">Aviation Hub</a>
+          <a href="04a_Aviation_Network_v3.5.html" class="footer-col__link">Aviation Network</a>
+        </div>
+      </div>
+      <!-- Digital Platforms -->
+      <div>
+        <div class="footer-col__title">Digital Platforms</div>
+        <div class="footer-col__links">
+          <a href="07_Digital_Platformsv5.html" class="footer-col__link">Digital Platforms Hub</a>
+          <a href="07a_HyDip_FMS_v4.html" class="footer-col__link">HyDip&#8482; FMS</a>
+          <a href="07b_Fuelcharge_App_v8.html" class="footer-col__link">Fuelcharge App</a>
+          <a href="07c_Customer_Portal_v4.html" class="footer-col__link">Customer Portal</a>
+        </div>
+      </div>
+      <!-- Company -->
+      <div>
+        <div class="footer-col__title">Company</div>
+        <div class="footer-col__links">
+          <a href="#" class="footer-col__link">About IOR</a>
+          <a href="09a_Our_Leadershipv5.html" class="footer-col__link">Our Leadership</a>
+          <a href="#" class="footer-col__link">Careers</a>
+          <a href="#" class="footer-col__link">News &amp; Insights</a>
+        </div>
+      </div>
+      <!-- Account -->
+      <div>
+        <div class="footer-col__title">Account</div>
+        <div class="footer-col__links">
+          <a href="#" class="footer-col__link">Customer Login</a>
+          <a href="#" class="footer-col__link">Apply for an Account</a>
+          <a href="11d_Find_Locationv5.html" class="footer-col__link">Find a Location</a>
+          <a href="11_Support_Hubv5.html" class="footer-col__link">Support Hub</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">
+        <svg width="56" height="26" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="IOR" role="img">
+          <g clip-path="url(#ior-footer-fc8)">
+            <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#fff"/>
+            <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#7FBEE6"/>
+            <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#fff"/>
+            <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#fff"/>
+          </g>
+          <defs><clipPath id="ior-footer-fc8"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
+        </svg>
+      </div>
+      <div class="footer-legal">
+        <span class="footer-legal__text">&copy; 2025 IOR Petroleum. All rights reserved.</span>
+        <a href="11f_Privacy_Policyv5.html" class="footer-legal__link">Privacy Policy</a>
+        <a href="#" class="footer-legal__link">Terms of Use</a>
+        <a href="#" class="footer-legal__link">Site by 3PM</a>
+      </div>
+      <div class="footer-social" aria-label="IOR social media">
+        <a href="#" class="footer-social__icon" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" class="footer-social__icon" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" class="footer-social__icon" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="0" ry="0"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="footer-social__icon" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── PRIMARY NAV SCROLL SHADOW ─────────────────────────────────────────
+    const nav = document.getElementById('primary-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('primary-nav--scrolled', window.scrollY > 80); }, { passive: true });
+
+    // ─── MEGA MENU ─────────────────────────────────────────────────────────
+    const navBtns = document.querySelectorAll('.nav-link[data-menu]');
+    const megaPanels = document.querySelectorAll('.mega-panel');
+    navBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const menuId = btn.getAttribute('data-menu');
+        const panel = document.getElementById('mega-' + menuId);
+        const isOpen = panel.classList.contains('mega-panel--visible');
+        megaPanels.forEach(p => p.classList.remove('mega-panel--visible'));
+        navBtns.forEach(b => b.setAttribute('aria-expanded', 'false'));
+        if (!isOpen) { panel.classList.add('mega-panel--visible'); btn.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.primary-nav')) {
+        megaPanels.forEach(p => p.classList.remove('mega-panel--visible'));
+        navBtns.forEach(b => b.setAttribute('aria-expanded', 'false'));
+      }
+    });
+
+    // ─── MOBILE DRAWER ─────────────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger-btn');
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    const drawerClose = document.getElementById('drawer-close');
+    function openDrawer() { drawer.classList.add('drawer--open'); overlay.classList.add('drawer-overlay--open'); drawer.removeAttribute('aria-hidden'); hamburger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { drawer.classList.remove('drawer--open'); overlay.classList.remove('drawer-overlay--open'); drawer.setAttribute('aria-hidden', 'true'); hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+    hamburger.addEventListener('click', openDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.querySelectorAll('.drawer__link[data-drawer]').forEach(link => {
+      link.addEventListener('click', () => {
+        const subId = link.getAttribute('data-drawer');
+        const sub = document.getElementById(subId);
+        const chevron = link.querySelector('.drawer__link-chevron');
+        const isOpen = sub.classList.contains('drawer__sub--open');
+        document.querySelectorAll('.drawer__sub').forEach(s => s.classList.remove('drawer__sub--open'));
+        document.querySelectorAll('.drawer__link-chevron').forEach(c => c.classList.remove('drawer__link-chevron--open'));
+        document.querySelectorAll('.drawer__link[data-drawer]').forEach(l => l.setAttribute('aria-expanded', 'false'));
+        if (!isOpen) { sub.classList.add('drawer__sub--open'); chevron.classList.add('drawer__link-chevron--open'); link.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+
+    // ─── APP FLOW TABS ─────────────────────────────────────────────────────
+    const flowTabs = document.querySelectorAll('.flow-tab__btn');
+    const flowPanels = document.querySelectorAll('.flow-panel');
+    flowTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const panelId = tab.getAttribute('aria-controls');
+        flowTabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+        flowPanels.forEach(p => p.classList.remove('active'));
+        tab.setAttribute('aria-selected', 'true');
+        const panel = document.getElementById(panelId);
+        if (panel) panel.classList.add('active');
+      });
+    });
+
+    // ─── FAQ ACCORDION ─────────────────────────────────────────────────────
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.faq-question').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          b.nextElementSibling.style.maxHeight = '0';
+        });
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          btn.nextElementSibling.style.maxHeight = btn.nextElementSibling.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // ─── FADE-UP SCROLL ANIMATION ──────────────────────────────────────────
+    const fadeObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-up--visible'); fadeObs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+  </script>
+</body>
+</html>
