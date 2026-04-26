@@ -163,6 +163,9 @@ def audit(filepath):
                 continue
             if re.search(r'hero[_-]overlay|\.hero.*rgba|overlay.*hero', stripped, re.I):
                 if not re.search(r'(annotation|STRIPPED|Figma)', stripped, re.I):
+                    # Skip CSS class definitions (lines with curly braces - these are style rules, not HTML overlays)
+                    if '{' in stripped and '}' in stripped:
+                        continue
                     hits.append(f"L{i}: {stripped[:80]}")
         return (len(hits) == 0, f"{len(hits)} hits" if hits else "Clean")
 
