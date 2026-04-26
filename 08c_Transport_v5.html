@@ -673,72 +673,7 @@
     .footer-col__link--icon { display: flex; align-items: center; gap: 8px; }
     .footer-col__link--icon svg { flex-shrink: 0; margin-top: 2px; }
     .footer-legal__link--muted { color: rgba(255,255,255,.6); text-decoration: underline; }
-  
-
-    /* ── Hero Split (Industries spoke pages) ──────────────────────── */
-    .hero-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: clamp(420px, 52dvh, 640px);
-      align-items: center;
-      border-top: 4px solid var(--ior-blue);
-      overflow: hidden;
-    }
-    .hero-split--construction { background: var(--ior-deep); }
-    .hero-split--oilgas { background: var(--ior-deep); }
-    .hero-split__left {
-      padding: clamp(48px, 6vw, 80px) clamp(20px, 5vw, 80px) clamp(48px, 6vw, 80px) var(--section-pad-x);
-    }
-    .hero-split__left h1 {
-      font-size: clamp(28px, 3.8vw, 52px); font-weight: 800;
-      line-height: 1.1; color: #fff;
-      margin-bottom: clamp(14px, 1.8vw, 22px); max-width: 600px;
-    }
-    .hero-split__left h1 .highlight { color: var(--ior-sky); }
-    .hero-split__left .hero-h1 {
-      font-size: clamp(28px, 3.8vw, 52px); font-weight: 800;
-      line-height: 1.1; color: #fff;
-      margin-bottom: clamp(14px, 1.8vw, 22px); max-width: 600px;
-    }
-    .hero-split__lead,
-    .hero-split__left p {
-      font-size: clamp(15px, 1.5vw, 18px);
-      color: rgba(255,255,255,.85); max-width: 500px;
-      margin-bottom: clamp(24px, 3vw, 36px); line-height: 1.7;
-    }
-    .hero-split__right {
-      display: flex; align-items: stretch; justify-content: center;
-      min-height: clamp(280px, 40vw, 520px);
-      background: rgba(0,0,0,.15);
-    }
-    .hero-split__right .asset-placeholder {
-      width: 100%; min-height: 300px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 40px;
-    }
-    @media (max-width: 900px) {
-      .hero-split { grid-template-columns: 1fr; }
-      .hero-split__right { display: none; }
-    }
-    .hero-split--deep  { background-color: var(--ior-deep); }
-    .hero-split--navy  { background-color: var(--ior-navy); }
-  
     .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  </style>
-
-  <!-- Page-specific styles go here — DO NOT add nav/footer styles -->
-  <style>
-    /* ─── PAGE STYLES ─────────────────────────────────────────────
-       Add your page-specific CSS here.
-       Rules:
-       - border-radius: 0 on all containers/cards (except .btn--pill / .cs-pill)
-       - No CSS gradients (except hero scrim on photo heroes — permitted)
-       - No inline style= attributes on body elements
-       - Use var(--ior-blue), var(--ior-navy), var(--ior-dark) for IOR pages
-       - Branding colours (HyDip, Fuelcharge, CP) body sections only
-    ─────────────────────────────────────────────────────────────── */
-
   </style>
 </head>
 <body>
@@ -1059,16 +994,30 @@
        MAIN CONTENT — BUILDER WRITES HERE ONLY
   ============================================================ -->
   <main id="main-content">
-        <section class="hero-split hero-split--navy">
-            <div class="hero-split__left">
-                <h1>Powering Australia's Transport & Logistics</h1>
-                <p>Keep your fleet moving efficiently with IOR's comprehensive fuel and lubricant solutions, designed for the unique demands of the transport and logistics sector.</p>
-                <a href="#" class="button">Get a Quote</a>
-            </div>
-            <div class="hero-split__right">
-                <!-- No image specified, so this can remain empty or contain a placeholder if needed, but brief says NO images unless specified -->
-            </div>
-        </section>
+        <!-- SECTION 1: HERO -->
+    <section class="hero" id="hero" aria-label="Transport & Logistics hero">
+      <div class="hero__video-wrap" aria-hidden="true">
+        <!-- Replace src with production video asset path -->
+        <video autoplay muted loop playsinline src="" aria-hidden="true">
+          <track kind="captions" src="" label="No captions">
+        </video>
+        <!-- Video placeholder — remove once real asset is in place -->
+        <div class="video-placeholder-full" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="0" ry="0"/></svg>
+          <span>Video asset: Road train on a remote outback highway at dawn</span>
+        </div>
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="eyebrow eyebrow--white">TRANSPORT &amp; LOGISTICS</p>
+        <h1>Powering Australia&#8217;s Transport &amp; Logistics.</h1>
+        <p>Australia&#8217;s freight corridors run on diesel. IOR&#8217;s national network of 115+ diesel stops, bulk delivery fleet, and fleet card ecosystem keeps your vehicles moving.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn btn--primary">Explore Diesel Network</a>
+          <a href="#" class="btn btn--ghost">Apply for a Fleet Card</a>
+        </div>
+      </div>
+    </section>
 
         <section class="quick-links-bar">
             <div class="quick-links-bar__inner">

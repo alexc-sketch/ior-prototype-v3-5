@@ -213,49 +213,21 @@
 
 
     /* ── Hero Split (Industries spoke pages) ──────────────────────── */
-    .hero-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: clamp(420px, 52dvh, 640px);
-      align-items: center;
-      border-top: 4px solid var(--ior-blue);
-      overflow: hidden;
-    }
-    .hero-split__left {
-      padding: clamp(48px, 6vw, 80px) clamp(20px, 5vw, 80px) clamp(48px, 6vw, 80px) var(--section-pad-x);
-    }
-    .hero-split__left h1,
-    .hero-split__left .hero-h1 {
-      font-size: clamp(28px, 3.8vw, 52px); font-weight: 800;
-      line-height: 1.1; color: #fff;
-      margin-bottom: clamp(14px, 1.8vw, 22px); max-width: 600px;
-    }
-    .hero-split__left h1 .highlight { color: var(--ior-sky); }
-    .hero-split__lead,
-    .hero-split__left p {
-      font-size: clamp(15px, 1.5vw, 18px);
-      color: rgba(255,255,255,.85); max-width: 500px;
-      margin-bottom: clamp(24px, 3vw, 36px); line-height: 1.7;
-    }
-    .hero-split__right {
-      display: flex; align-items: stretch; justify-content: center;
-      min-height: clamp(280px, 40vw, 520px);
-      background: rgba(0,0,0,.15);
-    }
-    .hero-split__right .asset-placeholder {
-      width: 100%; min-height: 300px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 40px;
-    }
+
+
+
+
+
+
+
     @media (max-width: 900px) {
-      .hero-split { grid-template-columns: 1fr; }
-      .hero-split__right { display: none; }
+  
+  
     }
-    .hero-split--industries { background: var(--ior-deep); }
-    .hero-h1 { font-size: clamp(32px,5vw,64px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 20px; }
-    .hero-subcopy { font-size: clamp(16px,1.5vw,18px); color: rgba(255,255,255,.85); margin-bottom: 32px; max-width: 540px; }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+
+
+
     .stat-bar { display: flex; gap: 0; background: var(--ior-navy); }
     .stat-item { flex: 1; padding: clamp(20px,3vw,40px); text-align: center; border-right: 1px solid rgba(255,255,255,.15); }
     .stat-item:last-child { border-right: none; }
@@ -306,6 +278,53 @@
       .industry-grid, .testimonial-grid, .related-grid, .lead-trap__inner { grid-template-columns: 1fr; }
       .stat-bar { flex-direction: column; }
     }
+    /* ============================================================
+       HERO — Full-width video container (canonical pattern)
+    ============================================================ */
+    .hero {
+      position: relative;
+      border-top: 4px solid var(--ior-blue);
+      overflow: hidden;
+      min-height: clamp(480px, 55dvh, 700px);
+      display: flex;
+      align-items: center;
+      background: var(--ior-navy);
+    }
+    .hero__video-wrap {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero__video-wrap video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .hero__overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: rgba(10, 64, 102, 0.72);
+    }
+    .hero__content {
+      position: relative; z-index: 2;
+      padding: clamp(48px, 6vw, 80px) var(--section-pad-x);
+      max-width: var(--container-max); margin-inline: auto;
+      width: 100%;
+    }
+    .hero__content h1 {
+      font-size: clamp(32px, 4.5vw, 58px); font-weight: 800;
+      line-height: 1.1; color: #fff;
+      margin-bottom: clamp(16px, 2vw, 24px); max-width: 640px;
+    }
+    .hero__content p {
+      font-size: clamp(15px, 1.6vw, 18px);
+      color: rgba(255,255,255,.85); max-width: 520px;
+      margin-bottom: clamp(24px, 3vw, 36px); line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .video-placeholder-full {
+      position: absolute; inset: 0;
+      background: #1a2535;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: rgba(255,255,255,.25); font-size: 13px; text-align: center; gap: 8px;
+    }
+    .video-placeholder-full svg { opacity: .3; }
   </style>
 </head>
 <body>
@@ -627,18 +646,26 @@
   ============================================================ -->
   <main id="main-content">
     <!-- SECTION 1: HERO -->
-    <section class="hero-split hero-split--industries">
-      <div class="hero-split__left">
-        <p class="eyebrow eyebrow--sky">INDUSTRIES WE SERVE</p>
-        <h1 class="hero-h1">Fuelling Australia&#8217;s hardest-working industries.</h1>
-        <p class="hero-subcopy">From remote mine sites and outback cattle stations to major airports and government fleet bases, IOR delivers fuel solutions purpose-built for every sector that keeps Australia moving.</p>
-        <div class="hero-ctas">
-          <a href="#industry-grid" class="btn btn--primary btn--pill">Find Your Industry &#8595;</a>
+    <section class="hero" id="hero" aria-label="Industries We Serve hero">
+      <div class="hero__video-wrap" aria-hidden="true">
+        <!-- Replace src with production video asset path -->
+        <video autoplay muted loop playsinline src="" aria-hidden="true">
+          <track kind="captions" src="" label="No captions">
+        </video>
+        <!-- Video placeholder — remove once real asset is in place -->
+        <div class="video-placeholder-full" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="0" ry="0"/></svg>
+          <span>Video asset: Composite montage — mining truck, aircraft refuel, harvest tractor</span>
         </div>
       </div>
-      <div class="hero-split__right">
-        <div class="asset-placeholder" style="background:#E8F1FB;border:2px dashed #0355A3;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;">
-          <strong style="color:#0355A3;font-size:16px;">ASSET REQUIRED: Composite grid of 3 industries &#8212; truck, plane, tractor</strong>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="eyebrow eyebrow--white">INDUSTRIES WE SERVE</p>
+        <h1>Fuelling Australia&#8217;s hardest-working industries.</h1>
+        <p>From remote mine sites and outback cattle stations to major airports and government fleet bases, IOR delivers fuel solutions purpose-built for every sector that keeps Australia moving.</p>
+        <div class="hero-ctas">
+          <a href="#industry-grid" class="btn btn--primary">Find Your Industry &#8595;</a>
+          <a href="#" class="btn btn--ghost">Apply for an Account</a>
         </div>
       </div>
     </section>
