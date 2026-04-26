@@ -289,20 +289,27 @@
     .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
     .pre-footer__divider { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 32px 0 0; max-width: 1200px; margin-left: auto; margin-right: auto; }
 
-    /* ─── SITE FOOTER ─── */
-    .site-footer { background: #0a0a2e; padding: clamp(40px,5vw,64px) clamp(20px,8vw,125px) 24px; }
-    .footer__grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto 40px; }
-    .footer-col__title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ior-gold); margin-bottom: 16px; }
-    .footer-col__links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-col__links a { font-size: 13px; color: rgba(255,255,255,0.65); text-decoration: none; transition: color var(--transition); }
-    .footer-col__links a:hover { color: #fff; }
-    .footer__bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; max-width: 1200px; margin: 0 auto; }
-    .footer__legal { font-size: 12px; color: rgba(255,255,255,0.4); }
-    .footer__social { display: flex; gap: 12px; }
-    .footer__social-link { color: rgba(255,255,255,0.5); transition: color var(--transition); text-decoration: none; }
-    .footer__social-link:hover { color: #fff; }
-    @media (max-width: 1024px) { .footer__grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 600px) { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    /* ─── SITE FOOTER — Shell v4 canonical ─── */
+    .site-footer { background: var(--ior-blue); color: #fff; padding: clamp(28px,3.5vw,40px) clamp(20px,8vw,80px) clamp(40px,5vw,60px); }
+    .footer-nav-grid { max-width: 1400px; margin-inline: auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; padding-bottom: 40px; }
+    .footer-col__title { font-size: clamp(13px,1.3vw,16px); font-weight: 800; color: #fff; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .footer-col__links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col__link { font-size: clamp(12px,1.2vw,14px); color: rgba(255,255,255,.8); min-height: 44px; display: flex; align-items: center; text-decoration: none; }
+    .footer-col__link:hover { color: #fff; text-decoration: underline; }
+    .footer-state-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .footer-state-pill { display: inline-flex; align-items: center; padding: 4px 12px; border: 1px solid rgba(255,255,255,.4); color: #fff; font-size: 13px; font-weight: 700; transition: all var(--transition); min-height: 44px; text-decoration: none; }
+    .footer-state-pill:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+    .footer-legal { max-width: 1400px; margin-inline: auto; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.2); flex-wrap: wrap; gap: 16px; }
+    .footer-legal__text { font-size: 12px; color: rgba(255,255,255,.6); }
+    .footer-legal__link--muted { color: rgba(255,255,255,.6); text-decoration: underline; }
+    .footer-legal__link--muted:hover { color: #fff; }
+    .footer__social { display: flex; gap: 10px; }
+    .footer__social-link { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; color: #fff; transition: all var(--transition); }
+    .footer__social-link:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+    @media (max-width: 1200px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px) { .footer-nav-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer-nav-grid { grid-template-columns: 1fr; } }
+
   </style>
 </head>
 <body>
@@ -591,9 +598,10 @@
       <div class="quick-links-bar__inner">
         <span class="quick-links-bar__label">Explore:</span>
         <nav class="quick-links-bar__links" aria-label="Section quick links">
-          <a href="09b_Our_Leadershipv5.html">Our Leadership</a>
-          <a href="#">Community &amp; Giving Back</a>
-          <a href="#">Sustainability, HSE &amp; ESG</a>
+          <a href="09a_Our_Leadershipv5.html">Our Leadership</a>
+          <a href="09b_Community.html">Community &amp; Giving Back</a>
+          <a href="09c_Sustainability.html">Sustainability, HSE &amp; ESG</a>
+          <a href="10_Careers.html">Careers</a>
           <a href="11c_News_Updates.html">News &amp; Updates</a>
         </nav>
       </div>
@@ -670,9 +678,9 @@
       <div class="pre-footer__row">
         <h2 class="pre-footer__title">We&rsquo;re here to help</h2>
         <div class="pre-footer__ctas">
-          <a href="11a_Contact_Usv5.html" class="btn btn--primary">Contact Us</a>
-          <a href="11d_Find_Locationv5.html" class="btn btn--outline">Find a Location</a>
-          <a href="07c_Customer_Portalv5.html" class="btn btn--outline">Customer Portal</a>
+          <a href="#" class="btn btn--primary btn--pill">Apply for an Account</a>
+          <a href="11a_Contact_Usv5.html" class="btn btn--outline btn--pill">Make an Enquiry</a>
+          <a href="11_Support_Hubv5.html" class="btn btn--outline btn--pill">Need Help?</a>
         </div>
       </div>
       <hr class="pre-footer__divider">
@@ -680,69 +688,74 @@
 
   </main>
 
-  <!-- ═══ SITE FOOTER ═══ -->
+  <!-- ═══ SITE FOOTER — Shell v4 canonical ═══ -->
   <footer class="site-footer" role="contentinfo">
-    <div class="footer__grid">
-      <div class="footer-col">
-        <p class="footer-col__title">Contact</p>
-        <ul class="footer-col__links">
-          <li><a href="11_Support_Hubv5.html">Support Hub</a></li>
-          <li><a href="11a_Contact_Usv5.html">Contact Us</a></li>
-          <li><a href="11b_Regional_Contactsv5.html">Regional Contacts</a></li>
-          <li><a href="tel:1300457467">1300 IOR IOR</a></li>
-        </ul>
+    <div class="footer-nav-grid">
+      <!-- Contact -->
+      <div>
+        <div class="footer-col__title">Contact</div>
+        <div class="footer-col__links">
+          <a href="11_Support_Hub.html" class="footer-col__link">Support Hub</a>
+          <a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a>
+          <a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Contacts</a>
+          <a href="tel:1300457467" class="footer-col__link">1300 IOR IOR</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <p class="footer-col__title">Fuel Solutions</p>
-        <ul class="footer-col__links">
-          <li><a href="02a_Diesel_Networkv5.html">Diesel Network</a></li>
-          <li><a href="02b_Bulk_Dieselv5.html">Bulk Diesel</a></li>
-          <li><a href="03a_Aviation_Hubv5.html">Aviation</a></li>
-          <li><a href="02c_Lubricantsv5.html">Lubricants</a></li>
-          <li><a href="02d_AdBluev5.html">AdBlue</a></li>
-          <li><a href="02e_Equipmentv5.html">Equipment &amp; Tanks</a></li>
-        </ul>
+      <!-- Fuel Solutions -->
+      <div>
+        <div class="footer-col__title">Fuel Solutions</div>
+        <div class="footer-col__links">
+          <a href="03_Ground_Fuels.html" class="footer-col__link">Ground Fuels</a>
+          <a href="04_Aviation.html" class="footer-col__link">Aviation</a>
+          <a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
+          <a href="06_Supply_Trading.html" class="footer-col__link">Supply &amp; Trading</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <p class="footer-col__title">Digital Platforms</p>
-        <ul class="footer-col__links">
-          <li><a href="07a_HyDip_FMSv5.html">HyDip&trade; FMS</a></li>
-          <li><a href="07b_Fuelcharge_App_v8.html">Fuelcharge App</a></li>
-          <li><a href="07c_Customer_Portalv5.html">Customer Portal</a></li>
-        </ul>
+      <!-- Digital Platforms -->
+      <div>
+        <div class="footer-col__title">Digital Platforms</div>
+        <div class="footer-col__links">
+          <a href="07_Digital_Platforms.html#hydip" class="footer-col__link">HyDip&#8482; FMS</a>
+          <a href="07_Digital_Platforms.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
+          <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <p class="footer-col__title">Corporate</p>
-        <ul class="footer-col__links">
-          <li><a href="09a_About_IOR_Hubv5.html">About IOR</a></li>
-          <li><a href="09b_Our_Leadershipv5.html">Our Leadership</a></li>
-          <li><a href="09d_Case_Studies_v6.html">Case Studies</a></li>
-          <li><a href="11c_News_Updates.html">News &amp; Updates</a></li>
-        </ul>
+      <!-- Corporate -->
+      <div>
+        <div class="footer-col__title">Corporate</div>
+        <div class="footer-col__links">
+          <a href="09_About_IOR.html" class="footer-col__link">About IOR</a>
+          <a href="10_Careers.html" class="footer-col__link">Careers</a>
+          <a href="09d_Case_Studies_v6.html" class="footer-col__link">Case Studies</a>
+          <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+          <a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <p class="footer-col__title">Quick Actions</p>
-        <ul class="footer-col__links">
-          <li><a href="11a_Contact_Usv5.html">Apply for an Account</a></li>
-          <li><a href="07c_Customer_Portalv5.html">Customer Login</a></li>
-          <li><a href="11e_Make_Paymentv5.html">Make a Payment</a></li>
-          <li><a href="11d_Find_Locationv5.html">Find a Location</a></li>
-        </ul>
+      <!-- Quick Actions -->
+      <div>
+        <div class="footer-col__title">Quick Actions</div>
+        <div class="footer-col__links">
+          <a href="#" class="footer-col__link">Apply for an Account</a>
+          <a href="11e_Make_Payment.html" class="footer-col__link">Make a Payment</a>
+          <a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a>
+          <a href="11_Support_Hub.html" class="footer-col__link">Help Centre &amp; FAQs</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <p class="footer-col__title">Find a Site By State</p>
-        <ul class="footer-col__links">
-          <li><a href="11d_Find_Locationv5.html">New South Wales</a></li>
-          <li><a href="11d_Find_Locationv5.html">Victoria</a></li>
-          <li><a href="11d_Find_Locationv5.html">Queensland</a></li>
-          <li><a href="11d_Find_Locationv5.html">Western Australia</a></li>
-          <li><a href="11d_Find_Locationv5.html">South Australia</a></li>
-          <li><a href="11d_Find_Locationv5.html">Northern Territory</a></li>
-        </ul>
+      <!-- Find a Site By State -->
+      <div>
+        <div class="footer-col__title">Find a Site By State</div>
+        <div class="footer-state-pills">
+          <a href="11d_Find_Location.html" class="footer-state-pill">QLD</a>
+          <a href="11d_Find_Location.html" class="footer-state-pill">NSW</a>
+          <a href="11d_Find_Location.html" class="footer-state-pill">VIC</a>
+          <a href="11d_Find_Location.html" class="footer-state-pill">SA</a>
+          <a href="11d_Find_Location.html" class="footer-state-pill">WA</a>
+          <a href="11d_Find_Location.html" class="footer-state-pill">NT</a>
+        </div>
       </div>
     </div>
-    <div class="footer__bottom">
-      <p class="footer__legal">&copy; 2025 IOR Petroleum. All rights reserved. &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Use</a> &nbsp;|&nbsp; Site by ThreePM</p>
+    <div class="footer-legal">
+      <p class="footer-legal__text">&copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" class="footer-legal__link--muted">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" class="footer-legal__link--muted">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;Site by 3PM</p>
       <div class="footer__social">
         <a href="#" class="footer__social-link" aria-label="IOR on LinkedIn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
