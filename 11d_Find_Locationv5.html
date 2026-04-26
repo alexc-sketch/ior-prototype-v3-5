@@ -241,25 +241,27 @@
     }
     @media (max-width: 640px) { .utility-cards__grid { grid-template-columns: 1fr; } }
 
-    /* Fuelcharge card — branded */
+    /* Fuelcharge card — IOR standard card styling */
     .fc-card {
-      background: var(--fuelcharge-dark);
+      background: #fff;
+      border: 1px solid var(--grey-200);
+      border-top: 3px solid var(--ior-blue);
       padding: clamp(28px, 3.5vw, 44px);
       display: flex; flex-direction: column;
     }
     .fc-card__logo { margin-bottom: 20px; }
     .fc-card__logo img { height: 28px; width: auto; }
-    .fc-card__eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--fuelcharge-teal); margin-bottom: 10px; }
-    .fc-card__title { font-size: clamp(20px, 2vw, 26px); font-weight: 800; color: #fff; margin-bottom: 12px; }
-    .fc-card__body { font-size: clamp(14px, 1.4vw, 15px); color: rgba(255,255,255,.8); line-height: 1.7; margin-bottom: 24px; flex: 1; }
+    .fc-card__eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 10px; }
+    .fc-card__title { font-size: clamp(20px, 2vw, 26px); font-weight: 800; color: var(--ior-navy); margin-bottom: 12px; }
+    .fc-card__body { font-size: clamp(14px, 1.4vw, 15px); color: var(--grey-700); line-height: 1.7; margin-bottom: 24px; flex: 1; }
     .fc-card__ctas { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
     .fc-badge-btn {
       display: inline-flex; align-items: center;
-      background: #000; border: 1px solid rgba(255,255,255,.2);
       padding: 0; overflow: hidden; min-height: 44px;
     }
-    .fc-badge-btn img { height: 44px; width: auto; display: block; }
-    .fc-learn-more { font-size: 14px; font-weight: 700; color: var(--fuelcharge-teal); display: inline-flex; align-items: center; gap: 4px; min-height: 44px; }
+    .fc-badge-btn img { height: 40px; width: auto; display: block; transition: opacity 150ms ease; }
+    .fc-badge-btn:hover img { opacity: 0.85; }
+    .fc-learn-more { font-size: 14px; font-weight: 700; color: var(--ior-blue); display: inline-flex; align-items: center; gap: 4px; min-height: 44px; }
     .fc-learn-more:hover { text-decoration: underline; }
 
     /* Fleet Account card */
@@ -304,6 +306,27 @@
     .download-card__title { font-size: clamp(18px, 1.8vw, 22px); font-weight: 800; color: #fff; margin-bottom: 10px; }
     .download-card__body { font-size: clamp(14px, 1.4vw, 15px); color: rgba(255,255,255,.75); line-height: 1.7; margin-bottom: 24px; }
     .download-card__note { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 12px; }
+
+    /* ============================================================
+       FAQ ACCORDION
+    ============================================================ */
+    .faq-section { padding: clamp(40px,5vw,72px) var(--section-pad-x); background: var(--grey-50); border-top: 1px solid var(--grey-200); }
+    .faq-section__inner { max-width: var(--content-max); margin-inline: auto; }
+    .faq-section__heading { margin-bottom: clamp(24px, 3vw, 40px); }
+    .faq-section__heading h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: var(--ior-navy); }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--grey-200); }
+    .faq-question { width: 100%; text-align: left; padding: clamp(12px,1.5vw,18px) 0; font-size: clamp(14px,1.4vw,16px); font-weight: 600; color: var(--grey-900); background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: color var(--transition); min-height: 44px; }
+    .faq-question:hover, .faq-question[aria-expanded="true"] { color: var(--ior-blue); }
+    .faq-chevron { flex-shrink: 0; transition: transform var(--transition); }
+    .faq-question[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { overflow: hidden; max-height: 0; transition: max-height .35s ease; }
+    .faq-answer p { font-size: 15px; color: var(--grey-700); line-height: 1.7; padding-bottom: 20px; }
+    .faq-footer { margin-top: 32px; padding: 24px 32px; background: #fff; border: 1px solid var(--grey-200); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .faq-footer__text h4 { font-size: 15px; font-weight: 700; color: var(--grey-900); margin-bottom: 4px; }
+    .faq-footer__text p { font-size: 13px; color: var(--grey-700); }
+    .faq-footer__actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; flex-shrink: 0; }
+    .faq-footer__help-link { font-size: 13px; color: var(--ior-blue); text-decoration: underline; text-underline-offset: 4px; }
 
     /* ============================================================
        PRE-FOOTER — canonical IOR
@@ -399,12 +422,31 @@
         </svg>
       </a>
       <ul class="nav-links" role="list">
-        <li><button class="nav-link" data-menu="ground-fuels" aria-expanded="false" aria-controls="mega-ground-fuels">Ground Fuels <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
-        <li><button class="nav-link" data-menu="aviation" aria-expanded="false" aria-controls="mega-aviation">Aviation <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
-        <li><button class="nav-link" data-menu="digital" aria-expanded="false" aria-controls="mega-digital">Digital Platforms <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
-        <li><button class="nav-link" data-menu="supply" aria-expanded="false" aria-controls="mega-supply">Supply &amp; Trading <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
-        <li><button class="nav-link" data-menu="equipment" aria-expanded="false" aria-controls="mega-equipment">Equipment <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
-        <li><a href="11_Support_Hubv5.html" class="nav-link">Support</a></li>
+        <li>
+          <button class="nav-link" data-menu="fuel-solutions" aria-expanded="false" aria-controls="mega-fuel-solutions">
+            Fuel Solutions <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link" data-menu="digital-platforms" aria-expanded="false" aria-controls="mega-digital-platforms">
+            Digital Platforms <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link" data-menu="industries" aria-expanded="false" aria-controls="mega-industries">
+            Industries We Serve <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link" data-menu="about-ior" aria-expanded="false" aria-controls="mega-about-ior">
+            About IOR <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+        </li>
+        <li>
+          <button class="nav-link" data-menu="support-contact" aria-expanded="false" aria-controls="mega-support-contact">
+            Support &amp; Contact <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+        </li>
       </ul>
       <div class="nav-ctas">
         <a href="#" class="btn btn--outline btn--pill" aria-label="Customer Login">Customer Login</a>
@@ -412,8 +454,8 @@
         <button class="hamburger" id="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer"><span></span><span></span><span></span></button>
       </div>
       <!-- Mega Menus -->
-      <div class="mega-panel" id="mega-ground-fuels" role="region" aria-label="Ground Fuels menu"><div class="mega-grid mega-grid--4"><div><div class="mega-col__title">Diesel Network</div><div class="mega-col__links"><a href="03a_Diesel_Network_v3.5.html" class="mega-col__link">IOR Diesel Stops</a><a href="03b_On_Site_Refuelling_v3.5.html" class="mega-col__link">On-Site Refuelling</a><a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="mega-col__link">Bulk Diesel Delivery</a></div></div><div><div class="mega-col__title">Speciality Fuels</div><div class="mega-col__links"><a href="03d_HyBlue_v3.5.html" class="mega-col__link">HyBlue&#8482; AdBlue</a><a href="03e_Oils_Lubricants_v3.5.html" class="mega-col__link">Oils &amp; Lubricants</a></div></div><div><div class="mega-col__title">Solutions</div><div class="mega-col__links"><a href="03_Ground_Fuels.html" class="mega-col__link mega-col__link--cta">View All Ground Fuels &rarr;</a></div></div><div class="mega-footer"><a href="#" class="mega-cta-link">Get a Quote &rarr;</a><a href="11d_Find_Locationv5.html" class="mega-cta-link">Find a Diesel Stop &rarr;</a></div></div></div>
-      <div class="mega-panel" id="mega-aviation" role="region" aria-label="Aviation menu"><div class="mega-grid mega-grid--4"><div><div class="mega-col__title mega-col__title--gold">Aviation Network</div><div class="mega-col__links"><a href="04a_Aviation_Network_v3.5.html" class="mega-col__link">Aviation Network</a><a href="04b_Airport_Fuelling_v3.5.html" class="mega-col__link">Airport Fuelling</a><a href="04c_Aviation_Bulk_v3.5.html" class="mega-col__link">Aviation Bulk Delivery</a><a href="04d_Aviation_Oils_v3.5.html" class="mega-col__link">Aviation Oils</a></div></div><div><div class="mega-col__title mega-col__title--gold">Hub</div><div class="mega-col__links"><a href="04_Aviation_Hub_v3.5.html" class="mega-col__link mega-col__link--cta">View All Aviation &rarr;</a></div></div><div class="mega-footer"><a href="#" class="mega-cta-link">Aviation Enquiry &rarr;</a></div></div></div>
+      <div class="mega-panel" id="mega-ground-fuels" role="region" aria-label="Ground Fuels menu"><div class="mega-grid mega-grid--4"><div><div class="mega-col__title">Diesel Network</div><div class="mega-col__links"><a href="#" class="mega-col__link">IOR Diesel Stops</a><a href="#" class="mega-col__link">On-Site Refuelling</a><a href="#" class="mega-col__link">Bulk Diesel Delivery</a></div></div><div><div class="mega-col__title">Speciality Fuels</div><div class="mega-col__links"><a href="#" class="mega-col__link">HyBlue&#8482; AdBlue</a><a href="#" class="mega-col__link">Oils &amp; Lubricants</a></div></div><div><div class="mega-col__title">Solutions</div><div class="mega-col__links"><a href="03_Ground_Fuels.html" class="mega-col__link mega-col__link--cta">View All Ground Fuels &rarr;</a></div></div><div class="mega-footer"><a href="#" class="mega-cta-link">Get a Quote &rarr;</a><a href="11d_Find_Locationv5.html" class="mega-cta-link">Find a Diesel Stop &rarr;</a></div></div></div>
+      <div class="mega-panel" id="mega-aviation" role="region" aria-label="Aviation menu"><div class="mega-grid mega-grid--4"><div><div class="mega-col__title mega-col__title--gold">Aviation Network</div><div class="mega-col__links"><a href="#" class="mega-col__link">Aviation Network</a><a href="#" class="mega-col__link">Airport Fuelling</a><a href="#" class="mega-col__link">Aviation Bulk Delivery</a><a href="#" class="mega-col__link">Aviation Oils</a></div></div><div><div class="mega-col__title mega-col__title--gold">Hub</div><div class="mega-col__links"><a href="#" class="mega-col__link mega-col__link--cta">View All Aviation &rarr;</a></div></div><div class="mega-footer"><a href="#" class="mega-cta-link">Aviation Enquiry &rarr;</a></div></div></div>
       <div class="mega-panel" id="mega-digital" role="region" aria-label="Digital Platforms menu"><div class="mega-grid mega-grid--3"><div><div class="mega-col__title">Platforms</div><div class="mega-col__links"><a href="07a_HyDip_FMSv5.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_Appv5.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v4.html" class="mega-col__link">Customer Portal</a></div></div><div class="mega-footer"><a href="#" class="mega-cta-link">Digital Enquiry &rarr;</a></div></div></div>
       <div class="mega-panel" id="mega-supply" role="region" aria-label="Supply and Trading menu"><div class="mega-grid mega-grid--2"><div><div class="mega-col__title">Supply</div><div class="mega-col__links"><a href="06_Supply_Trading.html" class="mega-col__link">Wholesale Fuel Supply</a><a href="06_Supply_Trading.html" class="mega-col__link">Supply Chain Solutions</a></div></div><div class="mega-footer"><a href="#" class="mega-cta-link">Supply Enquiry &rarr;</a></div></div></div>
       <div class="mega-panel" id="mega-equipment" role="region" aria-label="Equipment menu"><div class="mega-grid mega-grid--2"><div><div class="mega-col__title">Equipment</div><div class="mega-col__links"><a href="05_Equipment_Infrastructure.html" class="mega-col__link">Fuel Storage Tanks</a><a href="05_Equipment_Infrastructure.html" class="mega-col__link">Dispensing Equipment</a><a href="05_Equipment_Infrastructure.html" class="mega-col__link">Installation Services</a></div></div><div class="mega-footer"><a href="#" class="mega-cta-link">Equipment Enquiry &rarr;</a></div></div></div>
@@ -430,8 +472,8 @@
       <button class="drawer__close" id="drawer-close" aria-label="Close mobile menu">&times;</button>
     </div>
     <nav class="drawer__nav" aria-label="Mobile navigation links">
-      <div class="drawer__item"><button class="drawer__link" data-drawer="gf-drawer" aria-expanded="false" aria-controls="gf-drawer">Ground Fuels <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="gf-drawer"><a href="03a_Diesel_Network_v3.5.html" class="drawer__sub-link">IOR Diesel Stops</a><a href="03b_On_Site_Refuelling_v3.5.html" class="drawer__sub-link">On-Site Refuelling</a><a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="drawer__sub-link">Bulk Diesel Delivery</a><a href="03d_HyBlue_v3.5.html" class="drawer__sub-link">HyBlue&#8482; AdBlue</a></div></div>
-      <div class="drawer__item"><button class="drawer__link" data-drawer="av-drawer" aria-expanded="false" aria-controls="av-drawer">Aviation <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="av-drawer"><a href="04_Aviation_Hub_v3.5.html" class="drawer__sub-link">Aviation Hub</a><a href="04a_Aviation_Network_v3.5.html" class="drawer__sub-link">Aviation Network</a></div></div>
+      <div class="drawer__item"><button class="drawer__link" data-drawer="gf-drawer" aria-expanded="false" aria-controls="gf-drawer">Ground Fuels <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="gf-drawer"><a href="#" class="drawer__sub-link">IOR Diesel Stops</a><a href="#" class="drawer__sub-link">On-Site Refuelling</a><a href="#" class="drawer__sub-link">Bulk Diesel Delivery</a><a href="#" class="drawer__sub-link">HyBlue&#8482; AdBlue</a></div></div>
+      <div class="drawer__item"><button class="drawer__link" data-drawer="av-drawer" aria-expanded="false" aria-controls="av-drawer">Aviation <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="av-drawer"><a href="#" class="drawer__sub-link">Aviation Hub</a><a href="#" class="drawer__sub-link">Aviation Network</a></div></div>
       <div class="drawer__item"><button class="drawer__link" data-drawer="dig-drawer" aria-expanded="false" aria-controls="dig-drawer">Digital Platforms <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="dig-drawer"><a href="07a_HyDip_FMSv5.html" class="drawer__sub-link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_Appv5.html" class="drawer__sub-link">Fuelcharge App</a><a href="07c_Customer_Portal_v4.html" class="drawer__sub-link">Customer Portal</a></div></div>
       <div class="drawer__item"><a href="11_Support_Hubv5.html" class="drawer__link">Support</a></div>
     </nav>
@@ -449,12 +491,12 @@
     ============================================================ -->
     <section class="utility-hero" aria-labelledby="utility-h1">
       <div class="utility-hero__inner">
-        <span class="eyebrow eyebrow--sky">National Fuel Network</span>
-        <h1 id="utility-h1">Find fuel for your fleet or flight.</h1>
-        <p>Search our integrated network of 24/7 diesel truck stops and aviation refuelling locations across Australia.</p>
+        <span class="eyebrow eyebrow--sky">NETWORK LOCATOR</span>
+        <h1 id="utility-h1">Find an IOR Location.</h1>
+        <p>Search for diesel stops, aviation fuel sites, depots, and offices near you.</p>
         <div class="hero-ctas">
-          <a href="#map-section" class="btn btn--primary" aria-label="Apply for an IOR account">Apply Now <span class="btn__arrow" aria-hidden="true"></span></a>
-          <a href="11a_Contact_Usv5.html" class="btn btn--outline-white" aria-label="Register your interest with IOR">Register Your Interest</a>
+          <a href="#" class="btn btn--primary" aria-label="Apply for an IOR account">Apply Now <span class="btn__arrow" aria-hidden="true"></span></a>
+          <a href="#" class="btn btn--outline-white" aria-label="Register your interest with IOR">Register Your Interest</a>
         </div>
       </div>
     </section>
@@ -465,8 +507,8 @@
     <nav class="quick-links-bar" id="quick-links" aria-label="Page quick links">
       <div class="quick-links-bar__inner">
         <span class="quick-links-bar__label">Explore:</span>
-        <a href="03a_Diesel_Network_v3.5.html" class="quick-links-bar__link">IOR Diesel Network</a>
-        <a href="04_Aviation_Hub_v3.5.html"    class="quick-links-bar__link">IOR Aviation Network</a>
+        <a href="#" class="quick-links-bar__link">IOR Diesel Network</a>
+        <a href="#"    class="quick-links-bar__link">IOR Aviation Network</a>
         <a href="07b_Fuelcharge_Appv5.html"    class="quick-links-bar__link">Fuelcharge</a>
         <a href="11_Support_Hubv5.html"        class="quick-links-bar__link">Support &amp; Contact</a>
       </div>
@@ -576,17 +618,83 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         6. FAQ ACCORDION — map-specific questions
+    ============================================================ -->
+    <section class="faq-section fade-up" aria-labelledby="faq-heading">
+      <div class="faq-section__inner">
+        <div class="faq-section__heading">
+          <p class="eyebrow eyebrow--blue">FREQUENTLY ASKED QUESTIONS</p>
+          <h2 id="faq-heading">Map &amp; Network Questions</h2>
+        </div>
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+              How do I filter for Truck Wash sites?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-1" role="region">
+              <p>Use the filter panel on the left side of the map to select &ldquo;Truck Wash&rdquo; under the Amenities category. The map will update to show only sites with truck wash facilities. You can combine multiple filters &mdash; for example, Truck Wash + B-Double Access &mdash; to narrow your search further.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+              Does the map show live fuel outages or site closures?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-2" role="region">
+              <p>The map reflects our current network of active sites. In the event of a temporary outage or planned maintenance, affected sites may be marked accordingly. For real-time status, IOR account holders can check site availability through the Customer Portal or contact our team on 1300 457 467.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+              Can I access IOR diesel stops without an account?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-3" role="region">
+              <p>Yes. IOR diesel stops are accessible via the Fuelcharge app, which allows you to locate sites, unlock pumps, and pay directly from your smartphone &mdash; no account required. Download Fuelcharge from the App Store or Google Play. For volume pricing and consolidated invoicing, apply for a fleet account using the button above.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+              How do I find aviation fuel locations on the map?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer" id="faq-4" role="region">
+              <p>Select &ldquo;Aviation&rdquo; from the fuel type filter in the map panel. This will display IOR&rsquo;s 32+ aviation locations, including airports offering Jet A-1, Avgas, and into-plane services. Click any marker for site details, available fuel grades, and contact information. You can also download the Aviation Network Directory above for a complete offline reference.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="faq-footer">
+          <div class="faq-footer__text">
+            <h4>Still have a question?</h4>
+            <p>Our team is available to help with network and access queries.</p>
+          </div>
+          <div class="faq-footer__actions">
+            <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--sm" aria-label="Contact IOR">Contact Us <span class="btn__arrow" aria-hidden="true"></span></a>
+            <a href="11_Support_Hubv5.html" class="faq-footer__help-link" aria-label="Visit the IOR Help Centre">Visit Help Centre &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ============================================================
        PRE-FOOTER — canonical IOR
   ============================================================ -->
-  <section class="pre-footer" aria-label="Get started with IOR">
+  <section class="pre-footer" aria-label="We're here to help">
     <div class="pre-footer__row">
-      <h2 class="pre-footer__title">Ready to get started?</h2>
+      <h2 class="pre-footer__title">We&rsquo;re here to help</h2>
       <div class="pre-footer__ctas">
-        <a href="#" class="btn btn--white" aria-label="Apply for an IOR account">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
-        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white" aria-label="Contact IOR">Contact Us <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--pill">Apply for an Account</a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--outline btn--pill">Make an Enquiry</a>
+        <a href="11_Support_Hubv5.html" class="btn btn--outline btn--pill">Need Help?</a>
       </div>
     </div>
     <div class="pre-footer__divider"></div>
@@ -621,7 +729,7 @@
         <div class="footer-col__title">Fuel Solutions</div>
         <div class="footer-col__links">
           <a href="03_Ground_Fuels.html"             class="footer-col__link">Ground Fuels</a>
-          <a href="04_Aviation_Hub_v3.5.html"        class="footer-col__link">Aviation</a>
+          <a href="#"        class="footer-col__link">Aviation</a>
           <a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
           <a href="06_Supply_Trading.html"           class="footer-col__link">Supply &amp; Trading</a>
         </div>
@@ -674,7 +782,7 @@
         Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
         <a href="11f_Privacy_Policyv5.html" class="footer-legal__link--muted">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
         <a href="#" class="footer-legal__link--muted">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        Site by ThreePM
+        Site by 3PM
       </p>
       <div class="footer-social" aria-label="Social media links">
         <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
@@ -739,6 +847,20 @@
     });
   });
 
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.closest('.faq-list').querySelectorAll('.faq-question').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.style.maxHeight = '0';
+      });
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        btn.nextElementSibling.style.maxHeight = btn.nextElementSibling.scrollHeight + 'px';
+      }
+    });
+  });
   /* Fade-up intersection observer */
   const fadeObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-up--visible'); fadeObs.unobserve(e.target); } });
