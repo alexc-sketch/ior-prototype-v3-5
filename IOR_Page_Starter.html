@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  IOR PAGE STARTER — v1.0                                        ║
+  ║  Source: IOR_Global_Template_Shell_v4.html                      ║
+  ║                                                                  ║
+  ║  HOW TO USE THIS FILE:                                           ║
+  ║  1. Duplicate this file and rename it (e.g. 07a_HyDip_FMSv6.html)
+  ║  2. Update <title>, <meta name="description">, and lang="en"    ║
+  ║  3. Write your page content ONLY inside the <!-- PAGE CONTENT   ║
+  ║     START --> and <!-- PAGE CONTENT END --> markers below.       ║
+  ║  4. DO NOT modify the proto-bar, nav, drawer, pre-footer,       ║
+  ║     footer, or JS blocks — they are locked.                     ║
+  ║  5. Run: python3 audit.py YOUR_FILE.html before opening a PR.   ║
+  ║                                                                  ║
+  ║  RECURRING FAILURE CHECKLIST (verify before every PR):          ║
+  ║  ✓ Footer uses footer-nav-grid (not <ul>/<li>)                  ║
+  ║  ✓ Footer background: var(--ior-blue) — not a hardcoded hex     ║
+  ║  ✓ State column: QLD/NSW/VIC/SA/WA/NT — not full names          ║
+  ║  ✓ Legal bar: Site by 3PM — not ThreePM                         ║
+  ║  ✓ Pre-footer: Apply for an Account / Make an Enquiry / Need Help?
+  ║  ✓ Copyright: © 2026 — not © 2025                               ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Page Title] | IOR&#174;</title>
+  <meta name="description" content="[Page meta description — 150–160 characters]">
+  <style>
+    /* ============================================================
+       IOR DESIGN SYSTEM TOKENS — v4.0
+       DO NOT MODIFY — copy from IOR_Global_Template_Shell_v4.html
+    ============================================================ */
+    :root {
+      --ior-blue:          #0355A3;
+      --ior-navy:          #0A4066;
+      --ior-deep:          #0B1929;
+      --ior-sky:           #7FBEE6;
+      --ior-teal:          #00D1CC;
+      --ior-gold:          #F5A623;
+      --ior-white:         #FFFFFF;
+      --ior-off-white:     #F4F5F7;
+      --ior-text:          #1A1A2E;
+      --ior-text-muted:    #5A6A7A;
+      --ior-border:        #D8DCE0;
+      --radius:            0px;
+      --font-sans:         'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--ior-text); background: #fff; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-sans); font-size: 14px; font-weight: 600;
+      padding: 12px 24px; border: 2px solid transparent;
+      border-radius: 0; cursor: pointer; transition: all .2s; text-decoration: none;
+      white-space: nowrap; min-height: 44px;
+    }
+    .btn--primary   { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
+    .btn--primary:hover { background: #024a91; border-color: #024a91; }
+    .btn--outline   { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+    .btn--outline:hover { background: var(--ior-blue); color: #fff; }
+    .btn--white     { background: #fff; color: var(--ior-navy); border-color: #fff; }
+    .btn--white:hover { background: #f0f0f0; }
+    .btn--outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+    .btn--outline-white:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+    .btn--pill      { border-radius: 500px; }
+    .btn__arrow     { font-style: normal; }
+
+    /* ── PROTO-BAR ── */
+    .proto-bar {
+      background: #13114D; color: #fff;
+      font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      padding: 6px 24px; display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap; position: relative; z-index: 200;
+    }
+    .proto-bar__label { opacity: .7; }
+    .proto-bar__links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .proto-bar__links a { color: rgba(255,255,255,.8); text-decoration: none; }
+    .proto-bar__links a:hover { color: #fff; }
+
+    /* ── NAV ── */
+    .ior-nav {
+      background: var(--ior-blue); position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    }
+    .nav__inner {
+      max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px,3vw,48px);
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav__logo { display: flex; align-items: center; gap: 10px; }
+    .nav__logo img { height: 36px; width: auto; }
+    .nav__logo-text { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -.02em; }
+    .nav__links { display: flex; align-items: center; gap: 4px; }
+    .nav__link {
+      font-size: 13px; font-weight: 600; color: rgba(255,255,255,.9);
+      padding: 8px 14px; border-radius: 0; background: none; border: none;
+      cursor: pointer; transition: color .2s, background .2s; white-space: nowrap;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .nav__link:hover, .nav__link[aria-expanded="true"] { color: #fff; background: rgba(255,255,255,.1); }
+    .nav__link-chevron { font-size: 9px; transition: transform .2s; display: inline-block; }
+    .nav__link[aria-expanded="true"] .nav__link-chevron { transform: rotate(180deg); }
+    .nav-ctas { display: flex; align-items: center; gap: 8px; }
+    .nav__hamburger {
+      display: none; flex-direction: column; gap: 5px; background: none; border: none;
+      cursor: pointer; padding: 8px; margin-left: 8px;
+    }
+    .nav__hamburger span { display: block; width: 22px; height: 2px; background: #fff; transition: all .3s; }
+    @media (max-width: 900px) {
+      .nav__links, .nav-ctas { display: none; }
+      .nav__hamburger { display: flex; }
+    }
+
+    /* ── MEGA MENU ── */
+    .mega-menu { position: relative; }
+    .mega-panel {
+      display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      background: #fff; box-shadow: 0 8px 32px rgba(0,0,0,.15);
+      border-top: 3px solid var(--ior-gold); min-width: 720px; z-index: 99;
+    }
+    .mega-panel.is-open { display: flex; }
+    .mega-panel__inner { display: flex; width: 100%; }
+    .mega-col { flex: 1; padding: 28px 24px; border-right: 1px solid #eee; }
+    .mega-col:last-child { border-right: none; }
+    .mega-col__title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
+    .mega-col__links { display: flex; flex-direction: column; gap: 2px; }
+    .mega-col__link { font-size: 13px; color: var(--ior-text); padding: 6px 0; border-bottom: 1px solid #f0f0f0; transition: color .15s; }
+    .mega-col__link:hover { color: var(--ior-blue); }
+    .mega-col__link--cta { color: var(--ior-blue); font-weight: 600; margin-top: 8px; }
+    .mega-featured { background: var(--ior-navy); padding: 28px 24px; min-width: 220px; display: flex; flex-direction: column; }
+    .mega-featured__eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-gold); margin-bottom: 8px; }
+    .mega-featured__title { font-size: 18px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 10px; }
+    .mega-featured__body { font-size: 13px; color: rgba(255,255,255,.75); line-height: 1.5; margin-bottom: 20px; flex: 1; }
+    .mega-featured__cta { margin-top: auto; }
+
+    /* ── MOBILE DRAWER ── */
+    .ior-drawer {
+      position: fixed; top: 0; right: -100%; width: min(360px, 100vw);
+      height: 100vh; background: var(--ior-navy); z-index: 300;
+      overflow-y: auto; transition: right .3s ease; display: flex; flex-direction: column;
+    }
+    .ior-drawer.is-open { right: 0; }
+    .drawer-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 299;
+    }
+    .drawer-overlay.is-open { display: block; }
+    .ior-drawer__header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .ior-drawer__logo { font-size: 20px; font-weight: 800; color: #fff; }
+    .ior-drawer__close {
+      background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; padding: 4px;
+    }
+    .ior-drawer__nav { flex: 1; padding: 16px 0; }
+    .ior-drawer__item { border-bottom: 1px solid rgba(255,255,255,.08); }
+    .ior-drawer__link {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px; color: rgba(255,255,255,.9); font-size: 15px; font-weight: 600;
+      background: none; border: none; width: 100%; text-align: left; cursor: pointer;
+    }
+    .ior-drawer__link:hover { color: #fff; background: rgba(255,255,255,.05); }
+    .ior-drawer__chevron { font-size: 10px; transition: transform .2s; }
+    .ior-drawer__sub { display: none; background: rgba(0,0,0,.2); }
+    .ior-drawer__sub.is-open { display: block; }
+    .ior-drawer__sub-link { display: block; padding: 10px 20px 10px 32px; color: rgba(255,255,255,.75); font-size: 13px; }
+    .ior-drawer__sub-link:hover { color: #fff; }
+    .ior-drawer__ctas { padding: 20px; border-top: 1px solid rgba(255,255,255,.1); display: flex; flex-direction: column; gap: 10px; }
+
+    /* ── PRE-FOOTER ── */
+    .pre-footer {
+      background: var(--ior-navy); padding: clamp(48px,6vw,80px) clamp(20px,5vw,80px);
+    }
+    .pre-footer__row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;
+    }
+    .pre-footer__title { font-size: clamp(24px,3vw,36px); font-weight: 700; color: #fff; }
+    .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .pre-footer__divider { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 32px 0 0; max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--ior-blue); padding: clamp(48px,6vw,80px) clamp(20px,5vw,80px) 0; }
+    .footer-nav-grid {
+      max-width: 1400px; margin-inline: auto;
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; padding-bottom: 40px;
+    }
+    .footer-col__title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-gold); margin-bottom: 16px; }
+    .footer-col__links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col__link { font-size: clamp(12px,1.2vw,14px); color: rgba(255,255,255,.8); min-height: 44px; display: flex; align-items: center; }
+    .footer-col__link:hover { color: #fff; text-decoration: underline; }
+    .footer-col__address { font-size: 14px; color: rgba(255,255,255,.9); line-height: 1.6; display: block; }
+    .footer-col__link--address { line-height: 1.6; display: flex; align-items: flex-start; gap: 8px; }
+    .footer-col__link--icon { display: flex; align-items: center; gap: 8px; }
+    .footer-col__link--icon svg { flex-shrink: 0; margin-top: 2px; }
+    .footer-state-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .footer-state-pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 6px 12px; background: rgba(255,255,255,.1); color: rgba(255,255,255,.9);
+      font-size: 12px; font-weight: 600; border-radius: 0; transition: background .2s;
+    }
+    .footer-state-pill:hover { background: rgba(255,255,255,.2); }
+    .footer-legal {
+      max-width: 1400px; margin-inline: auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0; border-top: 1px solid rgba(255,255,255,.2); flex-wrap: wrap; gap: 16px;
+    }
+    .footer-legal__text { font-size: 12px; color: rgba(255,255,255,.6); }
+    .footer-legal__link--muted { color: rgba(255,255,255,.6); }
+    .footer-legal__link--muted:hover { color: #fff; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social__icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 0; background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.8); font-size: 14px; font-weight: 700; transition: background .2s;
+    }
+    .footer-social__icon:hover { background: rgba(255,255,255,.2); color: #fff; }
+    @media (max-width: 1024px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px) {
+      .footer-nav-grid { grid-template-columns: 1fr 1fr; }
+      .pre-footer__row { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) { .footer-nav-grid { grid-template-columns: 1fr; } }
+
+    /* ── PAGE-SPECIFIC CSS GOES HERE ── */
+    /* Add your page CSS below this comment */
+
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PROTO-BAR — DO NOT MODIFY
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="proto-bar" role="banner" aria-label="Prototype navigation">
+    <span class="proto-bar__label">IOR Prototype v3.5</span>
+    <div class="proto-bar__links">
+      <a href="00_Master_Index.html">Master Index</a>
+      <a href="IOR_Global_Template_Shell_v4.html">Shell v4</a>
+      <a href="IOR_Design_System.html">Design System</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PRIMARY NAV — DO NOT MODIFY
+  ═══════════════════════════════════════════════════════════ -->
+  <header class="ior-nav" id="primary-nav" role="banner">
+    <div class="nav__inner">
+      <a href="01_Homepage.html" class="nav__logo" aria-label="IOR Home">
+        <span class="nav__logo-text">IOR<sup style="font-size:0.55em">®</sup></span>
+      </a>
+      <nav class="mega-menu" aria-label="Primary navigation">
+        <ul class="nav__links" role="list">
+          <li><button class="nav__link" data-menu="fuel" aria-expanded="false" aria-haspopup="true">Fuel Solutions <span class="nav__link-chevron" aria-hidden="true">▾</span></button></li>
+          <li><button class="nav__link" data-menu="digital" aria-expanded="false" aria-haspopup="true">Digital Platforms <span class="nav__link-chevron" aria-hidden="true">▾</span></button></li>
+          <li><button class="nav__link" data-menu="industries" aria-expanded="false" aria-haspopup="true">Industries We Serve <span class="nav__link-chevron" aria-hidden="true">▾</span></button></li>
+          <li><button class="nav__link" data-menu="about" aria-expanded="false" aria-haspopup="true">About IOR <span class="nav__link-chevron" aria-hidden="true">▾</span></button></li>
+          <li><button class="nav__link" data-menu="support" aria-expanded="false" aria-haspopup="true">Support &amp; Contact <span class="nav__link-chevron" aria-hidden="true">▾</span></button></li>
+        </ul>
+        <!-- Fuel Solutions Panel -->
+        <div class="mega-panel" id="mega-fuel" role="region" aria-label="Fuel Solutions menu">
+          <div class="mega-panel__inner">
+            <div class="mega-col">
+              <div class="mega-col__title">Ground Fuels</div>
+              <div class="mega-col__links">
+                <a href="02a_Diesel_Networkv5.html" class="mega-col__link">IOR Diesel Network</a>
+                <a href="02b_Oils_Lubricantsv5.html" class="mega-col__link">Oils &amp; Lubricants</a>
+                <a href="02c_AdBlue_DEFv5.html" class="mega-col__link">AdBlue &amp; DEF</a>
+                <a href="02d_Bulk_Fuelsv5.html" class="mega-col__link">Bulk &amp; Packaged Fuels</a>
+                <a href="02e_Equipmentv5.html" class="mega-col__link">Equipment &amp; Infrastructure</a>
+              </div>
+            </div>
+            <div class="mega-col">
+              <div class="mega-col__title">Aviation</div>
+              <div class="mega-col__links">
+                <a href="03a_Aviation_Hubv5.html" class="mega-col__link">Aviation Overview</a>
+                <a href="03b_Jet_A1v5.html" class="mega-col__link">Jet A-1</a>
+                <a href="03c_Avgasv5.html" class="mega-col__link">Avgas 100LL</a>
+                <a href="03d_Into_Planev5.html" class="mega-col__link">Into-Plane Service</a>
+              </div>
+            </div>
+            <div class="mega-col">
+              <div class="mega-col__title">Supply</div>
+              <div class="mega-col__links">
+                <a href="06_Supply_Tradingv5.html" class="mega-col__link">Supply &amp; Trading</a>
+                <a href="11d_Find_Locationv5.html" class="mega-col__link mega-col__link--cta">Find a Diesel Stop →</a>
+                <a href="03a_Aviation_Hubv5.html" class="mega-col__link mega-col__link--cta">Find an Airport →</a>
+              </div>
+            </div>
+            <div class="mega-featured">
+              <div class="mega-featured__eyebrow">Find Fuel Now</div>
+              <div class="mega-featured__title">115+ unmanned diesel stops across Australia</div>
+              <div class="mega-featured__body">Open 24/7. Built for trucks. Completely cashless.</div>
+              <div class="mega-featured__cta"><a href="11d_Find_Locationv5.html" class="btn btn--white btn--pill">Find a Location</a></div>
+            </div>
+          </div>
+        </div>
+        <!-- Digital Platforms Panel -->
+        <div class="mega-panel" id="mega-digital" role="region" aria-label="Digital Platforms menu">
+          <div class="mega-panel__inner">
+            <div class="mega-col">
+              <div class="mega-col__title">HyDip&trade; FMS</div>
+              <div class="mega-col__links">
+                <a href="07a_HyDip_FMSv5.html" class="mega-col__link">Platform Overview</a>
+                <a href="07a_HyDip_FMSv5.html#hardware" class="mega-col__link">Hardware Devices</a>
+                <a href="07a_HyDip_FMSv5.html#mobile" class="mega-col__link">Mobile App</a>
+                <a href="https://status.hydip.com/" class="mega-col__link" target="_blank" rel="noopener noreferrer">System Status</a>
+              </div>
+            </div>
+            <div class="mega-col">
+              <div class="mega-col__title">Fuelcharge App</div>
+              <div class="mega-col__links">
+                <a href="07b_Fuelcharge_App_v8.html" class="mega-col__link">App Overview</a>
+                <a href="07b_Fuelcharge_App_v8.html#how-it-works" class="mega-col__link">How It Works</a>
+                <a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Fuelcharge Site</a>
+              </div>
+            </div>
+            <div class="mega-col">
+              <div class="mega-col__title">Customer Portal</div>
+              <div class="mega-col__links">
+                <a href="07c_Customer_Portalv5.html" class="mega-col__link">Portal Overview</a>
+                <a href="https://portal.ior.com.au" class="mega-col__link" target="_blank" rel="noopener noreferrer">Login to Portal</a>
+                <a href="https://iorapp.applyeasy.com.au/services/introduction" class="mega-col__link mega-col__link--cta" target="_blank" rel="noopener noreferrer">Apply for an Account →</a>
+              </div>
+            </div>
+            <div class="mega-featured">
+              <div class="mega-featured__eyebrow">Digital Tools</div>
+              <div class="mega-featured__title">Manage fuel from anywhere</div>
+              <div class="mega-featured__body">Real-time monitoring, cashless payments, and consolidated invoicing — all in one platform.</div>
+              <div class="mega-featured__cta"><a href="07c_Customer_Portalv5.html" class="btn btn--white btn--pill">Customer Login</a></div>
+            </div>
+          </div>
+        </div>
+        <!-- Industries Panel -->
+        <div class="mega-panel" id="mega-industries" role="region" aria-label="Industries menu">
+          <div class="mega-panel__inner">
+            <div class="mega-col">
+              <div class="mega-col__title">Industries</div>
+              <div class="mega-col__links">
+                <a href="08a_Transport_Logisticsv5.html" class="mega-col__link">Transport &amp; Logistics</a>
+                <a href="08b_Agriculturev5.html" class="mega-col__link">Agriculture</a>
+                <a href="08c_Miningv5.html" class="mega-col__link">Mining &amp; Resources</a>
+                <a href="08d_Constructionv5.html" class="mega-col__link">Construction &amp; Civil</a>
+                <a href="08e_Marinev5.html" class="mega-col__link">Marine &amp; Ports</a>
+                <a href="08f_Aviationv5.html" class="mega-col__link">Aviation</a>
+                <a href="08g_Governmentv5.html" class="mega-col__link">Government &amp; Defence</a>
+              </div>
+            </div>
+            <div class="mega-col">
+              <div class="mega-col__title">Solutions By Industry</div>
+              <div class="mega-col__links">
+                <a href="09d_Case_Studies_v6.html" class="mega-col__link">Case Studies</a>
+                <a href="08_Industries_Hubv5.html" class="mega-col__link mega-col__link--cta">Industries Hub →</a>
+              </div>
+            </div>
+            <div class="mega-featured">
+              <div class="mega-featured__eyebrow">Industries We Serve</div>
+              <div class="mega-featured__title">Fuel solutions for every sector</div>
+              <div class="mega-featured__body">From remote mine sites to regional airports — IOR delivers where others don't.</div>
+              <div class="mega-featured__cta"><a href="08_Industries_Hubv5.html" class="btn btn--white btn--pill">Explore Industries</a></div>
+            </div>
+          </div>
+        </div>
+        <!-- About IOR Panel -->
+        <div class="mega-panel" id="mega-about" role="region" aria-label="About IOR menu">
+          <div class="mega-panel__inner">
+            <div class="mega-col">
+              <div class="mega-col__title">Company</div>
+              <div class="mega-col__links">
+                <a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a>
+                <a href="09b_Community_Givingv5.html" class="mega-col__link">Community &amp; Giving Back</a>
+                <a href="09c_Sustainabilityv5.html" class="mega-col__link">Sustainability, HSE &amp; ESG</a>
+                <a href="11c_News_Updates.html" class="mega-col__link">News &amp; Updates</a>
+                <a href="10_Careers.html" class="mega-col__link">Careers</a>
+              </div>
+            </div>
+            <div class="mega-featured">
+              <div class="mega-featured__eyebrow">About IOR</div>
+              <div class="mega-featured__title">Fuelling Australia since 1984</div>
+              <div class="mega-featured__body">Family-owned. Independently operated. Built on relationships that last.</div>
+              <div class="mega-featured__cta"><a href="09_About_IOR_Hubv5.html" class="btn btn--white btn--pill">Our Story</a></div>
+            </div>
+          </div>
+        </div>
+        <!-- Support & Contact Panel -->
+        <div class="mega-panel" id="mega-support" role="region" aria-label="Support menu">
+          <div class="mega-panel__inner">
+            <div class="mega-col">
+              <div class="mega-col__title">Get Help</div>
+              <div class="mega-col__links">
+                <a href="11a_Contact_Usv5.html" class="mega-col__link">Contact Us</a>
+                <a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a>
+                <a href="11_Support_Hubv5.html" class="mega-col__link">Help Centre &amp; FAQs</a>
+                <a href="11e_Make_Paymentv5.html" class="mega-col__link">Make a Payment</a>
+              </div>
+            </div>
+            <div class="mega-col">
+              <div class="mega-col__title">Quick Contact</div>
+              <div class="mega-col__links">
+                <a href="tel:1300457467" class="mega-col__link">1300 457 467</a>
+                <a href="mailto:enquiries@ior.com.au" class="mega-col__link">enquiries@ior.com.au</a>
+                <a href="11d_Find_Locationv5.html" class="mega-col__link mega-col__link--cta">Find a Location →</a>
+              </div>
+            </div>
+            <div class="mega-featured">
+              <div class="mega-featured__eyebrow">Support</div>
+              <div class="mega-featured__title">We're here to help</div>
+              <div class="mega-featured__body">Speak to your local IOR representative or contact our national support team.</div>
+              <div class="mega-featured__cta"><a href="11_Support_Hubv5.html" class="btn btn--white btn--pill">Support Hub</a></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="nav-ctas">
+        <a href="https://portal.ior.com.au" class="btn btn--outline-white btn--pill" target="_blank" rel="noopener noreferrer" aria-label="Customer Login">Customer Login</a>
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--white btn--pill" target="_blank" rel="noopener noreferrer" aria-label="Apply for an Account">Apply for an Account</a>
+      </div>
+      <button class="nav__hamburger" id="drawer-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MOBILE DRAWER — DO NOT MODIFY
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+  <nav class="ior-drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="ior-drawer__header">
+      <span class="ior-drawer__logo">IOR<sup style="font-size:0.55em">®</sup></span>
+      <button class="ior-drawer__close" id="drawer-close" aria-label="Close navigation menu">&times;</button>
+    </div>
+    <div class="ior-drawer__nav">
+      <div class="ior-drawer__item">
+        <button class="ior-drawer__link" data-sub="sub-fuel" aria-expanded="false">Fuel Solutions <span class="ior-drawer__chevron">▾</span></button>
+        <div class="ior-drawer__sub" id="sub-fuel">
+          <a href="02a_Diesel_Networkv5.html" class="ior-drawer__sub-link">IOR Diesel Network</a>
+          <a href="02b_Oils_Lubricantsv5.html" class="ior-drawer__sub-link">Oils &amp; Lubricants</a>
+          <a href="02c_AdBlue_DEFv5.html" class="ior-drawer__sub-link">AdBlue &amp; DEF</a>
+          <a href="02d_Bulk_Fuelsv5.html" class="ior-drawer__sub-link">Bulk &amp; Packaged Fuels</a>
+          <a href="02e_Equipmentv5.html" class="ior-drawer__sub-link">Equipment &amp; Infrastructure</a>
+          <a href="03a_Aviation_Hubv5.html" class="ior-drawer__sub-link">Aviation</a>
+          <a href="06_Supply_Tradingv5.html" class="ior-drawer__sub-link">Supply &amp; Trading</a>
+        </div>
+      </div>
+      <div class="ior-drawer__item">
+        <button class="ior-drawer__link" data-sub="sub-digital" aria-expanded="false">Digital Platforms <span class="ior-drawer__chevron">▾</span></button>
+        <div class="ior-drawer__sub" id="sub-digital">
+          <a href="07a_HyDip_FMSv5.html" class="ior-drawer__sub-link">HyDip&trade; FMS</a>
+          <a href="07b_Fuelcharge_App_v8.html" class="ior-drawer__sub-link">Fuelcharge App</a>
+          <a href="07c_Customer_Portalv5.html" class="ior-drawer__sub-link">Customer Portal</a>
+        </div>
+      </div>
+      <div class="ior-drawer__item">
+        <button class="ior-drawer__link" data-sub="sub-industries" aria-expanded="false">Industries We Serve <span class="ior-drawer__chevron">▾</span></button>
+        <div class="ior-drawer__sub" id="sub-industries">
+          <a href="08a_Transport_Logisticsv5.html" class="ior-drawer__sub-link">Transport &amp; Logistics</a>
+          <a href="08b_Agriculturev5.html" class="ior-drawer__sub-link">Agriculture</a>
+          <a href="08c_Miningv5.html" class="ior-drawer__sub-link">Mining &amp; Resources</a>
+          <a href="08d_Constructionv5.html" class="ior-drawer__sub-link">Construction &amp; Civil</a>
+          <a href="08e_Marinev5.html" class="ior-drawer__sub-link">Marine &amp; Ports</a>
+          <a href="08f_Aviationv5.html" class="ior-drawer__sub-link">Aviation</a>
+          <a href="08g_Governmentv5.html" class="ior-drawer__sub-link">Government &amp; Defence</a>
+        </div>
+      </div>
+      <div class="ior-drawer__item">
+        <button class="ior-drawer__link" data-sub="sub-about" aria-expanded="false">About IOR <span class="ior-drawer__chevron">▾</span></button>
+        <div class="ior-drawer__sub" id="sub-about">
+          <a href="09a_Our_Leadershipv5.html" class="ior-drawer__sub-link">Our Leadership</a>
+          <a href="09b_Community_Givingv5.html" class="ior-drawer__sub-link">Community &amp; Giving Back</a>
+          <a href="09c_Sustainabilityv5.html" class="ior-drawer__sub-link">Sustainability, HSE &amp; ESG</a>
+          <a href="11c_News_Updates.html" class="ior-drawer__sub-link">News &amp; Updates</a>
+          <a href="10_Careers.html" class="ior-drawer__sub-link">Careers</a>
+        </div>
+      </div>
+      <div class="ior-drawer__item">
+        <button class="ior-drawer__link" data-sub="sub-support" aria-expanded="false">Support &amp; Contact <span class="ior-drawer__chevron">▾</span></button>
+        <div class="ior-drawer__sub" id="sub-support">
+          <a href="11a_Contact_Usv5.html" class="ior-drawer__sub-link">Contact Us</a>
+          <a href="11b_Regional_Contactsv5.html" class="ior-drawer__sub-link">Regional Contacts</a>
+          <a href="11_Support_Hubv5.html" class="ior-drawer__sub-link">Help Centre &amp; FAQs</a>
+          <a href="11e_Make_Paymentv5.html" class="ior-drawer__sub-link">Make a Payment</a>
+          <a href="11d_Find_Locationv5.html" class="ior-drawer__sub-link">Find a Location</a>
+        </div>
+      </div>
+    </div>
+    <div class="ior-drawer__ctas">
+      <a href="https://portal.ior.com.au" class="btn btn--outline-white" target="_blank" rel="noopener noreferrer">Customer Login</a>
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--white" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PAGE CONTENT START — write your <main> content here
+  ═══════════════════════════════════════════════════════════ -->
+  <main id="main-content">
+
+    <!-- HERO SECTION -->
+    <section>
+      <h1>[Page Title]</h1>
+      <p>[Page content goes here]</p>
+    </section>
+
+  </main>
+  <!-- ═══════════════════════════════════════════════════════════
+       PAGE CONTENT END
+  ═══════════════════════════════════════════════════════════ -->
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PRE-FOOTER — DO NOT MODIFY
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="pre-footer" aria-label="We're here to help">
+    <div class="pre-footer__row">
+      <h2 class="pre-footer__title">We&rsquo;re here to help</h2>
+      <div class="pre-footer__ctas">
+        <a href="#" class="btn btn--white" aria-label="Apply for an IOR account">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="11_Support_Hubv5.html#contact-us" class="btn btn--outline-white" aria-label="Make an enquiry">Make an Enquiry <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="11_Support_Hubv5.html" class="btn btn--outline-white" aria-label="Need help?">Need Help? <span class="btn__arrow" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER — DO NOT MODIFY
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-nav-grid">
+      <!-- Contact -->
+      <div>
+        <div class="footer-col__title">Contact</div>
+        <div class="footer-col__links">
+          <a href="tel:1300457467" class="footer-col__link footer-col__link--icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            1300 457 467
+          </a>
+          <a href="mailto:enquiries@ior.com.au" class="footer-col__link footer-col__link--icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            enquiries@ior.com.au
+          </a>
+          <a href="11b_Regional_Contactsv5.html" class="footer-col__link">Regional Contacts</a>
+        </div>
+      </div>
+      <!-- Fuel Solutions -->
+      <div>
+        <div class="footer-col__title">Fuel Solutions</div>
+        <div class="footer-col__links">
+          <a href="02a_Diesel_Networkv5.html"  class="footer-col__link">Ground Fuels</a>
+          <a href="03a_Aviation_Hubv5.html"    class="footer-col__link">Aviation</a>
+          <a href="02e_Equipmentv5.html"       class="footer-col__link">Equipment &amp; Infrastructure</a>
+          <a href="06_Supply_Tradingv5.html"   class="footer-col__link">Supply &amp; Trading</a>
+        </div>
+      </div>
+      <!-- Digital Platforms -->
+      <div>
+        <div class="footer-col__title">Digital Platforms</div>
+        <div class="footer-col__links">
+          <a href="07a_HyDip_FMSv5.html"        class="footer-col__link">HyDip&trade; FMS</a>
+          <a href="07b_Fuelcharge_App_v8.html"   class="footer-col__link">Fuelcharge App</a>
+          <a href="07c_Customer_Portalv5.html"   class="footer-col__link">Customer Portal</a>
+        </div>
+      </div>
+      <!-- Corporate -->
+      <div>
+        <div class="footer-col__title">Corporate</div>
+        <div class="footer-col__links">
+          <a href="09_About_IOR_Hubv5.html"   class="footer-col__link">About IOR</a>
+          <a href="10_Careers.html"           class="footer-col__link">Careers</a>
+          <a href="09d_Case_Studies_v6.html"  class="footer-col__link">Case Studies</a>
+          <a href="09c_Sustainabilityv5.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+          <a href="11c_News_Updates.html"     class="footer-col__link">News &amp; Updates</a>
+        </div>
+      </div>
+      <!-- Quick Actions -->
+      <div>
+        <div class="footer-col__title">Quick Actions</div>
+        <div class="footer-col__links">
+          <a href="#"                          class="footer-col__link">Apply for an Account</a>
+          <a href="11e_Make_Paymentv5.html"    class="footer-col__link">Make a Payment</a>
+          <a href="11a_Contact_Usv5.html"      class="footer-col__link">Contact Us</a>
+          <a href="11_Support_Hubv5.html"      class="footer-col__link">Help Centre &amp; FAQs</a>
+        </div>
+      </div>
+      <!-- Find a Site By State -->
+      <div>
+        <div class="footer-col__title">Find a Site By State</div>
+        <div class="footer-state-pills">
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">QLD</a>
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">NSW</a>
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">VIC</a>
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">SA</a>
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">WA</a>
+          <a href="11d_Find_Locationv5.html" class="footer-state-pill">NT</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p class="footer-legal__text">
+        Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#" class="footer-legal__link--muted">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#" class="footer-legal__link--muted">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        Site by 3PM
+      </p>
+      <div class="footer-social" aria-label="Social media links">
+        <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
+        <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
+        <a href="#" class="footer-social__icon" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="footer-social__icon" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       JS — DO NOT MODIFY
+  ═══════════════════════════════════════════════════════════ -->
+  <script>
+    // ── MEGA MENU ──
+    const navBtns = document.querySelectorAll('.nav__link[data-menu]');
+    const megaPanels = document.querySelectorAll('.mega-panel');
+    function closeAll() {
+      megaPanels.forEach(p => p.classList.remove('is-open'));
+      navBtns.forEach(b => b.setAttribute('aria-expanded','false'));
+    }
+    navBtns.forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const key = btn.dataset.menu;
+        const panel = document.getElementById('mega-' + key);
+        const isOpen = panel && panel.classList.contains('is-open');
+        closeAll();
+        if (!isOpen && panel) {
+          panel.classList.add('is-open');
+          btn.setAttribute('aria-expanded','true');
+        }
+      });
+    });
+    document.addEventListener('click', closeAll);
+    document.querySelectorAll('.mega-panel').forEach(p => p.addEventListener('click', e => e.stopPropagation()));
+
+    // ── MOBILE DRAWER ──
+    const drawerToggle = document.getElementById('drawer-toggle');
+    const drawerClose  = document.getElementById('drawer-close');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+    function openDrawer() {
+      mobileDrawer.classList.add('is-open');
+      drawerOverlay.classList.add('is-open');
+      mobileDrawer.setAttribute('aria-hidden','false');
+      drawerToggle.setAttribute('aria-expanded','true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      mobileDrawer.classList.remove('is-open');
+      drawerOverlay.classList.remove('is-open');
+      mobileDrawer.setAttribute('aria-hidden','true');
+      drawerToggle.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    }
+    if (drawerToggle) drawerToggle.addEventListener('click', openDrawer);
+    if (drawerClose)  drawerClose.addEventListener('click', closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+    document.querySelectorAll('.ior-drawer__link[data-sub]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const subId = btn.dataset.sub;
+        const sub = document.getElementById(subId);
+        const isOpen = sub && sub.classList.contains('is-open');
+        document.querySelectorAll('.ior-drawer__sub').forEach(s => s.classList.remove('is-open'));
+        document.querySelectorAll('.ior-drawer__link[data-sub]').forEach(b => b.setAttribute('aria-expanded','false'));
+        if (!isOpen && sub) {
+          sub.classList.add('is-open');
+          btn.setAttribute('aria-expanded','true');
+        }
+      });
+    });
+
+    // ── STICKY NAV SCROLL STATE ──
+    const nav = document.getElementById('primary-nav');
+    if (nav) {
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('is-scrolled', window.scrollY > 40);
+      }, { passive: true });
+    }
+  </script>
+</body>
+</html>
