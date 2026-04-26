@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IOR Website Prototype — Client Preview</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0A192F;
+      --sky: #4DA8DA;
+      --gold: #C9A227;
+      --white: #FFFFFF;
+      --off-white: #F4F5F7;
+      --mid: #6B7280;
+      --border: #E5E7EB;
+      --green: #16A34A;
+      --amber: #D97706;
+      --red: #DC2626;
+      --grey: #9CA3AF;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--off-white); color: var(--navy); }
+
+    /* COVER HERO */
+    .cover-hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 64px 48px 56px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .cover-hero__logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--white);
+    }
+    .cover-hero__logo span { color: var(--sky); }
+    .cover-hero__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 16px;
+    }
+    .cover-hero__h1 {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      max-width: 640px;
+      margin-bottom: 20px;
+    }
+    .cover-hero__h1 em { font-style: normal; color: var(--sky); }
+    .cover-hero__sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .cover-hero__meta {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .cover-hero__meta-item { text-align: left; }
+    .cover-hero__meta-item strong { display: block; font-size: 22px; font-weight: 800; color: var(--sky); }
+    .cover-hero__meta-item span { font-size: 12px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* STATUS LEGEND */
+    .legend {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 48px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .legend__label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--mid); margin-right: 8px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border: 1.5px solid transparent;
+    }
+    .badge--live { background: #DCFCE7; color: #15803D; border-color: #86EFAC; }
+    .badge--review { background: #FEF9C3; color: #92400E; border-color: #FDE047; }
+    .badge--pending { background: #F3F4F6; color: #6B7280; border-color: #D1D5DB; }
+    .badge--brief { background: #EFF6FF; color: #1D4ED8; border-color: #93C5FD; }
+    .badge--legacy { background: #F9FAFB; color: #9CA3AF; border-color: #E5E7EB; text-decoration: line-through; }
+
+    /* MAIN LAYOUT */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .section { padding: 48px 0 32px; }
+    .section__header { margin-bottom: 24px; border-left: 4px solid var(--sky); padding-left: 16px; }
+    .section__title { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; }
+    .section__sub { font-size: 13px; color: var(--mid); margin-top: 4px; }
+
+    /* PAGE GRID */
+    .page-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .page-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 20px 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.15s;
+    }
+    .page-card:hover { border-color: var(--sky); }
+    .page-card__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .page-card__title { font-size: 14px; font-weight: 700; line-height: 1.3; }
+    .page-card__desc { font-size: 12px; color: var(--mid); line-height: 1.5; flex: 1; }
+    .page-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid var(--border); }
+    .page-card__link {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--sky);
+      text-decoration: none;
+    }
+    .page-card__link:hover { text-decoration: underline; }
+    .page-card--pending { opacity: 0.6; pointer-events: none; }
+    .page-card--pending .page-card__link { color: var(--grey); }
+
+    /* PROGRESS BAR */
+    .progress-wrap { background: var(--white); border: 1px solid var(--border); padding: 24px 32px; margin-bottom: 32px; }
+    .progress-wrap__label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+    .progress-bar { height: 8px; background: var(--border); }
+    .progress-bar__fill { height: 100%; background: var(--sky); }
+    .progress-stats { display: flex; gap: 32px; margin-top: 16px; flex-wrap: wrap; }
+    .progress-stat { text-align: left; }
+    .progress-stat strong { display: block; font-size: 24px; font-weight: 800; color: var(--navy); }
+    .progress-stat span { font-size: 11px; color: var(--mid); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 8px 0 32px; }
+
+    /* NOTE BOX */
+    .note-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      padding: 16px 20px;
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .note-box strong { color: var(--navy); }
+
+    /* FOOTER */
+    .cover-footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      padding: 32px 48px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 64px;
+    }
+    .cover-footer a { color: var(--sky); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .cover-hero { padding: 40px 24px; }
+      .container { padding: 0 24px; }
+      .legend { padding: 16px 24px; }
+      .cover-footer { padding: 24px; }
+      .cover-hero__h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER HERO -->
+<header class="cover-hero">
+  <div>
+    <p class="cover-hero__eyebrow">Prototype Preview — Confidential</p>
+    <h1 class="cover-hero__h1">IOR Website<br><em>Prototype v3.5</em></h1>
+    <p class="cover-hero__sub">A working prototype of the IOR website redesign. All pages are built to the IOR Design System and Global Shell v4. Asset placeholders indicate photography and video to be supplied. HubSpot form embeds are pending live codes.</p>
+    <div class="cover-hero__meta">
+      <div class="cover-hero__meta-item"><strong>54</strong><span>Pages Built</span></div>
+      <div class="cover-hero__meta-item"><strong>12</strong><span>Modules</span></div>
+      <div class="cover-hero__meta-item"><strong>Apr 2026</strong><span>Last Updated</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- LEGEND -->
+<div class="legend">
+  <span class="legend__label">Status Key</span>
+  <span class="badge badge--live">&#10003; Live</span>
+  <span class="badge badge--review">&#9679; QC Review</span>
+  <span class="badge badge--brief">&#9998; In Brief</span>
+  <span class="badge badge--pending">&#9675; Pending</span>
+  <span class="badge badge--legacy">Legacy</span>
+</div>
+
+<div class="container">
+
+  <!-- PROGRESS -->
+  <div class="section">
+    <div class="progress-wrap">
+      <div class="progress-wrap__label">
+        <span>Overall Build Progress</span>
+        <span>54 of ~85 pages</span>
+      </div>
+      <div class="progress-bar"><div class="progress-bar__fill" style="width:64%"></div></div>
+      <div class="progress-stats">
+        <div class="progress-stat"><strong>9</strong><span>Industries Live</span></div>
+        <div class="progress-stat"><strong>15</strong><span>Leadership Bios Live</span></div>
+        <div class="progress-stat"><strong>1</strong><span>Digital Platforms Hub Live</span></div>
+        <div class="progress-stat"><strong>20+</strong><span>Pages In QC Review</span></div>
+        <div class="progress-stat"><strong>30</strong><span>Pages Pending Build</span></div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>For client review:</strong> Click any green "View Page" link to open a live preview. Pages marked <em>Pending</em> are in the build queue. All hero images are placeholder — photography to be supplied by the creative team. HubSpot form codes are pending integration.
+    </div>
+  </div>
+
+  <!-- MODULE 1: HUBS -->
+  <div class="section">
+    <div class="section__header">
+      <div class="section__title">Hubs</div>
+      <div class="section__sub">Top-level navigation hubs — entry points for each major silo</div>
+    </div>
+    <div class="page-grid">
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Homepage</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">Full homepage — hero, stat bar, product grid, testimonials, case studies.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="01_Homepagev5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Fuel Solutions Hub</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Ground Fuels, Aviation, Equipment, Supply — 4-card routing hub.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="02_Fuel_Solutions_Hub.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Digital Platforms Hub v8</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">Stripe/Linear SaaS rebuild — flip cards, stat bar, Fuelcharge band, 9 sections.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="07_Digital_Platformsv8.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Industries We Serve Hub</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">8-card industry routing grid, stat bar, testimonials, FAQ.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="08_Industries_v5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card page-card--pending">
+        <div class="page-card__top">
+          <div class="page-card__title">About IOR Hub</div>
+          <span class="badge badge--pending">Pending</span>
+        </div>
+        <div class="page-card__desc">Our story, leadership, community, sustainability.</div>
+        <div class="page-card__footer">
+          <span class="page-card__link">Coming Soon</span>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Support &amp; Contact Hub</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Routing grid, contact strip, 2×2 cards — utility shell.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="11_Support_Hubv5.html">View Page →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MODULE 2: GROUND FUELS -->
+  <div class="section">
+    <div class="section__header">
+      <div class="section__title">Ground Fuels</div>
+      <div class="section__sub">IOR Diesel Network, On-Site Refuelling, Bulk Delivery, HyBlue™ AdBlue®, Oils &amp; Lubricants</div>
+    </div>
+    <div class="page-grid">
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">IOR Diesel Network</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">115+ unmanned 24/7 diesel stops. Network map, RFID account, 1-2-3 flow. Target: 03a_Diesel_Network_v8.html</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="03a_Diesel_Network_v3.5.html">View Current →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">On-Site Refuelling</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Mobile refuelling, wet hosing, service specs. Target: 03b_On_Site_Refuelling_v8.html</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="03b_On_Site_Refuelling_v3.5.html">View Current →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Bulk Diesel Delivery</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Bulk tanker delivery, minimum orders, scheduling. Target: 03c_Bulk_Diesel_Delivery_v8.html</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="03c_Bulk_Diesel_Delivery_v3.5.html">View Current →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">HyBlue™ AdBlue®</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">VDA &amp; ISO 22241 certified DEF. 5-tab supply options. Target: 03d_HyBlue_v8.html</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="03d_HyBlue_v3.5.html">View Current →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Oils &amp; Lubricants</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Engine oils, hydraulic fluids, greases, drum supply. Target: 03e_Oils_Lubricants_v8.html</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="03e_Oils_Lubricants_v3.5.html">View Current →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MODULE 3: AVIATION -->
+  <div class="section">
+    <div class="section__header">
+      <div class="section__title">Aviation</div>
+      <div class="section__sub">Aviation Hub, Network, Airport Fuelling, Bulk Delivery, Oils &amp; Lubricants</div>
+    </div>
+    <div class="page-grid">
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Aviation Hub</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Gold identity, dark charcoal hero, 4-card routing grid.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="04_Aviation_Hub_v3.5.html">View Current →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">IOR Aviation Network</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Airstrip coverage, airport map, network stats.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="04a_Aviation_Network_v3.5.html">View Current →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Airport Fuelling Services</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">JIG-accredited, Aviation Gold identity, into-plane + fuel farm. Target: 04b_Airport_Fuelling_v8.html</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="04b_Airport_Fuelling_v3.5.html">View Current →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Aviation Bulk Delivery</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Remote airstrip bulk Jet A-1 delivery.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="04c_Aviation_Bulk_v3.5.html">View Current →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Aviation Oils &amp; Lubricants</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Piston engine oils, turbine oils, aviation grease.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="04d_Aviation_Oils_v3.5.html">View Current →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MODULE 4: DIGITAL PLATFORMS -->
+  <div class="section">
+    <div class="section__header">
+      <div class="section__title">Digital Platforms</div>
+      <div class="section__sub">HyDip™ FMS, Fuelcharge App, Customer Portal</div>
+    </div>
+    <div class="page-grid">
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Digital Platforms Hub v8</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">Stripe/Linear SaaS rebuild. Flip cards, stat bar, Fuelcharge B2C band.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="07_Digital_Platformsv8.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">HyDip™ FMS v6</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Interactive tabs (GAUGE/TRACK/DISPENSE/PAY), hardware cards, HubSpot form. Target: v8 rebuild.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="07a_HyDip_FMSv6.html">View Current →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Fuelcharge App v8</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">B2C fintech SaaS style. Audience flip cards, 1-2-3 flow, no forms.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="07b_Fuelcharge_App_v8.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card page-card--pending">
+        <div class="page-card__top">
+          <div class="page-card__title">Customer Portal v8</div>
+          <span class="badge badge--brief">In Brief</span>
+        </div>
+        <div class="page-card__desc">2×2 Bento Box, Request Access modal, 3-path access block. Target: 07c_Customer_Portal_v8.html</div>
+        <div class="page-card__footer">
+          <span class="page-card__link">In Build Queue</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MODULE 5: INDUSTRIES WE SERVE -->
+  <div class="section">
+    <div class="section__header">
+      <div class="section__title">Industries We Serve</div>
+      <div class="section__sub">All 9 industry pages — fully built, audited 20/20, live</div>
+    </div>
+    <div class="page-grid">
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Industries Hub</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">8-card routing grid, stat bar, testimonials, FAQ.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="08_Industries_v5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Mining &amp; Resources</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">Remote-ready, high-volume, compliance, HyDip™ FMS.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="08a_Mining_v5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Agriculture &amp; Harvest</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">Bulk delivery, seasonal supply, on-site storage.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="08b_Agriculture_v5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Transport &amp; Logistics</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">Diesel network, on-site, HyDip™ FMS, case study.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="08c_Transport_v5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Construction &amp; Civil</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">Project-based supply, temporary storage, mobile delivery.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="08d_Construction_v5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Livestock</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">Remote delivery, station storage, aviation fuels.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="08e_Livestock_v5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Government &amp; Defence</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">Sovereign supply, full audit trail, ISO-aligned.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="08f_Government_v5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Commercial &amp; General Aviation</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">JIG-compliant Jet A-1, Avgas, Fuelcharge self-serve.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="08g_Aviation_v5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Oil &amp; Gas</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">Remote supply, on-site infrastructure, fluid logistics.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="08h_Oil_Gas_v5.html">View Page →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MODULE 6: ABOUT IOR -->
+  <div class="section">
+    <div class="section__header">
+      <div class="section__title">About IOR</div>
+      <div class="section__sub">Leadership, Community, Sustainability, Case Studies</div>
+    </div>
+    <div class="page-grid">
+      <div class="page-card page-card--pending">
+        <div class="page-card__top">
+          <div class="page-card__title">About IOR Hub</div>
+          <span class="badge badge--pending">Pending</span>
+        </div>
+        <div class="page-card__desc">Our story, leadership, community, sustainability routing hub.</div>
+        <div class="page-card__footer"><span class="page-card__link">Coming Soon</span></div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Our Leadership</div>
+          <span class="badge badge--live">Live</span>
+        </div>
+        <div class="page-card__desc">Executive team hub — 15 bios, tabbed content, data table.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="09a_Our_Leadershipv5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card page-card--pending">
+        <div class="page-card__top">
+          <div class="page-card__title">Community &amp; Giving Back</div>
+          <span class="badge badge--pending">Pending</span>
+        </div>
+        <div class="page-card__desc">LifeFlight, AgForce, Red Dust, Outback communities.</div>
+        <div class="page-card__footer"><span class="page-card__link">Coming Soon</span></div>
+      </div>
+      <div class="page-card page-card--pending">
+        <div class="page-card__top">
+          <div class="page-card__title">Sustainability, HSE &amp; ESG</div>
+          <span class="badge badge--pending">Pending</span>
+        </div>
+        <div class="page-card__desc">Safety, Environment, Governance — categorised accordions.</div>
+        <div class="page-card__footer"><span class="page-card__link">Coming Soon</span></div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Case Studies List v6</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Navy hero, taxonomy filter bar, 3-col loop grid, pagination.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="09d_Case_Studies_v6.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Case Study Template v6</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Hero scrim, stat bar, 70/30 WYSIWYG + sticky sidebar, related grid.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="09d_Case_Study_Singlev6.html">View Page →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MODULE 7: LEADERSHIP BIOS -->
+  <div class="section">
+    <div class="section__header">
+      <div class="section__title">Leadership Bios</div>
+      <div class="section__sub">15 individual executive bio pages — all live</div>
+    </div>
+    <div class="page-grid">
+      <div class="page-card"><div class="page-card__top"><div class="page-card__title">Drew Morland — CEO</div><span class="badge badge--live">Live</span></div><div class="page-card__desc">Chief Executive Officer</div><div class="page-card__footer"><a class="page-card__link" href="09a_Bio_DrewMorland_v5.html">View Page →</a></div></div>
+      <div class="page-card"><div class="page-card__top"><div class="page-card__title">Drew Leishman — COO</div><span class="badge badge--live">Live</span></div><div class="page-card__desc">Chief Operating Officer</div><div class="page-card__footer"><a class="page-card__link" href="09a_Bio_DrewLeishman_v5.html">View Page →</a></div></div>
+      <div class="page-card"><div class="page-card__top"><div class="page-card__title">Adriaan Esterhuizen — CFO</div><span class="badge badge--live">Live</span></div><div class="page-card__desc">Chief Financial Officer</div><div class="page-card__footer"><a class="page-card__link" href="09a_Bio_AdriaanEsterhuizen_v5.html">View Page →</a></div></div>
+      <div class="page-card"><div class="page-card__top"><div class="page-card__title">Nick Mackenzie — CSO</div><span class="badge badge--live">Live</span></div><div class="page-card__desc">Chief Strategy Officer</div><div class="page-card__footer"><a class="page-card__link" href="09a_Bio_NickMackenzie_v5.html">View Page →</a></div></div>
+      <div class="page-card"><div class="page-card__top"><div class="page-card__title">Bryce Morland — GM Aviation</div><span class="badge badge--live">Live</span></div><div class="page-card__desc">General Manager, Aviation</div><div class="page-card__footer"><a class="page-card__link" href="09a_Bio_BryceMorland_v5.html">View Page →</a></div></div>
+      <div class="page-card"><div class="page-card__top"><div class="page-card__title">Chris Werfel — GM Supply</div><span class="badge badge--live">Live</span></div><div class="page-card__desc">General Manager, Supply &amp; Trading</div><div class="page-card__footer"><a class="page-card__link" href="09a_Bio_ChrisWerfel_v5.html">View Page →</a></div></div>
+      <div class="page-card"><div class="page-card__top"><div class="page-card__title">Daniel Roberts — GM Ground Fuels</div><span class="badge badge--live">Live</span></div><div class="page-card__desc">General Manager, Ground Fuels</div><div class="page-card__footer"><a class="page-card__link" href="09a_Bio_DanielRoberts_v5.html">View Page →</a></div></div>
+      <div class="page-card"><div class="page-card__top"><div class="page-card__title">Hamish Jarrett — GM Technology</div><span class="badge badge--live">Live</span></div><div class="page-card__desc">General Manager, Technology</div><div class="page-card__footer"><a class="page-card__link" href="09a_Bio_HamishJarrett_v5.html">View Page →</a></div></div>
+      <div class="page-card"><div class="page-card__top"><div class="page-card__title">Nell Bond — GM Marketing</div><span class="badge badge--live">Live</span></div><div class="page-card__desc">General Manager, Customer, Marketing &amp; Digital</div><div class="page-card__footer"><a class="page-card__link" href="09a_Bio_NellBond_v5.html">View Page →</a></div></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MODULE 8: SUPPORT & CONTACT -->
+  <div class="section">
+    <div class="section__header">
+      <div class="section__title">Support &amp; Contact</div>
+      <div class="section__sub">Contact Us, Regional Contacts, Find a Location, Make a Payment, Policy Downloads</div>
+    </div>
+    <div class="page-grid">
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Support &amp; Contact Hub</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Routing grid, contact strip, 2×2 cards.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="11_Support_Hubv5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Contact Us</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">2-col contact grid, Zendesk form, emergency block.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="11a_Contact_Usv5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Regional Contacts</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">Interactive SVG map, state contact directory, FAQ accordion.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="11b_Regional_Contactsv5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Find a Location</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">StorePoint map embed, diesel stops &amp; airports.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="11d_Find_Locationv5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="page-card__top">
+          <div class="page-card__title">Make a Payment</div>
+          <span class="badge badge--review">QC Review</span>
+        </div>
+        <div class="page-card__desc">AMEX &amp; Visa/MC gateway cards, EFT details.</div>
+        <div class="page-card__footer">
+          <a class="page-card__link" href="11e_Make_Paymentv5.html">View Page →</a>
+        </div>
+      </div>
+      <div class="page-card page-card--pending">
+        <div class="page-card__top">
+          <div class="page-card__title">Policy &amp; Form Downloads</div>
+          <span class="badge badge--pending">Pending</span>
+        </div>
+        <div class="page-card__desc">Categorised accordions — SDS, forms, policies.</div>
+        <div class="page-card__footer"><span class="page-card__link">Coming Soon</span></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- MODULE 9: CAREERS -->
+  <div class="section">
+    <div class="section__header">
+      <div class="section__title">Careers — Go Far with IOR</div>
+      <div class="section__sub">All 6 careers pages pending build</div>
+    </div>
+    <div class="page-grid">
+      <div class="page-card page-card--pending"><div class="page-card__top"><div class="page-card__title">Careers Hub</div><span class="badge badge--pending">Pending</span></div><div class="page-card__desc">Entry pathways, culture, benefits routing hub.</div><div class="page-card__footer"><span class="page-card__link">Coming Soon</span></div></div>
+      <div class="page-card page-card--pending"><div class="page-card__top"><div class="page-card__title">Entry Pathways</div><span class="badge badge--pending">Pending</span></div><div class="page-card__desc">Tabbed directory — Apprentices, Graduates, School-Based, Regional.</div><div class="page-card__footer"><span class="page-card__link">Coming Soon</span></div></div>
+      <div class="page-card page-card--pending"><div class="page-card__top"><div class="page-card__title">Apprentices &amp; Trades</div><span class="badge badge--pending">Pending</span></div><div class="page-card__desc">Step-by-step apprenticeship journey — Easy as 1, 2, 3.</div><div class="page-card__footer"><span class="page-card__link">Coming Soon</span></div></div>
+      <div class="page-card page-card--pending"><div class="page-card__top"><div class="page-card__title">Graduates &amp; Interns</div><span class="badge badge--pending">Pending</span></div><div class="page-card__desc">3 streams: Technology, Shared Services, Operations.</div><div class="page-card__footer"><span class="page-card__link">Coming Soon</span></div></div>
+      <div class="page-card page-card--pending"><div class="page-card__top"><div class="page-card__title">School-Based &amp; Trainees</div><span class="badge badge--pending">Pending</span></div><div class="page-card__desc">Info cards + FAQ accordion — requirements, benefits.</div><div class="page-card__footer"><span class="page-card__link">Coming Soon</span></div></div>
+      <div class="page-card page-card--pending"><div class="page-card__top"><div class="page-card__title">Working Regionally</div><span class="badge badge--pending">Pending</span></div><div class="page-card__desc">Eromanga origin story, community investment, regional life.</div><div class="page-card__footer"><span class="page-card__link">Coming Soon</span></div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="cover-footer">
+  <div>IOR Website Prototype — Confidential. For internal review only.</div>
+  <div><a href="00_Master_Index.html">Full Master Index →</a></div>
+</footer>
+
+</body>
+</html>
