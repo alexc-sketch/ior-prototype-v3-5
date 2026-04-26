@@ -34,11 +34,11 @@
     .btn--white{background:#fff;color:var(--ior-blue);border-color:#fff;}
     .btn--white:hover{background:var(--ior-light);}
     .btn--sm{padding:10px 20px;font-size:14px;}
-    .btn--pill{border-radius:500px;}
+    .btn--pill{border-radius:0;}
     /* Proto-bar */
     .proto-bar{background:#1a1a2e;color:#a0aec0;font-size:12px;padding:6px var(--section-pad-x);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
     .proto-bar a{color:#7FBEE6;text-decoration:underline;}
-    .proto-bar__badge{background:#D98300;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:500px;}
+    .proto-bar__badge{background:#D98300;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:0;}
     /* Utility Bar */
     .utility-bar{background:var(--ior-blue);color:#fff;padding:clamp(6px,0.8vw,8px) var(--section-pad-x);display:flex;justify-content:space-between;align-items:center;font-size:clamp(12px,1.2vw,14px);gap:16px;flex-wrap:wrap;}
     .utility-bar__actions{display:flex;align-items:center;gap:20px;}
@@ -98,12 +98,6 @@
     .hd-two-tone__dark{color:var(--near-black);}
     .hd-two-tone__muted{color:var(--mid-grey);}
     /* Industry Hub Hero */
-    .ind-hero{background:var(--ior-deep);padding:clamp(60px,8vw,120px) var(--section-pad-x);}
-    .ind-hero__inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);align-items:center;max-width:var(--container-max);margin-inline:auto;}
-    .ind-hero__copy{color:#fff;}
-    .ind-hero__copy h1{font-size:clamp(32px,4.5vw,60px);font-weight:900;line-height:1.1;margin-bottom:20px;}
-    .ind-hero__copy p{font-size:clamp(16px,1.6vw,20px);color:rgba(255,255,255,.8);margin-bottom:32px;max-width:520px;}
-    .ind-hero__ctas{display:flex;gap:16px;flex-wrap:wrap;}
     .asset-placeholder{background:rgba(255,255,255,.06);border:2px dashed rgba(255,255,255,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:rgba(255,255,255,.4);font-size:13px;font-weight:600;text-align:center;padding:24px;min-height:400px;}
     /* Why Section */
     .why-section{padding:var(--section-pad) var(--section-pad-x);background:#fff;}
@@ -200,8 +194,82 @@
     .footer-social__icon:hover{border-color:#fff;color:#fff;}
     /* Responsive */
     @media(max-width:1200px){.industry-grid{grid-template-columns:repeat(2,1fr);}.social-proof__grid{grid-template-columns:1fr;}.footer-nav-grid{grid-template-columns:repeat(3,1fr);}}
-    @media(max-width:768px){.ind-hero__inner{grid-template-columns:1fr;}.fast-facts{grid-template-columns:repeat(2,1fr);}.industry-grid{grid-template-columns:1fr;}.lead-trap__inner{grid-template-columns:1fr;}.related-grid{grid-template-columns:1fr;}.footer-nav-grid{grid-template-columns:repeat(2,1fr);}}
-  </style>
+    @media(max-width:768px){.fast-facts{grid-template-columns:repeat(2,1fr);}.industry-grid{grid-template-columns:1fr;}.lead-trap__inner{grid-template-columns:1fr;}.related-grid{grid-template-columns:1fr;}.footer-nav-grid{grid-template-columns:repeat(2,1fr);}}
+      /* ── CANONICAL HERO ─────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      border-top: 4px solid var(--ior-blue); overflow: hidden;
+      min-height: clamp(480px, 55dvh, 700px);
+      display: flex; align-items: center;
+      background: var(--ior-navy, #0B1929);
+    }
+    .hero__video-wrap {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero__video-wrap video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .hero__overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: rgba(10, 64, 102, 0.72);
+    }
+    .hero__content {
+      position: relative; z-index: 2;
+      padding: clamp(48px, 6vw, 80px) var(--section-pad-x, clamp(20px,5vw,80px));
+      max-width: var(--container-max, 1280px); margin-inline: auto;
+      width: 100%;
+    }
+    .hero__content .eyebrow { display: block; margin-bottom: 12px; }
+    .hero__content h1 {
+      font-size: clamp(32px, 4.5vw, 58px); font-weight: 800;
+      line-height: 1.1; color: #fff;
+      margin-bottom: clamp(16px, 2vw, 24px); max-width: 700px;
+    }
+    .hero__content p {
+      font-size: clamp(15px, 1.6vw, 18px);
+      color: rgba(255,255,255,.85); max-width: 560px;
+      margin-bottom: clamp(24px, 3vw, 36px); line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .video-placeholder-full {
+      position: absolute; inset: 0;
+      background: #1a2535;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      color: rgba(255,255,255,.35); font-size: 13px; text-align: center;
+    }
+    .video-placeholder-full svg { opacity: .4; }
+    /* ── LOGO CAROUSEL ───────────────────────────────────────────── */
+    .logo-carousel-wrap {
+      background: #f8fafc; border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      padding: clamp(20px, 3vw, 28px) 0; overflow: hidden;
+    }
+    .logo-carousel-label {
+      text-align: center; font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: #94a3b8; margin-bottom: 20px;
+    }
+    .logo-carousel-track-outer { overflow: hidden; }
+    .logo-carousel-track {
+      display: flex; gap: 40px; width: max-content;
+      animation: carousel-scroll 28s linear infinite;
+    }
+    .logo-carousel-track:hover { animation-play-state: paused; }
+    .logo-ph {
+      background: #e2e8f0; border: 1.5px dashed #94a3b8;
+      padding: 12px 28px; font-size: 12px; font-weight: 700;
+      color: #64748b; white-space: nowrap;
+      display: flex; align-items: center; min-width: 140px; min-height: 52px;
+    }
+    @keyframes carousel-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .logo-carousel-track { animation: none; }
+    }
+    </style>
 </head>
 <body>
 <div class="main-audit-container">
@@ -265,19 +333,24 @@
   <main id="main-content">
 
     <!-- 1. BESPOKE HERO -->
-    <section class="ind-hero" aria-labelledby="ind-h1">
-      <div class="ind-hero__inner">
-        <div class="ind-hero__copy">
-          <span class="eyebrow eyebrow--sky">INDUSTRIES WE SERVE</span>
-          <h1 id="ind-h1">Fuelling Australia&#8217;s hardest-working industries.</h1>
-          <p>From remote mine sites and outback cattle stations to major airports and government fleet operations, IOR delivers fuel solutions purpose-built for every sector that keeps Australia moving.</p>
-          <div class="ind-hero__ctas">
-            <a href="#industry-grid" class="btn btn--primary">Find Your Industry <span class="btn__arrow" aria-hidden="true"></span></a>
-          </div>
+        <section class="hero" id="hero" aria-label="Industries We Serve hero">
+      <div class="hero__video-wrap" aria-hidden="true">
+        <video autoplay muted loop playsinline src="" aria-hidden="true">
+          <track kind="captions" src="" label="No captions">
+        </video>
+        <div class="video-placeholder-full" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="0" ry="0"/></svg>
+          <span>Composite image: IOR tanker, aircraft refuelling, and agricultural machinery<br><small>Composite: truck / aircraft / tractor | Format: WebP | 1920×1080</small></span>
         </div>
-        <div class="asset-placeholder" role="img" aria-label="Composite image: IOR tanker, aircraft refuelling, and agricultural machinery">
-          <span style="font-size:40px;opacity:.4;" aria-hidden="true">&#9992;</span>
-          <span>Asset Placeholder<br>Composite: truck / aircraft / tractor<br>Format: WebP | 800&times;600</span>
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="eyebrow eyebrow--white">INDUSTRIES WE SERVE</p>
+        <h1 id="ind-h1">Fuelling Australia&#8217;s hardest-working industries.</h1>
+        <p>From remote mine sites and outback cattle stations to major airports and government fleet operations, IOR delivers fuel solutions purpose-built for every sector that keeps Australia moving.</p>
+        <div class="hero-ctas">
+          <a href="#industry-grid" class="btn btn--primary" aria-label="Find Your Industry">Find Your Industry <span class="btn__arrow" aria-hidden="true"></span></a>
+          <a href="11_Support_Hubv5.html#contact-us" class="btn btn--ghost" aria-label="Apply for an Account">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
         </div>
       </div>
     </section>
