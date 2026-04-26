@@ -1,3 +1,5 @@
+Global Components Reference: https://alexc-sketch.github.io/ior-prototype-v3-5/00_Global_Components.html
+
 # Builder Brief: Case Study Template v5
 
 **Target File:** `CS_Template_v5.html`

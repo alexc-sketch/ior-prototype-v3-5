@@ -1,3 +1,5 @@
+Global Components Reference: https://alexc-sketch.github.io/ior-prototype-v3-5/00_Global_Components.html
+
 # Builder Brief: Find a Location v5
 
 **To:** Development Team  
