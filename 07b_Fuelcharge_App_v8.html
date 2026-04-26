@@ -43,7 +43,7 @@
     .btn--outline:hover { background: var(--ior-blue); color: #fff; }
     .btn--outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
     .btn--outline-white:hover { border-color: #fff; background: rgba(255,255,255,.1); }
-    .btn--pill        { border-radius: 500px; }
+    .btn--pill        { border-radius: 0; }
     .btn--sm          { padding: 8px 18px; font-size: 13px; min-height: 36px; }
     .btn--fc          { background: var(--fc-teal); color: var(--fc-dark); border-color: var(--fc-teal); }
     .btn--fc:hover    { background: #00b8b4; border-color: #00b8b4; }
@@ -260,6 +260,16 @@
       .footer-nav-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
+
+    /* Logo Carousel */
+    .logo-carousel-wrap { background: var(--ior-light-blue-bg, #EBF4FB); padding: 28px clamp(20px,8vw,125px); }
+    .logo-carousel-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ior-mid-grey, #6B7280); margin-bottom: 16px; }
+    .logo-carousel-track-outer { overflow: hidden; }
+    .logo-carousel-track { display: flex; gap: 40px; animation: carousel-scroll 28s linear infinite; width: max-content; }
+    .logo-carousel-track:hover { animation-play-state: paused; }
+    .logo-placeholder { width: 120px; height: 44px; background: rgba(0,0,0,.08); display: flex; align-items: center; justify-content: center; font-size: 11px; color: #999; flex-shrink: 0; }
+    @keyframes carousel-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .logo-carousel-track { animation: none; } }
   </style>
 </head>
 <body>
@@ -277,21 +287,6 @@
         <span class="proto-bar__sep" aria-hidden="true"></span>
         <a href="07_Digital_Platformsv5.html" class="proto-bar__link">Digital Platforms Hub</a>
       </div>
-    </div>
-  </div>
-
-  <!-- ─── UTILITY BAR ────────────────────────────────────────────────────── -->
-  <div class="utility-bar" role="complementary" aria-label="Site utilities">
-    <div class="utility-bar__actions">
-      <a href="11d_Find_Locationv5.html" class="utility-bar__link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Find a Location
-      </a>
-      <div class="utility-bar__divider" aria-hidden="true"></div>
-      <a href="tel:1800467867" class="utility-bar__link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        1800 IOR IOR
-      </a>
     </div>
   </div>
 
@@ -519,76 +514,6 @@
       </div>
     </div>
   </nav>
-  <!-- Mobile Drawer -->
-  <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
-  <div class="drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-    <div class="drawer__header">
-      <svg width="70" height="33" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="IOR" role="img"><g clip-path="url(#ior-logo-drawer)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#fff"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#5BB4E5"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#fff"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#fff"/></g><defs><clipPath id="ior-logo-drawer"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg>
-      <button class="drawer__close" id="drawer-close" aria-label="Close menu">&times;</button>
-    </div>
-    <nav class="drawer__nav" aria-label="Mobile navigation">
-      <div class="drawer__item">
-        <button class="drawer__link" data-drawer-menu="fs">Fuel Solutions <span class="drawer__chevron" aria-hidden="true">&#8250;</span></button>
-        <div class="drawer__sub" id="drawer-fs">
-          <a href="03_Ground_Fuels.html" class="drawer__sub-link">Ground Fuels Hub</a>
-          <a href="#" class="drawer__sub-link">IOR Diesel Stops</a>
-          <a href="#" class="drawer__sub-link">On-Site Refuelling</a>
-          <a href="#" class="drawer__sub-link">Bulk Diesel Delivery</a>
-          <a href="#" class="drawer__sub-link">HyBlue&#8482; AdBlue</a>
-          <a href="#" class="drawer__sub-link">Oils &amp; Lubricants</a>
-          <a href="04_Aviation.html" class="drawer__sub-link">Aviation Hub</a>
-          <a href="#" class="drawer__sub-link">Aviation Network</a>
-          <a href="#" class="drawer__sub-link">Airport Fuelling</a>
-          <a href="#" class="drawer__sub-link">Aviation Bulk Delivery</a>
-        </div>
-      </div>
-      <div class="drawer__item">
-        <button class="drawer__link" data-drawer-menu="dp">Digital Platforms <span class="drawer__chevron" aria-hidden="true">&#8250;</span></button>
-        <div class="drawer__sub" id="drawer-dp">
-          <a href="07_Digital_Platformsv5.html" class="drawer__sub-link">Digital Platforms Hub</a>
-          <a href="07a_HyDip_FMSv6.html" class="drawer__sub-link">HyDip&#8482; FMS</a>
-          <a href="07b_Fuelcharge_App_v8.html" class="drawer__sub-link">Fuelcharge App</a>
-          <a href="07c_Customer_Portalv5.html" class="drawer__sub-link">Customer Portal</a>
-        </div>
-      </div>
-      <div class="drawer__item">
-        <button class="drawer__link" data-drawer-menu="ind">Industries We Serve <span class="drawer__chevron" aria-hidden="true">&#8250;</span></button>
-        <div class="drawer__sub" id="drawer-ind">
-          <a href="#" class="drawer__sub-link">Mining &amp; Resources</a>
-          <a href="#" class="drawer__sub-link">Agriculture</a>
-          <a href="#" class="drawer__sub-link">Construction</a>
-          <a href="#" class="drawer__sub-link">Transport &amp; Logistics</a>
-          <a href="#" class="drawer__sub-link">General Aviation</a>
-          <a href="#" class="drawer__sub-link">Marine &amp; Boating</a>
-          <a href="#" class="drawer__sub-link">Government Fleets</a>
-        </div>
-      </div>
-      <div class="drawer__item">
-        <button class="drawer__link" data-drawer-menu="abt">About IOR <span class="drawer__chevron" aria-hidden="true">&#8250;</span></button>
-        <div class="drawer__sub" id="drawer-abt">
-          <a href="09_About_IOR.html" class="drawer__sub-link">About IOR</a>
-          <a href="09a_Our_Leadershipv5.html" class="drawer__sub-link">Our Leadership</a>
-          <a href="#" class="drawer__sub-link">Our History</a>
-          <a href="10_Careers.html" class="drawer__sub-link">Careers</a>
-          <a href="#" class="drawer__sub-link">News &amp; Updates</a>
-        </div>
-      </div>
-      <div class="drawer__item">
-        <button class="drawer__link" data-drawer-menu="sup">Support &amp; Contact <span class="drawer__chevron" aria-hidden="true">&#8250;</span></button>
-        <div class="drawer__sub" id="drawer-sup">
-          <a href="11_Support_Hubv5.html" class="drawer__sub-link">Help Centre &amp; FAQs</a>
-          <a href="11a_Contact_Usv5.html" class="drawer__sub-link">Contact Us</a>
-          <a href="11b_Regional_Contactsv5.html" class="drawer__sub-link">Regional Contacts</a>
-          <a href="11d_Find_Locationv5.html" class="drawer__sub-link">Find a Location</a>
-          <a href="11e_Make_Paymentv5.html" class="drawer__sub-link">Make a Payment</a>
-        </div>
-      </div>
-    </nav>
-    <div class="drawer__cta">
-      <a href="#" class="btn btn--white btn--pill">Customer Login</a>
-      <a href="#" class="btn btn--primary btn--pill">Apply for an Account</a>
-    </div>
-  </div>
 </header>
 
   <!-- Mobile Drawer -->
@@ -912,7 +837,32 @@
     <!-- ═══════════════════════════════════════════════════════════════════ -->
     <!-- PRE-FOOTER CTA STRIP                                                -->
     <!-- ═══════════════════════════════════════════════════════════════════ -->
-    <section class="pre-footer" aria-labelledby="prefooter-heading">
+    <!-- Logo Carousel -->
+<div class="logo-carousel-wrap" aria-label="Trusted by" role="region">
+  <p class="logo-carousel-label">Trusted by leading Australian businesses</p>
+  <div class="logo-carousel-track-outer">
+    <div class="logo-carousel-track" aria-hidden="true">
+      <div class="logo-placeholder">Client Logo 1</div>
+      <div class="logo-placeholder">Client Logo 2</div>
+      <div class="logo-placeholder">Client Logo 3</div>
+      <div class="logo-placeholder">Client Logo 4</div>
+      <div class="logo-placeholder">Client Logo 5</div>
+      <div class="logo-placeholder">Client Logo 6</div>
+      <div class="logo-placeholder">Client Logo 7</div>
+      <div class="logo-placeholder">Client Logo 8</div>
+      <div class="logo-placeholder">Client Logo 1</div>
+      <div class="logo-placeholder">Client Logo 2</div>
+      <div class="logo-placeholder">Client Logo 3</div>
+      <div class="logo-placeholder">Client Logo 4</div>
+      <div class="logo-placeholder">Client Logo 5</div>
+      <div class="logo-placeholder">Client Logo 6</div>
+      <div class="logo-placeholder">Client Logo 7</div>
+      <div class="logo-placeholder">Client Logo 8</div>
+    </div>
+  </div>
+</div>
+
+<section class="pre-footer" aria-labelledby="prefooter-heading">
       <div class="pre-footer__inner">
         <h2 class="pre-footer__heading" id="prefooter-heading">Ready to fuel smarter?</h2>
         <p class="pre-footer__sub">Download Fuelcharge today and join thousands of drivers, pilots, and mariners across Australia's national fuel network.</p>

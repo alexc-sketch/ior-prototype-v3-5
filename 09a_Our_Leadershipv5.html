@@ -375,6 +375,16 @@
       .leader-grid { grid-template-columns: 1fr; }
       .footer-nav-grid { grid-template-columns: 1fr; }
     }
+
+    /* Logo Carousel */
+    .logo-carousel-wrap { background: var(--ior-light-blue-bg, #EBF4FB); padding: 28px clamp(20px,8vw,125px); }
+    .logo-carousel-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ior-mid-grey, #6B7280); margin-bottom: 16px; }
+    .logo-carousel-track-outer { overflow: hidden; }
+    .logo-carousel-track { display: flex; gap: 40px; animation: carousel-scroll 28s linear infinite; width: max-content; }
+    .logo-carousel-track:hover { animation-play-state: paused; }
+    .logo-placeholder { width: 120px; height: 44px; background: rgba(0,0,0,.08); display: flex; align-items: center; justify-content: center; font-size: 11px; color: #999; flex-shrink: 0; }
+    @keyframes carousel-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .logo-carousel-track { animation: none; } }
   </style>
 </head>
 <body>
@@ -478,7 +488,7 @@
     <!-- Mega: Digital Platforms -->
     <div class="mega-panel" id="mega-digital-platforms" role="region" aria-label="Digital Platforms menu">
       <div class="mega-inner mega-inner--3col">
-        <div class="mega-col"><p class="mega-col__title">Platforms</p><div class="mega-col__links"><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v4.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Platforms</p><div class="mega-col__links"><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a></div></div>
         <div class="mega-col"><p class="mega-col__title">Features</p><div class="mega-col__links"><a href="#" class="mega-col__link">Fuel Monitoring</a><a href="#" class="mega-col__link">Reporting &amp; Analytics</a><a href="#" class="mega-col__link">Fleet Management</a></div></div>
         <div class="mega-col"><p class="mega-col__title">Resources</p><div class="mega-col__links"><a href="#" class="mega-col__link">Product Brochures</a><a href="#" class="mega-col__link">Case Studies</a></div></div>
       </div>
@@ -496,7 +506,7 @@
     <div class="mega-panel" id="mega-about-ior" role="region" aria-label="About IOR menu">
       <div class="mega-inner mega-inner--2col">
         <div class="mega-col"><p class="mega-col__title">About IOR</p><div class="mega-col__links"><a href="09_About_IOR.html" class="mega-col__link">About Us</a><a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a><a href="#" class="mega-col__link">Community &amp; Giving Back</a><a href="09c_Sustainability.html" class="mega-col__link">Sustainability, HSE &amp; ESG</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">More</p><div class="mega-col__links"><a href="09d_Case_Studies.html" class="mega-col__link">Case Studies</a><a href="10_Careers.html" class="mega-col__link">Careers</a><a href="11c_News_Updates.html" class="mega-col__link">News &amp; Updates</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">More</p><div class="mega-col__links"><a href="09d_Case_Studies_v6.html" class="mega-col__link">Case Studies</a><a href="10_Careers.html" class="mega-col__link">Careers</a><a href="11c_News_Updates.html" class="mega-col__link">News &amp; Updates</a></div></div>
       </div>
     </div>
     <!-- Mega: Support & Contact -->
@@ -540,7 +550,7 @@
         </button>
         <div class="drawer__sub" id="drawer-digital-leadership">
           <a href="07a_HyDip_FMSv6.html" class="drawer__sub-link">HyDip&#8482; FMS</a>
-          <a href="07b_Fuelcharge_App_v4.html" class="drawer__sub-link">Fuelcharge App</a>
+          <a href="07b_Fuelcharge_App_v8.html" class="drawer__sub-link">Fuelcharge App</a>
           <a href="07c_Customer_Portalv5.html" class="drawer__sub-link">Customer Portal</a>
         </div>
       </div>
@@ -576,7 +586,7 @@
   <nav class="quick-links-bar" aria-label="Explore About IOR">
     <div class="quick-links-bar__inner">
       <span class="quick-links-bar__label">Explore:</span>
-      <a href="09d_Case_Studies.html" class="quick-links-bar__link">Case Studies</a>
+      <a href="09d_Case_Studies_v6.html" class="quick-links-bar__link">Case Studies</a>
       <a href="09b_Community.html" class="quick-links-bar__link">Community &amp; Giving Back</a>
       <a href="09c_Sustainability.html" class="quick-links-bar__link">Sustainability, HSE &amp; ESG</a>
       <a href="10_Careers.html" class="quick-links-bar__link">Careers</a>
@@ -588,6 +598,10 @@
 
     <!-- HERO -->
     <section class="hero" aria-label="Our Leadership hero">
+      <div class="hero__video-wrap">
+        <div class="hero__video-placeholder" aria-label="Video placeholder: IOR leadership team in a professional setting">[Video: IOR Leadership Team]</div>
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
       <div class="hero__content">
         <p class="hero__eyebrow fade-up">About IOR</p>
         <h1 class="hero__headline fade-up">Our Leadership Team</h1>
@@ -801,7 +815,32 @@
   </main>
 
   <!-- COMPONENT 8b: GLOBAL FOOTER — Shell v4 canonical -->
-  <footer class="site-footer" aria-label="Site footer">
+  <!-- Logo Carousel -->
+<div class="logo-carousel-wrap" aria-label="Trusted by" role="region">
+  <p class="logo-carousel-label">Trusted by leading Australian businesses</p>
+  <div class="logo-carousel-track-outer">
+    <div class="logo-carousel-track" aria-hidden="true">
+      <div class="logo-placeholder">Client Logo 1</div>
+      <div class="logo-placeholder">Client Logo 2</div>
+      <div class="logo-placeholder">Client Logo 3</div>
+      <div class="logo-placeholder">Client Logo 4</div>
+      <div class="logo-placeholder">Client Logo 5</div>
+      <div class="logo-placeholder">Client Logo 6</div>
+      <div class="logo-placeholder">Client Logo 7</div>
+      <div class="logo-placeholder">Client Logo 8</div>
+      <div class="logo-placeholder">Client Logo 1</div>
+      <div class="logo-placeholder">Client Logo 2</div>
+      <div class="logo-placeholder">Client Logo 3</div>
+      <div class="logo-placeholder">Client Logo 4</div>
+      <div class="logo-placeholder">Client Logo 5</div>
+      <div class="logo-placeholder">Client Logo 6</div>
+      <div class="logo-placeholder">Client Logo 7</div>
+      <div class="logo-placeholder">Client Logo 8</div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer" aria-label="Site footer">
   <div class="footer-nav-grid">
     <!-- Contact -->
     <div>
@@ -836,9 +875,9 @@
     <div>
       <div class="footer-col__title">Digital Platforms</div>
       <div class="footer-col__links">
-        <a href="07_Digital_Platforms.html#hydip" class="footer-col__link">HyDip&#8482; FMS</a>
-        <a href="07_Digital_Platforms.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
-        <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
+        <a href="07_Digital_Platformsv5.html#hydip" class="footer-col__link">HyDip&#8482; FMS</a>
+        <a href="07_Digital_Platformsv5.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
+        <a href="07_Digital_Platformsv5.html#customer-portal" class="footer-col__link">Customer Portal</a>
       </div>
     </div>
     <!-- Corporate -->
@@ -847,7 +886,7 @@
       <div class="footer-col__links">
         <a href="09_About_IOR.html" class="footer-col__link">About IOR</a>
         <a href="10_Careers.html#careers" class="footer-col__link">Careers</a>
-        <a href="09d_Case_Studies.html" class="footer-col__link">Case Studies</a>
+        <a href="09d_Case_Studies_v6.html" class="footer-col__link">Case Studies</a>
         <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
         <a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a>
       </div>

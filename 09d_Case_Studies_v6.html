@@ -55,10 +55,10 @@
     .proto-bar__sep { color: rgba(255,255,255,0.3); padding: 2px 0; font-size: 12px; }
 
     /* ─── UTILITY BAR ─── */
-    .util-bar { background: var(--ior-navy); padding: 6px clamp(20px,8vw,125px); display: flex; justify-content: flex-end; align-items: center; gap: 16px; }
-    .util-bar__link { color: rgba(255,255,255,0.8); font-size: 12px; transition: color var(--transition); text-decoration: none; }
-    .util-bar__link:hover { color: #fff; }
-    .util-bar__sep { color: rgba(255,255,255,0.3); font-size: 12px; }
+    .utility-bar { background: var(--ior-navy); padding: 6px clamp(20px,8vw,125px); display: flex; justify-content: flex-end; align-items: center; gap: 16px; }
+    .utility-bar__link { color: rgba(255,255,255,0.8); font-size: 12px; transition: color var(--transition); text-decoration: none; }
+    .utility-bar__link:hover { color: #fff; }
+    .utility-bar__divider { color: rgba(255,255,255,0.3); font-size: 12px; }
 
     /* ─── PRIMARY NAV ─── */
     .primary-nav { background: var(--ior-blue); padding: 0 clamp(20px,8vw,125px); display: flex; align-items: stretch; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
@@ -72,7 +72,7 @@
     .nav__link.is-active svg { transform: rotate(180deg); }
     .nav-ctas { display: flex; align-items: center; gap: 10px; padding: 12px 0; }
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 20px; font-size: 13px; font-weight: 700; text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: background var(--transition), color var(--transition), border-color var(--transition); border-radius: var(--radius); }
-    .btn--pill { border-radius: 500px; }
+    .btn--pill { border-radius: 0; }
     .btn--primary { background: var(--ior-gold); color: var(--ior-navy); border-color: var(--ior-gold); }
     .btn--primary:hover { background: #e6a418; border-color: #e6a418; }
     .btn--outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.6); }
@@ -177,7 +177,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
-      border-radius: 500px; /* filter pills — explicitly permitted per brief */
+      border-radius: 0; /* filter pills — explicitly permitted per brief */
     }
     .cs-filter-btn:hover,
     .cs-filter-btn.is-active {
@@ -271,7 +271,7 @@
       font-weight: 600;
       cursor: not-allowed;
       opacity: 0.45;
-      border-radius: 500px; /* pagination pill — explicitly permitted per brief */
+      border-radius: 0; /* pagination pill — explicitly permitted per brief */
     }
 
     /* ─── RESPONSIVE ─── */
@@ -310,6 +310,16 @@
     @media (max-width: 768px) { .footer-nav-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 480px) { .footer-nav-grid { grid-template-columns: 1fr; } }
 
+
+    /* Logo Carousel */
+    .logo-carousel-wrap { background: var(--ior-light-blue-bg, #EBF4FB); padding: 28px clamp(20px,8vw,125px); }
+    .logo-carousel-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ior-mid-grey, #6B7280); margin-bottom: 16px; }
+    .logo-carousel-track-outer { overflow: hidden; }
+    .logo-carousel-track { display: flex; gap: 40px; animation: carousel-scroll 28s linear infinite; width: max-content; }
+    .logo-carousel-track:hover { animation-play-state: paused; }
+    .logo-placeholder { width: 120px; height: 44px; background: rgba(0,0,0,.08); display: flex; align-items: center; justify-content: center; font-size: 11px; color: #999; flex-shrink: 0; }
+    @keyframes carousel-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .logo-carousel-track { animation: none; } }
   </style>
 </head>
 <body>
@@ -331,12 +341,12 @@
   </div>
 
   <!-- ═══ UTILITY BAR ═══ -->
-  <div class="util-bar" role="navigation" aria-label="Utility navigation">
-    <a href="11d_Find_Locationv5.html" class="util-bar__link">Find a Location</a>
-    <span class="util-bar__sep" aria-hidden="true">|</span>
-    <a href="07c_Customer_Portalv5.html" class="util-bar__link">Customer Portal</a>
-    <span class="util-bar__sep" aria-hidden="true">|</span>
-    <a href="11_Support_Hubv5.html" class="util-bar__link">Support</a>
+  <div class="utility-bar" role="navigation" aria-label="Utility navigation">
+    <a href="11d_Find_Locationv5.html" class="utility-bar__link">Find a Location</a>
+    <span class="utility-bar__divider" aria-hidden="true">|</span>
+    <a href="07c_Customer_Portalv5.html" class="utility-bar__link">Customer Portal</a>
+    <span class="utility-bar__divider" aria-hidden="true">|</span>
+    <a href="11_Support_Hubv5.html" class="utility-bar__link">Support</a>
   </div>
 
   <!-- ═══ PRIMARY NAV ═══ -->
@@ -354,20 +364,20 @@
           <div class="mega-col">
             <div class="mega-col__title">Ground Fuels</div>
             <ul class="mega-col__links">
-              <li><a href="02a_Diesel_Networkv5.html" class="mega-col__link">Diesel Network</a></li>
-              <li><a href="02b_Bulk_Dieselv5.html" class="mega-col__link">Bulk Diesel</a></li>
-              <li><a href="02c_Lubricantsv5.html" class="mega-col__link">Lubricants</a></li>
-              <li><a href="02d_AdBluev5.html" class="mega-col__link">AdBlue</a></li>
-              <li><a href="02e_Equipmentv5.html" class="mega-col__link">Equipment & Tanks</a></li>
+              <li><a href="03a_Diesel_Network_v3.5.html" class="mega-col__link">Diesel Network</a></li>
+              <li><a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="mega-col__link">Bulk Diesel</a></li>
+              <li><a href="03e_Oils_Lubricants_v3.5.html" class="mega-col__link">Lubricants</a></li>
+              <li><a href="03d_HyBlue_v3.5.html" class="mega-col__link">AdBlue</a></li>
+              <li><a href="05_Equipment_Infrastructure.html" class="mega-col__link">Equipment & Tanks</a></li>
             </ul>
           </div>
           <div class="mega-col">
             <div class="mega-col__title">Aviation</div>
             <ul class="mega-col__links">
-              <li><a href="03a_Aviation_Hubv5.html" class="mega-col__link">Aviation Overview</a></li>
-              <li><a href="03b_Jet_A1v5.html" class="mega-col__link">Jet A-1</a></li>
-              <li><a href="03c_Avgasv5.html" class="mega-col__link">Avgas</a></li>
-              <li><a href="03d_Into_Planev5.html" class="mega-col__link">Into-Plane Service</a></li>
+              <li><a href="04_Aviation.html" class="mega-col__link">Aviation Overview</a></li>
+              <li><a href="04b_Airport_Fuelling_v3.5.html" class="mega-col__link">Jet A-1</a></li>
+              <li><a href="04b_Airport_Fuelling_v3.5.html" class="mega-col__link">Avgas</a></li>
+              <li><a href="04b_Airport_Fuelling_v3.5.html" class="mega-col__link">Into-Plane Service</a></li>
             </ul>
           </div>
           <div class="mega-featured">
@@ -425,20 +435,20 @@
           <div class="mega-col">
             <div class="mega-col__title">Industries</div>
             <ul class="mega-col__links">
-              <li><a href="04a_Transport_Logisticsv5.html" class="mega-col__link">Transport & Logistics</a></li>
-              <li><a href="04b_Agriculturev5.html" class="mega-col__link">Agriculture</a></li>
-              <li><a href="04c_Aviationv5.html" class="mega-col__link">Aviation</a></li>
-              <li><a href="04d_Mining_Resourcesv5.html" class="mega-col__link">Mining & Resources</a></li>
-              <li><a href="04e_Marine_Portsv5.html" class="mega-col__link">Marine & Ports</a></li>
-              <li><a href="04f_Construction_Civilv5.html" class="mega-col__link">Construction & Civil</a></li>
-              <li><a href="04g_Government_Defencev5.html" class="mega-col__link">Government & Defence</a></li>
+              <li><a href="08c_Transport_v5.html" class="mega-col__link">Transport & Logistics</a></li>
+              <li><a href="08b_Agriculture_v5.html" class="mega-col__link">Agriculture</a></li>
+              <li><a href="08g_Aviation_v5.html" class="mega-col__link">Aviation</a></li>
+              <li><a href="08a_Mining_v5.html" class="mega-col__link">Mining & Resources</a></li>
+              <li><a href="08_Industries_v5.html" class="mega-col__link">Marine & Ports</a></li>
+              <li><a href="08d_Construction_v5.html" class="mega-col__link">Construction & Civil</a></li>
+              <li><a href="08f_Government_v5.html" class="mega-col__link">Government & Defence</a></li>
             </ul>
           </div>
           <div class="mega-featured">
             <span class="mega-featured__label">Industries Hub</span>
             <p class="mega-featured__title">Fuel for every sector.</p>
             <p class="mega-featured__body">From remote mining to metropolitan fleets — IOR delivers where others don't.</p>
-            <a href="04_Industries_Hubv5.html" class="btn btn--primary btn--pill mega-featured__cta">Explore Industries</a>
+            <a href="08_Industries_v5.html" class="btn btn--primary btn--pill mega-featured__cta">Explore Industries</a>
           </div>
         </div>
       </li>
@@ -451,8 +461,8 @@
           <div class="mega-col">
             <div class="mega-col__title">About IOR</div>
             <ul class="mega-col__links">
-              <li><a href="09a_About_IOR_Hubv5.html" class="mega-col__link">About IOR Hub</a></li>
-              <li><a href="09b_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a></li>
+              <li><a href="09_About_IOR.html" class="mega-col__link">About IOR Hub</a></li>
+              <li><a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a></li>
               <li><a href="09d_Case_Studies_v6.html" class="mega-col__link">Case Studies</a></li>
               <li><a href="11c_News_Updates.html" class="mega-col__link">News & Updates</a></li>
             </ul>
@@ -461,7 +471,7 @@
             <span class="mega-featured__label">Our Story</span>
             <p class="mega-featured__title">Fuelling Australia since 1984.</p>
             <p class="mega-featured__body">Family-owned, nationally operated. Discover the IOR difference.</p>
-            <a href="09a_About_IOR_Hubv5.html" class="btn btn--primary btn--pill mega-featured__cta">Our Story</a>
+            <a href="09_About_IOR.html" class="btn btn--primary btn--pill mega-featured__cta">Our Story</a>
           </div>
         </div>
       </li>
@@ -515,12 +525,12 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="drawer__sub" id="drawer-fuel">
-          <a href="02a_Diesel_Networkv5.html" class="drawer__sub-link">Diesel Network</a>
-          <a href="02b_Bulk_Dieselv5.html" class="drawer__sub-link">Bulk Diesel</a>
-          <a href="03a_Aviation_Hubv5.html" class="drawer__sub-link">Aviation Overview</a>
-          <a href="03b_Jet_A1v5.html" class="drawer__sub-link">Jet A-1</a>
-          <a href="03c_Avgasv5.html" class="drawer__sub-link">Avgas</a>
-          <a href="02e_Equipmentv5.html" class="drawer__sub-link">Equipment & Tanks</a>
+          <a href="03a_Diesel_Network_v3.5.html" class="drawer__sub-link">Diesel Network</a>
+          <a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="drawer__sub-link">Bulk Diesel</a>
+          <a href="04_Aviation.html" class="drawer__sub-link">Aviation Overview</a>
+          <a href="04b_Airport_Fuelling_v3.5.html" class="drawer__sub-link">Jet A-1</a>
+          <a href="04b_Airport_Fuelling_v3.5.html" class="drawer__sub-link">Avgas</a>
+          <a href="05_Equipment_Infrastructure.html" class="drawer__sub-link">Equipment & Tanks</a>
         </div>
       </div>
       <div class="drawer__item">
@@ -540,13 +550,13 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="drawer__sub" id="drawer-industries">
-          <a href="04a_Transport_Logisticsv5.html" class="drawer__sub-link">Transport & Logistics</a>
-          <a href="04b_Agriculturev5.html" class="drawer__sub-link">Agriculture</a>
-          <a href="04c_Aviationv5.html" class="drawer__sub-link">Aviation</a>
-          <a href="04d_Mining_Resourcesv5.html" class="drawer__sub-link">Mining & Resources</a>
-          <a href="04e_Marine_Portsv5.html" class="drawer__sub-link">Marine & Ports</a>
-          <a href="04f_Construction_Civilv5.html" class="drawer__sub-link">Construction & Civil</a>
-          <a href="04g_Government_Defencev5.html" class="drawer__sub-link">Government & Defence</a>
+          <a href="08c_Transport_v5.html" class="drawer__sub-link">Transport & Logistics</a>
+          <a href="08b_Agriculture_v5.html" class="drawer__sub-link">Agriculture</a>
+          <a href="08g_Aviation_v5.html" class="drawer__sub-link">Aviation</a>
+          <a href="08a_Mining_v5.html" class="drawer__sub-link">Mining & Resources</a>
+          <a href="08_Industries_v5.html" class="drawer__sub-link">Marine & Ports</a>
+          <a href="08d_Construction_v5.html" class="drawer__sub-link">Construction & Civil</a>
+          <a href="08f_Government_v5.html" class="drawer__sub-link">Government & Defence</a>
         </div>
       </div>
       <div class="drawer__item">
@@ -555,8 +565,8 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="drawer__sub" id="drawer-about">
-          <a href="09a_About_IOR_Hubv5.html" class="drawer__sub-link">About IOR Hub</a>
-          <a href="09b_Our_Leadershipv5.html" class="drawer__sub-link">Our Leadership</a>
+          <a href="09_About_IOR.html" class="drawer__sub-link">About IOR Hub</a>
+          <a href="09a_Our_Leadershipv5.html" class="drawer__sub-link">Our Leadership</a>
           <a href="09d_Case_Studies_v6.html" class="drawer__sub-link">Case Studies</a>
           <a href="11c_News_Updates.html" class="drawer__sub-link">News & Updates</a>
         </div>
@@ -675,7 +685,32 @@
     </section>
 
     <!-- ─── SECTION 5: PRE-FOOTER ─── -->
-    <section class="pre-footer" aria-label="Call to action">
+    <!-- Logo Carousel -->
+<div class="logo-carousel-wrap" aria-label="Trusted by" role="region">
+  <p class="logo-carousel-label">Trusted by leading Australian businesses</p>
+  <div class="logo-carousel-track-outer">
+    <div class="logo-carousel-track" aria-hidden="true">
+      <div class="logo-placeholder">Client Logo 1</div>
+      <div class="logo-placeholder">Client Logo 2</div>
+      <div class="logo-placeholder">Client Logo 3</div>
+      <div class="logo-placeholder">Client Logo 4</div>
+      <div class="logo-placeholder">Client Logo 5</div>
+      <div class="logo-placeholder">Client Logo 6</div>
+      <div class="logo-placeholder">Client Logo 7</div>
+      <div class="logo-placeholder">Client Logo 8</div>
+      <div class="logo-placeholder">Client Logo 1</div>
+      <div class="logo-placeholder">Client Logo 2</div>
+      <div class="logo-placeholder">Client Logo 3</div>
+      <div class="logo-placeholder">Client Logo 4</div>
+      <div class="logo-placeholder">Client Logo 5</div>
+      <div class="logo-placeholder">Client Logo 6</div>
+      <div class="logo-placeholder">Client Logo 7</div>
+      <div class="logo-placeholder">Client Logo 8</div>
+    </div>
+  </div>
+</div>
+
+<section class="pre-footer" aria-label="Call to action">
       <div class="pre-footer__row">
         <h2 class="pre-footer__title">We&rsquo;re here to help</h2>
         <div class="pre-footer__ctas">
@@ -716,9 +751,9 @@
       <div>
         <div class="footer-col__title">Digital Platforms</div>
         <div class="footer-col__links">
-          <a href="07_Digital_Platforms.html#hydip" class="footer-col__link">HyDip&#8482; FMS</a>
-          <a href="07_Digital_Platforms.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
-          <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
+          <a href="07_Digital_Platformsv5.html#hydip" class="footer-col__link">HyDip&#8482; FMS</a>
+          <a href="07_Digital_Platformsv5.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
+          <a href="07_Digital_Platformsv5.html#customer-portal" class="footer-col__link">Customer Portal</a>
         </div>
       </div>
       <!-- Corporate -->
