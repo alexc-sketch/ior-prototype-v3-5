@@ -131,7 +131,7 @@
     .flip-card__subtitle{font-size:13px;color:var(--mid-grey);margin-top:8px;text-align:center}
     .flip-card__hint{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fc-teal);margin-top:12px}
     .flip-card__back-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:12px;text-align:center}
-    .flip-card__back-text{font-size:14px;line-height:1.6;text-align:center;color:rgba(255,255,255,.85)}
+    .flip-card__back-text{font-size:14px;line-height:1.7;text-align:center;color:#fff;padding:0 8px}
     @media(max-width:768px){.flip-grid{grid-template-columns:1fr}.flip-card{height:auto;perspective:none}.flip-card__inner{transform:none!important;display:flex;flex-direction:column;height:auto}.flip-card__front{position:relative;inset:auto;backface-visibility:visible}.flip-card__back{position:relative;inset:auto;transform:none;backface-visibility:visible;margin-top:2px}}
 
     /* HOW IT WORKS — INTERACTIVE TABS */
@@ -150,7 +150,7 @@
     .hiw-tab.is-active .hiw-tab__num{background:var(--fc-teal);color:var(--fc-dark)}
     .hiw-tab__content{flex:1}
     .hiw-tab__title{font-size:16px;font-weight:700;color:rgba(255,255,255,.5);line-height:1.3;margin-bottom:0;transition:color .25s}
-    .hiw-tab.is-active .hiw-tab__title{color:#fff}
+    .hiw-tab.is-active .hiw-tab__title{color:var(--fc-teal)}
     .hiw-tab__desc{font-size:14px;color:rgba(255,255,255,.65);line-height:1.65;margin-top:10px;max-height:0;overflow:hidden;transition:max-height .35s ease,margin-top .25s}
     .hiw-tab.is-active .hiw-tab__desc{max-height:120px}
     .hiw-visual{position:relative}
@@ -190,6 +190,30 @@
     .testimonial-card--placeholder p{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mid-grey);text-align:center}
     @media(max-width:768px){.testimonial-grid{grid-template-columns:1fr}}
 
+    /* VIDEO MODAL */
+    .vid-modal{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:24px}
+    .vid-modal.is-open{display:flex}
+    .vid-modal__inner{position:relative;width:100%;max-width:900px}
+    .vid-modal__close{position:absolute;top:-44px;right:0;background:none;border:none;color:#fff;font-size:28px;cursor:pointer;line-height:1;padding:8px;opacity:.8}
+    .vid-modal__close:hover{opacity:1}
+    .vid-modal__ratio{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000}
+    .vid-modal__ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+    /* VIDEO WATCH BUTTON */
+    .hiw-watch-btn{display:inline-flex;align-items:center;gap:10px;margin-top:24px;background:rgba(0,209,204,.12);border:1px solid rgba(0,209,204,.35);color:var(--fc-teal);padding:12px 20px;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s,border-color .2s}
+    .hiw-watch-btn:hover{background:rgba(0,209,204,.2);border-color:var(--fc-teal)}
+    .hiw-watch-btn svg{flex-shrink:0}
+    /* PAYMENT TERMINAL SECTION */
+    .pt-section{background:var(--fc-dark);padding:clamp(48px,6vw,72px) var(--section-pad-x)}
+    .pt-section__inner{max-width:var(--container-max);margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,72px);align-items:center}
+    .pt-section__eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);margin-bottom:14px}
+    .pt-section__h2{font-size:clamp(22px,2.8vw,34px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:14px}
+    .pt-section__sub{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.7);line-height:1.7}
+    .pt-thumb{position:relative;cursor:pointer;display:block}
+    .pt-thumb__img{width:100%;aspect-ratio:16/9;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+    .pt-thumb__label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+    .pt-play{width:64px;height:64px;background:rgba(0,209,204,.2);border:2px solid var(--fc-teal);display:flex;align-items:center;justify-content:center;transition:background .2s}
+    .pt-thumb:hover .pt-play{background:rgba(0,209,204,.35)}
+    @media(max-width:768px){.pt-section__inner{grid-template-columns:1fr}}
     /* FAQ */
     .faq-section{background:var(--fc-cream);padding:clamp(56px,7vw,88px) var(--section-pad-x)}
     .faq-section__inner{max-width:var(--container-max);margin-inline:auto;display:grid;grid-template-columns:1fr 2fr;gap:clamp(40px,6vw,80px);align-items:start}
@@ -201,11 +225,11 @@
     .faq-list{display:flex;flex-direction:column;gap:0}
     .faq-item{border-bottom:1px solid rgba(19,17,77,.12)}
     .faq-item:first-child{border-top:1px solid rgba(19,17,77,.12)}
-    .faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;font-size:clamp(14px,1.4vw,16px);font-weight:700;color:var(--fc-dark);background:none;border:none;cursor:pointer;text-align:left;font-family:var(--font)}
+    .faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;font-size:clamp(14px,1.4vw,16px);font-weight:700;color:var(--fc-dark);background:none;border:none;cursor:pointer;text-align:left;font-family:var(--font)}
     .faq-btn:hover{color:var(--ior-blue)}
     .faq-chevron{width:20px;height:20px;flex-shrink:0;transition:transform var(--transition-fast)}
     .faq-item--open .faq-chevron{transform:rotate(180deg)}
-    .faq-answer{display:none;padding:0 0 18px;font-size:clamp(14px,1.4vw,15px);color:var(--dark-grey);line-height:1.7}
+    .faq-answer{display:none;padding:0 0 24px;font-size:clamp(14px,1.4vw,15px);color:var(--dark-grey);line-height:1.7}
     .faq-item--open .faq-answer{display:block}
     @media(max-width:900px){.faq-section__inner{grid-template-columns:1fr}}
 
@@ -483,6 +507,10 @@
         <p class="hiw-section__eyebrow">HOW IT WORKS</p>
         <h2 class="hiw-section__h2" id="hiw-heading">Start using Fuelcharge in three steps</h2>
         <p class="hiw-section__sub">No paperwork. No waiting for approval. Download the app and you&rsquo;re ready to refuel.</p>
+        <button class="hiw-watch-btn" onclick="openVidModal('vid-modal-1')" aria-label="Watch the Fuelcharge video guide">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+          Watch the Video Guide
+        </button>
       </div>
       <div class="hiw-body">
         <!-- LEFT: Numbered tab list -->
@@ -593,7 +621,26 @@
     </div>
   </section>
 
-  <!-- SECTION 7: FAQs -->
+  <!-- SECTION 7: PAYMENT TERMINAL VIDEO -->
+  <section class="pt-section" id="payment-terminal" aria-label="Using the Payment Terminal">
+    <div class="pt-section__inner">
+      <div class="fade-up">
+        <p class="pt-section__eyebrow">AT THE PUMP</p>
+        <h2 class="pt-section__h2">Using the Payment Terminal</h2>
+        <p class="pt-section__sub">New to IOR central payment terminals? Watch this quick guide on how to pre-authorise and pump.</p>
+      </div>
+      <button class="pt-thumb" onclick="openVidModal('vid-modal-2')" aria-label="Watch the payment terminal guide video">
+        <div class="pt-thumb__img">
+          <div class="pt-play">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--fc-teal)" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <div class="pt-thumb__label">Video thumbnail &mdash; How to use the Fuelcharge Payment Terminal (1:30)</div>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <!-- SECTION 8: FAQs -->
   <section class="faq-section" id="faqs" aria-labelledby="faq-heading">
     <div class="faq-section__inner">
       <div class="faq-section__sidebar fade-up">
@@ -623,15 +670,31 @@
           <button class="faq-btn" aria-expanded="false">How do I get my receipts?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
           <div class="faq-answer">All transactions are stored immediately against your Fuelcharge profile within the app. You can view your transaction history and download digital receipts at any time &mdash; no more lost paper dockets.</div>
         </div>
-        <div class="faq-item" role="listitem">
-          <button class="faq-btn" aria-expanded="false">Where can I use Fuelcharge?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="faq-answer">Fuelcharge is accepted at over 110 IOR diesel stops and more than 30 aviation airstrips across Australia. Use the map inside the app to find your nearest location and check current pricing.</div>
-        </div>
       </div>
     </div>
   </section>
 
 </main>
+
+<!-- VIDEO MODAL 1: Introducing Fuelcharge -->
+<div class="vid-modal" id="vid-modal-1" role="dialog" aria-modal="true" aria-label="Introducing Fuelcharge video" onclick="if(event.target===this)closeVidModal('vid-modal-1')">
+  <div class="vid-modal__inner">
+    <button class="vid-modal__close" onclick="closeVidModal('vid-modal-1')" aria-label="Close video">&times;</button>
+    <div class="vid-modal__ratio">
+      <iframe id="vid-frame-1" src="" data-src="https://www.youtube.com/embed/jfEqkJmzyBM?autoplay=1&rel=0" title="Introducing Fuelcharge" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL 2: How to use the Fuelcharge Payment Terminal -->
+<div class="vid-modal" id="vid-modal-2" role="dialog" aria-modal="true" aria-label="Fuelcharge Payment Terminal guide video" onclick="if(event.target===this)closeVidModal('vid-modal-2')">
+  <div class="vid-modal__inner">
+    <button class="vid-modal__close" onclick="closeVidModal('vid-modal-2')" aria-label="Close video">&times;</button>
+    <div class="vid-modal__ratio">
+      <iframe id="vid-frame-2" src="" data-src="https://www.youtube.com/embed/4XD3FZOAnr4?autoplay=1&rel=0" title="How to use the Fuelcharge Payment Terminal" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
 
 <!-- PRE-FOOTER -->
 <section class="pre-footer" aria-label="We're here to help">
@@ -807,6 +870,26 @@
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('fade-up--visible');fadeObs.unobserve(e.target);}});
   },{threshold:0.1});
   document.querySelectorAll('.fade-up').forEach(el=>fadeObs.observe(el));
+
+  // VIDEO MODAL
+  function openVidModal(id){
+    const modal=document.getElementById(id);
+    if(!modal)return;
+    const frame=modal.querySelector('iframe');
+    if(frame&&!frame.src)frame.src=frame.dataset.src;
+    modal.classList.add('is-open');
+    document.body.style.overflow='hidden';
+    modal.querySelector('.vid-modal__close').focus();
+  }
+  function closeVidModal(id){
+    const modal=document.getElementById(id);
+    if(!modal)return;
+    modal.classList.remove('is-open');
+    const frame=modal.querySelector('iframe');
+    if(frame)frame.src='';
+    document.body.style.overflow='';
+  }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.vid-modal.is-open').forEach(m=>closeVidModal(m.id));}});
 </script>
 </body>
 </html>
