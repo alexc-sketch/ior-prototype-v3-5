@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <!-- ╔══════════════════════════════════════════════════════════════════════╗
-     ║  IOR AVIATION NETWORK — v8                                          ║
+     ║  IOR AVIATION NETWORK — v8                                            ║
      ║  Repo:   ior-prototype-v3-5                                         ║
      ║  Branch: feature/network-pages-v8                                   ║
-     ║  Source: 04a_Aviation_Network_v4.html (ior-prototype, PR #16)       ║
+     ║  Source: 03a_Diesel_Network_v4.html (ior-prototype, PR #16)         ║
      ║  Shell:  IOR_Global_Template_Shell_v4.html (v3-5 repo)              ║
      ║                                                                      ║
      ║  SECTION ORDER                                                       ║
      ║    1. Canonical Header (utility bar + sticky nav + mega panels)      ║
-     ║    2. Hero — SVG map, gold pulsing dots, no 50/50 split              ║
-     ║    3. Quick Links Bar — "Explore Aviation:" label (4 links)          ║
-     ║    4. Features Grid — 4 boxes (aviation theme)                       ║
+     ║    2. Hero — SVG map, pulsing dots, no 50/50 split                   ║
+     ║    3. Quick Links Bar — "Explore Ground Fuels:" label                ║
+     ║    4. Features Grid — 4 boxes                                        ║
      ║    5. Map Teaser — 50/50 text+map, dual CTAs                         ║
-     ║    6. Testimonial — standalone full-width (Lee Schofield)            ║
+     ║    6. Testimonial — standalone full-width (Ken Easter)               ║
      ║    7. Fuelcharge Billboard — standalone fc-billboard                  ║
-     ║    8. HubSpot Lead Capture — Aviation Enquiry placeholder            ║
+     ║    8. HubSpot Lead Capture — dual-purpose placeholder                ║
      ║    9. Logo Carousel — "Trusted by" (above pre-footer)                ║
      ║   10. Related Content — tabbed Case Studies / Blog Posts             ║
      ║   11. FAQ Accordion + Still Have Questions?                          ║
@@ -26,20 +26,19 @@
      ║    ✓ No CSS gradients                                                ║
      ║    ✓ clamp() for all typography and spacing                          ║
      ║    ✓ dvh for hero height                                             ║
-     ║    ✓ No operating hours in live copy (R1)                            ║
-     ║    ✓ No SLA time commitments (R21)                                   ║
+     ║    ✓ No operating hours in live copy                                 ║
+     ║    ✓ No SLA time commitments                                         ║
      ║    ✓ No emoji in page content                                        ║
      ║    ✓ No "IOR Petroleum" in customer-facing copy                      ║
      ║    ✓ HubSpot only in developer comments                              ║
      ║    ✓ No v3.5 filenames in href attributes                            ║
-     ║    ✓ --av-gold applied to page accents only (not nav/footer)         ║
      ╚══════════════════════════════════════════════════════════════════════╝ -->
 <html lang="en-AU">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IOR Aviation Network — Airport Fuelling &amp; Aviation Bulk Delivery | IOR</title>
-  <meta name="description" content="IOR Aviation Network — CASA-compliant airport fuelling, aviation bulk delivery, and aviation oils across Australia. Apply for an aviation account today.">
+  <title>IOR Aviation Network — 39 Aviation Facilities Australia | IOR</title>
+  <meta name="description" content="Access 39 unmanned 24/7 aviation refuelling facilities across Australia's regional and remote airfields. JIG 4 compliant, Jet A-1 and Avgas, completely cashless. Apply for your IOR aviation account today.">
 
   <style>
     /* ============================================================
@@ -57,7 +56,6 @@
       --ior-light-blue-bg: #E0F1FF;
       --aviation-gold:     #D98300;
       --av-gold:           #D98300;
-      --av-gold-light:     #F5A623;
       --hyblue:            #0069C6;
       --white:             #FFFFFF;
       --off-white:         #F5F7FA;
@@ -84,8 +82,7 @@
       --transition-fast:   150ms ease;
       --transition:        250ms ease;
       --z-nav:             100;
-      /* Aviation silo accent — applied to page content only, never nav/footer */
-      --silo-accent-color: var(--av-gold);
+      --silo-accent-color: var(--aviation-gold);
       /* Fuelcharge sub-brand */
       --fc-dark:           #13114D;
       --fc-teal:           #00D1CC;
@@ -105,14 +102,12 @@
     /* Eyebrow */
     .eyebrow { font-size: clamp(11px, 1.2vw, 14px); font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--mid-grey); margin-bottom: 12px; display: block; }
     .eyebrow--white { color: rgba(255,255,255,.7); }
-    .eyebrow--gold  { color: var(--av-gold); }
+    .eyebrow--blue  { color: var(--ior-blue); }
 
     /* Buttons */
     .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font); font-size: clamp(14px, 1.4vw, 16px); font-weight: 800; padding: clamp(14px, 1.5vw, 18px) clamp(20px, 2vw, 28px); border-radius: 0; cursor: pointer; text-align: center; transition: all var(--transition-base); text-decoration: none; white-space: nowrap; border: 2px solid transparent; min-height: 44px; min-width: 44px; }
     .btn--primary       { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
     .btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
-    .btn--av            { background: var(--av-gold); color: #fff; border-color: var(--av-gold); }
-    .btn--av:hover      { background: #b87000; border-color: #b87000; }
     .btn--outline       { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
     .btn--outline:hover { background: var(--ior-blue); color: #fff; }
     .btn--outline-white       { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
@@ -187,11 +182,11 @@
     .ior-drawer__ctas { padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(255,255,255,.1); }
 
     /* ============================================================
-       HERO — SVG MAP + GOLD PULSING DOTS
+       HERO — SVG MAP + PULSING DOTS
     ============================================================ */
     .hero {
       position: relative;
-      border-top: 4px solid var(--av-gold);
+      border-top: 4px solid var(--aviation-gold);
       overflow: hidden;
       min-height: clamp(480px, 55dvh, 700px);
       display: flex;
@@ -204,26 +199,26 @@
     .hero__overlay { position: absolute; inset: 0; z-index: 2; background: rgba(10,64,102,0.55); }
     .hero__content { position: relative; z-index: 3; padding: clamp(48px, 6vw, 80px) var(--section-pad-x); max-width: var(--container-max); margin-inline: auto; width: 100%; }
     .hero__content h1 { font-size: clamp(32px, 4.5vw, 58px); font-weight: 800; line-height: 1.1; color: #fff; margin-bottom: clamp(16px, 2vw, 24px); max-width: 640px; }
-    .hero__content h1 .highlight { color: var(--av-gold); }
+    .hero__content h1 .highlight { color: var(--ior-sky); }
     .hero__content p { font-size: clamp(15px, 1.6vw, 18px); color: rgba(255,255,255,.85); max-width: 520px; margin-bottom: clamp(24px, 3vw, 36px); line-height: 1.7; }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    /* Gold pulsing dots */
+    /* Pulsing dots */
     .hero__dots { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
     .pulse-dot { position: absolute; }
-    .pulse-dot__ring { width: 18px; height: 18px; border-radius: 50%; background: var(--av-gold); opacity: .9; animation: pulse-ring 2.4s ease-out infinite; }
+    .pulse-dot__ring { width: 18px; height: 18px; border-radius: 50%; background: var(--ior-sky); opacity: .9; animation: pulse-ring 2.4s ease-out infinite; }
     .pulse-dot__core { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 8px; height: 8px; border-radius: 50%; background: #fff; }
     @keyframes pulse-ring { 0% { transform: scale(1); opacity: .9; } 70% { transform: scale(2.4); opacity: 0; } 100% { transform: scale(1); opacity: 0; } }
 
     /* ============================================================
-       QUICK LINKS BAR — aviation silo (4 links, no Aviation Hub)
+       QUICK LINKS BAR — canonical v3-5
     ============================================================ */
     .quick-links-bar { background: var(--ior-light-blue-bg); border-bottom: 1px solid rgba(3,85,163,.15); padding: 0 var(--section-pad-x); }
     .quick-links-bar__inner { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; gap: 0; overflow-x: auto; }
-    .quick-links-bar__label { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--av-gold); white-space: nowrap; padding: 12px 20px 12px 0; border-right: 1px solid rgba(3,85,163,.2); margin-right: 4px; flex-shrink: 0; }
+    .quick-links-bar__label { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ior-blue); white-space: nowrap; padding: 12px 20px 12px 0; border-right: 1px solid rgba(3,85,163,.2); margin-right: 4px; flex-shrink: 0; }
     .quick-links-bar__link { display: inline-flex; align-items: center; gap: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: var(--ior-navy); white-space: nowrap; border-bottom: 2px solid transparent; transition: all var(--transition-fast); min-height: 44px; }
-    .quick-links-bar__link:hover { color: var(--av-gold); border-bottom-color: var(--av-gold); }
-    .quick-links-bar__link--active { color: var(--av-gold); border-bottom-color: var(--av-gold); font-weight: 800; }
+    .quick-links-bar__link:hover { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+    .quick-links-bar__link--active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); font-weight: 800; }
 
     /* ============================================================
        FEATURES GRID
@@ -231,9 +226,9 @@
     .features-section { padding: var(--section-pad) 0; background: var(--brand-fill); }
     .features-section__header { text-align: center; margin-bottom: clamp(32px, 4vw, 48px); }
     .features-section__header h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--charcoal); line-height: 1.2; }
-    .features-section__header h2 .accent { color: var(--av-gold); }
+    .features-section__header h2 .accent { color: var(--ior-blue); }
     .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); margin-bottom: clamp(32px, 4vw, 48px); }
-    .feature-box { background: #fff; padding: clamp(24px, 3vw, 36px); border-top: 3px solid var(--av-gold); }
+    .feature-box { background: #fff; padding: clamp(24px, 3vw, 36px); border-top: 3px solid var(--aviation-gold); }
     .feature-box__icon { width: 48px; height: 48px; margin-bottom: 16px; }
     .feature-box__icon svg { width: 100%; height: 100%; }
     .feature-box__title { font-size: clamp(16px, 1.6vw, 18px); font-weight: 800; color: var(--charcoal); margin-bottom: 10px; }
@@ -248,7 +243,7 @@
     .map-teaser { padding: var(--section-pad) 0; background: #fff; }
     .map-teaser__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: center; max-width: var(--container-max); margin-inline: auto; padding-inline: var(--section-pad-x); }
     .map-teaser__content h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--charcoal); line-height: 1.2; margin-bottom: 16px; }
-    .map-teaser__content h2 .accent { color: var(--av-gold); }
+    .map-teaser__content h2 .accent { color: var(--ior-blue); }
     .map-teaser__content p { font-size: clamp(14px, 1.4vw, 16px); color: var(--dark-grey); line-height: 1.7; margin-bottom: clamp(24px, 3vw, 36px); }
     .map-teaser__ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
     .map-teaser__placeholder { background: var(--brand-fill); border: 1px solid var(--border-color-light); aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--mid-grey); font-size: 13px; text-align: center; padding: 24px; }
@@ -271,7 +266,7 @@
     ============================================================ */
     .testimonial-section { padding: var(--section-pad) 0; background: var(--ior-navy); }
     .testimonial-section__inner { max-width: 860px; margin-inline: auto; padding-inline: var(--section-pad-x); }
-    .testimonial-section__quote { font-size: clamp(18px, 2.2vw, 26px); font-weight: 600; color: #fff; line-height: 1.55; border-left: 4px solid var(--av-gold); padding-left: clamp(20px, 3vw, 32px); margin-bottom: clamp(20px, 2.5vw, 28px); font-style: italic; }
+    .testimonial-section__quote { font-size: clamp(18px, 2.2vw, 26px); font-weight: 600; color: #fff; line-height: 1.55; border-left: 4px solid var(--ior-sky); padding-left: clamp(20px, 3vw, 32px); margin-bottom: clamp(20px, 2.5vw, 28px); font-style: italic; }
     .testimonial-section__attr { display: flex; align-items: center; gap: 16px; padding-left: clamp(24px, 3.5vw, 36px); }
     .testimonial-section__attr-name { font-size: clamp(14px, 1.4vw, 16px); font-weight: 800; color: #fff; }
     .testimonial-section__attr-role { font-size: clamp(12px, 1.2vw, 14px); color: rgba(255,255,255,.65); margin-top: 2px; }
@@ -288,6 +283,8 @@
     .fc-billboard__ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: clamp(24px, 3vw, 32px); }
     .btn--fc { background: var(--fc-teal); color: var(--fc-dark); border-color: var(--fc-teal); font-weight: 900; }
     .btn--fc:hover { background: #00b8b4; border-color: #00b8b4; }
+    .btn--white { background: #fff; color: var(--aviation-gold); border-color: #fff; }
+    .btn--white:hover { background: var(--ior-light); }
     .fc-billboard__badges { display: flex; gap: 12px; flex-wrap: wrap; }
     .fc-billboard__badge { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 1.5px solid rgba(255,255,255,.3); font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); transition: border-color var(--transition-fast); }
     .fc-billboard__badge:hover { border-color: #fff; color: #fff; }
@@ -327,19 +324,19 @@
     .related-content { padding: clamp(40px,5vw,72px) 0; background: var(--grey-50); }
     .related-content__tabs { display: flex; border-bottom: 2px solid var(--grey-200); margin-bottom: 28px; }
     .related-content__tab { font-size: 14px; font-weight: 600; color: var(--grey-400); padding: 10px 20px; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color var(--transition), border-color var(--transition); min-height: 44px; }
-    .related-content__tab.active { color: var(--av-gold); border-bottom-color: var(--av-gold); }
+    .related-content__tab.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
     .related-tab-panel { display: none; }
     .related-tab-panel.active { display: block; }
     .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,2vw,20px); }
     @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
     .related-card { background: #fff; border: 1px solid var(--grey-200); }
     .related-card__img { background: var(--grey-100); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
-    .related-card__img-logo { width: 28px; height: 28px; background: var(--av-gold); display: flex; align-items: center; justify-content: center; }
+    .related-card__img-logo { width: 28px; height: 28px; background: var(--ior-blue); display: flex; align-items: center; justify-content: center; }
     .related-card__body { padding: 18px; }
-    .related-card__tag { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--av-gold); margin-bottom: 6px; }
+    .related-card__tag { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 6px; }
     .related-card__title { font-size: 14px; font-weight: 700; color: var(--grey-900); line-height: 1.4; margin-bottom: 6px; }
     .related-card__excerpt { font-size: 13px; color: var(--grey-700); line-height: 1.6; margin-bottom: 14px; }
-    .related-card__link { font-size: 13px; font-weight: 700; color: var(--av-gold); }
+    .related-card__link { font-size: 13px; font-weight: 700; color: var(--ior-blue); }
     .related-card__link:hover { text-decoration: underline; }
     .related-content__view-all { text-align: center; margin-top: 28px; }
 
@@ -350,7 +347,7 @@
     .faq-list { display: flex; flex-direction: column; }
     .faq-item { border-bottom: 1px solid var(--grey-200); }
     .faq-question { width: 100%; text-align: left; padding: clamp(12px,1.5vw,18px) 0; font-size: clamp(14px,1.4vw,16px); font-weight: 600; color: var(--grey-900); background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: color var(--transition); min-height: 44px; }
-    .faq-question:hover, .faq-question[aria-expanded="true"] { color: var(--av-gold); }
+    .faq-question:hover, .faq-question[aria-expanded="true"] { color: var(--ior-blue); }
     .faq-chevron { flex-shrink: 0; transition: transform var(--transition); }
     .faq-question[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
     .faq-answer { overflow: hidden; max-height: 0; transition: max-height .35s ease; }
@@ -359,17 +356,15 @@
     .faq-footer__text h4 { font-size: 15px; font-weight: 700; color: var(--grey-900); margin-bottom: 4px; }
     .faq-footer__text p { font-size: 13px; color: var(--grey-700); }
     .faq-footer__actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; flex-shrink: 0; }
-    .faq-footer__help-link { font-size: 13px; color: var(--av-gold); text-decoration: underline; text-underline-offset: 4px; }
+    .faq-footer__help-link { font-size: 13px; color: var(--ior-blue); text-decoration: underline; text-underline-offset: 4px; }
 
     /* ============================================================
        FINAL CTA
     ============================================================ */
-    .final-cta { padding: var(--section-pad) 0; background: var(--av-gold); text-align: center; }
+    .final-cta { padding: var(--section-pad) 0; background: var(--aviation-gold); text-align: center; }
     .final-cta h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.2; }
-    .final-cta p { font-size: clamp(14px, 1.5vw, 17px); color: rgba(255,255,255,.9); margin-bottom: clamp(28px, 3vw, 40px); max-width: 560px; margin-inline: auto; }
+    .final-cta p { font-size: clamp(14px, 1.5vw, 17px); color: rgba(255,255,255,.85); margin-bottom: clamp(28px, 3vw, 40px); max-width: 560px; margin-inline: auto; }
     .final-cta__ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn--white { background: #fff; color: var(--av-gold); border-color: #fff; font-weight: 800; }
-    .btn--white:hover { background: rgba(255,255,255,.9); }
 
     /* ============================================================
        PRE-FOOTER — canonical v3-5
@@ -536,7 +531,7 @@
     <button class="ior-drawer__close" id="drawer-close" aria-label="Close mobile menu">&times;</button>
   </div>
   <div class="ior-drawer__body">
-    <div class="ior-drawer__item"><button class="ior-drawer__link" data-drawer="fs-mob" aria-expanded="false">Fuel Solutions <span aria-hidden="true">&#8250;</span></button><div class="ior-drawer__sub" id="fs-mob"><a href="03_Ground_Fuels.html" class="ior-drawer__sub-link">Ground Fuels Hub</a><a href="03a_Diesel_Network_v8.html" class="ior-drawer__sub-link">IOR Diesel Network</a><a href="#" class="ior-drawer__sub-link">On-Site Refuelling</a><a href="#" class="ior-drawer__sub-link">Bulk Diesel Delivery</a><a href="#" class="ior-drawer__sub-link">HyBlue&#8482; AdBlue</a><a href="#" class="ior-drawer__sub-link">Oils &amp; Lubricants</a><a href="04a_Aviation_Network_v8.html" class="ior-drawer__sub-link">Aviation Network</a><a href="05_Equipment_Infrastructure.html" class="ior-drawer__sub-link">Equipment &amp; Infrastructure</a><a href="06_Supply_Trading.html" class="ior-drawer__sub-link">Supply &amp; Trading</a></div></div>
+    <div class="ior-drawer__item"><button class="ior-drawer__link" data-drawer="fs-mob" aria-expanded="false">Fuel Solutions <span aria-hidden="true">&#8250;</span></button><div class="ior-drawer__sub" id="fs-mob"><a href="03_Ground_Fuels.html" class="ior-drawer__sub-link">Ground Fuels Hub</a><a href="04a_Aviation_Network_v8.html" class="ior-drawer__sub-link">Aviation Network</a><a href="#" class="ior-drawer__sub-link">On-Site Refuelling</a><a href="#" class="ior-drawer__sub-link">Bulk Diesel Delivery</a><a href="#" class="ior-drawer__sub-link">HyBlue&#8482; AdBlue</a><a href="#" class="ior-drawer__sub-link">Oils &amp; Lubricants</a><a href="04a_Aviation_Network_v8.html" class="ior-drawer__sub-link">Aviation Network</a><a href="05_Equipment_Infrastructure.html" class="ior-drawer__sub-link">Equipment &amp; Infrastructure</a><a href="06_Supply_Trading.html" class="ior-drawer__sub-link">Supply &amp; Trading</a></div></div>
     <div class="ior-drawer__item"><button class="ior-drawer__link" data-drawer="dig-mob" aria-expanded="false">Digital Platforms <span aria-hidden="true">&#8250;</span></button><div class="ior-drawer__sub" id="dig-mob"><a href="07_Digital_Platformsv5.html" class="ior-drawer__sub-link">Digital Platforms Hub</a><a href="07a_HyDip_FMSv6.html" class="ior-drawer__sub-link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="ior-drawer__sub-link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="ior-drawer__sub-link">Customer Portal</a></div></div>
     <div class="ior-drawer__item"><button class="ior-drawer__link" data-drawer="ind-mob" aria-expanded="false">Industries We Serve <span aria-hidden="true">&#8250;</span></button><div class="ior-drawer__sub" id="ind-mob"><a href="#" class="ior-drawer__sub-link">Transport &amp; Logistics</a><a href="#" class="ior-drawer__sub-link">Agriculture</a><a href="#" class="ior-drawer__sub-link">Mining &amp; Resources</a><a href="#" class="ior-drawer__sub-link">Aviation &amp; Marine</a><a href="#" class="ior-drawer__sub-link">Oil &amp; Gas</a><a href="#" class="ior-drawer__sub-link">Construction &amp; Defence</a><a href="#" class="ior-drawer__sub-link">Government &amp; Defence</a><a href="#" class="ior-drawer__sub-link">Livestock</a></div></div>
     <div class="ior-drawer__item"><button class="ior-drawer__link" data-drawer="about-mob" aria-expanded="false">About IOR <span aria-hidden="true">&#8250;</span></button><div class="ior-drawer__sub" id="about-mob"><a href="09_About_IOR.html" class="ior-drawer__sub-link">About IOR</a><a href="09c_Sustainability.html" class="ior-drawer__sub-link">Sustainability, HSE &amp; ESG</a><a href="10_Careers.html" class="ior-drawer__sub-link">Careers</a><a href="09d_Case_Studies.html" class="ior-drawer__sub-link">Case Studies</a><a href="11c_News_Updates.html" class="ior-drawer__sub-link">News &amp; Updates</a></div></div>
@@ -557,41 +552,43 @@
     <div class="hero__map" aria-hidden="true">
       <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" fill="none">
         <path d="M120 60 L90 80 L70 110 L60 150 L65 190 L80 220 L100 240 L95 270 L110 300 L130 320 L160 330 L190 325 L210 310 L230 290 L250 270 L270 260 L300 255 L330 260 L360 270 L390 260 L420 240 L440 210 L445 180 L430 150 L410 130 L380 115 L350 110 L320 105 L290 95 L260 80 L230 65 L200 55 L170 55 Z" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="rgba(255,255,255,0.04)"/>
+        <!-- Tasmania -->
         <path d="M220 345 L210 360 L220 375 L235 375 L245 360 L235 345 Z" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="rgba(255,255,255,0.03)"/>
       </svg>
     </div>
-    <!-- Gold pulsing dots — airport positions -->
+    <!-- Pulsing location dots — highway corridor positions -->
     <div class="hero__dots" aria-hidden="true">
-      <div class="pulse-dot" style="top:38%;left:63%"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
-      <div class="pulse-dot" style="top:52%;left:57%;animation-delay:.5s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
-      <div class="pulse-dot" style="top:68%;left:60%;animation-delay:1s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
-      <div class="pulse-dot" style="top:74%;left:50%;animation-delay:1.5s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
-      <div class="pulse-dot" style="top:58%;left:42%;animation-delay:.3s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
-      <div class="pulse-dot" style="top:44%;left:37%;animation-delay:.9s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
-      <div class="pulse-dot" style="top:30%;left:52%;animation-delay:1.3s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
-      <div class="pulse-dot" style="top:25%;left:62%;animation-delay:.7s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
+      <div class="pulse-dot" style="top:42%;left:62%"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
+      <div class="pulse-dot" style="top:55%;left:55%;animation-delay:.4s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
+      <div class="pulse-dot" style="top:65%;left:58%;animation-delay:.8s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
+      <div class="pulse-dot" style="top:72%;left:52%;animation-delay:1.2s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
+      <div class="pulse-dot" style="top:60%;left:45%;animation-delay:1.6s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
+      <div class="pulse-dot" style="top:48%;left:40%;animation-delay:.6s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
+      <div class="pulse-dot" style="top:35%;left:50%;animation-delay:1s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
+      <div class="pulse-dot" style="top:28%;left:60%;animation-delay:1.4s"><div class="pulse-dot__ring"></div><div class="pulse-dot__core"></div></div>
     </div>
     <div class="hero__overlay" aria-hidden="true"></div>
     <div class="hero__content">
       <p class="eyebrow eyebrow--white">IOR Aviation Network</p>
-      <h1 id="hero-h1">Built for the way <span class="highlight">aviation works.</span></h1>
-      <p>CASA-compliant aviation fuel supply across Australia's airports, aerodromes, and remote strips. Reliable, accredited, and built for operators who can't afford surprises.</p>
+      <h1 id="hero-h1">The network that keeps <span class="highlight">Australia flying.</span></h1>
+      <p>39 unmanned 24/7 aviation refuelling facilities across Australia's regional and remote airfields. JIG 4 compliant filtration, dedicated tankers, and completely cashless.</p>
       <div class="hero-ctas">
-        <a href="#lead-capture" class="btn btn--av" aria-label="Apply for an Aviation Account">Apply for an Account &#8594;</a>
-        <a href="11a_Contact_Usv5.html" class="btn btn--ghost" aria-label="Talk to our Aviation Team">Talk to our Team &#8594;</a>
+        <a href="11d_Find_Locationv5.html" class="btn btn--primary" style="background:var(--aviation-gold);border-color:var(--aviation-gold);" aria-label="Find an Aviation Location">Find an Aviation Location &#8594;</a>
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--ghost" aria-label="Apply for an Account" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
       </div>
     </div>
-    <p style="position:absolute;bottom:12px;right:var(--section-pad-x);font-size:11px;color:rgba(255,255,255,.35);z-index:4;" aria-hidden="true">Abstract representation. Actual airport locations may vary.</p>
+    <p style="position:absolute;bottom:12px;right:var(--section-pad-x);font-size:11px;color:rgba(255,255,255,.35);z-index:4;" aria-hidden="true">Abstract representation. Actual site locations may vary.</p>
   </section>
 
   <!-- ─── SECTION 2: QUICK LINKS BAR ──────────────────────────────────── -->
-  <nav class="quick-links-bar" aria-label="Explore Aviation navigation">
+  <nav class="quick-links-bar" aria-label="Explore Ground Fuels navigation">
     <div class="quick-links-bar__inner">
       <span class="quick-links-bar__label">Explore Aviation:</span>
       <a href="04a_Aviation_Network_v8.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">IOR Aviation Network</a>
-      <a href="#" class="quick-links-bar__link">Airport Fuelling Services</a>
-      <a href="#" class="quick-links-bar__link">Aviation Bulk Delivery</a>
-      <a href="#" class="quick-links-bar__link">Aviation Oils &amp; Lubricants</a>
+      <a href="#" class="quick-links-bar__link">On-Site Refuelling</a>
+      <a href="#" class="quick-links-bar__link">Bulk Diesel Delivery</a>
+      <a href="#" class="quick-links-bar__link">HyBlue&#8482;</a>
+      <a href="#" class="quick-links-bar__link">Oils &amp; Lubricants</a>
     </div>
   </nav>
 
@@ -599,34 +596,34 @@
   <section class="features-section" aria-labelledby="features-h2">
     <div class="container">
       <div class="features-section__header fade-up">
-        <p class="eyebrow eyebrow--gold">Why the IOR Aviation Network</p>
-        <h2 id="features-h2">Accredited supply for <span class="accent">demanding operations.</span></h2>
+        <p class="eyebrow eyebrow--blue">Why the IOR Aviation Network</p>
+        <h2 id="features-h2">Engineered for <span class="accent">safety and reliability.</span></h2>
       </div>
       <div class="features-grid">
         <div class="feature-box fade-up">
-          <div class="feature-box__icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--av-gold)" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg></div>
-          <div class="feature-box__title">CASA-Compliant Supply</div>
-          <p class="feature-box__body">All IOR aviation fuel supply meets CASA regulatory requirements. Our accredited operators follow strict quality control protocols at every site.</p>
+          <div class="feature-box__icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--aviation-gold)" stroke-width="1.8" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></div>
+          <div class="feature-box__title">JIG 4 Compliant</div>
+          <p class="feature-box__body">Uncompromising quality control. Our filtration systems are JIG 4 compliant, stopping particles down to 0.5 microns to ensure fuel purity.</p>
         </div>
         <div class="feature-box fade-up">
-          <div class="feature-box__icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--av-gold)" stroke-width="1.8" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="0"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-          <div class="feature-box__title">RFID Tag Technology</div>
-          <p class="feature-box__body">Secure, unmanned fuelling at select locations via RFID tag. Cashless, fast, and fully auditable — every transaction recorded to your account.</p>
+          <div class="feature-box__icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--aviation-gold)" stroke-width="1.8" aria-hidden="true"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="0"/><line x1="12" y1="11" x2="12" y2="21"/><line x1="9" y1="16" x2="23" y2="16"/></svg></div>
+          <div class="feature-box__title">Dedicated Supply Chain</div>
+          <p class="feature-box__body">Zero-tolerance for load-switching. We use dedicated tankers for Avgas and Jet A-1 to eliminate any risk of cross-contamination.</p>
         </div>
         <div class="feature-box fade-up">
-          <div class="feature-box__icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--av-gold)" stroke-width="1.8" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-          <div class="feature-box__title">Customer Portal Visibility</div>
-          <p class="feature-box__body">Real-time transaction data, fuel uplift records, and account management — all accessible via the IOR Customer Portal, 24/7.</p>
+          <div class="feature-box__icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--aviation-gold)" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="feature-box__title">24/7 Unmanned Access</div>
+          <p class="feature-box__body">Swipe and fly. Our network of 39 regional and remote facilities operates 24/7, completely unmanned and cashless.</p>
         </div>
         <div class="feature-box fade-up">
-          <div class="feature-box__icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--av-gold)" stroke-width="1.8" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div class="feature-box__title">National Airport Coverage</div>
-          <p class="feature-box__body">From major capital city airports to remote outback aerodromes, IOR's aviation network reaches where other suppliers don't.</p>
+          <div class="feature-box__icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--aviation-gold)" stroke-width="1.8" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="0"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><circle cx="12" cy="17" r="1"/></svg></div>
+          <div class="feature-box__title">Fuelcharge Integration</div>
+          <p class="feature-box__body">No account? No problem. Pay instantly at the pump using the Fuelcharge app, available for iOS and Android.</p>
         </div>
       </div>
       <div class="features-ctas">
-        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--av" aria-label="Apply for an Aviation Account" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
-        <a href="11a_Contact_Usv5.html" class="btn btn--outline" aria-label="Contact our Aviation Team">Contact our Team &#8594;</a>
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary" aria-label="Apply for an Account" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--outline" aria-label="Contact our Team">Contact our Team &#8594;</a>
       </div>
     </div>
   </section>
@@ -643,17 +640,17 @@
         <div class="step-card">
           <span class="step-number" style="color:#D98300;">01</span>
           <h3>Apply for an Aviation Account</h3>
-          <p>Complete the online application. Our aviation team reviews and approves most accounts within one business day.</p>
+          <p>Complete the online application. Our team reviews and approves most accounts within one business day.</p>
         </div>
         <div class="step-card">
           <span class="step-number" style="color:#D98300;">02</span>
           <h3>Receive Your RFID Tags &amp; Account Details</h3>
-          <p>Your RFID tags are dispatched immediately on approval. Each tag is registered to your aircraft or fleet and linked to your account.</p>
+          <p>Your RFID tags are dispatched immediately on approval. Each tag is registered to your aircraft and linked to your account.</p>
         </div>
         <div class="step-card">
           <span class="step-number" style="color:#D98300;">03</span>
           <h3>Fuel at Any IOR Aviation Location</h3>
-          <p>Access CASA-compliant fuel at any IOR Aviation location. Transactions consolidate automatically into your monthly invoice.</p>
+          <p>Pull up to any IOR Aviation facility, tap your tag, and fuel. Transactions consolidate automatically into your monthly invoice.</p>
         </div>
       </div>
     </div>
@@ -663,21 +660,21 @@
   <section class="map-teaser" aria-labelledby="map-teaser-h2">
     <div class="map-teaser__inner">
       <div class="map-teaser__content fade-up">
-        <p class="eyebrow eyebrow--gold">National Coverage</p>
-        <h2 id="map-teaser-h2">Find your nearest <span class="accent">IOR Aviation location.</span></h2>
-        <p>Search by airport, aerodrome, or state. IOR Aviation supply points span capital city airports through to remote strips, covering the routes that matter to your operation.</p>
+        <p class="eyebrow eyebrow--blue">National Coverage</p>
+        <h2 id="map-teaser-h2">Find your nearest <span class="accent">IOR Aviation facility.</span></h2>
+        <p>Search by location or fuel type. 39 facilities strategically placed across Australia's regional and remote airfields.</p>
         <div class="map-teaser__ctas">
-          <a href="11d_Find_Locationv5.html" class="btn btn--av" aria-label="Find an Aviation Location">Find a Location &#8594;</a>
-          <a href="#" class="btn btn--outline" aria-label="Download the IOR Aviation Directory PDF" style="display:inline-flex;align-items:center;gap:8px;">
+          <a href="11d_Find_Locationv5.html" class="btn btn--primary" style="background:var(--aviation-gold);border-color:var(--aviation-gold);" aria-label="Find an Aviation Location">Find an Aviation Location &#8594;</a>
+          <a href="#" class="btn btn--outline" aria-label="Download the IOR Aviation Network Directory PDF" style="display:inline-flex;align-items:center;gap:8px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download Aviation Directory
           </a>
         </div>
       </div>
-      <div class="map-teaser__placeholder fade-up" aria-label="Static map placeholder — Australia with IOR Aviation Network locations">
+      <div class="map-teaser__placeholder fade-up" aria-label="Static map placeholder — Australia with IOR Aviation Network facility locations">
         <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--mid-grey)" stroke-width="1.2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         <span class="map-teaser__placeholder-label">Static Map Placeholder</span>
-        <span>Australia with IOR Aviation Network locations</span>
+        <span>Australia with IOR Aviation Network facility locations</span>
         <span style="font-size:11px;color:var(--mid-grey);margin-top:4px;">Interactive Storepoint map on Find a Location page only</span>
       </div>
     </div>
@@ -687,12 +684,12 @@
   <section class="testimonial-section" aria-label="Customer testimonial">
     <div class="testimonial-section__inner fade-up">
       <blockquote class="testimonial-section__quote">
-        "IOR's aviation fuel supply gives us the confidence to operate across regional routes knowing our fuel will be there, accredited, and on-spec. That reliability is everything in this industry."
+        "IOR's aviation network gives us the confidence to operate in remote areas, knowing we have access to high-quality, JIG-compliant fuel 24/7."
       </blockquote>
       <div class="testimonial-section__attr">
         <div>
-          <div class="testimonial-section__attr-name">Lee Schofield</div>
-          <div class="testimonial-section__attr-role">Head of Operations, Alliance Airlines</div>
+          <div class="testimonial-section__attr-name">[TBC &mdash; Client to provide named quote]</div>
+          <div class="testimonial-section__attr-role">[TBC]</div>
         </div>
       </div>
     </div>
@@ -702,9 +699,9 @@
   <section class="fc-billboard" aria-labelledby="fc-h2">
     <div class="fc-billboard__inner">
       <div class="fc-billboard__copy fade-up">
-        <span class="fc-billboard__eyebrow">Manage your account on the go.</span>
-        <h2 class="fc-billboard__h2" id="fc-h2">Your account. <em>In your pocket.</em></h2>
-        <p class="fc-billboard__body">The Fuelcharge app gives aviation operators instant access to transaction records, fuel uplift history, and account management — all from your phone. Available on iOS and Android.</p>
+        <span class="fc-billboard__eyebrow">No Tag? No Problem.</span>
+        <h2 class="fc-billboard__h2" id="fc-h2">Fuel now. <em>Pay at the pump.</em></h2>
+        <p class="fc-billboard__body">Download the Fuelcharge app for instant, cardless payment at any IOR Aviation facility. No account required. No tag needed. Works on iOS and Android.</p>
         <div class="fc-billboard__ctas">
           <a href="07b_Fuelcharge_App_v8.html" class="btn btn--fc" aria-label="Explore the Fuelcharge App">Explore Fuelcharge &#8594;</a>
         </div>
@@ -727,24 +724,24 @@
   </section>
 
   <!-- ─── SECTION 7: HUBSPOT LEAD CAPTURE ─────────────────────────────── -->
-  <!-- HubSpot Form — Embed Code Pending (Aviation Account Enquiry) -->
+  <!-- HubSpot Form — Embed Code Pending (Dual-Purpose: Enquiry + Brochure Request) -->
   <section class="lead-capture-section" id="lead-capture" aria-labelledby="lc-h2">
     <div class="container">
       <div class="lead-capture__card">
         <div class="lead-capture__info">
           <p class="lead-capture__eyebrow">Get Connected</p>
           <h2 class="lead-capture__h2" id="lc-h2">Set up your IOR Aviation account.</h2>
-          <p class="lead-capture__sub">Register your details below to apply for an aviation fuel account. Our team will be in touch to discuss your requirements and get you set up.</p>
+          <p class="lead-capture__sub">Register your details below to apply for an account, or request a hard copy of our Aviation Network Directory to be mailed to your office.</p>
           <ul class="lead-capture__callouts">
-            <li><span class="dot" aria-hidden="true"></span>CASA-compliant supply</li>
-            <li><span class="dot" aria-hidden="true"></span>RFID and app-based access</li>
+            <li><span class="dot" aria-hidden="true"></span>39 unmanned facilities</li>
+            <li><span class="dot" aria-hidden="true"></span>24/7 RFID fuelling</li>
             <li><span class="dot" aria-hidden="true"></span>Consolidated monthly invoicing</li>
           </ul>
         </div>
         <div class="lead-capture__form-wrapper">
-          <p class="lead-capture__eyebrow">Aviation Account Enquiry</p>
+          <p class="lead-capture__eyebrow">Account Enquiry &amp; Directory Request</p>
           <div class="hs-form-placeholder-light" aria-label="Form embed pending">
-            Form embed pending &mdash; aviation account enquiry form.
+            Form embed pending &mdash; Aviation industry tag. Dual-purpose: account enquiry and Aviation Network Directory request.
           </div>
         </div>
       </div>
@@ -764,17 +761,17 @@
       </div>
       <div class="related-tab-panel active" id="rc-panel-av-cs" role="tabpanel" aria-labelledby="rc-tab-av-cs">
         <div class="related-grid">
-          <article class="related-card"><div class="related-card__img" aria-label="Case study image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Case Study</p><h3 class="related-card__title">Alliance Airlines — Regional Route Fuel Supply</h3><p class="related-card__excerpt">How Alliance Airlines relies on IOR's aviation network to maintain reliable fuel supply across Australia's regional routes.</p><a href="#" class="related-card__link" aria-label="Read Alliance Airlines case study">Read Case Study &rarr;</a></div></article>
-          <article class="related-card"><div class="related-card__img" aria-label="Case study image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Case Study</p><h3 class="related-card__title">Remote Aerodrome Operator — Consistent Supply in the Outback</h3><p class="related-card__excerpt">A remote Northern Territory aerodrome operator partners with IOR to maintain consistent Avgas supply year-round.</p><a href="#" class="related-card__link" aria-label="Read remote aerodrome case study">Read Case Study &rarr;</a></div></article>
-          <article class="related-card"><div class="related-card__img" aria-label="Case study image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Case Study</p><h3 class="related-card__title">Charter Operator — Streamlining Multi-Airport Fuel Accounts</h3><p class="related-card__excerpt">A Queensland charter operator consolidates aviation fuel accounts across 12 airports with a single IOR relationship.</p><a href="#" class="related-card__link" aria-label="Read charter operator case study">Read Case Study &rarr;</a></div></article>
+          <article class="related-card"><div class="related-card__img" aria-label="Case study image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Case Study</p><h3 class="related-card__title">Remote Aviation Operations — 24/7 Fuel Access at Regional Airfields</h3><p class="related-card__excerpt">How a regional charter operator reduced fuel delays and improved operational reliability with IOR's aviation network.</p><a href="#" class="related-card__link" aria-label="Read aviation case study 1">Read Case Study &rarr;</a></div></article>
+          <article class="related-card"><div class="related-card__img" aria-label="Case study image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Case Study</p><h3 class="related-card__title">Regional Freight Operator — Streamlining Fuel Across 3 States</h3><p class="related-card__excerpt">A multi-state freight operator consolidates fuel spend with a single IOR account and monthly invoicing.</p><a href="#" class="related-card__link" aria-label="Read regional freight case study">Read Case Study &rarr;</a></div></article>
+          <article class="related-card"><div class="related-card__img" aria-label="Case study image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Case Study</p><h3 class="related-card__title">Agricultural Contractor — Harvest Season Fuel Without the Hassle</h3><p class="related-card__excerpt">How a Queensland agricultural contractor keeps machinery fuelled during peak harvest with IOR's network.</p><a href="#" class="related-card__link" aria-label="Read agricultural contractor case study">Read Case Study &rarr;</a></div></article>
         </div>
         <div class="related-content__view-all"><a href="#" class="btn btn--outline btn--sm" aria-label="View all case studies">View All Case Studies &rarr;</a></div>
       </div>
       <div class="related-tab-panel" id="rc-panel-av-blog" role="tabpanel" aria-labelledby="rc-tab-av-blog">
         <div class="related-grid">
-          <article class="related-card"><div class="related-card__img" aria-label="Blog post image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Blog</p><h3 class="related-card__title">CASA Compliance and Aviation Fuel — What Operators Need to Know</h3><p class="related-card__excerpt">Understanding CASA's requirements for aviation fuel supply and how to ensure your operation stays compliant.</p><a href="#" class="related-card__link" aria-label="Read CASA compliance blog post">Read Article &rarr;</a></div></article>
-          <article class="related-card"><div class="related-card__img" aria-label="Blog post image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Blog</p><h3 class="related-card__title">Aviation Fuel Supply in Remote Australia — The Logistics Challenge</h3><p class="related-card__excerpt">Supplying aviation fuel to remote aerodromes presents unique logistical challenges. Here's how IOR approaches them.</p><a href="#" class="related-card__link" aria-label="Read remote aviation fuel blog post">Read Article &rarr;</a></div></article>
-          <article class="related-card"><div class="related-card__img" aria-label="Blog post image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Blog</p><h3 class="related-card__title">Avgas vs Jet-A1 — Understanding Your Aircraft's Fuel Requirements</h3><p class="related-card__excerpt">A practical guide to the differences between Avgas and Jet-A1, and what to consider when choosing a fuel supplier.</p><a href="#" class="related-card__link" aria-label="Read Avgas vs Jet-A1 blog post">Read Article &rarr;</a></div></article>
+          <article class="related-card"><div class="related-card__img" aria-label="Blog post image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Blog</p><h3 class="related-card__title">JIG 4 Compliance — Why It Matters for Aviation Fuel Quality</h3><p class="related-card__excerpt">Understanding JIG 4 standards and why IOR's filtration systems set the benchmark for aviation fuel purity.</p><a href="#" class="related-card__link" aria-label="Read blog post 1">Read Article &rarr;</a></div></article>
+          <article class="related-card"><div class="related-card__img" aria-label="Blog post image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Blog</p><h3 class="related-card__title">Avgas vs Jet A-1 — Understanding Aviation Fuel Types</h3><p class="related-card__excerpt">A practical guide to aviation fuel grades, their applications, and why dedicated supply chains matter.</p><a href="#" class="related-card__link" aria-label="Read blog post 2">Read Article &rarr;</a></div></article>
+          <article class="related-card"><div class="related-card__img" aria-label="Blog post image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Blog</p><h3 class="related-card__title">Cashless Aviation Fuelling — How Fuelcharge is Changing Remote Operations</h3><p class="related-card__excerpt">The Fuelcharge app is making it easier than ever for pilots to fuel up without tags, cards, or accounts.</p><a href="#" class="related-card__link" aria-label="Read blog post 3">Read Article &rarr;</a></div></article>
         </div>
         <div class="related-content__view-all"><a href="#" class="btn btn--outline btn--sm" aria-label="View all blog posts">View All Blog Posts &rarr;</a></div>
       </div>
@@ -789,12 +786,11 @@
         <h2 id="faq-h2" style="font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--charcoal);line-height:1.2;">IOR Aviation Network &mdash; common questions.</h2>
       </div>
       <div class="faq-list">
-        <div class="faq-item"><button class="faq-question" id="faq-a-q1" aria-expanded="false" aria-controls="faq-a-a1">What aviation fuel grades does IOR supply?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a-a1" role="region"><p>IOR supplies Jet-A1 and Avgas 100LL across our aviation network. Fuel grade availability varies by location. Use the Find a Location tool to confirm grades available at your airport or aerodrome of interest.</p></div></div>
-        <div class="faq-item"><button class="faq-question" id="faq-a-q2" aria-expanded="false" aria-controls="faq-a-a2">Is IOR aviation fuel CASA-compliant?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a-a2" role="region"><p>Yes. All IOR aviation fuel supply meets CASA regulatory requirements. Our accredited operators follow strict quality control and handling protocols at every location. Full documentation is available on request.</p></div></div>
-        <div class="faq-item"><button class="faq-question" id="faq-a-q3" aria-expanded="false" aria-controls="faq-a-a3">How do I access fuel at unmanned IOR aviation locations?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a-a3" role="region"><p>Account holders receive RFID tags for unmanned site access. All transactions are recorded automatically and appear in your Customer Portal account. The Fuelcharge app also provides access at select locations.</p></div></div>
-        <div class="faq-item"><button class="faq-question" id="faq-a-q4" aria-expanded="false" aria-controls="faq-a-a4">Can IOR supply aviation fuel to remote aerodromes?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a-a4" role="region"><p>Yes. IOR has extensive experience supplying aviation fuel to remote and regional aerodromes across Australia, including locations in the Northern Territory and outback Queensland. Contact our aviation team to discuss your specific requirements.</p></div></div>
-        <div class="faq-item"><button class="faq-question" id="faq-a-q5" aria-expanded="false" aria-controls="faq-a-a5">Does IOR supply aviation oils and lubricants?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a-a5" role="region"><p>Yes. IOR supplies a range of aviation-grade oils and lubricants to complement our fuel offering. Products are available through your IOR account. Contact our team for a full product list and pricing.</p></div></div>
-        <div class="faq-item"><button class="faq-question" id="faq-a-q6" aria-expanded="false" aria-controls="faq-a-a6">How do I apply for an IOR Aviation account?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a-a6" role="region"><p>Apply online via the IOR account application form, or complete the enquiry form on this page and our aviation team will be in touch to discuss your requirements and guide you through the application process.</p></div></div>
+        <div class="faq-item"><button class="faq-question" id="faq-av-q1" aria-expanded="false" aria-controls="faq-av-a1">Where are IOR's aviation facilities located?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-av-a1" role="region"><p>We operate 39 unmanned 24/7 aviation refuelling facilities across Australia, primarily located at regional and remote airfields. Use the IOR Find a Location tool to search by state or fuel type.</p></div></div>
+        <div class="faq-item"><button class="faq-question" id="faq-av-q2" aria-expanded="false" aria-controls="faq-av-a2">What types of aviation fuel do you supply?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-av-a2" role="region"><p>We supply high-quality Jet A-1 and Avgas. Our supply chain uses dedicated tankers for each fuel type to ensure zero cross-contamination.</p></div></div>
+        <div class="faq-item"><button class="faq-question" id="faq-av-q3" aria-expanded="false" aria-controls="faq-av-a3">How do you ensure fuel quality?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-av-a3" role="region"><p>Our filtration systems are JIG 4 compliant, stopping particles down to 0.5 microns. We conduct rigorous quality checks at each delivery, including colour, clarity, water presence, density, and temperature.</p></div></div>
+        <div class="faq-item"><button class="faq-question" id="faq-av-q4" aria-expanded="false" aria-controls="faq-av-a4">Can I use the Fuelcharge app for aviation fuel?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-av-a4" role="region"><p>Yes. The Fuelcharge app allows casual users to pay instantly at the pump at any IOR Aviation facility without needing an account or RFID tag.</p></div></div>
+        <div class="faq-item"><button class="faq-question" id="faq-av-q5" aria-expanded="false" aria-controls="faq-av-a5">How do I apply for an aviation account?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-av-a5" role="region"><p>Apply online via the IOR account application form. Once approved, your RFID tags will be dispatched and you can begin fuelling immediately. Alternatively, contact your local IOR representative for assistance with the application process.</p></div></div>
       </div>
       <div class="faq-footer fade-up">
         <div class="faq-footer__text">
@@ -813,10 +809,10 @@
   <section class="final-cta" aria-labelledby="final-cta-h2">
     <div class="container">
       <h2 id="final-cta-h2">Ready to join the IOR Aviation Network?</h2>
-      <p>Apply for an account today and get your aviation fuel supply sorted.</p>
+      <p>Apply for an aviation account today and get your RFID tags promptly.</p>
       <div class="final-cta__ctas">
-        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--white" aria-label="Apply for an Aviation Account" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
-        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white" aria-label="Talk to our Aviation Team">Talk to our Team &#8594;</a>
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--white" aria-label="Apply for an Account" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white" aria-label="Talk to a Fuel Expert">Talk to a Fuel Expert &#8594;</a>
       </div>
     </div>
   </section>
