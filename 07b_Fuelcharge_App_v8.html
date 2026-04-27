@@ -134,22 +134,34 @@
     .flip-card__back-text{font-size:14px;line-height:1.6;text-align:center;color:rgba(255,255,255,.85)}
     @media(max-width:768px){.flip-grid{grid-template-columns:1fr}.flip-card{height:auto;perspective:none}.flip-card__inner{transform:none!important;display:flex;flex-direction:column;height:auto}.flip-card__front{position:relative;inset:auto;backface-visibility:visible}.flip-card__back{position:relative;inset:auto;transform:none;backface-visibility:visible;margin-top:2px}}
 
-    /* SIGN UP */
-    .signup-section{background:var(--fc-dark);padding:clamp(56px,7vw,88px) var(--section-pad-x)}
-    .signup-section__inner{max-width:var(--container-max);margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
-    .signup-section__eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);margin-bottom:14px}
-    .signup-section__h2{font-size:clamp(26px,3.2vw,42px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:20px}
-    .signup-section__sub{font-size:clamp(15px,1.5vw,17px);color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:36px}
-    .signup-steps{display:flex;flex-direction:column;gap:20px}
-    .signup-step{display:flex;gap:16px;align-items:flex-start}
-    .signup-step__num{width:32px;height:32px;background:var(--fc-teal);color:var(--fc-dark);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .signup-step__text{font-size:15px;color:rgba(255,255,255,.85);line-height:1.6;padding-top:4px}
-    .signup-step__text strong{color:#fff}
-    .signup-section__visual{position:relative}
-    .signup-section__img-placeholder{width:100%;min-height:clamp(300px,35vw,460px);background:rgba(255,255,255,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:40px;text-align:center}
-    .signup-section__img-placeholder svg{opacity:.25}
-    .signup-section__img-placeholder span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);max-width:240px;line-height:1.6}
-    @media(max-width:900px){.signup-section__inner{grid-template-columns:1fr}.signup-section__visual{display:none}}
+    /* HOW IT WORKS — INTERACTIVE TABS */
+    .hiw-section{background:var(--fc-dark);padding:clamp(56px,7vw,88px) var(--section-pad-x)}
+    .hiw-section__inner{max-width:var(--container-max);margin-inline:auto}
+    .hiw-section__header{text-align:center;margin-bottom:clamp(40px,5vw,60px)}
+    .hiw-section__eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);margin-bottom:14px}
+    .hiw-section__h2{font-size:clamp(26px,3.2vw,42px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:12px}
+    .hiw-section__sub{font-size:clamp(15px,1.5vw,17px);color:rgba(255,255,255,.65);line-height:1.7;max-width:520px;margin-inline:auto}
+    .hiw-body{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start}
+    .hiw-tabs{display:flex;flex-direction:column;gap:0}
+    .hiw-tab{display:flex;gap:20px;align-items:flex-start;padding:24px 20px;cursor:pointer;border-left:3px solid transparent;transition:border-color .25s,background .25s;background:transparent}
+    .hiw-tab:hover{background:rgba(255,255,255,.04)}
+    .hiw-tab.is-active{border-left-color:var(--fc-teal);background:rgba(0,209,204,.07)}
+    .hiw-tab__num{width:36px;height:36px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .25s,color .25s}
+    .hiw-tab.is-active .hiw-tab__num{background:var(--fc-teal);color:var(--fc-dark)}
+    .hiw-tab__content{flex:1}
+    .hiw-tab__title{font-size:16px;font-weight:700;color:rgba(255,255,255,.5);line-height:1.3;margin-bottom:0;transition:color .25s}
+    .hiw-tab.is-active .hiw-tab__title{color:#fff}
+    .hiw-tab__desc{font-size:14px;color:rgba(255,255,255,.65);line-height:1.65;margin-top:10px;max-height:0;overflow:hidden;transition:max-height .35s ease,margin-top .25s}
+    .hiw-tab.is-active .hiw-tab__desc{max-height:120px}
+    .hiw-visual{position:relative}
+    .hiw-panels{position:relative}
+    .hiw-panel{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:clamp(320px,38vw,480px);background:rgba(255,255,255,.06);padding:40px;text-align:center;gap:16px}
+    .hiw-panel.is-active{display:flex}
+    .hiw-panel__screen{width:100%;max-width:260px;background:rgba(255,255,255,.08);padding:24px 20px;display:flex;flex-direction:column;gap:12px;align-items:center}
+    .hiw-panel__screen-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fc-teal)}
+    .hiw-panel__screen-content{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;text-align:center}
+    .hiw-panel__asset-note{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:8px;max-width:220px;line-height:1.5}
+    @media(max-width:900px){.hiw-body{grid-template-columns:1fr}.hiw-visual{display:none}}
 
     /* MAP */
     .map-section{background:var(--off-white);padding:clamp(56px,7vw,88px) var(--section-pad-x)}
@@ -352,10 +364,6 @@
         </div>
         <h1 class="fc-hero__h1">Fuel on the Go with Fuelcharge</h1>
         <p class="fc-hero__sub">No credit application needed &mdash; anyone can download the app and start refuelling today. The fastest way to pay at IOR diesel stops and regional airstrips across Australia.</p>
-        <div class="fc-hero__actions">
-          <a href="#sign-up" class="btn btn--fc">Get Started <span class="btn__arrow"></span></a>
-          <a href="07_Digital_Platformsv5.html" class="btn btn--fc-outline">Back to Digital Platforms</a>
-        </div>
         <div class="fc-hero__badges">
           <a href="#" class="fc-store-badge" aria-label="Download on the App Store">[App Store Badge]</a>
           <a href="#" class="fc-store-badge" aria-label="Get it on Google Play">[Google Play Badge]</a>
@@ -374,13 +382,10 @@
   <!-- SECTION 2: QUICK LINKS -->
   <nav class="quick-links-bar" aria-label="Explore IOR navigation">
     <div class="quick-links-bar__inner">
-      <span class="quick-links-bar__label">Explore IOR:</span>
-      <a href="02_Fuel_Solutions_Hub.html" class="quick-links-bar__link">Fuel Solutions</a>
-      <a href="07_Digital_Platformsv5.html" class="quick-links-bar__link">Digital Platforms</a>
+      <span class="quick-links-bar__label">Explore Digital Platforms:</span>
+      <a href="07a_HyDip_FMS_v8.html" class="quick-links-bar__link">HyDip&#8482; FMS</a>
       <a href="07b_Fuelcharge_App_v8.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">Fuelcharge App</a>
-      <a href="#" class="quick-links-bar__link">Industries We Serve</a>
-      <a href="09_About_IOR.html" class="quick-links-bar__link">About IOR</a>
-      <a href="11_Support_Hub.html" class="quick-links-bar__link">Support &amp; Contact</a>
+      <a href="07c_Customer_Portal_v8.html" class="quick-links-bar__link">Customer Portal</a>
     </div>
   </nav>
 
@@ -445,32 +450,75 @@
     </div>
   </section>
 
-  <!-- SECTION 4: HOW IT WORKS / SIGN UP -->
-  <section class="signup-section" id="sign-up" aria-labelledby="signup-heading">
-    <div class="signup-section__inner">
-      <div class="signup-section__copy fade-up">
-        <p class="signup-section__eyebrow">HOW IT WORKS</p>
-        <h2 class="signup-section__h2" id="signup-heading">Three steps to your first fill</h2>
-        <p class="signup-section__sub">No credit application. No waiting for approval. Download the app and you&rsquo;re ready to refuel at any IOR stop across Australia.</p>
-        <div class="signup-steps">
-          <div class="signup-step">
-            <div class="signup-step__num">1</div>
-            <div class="signup-step__text"><strong>Download the Fuelcharge app</strong> &mdash; available on iOS and Android. Create a free account in under two minutes.</div>
-          </div>
-          <div class="signup-step">
-            <div class="signup-step__num">2</div>
-            <div class="signup-step__text"><strong>Find your nearest IOR stop</strong> &mdash; use the in-app map to locate diesel stops and aviation airstrips across the IOR network.</div>
-          </div>
-          <div class="signup-step">
-            <div class="signup-step__num">3</div>
-            <div class="signup-step__text"><strong>Scan, pay, and pump</strong> &mdash; scan the QR code at the pump, confirm your litres, and pay securely from your phone. Digital receipt sent instantly.</div>
-          </div>
-        </div>
+  <!-- SECTION 4: HOW IT WORKS — INTERACTIVE TABS -->
+  <section class="hiw-section" id="how-it-works" aria-labelledby="hiw-heading">
+    <div class="hiw-section__inner">
+      <div class="hiw-section__header fade-up">
+        <p class="hiw-section__eyebrow">HOW IT WORKS</p>
+        <h2 class="hiw-section__h2" id="hiw-heading">Start using Fuelcharge in three steps</h2>
+        <p class="hiw-section__sub">No credit application. No waiting for approval. Download the app and you&rsquo;re ready to refuel at any IOR stop across Australia.</p>
       </div>
-      <div class="signup-section__visual" aria-hidden="true">
-        <div class="signup-section__img-placeholder">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-          <span>ASSET REQUIRED &mdash; App screenshots: map view, QR scan screen, payment confirmation with digital receipt</span>
+      <div class="hiw-body">
+        <!-- LEFT: Numbered tab list -->
+        <div class="hiw-tabs" role="tablist" aria-label="How it works steps">
+
+          <div class="hiw-tab is-active" role="tab" aria-selected="true" aria-controls="hiw-panel-1" id="hiw-tab-1" tabindex="0" data-hiw="1">
+            <div class="hiw-tab__num">1</div>
+            <div class="hiw-tab__content">
+              <div class="hiw-tab__title">Download the app</div>
+              <div class="hiw-tab__desc">Fuelcharge is available free on the App Store and Google Play. Create your account in under two minutes &mdash; no paperwork, no credit check.</div>
+            </div>
+          </div>
+
+          <div class="hiw-tab" role="tab" aria-selected="false" aria-controls="hiw-panel-2" id="hiw-tab-2" tabindex="0" data-hiw="2">
+            <div class="hiw-tab__num">2</div>
+            <div class="hiw-tab__content">
+              <div class="hiw-tab__title">Find your nearest IOR stop</div>
+              <div class="hiw-tab__desc">Use the in-app map to locate diesel stops and aviation airstrips across the IOR network. Filter by fuel type &mdash; road diesel or aviation.</div>
+            </div>
+          </div>
+
+          <div class="hiw-tab" role="tab" aria-selected="false" aria-controls="hiw-panel-3" id="hiw-tab-3" tabindex="0" data-hiw="3">
+            <div class="hiw-tab__num">3</div>
+            <div class="hiw-tab__content">
+              <div class="hiw-tab__title">Scan, pay, and pump</div>
+              <div class="hiw-tab__desc">Scan the QR code at the pump, confirm your litres, and pay securely from your phone. Your digital receipt is stored instantly in the app.</div>
+            </div>
+          </div>
+
+        </div>
+        <!-- RIGHT: Screen panels -->
+        <div class="hiw-visual" aria-hidden="true">
+          <div class="hiw-panels">
+
+            <div class="hiw-panel is-active" id="hiw-panel-1" role="tabpanel" aria-labelledby="hiw-tab-1">
+              <div class="hiw-panel__screen">
+                <div class="hiw-panel__screen-label">App Store &amp; Google Play</div>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,209,204,.6)" stroke-width="1.5" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                <div class="hiw-panel__screen-content">Download screen &mdash; App Store &amp; Google Play badges, account creation form</div>
+              </div>
+              <div class="hiw-panel__asset-note">Asset required &mdash; app download / account creation screen</div>
+            </div>
+
+            <div class="hiw-panel" id="hiw-panel-2" role="tabpanel" aria-labelledby="hiw-tab-2">
+              <div class="hiw-panel__screen">
+                <div class="hiw-panel__screen-label">IOR Network Map</div>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,209,204,.6)" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="hiw-panel__screen-content">Map view showing IOR diesel stops (navy) and aviation airstrips (teal) with site cards</div>
+              </div>
+              <div class="hiw-panel__asset-note">Asset required &mdash; in-app map screen with IOR network pins</div>
+            </div>
+
+            <div class="hiw-panel" id="hiw-panel-3" role="tabpanel" aria-labelledby="hiw-tab-3">
+              <div class="hiw-panel__screen">
+                <div class="hiw-panel__screen-label">QR Scan &amp; Payment</div>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,209,204,.6)" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h.01M14 17h3M17 14v3M20 17v3M20 20h-3"/></svg>
+                <div class="hiw-panel__screen-content">QR scan screen &rarr; fuel confirmation &rarr; payment &rarr; digital receipt stored in app</div>
+              </div>
+              <div class="hiw-panel__asset-note">Asset required &mdash; QR scan, payment confirmation, and receipt screens</div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
@@ -716,6 +764,21 @@
   });
 
   // Fade-up on scroll
+  /* HIW interactive tabs */
+  document.querySelectorAll('.hiw-tab').forEach(tab=>{
+    tab.addEventListener('click',function(){
+      const idx=this.dataset.hiw;
+      document.querySelectorAll('.hiw-tab').forEach(t=>{t.classList.remove('is-active');t.setAttribute('aria-selected','false');});
+      document.querySelectorAll('.hiw-panel').forEach(p=>p.classList.remove('is-active'));
+      this.classList.add('is-active');this.setAttribute('aria-selected','true');
+      const panel=document.getElementById('hiw-panel-'+idx);
+      if(panel)panel.classList.add('is-active');
+    });
+    tab.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();this.click();}
+    });
+  });
+
   const fadeObs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('fade-up--visible');fadeObs.unobserve(e.target);}});
   },{threshold:0.1});
