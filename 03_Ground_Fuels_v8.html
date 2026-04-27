@@ -370,8 +370,11 @@
     /* ============================================================
        FADE UP ANIMATION
     ============================================================ */
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .5s ease, transform .5s ease; }
-    .fade-up--visible { opacity: 1; transform: none; }
+    .fade-up { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .5s ease, transform .5s ease; }
+      .fade-up--visible { opacity: 1; transform: none; }
+    }
 
     /* ============================================================
        RESPONSIVE
@@ -1035,11 +1038,14 @@
   });
 
   /* ---- FADE UP ---- */
-  const fadeObs = new Intersection
-Observer(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-up--visible'); fadeObs.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+  if ('IntersectionObserver' in window) {
+    const fadeObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-up--visible'); fadeObs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+  } else {
+    document.querySelectorAll('.fade-up').forEach(el => el.classList.add('fade-up--visible'));
+  }
 </script>
 </body>
 </html>
