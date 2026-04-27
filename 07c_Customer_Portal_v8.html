@@ -823,6 +823,10 @@
       <button type="submit" class="form-submit">Submit Request</button>
       <p class="form-note">By submitting this form you agree to IOR's <a href="11f_Privacy_Policyv5.html" class="form-privacy-link">Privacy Policy</a>.</p>
     </form>
+    <div id="portal-form-success" style="display:none;padding:24px;text-align:center;">
+      <p style="font-size:1.1rem;font-weight:700;color:var(--ior-blue);margin-bottom:8px;">✓ Request submitted</p>
+      <p style="font-size:.9rem;color:var(--text-mid);">Our Customer Service Team will link your profile and email your login credentials within 1 business day.</p>
+    </div>
   </div>
 </div>
 
@@ -1129,6 +1133,23 @@
   if (modalClose) modalClose.addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
+
+  // ── PORTAL ACCESS FORM SUBMIT HANDLER ─────────────────────────
+  const portalForm = document.getElementById('portal-access-form');
+  const formSuccess = document.getElementById('portal-form-success');
+  if (portalForm) {
+    portalForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const company = document.getElementById('company-name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if (!company || !email) {
+        alert('Please enter your company name and email address.');
+        return;
+      }
+      portalForm.style.display = 'none';
+      if (formSuccess) formSuccess.style.display = 'block';
+    });
+  }
 
   // ── STICKY NAV SCROLL STATE ──────────────────────────────────
   const nav = document.getElementById('primary-nav');

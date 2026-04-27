@@ -111,7 +111,8 @@
     .tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .tab-panel__content h3 { font-size: 1.5rem; margin-bottom: 16px; color: var(--hd-blue); }
     .tab-panel__content p { color: var(--ior-muted); font-size: 1rem; line-height: 1.75; }
-    .tab-panel__visual { background: var(--ior-mid); height: 320px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--ior-border); }
+    .tab-panel__visual { background: var(--ior-mid); height: 320px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--ior-border); overflow: hidden; }
+    .tab-panel__visual img { max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; }
     .tab-panel__visual span { color: var(--ior-muted); font-size: 0.85rem; }
 
     /* ── Onboarding Steps ── */
@@ -966,7 +967,7 @@
           <!-- HDX2 -->
           <div class="hw-card">
             <div class="hw-card__device">
-              <span>HDX2 — Image Coming Soon</span>
+              <img src="https://placehold.co/200x140/e8ecf0/0055A5?text=HDX2+Unit" alt="HDX2 Integrated Management Unit" loading="lazy">
             </div>
             <h3>HDX2 Integrated Management</h3>
             <ul class="hw-card__specs">
@@ -1029,9 +1030,10 @@
         <div class="lead-form" aria-label="HyDip enquiry form">
           <p class="lead-form__title">Speak to a HyDip Specialist</p>
           <!-- HubSpot Form placeholder — Form ID: 2DEKpUanRQ_GZw0Jd7xaN7w -->
+          <form id="hd-enquiry-form" novalidate>
           <div class="form-row">
             <label for="hd-name">Full Name</label>
-            <input type="text" id="hd-name" name="name" placeholder="Your full name" autocomplete="name">
+            <input type="text" id="hd-name" name="name" placeholder="Your full name" autocomplete="name" required>
           </div>
           <div class="form-row">
             <label for="hd-company">Company</label>
@@ -1039,7 +1041,7 @@
           </div>
           <div class="form-row">
             <label for="hd-email">Email Address</label>
-            <input type="email" id="hd-email" name="email" placeholder="your@email.com" autocomplete="email">
+            <input type="email" id="hd-email" name="email" placeholder="your@email.com" autocomplete="email" required>
           </div>
           <div class="form-row">
             <label for="hd-phone">Phone Number</label>
@@ -1051,6 +1053,11 @@
           </div>
           <button type="submit" class="form-submit">Submit Enquiry →</button>
           <p class="form-note">By submitting this form you agree to IOR's <a href="11f_Privacy_Policyv5.html" class="form-privacy-link">Privacy Policy</a>.</p>
+          </form>
+          <div id="hd-form-success" style="display:none;padding:24px 0;text-align:center;">
+            <p style="font-size:1.1rem;font-weight:700;color:var(--hd-yellow);margin-bottom:8px;">✓ Enquiry submitted</p>
+            <p style="font-size:.9rem;color:rgba(255,255,255,.8);">A HyDip specialist will be in touch within 1 business day.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1382,6 +1389,21 @@
         if (panel) panel.classList.add('active');
       });
     });
+    // HyDip enquiry form submit handler
+    const hdForm = document.getElementById('hd-enquiry-form');
+    if (hdForm) {
+      hdForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('hd-name').value.trim();
+        const email = document.getElementById('hd-email').value.trim();
+        if (!name || !email) {
+          alert('Please enter your name and email address.');
+          return;
+        }
+        hdForm.style.display = 'none';
+        document.getElementById('hd-form-success').style.display = 'block';
+      });
+    }
     // FAQ accordion
     document.querySelectorAll('.faq-btn').forEach(btn => {
       btn.addEventListener('click', () => {
