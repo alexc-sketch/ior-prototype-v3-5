@@ -99,12 +99,14 @@
     .hero__image-placeholder svg{opacity:.25}
     .hero__image-placeholder span{font-size:12px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.4);max-width:280px;line-height:1.5}
     @media(max-width:900px){.hero{grid-template-columns:1fr}.hero__image{display:none}.hero__content{padding:clamp(40px,6vw,64px) var(--section-pad-x)}}
-    /* Quick Links Bar */
-    .quick-links-bar{background:var(--ior-light-blue-bg);border-bottom:1px solid rgba(3,85,163,.15);padding:0 var(--section-pad-x)}
-    .quick-links-bar__inner{max-width:var(--container-max);margin-inline:auto;display:flex;align-items:center;overflow-x:auto;-webkit-overflow-scrolling:touch}
-    .quick-links-bar__label{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ior-blue);white-space:nowrap;padding:14px 20px 14px 0;border-right:1px solid rgba(3,85,163,.2);margin-right:4px;flex-shrink:0}
-    .quick-links-bar__link{display:inline-flex;align-items:center;gap:6px;padding:14px 16px;font-size:14px;font-weight:700;color:var(--ior-navy);white-space:nowrap;border-bottom:2px solid transparent;transition:all var(--transition-fast);min-height:48px}
-    .quick-links-bar__link:hover{color:var(--ior-blue);border-bottom-color:var(--ior-blue)}
+    /* Quick Links Bar — EXPLORE IOR pattern (matches Diesel Network v3.5) */
+    .quick-links-bar{background:#fff;border-bottom:2px solid var(--grey-200);z-index:calc(var(--z-nav) - 1)}
+    .quick-links-bar__inner{max-width:var(--container-max);margin:0 auto;padding:0 var(--section-pad-x);display:flex;align-items:center;overflow-x:auto;scrollbar-width:none}
+    .quick-links-bar__inner::-webkit-scrollbar{display:none}
+    .quick-links-bar__label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-400);padding:14px 12px 14px 0;white-space:nowrap;flex-shrink:0}
+    .quick-links-bar__link{font-size:13px;font-weight:600;color:var(--grey-700);padding:14px 16px;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:color var(--transition),border-color var(--transition);min-height:44px;display:inline-flex;align-items:center}
+    .quick-links-bar__link:hover{color:var(--ior-blue)}
+    .quick-links-bar__link--active{color:var(--ior-blue);border-bottom-color:var(--ior-blue);font-weight:700}
     /* Logo Carousel */
     .logo-carousel-wrap{background:var(--brand-fill);border-top:1px solid var(--border-color-light);border-bottom:1px solid var(--border-color-light);padding:clamp(20px,3vw,28px) 0;overflow:hidden}
     .logo-carousel-label{text-align:center;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:20px}
@@ -136,29 +138,48 @@
     .platform-card__bullets li{font-size:14px;color:var(--grey-800);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
     .platform-card__bullets li::before{content:'';display:inline-block;width:7px;height:7px;background:var(--ior-blue);flex-shrink:0;margin-top:5px}
     .platform-card__ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:auto}
-    /* Fuelcharge Band — branded section */
-    .fuelcharge-band{background:var(--fc-dark);border-top:4px solid var(--fc-orange);padding:0;overflow:hidden}
+    /* Fuelcharge Band — fc-dark/fc-teal/fc-cream branding */
+    .fuelcharge-band{background:var(--fc-dark);border-top:4px solid var(--fc-teal);padding:0;overflow:hidden}
     .fuelcharge-band__inner{max-width:var(--container-max);margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:clamp(320px,40vw,520px)}
     .fuelcharge-band__content{padding:clamp(40px,5vw,72px) clamp(24px,4vw,64px) clamp(40px,5vw,72px) var(--section-pad-x);display:flex;flex-direction:column;justify-content:center}
-    .fuelcharge-band__eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fc-orange);margin-bottom:14px;display:block}
-    .fuelcharge-band__content h3{font-size:clamp(22px,2.8vw,36px);font-weight:800;color:#fff;margin-bottom:16px;line-height:1.2}
-    .fuelcharge-band__content p{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.8);line-height:1.75;margin-bottom:32px;max-width:480px}
-    .fuelcharge-band__cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn--fc{background:var(--fc-orange);color:#fff;border-color:var(--fc-orange)}.btn--fc:hover{background:#e05e00;border-color:#e05e00}
-    .btn--fc-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}.btn--fc-outline:hover{border-color:#fff;background:rgba(255,255,255,.08)}
-    .fuelcharge-band__image{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#110500}
+    .fuelcharge-band__eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fc-teal);margin-bottom:14px;display:block}
+    .fuelcharge-band__content h3{font-size:clamp(22px,2.8vw,36px);font-weight:800;color:var(--fc-cream);margin-bottom:16px;line-height:1.2}
+    .fuelcharge-band__content p{font-size:clamp(14px,1.4vw,16px);color:rgba(252,252,237,.8);line-height:1.75;margin-bottom:32px;max-width:480px}
+    .fuelcharge-band__badges{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .fc-badge-btn{display:inline-flex;align-items:center;padding:0;overflow:hidden;min-height:44px}
+    .fc-badge-btn img{height:40px;width:auto;display:block;transition:opacity var(--transition-fast)}
+    .fc-badge-btn:hover img{opacity:.85}
+    .fuelcharge-band__image{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--fc-dark) 85%,#000)}
     .fuelcharge-band__image-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px}
-    .fc-phone-mock{width:clamp(140px,16vw,220px);aspect-ratio:9/19;background:#0d0d0d;border:3px solid rgba(255,107,0,.4);position:relative;display:flex;flex-direction:column;overflow:hidden}
-    .fc-phone-mock__notch{width:40%;height:20px;background:#0d0d0d;margin:0 auto;position:relative;z-index:2;border-bottom-left-radius:12px;border-bottom-right-radius:12px}
-    .fc-phone-mock__screen{flex:1;background:#1a0a00;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px}
-    .fc-phone-mock__logo{font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--fc-orange);text-transform:uppercase}
-    .fc-phone-mock__bar{width:80%;height:6px;background:rgba(255,107,0,.3)}
-    .fc-phone-mock__bar--fill{width:55%;height:6px;background:var(--fc-orange)}
-    .fc-phone-mock__amount{font-size:22px;font-weight:800;color:#fff}
-    .fc-phone-mock__label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-    .fc-phone-mock__btn{background:var(--fc-orange);color:#fff;font-size:11px;font-weight:800;padding:8px 20px;letter-spacing:.04em;text-transform:uppercase;margin-top:8px}
-    .fuelcharge-band__image-placeholder span{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,107,0,.5);text-align:center;max-width:200px;line-height:1.5}
-    @media(max-width:768px){.fuelcharge-band__inner{grid-template-columns:1fr}.fuelcharge-band__image{min-height:280px}}
+    .fc-phone-mock{width:clamp(140px,16vw,200px);aspect-ratio:9/19;background:#0a0920;border:2px solid rgba(0,209,204,.25);position:relative;display:flex;flex-direction:column;overflow:hidden}
+    .fc-phone-mock__notch{width:40%;height:18px;background:#0a0920;margin:0 auto;position:relative;z-index:2}
+    .fc-phone-mock__screen{flex:1;background:var(--fc-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px}
+    .fc-phone-mock__logo{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--fc-teal);text-transform:uppercase}
+    .fc-phone-mock__bar{width:80%;height:5px;background:rgba(0,209,204,.2)}
+    .fc-phone-mock__bar--fill{width:55%;height:5px;background:var(--fc-teal)}
+    .fc-phone-mock__amount{font-size:22px;font-weight:800;color:var(--fc-cream)}
+    .fc-phone-mock__label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(252,252,237,.4)}
+    .fc-phone-mock__btn{background:var(--fc-teal);color:var(--fc-dark);font-size:11px;font-weight:800;padding:8px 20px;letter-spacing:.04em;text-transform:uppercase;margin-top:8px}
+    .fuelcharge-band__image-placeholder span{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(0,209,204,.4);text-align:center;max-width:200px;line-height:1.5}
+    @media(max-width:768px){.fuelcharge-band__inner{grid-template-columns:1fr}.fuelcharge-band__image{min-height:260px}}
+    /* Related Content — Support & Resources */
+    .related-content{padding:clamp(40px,5vw,72px) 0;background:var(--grey-50)}
+    .related-content__tabs{display:flex;border-bottom:2px solid var(--grey-200);margin-bottom:28px}
+    .related-content__tab{font-size:14px;font-weight:600;color:var(--grey-400);padding:10px 20px;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color var(--transition),border-color var(--transition);min-height:44px}
+    .related-content__tab.active{color:var(--ior-blue);border-bottom-color:var(--ior-blue)}
+    .related-tab-panel{display:none}.related-tab-panel.active{display:block}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,20px)}
+    @media(max-width:768px){.related-grid{grid-template-columns:1fr}}
+    .related-card{background:#fff;border:1px solid var(--grey-200)}
+    .related-card__img{background:var(--grey-100);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
+    .related-card__img-logo{width:28px;height:28px;background:var(--ior-blue);display:flex;align-items:center;justify-content:center}
+    .related-card__body{padding:18px}
+    .related-card__tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ior-blue);margin-bottom:6px}
+    .related-card__title{font-size:14px;font-weight:700;color:var(--grey-900);line-height:1.4;margin-bottom:6px}
+    .related-card__excerpt{font-size:13px;color:var(--grey-700);line-height:1.6;margin-bottom:14px}
+    .related-card__link{font-size:13px;font-weight:700;color:var(--ior-blue)}.related-card__link:hover{text-decoration:underline}
+    .related-content__view-all{text-align:center;margin-top:28px}
+    .btn--outline-dark{background:transparent;color:var(--near-black);border:2px solid var(--near-black)}.btn--outline-dark:hover{background:var(--near-black);color:#fff}
     /* Stat Bar */
     .stat-bar{background:var(--ior-blue);padding:clamp(20px,3vw,28px) 0}
     .stat-bar .container{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
@@ -363,11 +384,12 @@
       </div>
     </section>
 
-    <!-- SECTION 2: QUICK LINKS BAR -->
-    <nav class="quick-links-bar" aria-label="Explore quick links">
+    <!-- SECTION 2: EXPLORE IOR QUICK LINKS BAR -->
+    <nav class="quick-links-bar" aria-label="Explore IOR navigation">
       <div class="quick-links-bar__inner">
         <span class="quick-links-bar__label">Explore IOR:</span>
         <a href="02_Fuel_Solutions_Hub.html" class="quick-links-bar__link">Fuel Solutions</a>
+        <a href="07_Digital_Platformsv5.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">Digital Platforms</a>
         <a href="#" class="quick-links-bar__link">Industries We Serve</a>
         <a href="09_About_IOR.html" class="quick-links-bar__link">About IOR</a>
         <a href="11_Support_Hub.html" class="quick-links-bar__link">Support &amp; Contact</a>
@@ -463,9 +485,13 @@
           <span class="fuelcharge-band__eyebrow">Fuelcharge App</span>
           <h3 id="fc-band-heading">Looking for a pay-as-you-go refuelling solution?</h3>
           <p>The Fuelcharge App lets you scan-and-pay at any IOR Diesel Network stop &mdash; no account required. Perfect for rural drivers, owner-operators, and small businesses that need flexibility without the commitment.</p>
-          <div class="fuelcharge-band__cta">
-            <a href="07b_Fuelcharge_App_v8.html" class="btn btn--fc">Explore Fuelcharge App <span class="btn__arrow" aria-hidden="true"></span></a>
-            <a href="07b_Fuelcharge_App_v8.html" class="btn btn--fc-outline">Learn More</a>
+          <div class="fuelcharge-band__badges">
+            <a href="#" class="fc-badge-btn" aria-label="Download Fuelcharge on the App Store">
+              <img src="assets/images/badge-app-store.png" alt="Download on the App Store">
+            </a>
+            <a href="#" class="fc-badge-btn" aria-label="Get Fuelcharge on Google Play">
+              <img src="assets/images/badge-google-play.png" alt="Get it on Google Play">
+            </a>
           </div>
         </div>
         <div class="fuelcharge-band__image" aria-hidden="true">
@@ -520,6 +546,114 @@
           <div class="kb-section__image-placeholder">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             <span>Knowledge Base Image</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- SUPPORT & RESOURCES: Related Content -->
+    <section class="related-content" aria-labelledby="rc-dp-heading">
+      <div class="container">
+        <div class="section-heading fade-up">
+          <p class="eyebrow">LATEST FROM IOR</p>
+          <h2 id="rc-dp-heading">Case studies &amp; insights for <span style="color:var(--ior-sky)">digital platform users.</span></h2>
+        </div>
+        <div class="related-content__tabs" role="tablist">
+          <button class="related-content__tab active" role="tab" aria-selected="true" aria-controls="rc-dp-cases" id="rc-dp-tab-cs">Case Studies</button>
+          <button class="related-content__tab" role="tab" aria-selected="false" aria-controls="rc-dp-blog" id="rc-dp-tab-blog">Blog Posts</button>
+        </div>
+        <div class="related-tab-panel active" id="rc-dp-cases" role="tabpanel" aria-labelledby="rc-dp-tab-cs">
+          <div class="related-grid">
+            <article class="related-card fade-up">
+              <div class="related-card__img" aria-label="K.S. Easter Transport case study">
+                <div class="related-card__img-logo" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+              </div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Case Study</div>
+                <h3 class="related-card__title">How K.S. Easter Transport cut fuel admin by 40% with HyDip&#8482;</h3>
+                <p class="related-card__excerpt">Real-time tank monitoring and automated FTC reporting gave K.S. Easter complete visibility &mdash; and eliminated manual dipping entirely.</p>
+                <a href="#" class="related-card__link" aria-label="Read the K.S. Easter Transport case study">Read the case study &raquo;</a>
+              </div>
+            </article>
+            <article class="related-card fade-up">
+              <div class="related-card__img" aria-label="Incitec Pivot case study">
+                <div class="related-card__img-logo" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+              </div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Case Study</div>
+                <h3 class="related-card__title">Incitec Pivot: managing bulk diesel across remote sites via the Customer Portal</h3>
+                <p class="related-card__excerpt">Consolidated invoicing and real-time account visibility gave Incitec Pivot&rsquo;s fleet team control they never had before.</p>
+                <a href="#" class="related-card__link" aria-label="Read the Incitec Pivot case study">Read the case study &raquo;</a>
+              </div>
+            </article>
+            <article class="related-card fade-up">
+              <div class="related-card__img" aria-label="MPC Kinetic case study">
+                <div class="related-card__img-logo" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+              </div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Case Study</div>
+                <h3 class="related-card__title">MPC Kinetic: on-site refuelling visibility across 200+ vehicles</h3>
+                <p class="related-card__excerpt">HyDip&#8482; FMS eliminated manual dipping and gave MPC Kinetic real-time fuel data across their entire fleet operation.</p>
+                <a href="#" class="related-card__link" aria-label="Read the MPC Kinetic case study">Read the case study &raquo;</a>
+              </div>
+            </article>
+          </div>
+          <div class="related-content__view-all">
+            <a href="#" class="btn btn--outline-dark" aria-label="Browse the IOR Help Centre">Browse Help Centre &raquo;</a>
+            <a href="11_Support_Hub.html#contact-us" class="btn btn--outline-dark" aria-label="Contact IOR">Contact Us &raquo;</a>
+          </div>
+        </div>
+        <div class="related-tab-panel" id="rc-dp-blog" role="tabpanel" aria-labelledby="rc-dp-tab-blog" style="display:none;">
+          <div class="related-grid">
+            <article class="related-card fade-up">
+              <div class="related-card__img" aria-label="Blog post image">
+                <div class="related-card__img-logo" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+              </div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Blog Post</div>
+                <h3 class="related-card__title">How to set up HyDip&#8482; FMS: a step-by-step guide for new users</h3>
+                <p class="related-card__excerpt">From sensor installation to your first automated FTC claim &mdash; everything you need to get started with HyDip&#8482; FMS.</p>
+                <a href="#" class="related-card__link" aria-label="Read the blog post">Read the post &raquo;</a>
+              </div>
+            </article>
+            <article class="related-card fade-up">
+              <div class="related-card__img" aria-label="Blog post image">
+                <div class="related-card__img-logo" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+              </div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Blog Post</div>
+                <h3 class="related-card__title">Understanding FTC: what fleet managers need to know about fuel tax credits</h3>
+                <p class="related-card__excerpt">Fuel tax credits can represent significant savings for Australian fleets. Here&rsquo;s how HyDip&#8482; automates the entire process.</p>
+                <a href="#" class="related-card__link" aria-label="Read the blog post">Read the post &raquo;</a>
+              </div>
+            </article>
+            <article class="related-card fade-up">
+              <div class="related-card__img" aria-label="Blog post image">
+                <div class="related-card__img-logo" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+              </div>
+              <div class="related-card__body">
+                <div class="related-card__tag">Blog Post</div>
+                <h3 class="related-card__title">5 reasons fleet managers are switching to the IOR Customer Portal</h3>
+                <p class="related-card__excerpt">From consolidated billing to real-time account management, the Customer Portal is changing how Australian fleets manage fuel.</p>
+                <a href="#" class="related-card__link" aria-label="Read the blog post">Read the post &raquo;</a>
+              </div>
+            </article>
+          </div>
+          <div class="related-content__view-all">
+            <a href="#" class="btn btn--outline-dark" aria-label="Browse the IOR Help Centre">Browse Help Centre &raquo;</a>
+            <a href="11_Support_Hub.html#contact-us" class="btn btn--outline-dark" aria-label="Contact IOR">Contact Us &raquo;</a>
           </div>
         </div>
       </div>
@@ -679,6 +813,17 @@
     });
   },{threshold:0.1});
   document.querySelectorAll('.fade-up').forEach(el=>fadeObs.observe(el));
+  // Related content tab switching
+  document.querySelectorAll('.related-content__tab').forEach(tab=>{
+    tab.addEventListener('click',function(){
+      const parent=this.closest('.related-content');
+      parent.querySelectorAll('.related-content__tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');});
+      parent.querySelectorAll('.related-tab-panel').forEach(p=>{p.classList.remove('active');p.style.display='none';});
+      this.classList.add('active');this.setAttribute('aria-selected','true');
+      const panel=parent.querySelector('#'+this.getAttribute('aria-controls'));
+      if(panel){panel.classList.add('active');panel.style.display='block';}
+    });
+  });
 </script>
 </body>
 </html>
