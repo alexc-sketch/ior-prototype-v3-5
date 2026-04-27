@@ -247,16 +247,17 @@
     .testimonial-card__role { font-size: 13px; color: var(--mid-grey); }
 
     /* ============================================================ FAQ ============================================================ */
-    .faq-section { background: var(--brand-fill); padding: var(--section-pad) var(--section-pad-x); }
+    .faq-section { background: #fff; padding: var(--section-pad) var(--section-pad-x); }
     .faq-section .section-heading { text-align: center; max-width: 640px; margin: 0 auto 48px; }
     .faq-section .section-heading h2 { font-size: clamp(26px,3vw,40px); font-weight: 900; color: var(--near-black); line-height: 1.15; }
     .faq-list { max-width: 860px; margin: 0 auto; }
     .faq-item { border-bottom: 1px solid var(--border-color-light); }
     .faq-item:first-child { border-top: 1px solid var(--border-color-light); }
-    .faq-question { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 22px 0; font-size: clamp(15px,1.4vw,17px); font-weight: 700; color: var(--near-black); background: none; border: none; cursor: pointer; text-align: left; gap: 16px; font-family: var(--font); }
-    .faq-question__icon { width: 24px; height: 24px; flex-shrink: 0; background: var(--ior-blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 400; transition: transform var(--transition-fast); }
-    .faq-item--open .faq-question__icon { transform: rotate(45deg); }
-    .faq-answer { display: none; padding: 0 0 22px; font-size: clamp(14px,1.2vw,15px); color: var(--dark-grey); line-height: 1.7; max-width: 720px; }
+    .faq-question { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 22px 0 22px 20px; font-size: clamp(15px,1.4vw,17px); font-weight: 700; color: var(--near-black); background: none; border: none; border-left: 3px solid transparent; cursor: pointer; text-align: left; gap: 16px; font-family: var(--font); transition: border-color var(--transition-fast); }
+    .faq-item--open .faq-question { border-left-color: var(--ior-blue); color: var(--ior-blue); }
+    .faq-question__icon { width: 20px; height: 20px; flex-shrink: 0; color: var(--mid-grey); font-size: 22px; font-weight: 300; line-height: 1; transition: transform var(--transition-fast); }
+    .faq-item--open .faq-question__icon { transform: rotate(45deg); color: var(--ior-blue); }
+    .faq-answer { display: none; padding: 0 0 22px 23px; font-size: clamp(14px,1.2vw,15px); color: var(--dark-grey); line-height: 1.7; max-width: 720px; border-left: 3px solid var(--ior-blue); }
     .faq-item--open .faq-answer { display: block; }
 
     /* ============================================================ LEAD CAPTURE ============================================================ */
@@ -563,10 +564,39 @@
           </div>
         </div>
       </div>
+      <div class="challenge-ctas fade-up" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:48px;">
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Apply for an Account &rsaquo;</a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--ghost">Speak to a Fuel Specialist &rsaquo;</a>
+      </div>
     </div>
   </section>
 
-  <!-- 4. THE SOLUTION -->
+  <!-- 4. LOGO CAROUSEL -->
+  <div class="logo-carousel-wrap" aria-label="Trusted by leading Australian businesses">
+    <p class="logo-carousel-label">Trusted by leading Australian businesses</p>
+    <div class="logo-carousel-track-outer">
+      <div class="logo-carousel-track" aria-hidden="true">
+        <div class="logo-placeholder">Client Logo 1</div>
+        <div class="logo-placeholder">Client Logo 2</div>
+        <div class="logo-placeholder">Client Logo 3</div>
+        <div class="logo-placeholder">Client Logo 4</div>
+        <div class="logo-placeholder">Client Logo 5</div>
+        <div class="logo-placeholder">Client Logo 6</div>
+        <div class="logo-placeholder">Client Logo 7</div>
+        <div class="logo-placeholder">Client Logo 8</div>
+        <div class="logo-placeholder">Client Logo 1</div>
+        <div class="logo-placeholder">Client Logo 2</div>
+        <div class="logo-placeholder">Client Logo 3</div>
+        <div class="logo-placeholder">Client Logo 4</div>
+        <div class="logo-placeholder">Client Logo 5</div>
+        <div class="logo-placeholder">Client Logo 6</div>
+        <div class="logo-placeholder">Client Logo 7</div>
+        <div class="logo-placeholder">Client Logo 8</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. THE SOLUTION -->
   <section class="solution-section" aria-labelledby="solution-heading">
     <div class="container">
       <div class="section-heading fade-up">
@@ -645,6 +675,10 @@
           <div class="why-ior__card-title">We monitor your tanks.</div>
           <div class="why-ior__card-body">HyDip&#8482; FMS gives you live data, not end-of-month surprises. Know your fuel status before it becomes a problem.</div>
         </div>
+      </div>
+      <div class="why-ior__ctas" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:48px;padding-top:8px;">
+        <a href="09_About_IOR.html" class="btn btn--outline-white">About IOR &rsaquo;</a>
+        <a href="06_Supply_Trading.html" class="btn btn--outline-white">Supply &amp; Trading &rsaquo;</a>
       </div>
     </div>
   </section>
@@ -856,102 +890,90 @@
 </main>
 
 <!-- PRE-FOOTER -->
-<div class="ior-pre-footer" aria-label="We're here to help">
+<section class="ior-pre-footer" aria-label="We're here to help">
   <div class="ior-pre-footer__inner">
-    <div class="ior-pre-footer__block">
-      <div class="ior-pre-footer__icon" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.76 16.92z"/></svg>
-      </div>
-      <div class="ior-pre-footer__title">Speak to a Specialist</div>
-      <p class="ior-pre-footer__body">Our Australian team is available to discuss your fuel requirements and design the right solution for your operation.</p>
-      <a href="11a_Contact_Usv5.html" class="ior-pre-footer__link">Contact Us &rarr;</a>
-    </div>
-    <div class="ior-pre-footer__block">
-      <div class="ior-pre-footer__icon" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <div class="ior-pre-footer__title">Apply for an Account</div>
-      <p class="ior-pre-footer__body">Most commercial accounts are approved within one business day. Get started with IOR today.</p>
-      <a href="#" class="ior-pre-footer__link">Apply Now &rarr;</a>
-    </div>
-    <div class="ior-pre-footer__block">
-      <div class="ior-pre-footer__icon" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </div>
-      <div class="ior-pre-footer__title">Find a Diesel Stop</div>
-      <p class="ior-pre-footer__body">Use our location finder to find the nearest IOR diesel stop on your route across Australia's major freight corridors.</p>
-      <a href="11d_Find_Locationv5.html" class="ior-pre-footer__link">Find a Location &rarr;</a>
+    <h2 class="ior-pre-footer__title">We&rsquo;re here to help</h2>
+    <div class="ior-pre-footer__ctas">
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-pre-footer__btn ior-pre-footer__btn--filled" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
+      <a href="11_Support_Hubv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Need Help? &#8594;</a>
+      <a href="11a_Contact_Usv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Contact Us &#8594;</a>
     </div>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
 <footer class="ior-footer" aria-label="Site footer">
-  <div class="ior-footer__grid">
-    <div class="ior-footer__brand-col">
-      <div class="footer-logo">
-        <svg width="80" height="38" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g clip-path="url(#ior-logo-clip-footer)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="white"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="white"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="white"/></g><defs><clipPath id="ior-logo-clip-footer"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg>
-      </div>
-      <p>Australia's independent fuel specialist. Delivering purpose-built fuel solutions to transport, mining, agriculture, aviation, and more since 1984.</p>
-      <div class="ior-footer__social" aria-label="Social media links">
-        <a href="#" class="ior-footer__social-link" aria-label="IOR on LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-        <a href="#" class="ior-footer__social-link" aria-label="IOR on Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-        <a href="#" class="ior-footer__social-link" aria-label="IOR on Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-      </div>
+  <div class="ior-footer__inner">
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Contact</span>
+      <address class="ior-footer__address">
+        IOR Head Office<br>
+        99 Southgate Ave,<br>
+        Cannon Hill, Qld 4170
+      </address>
+      <a href="tel:1300457467" class="ior-footer__link">1300 457 467</a>
+      <a href="mailto:enquiries@ior.com.au" class="ior-footer__link">enquiries@ior.com.au</a>
+      <a href="11b_Regional_Contacts.html" class="ior-footer__link">Regional Contacts</a>
     </div>
-    <div class="footer-col">
-      <p class="footer-col__title">Fuel Solutions</p>
-      <div class="footer-col__links">
-        <a href="03_Ground_Fuels.html" class="footer-col__link">Ground Fuels</a>
-        <a href="#" class="footer-col__link">IOR Diesel Stops</a>
-        <a href="#" class="footer-col__link">Bulk Delivery</a>
-        <a href="#" class="footer-col__link">HyBlue&#8482; AdBlue</a>
-        <a href="04_Aviation_Hub.html" class="footer-col__link">Aviation Fuels</a>
-      </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Fuel Solutions</span>
+      <a href="03_Ground_Fuels.html" class="ior-footer__link">Ground Fuels</a>
+      <a href="#" class="ior-footer__link">Aviation</a>
+      <a href="05_Equipment_Infrastructure.html" class="ior-footer__link">Equipment &amp; Infrastructure</a>
+      <a href="06_Supply_Trading.html" class="ior-footer__link">Supply &amp; Trading</a>
     </div>
-    <div class="footer-col">
-      <p class="footer-col__title">Digital Platforms</p>
-      <div class="footer-col__links">
-        <a href="07a_HyDip_FMSv6.html" class="footer-col__link">HyDip&#8482; FMS</a>
-        <a href="07b_Fuelcharge_App_v8.html" class="footer-col__link">Fuelcharge App</a>
-        <a href="07c_Customer_Portalv5.html" class="footer-col__link">Customer Portal</a>
-      </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Digital Platforms</span>
+      <a href="07a_HyDip_FMSv6.html" class="ior-footer__link">HyDip&#8482; FMS</a>
+      <a href="07b_Fuelcharge_App_v8.html" class="ior-footer__link">Fuelcharge App</a>
+      <a href="07c_Customer_Portalv5.html" class="ior-footer__link">Customer Portal</a>
     </div>
-    <div class="footer-col">
-      <p class="footer-col__title">Industries</p>
-      <div class="footer-col__links">
-        <a href="08c_Transport_v6.html" class="footer-col__link">Transport &amp; Logistics</a>
-        <a href="08a_Mining_v6.html" class="footer-col__link">Mining &amp; Resources</a>
-        <a href="08b_Agriculture_v6.html" class="footer-col__link">Agriculture</a>
-        <a href="08h_Aviation_v6.html" class="footer-col__link">Aviation</a>
-        <a href="08_Industries_v6.html" class="footer-col__link">All Industries</a>
-      </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Corporate</span>
+      <a href="09_About_IOR.html" class="ior-footer__link">About IOR</a>
+      <a href="10_Careers.html" class="ior-footer__link">Careers</a>
+      <a href="09d_Case_Studies.html" class="ior-footer__link">Case Studies</a>
+      <a href="09c_Sustainability.html" class="ior-footer__link">Sustainability, HSE &amp; ESG</a>
+      <a href="11c_News_Updates.html" class="ior-footer__link">News &amp; Updates</a>
     </div>
-    <div class="footer-col">
-      <p class="footer-col__title">Company</p>
-      <div class="footer-col__links">
-        <a href="09_About_IOR.html" class="footer-col__link">About IOR</a>
-        <a href="09a_Our_Leadershipv5.html" class="footer-col__link">Leadership</a>
-        <a href="10_Careers.html" class="footer-col__link">Careers</a>
-        <a href="#" class="footer-col__link">Sustainability</a>
-      </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Quick Actions</span>
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-footer__link" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+      <a href="11e_Make_Payment.html" class="ior-footer__link">Make a Payment</a>
+      <a href="11a_Contact_Usv5.html" class="ior-footer__link">Contact Us</a>
+      <a href="11_Support_Hubv5.html" class="ior-footer__link">Help Centre &amp; FAQs</a>
     </div>
-    <div class="footer-col">
-      <p class="footer-col__title">Support</p>
-      <div class="footer-col__links">
-        <a href="11_Support_Hubv5.html" class="footer-col__link">Help Centre</a>
-        <a href="11a_Contact_Usv5.html" class="footer-col__link">Contact Us</a>
-        <a href="11d_Find_Locationv5.html" class="footer-col__link">Find a Location</a>
-        <a href="11e_Make_Paymentv5.html" class="footer-col__link">Make a Payment</a>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Find a Site By State</span>
+      <div class="ior-footer__states">
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">QLD</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">NSW</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">VIC</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">SA</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">WA</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">NT</a>
       </div>
     </div>
   </div>
-  <div class="ior-footer__bottom">
-    <p class="ior-footer__legal">&copy; 2026 IOR Petroleum Pty Ltd. All rights reserved. ABN 12 345 678 901.</p>
-    <div class="ior-footer__legal-links">
-      <a href="#" class="ior-footer__legal-link">Privacy Policy</a>
-      <a href="#" class="ior-footer__legal-link">Terms of Use</a>
-      <a href="#" class="ior-footer__legal-link">Sitemap</a>
+  <div class="ior-footer__legal">
+    <p class="ior-footer__legal-text">
+      Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="ior-footer__legal-link">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="ior-footer__legal-link">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      Site by ThreePM
+    </p>
+    <div class="ior-footer__social" aria-label="Social media links">
+      <a href="https://www.linkedin.com/company/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M15 17h-3v9h3v-9zm-1.5-4.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM26 17c-1.7 0-2.8.9-3 1.8V17h-3v9h3v-4.5c0-1.4.7-2.5 2-2.5s2 1.1 2 2.5V26h3v-5c0-2.8-1.8-4-4-4z" fill="#0355A3"/></svg>
+      </a>
+      <a href="https://www.facebook.com/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M22 28v-7h2.4l.3-2.8H22v-1.8c0-.8.2-1.4 1.4-1.4H25V13c-.2 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.4v2H17V21h2.6v7H22z" fill="#0355A3"/></svg>
+      </a>
+      <a href="https://www.instagram.com/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><rect x="13" y="13" width="15" height="15" rx="4" stroke="#0355A3" stroke-width="2" fill="none"/><circle cx="20.5" cy="20.5" r="3.5" stroke="#0355A3" stroke-width="2" fill="none"/><circle cx="25" cy="16" r="1" fill="#0355A3"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M29 17.5s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C23.6 14.5 20.5 14.5 20.5 14.5s-3.1 0-5.7.1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S12 19 12 20.5v1.4c0 1.5.2 3 .2 3s.2 1.4.8 2c.8.8 1.8.8 2.3.9 1.7.2 7.2.2 7.2.2s3.1 0 5.7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.5.2-3v-1.4c0-1.5-.2-3-.2-3zM18.5 23v-5l5.5 2.5-5.5 2.5z" fill="#0355A3"/></svg>
+      </a>
     </div>
   </div>
 </footer>
