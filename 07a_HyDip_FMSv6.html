@@ -274,6 +274,21 @@
       .hd-tab { padding: 12px 16px; font-size: 11px; }
       .footer-nav-grid { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* ── HyDip Pre-Footer CTA Band ─────────────────────────────────────── */
+    .hd-cta-band { background: var(--hd-dark, #0d1f30); border-top: 4px solid var(--hd-blue, #0355A3); padding: clamp(48px,6vw,80px) clamp(20px,8vw,125px); }
+    .hd-cta-band__inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .hd-cta-band__copy { flex: 1 1 400px; }
+    .hd-cta-band__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--hd-blue, #0355A3); text-transform: uppercase; margin-bottom: 10px; }
+    .hd-cta-band__title { font-size: clamp(24px,3vw,40px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 12px; }
+    .hd-cta-band__sub { font-size: clamp(14px,1.4vw,16px); color: rgba(255,255,255,.75); line-height: 1.7; }
+    .hd-cta-band__actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .hd-cta-band__btn { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; font-size: clamp(14px,1.3vw,16px); font-weight: 700; border: 2px solid #fff; cursor: pointer; transition: all var(--transition-fast, .2s); text-decoration: none; white-space: nowrap; min-height: 48px; border-radius: 500px; }
+    .hd-cta-band__btn--primary { background: #fff; color: var(--hd-dark, #0d1f30); }
+    .hd-cta-band__btn--primary:hover { background: var(--ior-light, #e8f1fb); }
+    .hd-cta-band__btn--outline { background: transparent; color: #fff; }
+    .hd-cta-band__btn--outline:hover { background: rgba(255,255,255,.1); }
+    @media (max-width: 640px) { .hd-cta-band__inner { flex-direction: column; align-items: flex-start; } }
   </style>
 </head>
 <body>
@@ -297,176 +312,66 @@
   </div>
   <!-- Header: Primary Nav + Mega Menus (STICKY) -->
   <header role="banner">
-    <!-- Utility Bar -->
-    <div class="utility-bar" role="complementary" aria-label="Site utilities">
-      <span>Announcement Message Placeholder</span>
-      <div class="utility-bar__actions">
-        <a href="11d_Find_Location.html" class="utility-bar__link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Find a Location
-        </a>
-        <div class="utility-bar__divider" aria-hidden="true"></div>
-        <a href="11e_Make_Payment.html" class="utility-bar__link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-          Make a Payment
-        </a>
-        <div class="utility-bar__divider" aria-hidden="true"></div>
-        <a href="tel:1300457467" class="utility-bar__link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          1300 457 467
-        </a>
-      </div>
-    </div>
-    <!-- Primary Nav -->
-    <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
-      <a href="01_Homepage.html" class="nav-logo" aria-label="IOR&#174; home">
-        <svg width="90" height="42" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <g clip-path="url(#ior-logo-clip-v4)">
-            <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/>
-            <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/>
-            <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/>
-            <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/>
-          </g>
-          <defs><clipPath id="ior-logo-clip-v4"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
-        </svg>
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">
+        <svg width="90" height="42" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g clip-path="url(#ior-logo-clip-nav)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/></g><defs><clipPath id="ior-logo-clip-nav"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg>
       </a>
       <ul class="nav-links" role="list">
-        <li>
-          <button class="nav-link" data-menu="ground-fuels" aria-expanded="false" aria-controls="mega-ground-fuels">
-            Ground Fuels <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
-          </button>
-        </li>
-        <li>
-          <button class="nav-link" data-menu="aviation" aria-expanded="false" aria-controls="mega-aviation">
-            Aviation <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
-          </button>
-        </li>
-        <li>
-          <button class="nav-link" data-menu="digital" aria-expanded="false" aria-controls="mega-digital">
-            Digital Platforms <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
-          </button>
-        </li>
-        <li>
-          <button class="nav-link" data-menu="supply" aria-expanded="false" aria-controls="mega-supply">
-            Supply &amp; Trading <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
-          </button>
-        </li>
-        <li>
-          <button class="nav-link" data-menu="equipment" aria-expanded="false" aria-controls="mega-equipment">
-            Equipment <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
-          </button>
-        </li>
-        <li><a href="11_Support_Hub.html" class="nav-link">Support</a></li>
+        <li><button class="nav-link" data-menu="fuel-solutions" aria-expanded="false" aria-controls="mega-fuel-solutions">Fuel Solutions <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link" data-menu="digital-platforms" aria-expanded="false" aria-controls="mega-digital-platforms">Digital Platforms <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link" data-menu="industries" aria-expanded="false" aria-controls="mega-industries">Industries We Serve <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link" data-menu="about-ior" aria-expanded="false" aria-controls="mega-about-ior">About IOR <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link" data-menu="support-contact" aria-expanded="false" aria-controls="mega-support-contact">Support &amp; Contact <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
       </ul>
       <div class="nav-ctas">
-        <a href="#" class="btn btn--outline btn--pill" aria-label="Customer Login">Customer Login</a>
-        <a href="#" class="btn btn--primary btn--pill" aria-label="Apply for an Account">Apply for an Account</a>
+        <a href="#" class="btn btn--outline btn--pill btn--sm" aria-label="Customer Login">Customer Login</a>
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary btn--pill btn--sm" aria-label="Apply for an Account" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
         <button class="hamburger" id="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
-          <span></span><span></span><span></span>
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
         </button>
       </div>
-      <!-- Mega Menu: Ground Fuels -->
-      <div class="mega-panel" id="mega-ground-fuels" role="region" aria-label="Ground Fuels menu">
-        <div class="mega-grid mega-grid--4">
-          <div>
-            <div class="mega-col__title">Diesel Network</div>
-            <div class="mega-col__links">
-              <a href="03a_Diesel_Network_v3.5.html" class="mega-col__link">IOR Diesel Stops</a>
-              <a href="03b_On_Site_Refuelling_v3.5.html" class="mega-col__link">On-Site Refuelling</a>
-              <a href="03c_Bulk_Diesel_Delivery_v3.5.html" class="mega-col__link">Bulk Diesel Delivery</a>
-            </div>
-          </div>
-          <div>
-            <div class="mega-col__title">Speciality Fuels</div>
-            <div class="mega-col__links">
-              <a href="03d_HyBlue_v3.5.html" class="mega-col__link">HyBlue&#8482; AdBlue</a>
-              <a href="03e_Oils_Lubricants_v3.5.html" class="mega-col__link">Oils &amp; Lubricants</a>
-            </div>
-          </div>
-          <div>
-            <div class="mega-col__title">Solutions</div>
-            <div class="mega-col__links">
-              <a href="03_Ground_Fuels.html" class="mega-col__link mega-col__link--cta">View All Ground Fuels &rarr;</a>
-            </div>
-          </div>
-          <div class="mega-footer">
-            <a href="#lead-capture" class="mega-cta-link">Get a Quote &rarr;</a>
-            <a href="11d_Find_Location.html" class="mega-cta-link">Find a Diesel Stop &rarr;</a>
-          </div>
-        </div>
+    </div>
+    <!-- Mega Menus -->
+    <div class="mega-panel" id="mega-fuel-solutions" role="region" aria-label="Fuel Solutions menu">
+      <div class="mega-inner mega-inner--4col">
+        <div class="mega-col"><p class="mega-col__title">Ground Fuels</p><div class="mega-col__links"><a href="03_Ground_Fuels.html" class="mega-col__link">Ground Fuels Hub</a><a href="03a_Diesel_Network_v8.html" class="mega-col__link">IOR Diesel Network</a><a href="#" class="mega-col__link">On-Site Refuelling</a><a href="#" class="mega-col__link">Bulk Diesel Delivery</a><a href="#" class="mega-col__link">HyBlue&#8482; AdBlue</a><a href="#" class="mega-col__link">Oils &amp; Lubricants</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Aviation Fuels</p><div class="mega-col__links"><a href="04_Aviation_Hub.html" class="mega-col__link">Aviation Hub</a><a href="04a_Aviation_Network_v8.html" class="mega-col__link">Aviation Network</a><a href="#" class="mega-col__link">Airport Fuelling</a><a href="#" class="mega-col__link">Aviation Bulk Delivery</a><a href="#" class="mega-col__link">Aviation Oils</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Speciality</p><div class="mega-col__links"><a href="#" class="mega-col__link">Marine Fuels</a><a href="#" class="mega-col__link">Rail Fuels</a><a href="#" class="mega-col__link">Emergency Fuel</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Quick Actions</p><div class="mega-col__links"><a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a><a href="#" class="mega-col__link">Get a Quote</a><a href="#" class="mega-col__link">Apply for an Account</a></div></div>
       </div>
-      <!-- Mega Menu: Aviation -->
-      <div class="mega-panel" id="mega-aviation" role="region" aria-label="Aviation menu">
-        <div class="mega-grid mega-grid--4">
-          <div>
-            <div class="mega-col__title mega-col__title--gold">Aviation Network</div>
-            <div class="mega-col__links">
-              <a href="04a_Aviation_Network_v3.5.html" class="mega-col__link">Aviation Network</a>
-              <a href="04b_Airport_Fuelling_v3.5.html" class="mega-col__link">Airport Fuelling</a>
-              <a href="04c_Aviation_Bulk_v3.5.html" class="mega-col__link">Aviation Bulk Delivery</a>
-              <a href="04d_Aviation_Oils_v3.5.html" class="mega-col__link">Aviation Oils</a>
-            </div>
-          </div>
-          <div>
-            <div class="mega-col__title mega-col__title--gold">Hub</div>
-            <div class="mega-col__links">
-              <a href="04_Aviation_Hub_v3.5.html" class="mega-col__link mega-col__link--cta">View All Aviation &rarr;</a>
-            </div>
-          </div>
-          <div class="mega-footer">
-            <a href="#lead-capture" class="mega-cta-link">Aviation Enquiry &rarr;</a>
-          </div>
-        </div>
+    </div>
+    <div class="mega-panel" id="mega-digital-platforms" role="region" aria-label="Digital Platforms menu">
+      <div class="mega-inner mega-inner--3col">
+        <div class="mega-col"><p class="mega-col__title">Platforms</p><div class="mega-col__links"><a href="07_Digital_Platformsv5.html" class="mega-col__link">Digital Platforms Hub</a><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Features</p><div class="mega-col__links"><a href="#" class="mega-col__link">Fleet Management</a><a href="#" class="mega-col__link">Real-Time Reporting</a><a href="#" class="mega-col__link">Tank Monitoring</a><a href="#" class="mega-col__link">Payment Integration</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Get Started</p><div class="mega-col__links"><a href="#" class="mega-col__link">Request a Demo</a><a href="#" class="mega-col__link">Apply for an Account</a></div></div>
       </div>
-      <!-- Mega Menu: Digital Platforms -->
-      <div class="mega-panel" id="mega-digital" role="region" aria-label="Digital Platforms menu">
-        <div class="mega-grid mega-grid--3">
-          <div>
-            <div class="mega-col__title">Platforms</div>
-            <div class="mega-col__links">
-              <a href="#" class="mega-col__link">FuelCharge App</a>
-              <a href="#" class="mega-col__link">HyDip Tank Monitoring</a>
-              <a href="#" class="mega-col__link">IOR Portal</a>
-            </div>
-          </div>
-          <div class="mega-footer">
-            <a href="#lead-capture" class="mega-cta-link">Digital Enquiry &rarr;</a>
-          </div>
-        </div>
+    </div>
+    <div class="mega-panel" id="mega-industries" role="region" aria-label="Industries We Serve menu">
+      <div class="mega-inner mega-inner--4col">
+        <div class="mega-col"><p class="mega-col__title">Primary Industries</p><div class="mega-col__links"><a href="#" class="mega-col__link">Mining &amp; Resources</a><a href="#" class="mega-col__link">Agriculture</a><a href="#" class="mega-col__link">Construction</a><a href="#" class="mega-col__link">Transport &amp; Logistics</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Aviation &amp; Marine</p><div class="mega-col__links"><a href="#" class="mega-col__link">General Aviation</a><a href="#" class="mega-col__link">Commercial Aviation</a><a href="#" class="mega-col__link">Marine &amp; Boating</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Government &amp; Defence</p><div class="mega-col__links"><a href="#" class="mega-col__link">Government Fleets</a><a href="#" class="mega-col__link">Defence</a><a href="#" class="mega-col__link">Emergency Services</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Case Studies</p><div class="mega-col__links"><a href="09d_Case_Study_Singlev6.html" class="mega-col__link">View Case Studies</a></div></div>
       </div>
-      <!-- Mega Menu: Supply & Trading -->
-      <div class="mega-panel" id="mega-supply" role="region" aria-label="Supply and Trading menu">
-        <div class="mega-grid mega-grid--2">
-          <div>
-            <div class="mega-col__title">Supply</div>
-            <div class="mega-col__links">
-              <a href="#" class="mega-col__link">Wholesale Fuel Supply</a>
-              <a href="#" class="mega-col__link">Supply Chain Solutions</a>
-            </div>
-          </div>
-          <div class="mega-footer">
-            <a href="#lead-capture" class="mega-cta-link">Supply Enquiry &rarr;</a>
-          </div>
-        </div>
+    </div>
+    <div class="mega-panel" id="mega-about-ior" role="region" aria-label="About IOR menu">
+      <div class="mega-inner mega-inner--3col">
+        <div class="mega-col"><p class="mega-col__title">Company</p><div class="mega-col__links"><a href="09_About_IOR.html" class="mega-col__link">About IOR</a><a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a><a href="#" class="mega-col__link">Our History</a><a href="#" class="mega-col__link">Community &amp; Giving Back</a><a href="#" class="mega-col__link">Sustainability, HSE &amp; ESG</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Careers</p><div class="mega-col__links"><a href="10_Careers.html" class="mega-col__link">Work at IOR</a><a href="#" class="mega-col__link">Current Vacancies</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">News</p><div class="mega-col__links"><a href="#" class="mega-col__link">News &amp; Updates</a><a href="#" class="mega-col__link">Blog</a></div></div>
       </div>
-      <!-- Mega Menu: Equipment -->
-      <div class="mega-panel" id="mega-equipment" role="region" aria-label="Equipment menu">
-        <div class="mega-grid mega-grid--2">
-          <div>
-            <div class="mega-col__title">Equipment</div>
-            <div class="mega-col__links">
-              <a href="#" class="mega-col__link">Fuel Storage Tanks</a>
-              <a href="#" class="mega-col__link">Dispensing Equipment</a>
-              <a href="#" class="mega-col__link">Installation Services</a>
-            </div>
-          </div>
-          <div class="mega-footer">
-            <a href="#lead-capture" class="mega-cta-link">Equipment Enquiry &rarr;</a>
-          </div>
-        </div>
+    </div>
+    <div class="mega-panel" id="mega-support-contact" role="region" aria-label="Support &amp; Contact menu">
+      <div class="mega-inner mega-inner--3col">
+        <div class="mega-col"><p class="mega-col__title">Get Help</p><div class="mega-col__links"><a href="11_Support_Hubv5.html" class="mega-col__link">Help Centre &amp; FAQs</a><a href="11a_Contact_Usv5.html" class="mega-col__link">Contact Us</a><a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Accounts</p><div class="mega-col__links"><a href="#" class="mega-col__link">Apply for an Account</a><a href="#" class="mega-col__link">Customer Login</a><a href="11e_Make_Paymentv5.html" class="mega-col__link">Make a Payment</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Find Us</p><div class="mega-col__links"><a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a><a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a></div></div>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- MOBILE DRAWER — verbatim from IOR_Utility_Template_Shell_v5.html   -->
@@ -826,107 +731,90 @@
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- PRE-FOOTER — verbatim from IOR_Utility_Template_Shell_v5.html      -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="pre-footer" aria-label="We're here to help">
-    <div class="pre-footer__row">
-      <h2 class="pre-footer__title">We&rsquo;re here to help</h2>
-      <div class="pre-footer__ctas">
-        <a href="#" class="btn btn--white" aria-label="Apply for an IOR account">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
-        <a href="11_Support_Hub.html#contact-us" class="btn btn--outline-white" aria-label="Make an enquiry">Make an Enquiry <span class="btn__arrow" aria-hidden="true"></span></a>
-        <a href="11_Support_Hub.html" class="btn btn--outline-white" aria-label="Visit the support hub">Need Help? <span class="btn__arrow" aria-hidden="true"></span></a>
-      </div>
-    </div>
-    <div class="pre-footer__divider"></div>
-  </section>
+  
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- FOOTER — verbatim from IOR_Utility_Template_Shell_v5.html          -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <footer class="site-footer" aria-label="Site footer">
-  <div class="footer-nav-grid">
-    <!-- Contact -->
-    <div>
-      <div class="footer-col__title">Contact</div>
-      <div class="footer-col__links">
-        <span class="footer-col__link footer-col__link--address">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
-        </span>
-        <a href="tel:1300457467" class="footer-col__link footer-col__link--icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          1300 457 467
-        </a>
-        <a href="mailto:enquiries@ior.com.au" class="footer-col__link footer-col__link--icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          enquiries@ior.com.au
-        </a>
-        <a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Contacts</a>
+  
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- HYDIP PRE-FOOTER CTA BAND                                           -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section class="hd-cta-band" aria-label="Get started with HyDip">
+    <div class="hd-cta-band__inner">
+      <div class="hd-cta-band__copy">
+        <p class="hd-cta-band__eyebrow">HYDIP&#8482; FMS</p>
+        <h2 class="hd-cta-band__title">Ready to take control of your fuel?</h2>
+        <p class="hd-cta-band__sub">Speak with an IOR digital specialist to find the right HyDip configuration for your sites.</p>
+      </div>
+      <div class="hd-cta-band__actions">
+        <a href="#hd-enquiry" class="hd-cta-band__btn hd-cta-band__btn--primary">Enquire Now <span aria-hidden="true">&#8594;</span></a>
+        <a href="https://status.hydip.com/" class="hd-cta-band__btn hd-cta-band__btn--outline" target="_blank" rel="noopener noreferrer">View Server Status <span aria-hidden="true">&#8599;</span></a>
       </div>
     </div>
-    <!-- Fuel Solutions -->
-    <div>
-      <div class="footer-col__title">Fuel Solutions</div>
-      <div class="footer-col__links">
-        <a href="03_Ground_Fuels.html"              class="footer-col__link">Ground Fuels</a>
-        <a href="04_Aviation.html"                  class="footer-col__link">Aviation</a>
-        <a href="05_Equipment_Infrastructure.html"  class="footer-col__link">Equipment &amp; Infrastructure</a>
-        <a href="06_Supply_Trading.html"            class="footer-col__link">Supply &amp; Trading</a>
-      </div>
+  </section>
+
+  <footer class="ior-footer" aria-label="Site footer">
+  <div class="ior-footer__inner">
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Contact</span>
+      <address class="ior-footer__address">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</address>
+      <a href="tel:1300457467" class="ior-footer__link">1300 457 467</a>
+      <a href="mailto:enquiries@ior.com.au" class="ior-footer__link">enquiries@ior.com.au</a>
+      <a href="11b_Regional_Contactsv5.html" class="ior-footer__link">Regional Contacts</a>
     </div>
-    <!-- Digital Platforms -->
-    <div>
-      <div class="footer-col__title">Digital Platforms</div>
-      <div class="footer-col__links">
-        <a href="07_Digital_Platforms.html#hydip"           class="footer-col__link">HyDip™ FMS</a>
-        <a href="07_Digital_Platforms.html#fuelcharge"      class="footer-col__link">Fuelcharge App</a>
-        <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
-      </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Fuel Solutions</span>
+      <a href="03_Ground_Fuels.html" class="ior-footer__link">Ground Fuels</a>
+      <a href="04_Aviation_Hub.html" class="ior-footer__link">Aviation</a>
+      <a href="05_Equipment_Infrastructure.html" class="ior-footer__link">Equipment &amp; Infrastructure</a>
+      <a href="06_Supply_Trading.html" class="ior-footer__link">Supply &amp; Trading</a>
     </div>
-    <!-- Corporate -->
-    <div>
-      <div class="footer-col__title">Corporate</div>
-      <div class="footer-col__links">
-        <a href="09_About_IOR.html"          class="footer-col__link">About IOR</a>
-        <a href="10_Careers.html#careers"      class="footer-col__link">Careers</a>
-        <a href="09d_Case_Studies.html"   class="footer-col__link">Case Studies</a>
-        <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
-        <a href="11c_News_Updates.html"         class="footer-col__link">News &amp; Updates</a>
-      </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Digital Platforms</span>
+      <a href="07a_HyDip_FMSv6.html" class="ior-footer__link">HyDip&#8482; FMS</a>
+      <a href="07b_Fuelcharge_App_v8.html" class="ior-footer__link">Fuelcharge App</a>
+      <a href="07c_Customer_Portalv5.html" class="ior-footer__link">Customer Portal</a>
     </div>
-    <!-- Quick Actions -->
-    <div>
-      <div class="footer-col__title">Quick Actions</div>
-      <div class="footer-col__links">
-        <a href="#" class="footer-col__link">Apply for an Account</a>
-        <a href="11e_Make_Payment.html" class="footer-col__link">Make a Payment</a>
-        <a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a>
-        <a href="11_Support_Hub.html" class="footer-col__link">Help Centre &amp; FAQs</a>
-      </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Corporate</span>
+      <a href="09_About_IOR.html" class="ior-footer__link">About IOR</a>
+      <a href="10_Careers.html" class="ior-footer__link">Careers</a>
+      <a href="09d_Case_Studies.html" class="ior-footer__link">Case Studies</a>
+      <a href="09c_Sustainability.html" class="ior-footer__link">Sustainability, HSE &amp; ESG</a>
+      <a href="11c_News_Updates.html" class="ior-footer__link">News &amp; Updates</a>
     </div>
-    <!-- Find a Site By State -->
-    <div>
-      <div class="footer-col__title">Find a Site By State</div>
-      <div class="footer-state-pills">
-        <a href="11d_Find_Location.html" class="footer-state-pill">QLD</a>
-        <a href="11d_Find_Location.html" class="footer-state-pill">NSW</a>
-        <a href="11d_Find_Location.html" class="footer-state-pill">VIC</a>
-        <a href="11d_Find_Location.html" class="footer-state-pill">SA</a>
-        <a href="11d_Find_Location.html" class="footer-state-pill">WA</a>
-        <a href="11d_Find_Location.html" class="footer-state-pill">NT</a>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Quick Actions</span>
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-footer__link" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+      <a href="11e_Make_Paymentv5.html" class="ior-footer__link">Make a Payment</a>
+      <a href="11a_Contact_Usv5.html" class="ior-footer__link">Contact Us</a>
+      <a href="11_Support_Hubv5.html" class="ior-footer__link">Help Centre &amp; FAQs</a>
+    </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Find a Site By State</span>
+      <div class="ior-footer__states">
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">QLD</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">NSW</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">VIC</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">SA</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">WA</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">NT</a>
       </div>
     </div>
   </div>
-  <div class="footer-legal">
-    <p class="footer-legal__text">
+  <div class="ior-footer__legal">
+    <p class="ior-footer__legal-text">
       Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="#" class="footer-legal__link--muted">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="#" class="footer-legal__link--muted">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-      Site by 3PM
+      <a href="#" class="ior-footer__legal-link">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="ior-footer__legal-link">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      Site by ThreePM
     </p>
-    <div class="footer-social" aria-label="Social media links">
-      <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
-      <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
-      <a href="#" class="footer-social__icon" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-      <a href="#" class="footer-social__icon" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+    <div class="ior-footer__social" aria-label="Social media links">
+      <a href="https://www.linkedin.com/company/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M15 17h-3v9h3v-9zm-1.5-4.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM26 17c-1.7 0-2.8.9-3 1.8V17h-3v9h3v-4.5c0-1.4.7-2.5 2-2.5s2 1.1 2 2.5V26h3v-5c0-2.8-1.8-4-4-4z" fill="#0355A3"/></svg></a>
+      <a href="https://www.facebook.com/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M22 28v-7h2.4l.3-2.8H22v-1.8c0-.8.2-1.4 1.4-1.4H25V13c-.2 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.4v2H17V21h2.6v7H22z" fill="#0355A3"/></svg></a>
+      <a href="https://www.instagram.com/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><rect x="13" y="13" width="15" height="15" rx="4" stroke="#0355A3" stroke-width="2" fill="none"/><circle cx="20.5" cy="20.5" r="3.5" stroke="#0355A3" stroke-width="2" fill="none"/><circle cx="25" cy="16" r="1" fill="#0355A3"/></svg></a>
+      <a href="https://www.youtube.com/@iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M29 17.5s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C23.6 14.5 20.5 14.5 20.5 14.5s-3.1 0-5.7.1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S12 19 12 20.5v1.4c0 1.5.2 3 .2 3s.2 1.4.8 2c.8.8 1.8.8 2.3.9 1.7.2 7.2.2 7.2.2s3.1 0 5.7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.5.2-3v-1.4c0-1.5-.2-3-.2-3zM18.5 23v-5l5.5 2.5-5.5 2.5z" fill="#0355A3"/></svg></a>
     </div>
   </div>
 </footer>
