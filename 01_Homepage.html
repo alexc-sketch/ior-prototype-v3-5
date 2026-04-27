@@ -513,7 +513,7 @@
     .ann-box--narrower { max-width:640px; }
     .ann-box--mobile { max-width:380px; }
     .ann-bar { background:rgba(3,85,163,.06); padding:6px 16px; font-family:'Courier New',monospace; font-size:10px; color:var(--ior-mid-grey); }
-    .ann-mega-panel { position:relative; top:auto; box-shadow:none; border-top:3px solid var(--ior-blue); }
+    .ann-mega-panel { position:relative !important; top:auto !important; left:auto !important; display:block !important; visibility:visible !important; opacity:1 !important; box-shadow:none; border-top:3px solid var(--ior-blue); }
     .ann-footer-label { font-family:'Courier New',monospace; font-size:10px; color:var(--ior-mid-grey); padding-right:16px; align-self:center; }
     .ann-cta-gold { background:var(--aviation-gold); }
     .ann-title--teal { color:var(--ior-teal); border-bottom-color:var(--ior-teal); }
@@ -2544,7 +2544,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* ── Mega menu toggle (live wiring) ──────────────────────── */
 const navBtns   = document.querySelectorAll('.nav-link[data-menu]');
-const megaPanels = document.querySelectorAll('.mega-panel');
+const megaPanels = Array.from(document.querySelectorAll('.mega-panel')).filter(p => !p.classList.contains('ann-mega-panel'));
 navBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     const menuId = btn.getAttribute('data-menu');
