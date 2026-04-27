@@ -319,6 +319,34 @@ def audit(filepath):
 
     check("R20", "No placeholder YouTube IDs", r20)
 
+    def r21():
+        sla_patterns = [
+            r'within one business day', r'within 1 business day',
+            r'within one working day', r'within 1 working day',
+            r'within 24 hours', r'within 48 hours', r'within 72 hours',
+            r'respond within', r'reply within', r'get back.*within',
+            r'approved within.*hour', r'usually within.*day',
+        ]
+        import re as _re
+        stripped = _re.sub(r'<!--.*?-->', '', html, flags=_re.DOTALL)
+        hits = []
+        for p in sla_patterns:
+            found = _re.findall(p, stripped, _re.IGNORECASE)
+            hits.extend(found)
+        return (len(hits) == 0, f"{len(hits)} SLA commitment(s): {hits[:3]}" if hits else "Clean")
+    check("R21", "No SLA time commitments in customer-facing copy", r21)
+
+    def r22():
+        tool_patterns = ['Zendesk', 'Salesforce', 'Mailchimp', 'Intercom', 'Freshdesk', 'ServiceNow']
+        import re as _re
+        stripped = _re.sub(r'<!--.*?-->', '', html, flags=_re.DOTALL)
+        stripped = _re.sub(r'class="[^"]*"', '', stripped)
+        stripped = _re.sub(r'<style[^>]*>.*?</style>', '', stripped, flags=_re.DOTALL)
+        hits = [t for t in tool_patterns if t.lower() in stripped.lower()]
+        return (len(hits) == 0, f"Backend tool name(s) found: {hits}" if hits else "Clean")
+    check("R22", "No backend tool names (Zendesk/Salesforce etc.) in customer-facing copy", r22)
+
+
     # ── PRINT RESULTS ───────────────────────────────────────────────────────
     print(f"\n{'='*60}")
     print(f"IOR AUDIT REPORT — {filename}")
