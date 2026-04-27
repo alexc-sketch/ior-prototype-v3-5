@@ -38,6 +38,10 @@
       --purple-bg:  #F5F3FF;
       --purple-text:#4C1D95;
       --purple-dot: #8B5CF6;
+
+      --orange-bg:  #FFF7ED;
+      --orange-text:#9A3412;
+      --orange-dot: #EA580C;
     }
 
     body {
@@ -116,7 +120,7 @@
     /* ── SUMMARY STRIP ── */
     .summary-strip {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 16px;
       margin-bottom: 40px;
     }
@@ -131,6 +135,7 @@
     .summary-card--red    { border-top-color: var(--red-dot); }
     .summary-card--blue   { border-top-color: var(--blue-dot); }
     .summary-card--purple { border-top-color: var(--purple-dot); }
+    .summary-card--orange { border-top-color: var(--orange-dot); }
     .summary-card__num {
       font-size: 36px;
       font-weight: 800;
@@ -142,6 +147,7 @@
     .summary-card--red    .summary-card__num { color: var(--red-dot); }
     .summary-card--blue   .summary-card__num { color: var(--blue-dot); }
     .summary-card--purple .summary-card__num { color: var(--purple-dot); }
+    .summary-card--orange .summary-card__num { color: var(--orange-dot); }
     .summary-card__label {
       font-size: 12px;
       font-weight: 600;
@@ -239,6 +245,8 @@
     .badge--pr::before      { background: var(--blue-dot); }
     .badge--brief   { background: var(--purple-bg); color: var(--purple-text); }
     .badge--brief::before   { background: var(--purple-dot); }
+    .badge--audit   { background: var(--orange-bg); color: var(--orange-text); }
+    .badge--audit::before   { background: var(--orange-dot); }
 
     /* ── LINKS ── */
     .page-link {
@@ -275,10 +283,42 @@
     .note-cell {
       font-size: 12px;
       color: var(--grey-700);
-      max-width: 320px;
+      max-width: 340px;
     }
     .note-cell .warn  { color: var(--amber-text); font-weight: 600; }
     .note-cell .block { color: var(--red-text);   font-weight: 600; }
+    .note-cell .ok    { color: var(--green-text);  font-weight: 600; }
+
+    /* ── AUDIT ACTIONS PANEL ── */
+    .audit-panel {
+      background: var(--orange-bg);
+      border: 1px solid #FED7AA;
+      border-left: 4px solid var(--orange-dot);
+      padding: 20px 24px;
+      margin-top: 40px;
+    }
+    .audit-panel h3 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--orange-text);
+      margin-bottom: 14px;
+    }
+    .audit-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--grey-900);
+    }
+    .audit-item:last-child { margin-bottom: 0; }
+    .audit-num {
+      font-weight: 800;
+      color: var(--orange-dot);
+      flex-shrink: 0;
+      width: 18px;
+    }
 
     /* ── BLOCKERS PANEL ── */
     .blockers-panel {
@@ -286,7 +326,7 @@
       border: 1px solid #FED7AA;
       border-left: 4px solid var(--amber-dot);
       padding: 20px 24px;
-      margin-top: 40px;
+      margin-top: 24px;
     }
     .blockers-panel h3 {
       font-size: 13px;
@@ -325,7 +365,7 @@
 
     @media (max-width: 900px) {
       .dash-body { padding: 24px 16px 60px; }
-      .summary-strip { grid-template-columns: repeat(2, 1fr); }
+      .summary-strip { grid-template-columns: repeat(3, 1fr); }
       .dash-header { padding: 0 16px; }
       .dash-header__meta { display: none; }
       .dash-table { font-size: 12px; }
@@ -342,9 +382,10 @@
     <div class="dash-header__sep"></div>
     <span class="dash-header__title">Prototype Status Dashboard</span>
   </a>
-  <div class="dash-header__m    <span class="dash-header__updated">Last updated: 26 Apr 2026 &mdash; AEST</span>
-    <a class="dash-header__link" href="00_Master_Index.html">← Master Index</a>
-    <a class="dash-header__link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pulls" target="_blank" rel="noopener">GitHub PRs ↗</a>
+  <div class="dash-header__meta">
+    <span class="dash-header__updated">Last updated: 27 Apr 2026 &mdash; AEST</span>
+    <a class="dash-header__link" href="00_Master_Index.html">&#8592; Master Index</a>
+    <a class="dash-header__link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pulls" target="_blank" rel="noopener">GitHub PRs &#8599;</a>
   </div>
 </header>
 
@@ -354,20 +395,24 @@
   <!-- SUMMARY STRIP -->
   <div class="summary-strip">
     <div class="summary-card summary-card--green">
-      <div class="summary-card__num">12</div>
+      <div class="summary-card__num">14</div>
       <div class="summary-card__label">Live on Main</div>
     </div>
     <div class="summary-card summary-card--blue">
-      <div class="summary-card__num">7</div>
+      <div class="summary-card__num">4</div>
       <div class="summary-card__label">Open PRs</div>
     </div>
+    <div class="summary-card summary-card--orange">
+      <div class="summary-card__num">2</div>
+      <div class="summary-card__label">Audit Actions Required</div>
+    </div>
     <div class="summary-card summary-card--amber">
-      <div class="summary-card__num">5</div>
-      <div class="summary-card__label">Awaiting Audit / Merge</div>
+      <div class="summary-card__num">3</div>
+      <div class="summary-card__label">Stale PRs (Rebase Needed)</div>
     </div>
     <div class="summary-card summary-card--purple">
-      <div class="summary-card__num">2</div>
-      <div class="summary-card__label">Brief Ready</div>
+      <div class="summary-card__num">5</div>
+      <div class="summary-card__label">Brief Ready — Awaiting Build</div>
     </div>
     <div class="summary-card summary-card--red">
       <div class="summary-card__num">0</div>
@@ -378,8 +423,8 @@
   <!-- SECTION 1: LIVE ON MAIN -->
   <div class="section-header">
     <div class="section-dot" style="background: var(--green-dot);"></div>
-    <h2>Live on Main — Approved &amp; Merged</h2>
-    <span class="section-count">12 pages</span>
+    <h2>Live on Main &mdash; Approved &amp; Merged</h2>
+    <span class="section-count">14 pages / components</span>
   </div>
   <table class="dash-table">
     <thead>
@@ -396,86 +441,108 @@
         <td><strong>Global Template Shell v4</strong></td>
         <td><span class="filename">IOR_Global_Template_Shell_v4.html</span></td>
         <td><span class="badge badge--done">Live</span></td>
-        <td><a class="page-link" href="IOR_Global_Template_Shell_v4.html" target="_blank">View ↗</a></td>
-        <td class="note-cell">Master shell for all spoke pages. Nav CTA fix merged (PR #85). Customer Login + Apply for an Account now canonical.</td>
+        <td><a class="page-link" href="IOR_Global_Template_Shell_v4.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">Master shell for all spoke pages. Nav CTA fix merged (PR #85). Customer Login + Apply for an Account canonical.</td>
       </tr>
       <tr>
         <td><strong>Utility Template Shell v5</strong></td>
         <td><span class="filename">IOR_Utility_Template_Shell_v5.html</span></td>
         <td><span class="badge badge--done">Live</span></td>
-        <td><a class="page-link" href="IOR_Utility_Template_Shell_v5.html" target="_blank">View ↗</a></td>
-        <td class="note-cell">Master base template for all utility pages. Do not modify without a new brief.</td>
+        <td><a class="page-link" href="IOR_Utility_Template_Shell_v5.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">Master base for all utility pages. Do not modify without a new brief.</td>
       </tr>
       <tr>
         <td><strong>Ground Fuels v5</strong></td>
         <td><span class="filename">03_Ground_Fuels_v5.html</span></td>
         <td><span class="badge badge--done">Live</span></td>
-        <td><a class="page-link" href="03_Ground_Fuels_v5.html" target="_blank">View ↗</a></td>
-        <td class="note-cell">Clean build from shell. Stat bar, FMT dark navy, WCAG AA compliant.</td>
+        <td><a class="page-link" href="03_Ground_Fuels_v5.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">Canonical hero pattern reference. Stat bar, FMT dark navy, WCAG AA compliant.</td>
+      </tr>
+      <tr>
+        <td><strong>Digital Platforms Hub v8</strong></td>
+        <td><span class="filename">07_Digital_Platformsv8.html</span></td>
+        <td><span class="badge badge--done">Live</span></td>
+        <td><a class="page-link" href="07_Digital_Platformsv8.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">3-column SaaS card grid. HyDip, Fuelcharge, Customer Portal cards. Merged to main 27 Apr 2026.</td>
+      </tr>
+      <tr>
+        <td><strong>Fuelcharge App v8</strong></td>
+        <td><span class="filename">07b_Fuelcharge_App_v8.html</span></td>
+        <td><span class="badge badge--done">Live</span></td>
+        <td><a class="page-link" href="07b_Fuelcharge_App_v8.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">B2C app page. Flip cards, network map teaser, 1-2-3 vertical tabs. Brief: <a class="brief-link" href="Builder_Brief_FUELCHARGE_APP.md">Brief &#8599;</a></td>
       </tr>
       <tr>
         <td><strong>Make a Payment v5</strong></td>
         <td><span class="filename">11e_Make_Paymentv5.html</span></td>
         <td><span class="badge badge--done">Live</span></td>
-        <td><a class="page-link" href="11e_Make_Paymentv5.html" target="_blank">View ↗</a></td>
-        <td class="note-cell">AMEX + Visa/MC gateway cards. Copy audited 18/18. Brief: <a class="brief-link" href="Builder_Brief_Utility_Shell_Make_Payment_v5.md">Brief ↗</a></td>
+        <td><a class="page-link" href="11e_Make_Paymentv5.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">AMEX + Visa/MC gateway cards. Copy audited 18/18. Brief: <a class="brief-link" href="Builder_Brief_Utility_Shell_Make_Payment_v5.md">Brief &#8599;</a></td>
       </tr>
       <tr>
         <td><strong>Regional Contacts v5</strong></td>
         <td><span class="filename">11b_Regional_Contactsv5.html</span></td>
         <td><span class="badge badge--done">Live</span></td>
-        <td><a class="page-link" href="11b_Regional_Contactsv5.html" target="_blank">View ↗</a></td>
-        <td class="note-cell">Interactive SVG map. Footer fix merged (PR #80). Quick links updated to v5 hrefs.</td>
+        <td><a class="page-link" href="11b_Regional_Contactsv5.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">Interactive SVG map. Footer fix merged (PR #80).</td>
       </tr>
       <tr>
         <td><strong>Find a Location v5</strong></td>
         <td><span class="filename">11d_Find_Locationv5.html</span></td>
         <td><span class="badge badge--done">Live</span></td>
-        <td><a class="page-link" href="11d_Find_Locationv5.html" target="_blank">View ↗</a></td>
-        <td class="note-cell">Storepoint map embed. Mode switcher removed per updated brief. <span class="warn">Missing "Learn More" link on Fuelcharge card — fix required.</span> Brief: <a class="brief-link" href="Builder_Brief_Find_Location_v5.md">Brief ↗</a></td>
+        <td><a class="page-link" href="11d_Find_Locationv5.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">Canopy overhang hero. Storepoint map embed. "Learn More" link on Fuelcharge card confirmed. Brief: <a class="brief-link" href="Builder_Brief_Find_Location_v5.md">Brief &#8599;</a></td>
       </tr>
       <tr>
         <td><strong>Privacy Policy v5</strong></td>
         <td><span class="filename">11f_Privacy_Policyv5.html</span></td>
         <td><span class="badge badge--done">Live</span></td>
-        <td><a class="page-link" href="11f_Privacy_Policyv5.html" target="_blank">View ↗</a></td>
-        <td class="note-cell">Ultra-minimal shell. No quick-links, no pre-footer, no FAQ routing. Brief: <a class="brief-link" href="Builder_Brief_Privacy_Policy_v5.md">Brief ↗</a></td>
+        <td><a class="page-link" href="11f_Privacy_Policyv5.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">Ultra-minimal shell. No quick-links, no pre-footer, no FAQ routing.</td>
       </tr>
       <tr>
         <td><strong>Contact Us v5</strong></td>
         <td><span class="filename">11a_Contact_Usv5.html</span></td>
         <td><span class="badge badge--done">Live</span></td>
-        <td><a class="page-link" href="11a_Contact_Usv5.html" target="_blank">View ↗</a></td>
-        <td class="note-cell">Nav CTAs updated (PR #85). Footer confirmed correct — false positive resolved. Brief: <a class="brief-link" href="Builder_Brief_Contact_Us_v5.md">Brief ↗</a></td>
+        <td><a class="page-link" href="11a_Contact_Usv5.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">Nav CTAs updated (PR #85). Footer confirmed correct.</td>
       </tr>
       <tr>
         <td><strong>Leadership Bio Template v5</strong></td>
         <td><span class="filename">09a_Leadership_Bio_Template_v5.html</span></td>
         <td><span class="badge badge--done">Live</span></td>
-        <td><a class="page-link" href="09a_Leadership_Bio_Template_v5.html" target="_blank">View ↗</a></td>
-        <td class="note-cell">Both critical failures resolved and merged (PR #86). Dual nav CTAs correct. Canonical Tabbed Grid in place. Brief: <a class="brief-link" href="Builder_Brief_Leadership_Bio_v5.md">Brief ↗</a></td>
+        <td><a class="page-link" href="09a_Leadership_Bio_Template_v5.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">Both critical failures resolved (PR #86). Dual nav CTAs correct. Canonical Tabbed Grid in place.</td>
       </tr>
       <tr>
-        <td><strong>Find a Location v5</strong> (Canopy Hero Rebuild)</td>
-        <td><span class="filename">11d_Find_Locationv5.html</span></td>
+        <td><strong>Leadership Bio Pages v5</strong> (16 bios)</td>
+        <td><span class="filename">09a_Bio_*_v5.html</span></td>
         <td><span class="badge badge--done">Live</span></td>
-        <td><a class="page-link" href="11d_Find_Locationv5.html" target="_blank">View ↗</a></td>
-        <td class="note-cell">Canopy overhang hero. Dual nav CTAs. "Learn More" link added to Fuelcharge card. Merged PR #88. Brief: <a class="brief-link" href="Builder_Brief_Find_Location_v5.md">Brief ↗</a></td>
+        <td><a class="page-link" href="09a_Bio_DrewMorland_v5.html" target="_blank">Example &#8599;</a></td>
+        <td class="note-cell">16 individual bio pages live. Quick-links, logo carousel, mega panels all confirmed. Weekend audit 27 Apr 2026 — 16/16 pass.</td>
       </tr>
       <tr>
-        <td><strong>Batch Compliance Fix</strong> — 65 pages</td>
+        <td><strong>Case Studies List v6</strong></td>
+        <td><span class="filename">09d_Case_Studies_v6.html</span></td>
+        <td><span class="badge badge--done">Live</span></td>
+        <td><a class="page-link" href="09d_Case_Studies_v6.html" target="_blank">View &#8599;</a></td>
+        <td class="note-cell">Full-width hero, 3-column card grid, search/filter. Brief: <a class="brief-link" href="Builder_Brief_CS_List_v6.md">Brief &#8599;</a></td>
+      </tr>
+      <tr>
+        <td><strong>Batch Compliance Fix</strong> &mdash; 65 pages</td>
         <td><span class="filename">All prototype pages</span></td>
         <td><span class="badge badge--done">Live</span></td>
-        <td>—</td>
-        <td class="note-cell">Global nav CTA and footer compliance fix across all 65 prototype pages. Merged PR #87.</td>
+        <td>&mdash;</td>
+        <td class="note-cell">Global nav CTA and footer compliance fix across all 65 prototype pages. Merged PR #87. Weekend audit 27 Apr 2026: 725 broken links fixed, 86 border-radius violations fixed.</td>
       </tr>
     </tbody>
   </table>
-  <!-- SECTION 2: OPEN PRs -->
+
+  <!-- SECTION 2: OPEN PRs — AWAITING AUDIT / MERGE -->
   <div class="section-header">
     <div class="section-dot" style="background: var(--blue-dot);"></div>
-    <h2>Open Pull Requests — Awaiting Audit / Merge</h2>
-    <span class="section-count">7 PRs</span>
+    <h2>Open Pull Requests &mdash; Awaiting Audit / Merge</h2>
+    <span class="section-count">4 PRs</span>
   </div>
   <table class="dash-table">
     <thead>
@@ -489,111 +556,155 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/93" target="_blank">#93</a></td>
-        <td><strong>Case Study Template v5 — Tin Can Bay Marina</strong> <span class="filename">CS_Template_v5.html</span></td>
-        <td><span class="filename">feature/case-study-template-v5</span></td>
-        <td><span class="badge badge--done">Approved</span></td>
-        <td class="note-cell">40/40 audit checks pass. Global Shell v4 (marketing shell) correct. Photo hero with readability scrim confirmed. All 3 real assets wired. K.S. Easter Transport placeholder card correct. Master Index updated. Safe to merge. Brief: <a class="brief-link" href="Builder_Brief_Case_Study_Template_v5.md">Brief ↗</a></td>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/118" target="_blank">#118</a></td>
+        <td><strong>Industries We Serve — Hub + 8 Spoke Pages v5</strong><br><span class="filename">08_Industries_v5.html + 08a–08h</span></td>
+        <td><span class="filename">feature/industry-pages-v5</span></td>
+        <td><span class="badge badge--review">Awaiting Merge</span></td>
+        <td class="note-cell"><span class="ok">9/9 pages pass audit.</span> 50/50 hero replaced with canonical full-width video-container hero. Logo carousel injected. Border-radius violations fixed. Safe to merge. Brief: <a class="brief-link" href="Builder_Brief_INDUSTRIES_WE_SERVE_HUB.md">Brief &#8599;</a></td>
       </tr>
       <tr>
-        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/91" target="_blank">#91</a></td>
-        <td><strong>Support &amp; Contact Hub v5</strong> <span class="filename">11_Support_Hubv5.html</span></td>
-        <td><span class="filename">feature/support-hub-v5</span></td>
-        <td><span class="badge badge--done">Approved</span></td>
-        <td class="note-cell">41/41 audit checks pass. All 4 auditor fixes applied (commit 0a06f1a). Safe to merge. Brief: <a class="brief-link" href="Builder_Brief_Support_Hub_v5.md">Brief ↗</a></td>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/115" target="_blank">#115</a></td>
+        <td><strong>HyDip FMS v8</strong><br><span class="filename">07a_HyDip_FMS_v8.html</span></td>
+        <td><span class="filename">feature/hydip-fms-v8</span></td>
+        <td><span class="badge badge--audit">Audit Required</span></td>
+        <td class="note-cell"><span class="warn">FAIL: Uses custom <code>hd-hero</code> class (centred layout, no video-wrap, no overlay). Must be replaced with canonical Shell v4 full-width hero before merge.</span> Brief: <a class="brief-link" href="Builder_Brief_HYDIP_FMS.md">Brief &#8599;</a></td>
       </tr>
       <tr>
-        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/55" target="_blank">#55</a></td>
-        <td><strong>Global Template Shell v4 — Footer, Contact Column, Proto-bar</strong></td>
-        <td><span class="filename">feat/shell-v4-footer-update</span></td>
-        <td><span class="badge badge--review">Awaiting Audit</span></td>
-        <td class="note-cell">Updates pre-footer padding, contact column, and proto-bar. Verify no conflicts with PR #85 merged changes. Rebase required before merge.</td>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/116" target="_blank">#116</a></td>
+        <td><strong>Customer Portal v8</strong><br><span class="filename">07c_Customer_Portal_v8.html</span></td>
+        <td><span class="filename">feature/customer-portal-v8</span></td>
+        <td><span class="badge badge--audit">Audit Required</span></td>
+        <td class="note-cell"><span class="warn">FAIL: Uses custom <code>cp-hero</code> class with 50/50 grid split. Must be replaced with canonical Shell v4 full-width hero before merge.</span> Brief: <a class="brief-link" href="Builder_Brief_CUSTOMER_PORTAL.md">Brief &#8599;</a></td>
       </tr>
       <tr>
-        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/34" target="_blank">#34</a></td>
-        <td><strong>Global Copy Rules — 37 pages</strong> (no time commitments, UK English, commas not em-dashes)</td>
-        <td><span class="filename">feature/global-copy-rules-all-pages</span></td>
-        <td><span class="badge badge--review">Awaiting Audit</span></td>
-        <td class="note-cell">Copy-only changes across 37 pages. Verify IOR_Design_System.html changes are zero-diff. Rebase required — many pages have been updated since this branch was cut.</td>
-      </tr>
-      <tr>
-        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/29" target="_blank">#29</a></td>
-        <td><strong>Fuel Solutions Hub — Copy Enhancement</strong></td>
-        <td><span class="filename">feature/fuel-solutions-hub-copy-enhancement</span></td>
-        <td><span class="badge badge--review">Awaiting Audit</span></td>
-        <td class="note-cell">Copy enhancement for 02_Fuel_Solutions_Hub.html. Verify no structural changes. Rebase required.</td>
-      </tr>
-      <tr>
-        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/25" target="_blank">#25</a></td>
-        <td><strong>Diesel Network — Standalone Page</strong> <span class="filename">03a_Diesel_Network_v3.5.html</span></td>
-        <td><span class="filename">feat/v3-m7-diesel-network</span></td>
-        <td><span class="badge badge--review">Awaiting Audit</span></td>
-        <td class="note-cell">Standalone Diesel Network page. Verify Golden Rules compliance — especially nav CTAs (must be Customer Login + Apply for an Account). Rebase required.</td>
-      </tr>
-      <tr>
-        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/2" target="_blank">#2</a></td>
-        <td><strong>Homepage — 01_Homepage.html</strong> [v2 Figma corrected]</td>
-        <td><span class="filename">feat/v3-m1-homepage</span></td>
-        <td><span class="badge badge--pending">Stale</span></td>
-        <td class="note-cell"><span class="block">Stale PR.</span> Created Apr 22 — many pages have merged since. Rebase onto current main before audit. Verify nav CTAs and footer compliance post-rebase.</td>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/113" target="_blank">#113</a></td>
+        <td><strong>QC Pass &mdash; Industries v5 (legacy branch)</strong></td>
+        <td><span class="filename">fix/industries-v5-qc-pass</span></td>
+        <td><span class="badge badge--pending">Superseded</span></td>
+        <td class="note-cell">Superseded by PR #118. Close without merging.</td>
       </tr>
     </tbody>
   </table>
 
-  <!-- SECTION 3: BRIEF READY -->
+  <!-- SECTION 3: STALE PRs -->
   <div class="section-header">
-    <div class="section-dot" style="background: var(--purple-dot);"></div>
-    <h2>Brief Ready — Awaiting Builder</h2>
-    <span class="section-count">2 pages</span>
+    <div class="section-dot" style="background: var(--amber-dot);"></div>
+    <h2>Stale Pull Requests &mdash; Rebase Required Before Audit</h2>
+    <span class="section-count">3 PRs</span>
   </div>
   <table class="dash-table">
     <thead>
       <tr>
-        <th>Page</th>
-        <th>Target File</th>
-        <th>Brief</th>
+        <th>PR</th>
+        <th>Page / Feature</th>
+        <th>Branch</th>
         <th>Status</th>
         <th>Notes</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Support &amp; Contact Hub v5</strong></td>
-        <td><span class="filename">11_Support_Hubv5.html</span></td>
-        <td><a class="brief-link" href="Builder_Brief_Support_Hub_v5.md">Brief ↗</a></td>
-        <td><span class="badge badge--done">Approved — PR #91</span></td>
-        <td class="note-cell">Built, audited, approved. PR #91 ready to merge (41/41 checks). Commit 0a06f1a.</td>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/55" target="_blank">#55</a></td>
+        <td><strong>Global Template Shell v4 &mdash; Footer, Contact Column, Proto-bar</strong></td>
+        <td><span class="filename">feat/shell-v4-footer-update</span></td>
+        <td><span class="badge badge--review">Awaiting Audit</span></td>
+        <td class="note-cell">Updates pre-footer padding, contact column, proto-bar. Rebase onto current main required. Verify no conflicts with PR #85 merged changes.</td>
       </tr>
       <tr>
-        <td><strong>Case Study Template v5</strong></td>
-        <td><span class="filename">CS_Template_v5.html</span></td>
-        <td><a class="brief-link" href="Builder_Brief_Case_Study_Template_v5.md">Brief ↗</a></td>
-        <td><span class="badge badge--done">Approved — PR #93</span></td>
-        <td class="note-cell">Built, audited, approved. PR #93 ready to merge (40/40 checks). Tin Can Bay Marina dummy data. All 3 real assets wired.</td>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/34" target="_blank">#34</a></td>
+        <td><strong>Global Copy Rules &mdash; 37 pages</strong></td>
+        <td><span class="filename">feature/global-copy-rules-all-pages</span></td>
+        <td><span class="badge badge--review">Awaiting Audit</span></td>
+        <td class="note-cell">Copy-only changes: no time commitments, UK English, commas not em-dashes. Rebase required &mdash; many pages updated since branch was cut.</td>
       </tr>
       <tr>
-        <td><strong>Fuelcharge App v5</strong></td>
-        <td><span class="filename">07b_Fuelcharge_App_v5.html</span></td>
-        <td><a class="brief-link" href="Builder_Brief_Fuelcharge_App_v5.md">Brief ↗</a></td>
-        <td><span class="badge badge--brief">Brief Ready</span></td>
-        <td class="note-cell">All assets committed to <span class="filename">assets/images/fuelcharge/</span>. Build from Global Shell v4. Hero mockup, 3 app screens, stats bar reference all ready.</td>
-      </tr>
-      <tr>
-        <td><strong>Digital Platforms Hub v5</strong></td>
-        <td><span class="filename">07_Digital_Platformsv5.html</span></td>
-        <td><a class="brief-link" href="Builder_Brief_Digital_Platforms_v5.md">Brief ↗</a></td>
-        <td><span class="badge badge--brief">Brief Ready</span></td>
-        <td class="note-cell">All assets committed to <span class="filename">assets/images/digital-platforms/</span>. Build from Global Shell v4. Bento grid, stats bar, 3 spoke cards (HyDip, Fuelcharge, Portal).</td>
+        <td><a class="pr-link" href="https://github.com/alexc-sketch/ior-prototype-v3-5/pull/2" target="_blank">#2</a></td>
+        <td><strong>Homepage &mdash; 01_Homepage.html</strong></td>
+        <td><span class="filename">feat/v3-m1-homepage</span></td>
+        <td><span class="badge badge--pending">Stale</span></td>
+        <td class="note-cell">Created Apr 22 &mdash; many pages merged since. Rebase onto current main before audit. Verify nav CTAs and footer compliance post-rebase.</td>
       </tr>
     </tbody>
   </table>
+
+  <!-- SECTION 4: BRIEF READY — AWAITING BUILD -->
+  <div class="section-header">
+    <div class="section-dot" style="background: var(--purple-dot);"></div>
+    <h2>Brief Ready &mdash; Awaiting Builder</h2>
+    <span class="section-count">5 pages</span>
+  </div>
+  <table class="dash-table">
+    <thead>
+      <tr>
+        <th>Page</th>
+        <th>Target File</th>
+        <th>Replaces</th>
+        <th>Brief</th>
+        <th>Key Sections</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>IOR Diesel Network v8</strong></td>
+        <td><span class="filename">03a_Diesel_Network_v8.html</span></td>
+        <td><span class="filename">03a_Diesel_Network_v3.5.html</span></td>
+        <td><a class="brief-link" href="Builder_Brief_DIESEL_NETWORK.md">Brief &#8599;</a></td>
+        <td class="note-cell">Hero (full-width video), interactive network map, stats strip (115+ stops, 24/7, B-Double), how it works, card grid, testimonial, FAQ, pre-footer.</td>
+      </tr>
+      <tr>
+        <td><strong>On-Site Refuelling v8</strong></td>
+        <td><span class="filename">03b_On_Site_Refuelling_v8.html</span></td>
+        <td><span class="filename">03b_On_Site_Refuelling_v3.5.html</span></td>
+        <td><a class="brief-link" href="Builder_Brief_ON_SITE_REFUELLING.md">Brief &#8599;</a></td>
+        <td class="note-cell">Hero, services grid (wet hosing, mobile refuelling, direct-to-equipment), industries served, equipment showcase, lead trap, FAQ, pre-footer.</td>
+      </tr>
+      <tr>
+        <td><strong>Bulk Diesel Delivery v8</strong></td>
+        <td><span class="filename">03c_Bulk_Diesel_Delivery_v8.html</span></td>
+        <td><span class="filename">03c_Bulk_Diesel_Delivery_v3.5.html</span></td>
+        <td><a class="brief-link" href="Builder_Brief_BULK_DIESEL.md">Brief &#8599;</a></td>
+        <td class="note-cell">Hero, delivery capability stats, B-Double + remote access features, industries served, lead trap, FAQ, pre-footer.</td>
+      </tr>
+      <tr>
+        <td><strong>HyBlue&trade; AdBlue&reg; v8</strong></td>
+        <td><span class="filename">03d_HyBlue_v8.html</span></td>
+        <td><span class="filename">03d_HyBlue_v3.5.html</span></td>
+        <td><a class="brief-link" href="Builder_Brief_HYBLUE.md">Brief &#8599;</a></td>
+        <td class="note-cell">Hero, VDA certification callout, product format grid (10L, 210L, IBC, bulk, pump), compatibility checker, FAQ, pre-footer.</td>
+      </tr>
+      <tr>
+        <td><strong>Oils &amp; Lubricants v8</strong></td>
+        <td><span class="filename">03e_Oils_Lubricants_v8.html</span></td>
+        <td><span class="filename">03e_Oils_Lubricants_v3.5.html</span></td>
+        <td><a class="brief-link" href="Builder_Brief_OILS_LUBRICANTS.md">Brief &#8599;</a></td>
+        <td class="note-cell">Hero, product range grid (engine oil, hydraulic fluid, aviation oil, grease), industries served, procurement simplification CTA, FAQ, pre-footer.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- AUDIT ACTIONS REQUIRED -->
+  <div class="audit-panel">
+    <h3>&#9888; Audit Actions Required Before Merge</h3>
+    <div class="audit-item">
+      <span class="audit-num">1</span>
+      <span><strong>PR #115 — HyDip FMS v8:</strong> Hero uses custom <code>hd-hero</code> class with centred layout and no video-wrap or overlay. Must be replaced with the canonical Shell v4 full-width video-container hero (<code>class="hero"</code> + <code>hero__video-wrap</code> + <code>hero__overlay</code> + <code>hero__content</code>) before this PR can be merged. Reference: <code>03_Ground_Fuels_v5.html</code>.</span>
+    </div>
+    <div class="audit-item">
+      <span class="audit-num">2</span>
+      <span><strong>PR #116 — Customer Portal v8:</strong> Hero uses custom <code>cp-hero</code> class with a 50/50 grid split (<code>grid-template-columns: 1fr 1fr</code>). 50/50 heroes are no longer used in this prototype. Must be replaced with the canonical Shell v4 full-width video-container hero before merge. Reference: <code>03_Ground_Fuels_v5.html</code>.</span>
+    </div>
+    <div class="audit-item">
+      <span class="audit-num">3</span>
+      <span><strong>PR #113 — QC Pass (legacy branch):</strong> This branch is superseded by PR #118 which contains the same pages rebuilt correctly. Close PR #113 without merging.</span>
+    </div>
+  </div>
 
   <!-- BLOCKERS -->
   <div class="blockers-panel" style="border-left-color: var(--green-dot); background: var(--green-bg); border-color: #A7F3D0;">
     <h3 style="color: var(--green-text);">&#10003; No Active Blockers</h3>
     <div class="blocker-item" style="color: var(--green-text);">
       <span class="blocker-num" style="color: var(--green-dot);">&#10003;</span>
-      <span>All blockers resolved. HyDip FMS v6 login URL confirmed 26 Apr 2026 &mdash; <code>https://www.hydip.com/accounts/login/</code> is the correct production URL. Brief updated. PRs #91 (Support Hub v5) and #93 (Case Study Template v5) approved and awaiting merge. PR #97 (Mega Menu Prototype v1) open. 5 PRs awaiting audit (#55, #34, #29, #25, #2). 2 briefs ready for builder (Fuelcharge App v5, Digital Platforms Hub v5).</span>
+      <span>All blockers resolved as of 27 Apr 2026. Weekend audit complete: 32/32 in-scope pages pass all structural checks. PR #118 (Industries v5, 9 pages) ready to merge. 2 audit actions required on PR #115 and #116 before those can merge. 5 new briefs ready for the builder (Diesel Network, On-Site Refuelling, Bulk Diesel, HyBlue, Oils &amp; Lubricants). HyDip login URL confirmed: <code>https://www.hydip.com/accounts/login/</code></span>
     </div>
   </div>
 
@@ -601,8 +712,8 @@
 
 <!-- FOOTER -->
 <footer class="dash-footer">
-  <p>IOR Prototype v5 — Status Dashboard · <a href="00_Master_Index.html">Master Index</a> · <a href="https://github.com/alexc-sketch/ior-prototype-v3-5" target="_blank">GitHub Repo ↗</a></p>
-  <p>For questions, contact the project lead. Do not modify this file manually — update via the Auditor workflow.</p>
+  <p>IOR Prototype v5 &mdash; Status Dashboard &middot; <a href="00_Master_Index.html">Master Index</a> &middot; <a href="https://github.com/alexc-sketch/ior-prototype-v3-5" target="_blank">GitHub Repo &#8599;</a></p>
+  <p>Last updated 27 Apr 2026. For questions contact the project lead. Update via the Auditor workflow only.</p>
 </footer>
 
 </body>
