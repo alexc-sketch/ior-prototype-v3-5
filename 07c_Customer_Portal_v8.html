@@ -52,7 +52,7 @@
     .btn--outline-light:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
     .btn--outline-dark { background: transparent; color: var(--ior-navy); border-color: var(--ior-navy); }
     .btn--outline-dark:hover { background: var(--ior-navy); color: #fff; }
-    .btn--pill       { border-radius: 500px; }
+    .btn--pill       { border-radius: 0; }
     .btn--sm         { padding: 10px 20px; font-size: 0.875rem; }
     .btn--full       { justify-content: center; }
 
@@ -116,6 +116,21 @@
     .quick-links__label { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin-right: 8px; }
     .quick-links__link { font-size: .85rem; font-weight: 500; color: var(--text-mid); padding: 6px 14px; border: 1px solid var(--border); transition: background var(--transition), color var(--transition), border-color var(--transition); border-radius: 0; }
     .quick-links__link:hover { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
+
+
+    /* ── CANONICAL HERO (Shell v4) ─────────────────────────────── */
+    .hero { position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden; background: var(--ior-navy); }
+    .hero__video-wrap { position: absolute; inset: 0; z-index: 0; }
+    .hero__video-wrap video { width: 100%; height: 100%; object-fit: cover; }
+    .hero__video-wrap--ph { background: var(--ior-deep); display: flex; align-items: center; justify-content: center; }
+    .hero__video-wrap--ph span { color: rgba(255,255,255,.35); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
+    .hero__overlay { position: absolute; inset: 0; background: rgba(10,64,102,.72); z-index: 1; }
+    .hero__content { position: relative; z-index: 2; max-width: var(--max-w); margin: 0 auto; padding: 80px 24px; }
+    .hero__eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 16px; }
+    .hero__h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.1; color: #fff; margin-bottom: 20px; max-width: 720px; }
+    .hero__sub { font-size: 1.05rem; color: rgba(255,255,255,.85); line-height: 1.7; margin-bottom: 32px; max-width: 580px; }
+    .hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 600px) { .hero { min-height: 420px; } .hero__content { padding: 60px 16px; } }
 
     /* ── CP HERO ────────────────────────────────────────────── */
     .cp-hero { background: var(--cp-navy); color: #fff; padding: 80px 0 0; overflow: hidden; }
@@ -265,6 +280,16 @@
       .access__card { border-right: none; border-bottom: 1px solid var(--border); }
       .access__card:last-child { border-bottom: none; }
     }
+
+    /* ── LOGO CAROUSEL ─────────────────────────────────────────── */
+    .logo-carousel-wrap { background: var(--ior-light-blue); padding: 28px 0; overflow: hidden; }
+    .logo-carousel-label { text-align: center; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .logo-carousel-track-outer { overflow: hidden; }
+    .logo-carousel-track { display: flex; gap: 48px; align-items: center; width: max-content; animation: carousel-scroll 28s linear infinite; }
+    .logo-carousel-track:hover { animation-play-state: paused; }
+    .logo-ph { background: rgba(0,0,0,.08); height: 36px; min-width: 120px; display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 600; color: var(--text-muted); letter-spacing: .04em; padding: 0 16px; flex-shrink: 0; }
+    @keyframes carousel-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .logo-carousel-track { animation: none; } }
   </style>
 </head>
 <body>
@@ -591,20 +616,19 @@
 ============================================================ -->
 
 <!-- SECTION 1: SaaS Hero -->
-<section class="cp-hero" id="hero">
-  <div class="cp-hero__inner">
-    <div class="cp-hero__copy">
-      <p class="cp-hero__eyebrow">IOR CUSTOMER PORTAL</p>
-      <h1 class="cp-hero__h1">Powerful fuel management, without the complexity.</h1>
-      <p class="cp-hero__sub">The IOR Customer Portal gives you complete control over your fuel — from security and compliance to budgeting and forecasting. Advanced fleet management that is fast, simple, and included out-of-the-box for all IOR account holders.</p>
-      <div class="cp-hero__ctas">
-        <a href="https://portal.ior.com.au" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Log in to Portal →</a>
-        <button class="btn btn--outline-light" id="hero-request-access">Request Access</button>
-      </div>
-    </div>
-    <div class="cp-hero__visual">
-      <!-- REPLACE: CP - Website.jpg (overlapping Tablet and iPhone mockup) -->
-      <img src="assets/images/customer-portal/cp-hero-device-mockup.png" alt="IOR Customer Portal on tablet and mobile" class="cp-hero__img">
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero" aria-label="Customer Portal hero">
+  <div class="hero__video-wrap hero__video-wrap--ph" aria-hidden="true">
+    <span>Format: WebP | 1920×1080 | IOR Customer Portal dashboard on tablet and mobile device</span>
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <p class="hero__eyebrow">IOR CUSTOMER PORTAL</p>
+    <h1 class="hero__h1">Powerful fuel management, without the complexity.</h1>
+    <p class="hero__sub">The IOR Customer Portal gives you complete control over your fuel — from security and compliance to budgeting and forecasting. Fast, simple, and included out-of-the-box for all IOR account holders.</p>
+    <div class="hero__ctas">
+      <a href="https://portal.ior.com.au" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Log in to Portal →</a>
+      <button class="btn btn--outline-light" id="hero-request-access">Request Access</button>
     </div>
   </div>
 </section>
@@ -851,6 +875,30 @@
 <!-- ============================================================
      PRE-FOOTER + FOOTER — Verbatim from IOR_Global_Template_Shell_v4.html
 ============================================================ -->
+  <!-- ═══ LOGO CAROUSEL ═══ -->
+  <div class="logo-carousel-wrap" aria-label="Trusted by" role="region">
+    <p class="logo-carousel-label">Trusted by leading Australian businesses</p>
+    <div class="logo-carousel-track-outer">
+      <div class="logo-carousel-track" aria-hidden="true">
+        <div class="logo-ph">Norwood Agriculture</div>
+        <div class="logo-ph">Incitec Pivot</div>
+        <div class="logo-ph">Alliance Airlines</div>
+        <div class="logo-ph">K.S. Easter</div>
+        <div class="logo-ph">MPC Kinetic</div>
+        <div class="logo-ph">Flight Training Adelaide</div>
+        <div class="logo-ph">Tin Can Bay Marina</div>
+        <div class="logo-ph">Games LinQ</div>
+        <div class="logo-ph">Norwood Agriculture</div>
+        <div class="logo-ph">Incitec Pivot</div>
+        <div class="logo-ph">Alliance Airlines</div>
+        <div class="logo-ph">K.S. Easter</div>
+        <div class="logo-ph">MPC Kinetic</div>
+        <div class="logo-ph">Flight Training Adelaide</div>
+        <div class="logo-ph">Tin Can Bay Marina</div>
+        <div class="logo-ph">Games LinQ</div>
+      </div>
+    </div>
+  </div>
 <section class="pre-footer">
   <div class="pre-footer__inner">
     <h2 class="pre-footer__h2">We're here to help.</h2>
@@ -1046,6 +1094,30 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('is-scrolled', window.scrollY > 10);
   }, { passive: true });
+
+  // ── FORM SUBMIT HANDLER ──────────────────────────────────────────────────
+  (function() {
+    var form = document.getElementById('cp-access-form') || document.querySelector('form');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = form.querySelector('[type="email"]');
+      var company = form.querySelector('[type="text"]');
+      if (!email || !email.value.trim() || !company || !company.value.trim()) {
+        var alert = form.querySelector('.form-alert') || document.createElement('p');
+        alert.className = 'form-alert';
+        alert.style.cssText = 'color:#dc2626;font-size:.85rem;margin-top:8px;';
+        alert.textContent = 'Please fill in all required fields.';
+        if (!form.querySelector('.form-alert')) form.appendChild(alert);
+        return;
+      }
+      form.style.display = 'none';
+      var success = document.createElement('p');
+      success.style.cssText = 'color:#16a34a;font-weight:600;font-size:1rem;padding:16px 0;';
+      success.textContent = '✓ Request submitted — our team will be in touch within 1 business day.';
+      form.parentNode.insertBefore(success, form.nextSibling);
+    });
+  })();
 </script>
 </body>
 </html>
