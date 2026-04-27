@@ -176,7 +176,7 @@
     .challenge-section .section-heading p { font-size: clamp(15px,1.4vw,18px); color: var(--dark-grey); }
     .challenge-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; max-width: var(--content-max); margin: 0 auto; }
     .challenge-card { background: #fff; border-left: 4px solid var(--ior-blue); overflow: hidden; }
-    .challenge-card__img-placeholder { width: 100%; aspect-ratio: 16/9; background: #d1d5db; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .06em; text-align: center; padding: 12px; }
+    .challenge-card__img-placeholder { width: 100%; aspect-ratio: 1/1; background: #d1d5db; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .06em; text-align: center; padding: 12px; }
     .challenge-card__body { padding: 28px 28px 32px; }
     .challenge-card__title { font-size: clamp(17px,1.5vw,20px); font-weight: 800; color: var(--near-black); margin-bottom: 12px; line-height: 1.2; }
     .challenge-card__body-text { font-size: clamp(14px,1.2vw,15px); color: var(--dark-grey); line-height: 1.65; }
@@ -194,7 +194,7 @@
     .solution-panel__content h3 { font-size: clamp(22px,2.2vw,30px); font-weight: 900; color: var(--near-black); margin-bottom: 16px; line-height: 1.2; }
     .solution-panel__content p { font-size: clamp(14px,1.3vw,16px); color: var(--dark-grey); line-height: 1.7; margin-bottom: 24px; }
     .solution-panel__content .btn { margin-top: 8px; }
-    .solution-panel__visual { background: #d1d5db; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .06em; text-align: center; padding: 20px; min-height: 280px; }
+    .solution-panel__visual { background: #d1d5db; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .06em; text-align: center; padding: 20px;   height: 100%; align-self: stretch; min-height: 0;}
 
     /* ============================================================ PARALLAX BREAK ============================================================ */
     .parallax-break { position: relative; height: 400px; overflow: hidden; background: var(--ior-deep); }
@@ -227,8 +227,8 @@
     .steps-section .section-heading .eyebrow { color: rgba(255,255,255,.6); }
     .steps-section .section-heading h2 { font-size: clamp(26px,3vw,40px); font-weight: 900; color: #fff; line-height: 1.15; }
     .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; max-width: var(--content-max); margin: 0 auto 40px; }
-    .step-card { background: rgba(255,255,255,.05); padding: 36px 32px; border-top: 4px solid #00B140; }
-    .step-card__num { font-size: clamp(36px,4vw,52px); font-weight: 900; color: #00B140; line-height: 1; margin-bottom: 16px; }
+    .step-card { background: rgba(255,255,255,.05); padding: 36px 32px; border-top: 4px solid var(--ior-blue); }
+    .step-card__num { font-size: clamp(36px,4vw,52px); font-weight: 900; color: var(--ior-blue); line-height: 1; margin-bottom: 16px; }
     .step-card__title { font-size: clamp(16px,1.5vw,19px); font-weight: 800; color: #fff; margin-bottom: 10px; }
     .step-card__desc { font-size: clamp(13px,1.2vw,15px); color: rgba(255,255,255,.7); line-height: 1.65; }
     .steps-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
@@ -346,7 +346,36 @@
     /* Fade-up animation */
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .5s ease, transform .5s ease; }
     .fade-up--visible { opacity: 1; transform: translateY(0); }
-  </style>
+      .logo-carousel-wrap {
+      background: var(--brand-fill); border-top: 1px solid var(--border-color-light);
+      border-bottom: 1px solid var(--border-color-light);
+      padding: clamp(20px, 3vw, 28px) 0; overflow: hidden;
+    }
+    .logo-carousel-label {
+      text-align: center; font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--mid-grey); margin-bottom: 20px;
+    }
+    .logo-carousel-track-outer { overflow: hidden; }
+    .logo-carousel-track {
+      display: flex; gap: 40px; width: max-content;
+      animation: carousel-scroll 28s linear infinite;
+    }
+    .logo-carousel-track:hover { animation-play-state: paused; }
+    .logo-placeholder {
+      background: #e2e8f0; border: 1.5px dashed #94a3b8;
+      padding: 12px 28px; font-size: 12px; font-weight: 700;
+      color: var(--mid-grey); white-space: nowrap;
+      display: flex; align-items: center; min-width: 140px; min-height: 52px;
+    }
+    @keyframes carousel-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .logo-carousel-track { animation: none; }
+
+    </style>
 </head>
 
 <body>
@@ -662,6 +691,7 @@
 </nav>
 
 
+
 <main id="main-content">
 
   <!-- PROTO BAR -->
@@ -770,29 +800,32 @@
   </section>
 
   <!-- 4. LOGO CAROUSEL -->
-  <div class="logo-carousel-wrap" aria-label="Trusted by leading Australian businesses">
-    <p class="logo-carousel-label">Trusted by leading Australian businesses</p>
-    <div class="logo-carousel-track-outer">
-      <div class="logo-carousel-track" aria-hidden="true">
-        <div class="logo-placeholder">Client Logo 1</div>
-        <div class="logo-placeholder">Client Logo 2</div>
-        <div class="logo-placeholder">Client Logo 3</div>
-        <div class="logo-placeholder">Client Logo 4</div>
-        <div class="logo-placeholder">Client Logo 5</div>
-        <div class="logo-placeholder">Client Logo 6</div>
-        <div class="logo-placeholder">Client Logo 7</div>
-        <div class="logo-placeholder">Client Logo 8</div>
-        <div class="logo-placeholder">Client Logo 1</div>
-        <div class="logo-placeholder">Client Logo 2</div>
-        <div class="logo-placeholder">Client Logo 3</div>
-        <div class="logo-placeholder">Client Logo 4</div>
-        <div class="logo-placeholder">Client Logo 5</div>
-        <div class="logo-placeholder">Client Logo 6</div>
-        <div class="logo-placeholder">Client Logo 7</div>
-        <div class="logo-placeholder">Client Logo 8</div>
+    <div class="logo-carousel-wrap" aria-label="Trusted by" role="region">
+      <p class="logo-carousel-label">Trusted by leading Australian businesses</p>
+      <div class="logo-carousel-track-outer">
+        <div class="logo-carousel-track" aria-hidden="true">
+          <!-- Set 1 -->
+          <div class="logo-placeholder">Client Logo 1</div>
+          <div class="logo-placeholder">Client Logo 2</div>
+          <div class="logo-placeholder">Client Logo 3</div>
+          <div class="logo-placeholder">Client Logo 4</div>
+          <div class="logo-placeholder">Client Logo 5</div>
+          <div class="logo-placeholder">Client Logo 6</div>
+          <div class="logo-placeholder">Client Logo 7</div>
+          <div class="logo-placeholder">Client Logo 8</div>
+          <!-- Set 2 (duplicate for seamless loop) -->
+          <div class="logo-placeholder">Client Logo 1</div>
+          <div class="logo-placeholder">Client Logo 2</div>
+          <div class="logo-placeholder">Client Logo 3</div>
+          <div class="logo-placeholder">Client Logo 4</div>
+          <div class="logo-placeholder">Client Logo 5</div>
+          <div class="logo-placeholder">Client Logo 6</div>
+          <div class="logo-placeholder">Client Logo 7</div>
+          <div class="logo-placeholder">Client Logo 8</div>
+        </div>
       </div>
     </div>
-  </div>
+
 
   <!-- 5. THE SOLUTION -->
   <section class="solution-section" aria-labelledby="solution-heading">
@@ -1093,12 +1126,13 @@
   <div class="ior-pre-footer__inner">
     <h2 class="ior-pre-footer__title">We&rsquo;re here to help</h2>
     <div class="ior-pre-footer__ctas">
-      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-pre-footer__btn ior-pre-footer__btn--filled" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
-      <a href="11_Support_Hubv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Need Help? &#8594;</a>
-      <a href="11a_Contact_Usv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Contact Us &#8594;</a>
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-pre-footer__btn ior-pre-footer__btn--filled" target="_blank" rel="noopener noreferrer">Apply for an Account <span aria-hidden="true">&#8594;</span></a>
+      <a href="11_Support_Hubv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Need Help? <span aria-hidden="true">&#8594;</span></a>
+      <a href="11a_Contact_Us.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Contact Us <span aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
 </section>
+
 
 <footer class="ior-footer" aria-label="Site footer">
   <div class="ior-footer__inner">
@@ -1138,7 +1172,7 @@
       <span class="ior-footer__heading">Quick Actions</span>
       <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-footer__link" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
       <a href="11e_Make_Payment.html" class="ior-footer__link">Make a Payment</a>
-      <a href="11a_Contact_Usv5.html" class="ior-footer__link">Contact Us</a>
+      <a href="11a_Contact_Us.html" class="ior-footer__link">Contact Us</a>
       <a href="11_Support_Hubv5.html" class="ior-footer__link">Help Centre &amp; FAQs</a>
     </div>
     <div class="ior-footer__col">
@@ -1176,6 +1210,7 @@
     </div>
   </div>
 </footer>
+
 
 </div><!-- /.main-audit-container -->
 
