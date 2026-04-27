@@ -300,27 +300,51 @@
     .cp-hero__visual { display: flex; align-items: flex-end; justify-content: center; }
     .cp-hero__img { width: 100%; max-width: 560px; border-radius: 0; display: block; }
 
-    /* ── BENTO GRID ─────────────────────────────────────────── */
-    .bento { background: var(--off-white); padding: 80px 0; }
-    .bento__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-    .bento__header { text-align: center; margin-bottom: 48px; }
-    .bento__eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
-    .bento__h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: var(--ior-navy); }
-    .bento__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); border: 1px solid var(--border); }
-    .bento__card { background: #fff; padding: 40px; overflow: hidden; position: relative; display: flex; flex-direction: column; min-height: 340px; border-radius: 0; }
-    .bento__card-eyebrow { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cp-teal); margin-bottom: 12px; }
-    .bento__card-title { font-size: 1.25rem; font-weight: 700; color: var(--ior-navy); margin-bottom: 12px; line-height: 1.3; }
-    .bento__card-body { font-size: .9rem; color: var(--text-mid); line-height: 1.7; max-width: 320px; }
-    .bento__card-img { position: absolute; right: -20px; bottom: -10px; width: 55%; opacity: 0.9; border-radius: 0; }
-    .bento__card-img--top { top: -10px; bottom: auto; right: -20px; }
-    .bento__card--dark { background: var(--cp-navy); }
-    .bento__card--dark .bento__card-title { color: #fff; }
-    .bento__card--dark .bento__card-body { color: rgba(255,255,255,.75); }
+    /* ── USP BAR ─────────────────────────────────────────────── */
+    .usp-bar { background: #fff; border-top: 1px solid var(--grey-200); border-bottom: 1px solid var(--grey-200); padding: clamp(28px, 4vw, 44px) 0; }
+    .usp-bar__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 clamp(20px, 8vw, 125px); display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .usp-bar__item { display: flex; align-items: flex-start; gap: 16px; padding: 0 24px; border-right: 1px solid var(--grey-200); }
+    .usp-bar__item:first-child { padding-left: 0; }
+    .usp-bar__item:last-child { border-right: none; }
+    .usp-bar__icon { flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--ior-light); color: var(--ior-blue); }
+    .usp-bar__icon svg { display: block; }
+    .usp-bar__text strong { display: block; font-size: clamp(13px, 1.2vw, 15px); font-weight: 800; color: var(--ior-navy); margin-bottom: 2px; }
+    .usp-bar__text span { font-size: clamp(12px, 1.1vw, 13px); color: var(--mid-grey); line-height: 1.4; }
+
+    /* ── TAB-CORDION (SaaS feature showcase) ────────────────── */
+    .tabcordion-section { background: var(--off-white); padding: var(--section-pad) 0; }
+    .tabcordion-section__header { text-align: center; margin-bottom: clamp(32px, 4vw, 56px); }
+    .tabcordion-section__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; display: block; }
+    .tabcordion-section__h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: var(--ior-navy); }
+    .tabcordion { display: grid; grid-template-columns: 280px 1fr; gap: 0; border: 1px solid var(--grey-200); background: #fff; }
+    .tabcordion__tabs { display: flex; flex-direction: column; border-right: 1px solid var(--grey-200); }
+    .tabcordion__tab { display: flex; align-items: center; gap: 14px; padding: 22px 24px; font-size: 15px; font-weight: 700; color: var(--grey-700); cursor: pointer; border-left: 4px solid transparent; border-bottom: 1px solid var(--grey-200); background: none; text-align: left; transition: all var(--transition-fast); min-height: 44px; font-family: var(--font); }
+    .tabcordion__tab:last-child { border-bottom: none; }
+    .tabcordion__tab:hover { background: var(--grey-50); color: var(--ior-blue); }
+    .tabcordion__tab.active { border-left-color: #00B140; color: var(--ior-blue); background: var(--ior-light); font-weight: 800; }
+    .tabcordion__tab-num { font-size: 12px; font-weight: 700; color: var(--mid-grey); width: 20px; flex-shrink: 0; }
+    .tabcordion__tab.active .tabcordion__tab-num { color: #00B140; }
+    .tabcordion__panels { position: relative; }
+    .tabcordion__panel { display: none; grid-template-columns: 1fr 1fr; min-height: 420px; }
+    .tabcordion__panel.active { display: grid; }
+    .tabcordion__panel-img { background: var(--grey-200); position: relative; overflow: hidden; min-height: 320px; display: flex; align-items: center; justify-content: center; }
+    .tabcordion__panel-img-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--grey-400); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; gap: 10px; text-align: center; padding: 24px; }
+    .tabcordion__panel-content { padding: clamp(32px, 4vw, 48px); display: flex; flex-direction: column; justify-content: center; }
+    .tabcordion__panel-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #00B140; margin-bottom: 12px; }
+    .tabcordion__panel-title { font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; color: var(--charcoal); line-height: 1.15; margin-bottom: 16px; }
+    .tabcordion__panel-body { font-size: clamp(14px, 1.4vw, 16px); color: var(--grey-700); line-height: 1.7; margin-bottom: 28px; }
+    /* Mobile accordion */
+    .tabcordion__accordion { display: none; }
+    .tabcordion__acc-item { border-bottom: 1px solid var(--grey-200); }
+    .tabcordion__acc-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px; font-size: 15px; font-weight: 700; color: var(--grey-900); background: none; border: none; cursor: pointer; text-align: left; font-family: var(--font); min-height: 44px; border-left: 4px solid transparent; transition: all var(--transition-fast); }
+    .tabcordion__acc-trigger[aria-expanded="true"] { border-left-color: #00B140; color: var(--ior-blue); background: var(--ior-light); }
+    .tabcordion__acc-chevron { flex-shrink: 0; transition: transform var(--transition-fast); }
+    .tabcordion__acc-trigger[aria-expanded="true"] .tabcordion__acc-chevron { transform: rotate(180deg); }
+    .tabcordion__acc-body { overflow: hidden; max-height: 0; transition: max-height .4s ease; }
+    .tabcordion__acc-body-inner { padding: 20px 20px 28px; }
+    .tabcordion__acc-body-inner p { font-size: 15px; color: var(--grey-700); line-height: 1.7; margin-bottom: 20px; }
     .bento__card--dark .bento__card-eyebrow { color: var(--cp-teal); }
-    .bento__card--blue { background: var(--cp-blue); }
-    .bento__card--blue .bento__card-title { color: #fff; }
-    .bento__card--blue .bento__card-body { color: rgba(255,255,255,.8); }
-    .bento__card--blue .bento__card-eyebrow { color: rgba(255,255,255,.7); }
+    /* (bento removed — replaced by tabcordion) */
 
     /* ── THREE-PATH ACCESS BLOCK ────────────────────────────── */
     .access { background: #fff; padding: 80px 0; }
@@ -371,11 +395,12 @@
     .related__card-excerpt { font-size: .875rem; color: var(--text-mid); line-height: 1.6; flex: 1; margin-bottom: 16px; }
     .related__card-cta { font-size: .85rem; font-weight: 600; color: var(--ior-blue); }
 
-    /* ── PRE-FOOTER (Shell v4 canonical) ───────────────────── */
-    .pre-footer { background: var(--ior-navy); color: #fff; padding: 60px 0; text-align: center; }
-    .pre-footer__inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-    .pre-footer__h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 12px; }
-    .pre-footer__sub { font-size: 1rem; color: rgba(255,255,255,.75); margin-bottom: 32px; }
+    /* ── PRE-FOOTER (SaaS upgrade per brief) ───────────────── */
+    .pre-footer { background: var(--ior-navy); color: #fff; padding: clamp(60px, 8vw, 100px) 0; text-align: center; }
+    .pre-footer__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 clamp(20px, 8vw, 125px); }
+    .pre-footer__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 16px; display: block; }
+    .pre-footer__h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; margin-bottom: 14px; line-height: 1.15; }
+    .pre-footer__sub { font-size: clamp(15px, 1.5vw, 17px); color: rgba(255,255,255,.7); margin-bottom: clamp(28px, 4vw, 44px); max-width: 540px; margin-inline: auto; margin-bottom: clamp(28px, 4vw, 44px); line-height: 1.6; }
     .pre-footer__ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
     /* ── SITE FOOTER (Shell v4 canonical) ──────────────────── */
@@ -418,12 +443,20 @@
 
     /* ── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 1024px) {
-      .bento__grid { grid-template-columns: 1fr; }
+      .usp-bar__inner { grid-template-columns: repeat(2, 1fr); }
+      .usp-bar__item:nth-child(2) { border-right: none; }
+      .usp-bar__item:nth-child(3) { border-right: 1px solid var(--grey-200); padding-left: 0; border-top: 1px solid var(--grey-200); padding-top: 20px; margin-top: 0; }
+      .usp-bar__item:nth-child(4) { border-right: none; border-top: 1px solid var(--grey-200); padding-top: 20px; }
+      .tabcordion { grid-template-columns: 1fr; }
+      .tabcordion__tabs { display: none; }
+      .tabcordion__panels { display: none; }
+      .tabcordion__accordion { display: block; background: #fff; border: 1px solid var(--grey-200); }
       .access__grid { grid-template-columns: 1fr; }
       .related__grid { grid-template-columns: 1fr 1fr; }
       .footer-nav-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 768px) {
+      .usp-bar__inner { grid-template-columns: 1fr 1fr; }
       .cp-hero__inner { grid-template-columns: 1fr; gap: 32px; }
       .cp-hero { padding: 60px 0 0; }
       .cp-hero__visual { display: none; }
@@ -432,8 +465,12 @@
       .mega-menu { display: none !important; }
       .related__grid { grid-template-columns: 1fr; }
       .footer-nav-grid { grid-template-columns: repeat(2, 1fr); }
+      .tabcordion__panel { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
+      .usp-bar__inner { grid-template-columns: 1fr; }
+      .usp-bar__item { border-right: none; border-bottom: 1px solid var(--grey-200); padding: 0 0 20px; }
+      .usp-bar__item:last-child { border-bottom: none; padding-bottom: 0; }
       .footer-nav-grid { grid-template-columns: 1fr; }
       .access__card { border-right: none; border-bottom: 1px solid var(--border); }
       .access__card:last-child { border-bottom: none; }
@@ -888,49 +925,196 @@
     </div>
   </div>
 </div>
-<!-- SECTION 3: 2x2 Feature Quadrant (Bento Box) -->
-<section class="bento" id="features">
-  <div class="bento__inner">
-    <div class="bento__header">
-      <p class="bento__eyebrow">Platform Features</p>
-      <h2 class="bento__h2">Everything you need to manage your fuel.</h2>
+
+<!-- SECTION 2b: Icon USP Bar -->
+<div class="usp-bar" aria-label="Platform highlights">
+  <div class="usp-bar__inner">
+
+    <div class="usp-bar__item">
+      <div class="usp-bar__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="usp-bar__text">
+        <strong>Free for all IOR account holders</strong>
+        <span>Included out-of-the-box, no extra cost</span>
+      </div>
     </div>
-    <div class="bento__grid">
 
-      <!-- Card 1: Total network visibility -->
-      <div class="bento__card bento__card--dark">
-        <p class="bento__card-eyebrow">Visibility</p>
-        <h3 class="bento__card-title">Total network visibility.</h3>
-        <p class="bento__card-body">Track your bulk fuel deliveries as they happen. Integrate with your HyDip™ FMS to see real-time dips and usage directly from your bulk tank, giving you full visibility and control over what was delivered versus what was pumped.</p>
-        <!-- REPLACE: horizontal.png — bleed off top-right edge of card -->
-        <img src="assets/images/customer-portal/cp-tablet-stock-history.png" alt="Real-time fuel visibility dashboard" class="bento__card-img bento__card-img--top">
+    <div class="usp-bar__item">
+      <div class="usp-bar__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="usp-bar__text">
+        <strong>Real-time data sync</strong>
+        <span>Live tank levels, tags &amp; transactions</span>
+      </div>
+    </div>
+
+    <div class="usp-bar__item">
+      <div class="usp-bar__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div class="usp-bar__text">
+        <strong>24/7 secure access</strong>
+        <span>Multi-layer security, always on</span>
+      </div>
+    </div>
+
+    <div class="usp-bar__item">
+      <div class="usp-bar__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <div class="usp-bar__text">
+        <strong>Mobile &amp; desktop ready</strong>
+        <span>Manage your fleet from any device</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 3: SaaS Feature Tab-Cordion -->
+<section class="tabcordion-section" id="features" aria-labelledby="features-heading">
+  <div class="container">
+    <div class="tabcordion-section__header">
+      <span class="tabcordion-section__eyebrow">Platform Features</span>
+      <h2 class="tabcordion-section__h2" id="features-heading">Everything you need to manage your fuel.</h2>
+    </div>
+
+    <!-- DESKTOP: Tab-Cordion -->
+    <div class="tabcordion" role="tablist" aria-label="Customer Portal platform features">
+
+      <!-- Tab list -->
+      <div class="tabcordion__tabs">
+        <button class="tabcordion__tab active" role="tab" aria-selected="true" aria-controls="cp-panel-1" id="cp-tab-1" data-tc="cp-1">
+          <span class="tabcordion__tab-num">01</span> Visibility
+        </button>
+        <button class="tabcordion__tab" role="tab" aria-selected="false" aria-controls="cp-panel-2" id="cp-tab-2" data-tc="cp-2">
+          <span class="tabcordion__tab-num">02</span> Security
+        </button>
+        <button class="tabcordion__tab" role="tab" aria-selected="false" aria-controls="cp-panel-3" id="cp-tab-3" data-tc="cp-3">
+          <span class="tabcordion__tab-num">03</span> Reporting
+        </button>
+        <button class="tabcordion__tab" role="tab" aria-selected="false" aria-controls="cp-panel-4" id="cp-tab-4" data-tc="cp-4">
+          <span class="tabcordion__tab-num">04</span> Finance
+        </button>
       </div>
 
-      <!-- Card 2: Mitigate fraud instantly -->
-      <div class="bento__card">
-        <p class="bento__card-eyebrow">Security</p>
-        <h3 class="bento__card-title">Mitigate fraud instantly.</h3>
-        <p class="bento__card-body">Multiple security layers mean only authorised users access your fuel. Add, suspend, or cancel RFID fuel tags in real time, adding instant protection against unauthorised use or theft.</p>
-        <!-- REPLACE: Mobile.png — bleed off bottom-right edge of card -->
-        <img src="assets/images/customer-portal/cp-mobile-tag-management.png" alt="Mobile tag management interface" class="bento__card-img">
+      <!-- Panels -->
+      <div class="tabcordion__panels">
+
+        <!-- Panel 1: Visibility -->
+        <div class="tabcordion__panel active" id="cp-panel-1" role="tabpanel" aria-labelledby="cp-tab-1">
+          <div class="tabcordion__panel-img" aria-label="Dashboard overview showing tank levels and delivery status">
+            <span class="tabcordion__panel-img-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              [ UI Mockup: Dashboard overview &mdash; tank levels &amp; delivery status ]
+            </span>
+          </div>
+          <div class="tabcordion__panel-content">
+            <span class="tabcordion__panel-eyebrow">Visibility</span>
+            <h3 class="tabcordion__panel-title">Total network visibility.</h3>
+            <p class="tabcordion__panel-body">Track bulk deliveries as they happen. Integrate with HyDip™ FMS to see real-time dips and usage directly from your bulk tank, giving you full visibility and control over what was delivered versus what was pumped.</p>
+          </div>
+        </div>
+
+        <!-- Panel 2: Security -->
+        <div class="tabcordion__panel" id="cp-panel-2" role="tabpanel" aria-labelledby="cp-tab-2">
+          <div class="tabcordion__panel-img" aria-label="Tag management screen showing active and suspended toggles">
+            <span class="tabcordion__panel-img-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              [ UI Mockup: Tag management &mdash; active/suspended RFID toggles ]
+            </span>
+          </div>
+          <div class="tabcordion__panel-content">
+            <span class="tabcordion__panel-eyebrow">Security</span>
+            <h3 class="tabcordion__panel-title">Mitigate fraud instantly.</h3>
+            <p class="tabcordion__panel-body">Add, suspend, or cancel RFID fuel tags in real time, adding instant protection against unauthorised use or theft. Multiple security layers mean only authorised users access your fuel.</p>
+          </div>
+        </div>
+
+        <!-- Panel 3: Reporting -->
+        <div class="tabcordion__panel" id="cp-panel-3" role="tabpanel" aria-labelledby="cp-tab-3">
+          <div class="tabcordion__panel-img" aria-label="Data table or chart showing fuel consumption by vehicle">
+            <span class="tabcordion__panel-img-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              [ UI Mockup: Consumption report &mdash; fuel by vehicle/driver/site ]
+            </span>
+          </div>
+          <div class="tabcordion__panel-content">
+            <span class="tabcordion__panel-eyebrow">Reporting</span>
+            <h3 class="tabcordion__panel-title">Understand your consumption.</h3>
+            <p class="tabcordion__panel-body">Generate granular reports on all transactions. Understand exactly how much fuel is being consumed between top-ups, broken down per vehicle, per driver, or per site.</p>
+          </div>
+        </div>
+
+        <!-- Panel 4: Finance -->
+        <div class="tabcordion__panel" id="cp-panel-4" role="tabpanel" aria-labelledby="cp-tab-4">
+          <div class="tabcordion__panel-img" aria-label="Invoice download screen or pricing chart">
+            <span class="tabcordion__panel-img-placeholder">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              [ UI Mockup: Invoice download &amp; live pricing chart ]
+            </span>
+          </div>
+          <div class="tabcordion__panel-content">
+            <span class="tabcordion__panel-eyebrow">Finance</span>
+            <h3 class="tabcordion__panel-title">Smarter budgeting.</h3>
+            <p class="tabcordion__panel-body">Access live terminal gate pricing, download tax-compliant invoices instantly, and utilise your historical consumption data for accurate fuel cost forecasting.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MOBILE: Accordion -->
+    <div class="tabcordion__accordion" aria-label="Customer Portal features accordion">
+
+      <div class="tabcordion__acc-item">
+        <button class="tabcordion__acc-trigger" aria-expanded="true" aria-controls="cp-acc-body-1" id="cp-acc-btn-1">
+          <span><strong>01</strong>&nbsp;&nbsp;Visibility</span>
+          <svg class="tabcordion__acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="tabcordion__acc-body" id="cp-acc-body-1" role="region" aria-labelledby="cp-acc-btn-1" style="max-height:500px">
+          <div class="tabcordion__acc-body-inner">
+            <p>Track bulk deliveries as they happen. Integrate with HyDip™ FMS to see real-time dips and usage directly from your bulk tank, giving you full visibility and control over what was delivered versus what was pumped.</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Card 3: Understand your consumption -->
-      <div class="bento__card bento__card--blue">
-        <p class="bento__card-eyebrow">Reporting</p>
-        <h3 class="bento__card-title">Understand your consumption.</h3>
-        <p class="bento__card-body">Generate granular reports on all transactions. Understand exactly how much fuel is being consumed between top-ups, broken down per vehicle, per driver, or per site.</p>
-        <!-- REPLACE: UI snippet — cropped dashboard report view -->
-        <img src="assets/images/digital-platforms/customer-portal-ui.webp" alt="Consumption reporting dashboard" class="bento__card-img">
+      <div class="tabcordion__acc-item">
+        <button class="tabcordion__acc-trigger" aria-expanded="false" aria-controls="cp-acc-body-2" id="cp-acc-btn-2">
+          <span><strong>02</strong>&nbsp;&nbsp;Security</span>
+          <svg class="tabcordion__acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="tabcordion__acc-body" id="cp-acc-body-2" role="region" aria-labelledby="cp-acc-btn-2">
+          <div class="tabcordion__acc-body-inner">
+            <p>Add, suspend, or cancel RFID fuel tags in real time, adding instant protection against unauthorised use or theft. Multiple security layers mean only authorised users access your fuel.</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Card 4: Smarter budgeting -->
-      <div class="bento__card">
-        <p class="bento__card-eyebrow">Finance</p>
-        <h3 class="bento__card-title">Smarter budgeting.</h3>
-        <p class="bento__card-body">Access live terminal gate pricing, download tax-compliant invoices instantly, and utilise your historical consumption data for accurate fuel cost forecasting.</p>
-        <!-- REPLACE: UI snippet — invoice download screen -->
-        <img src="assets/images/digital-platforms/bento-grid-reference.png" alt="Invoice download and budgeting tools" class="bento__card-img">
+      <div class="tabcordion__acc-item">
+        <button class="tabcordion__acc-trigger" aria-expanded="false" aria-controls="cp-acc-body-3" id="cp-acc-btn-3">
+          <span><strong>03</strong>&nbsp;&nbsp;Reporting</span>
+          <svg class="tabcordion__acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="tabcordion__acc-body" id="cp-acc-body-3" role="region" aria-labelledby="cp-acc-btn-3">
+          <div class="tabcordion__acc-body-inner">
+            <p>Generate granular reports on all transactions. Understand exactly how much fuel is being consumed between top-ups, broken down per vehicle, per driver, or per site.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabcordion__acc-item">
+        <button class="tabcordion__acc-trigger" aria-expanded="false" aria-controls="cp-acc-body-4" id="cp-acc-btn-4">
+          <span><strong>04</strong>&nbsp;&nbsp;Finance</span>
+          <svg class="tabcordion__acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="tabcordion__acc-body" id="cp-acc-body-4" role="region" aria-labelledby="cp-acc-btn-4">
+          <div class="tabcordion__acc-body-inner">
+            <p>Access live terminal gate pricing, download tax-compliant invoices instantly, and utilise your historical consumption data for accurate fuel cost forecasting.</p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1123,16 +1307,16 @@
 </section>
 
 <!-- ============================================================
-     PRE-FOOTER + FOOTER — Verbatim from IOR_Global_Template_Shell_v4.html
+     PRE-FOOTER — SaaS upgrade per Customer Portal rebuild brief
 ============================================================ -->
-<section class="pre-footer">
+<section class="pre-footer" aria-label="Ready to take control of your fuel">
   <div class="pre-footer__inner">
-    <h2 class="pre-footer__h2">We're here to help.</h2>
-    <p class="pre-footer__sub">Our team is ready to assist with your fuel and fleet management needs.</p>
+    <span class="pre-footer__eyebrow">Get Started</span>
+    <h2 class="pre-footer__h2">Ready to take control of your fuel?</h2>
+    <p class="pre-footer__sub">Join thousands of Australian businesses managing their fleet fuel with the IOR Customer Portal.</p>
     <div class="pre-footer__ctas">
-      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary">Apply for an Account</a>
-      <a href="11a_Contact_Usv5.html" class="btn btn--outline-light">Make an Enquiry</a>
-      <a href="11_Support_Hubv5.html" class="btn btn--outline-light">Need Help?</a>
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+      <a href="https://portal.ior.com.au" class="btn btn--outline-white" target="_blank" rel="noopener noreferrer">Customer Login</a>
     </div>
   </div>
 </section>
@@ -1297,14 +1481,42 @@ if (primaryNav) {
   }, { passive: true });
 }
 
-  document.querySelectorAll('.faq-question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const answer = document.getElementById(btn.getAttribute('aria-controls'));
-    const isOpen = btn.getAttribute('aria-expanded') === 'true';
-    document.querySelectorAll('.faq-question').forEach(b => { b.setAttribute('aria-expanded', 'false'); document.getElementById(b.getAttribute('aria-controls')).style.maxHeight = '0'; });
-    if (!isOpen) { btn.setAttribute('aria-expanded', 'true'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
+  /* ---- FAQ accordion ---- */
+  document.querySelectorAll('.faq__q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq__q').forEach(b => { b.setAttribute('aria-expanded', 'false'); if (b.nextElementSibling) b.nextElementSibling.classList.remove('is-open'); });
+      if (!isOpen) { btn.setAttribute('aria-expanded', 'true'); answer.classList.add('is-open'); }
+    });
   });
-});
+
+  /* ---- Tab-Cordion (desktop tabs) ---- */
+  const cpTabs = document.querySelectorAll('.tabcordion__tab');
+  const cpPanels = document.querySelectorAll('.tabcordion__panel');
+  cpTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const id = tab.getAttribute('data-tc');
+      cpTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      cpPanels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const panel = document.getElementById('cp-panel-' + id.replace('cp-', ''));
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  /* ---- Tab-Cordion (mobile accordion) ---- */
+  document.querySelectorAll('.tabcordion__acc-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const bodyId = trigger.getAttribute('aria-controls');
+      const body = document.getElementById(bodyId);
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.tabcordion__acc-trigger').forEach(t => { t.setAttribute('aria-expanded', 'false'); });
+      document.querySelectorAll('.tabcordion__acc-body').forEach(b => { b.style.maxHeight = '0'; });
+      if (!isOpen) { trigger.setAttribute('aria-expanded', 'true'); body.style.maxHeight = body.scrollHeight + 'px'; }
+    });
+  });
 /* ---- Related content tabs ---- */
 document.querySelectorAll('.related-content__tab').forEach(tab => {
   tab.addEventListener('click', () => {
@@ -1333,7 +1545,8 @@ const modal = document.getElementById('request-access-modal');
     document.body.style.overflow = '';
   }
 
-  document.getElementById('hero-request-access').addEventListener('click', openModal);
+  const heroRequestBtn = document.getElementById('hero-request-access');
+  if (heroRequestBtn) heroRequestBtn.addEventListener('click', openModal);
   document.querySelectorAll('.access-request-btn').forEach(btn => btn.addEventListener('click', openModal));
   if (modalClose) modalClose.addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
