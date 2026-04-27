@@ -18,6 +18,7 @@
       --radius:0px;--section-pad:clamp(50px,7vw,100px);--section-pad-x:clamp(20px,8vw,125px);
       --container-max:1550px;--content-max:1300px;--transition-base:250ms ease;
       --transition-fast:150ms ease;--transition:250ms ease;--z-nav:100;
+      --fc-orange:#FF6B00;--fc-dark:#1A0A00;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-size:16px;scroll-behavior:smooth}
@@ -135,13 +136,29 @@
     .platform-card__bullets li{font-size:14px;color:var(--grey-800);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
     .platform-card__bullets li::before{content:'';display:inline-block;width:7px;height:7px;background:var(--ior-blue);flex-shrink:0;margin-top:5px}
     .platform-card__ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:auto}
-    /* Fuelcharge Callout Band */
-    .fuelcharge-band{background:var(--ior-light-blue-bg);border-top:1px solid rgba(3,85,163,.12);border-bottom:1px solid rgba(3,85,163,.12);padding:clamp(40px,5vw,64px) 0}
-    .fuelcharge-band__inner{max-width:var(--container-max);margin-inline:auto;padding-inline:var(--section-pad-x);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
-    .fuelcharge-band__content{max-width:680px}
-    .fuelcharge-band__content h3{font-size:clamp(20px,2.4vw,30px);font-weight:800;color:var(--near-black);margin-bottom:12px;line-height:1.25}
-    .fuelcharge-band__content p{font-size:clamp(14px,1.4vw,16px);color:var(--grey-700);line-height:1.7}
-    .fuelcharge-band__cta{flex-shrink:0}
+    /* Fuelcharge Band — branded section */
+    .fuelcharge-band{background:var(--fc-dark);border-top:4px solid var(--fc-orange);padding:0;overflow:hidden}
+    .fuelcharge-band__inner{max-width:var(--container-max);margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:clamp(320px,40vw,520px)}
+    .fuelcharge-band__content{padding:clamp(40px,5vw,72px) clamp(24px,4vw,64px) clamp(40px,5vw,72px) var(--section-pad-x);display:flex;flex-direction:column;justify-content:center}
+    .fuelcharge-band__eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fc-orange);margin-bottom:14px;display:block}
+    .fuelcharge-band__content h3{font-size:clamp(22px,2.8vw,36px);font-weight:800;color:#fff;margin-bottom:16px;line-height:1.2}
+    .fuelcharge-band__content p{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.8);line-height:1.75;margin-bottom:32px;max-width:480px}
+    .fuelcharge-band__cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn--fc{background:var(--fc-orange);color:#fff;border-color:var(--fc-orange)}.btn--fc:hover{background:#e05e00;border-color:#e05e00}
+    .btn--fc-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}.btn--fc-outline:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+    .fuelcharge-band__image{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#110500}
+    .fuelcharge-band__image-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px}
+    .fc-phone-mock{width:clamp(140px,16vw,220px);aspect-ratio:9/19;background:#0d0d0d;border:3px solid rgba(255,107,0,.4);position:relative;display:flex;flex-direction:column;overflow:hidden}
+    .fc-phone-mock__notch{width:40%;height:20px;background:#0d0d0d;margin:0 auto;position:relative;z-index:2;border-bottom-left-radius:12px;border-bottom-right-radius:12px}
+    .fc-phone-mock__screen{flex:1;background:#1a0a00;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px}
+    .fc-phone-mock__logo{font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--fc-orange);text-transform:uppercase}
+    .fc-phone-mock__bar{width:80%;height:6px;background:rgba(255,107,0,.3)}
+    .fc-phone-mock__bar--fill{width:55%;height:6px;background:var(--fc-orange)}
+    .fc-phone-mock__amount{font-size:22px;font-weight:800;color:#fff}
+    .fc-phone-mock__label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+    .fc-phone-mock__btn{background:var(--fc-orange);color:#fff;font-size:11px;font-weight:800;padding:8px 20px;letter-spacing:.04em;text-transform:uppercase;margin-top:8px}
+    .fuelcharge-band__image-placeholder span{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,107,0,.5);text-align:center;max-width:200px;line-height:1.5}
+    @media(max-width:768px){.fuelcharge-band__inner{grid-template-columns:1fr}.fuelcharge-band__image{min-height:280px}}
     /* Stat Bar */
     .stat-bar{background:var(--ior-blue);padding:clamp(20px,3vw,28px) 0}
     .stat-bar .container{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
@@ -357,6 +374,16 @@
       </div>
     </nav>
 
+    <!-- STATS BAR — positioned above logo carousel per brief -->
+    <div class="stat-bar" aria-label="Key statistics" role="region">
+      <div class="container">
+        <div class="stat-item"><div class="stat-item__number">2,400+</div><div class="stat-item__label">Active Fleet Accounts</div></div>
+        <div class="stat-item"><div class="stat-item__number">$18M+</div><div class="stat-item__label">FTC Claims via HyDip&#8482; Annually</div></div>
+        <div class="stat-item"><div class="stat-item__number">180+</div><div class="stat-item__label">Network Sites</div></div>
+        <div class="stat-item"><div class="stat-item__number">40+</div><div class="stat-item__label">Years in Operation</div></div>
+      </div>
+    </div>
+
     <!-- LOGO CAROUSEL -->
     <div class="logo-carousel-wrap" aria-label="Trusted by" role="region">
       <p class="logo-carousel-label">Trusted by leading Australian businesses</p>
@@ -433,24 +460,33 @@
     <section id="fuelcharge" class="fuelcharge-band" aria-labelledby="fc-band-heading">
       <div class="fuelcharge-band__inner">
         <div class="fuelcharge-band__content fade-up">
+          <span class="fuelcharge-band__eyebrow">Fuelcharge App</span>
           <h3 id="fc-band-heading">Looking for a pay-as-you-go refuelling solution?</h3>
           <p>The Fuelcharge App lets you scan-and-pay at any IOR Diesel Network stop &mdash; no account required. Perfect for rural drivers, owner-operators, and small businesses that need flexibility without the commitment.</p>
+          <div class="fuelcharge-band__cta">
+            <a href="07b_Fuelcharge_App_v8.html" class="btn btn--fc">Explore Fuelcharge App <span class="btn__arrow" aria-hidden="true"></span></a>
+            <a href="07b_Fuelcharge_App_v8.html" class="btn btn--fc-outline">Learn More</a>
+          </div>
         </div>
-        <div class="fuelcharge-band__cta fade-up">
-          <a href="07b_Fuelcharge_App_v8.html" class="btn btn--primary">Explore Fuelcharge App <span class="btn__arrow" aria-hidden="true"></span></a>
+        <div class="fuelcharge-band__image" aria-hidden="true">
+          <div class="fuelcharge-band__image-placeholder">
+            <div class="fc-phone-mock">
+              <div class="fc-phone-mock__notch"></div>
+              <div class="fc-phone-mock__screen">
+                <div class="fc-phone-mock__logo">Fuelcharge</div>
+                <div class="fc-phone-mock__label">Litres dispensed</div>
+                <div class="fc-phone-mock__amount">84.2 L</div>
+                <div class="fc-phone-mock__bar"></div>
+                <div class="fc-phone-mock__bar--fill"></div>
+                <div class="fc-phone-mock__label">Scan QR to pay</div>
+                <div class="fc-phone-mock__btn">Pay Now</div>
+              </div>
+            </div>
+            <span>ASSET REQUIRED &mdash; Photo of person using Fuelcharge App on phone at IOR diesel stop</span>
+          </div>
         </div>
       </div>
     </section>
-
-    <!-- SECTION 5: STATS BAR -->
-    <div class="stat-bar" aria-label="Key statistics" role="region">
-      <div class="container">
-        <div class="stat-item"><div class="stat-item__number">2,400+</div><div class="stat-item__label">Active Fleet Accounts</div></div>
-        <div class="stat-item"><div class="stat-item__number">$18M+</div><div class="stat-item__label">FTC Claims via HyDip&#8482; Annually</div></div>
-        <div class="stat-item"><div class="stat-item__number">180+</div><div class="stat-item__label">Network Sites</div></div>
-        <div class="stat-item"><div class="stat-item__number">40+</div><div class="stat-item__label">Years in Operation</div></div>
-      </div>
-    </div>
 
     <!-- SECTION 6: TESTIMONIALS -->
     <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading">
