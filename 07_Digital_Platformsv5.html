@@ -107,6 +107,17 @@
     .hero__content p{font-size:clamp(14px,1.4vw,17px);color:rgba(255,255,255,.7);max-width:500px;margin-bottom:clamp(20px,2.5vw,28px);line-height:1.7}
     .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;opacity:.85}
     @media(max-width:768px){.hero__play{width:56px;height:56px}.hero__content{padding:clamp(28px,5vw,48px) var(--section-pad-x)}}
+    /* Proto-bar — builder navigation */
+    .wf-nav{position:sticky;top:0;z-index:9999;background:#1A1A2E;border-bottom:2px solid #E94560;padding:6px 16px;display:flex;align-items:center;flex-wrap:wrap;gap:12px;font-family:'Courier New',monospace;font-size:11px;color:#A8B2D8;user-select:none}
+    .wf-nav__links{display:flex;align-items:center;gap:4px;flex-shrink:0}
+    .wf-nav__link{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#CCD6F6;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.04em;transition:background 120ms,color 120ms;white-space:nowrap}
+    .wf-nav__link:hover{background:#E94560;border-color:#E94560;color:#fff}
+    .wf-nav__div{width:1px;height:16px;background:rgba(255,255,255,.15);flex-shrink:0}
+    .wf-nav__mod{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
+    .wf-nav__badge{display:inline-block;padding:2px 8px;background:#E94560;color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
+    .wf-nav__name{font-size:11px;font-weight:700;color:#CCD6F6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .wf-nav__file{font-size:10px;color:#6A7497;white-space:nowrap}
+    @media(max-width:640px){.wf-nav__file{display:none}}
     /* Quick Links Bar — EXPLORE IOR pattern (matches Diesel Network v3.5) */
     .quick-links-bar{background:#fff;border-bottom:2px solid var(--grey-200);z-index:calc(var(--z-nav) - 1)}
     .quick-links-bar__inner{max-width:var(--container-max);margin:0 auto;padding:0 var(--section-pad-x);display:flex;align-items:center;overflow-x:auto;scrollbar-width:none}
@@ -253,6 +264,21 @@
   </style>
 </head>
 <body>
+
+<!-- PROTO-BAR: builder navigation — not part of live design -->
+<div class="wf-nav" role="navigation" aria-label="Prototype navigation">
+  <div class="wf-nav__links">
+    <a href="00_Client_Preview.html" class="wf-nav__link">&#8592; Client Preview</a>
+    <div class="wf-nav__div" aria-hidden="true"></div>
+    <a href="IOR_Design_System.html" class="wf-nav__link">Design System</a>
+  </div>
+  <div class="wf-nav__div" aria-hidden="true"></div>
+  <div class="wf-nav__mod">
+    <span class="wf-nav__badge">MODULE 07</span>
+    <span class="wf-nav__name">Digital Platforms Hub</span>
+    <span class="wf-nav__file">07_Digital_Platformsv5.html</span>
+  </div>
+</div>
 
   <!-- HEADER -->
   <header role="banner">
