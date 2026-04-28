@@ -220,12 +220,15 @@
     /* ============================================================
        STAT BAR
     ============================================================ */
-    .stat-bar { background: var(--ior-blue); padding: clamp(20px,3vw,28px) 0; }
-    .stat-bar .container { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
-    .stat-item { text-align: center; padding: 0 16px; border-right: 1px solid rgba(255,255,255,.2); }
-    .stat-item:last-child { border-right: none; }
-    .stat-item__number { font-size: clamp(26px,3vw,38px); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 6px; }
-    .stat-item__label { font-size: clamp(10px,1vw,12px); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.75); }
+    /* USP BAR */
+    .usp-bar { background: #fff; border-top: 1px solid var(--grey-200); border-bottom: 1px solid var(--grey-200); padding: clamp(28px,4vw,44px) 0; }
+    .usp-bar__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--section-pad-x); display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+    .usp-bar__item { display: flex; align-items: flex-start; gap: 16px; padding: 0 24px; border-right: 1px solid var(--grey-200); }
+    .usp-bar__item:first-child { padding-left: 0; }
+    .usp-bar__item:last-child { border-right: none; }
+    .usp-bar__icon { flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--ior-light); color: var(--ior-blue); font-size: 22px; }
+    .usp-bar__text strong { display: block; font-size: clamp(13px,1.2vw,15px); font-weight: 800; color: var(--ior-navy); margin-bottom: 3px; }
+    .usp-bar__text span { font-size: clamp(12px,1.1vw,13px); color: var(--mid-grey); line-height: 1.4; }
 
     /* ============================================================
        LOGO CAROUSEL — global standard
@@ -293,7 +296,7 @@
     /* ============================================================
        INDUSTRIES GRID
     ============================================================ */
-    .industries-section { padding: var(--section-pad) 0; background: var(--grey-50); }
+    .industries-section { padding: var(--section-pad) 0; background: var(--off-white); }
     .industries-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 40px; }
     .industry-card { background: var(--ior-navy); padding: 32px 24px; position: relative; overflow: hidden; }
     .industry-card__icon { margin-bottom: 20px; color: var(--ior-sky); display: flex; align-items: center; }
@@ -304,6 +307,10 @@
     .industry-card__body { font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.6; margin-bottom: 20px; }
     .industry-card__link { font-size: 13px; font-weight: 700; color: var(--ior-sky); display: inline-flex; align-items: center; gap: 6px; }
     .industry-card__link:hover { text-decoration: underline; }
+    /* Industry view-all CTA */
+    .industry-cta-row { display: flex; justify-content: center; margin-top: clamp(32px,4vw,48px); }
+    .industry-view-all { display: inline-flex; align-items: center; padding: 14px 32px; font-size: clamp(14px,1.3vw,16px); font-weight: 700; font-family: var(--font); color: var(--ior-blue); border: 2px solid var(--ior-blue); border-radius: 500px; text-decoration: none; transition: all .2s; min-height: 48px; }
+    .industry-view-all:hover { background: var(--ior-blue); color: #fff; }
 
     /* ============================================================
        MAP TEASER
@@ -462,7 +469,10 @@
       .tabcordion__accordion { display: block; }
     }
     @media (max-width: 900px) {
-      .stat-bar .container { grid-template-columns: repeat(2,1fr); }
+      .usp-bar__inner { grid-template-columns: repeat(2,1fr); }
+      .usp-bar__item:nth-child(2) { border-right: none; }
+      .usp-bar__item:nth-child(3) { border-right: 1px solid var(--grey-200); padding-left: 0; border-top: 1px solid var(--grey-200); padding-top: 20px; }
+      .usp-bar__item:nth-child(4) { border-right: none; border-top: 1px solid var(--grey-200); padding-top: 20px; }
       .industries-grid { grid-template-columns: repeat(2,1fr); }
       .related-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -472,9 +482,9 @@
       .lead-capture__card { grid-template-columns: 1fr; padding: 24px; }
       .footer-nav-grid { grid-template-columns: repeat(2,1fr); }
       .pre-footer__row { flex-direction: column; align-items: flex-start; }
-      .stat-bar .container { grid-template-columns: 1fr 1fr; gap: 24px; }
-      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 20px; }
-      .stat-item:last-child { border-bottom: none; }
+      .usp-bar__inner { grid-template-columns: 1fr 1fr; }
+      .usp-bar__item { border-right: none; border-bottom: 1px solid var(--grey-200); padding-bottom: 20px; }
+      .usp-bar__item:last-child { border-bottom: none; }
       .industries-grid { grid-template-columns: 1fr; }
       .map-stats { grid-template-columns: 1fr 1fr; }
       .related-grid { grid-template-columns: 1fr; }
@@ -650,13 +660,37 @@
       </div>
     </nav>
 
-    <!-- STAT BAR -->
-    <div class="stat-bar" aria-label="Key statistics">
-      <div class="container">
-        <div class="stat-item"><div class="stat-item__number">500+</div><div class="stat-item__label">Diesel Stop locations</div></div>
-        <div class="stat-item"><div class="stat-item__number">National</div><div class="stat-item__label">Bulk delivery fleet</div></div>
-        <div class="stat-item"><div class="stat-item__number">ISO 22241</div><div class="stat-item__label">Certified AdBlue®</div></div>
-        <div class="stat-item"><div class="stat-item__number">40+</div><div class="stat-item__label">Years in the industry</div></div>
+    <!-- USP BAR -->
+    <div class="usp-bar" aria-label="Why IOR Ground Fuels">
+      <div class="usp-bar__inner">
+        <div class="usp-bar__item">
+          <div class="usp-bar__icon" aria-hidden="true">&#128205;</div>
+          <div class="usp-bar__text">
+            <strong>500+ Diesel Stop Locations</strong>
+            <span>On Australia&#8217;s key transport corridors</span>
+          </div>
+        </div>
+        <div class="usp-bar__item">
+          <div class="usp-bar__icon" aria-hidden="true">&#128666;</div>
+          <div class="usp-bar__text">
+            <strong>National Bulk Delivery Fleet</strong>
+            <span>Rigid tankers, semi-trailers &amp; B-Doubles</span>
+          </div>
+        </div>
+        <div class="usp-bar__item">
+          <div class="usp-bar__icon" aria-hidden="true">&#9989;</div>
+          <div class="usp-bar__text">
+            <strong>ISO 22241 Certified AdBlue&#174;</strong>
+            <span>HyBlue&#8482; &#8212; quality guaranteed, every batch</span>
+          </div>
+        </div>
+        <div class="usp-bar__item">
+          <div class="usp-bar__icon" aria-hidden="true">&#127981;</div>
+          <div class="usp-bar__text">
+            <strong>40+ Years in the Industry</strong>
+            <span>Australia&#8217;s most trusted fuel partner since 1984</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -924,6 +958,10 @@
             <p class="industry-card__body">Compliant fuel supply for government fleets, defence operations, and emergency services. Secure bulk delivery, full audit trails, and single-account management across all sites.</p>
             <a href="03c_Bulk_Diesel_Delivery_v9.html" class="industry-card__link">Bulk Delivery &#8594;</a>
           </div>
+        </div>
+        <!-- Industries CTA -->
+        <div class="industry-cta-row fade-up">
+          <a href="08_Industries_Hub.html" class="industry-view-all">View All Industries &#8594;</a>
         </div>
       </div>
     </section>
