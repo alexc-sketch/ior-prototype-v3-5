@@ -348,8 +348,10 @@
     .related-content__tab.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
     .related-tab-panel { display: none; }
     .related-tab-panel.active { display: block; }
-    .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,2vw,20px); }
-    @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
+    .industry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); }
+    .industry-grid--6col { grid-template-columns: repeat(6, 1fr); }
+    @media (max-width: 1100px) { .industry-grid--6col { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px) { .industry-grid--6col { grid-template-columns: repeat(2, 1fr); } } @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
     .related-card { background: #fff; border: 1px solid var(--grey-200); }
     .related-card__img { background: var(--grey-100); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
     .related-card__img-logo { width: 28px; height: 28px; background: var(--ior-blue); display: flex; align-items: center; justify-content: center; }
@@ -382,7 +384,7 @@
     /* ============================================================
        FINAL CTA
     ============================================================ */
-    .final-cta { padding: var(--section-pad) 0; background: var(--ior-blue); text-align: center; }
+    .final-cta { padding: var(--section-pad) 0; background: #0a2240; text-align: center; }
     .final-cta h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.2; }
     .final-cta p { font-size: clamp(14px, 1.5vw, 17px); color: rgba(255,255,255,.85); margin-bottom: clamp(28px, 3vw, 40px); max-width: 560px; margin-inline: auto; }
     .final-cta__ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
@@ -558,7 +560,7 @@
     </div>
     <div class="hero__overlay" aria-hidden="true"></div>
     <div class="hero__content">
-      <p class="eyebrow eyebrow--white">Ground Fuels &mdash; On-Site Refuelling</p>
+      <p class="eyebrow eyebrow--white">On-site Refuelling</p>
       <h1>Fuel at your fingertips.<br><span class="highlight">Ready when you need it.</span></h1>
       <p>Eliminate queues and downtime. IOR brings the fuel, the infrastructure, and the technology directly to your yard or job site &mdash; with zero capital outlay.</p>
       <div class="hero-ctas">
@@ -590,20 +592,20 @@
   <div class="stat-bar" role="region" aria-label="Key statistics">
     <div class="stat-bar__inner">
       <div class="stat-item">
-        <div class="stat-item__number">500+</div>
-        <div class="stat-item__label">Diesel Stop Locations</div>
+        <div class="stat-item__number">Zero</div>
+        <div class="stat-item__label">Capital Outlay</div>
       </div>
       <div class="stat-item">
-        <div class="stat-item__number">40+</div>
-        <div class="stat-item__label">Years in the Industry</div>
+        <div class="stat-item__number">IOR</div>
+        <div class="stat-item__label">Maintained</div>
       </div>
       <div class="stat-item">
-        <div class="stat-item__number">National</div>
-        <div class="stat-item__label">Bulk Delivery Fleet</div>
+        <div class="stat-item__number">HyDip&#8482;</div>
+        <div class="stat-item__label">Enabled</div>
       </div>
       <div class="stat-item">
-        <div class="stat-item__number">24/7</div>
-        <div class="stat-item__label">Vendor-Managed Supply</div>
+        <div class="stat-item__number">Diesel</div>
+        <div class="stat-item__label">+ AdBlue&#174;</div>
       </div>
     </div>
   </div>
@@ -843,38 +845,54 @@
         <h2 id="industry-heading">On-site refuelling for every sector.</h2>
         <p>From remote mine sites to busy civil depots, IOR delivers reliable on-site fuel across Australia's most demanding industries.</p>
       </div>
-      <div class="industry-grid">
+      <div class="industry-grid industry-grid--6col">
         <div class="industry-card fade-up">
           <div class="industry-card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
           <h3 class="industry-card__title">Mining &amp; Resources</h3>
-          <p class="industry-card__body">Remote mine sites, drill rigs, and processing facilities. IOR delivers to the most isolated locations in Australia, with vendor-managed supply so you never run dry.</p>
-          <a href="#" class="industry-card__link">Mining solutions &rarr;</a>
+          <p class="industry-card__body">Remote mine sites, drill rigs, and processing facilities — vendor-managed so you never run dry.</p>
+          <a href="08a_Industry_Mining.html" class="industry-card__link">Mining solutions &rarr;</a>
         </div>
         <div class="industry-card fade-up">
           <div class="industry-card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           </div>
           <h3 class="industry-card__title">Construction &amp; Civil</h3>
-          <p class="industry-card__body">Earthmoving, civil infrastructure, and building sites. IOR's on-site refuelling keeps excavators, graders, and compactors fuelled without queues or delays.</p>
-          <a href="#" class="industry-card__link">Construction solutions &rarr;</a>
+          <p class="industry-card__body">Earthmoving and civil infrastructure — keep excavators, graders, and compactors fuelled without delays.</p>
+          <a href="08b_Industry_Construction.html" class="industry-card__link">Construction solutions &rarr;</a>
         </div>
         <div class="industry-card fade-up">
           <div class="industry-card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
           </div>
           <h3 class="industry-card__title">Transport &amp; Logistics</h3>
-          <p class="industry-card__body">Depot-based refuelling for truck fleets. Combine on-site storage with network access so your drivers are covered whether they're at the yard or on the road.</p>
-          <a href="#" class="industry-card__link">Transport solutions &rarr;</a>
+          <p class="industry-card__body">Depot-based refuelling for truck fleets, combined with network access for drivers on the road.</p>
+          <a href="08c_Industry_Transport.html" class="industry-card__link">Transport solutions &rarr;</a>
         </div>
         <div class="industry-card fade-up">
           <div class="industry-card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <h3 class="industry-card__title">Agriculture</h3>
-          <p class="industry-card__body">Harvest season, seeding, and year-round machinery fuel. IOR's vendor-managed supply means your tanks are always ready when the season demands it.</p>
-          <a href="#" class="industry-card__link">Agriculture solutions &rarr;</a>
+          <p class="industry-card__body">Harvest season, seeding, and year-round machinery fuel — vendor-managed supply ready when the season demands.</p>
+          <a href="08d_Industry_Agriculture.html" class="industry-card__link">Agriculture solutions &rarr;</a>
+        </div>
+        <div class="industry-card fade-up">
+          <div class="industry-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="industry-card__title">Oil &amp; Gas</h3>
+          <p class="industry-card__body">Wellheads, compressor stations, and remote exploration sites — reliable supply to Australia's most demanding energy operations.</p>
+          <a href="08e_Industry_Oil_Gas.html" class="industry-card__link">Oil &amp; Gas solutions &rarr;</a>
+        </div>
+        <div class="industry-card fade-up">
+          <div class="industry-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3 class="industry-card__title">Government &amp; Defence</h3>
+          <p class="industry-card__body">Councils, emergency services, and defence facilities — secure, compliant, and reliable fuel supply for critical operations.</p>
+          <a href="08f_Industry_Government.html" class="industry-card__link">Government solutions &rarr;</a>
         </div>
       </div>
     </div>
@@ -923,31 +941,7 @@
     </div>
   </section>
 
-  <!-- ── SECTION 9: LOGO CAROUSEL ──────────────────────────────────────── -->
-  <div class="logo-carousel-wrap" role="region" aria-label="Trusted by leading Australian businesses">
-    <p class="logo-carousel-label">Trusted by leading Australian businesses</p>
-    <div class="logo-carousel-track-outer">
-      <div class="logo-carousel-track" aria-hidden="true">
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <!-- Duplicated for seamless loop -->
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-        <div class="logo-placeholder">CLIENT LOGO</div>
-      </div>
-    </div>
-  </div>
+  <!-- Logo carousel removed per client request -->
 
   <!-- ── SECTION 10: RELATED CONTENT ───────────────────────────────────── -->
   <section class="related-content" id="related" aria-labelledby="rc-heading">
