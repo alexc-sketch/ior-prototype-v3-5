@@ -219,15 +219,34 @@
     .fleet-accordion-body.open { display: block; }
     @media (max-width: 900px) { .fleet-tabcordion { display: none; } .fleet-accordion { display: block; } }
 
-    /* ── DELIVERY PROCESS ── */
-    .process-section { padding: var(--section-pad) 0; background: #fff; }
-    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; margin-top: clamp(32px, 4vw, 48px); }
-    .process-steps::before { content: ''; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 2px; background: var(--grey-200); z-index: 0; }
-    .process-step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
-    .process-step__num { width: 56px; height: 56px; background: var(--ior-blue); color: #fff; font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-inline: auto; margin-bottom: 16px; }
-    .process-step__title { font-size: clamp(14px, 1.3vw, 16px); font-weight: 800; color: var(--grey-900); margin-bottom: 8px; }
-    .process-step__body { font-size: clamp(13px, 1.1vw, 14px); color: var(--grey-700); line-height: 1.6; }
-    @media (max-width: 700px) { .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; } .process-steps::before { display: none; } }
+    /* ── DELIVERY PROCESS — INTERACTIVE HIW ── */
+    .hiw-section { background: var(--ior-navy); padding: clamp(56px,7vw,88px) var(--section-pad-x); }
+    .hiw-section__inner { max-width: var(--container-max); margin-inline: auto; }
+    .hiw-section__header { text-align: center; margin-bottom: clamp(40px,5vw,60px); }
+    .hiw-section__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 14px; }
+    .hiw-section__h2 { font-size: clamp(26px,3.2vw,42px); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 12px; }
+    .hiw-section__sub { font-size: clamp(15px,1.5vw,17px); color: rgba(255,255,255,.65); line-height: 1.7; max-width: 520px; margin-inline: auto; }
+    .hiw-body { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: start; }
+    .hiw-tabs { display: flex; flex-direction: column; gap: 0; }
+    .hiw-tab { display: flex; gap: 20px; align-items: flex-start; padding: 24px 20px; cursor: pointer; border-left: 3px solid transparent; transition: border-color .25s, background .25s; background: transparent; }
+    .hiw-tab:hover { background: rgba(255,255,255,.04); }
+    .hiw-tab.is-active { border-left-color: var(--ior-sky); background: rgba(0,161,255,.07); }
+    .hiw-tab__num { width: 36px; height: 36px; background: rgba(255,255,255,.1); color: rgba(255,255,255,.4); font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .25s, color .25s; }
+    .hiw-tab.is-active .hiw-tab__num { background: var(--ior-sky); color: var(--ior-navy); }
+    .hiw-tab__content { flex: 1; }
+    .hiw-tab__title { font-size: 16px; font-weight: 700; color: rgba(255,255,255,.5); line-height: 1.3; margin-bottom: 0; transition: color .25s; }
+    .hiw-tab.is-active .hiw-tab__title { color: var(--ior-sky); }
+    .hiw-tab__desc { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.65; margin-top: 10px; max-height: 0; overflow: hidden; transition: max-height .35s ease, margin-top .25s; }
+    .hiw-tab.is-active .hiw-tab__desc { max-height: 160px; }
+    .hiw-visual { position: relative; }
+    .hiw-panels { position: relative; }
+    .hiw-panel { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: clamp(320px,38vw,480px); background: rgba(255,255,255,.06); padding: 40px; text-align: center; gap: 16px; }
+    .hiw-panel.is-active { display: flex; }
+    .hiw-panel__screen { width: 100%; max-width: 320px; background: rgba(255,255,255,.08); padding: 32px 24px; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+    .hiw-panel__screen-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ior-sky); }
+    .hiw-panel__screen-content { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; text-align: center; }
+    .hiw-panel__asset-note { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-top: 8px; max-width: 260px; line-height: 1.5; }
+    @media (max-width: 900px) { .hiw-body { grid-template-columns: 1fr; } .hiw-visual { display: none; } }
 
     /* ── INDUSTRIES ── */
     .industry-section { padding: var(--section-pad) 0; background: var(--off-white); }
@@ -241,6 +260,8 @@
     .industry-card__link:hover { text-decoration: underline; }
     @media (max-width: 1100px) { .industry-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 700px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } }
+    /* Force 2 rows of 3 on desktop */
+    @media (min-width: 1101px) { .industry-grid { grid-template-columns: repeat(3, 1fr); } }
 
     /* ── TESTIMONIAL ── */
     .testimonial-section { padding: var(--section-pad) 0; background: var(--ior-navy); }
@@ -620,33 +641,82 @@
     </div>
   </section>
 
-  <!-- ── SECTION 5: DELIVERY PROCESS ──────────────────────────────────── -->
-  <section class="process-section" id="process" aria-labelledby="process-heading">
-    <div class="container">
-      <div class="section-heading section-heading--center fade-up">
-        <p class="eyebrow eyebrow--blue">How It Works</p>
-        <h2 id="process-heading">From enquiry to delivery — a simple, reliable process.</h2>
+  <!-- ── SECTION 5: DELIVERY PROCESS — INTERACTIVE HIW ──────────────── -->
+  <section class="hiw-section" id="process" aria-labelledby="hiw-heading">
+    <div class="hiw-section__inner">
+      <div class="hiw-section__header fade-up">
+        <p class="hiw-section__eyebrow">How It Works</p>
+        <h2 class="hiw-section__h2" id="hiw-heading">From enquiry to delivery — a simple, reliable process.</h2>
+        <p class="hiw-section__sub">No surprises. No delays. Just reliable bulk diesel delivered to your site, on schedule.</p>
       </div>
-      <div class="process-steps">
-        <div class="process-step fade-up">
-          <div class="process-step__num" aria-hidden="true">1</div>
-          <h3 class="process-step__title">Tell us about your site</h3>
-          <p class="process-step__body">Share your location, access conditions, storage capacity, and estimated volume. We'll match the right vehicle and schedule to your operation.</p>
+      <div class="hiw-body">
+        <!-- LEFT: Numbered tab list -->
+        <div class="hiw-tabs" role="tablist" aria-label="Delivery process steps">
+          <div class="hiw-tab is-active" role="tab" aria-selected="true" aria-controls="hiw-panel-1" id="hiw-tab-1" tabindex="0" data-hiw="1">
+            <div class="hiw-tab__num">1</div>
+            <div class="hiw-tab__content">
+              <div class="hiw-tab__title">Tell us about your site</div>
+              <div class="hiw-tab__desc">Share your location, access conditions, storage capacity, and estimated volume. We'll match the right vehicle and schedule to your operation.</div>
+            </div>
+          </div>
+          <div class="hiw-tab" role="tab" aria-selected="false" aria-controls="hiw-panel-2" id="hiw-tab-2" tabindex="0" data-hiw="2">
+            <div class="hiw-tab__num">2</div>
+            <div class="hiw-tab__content">
+              <div class="hiw-tab__title">Receive a tailored quote</div>
+              <div class="hiw-tab__desc">Our team will provide a competitive quote based on your volume, frequency, and location. No hidden fees, no surprises.</div>
+            </div>
+          </div>
+          <div class="hiw-tab" role="tab" aria-selected="false" aria-controls="hiw-panel-3" id="hiw-tab-3" tabindex="0" data-hiw="3">
+            <div class="hiw-tab__num">3</div>
+            <div class="hiw-tab__content">
+              <div class="hiw-tab__title">We schedule your delivery</div>
+              <div class="hiw-tab__desc">IOR coordinates the delivery schedule around your operation. We notify you in advance and track every delivery through our digital platform.</div>
+            </div>
+          </div>
+          <div class="hiw-tab" role="tab" aria-selected="false" aria-controls="hiw-panel-4" id="hiw-tab-4" tabindex="0" data-hiw="4">
+            <div class="hiw-tab__num">4</div>
+            <div class="hiw-tab__content">
+              <div class="hiw-tab__title">Fuel arrives, records updated</div>
+              <div class="hiw-tab__desc">Your fuel is delivered, metered, and documented. Delivery records are automatically updated in the IOR Customer Portal and HyDip&#8482; FMS.</div>
+            </div>
+          </div>
         </div>
-        <div class="process-step fade-up">
-          <div class="process-step__num" aria-hidden="true">2</div>
-          <h3 class="process-step__title">Receive a tailored quote</h3>
-          <p class="process-step__body">Our team will provide a competitive quote based on your volume, frequency, and location. No hidden fees, no surprises.</p>
-        </div>
-        <div class="process-step fade-up">
-          <div class="process-step__num" aria-hidden="true">3</div>
-          <h3 class="process-step__title">We schedule your delivery</h3>
-          <p class="process-step__body">IOR coordinates the delivery schedule around your operation. We notify you in advance and track every delivery through our digital platform.</p>
-        </div>
-        <div class="process-step fade-up">
-          <div class="process-step__num" aria-hidden="true">4</div>
-          <h3 class="process-step__title">Fuel arrives, records updated</h3>
-          <p class="process-step__body">Your fuel is delivered, metered, and documented. Delivery records are automatically updated in the IOR Customer Portal and HyDip&#8482; FMS.</p>
+        <!-- RIGHT: Visual panels -->
+        <div class="hiw-visual" aria-hidden="true">
+          <div class="hiw-panels">
+            <div class="hiw-panel is-active" id="hiw-panel-1" role="tabpanel" aria-labelledby="hiw-tab-1">
+              <div class="hiw-panel__screen">
+                <div class="hiw-panel__screen-label">Site Assessment</div>
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(0,161,255,.6)" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="hiw-panel__screen-content">Location, access conditions, storage capacity &amp; volume requirements</div>
+              </div>
+              <div class="hiw-panel__asset-note">Asset required &mdash; site assessment / enquiry form screen</div>
+            </div>
+            <div class="hiw-panel" id="hiw-panel-2" role="tabpanel" aria-labelledby="hiw-tab-2">
+              <div class="hiw-panel__screen">
+                <div class="hiw-panel__screen-label">Tailored Quote</div>
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(0,161,255,.6)" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                <div class="hiw-panel__screen-content">Volume-based pricing, delivery frequency, and site-specific logistics — no hidden fees</div>
+              </div>
+              <div class="hiw-panel__asset-note">Asset required &mdash; quote document or pricing screen</div>
+            </div>
+            <div class="hiw-panel" id="hiw-panel-3" role="tabpanel" aria-labelledby="hiw-tab-3">
+              <div class="hiw-panel__screen">
+                <div class="hiw-panel__screen-label">Delivery Schedule</div>
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(0,161,255,.6)" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div class="hiw-panel__screen-content">Scheduled delivery calendar with advance notification and driver tracking</div>
+              </div>
+              <div class="hiw-panel__asset-note">Asset required &mdash; delivery schedule or calendar screen</div>
+            </div>
+            <div class="hiw-panel" id="hiw-panel-4" role="tabpanel" aria-labelledby="hiw-tab-4">
+              <div class="hiw-panel__screen">
+                <div class="hiw-panel__screen-label">Digital Records</div>
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(0,161,255,.6)" stroke-width="1.5" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                <div class="hiw-panel__screen-content">Delivery confirmed, metered &amp; recorded — auto-updated in Customer Portal &amp; HyDip&#8482; FMS</div>
+              </div>
+              <div class="hiw-panel__asset-note">Asset required &mdash; delivery confirmation / portal records screen</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -958,6 +1028,20 @@ document
   });
 });
 /* ---- Related content tabs ---- */
+/* ---- HIW interactive tabs ---- */
+document.querySelectorAll('.hiw-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    const idx = this.dataset.hiw;
+    document.querySelectorAll('.hiw-tab').forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+    document.querySelectorAll('.hiw-panel').forEach(p => p.classList.remove('is-active'));
+    this.classList.add('is-active'); this.setAttribute('aria-selected', 'true');
+    const panel = document.getElementById('hiw-panel-' + idx);
+    if (panel) panel.classList.add('is-active');
+  });
+  tab.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+  });
+});
 document.querySelectorAll('.related-content__tab').forEach(tab => {
   tab.addEventListener('click', () => {
     const panelId = tab.getAttribute('aria-controls');
