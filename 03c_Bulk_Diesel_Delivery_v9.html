@@ -247,6 +247,13 @@
     .hiw-panel__screen-content { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; text-align: center; }
     .hiw-panel__asset-note { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-top: 8px; max-width: 260px; line-height: 1.5; }
     @media (max-width: 900px) { .hiw-body { grid-template-columns: 1fr; } .hiw-visual { display: none; } }
+    /* HIW CTAs */
+    .hiw-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: clamp(40px,5vw,56px); }
+    .hiw-cta { display: inline-flex; align-items: center; padding: 14px 32px; font-size: clamp(14px,1.3vw,16px); font-weight: 700; font-family: var(--font); border-radius: 500px; border: 2px solid #fff; cursor: pointer; transition: all .2s; text-decoration: none; white-space: nowrap; min-height: 48px; }
+    .hiw-cta--primary { background: #fff; color: var(--ior-navy); }
+    .hiw-cta--primary:hover { background: var(--ior-light); border-color: var(--ior-light); }
+    .hiw-cta--outline { background: transparent; color: #fff; }
+    .hiw-cta--outline:hover { background: rgba(255,255,255,.1); }
 
     /* ── INDUSTRIES ── */
     .industry-section { padding: var(--section-pad) 0; background: var(--off-white); }
@@ -262,6 +269,10 @@
     @media (max-width: 700px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } }
     /* Force 2 rows of 3 on desktop */
     @media (min-width: 1101px) { .industry-grid { grid-template-columns: repeat(3, 1fr); } }
+    /* Industry view-all CTA */
+    .industry-cta-row { display: flex; justify-content: center; margin-top: clamp(32px,4vw,48px); }
+    .industry-view-all { display: inline-flex; align-items: center; padding: 14px 32px; font-size: clamp(14px,1.3vw,16px); font-weight: 700; font-family: var(--font); color: var(--ior-blue); border: 2px solid var(--ior-blue); border-radius: 500px; text-decoration: none; transition: all .2s; min-height: 48px; }
+    .industry-view-all:hover { background: var(--ior-blue); color: #fff; }
 
     /* ── TESTIMONIAL ── */
     .testimonial-section { padding: var(--section-pad) 0; background: var(--ior-navy); }
@@ -330,32 +341,33 @@
     .final-cta__ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
     /* ── PRE-FOOTER ── */
-    .ior-pre-footer { background: var(--ior-blue); padding: clamp(40px, 5vw, 64px) var(--section-pad-x); }
-    .ior-pre-footer__inner { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-    .ior-pre-footer__title { font-size: clamp(20px, 2.5vw, 30px); font-weight: 800; color: #fff; line-height: 1.25; }
-    .ior-pre-footer__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-    .ior-pre-footer__btn { display: inline-flex; align-items: center; padding: clamp(12px, 1.5vw, 16px) clamp(20px, 2vw, 32px); font-size: clamp(14px, 1.4vw, 16px); font-weight: 800; font-family: var(--font); cursor: pointer; transition: all var(--transition-base); text-decoration: none; border: 2px solid transparent; min-height: 44px; }
-    .ior-pre-footer__btn--filled { background: #fff; color: var(--ior-blue); border-color: #fff; }
-    .ior-pre-footer__btn--filled:hover { background: var(--ior-light); }
-    .ior-pre-footer__btn--outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
-    .ior-pre-footer__btn--outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+    .ior-pre-footer { background: var(--ior-blue); padding: clamp(40px,5vw,64px) var(--section-pad-x); }
+    .ior-pre-footer__inner { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .ior-pre-footer__title { font-size: clamp(24px,3.5vw,40px); font-weight: 800; color: #fff; line-height: 1.1; }
+    .ior-pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .ior-pre-footer__btn { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; font-size: clamp(14px,1.3vw,16px); font-weight: 700; font-family: var(--font); border-radius: 500px; border: 2px solid #fff; cursor: pointer; transition: all .2s; text-decoration: none; white-space: nowrap; min-height: 48px; }
+    .ior-pre-footer__btn--filled { background: #fff; color: var(--ior-blue); }
+    .ior-pre-footer__btn--filled:hover { background: var(--ior-light); border-color: var(--ior-light); }
+    .ior-pre-footer__btn--outline { background: transparent; color: #fff; }
+    .ior-pre-footer__btn--outline:hover { background: rgba(255,255,255,.1); }
 
-    /* ── FOOTER ── */
-    .ior-footer { background: var(--near-black); padding: clamp(40px, 5vw, 64px) var(--section-pad-x) 0; }
-    .ior-footer__inner { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(24px, 3vw, 40px); padding-bottom: clamp(40px, 5vw, 64px); }
-    .ior-footer__col { display: flex; flex-direction: column; gap: 8px; }
-    .ior-footer__heading { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 4px; }
-    .ior-footer__link { font-size: 13px; color: rgba(255,255,255,.75); min-height: 32px; display: flex; align-items: center; }
+    /* ── FOOTER — canonical ── */
+    .ior-footer { background: var(--ior-blue); padding: clamp(40px,5vw,64px) var(--section-pad-x) 0; }
+    .ior-footer__inner { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr 1fr; gap: 32px; padding-bottom: clamp(32px,4vw,48px); border-bottom: 1px solid rgba(255,255,255,.15); }
+    .ior-footer__col { display: flex; flex-direction: column; gap: 10px; }
+    .ior-footer__heading { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 4px; }
+    .ior-footer__link { font-size: 14px; color: rgba(255,255,255,.85); text-decoration: none; min-height: 32px; display: flex; align-items: center; }
     .ior-footer__link:hover { color: #fff; text-decoration: underline; }
-    .ior-footer__address { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; font-style: normal; }
-    .ior-footer__states { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-    .ior-footer__state { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.75); background: rgba(255,255,255,.1); padding: 4px 10px; }
-    .ior-footer__state:hover { background: var(--ior-blue); color: #fff; }
-    .ior-footer__legal { border-top: 1px solid rgba(255,255,255,.1); padding: 20px 0; max-width: var(--container-max); margin-inline: auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-    .ior-footer__legal-text { font-size: 12px; color: rgba(255,255,255,.5); }
-    .ior-footer__legal-link { color: rgba(255,255,255,.6); text-decoration: underline; }
+    .ior-footer__address { font-size: 14px; color: rgba(255,255,255,.75); font-style: normal; line-height: 1.6; }
+    .ior-footer__states { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ior-footer__state { display: inline-flex; align-items: center; justify-content: center; padding: 6px 12px; background: rgba(255,255,255,.1); font-size: 13px; font-weight: 700; color: #fff; min-height: 36px; transition: background var(--transition-fast); }
+    .ior-footer__state:hover { background: rgba(255,255,255,.2); }
+    .ior-footer__legal { max-width: var(--container-max); margin-inline: auto; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .ior-footer__legal-text { font-size: 12px; color: rgba(255,255,255,.55); }
+    .ior-footer__legal-link { color: rgba(255,255,255,.55); text-decoration: underline; }
+    .ior-footer__legal-link:hover { color: rgba(255,255,255,.85); }
     .ior-footer__social { display: flex; gap: 12px; }
-    .ior-footer__social-link { display: flex; align-items: center; justify-content: center; }
+    .ior-footer__social-link { display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
     @media (max-width: 1024px) { .ior-footer__inner { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 600px) { .ior-footer__inner { grid-template-columns: repeat(2, 1fr); } }
 
@@ -719,6 +731,11 @@
           </div>
         </div>
       </div>
+      <!-- HIW CTAs -->
+      <div class="hiw-ctas fade-up">
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="hiw-cta hiw-cta--primary" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
+        <a href="11a_Contact_Usv5.html" class="hiw-cta hiw-cta--outline">Speak to a Fuel Specialist &#8594;</a>
+      </div>
     </div>
   </section>
 
@@ -767,6 +784,10 @@
           <p class="industry-card__body">Councils, emergency services, and defence facilities — secure, compliant, and reliable fuel supply.</p>
           <a href="08f_Industry_Government.html" class="industry-card__link">Government solutions &rarr;</a>
         </div>
+      </div>
+      <!-- Industries CTA -->
+      <div class="industry-cta-row fade-up">
+        <a href="08_Industries_Hub.html" class="industry-view-all">View All Industries &#8594;</a>
       </div>
     </div>
   </section>
@@ -876,16 +897,17 @@
 
 </main>
 
-<!-- ── PRE-FOOTER ────────────────────────────────────────────────────────── -->
-<div class="ior-pre-footer" role="complementary" aria-label="Pre-footer call to action">
+<!-- ── PRE-FOOTER — canonical ─────────────────────────────────────────── -->
+<section class="ior-pre-footer" aria-label="We're here to help">
   <div class="ior-pre-footer__inner">
-    <p class="ior-pre-footer__title">Australia's remote fuel specialists<br>since 1984.</p>
+    <h2 class="ior-pre-footer__title">We&rsquo;re here to help</h2>
     <div class="ior-pre-footer__ctas">
-      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-pre-footer__btn ior-pre-footer__btn--filled" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
-      <a href="11d_Find_Locationv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Find a Location</a>
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-pre-footer__btn ior-pre-footer__btn--filled" target="_blank" rel="noopener noreferrer">Apply for an Account <span aria-hidden="true">&#8594;</span></a>
+      <a href="11_Support_Hubv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Need Help? <span aria-hidden="true">&#8594;</span></a>
+      <a href="11a_Contact_Usv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Contact Us <span aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
 <footer class="ior-footer" role="contentinfo" aria-label="Site footer">
