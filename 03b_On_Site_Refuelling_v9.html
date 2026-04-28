@@ -288,7 +288,9 @@
     ============================================================ */
     .industry-section { padding: var(--section-pad) 0; }
     .industry-section .section-heading { margin-bottom: clamp(32px, 4vw, 48px); }
-    .industry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .industry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    @media (max-width: 900px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .industry-grid { grid-template-columns: 1fr; } }
     .industry-card { background: var(--grey-50); padding: 32px 24px; border-top: 3px solid var(--ior-blue); }
     .industry-card__icon { width: 44px; height: 44px; margin-bottom: 16px; }
     .industry-card__icon svg { width: 44px; height: 44px; stroke: var(--ior-blue); fill: none; }
@@ -296,8 +298,6 @@
     .industry-card__body { font-size: 14px; color: var(--grey-700); line-height: 1.6; margin-bottom: 16px; }
     .industry-card__link { font-size: 13px; font-weight: 700; color: var(--ior-blue); display: inline-flex; align-items: center; gap: 4px; }
     .industry-card__link:hover { text-decoration: underline; }
-    @media (max-width: 900px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 500px) { .industry-grid { grid-template-columns: 1fr; } }
 
     /* ============================================================
        TESTIMONIAL — standalone full-width (canonical v3-5)
@@ -349,7 +349,8 @@
     .related-tab-panel { display: none; }
     .related-tab-panel.active { display: block; }
     .industry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); }
-    .industry-grid--6col { grid-template-columns: repeat(3, 1fr); }
+    .industry-grid--6col { grid-template-columns: repeat(6, 1fr); }
+    @media (max-width: 1100px) { .industry-grid--6col { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 700px) { .industry-grid--6col { grid-template-columns: repeat(2, 1fr); } } @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
     .related-card { background: #fff; border: 1px solid var(--grey-200); }
     .related-card__img { background: var(--grey-100); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
@@ -838,7 +839,7 @@
         <h2 id="industry-heading">On-site refuelling for every sector.</h2>
         <p>From remote mine sites to busy civil depots, IOR delivers reliable on-site fuel across Australia's most demanding industries.</p>
       </div>
-      <div class="industry-grid industry-grid--6col">
+      <div class="industry-grid">
         <div class="industry-card fade-up">
           <div class="industry-card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
