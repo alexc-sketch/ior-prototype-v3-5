@@ -51,10 +51,14 @@
       --z-nav:             100;
       /* Silo accent -- override per page:
          Ground Fuels:  --silo-accent-color: var(--ior-blue);
+      --fc-dark:  #1A0A2E;
+      --fc-teal:  #00D1CC;
          Aviation:      --silo-accent-color: var(--aviation-gold);
          HyBlue:        --silo-accent-color: var(--hyblue);
       */
       --silo-accent-color: var(--ior-blue);
+      --fc-dark:  #1A0A2E;
+      --fc-teal:  #00D1CC;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -288,6 +292,22 @@
       border-top: 1px solid rgba(255,255,255,.1);
     }
 
+
+    /* ============================================================
+       PROTO-BAR (prototype navigation breadcrumb)
+       Source: 08d_Construction_v6.html
+    ============================================================ */
+    .proto-bar {
+      background: var(--brand-fill);
+      border-bottom: 1px solid var(--border-color-light);
+      padding: 10px var(--section-pad-x);
+      font-size: 13px; color: var(--mid-grey);
+      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    }
+    .proto-bar a { color: var(--mid-grey); }
+    .proto-bar a:hover { color: var(--ior-blue); text-decoration: underline; }
+    .proto-bar__sep { color: var(--grey-400); }
+    .proto-bar__current { color: var(--charcoal); font-weight: 600; }
     /* ============================================================
        HERO -- FULL-BLEED VIDEO
        Source: 02_Fuel_Solutions_Hub.html
@@ -337,6 +357,158 @@
       color: rgba(255,255,255,.25); font-size: 13px; text-align: center; gap: 8px;
     }
     .video-placeholder-full svg { opacity: .3; }
+
+
+    /* ============================================================
+       FUELCHARGE HERO — DARK BRAND VARIANT
+       Uses --fc-dark background with --fc-teal accent.
+       Rebuilt per audit report 1.1.
+    ============================================================ */
+    .fc-hero {
+      background: var(--fc-dark);
+      border-top: 4px solid var(--fc-teal);
+      min-height: clamp(480px, 55dvh, 640px);
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .fc-hero__inner {
+      max-width: var(--container-max);
+      margin-inline: auto;
+      padding: clamp(48px, 6vw, 80px) var(--section-pad-x);
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 80px);
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .fc-hero__inner { grid-template-columns: 1fr; }
+      .fc-hero__visual { display: none; }
+    }
+    .fc-hero__logo-lockup {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 20px;
+    }
+    .fc-hero__logo-mark {
+      width: 32px; height: 32px;
+      color: var(--fc-teal);
+      flex-shrink: 0;
+    }
+    .fc-hero__logo-text {
+      font-size: 13px; font-weight: 800;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--fc-teal);
+    }
+    .fc-hero__h1 {
+      font-size: clamp(30px, 4.5vw, 56px);
+      font-weight: 800; line-height: 1.1;
+      color: #fff;
+      margin-bottom: clamp(14px, 2vw, 20px);
+      max-width: 560px;
+    }
+    .fc-hero__sub {
+      font-size: clamp(15px, 1.5vw, 17px);
+      color: rgba(255,255,255,.75);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: clamp(24px, 3vw, 32px);
+    }
+    .fc-hero__badges {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .fc-store-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px;
+      border: 1.5px solid rgba(255,255,255,.3);
+      font-size: 13px; font-weight: 700;
+      color: rgba(255,255,255,.85);
+      transition: border-color var(--transition-fast), color var(--transition-fast);
+    }
+    .fc-store-badge:hover { border-color: var(--fc-teal); color: #fff; }
+    .fc-hero__microcopy {
+      font-size: 12px; color: rgba(255,255,255,.45);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .fc-hero__microcopy::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--fc-teal);
+      display: inline-block; flex-shrink: 0;
+    }
+    .fc-hero__visual {
+      display: flex; align-items: center; justify-content: center;
+    }
+    .fc-hero__img-placeholder {
+      width: 100%; aspect-ratio: 9/16; max-width: 280px;
+      background: rgba(255,255,255,.04);
+      border: 1.5px dashed rgba(0,209,204,.25);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; color: rgba(255,255,255,.3);
+      font-size: 12px; text-align: center; padding: 24px;
+    }
+
+    /* ============================================================
+       FLIP CARDS — FUELCHARGE BRAND VARIANT
+       .flip-card--fc: dark bg + teal accent on back face
+    ============================================================ */
+    .flip-card {
+      height: 320px;
+      perspective: 1200px;
+      cursor: pointer;
+    }
+    .flip-card__inner {
+      position: relative; width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .flip-card:hover .flip-card__inner,
+    .flip-card:focus .flip-card__inner { transform: rotateY(180deg); }
+    .flip-card__front,
+    .flip-card__back {
+      position: absolute; inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      border: 1px solid var(--border-color-light);
+    }
+    .flip-card__back { transform: rotateY(180deg); }
+    /* Default front */
+    .flip-card__front { background: var(--ior-navy); }
+    /* Default back */
+    .flip-card__back { background: var(--ior-deep); }
+    /* Fuelcharge variant */
+    .flip-card--fc .flip-card__front { background: var(--fc-dark); border-top: 3px solid var(--fc-teal); }
+    .flip-card--fc .flip-card__back  { background: #0D0620; border-top: 3px solid var(--fc-teal); }
+    .flip-card__icon {
+      position: absolute; top: 24px; left: 28px;
+      width: 40px; height: 40px;
+      background: rgba(0,209,204,.12);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .flip-card__title {
+      font-size: 18px; font-weight: 800;
+      color: #fff; line-height: 1.2; margin-bottom: 6px;
+    }
+    .flip-card__subtitle {
+      font-size: 13px; color: rgba(255,255,255,.55);
+    }
+    .flip-card__hint {
+      position: absolute; top: 24px; right: 28px;
+      font-size: 11px; color: rgba(255,255,255,.3);
+    }
+    .flip-card__back-title {
+      font-size: 16px; font-weight: 800;
+      color: var(--fc-teal); margin-bottom: 10px;
+    }
+    .flip-card__back-text {
+      font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.6;
+    }
+    /* Opacity utility */
+    .opacity-35 { opacity: .35; }
 
     /* ============================================================
        QUICK LINKS BAR
@@ -868,6 +1040,17 @@
 </div>
 
 <!-- PRIMARY NAV -->
+  <!-- PROTO-BAR -->
+  <nav class="proto-bar" aria-label="Breadcrumb">
+    <a href="00_Client_Preview.html" class="proto-bar__back">&#8592; Client Preview</a>
+    <span class="proto-bar__sep" aria-hidden="true">&#8250;</span>
+    <a href="01_Homepage.html">Home</a>
+    <span class="proto-bar__sep" aria-hidden="true">&#8250;</span>
+    <a href="07_Digital_Platformsv8.html">Digital Platforms</a>
+    <span class="proto-bar__sep" aria-hidden="true">&#8250;</span>
+    <span class="proto-bar__current" aria-current="page">Fuelcharge App v8</span>
+  </nav>
+
 <header role="banner">
   <!-- Primary Nav (Sticky) -->
   <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
@@ -1169,8 +1352,14 @@
         <h1 class="fc-hero__h1">Save time and pay for fuel faster.</h1>
         <p class="fc-hero__sub">No credit application needed &mdash; anyone can download the app and start refuelling today. Access over 110 IOR diesel stops and aviation airstrips across Australia, 24/7.</p>
         <div class="fc-hero__badges">
-          <a href="#" class="fc-store-badge" aria-label="Download on the App Store">[App Store Badge]</a>
-          <a href="#" class="fc-store-badge" aria-label="Get it on Google Play">[Google Play Badge]</a>
+          <a href="#" class="fc-store-badge" aria-label="Download on the App Store">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M8 12l4-4 4 4M12 8v8"/></svg>
+            App Store
+          </a>
+          <a href="#" class="fc-store-badge" aria-label="Get it on Google Play">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Google Play
+          </a>
         </div>
         <p class="fc-hero__microcopy">No trade account required &mdash; open to everyone</p>
       </div>
@@ -1184,12 +1373,18 @@
   </section>
 
   <!-- SECTION 2: QUICK LINKS -->
-  <nav class="quick-links-bar" aria-label="Explore IOR navigation">
+  <nav class="quick-links-bar" aria-label="Quick links">
     <div class="quick-links-bar__inner">
-      <span class="quick-links-bar__label">Explore Digital Platforms:</span>
-      <a href="07a_HyDip_FMS_v8.html" class="quick-links-bar__link">HyDip&#8482; FMS</a>
-      <a href="07b_Fuelcharge_App_v8.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">Fuelcharge App</a>
-      <a href="07c_Customer_Portal_v8.html" class="quick-links-bar__link">Customer Portal</a>
+      <span class="quick-links-bar__label">Explore IOR:</span>
+      <a href="03_Ground_Fuels_v8.html" class="quick-links-bar__link">Fuel Solutions</a>
+      <span class="quick-links-bar__sep" aria-hidden="true">|</span>
+      <a href="07_Digital_Platformsv8.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">Digital Platforms</a>
+      <span class="quick-links-bar__sep" aria-hidden="true">|</span>
+      <a href="08_Industries_v6.html" class="quick-links-bar__link">Industries We Serve</a>
+      <span class="quick-links-bar__sep" aria-hidden="true">|</span>
+      <a href="09_About_IOR_v5.html" class="quick-links-bar__link">About IOR</a>
+      <span class="quick-links-bar__sep" aria-hidden="true">|</span>
+      <a href="11_Support_Hubv5.html" class="quick-links-bar__link">Support &amp; Contact</a>
     </div>
   </nav>
 
@@ -1346,7 +1541,7 @@
         </div>
       </div>
       <div class="map-placeholder fade-up" role="img" aria-label="Map placeholder showing IOR network coverage across Australia">
-        <div style="opacity:.35">
+        <div class="opacity-35">
           <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(19,17,77,.4)" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div class="map-placeholder__label">MAP COMPONENT &mdash; Interactive map showing IOR diesel stops (navy pins) and aviation airstrips (teal pins) across Australia</div>
@@ -1401,7 +1596,7 @@
         <p class="faq-section__eyebrow">FAQS</p>
         <h2 class="faq-section__h2" id="faq-heading">Common questions about Fuelcharge</h2>
         <p class="faq-section__sub">Need assistance?</p>
-        <a href="11_Support_Hub.html" class="faq-kb-link">Browse the Knowledge Base &rarr;</a>
+        <a href="11_Support_Hubv5.html" class="faq-kb-link">Browse the Knowledge Base &rarr;</a>
         <p class="faq-section__phone">Or</p>
         <a href="tel:1800414012" class="faq-section__phone-link">&#128222; Call 1800 414 012</a>
       </div>
