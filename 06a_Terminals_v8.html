@@ -4,14 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lytton &amp; Port Bonython Fuel Terminals | IOR Supply &amp; Trading</title>
-  <meta name="description" content="IOR operates two of Australia's most strategically located diesel-only import terminals. With 191ML combined capacity, we provide critical supply buffers.">
+  <meta name="description" content="IOR operates two of Australia&#8217;s most strategically located diesel-only import terminals. With 191ML combined capacity, we provide critical supply buffers.">
   <meta name="keywords" content="IOR fuel terminals, Lytton terminal, Port Bonython terminal, bulk diesel storage Australia, strategic import terminals">
   <style>
     :root {
       --ior-blue:#0355A3; --ior-navy:#0A4066; --ior-deep:#0B1929;
-      --ior-sky:#7FBEE6; --ior-teal:#00D1CC; --ior-teal-navy:#13114D;
+      --ior-sky:#7FBEE6; --ior-teal:#00D1CC;
       --ior-light:#E8F1FB; --ior-light-blue-bg:#E0F1FF;
-      --aviation-gold:#D98300; --hyblue:#0069C6;
       --white:#FFFFFF; --off-white:#F5F7FA; --brand-fill:#F4F5F7;
       --mid-grey:#94A9BA; --dark-grey:#374151; --charcoal:#383838;
       --near-black:#231F20; --border-color-light:#e5e7eb;
@@ -25,7 +24,6 @@
       --z-nav:100;
       --st-green:#00B140; --st-green-dark:#008F33;
       --silo-accent-color:var(--st-green);
-      --fc-dark:#13114D; --fc-teal:#00D1CC;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{font-size:16px;scroll-behavior:smooth}
@@ -50,6 +48,7 @@
     .btn--white:hover{background:rgba(255,255,255,.9)}
     .btn--sm{padding:10px 20px;font-size:14px}
     .btn--pill{border-radius:500px}
+    /* UTILITY BAR */
     .ior-utility-bar{background:var(--ior-blue);color:#fff;padding:clamp(6px,.8vw,8px) var(--section-pad-x);display:flex;justify-content:space-between;align-items:center;font-size:clamp(12px,1.2vw,14px);gap:16px;flex-wrap:wrap}
     .ior-utility-bar__inner{max-width:var(--container-max);margin-inline:auto;width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px}
     .ior-utility-bar__announcement{font-size:clamp(12px,1.2vw,14px);color:rgba(255,255,255,.9)}
@@ -58,10 +57,10 @@
     .ior-utility-bar__link:hover{opacity:1;text-decoration:underline}
     .ior-utility-bar__icon{flex-shrink:0} .ior-utility-bar__chevron{flex-shrink:0}
     .ior-utility-bar__divider{width:1px;height:14px;background:rgba(255,255,255,.4)}
+    /* PRIMARY NAV */
     .primary-nav{background:#fff;border-bottom:1px solid var(--border-color-light);position:sticky;top:0;z-index:var(--z-nav);display:flex;align-items:center;padding:0 var(--section-pad-x);min-height:clamp(60px,6vw,72px);transition:all var(--transition-base)}
     .nav-inner{display:flex;align-items:center;width:100%;flex-wrap:nowrap}
     .primary-nav--scrolled{height:56px;box-shadow:0 2px 20px rgba(0,0,0,.10)}
-    .primary-nav--scrolled .nav-logo svg{width:70px}
     .nav-logo{display:flex;align-items:center;margin-right:clamp(20px,3vw,40px);flex-shrink:0;text-decoration:none}
     .nav-logo svg{width:90px;height:auto;display:block;transition:width var(--transition-base)}
     .nav-links{display:flex;gap:0;list-style:none;flex:1}
@@ -83,6 +82,7 @@
     .mega-col__link:hover{background:var(--ior-light);color:var(--ior-blue)}
     .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;min-width:44px;min-height:44px;justify-content:center;align-items:center}
     .hamburger span{display:block;width:22px;height:2px;background:var(--charcoal);transition:all var(--transition-fast)}
+    /* MOBILE DRAWER */
     .ior-drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity var(--transition)}
     .ior-drawer-overlay--open{opacity:1;pointer-events:all}
     .ior-drawer{position:fixed;top:0;left:0;bottom:0;width:min(360px,90vw);background:var(--ior-deep);z-index:201;transform:translateX(-100%);transition:transform 350ms cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;overflow-y:auto}
@@ -99,71 +99,83 @@
     .ior-drawer__sub-link{display:flex;align-items:center;padding:10px 20px 10px 32px;font-size:14px;color:rgba(255,255,255,.8);min-height:44px;text-decoration:none}
     .ior-drawer__sub-link:hover{color:#fff;background:rgba(255,255,255,.05)}
     .ior-drawer__ctas{padding:16px 20px;display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(255,255,255,.1)}
-    .hero{position:relative;border-top:4px solid var(--st-green);overflow:hidden;min-height:clamp(480px,60dvh,720px);display:flex;align-items:center;background:var(--ior-deep)}
-    .hero__video-wrap{position:absolute;inset:0;z-index:0;overflow:hidden}
-    .hero__video-wrap img{width:100%;height:100%;object-fit:cover;display:block}
-    .hero__overlay{position:absolute;inset:0;z-index:1;background:rgba(10,25,41,0.65)}
-    .hero__content{position:relative;z-index:2;padding:clamp(48px,6vw,80px) var(--section-pad-x);max-width:var(--container-max);margin-inline:auto;width:100%}
-    .hero__content h1{font-size:clamp(32px,4.5vw,60px);font-weight:800;line-height:1.1;color:#fff;margin-bottom:clamp(16px,2vw,24px);max-width:720px}
-    .hero__content p{font-size:clamp(15px,1.6vw,18px);color:rgba(255,255,255,.85);max-width:600px;margin-bottom:clamp(24px,3vw,36px);line-height:1.7}
+    /* HERO (Full-Bleed) */
+    .hero{position:relative;border-top:4px solid var(--st-green);overflow:hidden;min-height:clamp(520px,65dvh,760px);display:flex;align-items:flex-end;background:var(--ior-deep)}
+    .hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+    .hero__overlay{position:absolute;inset:0;background:rgba(10,25,41,0.65);z-index:1}
+    .hero__content{position:relative;z-index:2;padding:clamp(60px,8vw,100px) var(--section-pad-x);max-width:860px;width:100%}
+    .hero__content h1{font-size:clamp(36px,5vw,68px);font-weight:800;line-height:1.05;color:#fff;margin-bottom:clamp(16px,2vw,24px)}
+    .hero__content p{font-size:clamp(15px,1.6vw,18px);color:rgba(255,255,255,.85);max-width:620px;margin-bottom:clamp(24px,3vw,36px);line-height:1.7}
     .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+    /* QUICK LINKS */
     .quick-links-bar{background:var(--ior-light-blue-bg);border-bottom:1px solid rgba(3,85,163,.15);padding:0 var(--section-pad-x)}
     .quick-links-bar__inner{max-width:var(--container-max);margin-inline:auto;display:flex;align-items:center;gap:0;overflow-x:auto}
     .quick-links-bar__label{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ior-blue);white-space:nowrap;padding:12px 20px 12px 0;border-right:1px solid rgba(3,85,163,.2);margin-right:4px;flex-shrink:0}
     .quick-links-bar__link{display:inline-flex;align-items:center;gap:6px;padding:12px 16px;font-size:14px;font-weight:700;color:var(--ior-navy);white-space:nowrap;border-bottom:2px solid transparent;transition:all var(--transition-fast);min-height:44px}
     .quick-links-bar__link:hover{color:var(--ior-blue);border-bottom-color:var(--ior-blue)}
     .quick-links-bar__link--active{color:var(--ior-blue);border-bottom-color:var(--ior-blue);font-weight:800}
+    /* USP BAR */
     .usp-bar{background:var(--st-green);padding:clamp(20px,3vw,28px) var(--section-pad-x)}
     .usp-bar__inner{max-width:var(--container-max);margin-inline:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,32px)}
     .usp-item{display:flex;align-items:flex-start;gap:14px}
     .usp-item__icon{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center}
-    .usp-item__icon svg{width:28px;height:28px;stroke:rgba(255,255,255,.9)}
+    .usp-item__icon svg{width:28px;height:28px;stroke:rgba(255,255,255,.9);fill:none}
     .usp-item__text{display:flex;flex-direction:column}
-    .usp-item__value{font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;line-height:1.1}
-    .usp-item__label{font-size:clamp(12px,1.1vw,14px);color:rgba(255,255,255,.8);font-weight:500;margin-top:2px}
-    /* Terminal Tabs */
+    .usp-item__value{font-size:clamp(16px,1.8vw,22px);font-weight:800;color:#fff;line-height:1.1}
+    .usp-item__label{font-size:clamp(12px,1.1vw,13px);color:rgba(255,255,255,.8);font-weight:500;margin-top:2px}
+    /* TERMINAL SPECS (Tabbed) */
     .terminal-specs{padding:var(--section-pad) 0;background:#fff}
-    .terminal-specs__header{text-align:center;margin-bottom:clamp(32px,4vw,48px)}
-    .terminal-specs__header h2{font-size:clamp(26px,3vw,40px);font-weight:800;color:var(--near-black);line-height:1.2;margin-bottom:16px}
-    .terminal-specs__header p{font-size:clamp(15px,1.5vw,17px);color:var(--dark-grey);line-height:1.7;max-width:640px;margin-inline:auto}
-    .terminal-tabs{display:flex;gap:0;border-bottom:2px solid var(--grey-200);margin-bottom:clamp(32px,4vw,48px)}
-    .terminal-tab{padding:14px 28px;font-size:clamp(14px,1.4vw,16px);font-weight:700;color:var(--mid-grey);background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer;transition:all var(--transition-fast);font-family:var(--font)}
-    .terminal-tab.active,.terminal-tab[aria-selected="true"]{color:var(--ior-blue);border-bottom-color:var(--ior-blue)}
-    .terminal-panel{display:none}
-    .terminal-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:start}
-    .terminal-panel__img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-    .terminal-panel__img-ph{width:100%;aspect-ratio:4/3;background:var(--grey-200);display:flex;align-items:center;justify-content:center;color:var(--mid-grey);font-size:13px}
-    .terminal-panel__content h3{font-size:clamp(22px,2.5vw,30px);font-weight:800;color:var(--near-black);line-height:1.2;margin-bottom:16px}
-    .terminal-panel__content p{font-size:clamp(14px,1.4vw,16px);color:var(--dark-grey);line-height:1.7;margin-bottom:20px}
-    .terminal-checklist{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-    .terminal-checklist li{display:flex;align-items:flex-start;gap:10px;font-size:clamp(14px,1.3vw,15px);color:var(--charcoal)}
-    .terminal-checklist li::before{content:'';flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--st-green);display:inline-block;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;margin-top:2px}
-    /* Why IOR 50/50 Split */
-    .why-split{padding:var(--section-pad) 0;background:var(--ior-deep)}
-    .why-split__inner{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
-    .why-split__content{padding:clamp(40px,6vw,80px) var(--section-pad-x) clamp(40px,6vw,80px) var(--section-pad-x);display:flex;flex-direction:column;justify-content:center}
-    .why-split__content h2{font-size:clamp(26px,3vw,40px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:20px}
-    .why-split__content p{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:16px}
-    .why-split__checklist{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-    .why-split__checklist li{display:flex;align-items:flex-start;gap:10px;font-size:clamp(14px,1.3vw,15px);color:rgba(255,255,255,.85)}
-    .why-split__checklist li::before{content:'';flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--st-green);display:inline-block;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;margin-top:2px}
-    .why-split__img{width:100%;height:100%;min-height:400px;object-fit:cover;display:block}
-    .why-split__img-ph{width:100%;min-height:400px;background:var(--grey-700);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:13px}
-    /* Lead Capture */
-    .lead-capture-section{padding:var(--section-pad) 0;background:var(--off-white)}
+    .terminal-specs__header{text-align:center;max-width:760px;margin-inline:auto;margin-bottom:clamp(32px,4vw,48px)}
+    .terminal-specs__header h2{font-size:clamp(26px,3vw,40px);font-weight:800;color:var(--near-black);line-height:1.2;margin-bottom:12px}
+    .terminal-specs__header p{font-size:clamp(14px,1.4vw,16px);color:var(--dark-grey);line-height:1.7}
+    .tab-nav{display:flex;border-bottom:2px solid var(--grey-200);margin-bottom:clamp(28px,3.5vw,44px)}
+    .tab-btn{padding:14px 28px;font-size:clamp(14px,1.4vw,16px);font-weight:700;color:var(--mid-grey);background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer;transition:all var(--transition-fast);font-family:var(--font);min-height:44px}
+    .tab-btn.active,.tab-btn[aria-selected="true"]{color:var(--ior-blue);border-bottom-color:var(--ior-blue)}
+    .tab-panel{display:none}
+    .tab-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:start}
+    .tab-panel__img-ph{width:100%;aspect-ratio:4/3;background:var(--grey-200);display:flex;align-items:center;justify-content:center;color:var(--mid-grey);font-size:13px;text-align:center;padding:16px}
+    .tab-panel__img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+    .tab-panel__content h3{font-size:clamp(22px,2.5vw,30px);font-weight:800;color:var(--near-black);line-height:1.2;margin-bottom:14px}
+    .tab-panel__content p{font-size:clamp(14px,1.4vw,16px);color:var(--dark-grey);line-height:1.7;margin-bottom:20px}
+    .check-list{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+    .check-list li{display:flex;align-items:flex-start;gap:10px;font-size:clamp(14px,1.4vw,15px);color:var(--charcoal)}
+    .check-list li::before{content:'';flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--st-green);display:inline-block;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;margin-top:2px}
+    /* PARALLAX SHOWCASE */
+    .parallax-showcase{position:relative;overflow:hidden;min-height:clamp(380px,55vh,600px);display:flex;align-items:center;justify-content:center}
+    .parallax-showcase__bg{position:absolute;inset:-20%;width:calc(100% + 40%);height:calc(100% + 40%);object-fit:cover;will-change:transform}
+    .parallax-showcase__bg-ph{position:absolute;inset:0;background:var(--ior-deep)}
+    .parallax-showcase__overlay{position:absolute;inset:0;background:rgba(11,25,41,0.6);z-index:1}
+    .parallax-showcase__content{position:relative;z-index:2;text-align:center;padding:clamp(48px,7vw,80px) var(--section-pad-x)}
+    .parallax-showcase__content .eyebrow{color:var(--st-green);margin-bottom:12px}
+    .parallax-showcase__content h2{font-size:clamp(28px,4vw,52px);font-weight:800;color:#fff;line-height:1.1;margin-bottom:clamp(28px,4vw,48px)}
+    .parallax-stat-grid{display:flex;gap:clamp(24px,5vw,80px);justify-content:center;flex-wrap:wrap}
+    .parallax-stat{text-align:center;border-top:3px solid var(--st-green);padding-top:16px;min-width:160px}
+    .parallax-stat__value{font-size:clamp(24px,3.5vw,44px);font-weight:800;color:#fff;line-height:1.1;display:block}
+    .parallax-stat__label{font-size:clamp(12px,1.2vw,14px);color:rgba(255,255,255,.75);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:6px;display:block}
+    /* WHY IOR (50/50 Split) */
+    .why-ior-split{padding:var(--section-pad) 0;background:var(--ior-deep)}
+    .why-ior-split__inner{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;max-width:var(--container-max);margin-inline:auto}
+    .why-ior-split__content{padding:clamp(40px,6vw,80px) clamp(32px,5vw,80px)}
+    .why-ior-split__content h2{font-size:clamp(26px,3vw,40px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px}
+    .why-ior-split__content p{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:16px}
+    .why-ior-split__img{width:100%;height:100%;min-height:400px;object-fit:cover;display:block}
+    .why-ior-split__img-ph{width:100%;min-height:400px;background:var(--ior-navy);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:13px;text-align:center;padding:24px}
+    .why-ior-split__ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    /* LEAD CAPTURE */
+    .lead-capture-section{padding:var(--section-pad) 0;background:#fff}
     .lead-capture__card{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:start}
     .lead-capture__eyebrow{font-size:clamp(11px,1.1vw,13px);font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--st-green);margin-bottom:12px;display:block}
     .lead-capture__h2{font-size:clamp(24px,2.8vw,36px);font-weight:800;color:var(--near-black);line-height:1.2;margin-bottom:16px}
     .lead-capture__sub{font-size:clamp(14px,1.4vw,16px);color:var(--dark-grey);line-height:1.7;margin-bottom:24px}
-    .lead-capture__callouts{display:flex;flex-direction:column;gap:10px}
+    .lead-capture__callouts{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
     .lead-capture__callouts li{display:flex;align-items:flex-start;gap:10px;font-size:clamp(13px,1.3vw,15px);color:var(--charcoal)}
     .lead-capture__callouts li::before{content:'';flex-shrink:0;width:18px;height:18px;border-radius:50%;background:var(--st-green);display:inline-block;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;margin-top:2px}
-    .lead-capture__form-wrapper{background:#fff;border:1px solid var(--grey-200);padding:clamp(24px,3vw,36px)}
+    .lead-capture__tgp{font-size:12px;color:var(--mid-grey);margin-top:12px}
+    .lead-capture__tgp a{color:var(--ior-blue);text-decoration:underline}
+    .lead-capture__form-wrapper{background:var(--off-white);border:1px solid var(--grey-200);padding:clamp(24px,3vw,36px)}
     .hs-form-placeholder{background:var(--grey-100);border:1px dashed var(--grey-400);padding:clamp(32px,4vw,48px) 24px;text-align:center;color:var(--mid-grey);font-size:13px;line-height:1.6}
-    .tgp-link{display:block;margin-top:12px;font-size:12px;color:var(--mid-grey);text-align:center}
-    .tgp-link a{color:var(--ior-blue);text-decoration:underline}
-    /* Related Content */
-    .related-content{padding:var(--section-pad) 0;background:#fff}
+    /* RELATED CONTENT */
+    .related-content{padding:var(--section-pad) 0;background:var(--off-white)}
     .related-content__header{text-align:center;margin-bottom:clamp(24px,3vw,36px)}
     .related-content__header h2{font-size:clamp(22px,2.5vw,32px);font-weight:800;color:var(--near-black)}
     .related-content__tabs{display:flex;gap:0;border-bottom:2px solid var(--grey-200);margin-bottom:clamp(24px,3vw,36px)}
@@ -172,14 +184,14 @@
     .related-tab-panel{display:none}
     .related-tab-panel.active{display:block}
     .related-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px)}
-    .related-card{background:var(--off-white);border:1px solid var(--grey-200);overflow:hidden}
+    .related-card{background:#fff;border:1px solid var(--grey-200);overflow:hidden}
     .related-card__img-ph{width:100%;height:180px;background:var(--grey-200);display:flex;align-items:center;justify-content:center;color:var(--mid-grey);font-size:13px}
     .related-card__body{padding:20px}
     .related-card__tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ior-blue);margin-bottom:8px;display:block}
     .related-card__title{font-size:clamp(14px,1.4vw,16px);font-weight:800;color:var(--near-black);line-height:1.35;margin-bottom:8px}
     .related-card__excerpt{font-size:13px;color:var(--dark-grey);line-height:1.6}
     /* FAQ */
-    .faq-section{padding:var(--section-pad) 0;background:var(--off-white)}
+    .faq-section{padding:var(--section-pad) 0;background:#fff}
     .faq-section__header{text-align:center;margin-bottom:clamp(32px,4vw,48px)}
     .faq-section__header h2{font-size:clamp(24px,2.8vw,36px);font-weight:800;color:var(--near-black)}
     .faq-list{max-width:860px;margin-inline:auto;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--grey-200)}
@@ -189,16 +201,16 @@
     .faq-question[aria-expanded="true"] .faq-chevron{transform:rotate(180deg)}
     .faq-answer{max-height:0;overflow:hidden;transition:max-height 350ms ease}
     .faq-answer p{padding:0 0 clamp(16px,2vw,20px);font-size:clamp(14px,1.4vw,16px);color:var(--dark-grey);line-height:1.7}
-    .faq-footer{margin-top:clamp(32px,4vw,48px);background:#fff;padding:clamp(24px,3vw,32px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;max-width:860px;margin-inline:auto}
+    .faq-footer{margin-top:clamp(32px,4vw,48px);background:var(--off-white);padding:clamp(24px,3vw,32px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;max-width:860px;margin-inline:auto}
     .faq-footer__text h4{font-size:clamp(16px,1.6vw,18px);font-weight:800;color:var(--near-black);margin-bottom:6px}
     .faq-footer__text p{font-size:clamp(13px,1.3vw,15px);color:var(--dark-grey)}
     .faq-footer__actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    /* Final CTA */
+    /* FINAL CTA */
     .final-cta{padding:var(--section-pad) var(--section-pad-x);background:var(--ior-deep);text-align:center}
     .final-cta h2{font-size:clamp(26px,3.5vw,44px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:16px}
     .final-cta p{font-size:clamp(15px,1.5vw,17px);color:rgba(255,255,255,.8);max-width:600px;margin-inline:auto;margin-bottom:clamp(28px,3.5vw,40px);line-height:1.7}
     .final-cta__ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    /* Pre-footer */
+    /* PRE-FOOTER */
     .ior-pre-footer{background:var(--ior-blue);padding:clamp(40px,5vw,64px) var(--section-pad-x)}
     .ior-pre-footer__inner{max-width:var(--container-max);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
     .ior-pre-footer__title{font-size:clamp(24px,3.5vw,40px);font-weight:800;color:#fff;line-height:1.1}
@@ -208,7 +220,7 @@
     .ior-pre-footer__btn--filled:hover{background:var(--ior-light)}
     .ior-pre-footer__btn--outline{background:transparent;color:#fff}
     .ior-pre-footer__btn--outline:hover{background:rgba(255,255,255,.1)}
-    /* Footer */
+    /* FOOTER */
     .ior-footer{background:var(--ior-blue);padding:clamp(40px,5vw,64px) var(--section-pad-x) 0}
     .ior-footer__inner{max-width:var(--container-max);margin-inline:auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr 1fr;gap:32px;padding-bottom:clamp(32px,4vw,48px);border-bottom:1px solid rgba(255,255,255,.15)}
     .ior-footer__col{display:flex;flex-direction:column;gap:10px}
@@ -229,8 +241,8 @@
     .fade-up{opacity:0;transform:translateY(24px);transition:opacity 550ms ease,transform 550ms ease}
     .fade-up--visible{opacity:1;transform:none}
     @media(max-width:1024px){
-      .terminal-panel.active{grid-template-columns:1fr}
-      .why-split__inner{grid-template-columns:1fr}
+      .tab-panel.active{grid-template-columns:1fr}
+      .why-ior-split__inner{grid-template-columns:1fr}
       .lead-capture__card{grid-template-columns:1fr}
       .ior-footer__inner{grid-template-columns:repeat(3,1fr)}
     }
@@ -241,6 +253,7 @@
       .related-cards{grid-template-columns:1fr}
       .ior-footer__inner{grid-template-columns:repeat(2,1fr)}
       .ior-pre-footer__inner{flex-direction:column;align-items:flex-start}
+      .parallax-stat-grid{gap:24px}
     }
     @media(max-width:480px){
       .usp-bar__inner{grid-template-columns:1fr}
@@ -294,8 +307,8 @@
         <li><button class="nav-link" data-menu="support-contact" aria-expanded="false" aria-controls="mega-support-contact">Support &amp; Contact <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
       </ul>
       <div class="nav-ctas">
-        <a href="#" class="btn btn--outline btn--pill btn--sm" aria-label="Customer Login">Customer Login</a>
-        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary btn--pill btn--sm" aria-label="Apply for an Account" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+        <a href="#" class="btn btn--outline btn--pill btn--sm">Customer Login</a>
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary btn--pill btn--sm" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
         <button class="hamburger" id="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
           <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
         </button>
@@ -309,35 +322,10 @@
         <div class="mega-col"><p class="mega-col__title">Quick Actions</p><div class="mega-col__links"><a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a><a href="https://iorapp.applyeasy.com.au/services/introduction" class="mega-col__link">Apply for an Account</a><a href="05_Equipment_Infrastructure.html" class="mega-col__link">Equipment &amp; Infrastructure</a></div></div>
       </div>
     </div>
-    <div class="mega-panel" id="mega-digital-platforms" role="region" aria-label="Digital Platforms menu">
-      <div class="mega-inner mega-inner--3col">
-        <div class="mega-col"><p class="mega-col__title">Platforms</p><div class="mega-col__links"><a href="07_Digital_Platformsv5.html" class="mega-col__link">Digital Platforms Hub</a><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">Features</p><div class="mega-col__links"><a href="#" class="mega-col__link">Fleet Management</a><a href="#" class="mega-col__link">Real-Time Reporting</a><a href="#" class="mega-col__link">Tank Monitoring</a><a href="#" class="mega-col__link">Payment Integration</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">Get Started</p><div class="mega-col__links"><a href="#" class="mega-col__link">Request a Demo</a><a href="#" class="mega-col__link">Apply for an Account</a></div></div>
-      </div>
-    </div>
-    <div class="mega-panel" id="mega-industries" role="region" aria-label="Industries We Serve menu">
-      <div class="mega-inner mega-inner--4col">
-        <div class="mega-col"><p class="mega-col__title">Primary Industries</p><div class="mega-col__links"><a href="#" class="mega-col__link">Mining &amp; Resources</a><a href="#" class="mega-col__link">Agriculture</a><a href="#" class="mega-col__link">Construction</a><a href="#" class="mega-col__link">Transport &amp; Logistics</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">Aviation &amp; Marine</p><div class="mega-col__links"><a href="#" class="mega-col__link">General Aviation</a><a href="#" class="mega-col__link">Commercial Aviation</a><a href="#" class="mega-col__link">Marine &amp; Boating</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">Government &amp; Defence</p><div class="mega-col__links"><a href="#" class="mega-col__link">Government Fleets</a><a href="#" class="mega-col__link">Defence</a><a href="#" class="mega-col__link">Emergency Services</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">Case Studies</p><div class="mega-col__links"><a href="09d_Case_Study_Singlev6.html" class="mega-col__link">View Case Studies</a></div></div>
-      </div>
-    </div>
-    <div class="mega-panel" id="mega-about-ior" role="region" aria-label="About IOR menu">
-      <div class="mega-inner mega-inner--3col">
-        <div class="mega-col"><p class="mega-col__title">Company</p><div class="mega-col__links"><a href="09_About_IOR.html" class="mega-col__link">About IOR</a><a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a><a href="#" class="mega-col__link">Our History</a><a href="#" class="mega-col__link">Community &amp; Giving Back</a><a href="#" class="mega-col__link">Sustainability, HSE &amp; ESG</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">Careers</p><div class="mega-col__links"><a href="10_Careers.html" class="mega-col__link">Work at IOR</a><a href="#" class="mega-col__link">Current Vacancies</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">News</p><div class="mega-col__links"><a href="#" class="mega-col__link">News &amp; Updates</a><a href="#" class="mega-col__link">Blog</a></div></div>
-      </div>
-    </div>
-    <div class="mega-panel" id="mega-support-contact" role="region" aria-label="Support &amp; Contact menu">
-      <div class="mega-inner mega-inner--3col">
-        <div class="mega-col"><p class="mega-col__title">Get Help</p><div class="mega-col__links"><a href="11_Support_Hubv5.html" class="mega-col__link">Help Centre &amp; FAQs</a><a href="11a_Contact_Usv5.html" class="mega-col__link">Contact Us</a><a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">Accounts</p><div class="mega-col__links"><a href="#" class="mega-col__link">Apply for an Account</a><a href="#" class="mega-col__link">Customer Login</a><a href="11e_Make_Paymentv5.html" class="mega-col__link">Make a Payment</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">Find Us</p><div class="mega-col__links"><a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a><a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a></div></div>
-      </div>
-    </div>
+    <div class="mega-panel" id="mega-digital-platforms" role="region" aria-label="Digital Platforms menu"><div class="mega-inner mega-inner--3col"><div class="mega-col"><p class="mega-col__title">Platforms</p><div class="mega-col__links"><a href="07_Digital_Platformsv5.html" class="mega-col__link">Digital Platforms Hub</a><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a></div></div><div class="mega-col"><p class="mega-col__title">Features</p><div class="mega-col__links"><a href="#" class="mega-col__link">Fleet Management</a><a href="#" class="mega-col__link">Real-Time Reporting</a><a href="#" class="mega-col__link">Tank Monitoring</a><a href="#" class="mega-col__link">Payment Integration</a></div></div><div class="mega-col"><p class="mega-col__title">Get Started</p><div class="mega-col__links"><a href="#" class="mega-col__link">Request a Demo</a><a href="#" class="mega-col__link">Apply for an Account</a></div></div></div></div>
+    <div class="mega-panel" id="mega-industries" role="region" aria-label="Industries We Serve menu"><div class="mega-inner mega-inner--4col"><div class="mega-col"><p class="mega-col__title">Primary Industries</p><div class="mega-col__links"><a href="#" class="mega-col__link">Mining &amp; Resources</a><a href="#" class="mega-col__link">Agriculture</a><a href="#" class="mega-col__link">Construction</a><a href="#" class="mega-col__link">Transport &amp; Logistics</a></div></div><div class="mega-col"><p class="mega-col__title">Aviation &amp; Marine</p><div class="mega-col__links"><a href="#" class="mega-col__link">General Aviation</a><a href="#" class="mega-col__link">Commercial Aviation</a><a href="#" class="mega-col__link">Marine &amp; Boating</a></div></div><div class="mega-col"><p class="mega-col__title">Government &amp; Defence</p><div class="mega-col__links"><a href="#" class="mega-col__link">Government Fleets</a><a href="#" class="mega-col__link">Defence</a><a href="#" class="mega-col__link">Emergency Services</a></div></div><div class="mega-col"><p class="mega-col__title">Case Studies</p><div class="mega-col__links"><a href="09d_Case_Study_Singlev6.html" class="mega-col__link">View Case Studies</a></div></div></div></div>
+    <div class="mega-panel" id="mega-about-ior" role="region" aria-label="About IOR menu"><div class="mega-inner mega-inner--3col"><div class="mega-col"><p class="mega-col__title">Company</p><div class="mega-col__links"><a href="09_About_IOR.html" class="mega-col__link">About IOR</a><a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a><a href="#" class="mega-col__link">Our History</a><a href="#" class="mega-col__link">Community &amp; Giving Back</a><a href="#" class="mega-col__link">Sustainability, HSE &amp; ESG</a></div></div><div class="mega-col"><p class="mega-col__title">Careers</p><div class="mega-col__links"><a href="10_Careers.html" class="mega-col__link">Work at IOR</a><a href="#" class="mega-col__link">Current Vacancies</a></div></div><div class="mega-col"><p class="mega-col__title">News</p><div class="mega-col__links"><a href="#" class="mega-col__link">News &amp; Updates</a><a href="#" class="mega-col__link">Blog</a></div></div></div></div>
+    <div class="mega-panel" id="mega-support-contact" role="region" aria-label="Support &amp; Contact menu"><div class="mega-inner mega-inner--3col"><div class="mega-col"><p class="mega-col__title">Get Help</p><div class="mega-col__links"><a href="11_Support_Hubv5.html" class="mega-col__link">Help Centre &amp; FAQs</a><a href="11a_Contact_Usv5.html" class="mega-col__link">Contact Us</a><a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a></div></div><div class="mega-col"><p class="mega-col__title">Accounts</p><div class="mega-col__links"><a href="#" class="mega-col__link">Apply for an Account</a><a href="#" class="mega-col__link">Customer Login</a><a href="11e_Make_Paymentv5.html" class="mega-col__link">Make a Payment</a></div></div><div class="mega-col"><p class="mega-col__title">Find Us</p><div class="mega-col__links"><a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a><a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a></div></div></div></div>
   </nav>
 </header>
 <!-- MOBILE DRAWER OVERLAY -->
@@ -345,21 +333,19 @@
 <!-- MOBILE DRAWER -->
 <nav class="ior-drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
   <div class="ior-drawer__head">
-    <a href="01_Homepage.html" class="ior-drawer__logo" aria-label="IOR home">
-      <svg width="80" height="38" viewBox="0 0 97.65 45.98" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="12.92" width="9.27" height="31.96" fill="white"/><rect x="0" y="1.07" width="9.27" height="8.18" fill="#0054A4"/><rect x="62.54" y="1.11" width="35.12" height="43.75" fill="white"/><rect x="12.39" y="0" width="47.23" height="45.98" fill="white"/></svg>
-    </a>
+    <a href="01_Homepage.html" class="ior-drawer__logo" aria-label="IOR home"><svg width="80" height="38" viewBox="0 0 97.65 45.98" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="12.92" width="9.27" height="31.96" fill="white"/><rect x="0" y="1.07" width="9.27" height="8.18" fill="#0054A4"/><rect x="62.54" y="1.11" width="35.12" height="43.75" fill="white"/><rect x="12.39" y="0" width="47.23" height="45.98" fill="white"/></svg></a>
     <button class="ior-drawer__close" id="drawer-close" aria-label="Close mobile menu">&times;</button>
   </div>
   <div class="ior-drawer__body">
     <div class="ior-drawer__item"><button class="ior-drawer__link" data-drawer="fs-mob" aria-expanded="false">Fuel Solutions <span aria-hidden="true">&#8250;</span></button><div class="ior-drawer__sub" id="fs-mob"><a href="03_Ground_Fuels.html" class="ior-drawer__sub-link">Ground Fuels Hub</a><a href="04_Aviation_Hub.html" class="ior-drawer__sub-link">Aviation Hub</a><a href="04a_Aviation_Network_v8.html" class="ior-drawer__sub-link">Aviation Network</a><a href="05_Equipment_Infrastructure.html" class="ior-drawer__sub-link">Equipment &amp; Infrastructure</a><a href="06_Supply_Trading_v8.html" class="ior-drawer__sub-link">Supply &amp; Trading Hub</a><a href="06a_Terminals_v8.html" class="ior-drawer__sub-link">Lytton &amp; Port Bonython Terminals</a><a href="06b_Eromanga_v8.html" class="ior-drawer__sub-link">Eromanga Refinery</a><a href="06c_Condensates_v8.html" class="ior-drawer__sub-link">Condensates</a></div></div>
     <div class="ior-drawer__item"><button class="ior-drawer__link" data-drawer="dig-mob" aria-expanded="false">Digital Platforms <span aria-hidden="true">&#8250;</span></button><div class="ior-drawer__sub" id="dig-mob"><a href="07_Digital_Platformsv5.html" class="ior-drawer__sub-link">Digital Platforms Hub</a><a href="07a_HyDip_FMSv6.html" class="ior-drawer__sub-link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="ior-drawer__sub-link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="ior-drawer__sub-link">Customer Portal</a></div></div>
-    <div class="ior-drawer__item"><button class="ior-drawer__link" data-drawer="ind-mob" aria-expanded="false">Industries We Serve <span aria-hidden="true">&#8250;</span></button><div class="ior-drawer__sub" id="ind-mob"><a href="#" class="ior-drawer__sub-link">Transport &amp; Logistics</a><a href="#" class="ior-drawer__sub-link">Agriculture</a><a href="#" class="ior-drawer__sub-link">Mining &amp; Resources</a><a href="#" class="ior-drawer__sub-link">Aviation &amp; Marine</a><a href="#" class="ior-drawer__sub-link">Oil &amp; Gas</a><a href="#" class="ior-drawer__sub-link">Construction</a><a href="#" class="ior-drawer__sub-link">Government &amp; Defence</a></div></div>
+    <div class="ior-drawer__item"><button class="ior-drawer__link" data-drawer="ind-mob" aria-expanded="false">Industries We Serve <span aria-hidden="true">&#8250;</span></button><div class="ior-drawer__sub" id="ind-mob"><a href="#" class="ior-drawer__sub-link">Transport &amp; Logistics</a><a href="#" class="ior-drawer__sub-link">Agriculture</a><a href="#" class="ior-drawer__sub-link">Mining &amp; Resources</a><a href="#" class="ior-drawer__sub-link">Aviation &amp; Marine</a><a href="#" class="ior-drawer__sub-link">Construction</a><a href="#" class="ior-drawer__sub-link">Government &amp; Defence</a></div></div>
     <div class="ior-drawer__item"><button class="ior-drawer__link" data-drawer="about-mob" aria-expanded="false">About IOR <span aria-hidden="true">&#8250;</span></button><div class="ior-drawer__sub" id="about-mob"><a href="09_About_IOR.html" class="ior-drawer__sub-link">About IOR</a><a href="09c_Sustainability.html" class="ior-drawer__sub-link">Sustainability, HSE &amp; ESG</a><a href="10_Careers.html" class="ior-drawer__sub-link">Careers</a><a href="09d_Case_Studies.html" class="ior-drawer__sub-link">Case Studies</a><a href="11c_News_Updates.html" class="ior-drawer__sub-link">News &amp; Updates</a></div></div>
     <div class="ior-drawer__item"><button class="ior-drawer__link" data-drawer="sup-mob" aria-expanded="false">Support &amp; Contact <span aria-hidden="true">&#8250;</span></button><div class="ior-drawer__sub" id="sup-mob"><a href="11_Support_Hubv5.html" class="ior-drawer__sub-link">Help Centre &amp; FAQs</a><a href="11a_Contact_Usv5.html" class="ior-drawer__sub-link">Contact Us</a><a href="11b_Regional_Contactsv5.html" class="ior-drawer__sub-link">Regional Contacts</a><a href="11d_Find_Locationv5.html" class="ior-drawer__sub-link">Find a Location</a><a href="11e_Make_Paymentv5.html" class="ior-drawer__sub-link">Make a Payment</a></div></div>
   </div>
   <div class="ior-drawer__ctas">
-    <a href="#" class="btn btn--outline-white btn--sm" style="width:100%;justify-content:center;" aria-label="Customer Login">Customer Login</a>
-    <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary btn--sm" style="width:100%;justify-content:center;" aria-label="Apply for an Account" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+    <a href="#" class="btn btn--outline-white btn--sm" style="width:100%;justify-content:center;">Customer Login</a>
+    <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary btn--sm" style="width:100%;justify-content:center;" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
   </div>
 </nav>
 
@@ -367,18 +353,16 @@
 
   <!-- SECTION 1: HERO (Full-Bleed) -->
   <section class="hero" aria-labelledby="hero-h1">
-    <!-- VIDEO/IMAGE ASSET: Aerial video or high-res photo of Lytton Terminal tank farm -->
-    <div class="hero__video-wrap" aria-hidden="true">
-      <img src="assets/images/supply-trading/lytton_tanks_aerial.png" alt="Aerial view of IOR Lytton Terminal tank farm, Port of Brisbane">
-    </div>
+    <!-- ASSET: Full-bleed aerial photo or video of Lytton Terminal tank farm -->
+    <img class="hero__bg" src="assets/images/supply-trading/lytton_tanks_aerial.png" alt="Aerial view of IOR Lytton Terminal tanks at Port of Brisbane">
     <div class="hero__overlay" aria-hidden="true"></div>
     <div class="hero__content">
       <p class="eyebrow eyebrow--green fade-up">IMPORT TERMINALS</p>
       <h1 id="hero-h1" class="fade-up">191 million litres of strategic diesel storage.</h1>
-      <p class="fade-up">IOR operates two of Australia's most strategically located diesel-only import terminals in Brisbane and South Australia. Together, they provide 191ML of combined storage capacity and critical supply buffers for the East Coast and Southern markets.</p>
+      <p class="fade-up">Two of Australia&#8217;s most strategically located diesel-only import terminals. Providing 191ML of combined storage capacity and critical supply buffers for the East Coast and Southern markets.</p>
       <div class="hero-ctas fade-up">
-        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary" style="background:var(--st-green);border-color:var(--st-green);" aria-label="Apply for an Account" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
-        <a href="#lead-capture" class="btn btn--outline-white" aria-label="Enquire About Terminal Access">Enquire About Terminal Access &#8594;</a>
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary" style="background:var(--st-green);border-color:var(--st-green);" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
+        <a href="#lead-capture" class="btn btn--outline-white">Enquire About Terminal Access &#8594;</a>
       </div>
     </div>
   </section>
@@ -393,24 +377,44 @@
     </div>
   </nav>
 
-  <!-- SECTION 3: USP BAR -->
+  <!-- SECTION 3: USP BAR (Icon-Driven) -->
   <section class="usp-bar" aria-label="Terminal key facts">
     <div class="usp-bar__inner">
       <div class="usp-item fade-up">
-        <div class="usp-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h18v4H3zM3 10h18v4H3zM3 17h18v4H3z"/></svg></div>
-        <div class="usp-item__text"><span class="usp-item__value">191ML</span><span class="usp-item__label">Combined Capacity</span></div>
+        <div class="usp-item__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="usp-item__text">
+          <span class="usp-item__value">191ML</span>
+          <span class="usp-item__label">Combined Capacity</span>
+        </div>
       </div>
       <div class="usp-item fade-up">
-        <div class="usp-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h18M3 6h18M3 18h18"/><circle cx="12" cy="12" r="10"/></svg></div>
-        <div class="usp-item__text"><span class="usp-item__value">Deep-Water</span><span class="usp-item__label">Port Access</span></div>
+        <div class="usp-item__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="usp-item__text">
+          <span class="usp-item__value">Deep-Water</span>
+          <span class="usp-item__label">Port Access</span>
+        </div>
       </div>
       <div class="usp-item fade-up">
-        <div class="usp-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <div class="usp-item__text"><span class="usp-item__value">Road Train</span><span class="usp-item__label">Capable Loading</span></div>
+        <div class="usp-item__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="usp-item__text">
+          <span class="usp-item__value">Road Train</span>
+          <span class="usp-item__label">Capable Loading</span>
+        </div>
       </div>
       <div class="usp-item fade-up">
-        <div class="usp-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="usp-item__text"><span class="usp-item__value">24/7</span><span class="usp-item__label">Uninterrupted Operations</span></div>
+        <div class="usp-item__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="usp-item__text">
+          <span class="usp-item__value">24/7</span>
+          <span class="usp-item__label">Uninterrupted Operations</span>
+        </div>
       </div>
     </div>
   </section>
@@ -419,68 +423,94 @@
   <section class="terminal-specs" aria-labelledby="specs-h2">
     <div class="container">
       <div class="terminal-specs__header fade-up">
-        <p class="eyebrow eyebrow--green">TERMINAL SPECIFICATIONS</p>
+        <p class="eyebrow eyebrow--green">LYTTON &amp; PORT BONYTHON TERMINALS</p>
         <h2 id="specs-h2">Two terminals. One reliable supply chain.</h2>
         <p>Both terminals were purpose-built for maximum throughput and minimum downtime.</p>
       </div>
-      <div class="terminal-tabs" role="tablist" aria-label="Terminal specifications">
-        <button class="terminal-tab active" role="tab" aria-selected="true" aria-controls="tab-lytton" id="tab-btn-lytton">Lytton Terminal (QLD)</button>
-        <button class="terminal-tab" role="tab" aria-selected="false" aria-controls="tab-bonython" id="tab-btn-bonython">Port Bonython Terminal (SA)</button>
+      <div class="tab-nav" role="tablist" data-group="terminals" aria-label="Terminal specifications">
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-lytton" id="tab-btn-lytton">Lytton Terminal (QLD)</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-bonython" id="tab-btn-bonython">Port Bonython Terminal (SA)</button>
       </div>
-      <div class="terminal-panel active" id="tab-lytton" role="tabpanel" aria-labelledby="tab-btn-lytton">
-        <img class="terminal-panel__img" src="assets/images/supply-trading/lytton_tanks_aerial.png" alt="Aerial view of IOR Lytton Terminal, Port of Brisbane" loading="lazy">
-        <div class="terminal-panel__content">
+      <div class="tab-panel active" id="tab-lytton" role="tabpanel" aria-labelledby="tab-btn-lytton" data-group="terminals">
+        <img class="tab-panel__img" src="assets/images/supply-trading/lytton_tanks_aerial.png" alt="Aerial view of IOR Lytton Terminal, Port of Brisbane">
+        <div class="tab-panel__content">
           <h3>Lytton Terminal, Port of Brisbane.</h3>
           <p>The largest diesel-only terminal in Queensland. Strategically located on the south side of the Brisbane River to supply Western Queensland and New South Wales.</p>
-          <ul class="terminal-checklist">
+          <ul class="check-list" aria-label="Lytton Terminal features">
             <li>110ML capacity provides up to 12 additional days of supply buffer</li>
             <li>2km underground pipeline and deep-water berth</li>
             <li>High-speed gantry fills two trailers simultaneously at 2,400 Lpm</li>
             <li>Designed for AB triple road train access</li>
           </ul>
-          <a href="#lead-capture" class="btn btn--primary" style="background:var(--st-green);border-color:var(--st-green);" aria-label="Enquire About Lytton Access">Enquire About Lytton Access &#8594;</a>
+          <a href="#lead-capture" class="btn btn--primary" style="background:var(--st-green);border-color:var(--st-green);">Enquire About Lytton Access &#8594;</a>
         </div>
       </div>
-      <div class="terminal-panel" id="tab-bonython" role="tabpanel" aria-labelledby="tab-btn-bonython">
-        <img class="terminal-panel__img" src="assets/images/supply-trading/port_bonython_tanks.jpeg" alt="Port Bonython Terminal tank farm, South Australia" loading="lazy">
-        <div class="terminal-panel__content">
+      <div class="tab-panel" id="tab-bonython" role="tabpanel" aria-labelledby="tab-btn-bonython" data-group="terminals">
+        <img class="tab-panel__img" src="assets/images/supply-trading/port_bonython_tanks.jpeg" alt="Port Bonython T-001/T-002/T-003 tank farm, South Australia">
+        <div class="tab-panel__content">
           <h3>Port Bonython Terminal, South Australia.</h3>
           <p>The largest diesel storage facility in South Australia. Located 25km north of Whyalla, it is perfectly positioned to supply the mining, agriculture, and transport sectors in SA and the NT.</p>
-          <ul class="terminal-checklist">
+          <ul class="check-list" aria-label="Port Bonython Terminal features">
             <li>81ML capacity across three massive 27ML tanks</li>
             <li>High-speed 2-bay loading gantries</li>
             <li>Uncongested deep-water port access</li>
             <li>Designed for heavy vehicle and triple road train access</li>
           </ul>
-          <a href="#lead-capture" class="btn btn--primary" style="background:var(--st-green);border-color:var(--st-green);" aria-label="Enquire About Port Bonython Access">Enquire About Port Bonython Access &#8594;</a>
+          <a href="#lead-capture" class="btn btn--primary" style="background:var(--st-green);border-color:var(--st-green);">Enquire About Port Bonython Access &#8594;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 5: WHY IOR TERMINALS (50/50 Split) -->
-  <section class="why-split" aria-labelledby="why-h2">
-    <div class="why-split__inner">
-      <div class="why-split__content">
-        <p class="eyebrow eyebrow--green">WHY IOR TERMINALS</p>
-        <h2 id="why-h2">Built for security. Designed for efficiency.</h2>
-        <p>IOR terminals are built to keep your supply chain moving regardless of market conditions. With deep-water port access, high-speed loading arms, and 24-hour operations, we eliminate congestion delays.</p>
-        <p>We are Australia's designated sovereign fuel supply partner, backed by a commercial framework with the Federal Government.</p>
-        <ul class="why-split__checklist">
-          <li>Deep-water port access avoids shipping congestion delays</li>
-          <li>2,400 litres per minute loading efficiency</li>
-          <li>Sovereign supply mandate backed by the Federal Government</li>
-        </ul>
-        <a href="11a_Contact_Usv5.html" class="btn btn--primary" style="background:var(--st-green);border-color:var(--st-green);" aria-label="Speak to a Specialist">Speak to a Specialist &#8594;</a>
-      </div>
-      <div class="why-split__img-ph" aria-label="Image placeholder: Semi-trailers loading fuel at the gantry">
-        Image Placeholder: Semi-trailers loading at the gantry
+  <!-- SECTION 5: PARALLAX SHOWCASE (Infrastructure Stats) -->
+  <section class="parallax-showcase" aria-labelledby="showcase-h2">
+    <img class="parallax-showcase__bg" src="assets/images/supply-trading/condensates_bonython_tanks.jpeg" alt="Port Bonython terminal tank farm at scale, South Australia">
+    <div class="parallax-showcase__overlay" aria-hidden="true"></div>
+    <div class="parallax-showcase__content">
+      <p class="eyebrow eyebrow--green fade-up">STRATEGIC STORAGE</p>
+      <h2 id="showcase-h2" class="fade-up">Scale. Security. Sovereign Supply.</h2>
+      <div class="parallax-stat-grid fade-up" aria-label="Terminal statistics">
+        <div class="parallax-stat">
+          <span class="parallax-stat__value">2,400 L/min</span>
+          <span class="parallax-stat__label">High-Speed Loading</span>
+        </div>
+        <div class="parallax-stat">
+          <span class="parallax-stat__value">24/7</span>
+          <span class="parallax-stat__label">Terminal Access</span>
+        </div>
+        <div class="parallax-stat">
+          <span class="parallax-stat__value">100%</span>
+          <span class="parallax-stat__label">Australian Owned</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 6: LEAD CAPTURE -->
-  <!-- HubSpot Form: Supply and Trading Terminal Access Enquiry -->
+  <!-- SECTION 6: WHY IOR TERMINALS (50/50 Split) -->
+  <section class="why-ior-split" aria-labelledby="why-h2">
+    <div class="why-ior-split__inner">
+      <div class="why-ior-split__content fade-up">
+        <p class="eyebrow eyebrow--green">WHY IOR TERMINALS</p>
+        <h2 id="why-h2">Built for security. Designed for efficiency.</h2>
+        <p>IOR terminals are built to keep your supply chain moving regardless of market conditions. With deep-water port access, high-speed loading arms, and 24-hour operations, we eliminate congestion delays.</p>
+        <p>We are Australia&#8217;s designated sovereign fuel supply partner, backed by a commercial framework with the Federal Government.</p>
+        <ul class="check-list" aria-label="Why IOR Terminals">
+          <li>Deep-water port access avoids shipping congestion delays</li>
+          <li>2,400 litres per minute loading efficiency</li>
+          <li>Sovereign supply mandate backed by the Federal Government</li>
+        </ul>
+        <div class="why-ior-split__ctas">
+          <a href="09_About_IOR.html" class="btn btn--primary" style="background:var(--st-green);border-color:var(--st-green);">About IOR &#8594;</a>
+          <a href="11a_Contact_Usv5.html" class="btn btn--outline-white">Speak to a Specialist &#8594;</a>
+        </div>
+      </div>
+      <div class="why-ior-split__img-ph" aria-label="Image placeholder: ships at deep-water berth or terminal infrastructure">
+        High-fidelity image of ships at the deep-water berth or terminal infrastructure<br><br>Asset required from client photography library
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: LEAD CAPTURE -->
   <section class="lead-capture-section" id="lead-capture" aria-labelledby="lc-h2">
     <div class="container">
       <div class="lead-capture__card">
@@ -495,17 +525,17 @@
           </ul>
         </div>
         <div class="lead-capture__form-wrapper">
-          <span class="lead-capture__eyebrow">Terminal Access Enquiry Form</span>
+          <span class="lead-capture__eyebrow">Supply &amp; Trading Enquiry Form</span>
           <div class="hs-form-placeholder" aria-label="Form embed pending">
-            HubSpot form embed pending.<br>Supply and Trading Terminal Access enquiry form.<br>Portal ID + Form ID to be provided by Marketing team.
+            HubSpot form embed pending.<br>Supply &amp; Trading Enquiry Form.<br>Portal ID + Form ID to be provided by Marketing team.
           </div>
-          <p class="tgp-link">View current Terminal Gate Pricing at <a href="https://iorterminals.com.au/pricing" target="_blank" rel="noopener noreferrer">iorterminals.com.au/pricing</a></p>
+          <p class="lead-capture__tgp">View current Terminal Gate Pricing at <a href="https://www.iorterminals.com.au/pricing" target="_blank" rel="noopener noreferrer">iorterminals.com.au/pricing</a></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 7: RELATED CONTENT -->
+  <!-- SECTION 8: RELATED CONTENT (Tabbed) -->
   <section class="related-content" aria-labelledby="related-h2">
     <div class="container">
       <div class="related-content__header fade-up">
@@ -517,22 +547,22 @@
       </div>
       <div class="related-tab-panel active" id="tab-cs" role="tabpanel" aria-labelledby="tab-btn-cs">
         <div class="related-cards">
-          <div class="related-card fade-up"><div class="related-card__img-ph">Case Study Image</div><div class="related-card__body"><span class="related-card__tag">Case Study</span><h3 class="related-card__title">Incitec Pivot: 800% AdBlue Supply Ramp-Up</h3><p class="related-card__excerpt">How IOR's sovereign supply chain enabled a rapid national distribution response during a critical shortage.</p></div></div>
-          <div class="related-card fade-up"><div class="related-card__img-ph">Case Study Image</div><div class="related-card__body"><span class="related-card__tag">Case Study</span><h3 class="related-card__title">SA Infrastructure Project: Port Bonython Terminal Access</h3><p class="related-card__excerpt">Port Bonython Terminal access enabled a major South Australian infrastructure project to maintain uninterrupted fuel supply.</p></div></div>
-          <div class="related-card fade-up"><div class="related-card__img-ph">Case Study Image</div><div class="related-card__body"><span class="related-card__tag">Case Study</span><h3 class="related-card__title">Mining Operator: Bulk Diesel Term Agreement</h3><p class="related-card__excerpt">Securing long-term supply certainty for a major Queensland mining operation through a structured term agreement.</p></div></div>
+          <div class="related-card fade-up"><div class="related-card__img-ph">Case Study Image</div><div class="related-card__body"><span class="related-card__tag">Case Study</span><h3 class="related-card__title">Lytton Terminal: Commissioning Queensland&#8217;s Largest Diesel-Only Import Facility</h3><p class="related-card__excerpt">How IOR designed and commissioned the largest diesel-only terminal in Queensland, with 110ML capacity and a 2km underground pipeline to the deep-water berth.</p></div></div>
+          <div class="related-card fade-up"><div class="related-card__img-ph">Case Study Image</div><div class="related-card__body"><span class="related-card__tag">Case Study</span><h3 class="related-card__title">Port Bonython: Securing South Australia&#8217;s Fuel Supply</h3><p class="related-card__excerpt">How IOR&#8217;s Port Bonython Terminal provides critical supply buffer for mining, agriculture, and transport operators across South Australia and the Northern Territory.</p></div></div>
+          <div class="related-card fade-up"><div class="related-card__img-ph">Case Study Image</div><div class="related-card__body"><span class="related-card__tag">Case Study</span><h3 class="related-card__title">Incitec Pivot: 800% AdBlue Supply Ramp in 30 Days</h3><p class="related-card__excerpt">How IOR&#8217;s supply chain capability enabled a critical industrial operator to rapidly scale AdBlue distribution during a national shortage.</p></div></div>
         </div>
       </div>
       <div class="related-tab-panel" id="tab-bp" role="tabpanel" aria-labelledby="tab-btn-bp">
         <div class="related-cards">
-          <div class="related-card fade-up"><div class="related-card__img-ph">Blog Post Image</div><div class="related-card__body"><span class="related-card__tag">Blog</span><h3 class="related-card__title">What is Terminal Gate Pricing and How Does It Work?</h3><p class="related-card__excerpt">A plain-English guide to TGP, who it applies to, and how to access IOR's daily pricing portal.</p></div></div>
-          <div class="related-card fade-up"><div class="related-card__img-ph">Blog Post Image</div><div class="related-card__body"><span class="related-card__tag">Blog</span><h3 class="related-card__title">Why Australia Needs Sovereign Fuel Storage</h3><p class="related-card__excerpt">The case for strategic domestic fuel reserves and what concentrated port infrastructure means for supply security.</p></div></div>
-          <div class="related-card fade-up"><div class="related-card__img-ph">Blog Post Image</div><div class="related-card__body"><span class="related-card__tag">Blog</span><h3 class="related-card__title">Lytton Terminal: Built for Queensland's Future</h3><p class="related-card__excerpt">How the 2023 construction of IOR's Lytton Terminal added 110ML of new strategic diesel storage to the Queensland market.</p></div></div>
+          <div class="related-card fade-up"><div class="related-card__img-ph">Blog Post Image</div><div class="related-card__body"><span class="related-card__tag">Blog</span><h3 class="related-card__title">What Is a Deep-Water Import Terminal and Why Does It Matter?</h3><p class="related-card__excerpt">A plain-English guide to how bulk fuel import terminals work and why IOR&#8217;s Lytton and Port Bonython facilities are strategically critical.</p></div></div>
+          <div class="related-card fade-up"><div class="related-card__img-ph">Blog Post Image</div><div class="related-card__body"><span class="related-card__tag">Blog</span><h3 class="related-card__title">Terminal Gate Pricing Explained: What You Need to Know</h3><p class="related-card__excerpt">A guide to how Terminal Gate Pricing works, who it applies to, and how to access daily TGP through IOR&#8217;s pricing portal.</p></div></div>
+          <div class="related-card fade-up"><div class="related-card__img-ph">Blog Post Image</div><div class="related-card__body"><span class="related-card__tag">Blog</span><h3 class="related-card__title">Why Australia&#8217;s Fuel Security Problem Is Getting Worse</h3><p class="related-card__excerpt">Import dependency, declining domestic refining, and limited regional storage: the case for sovereign supply chain investment.</p></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 8: FAQs -->
+  <!-- SECTION 9: FAQs -->
   <section class="faq-section" aria-labelledby="faq-h2">
     <div class="container">
       <div class="faq-section__header fade-up">
@@ -540,31 +570,49 @@
         <h2 id="faq-h2">Terminal Access: Common Questions.</h2>
       </div>
       <div class="faq-list" role="list">
-        <div class="faq-item" role="listitem"><button class="faq-question" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">Who can access IOR terminals for fuel pick-up?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1"><p>Terminal access is available to licensed fuel distributors and large commercial operators. There are statutory health and safety accreditations required for both the driver and vehicle. Contact our Supply and Trading team to discuss your eligibility.</p></div></div>
-        <div class="faq-item" role="listitem"><button class="faq-question" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">What is Terminal Gate Pricing (TGP)?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2"><p>Terminal Gate Pricing is the published daily price for bulk diesel collected directly from our terminals. TGP is updated daily and is available on our pricing portal.</p></div></div>
-        <div class="faq-item" role="listitem"><button class="faq-question" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">What is the minimum volume for terminal pick-up?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3"><p>Minimum volumes apply and vary by terminal. Contact our Supply and Trading team for current minimums and access requirements.</p></div></div>
-        <div class="faq-item" role="listitem"><button class="faq-question" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">Are IOR terminals open on public holidays?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4"><p>Yes. Both Lytton and Port Bonython terminals operate 24 hours a day, 7 days per week, including public holidays.</p></div></div>
-        <div class="faq-item" role="listitem"><button class="faq-question" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">Does IOR offer term supply agreements?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button><div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5"><p>Yes. IOR offers term supply agreements for qualified distributors and large commercial operators. These agreements provide price certainty and guaranteed volume allocation.</p></div></div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">Who can access IOR terminals for fuel pick-up?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1"><p>Terminal access is available to licensed fuel distributors and large commercial operators. There are statutory health and safety accreditations required for both the driver and vehicle. Contact our Supply and Trading team to discuss your eligibility.</p></div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">What is Terminal Gate Pricing (TGP)?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2"><p>Terminal Gate Pricing is the published daily price for bulk diesel collected directly from our terminals. TGP is updated daily and is available on our pricing portal.</p></div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">What is the minimum volume for terminal pick-up?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3"><p>Minimum volumes apply and vary by terminal. Contact our Supply and Trading team for current minimums and access requirements.</p></div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">Are IOR terminals open on public holidays?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4"><p>Yes. Both Lytton and Port Bonython terminals operate 24 hours a day, 7 days per week, including public holidays.</p></div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">Does IOR offer term supply agreements?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5"><p>Yes. IOR offers term supply agreements for qualified distributors and large commercial operators. These agreements provide price certainty and guaranteed volume allocation.</p></div>
+        </div>
       </div>
       <div class="faq-footer fade-up">
-        <div class="faq-footer__text"><h4>Still have questions?</h4><p>Submit an enquiry to our Supply and Trading team or browse the full knowledge base.</p></div>
+        <div class="faq-footer__text">
+          <h4>Still have questions?</h4>
+          <p>Submit an enquiry to our Supply and Trading team or browse the full knowledge base.</p>
+        </div>
         <div class="faq-footer__actions">
-          <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--sm" aria-label="Speak to a Specialist">Speak to a Specialist &#8594;</a>
-          <a href="11_Support_Hubv5.html" class="btn btn--outline btn--sm" aria-label="Visit Help Centre">Visit Help Centre &#8594;</a>
+          <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--sm" style="background:var(--st-green);border-color:var(--st-green);">Speak to a Specialist &#8594;</a>
+          <a href="11_Support_Hubv5.html" class="btn btn--outline btn--sm">Visit Help Centre &#8594;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 9: FINAL CTA -->
+  <!-- SECTION 10: BESPOKE FINAL CTA -->
   <section class="final-cta" aria-labelledby="final-cta-h2">
     <div class="container">
       <p class="eyebrow eyebrow--green">READY TO SECURE YOUR FUEL SUPPLY?</p>
-      <h2 id="final-cta-h2">Partner with Australia's sovereign fuel supplier.</h2>
+      <h2 id="final-cta-h2">Partner with Australia&#8217;s sovereign fuel supplier.</h2>
       <p>Talk to our Supply and Trading team about terminal access, logistics, and term supply agreements.</p>
       <div class="final-cta__ctas">
-        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--white" aria-label="Apply for an Account" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
-        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white" aria-label="Speak to a Specialist">Speak to a Specialist &#8594;</a>
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--white" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
+        <a href="#lead-capture" class="btn btn--outline-white">Enquire About Terminal Access &#8594;</a>
       </div>
     </div>
   </section>
@@ -659,9 +707,16 @@ if(overlay)overlay.addEventListener('click',closeDrawer);
 document.querySelectorAll('.ior-drawer__link[data-drawer]').forEach(btn=>{btn.addEventListener('click',()=>{const sub=document.getElementById(btn.getAttribute('data-drawer'));if(!sub)return;const isOpen=sub.classList.contains('ior-drawer__sub--open');document.querySelectorAll('.ior-drawer__sub').forEach(s=>s.classList.remove('ior-drawer__sub--open'));document.querySelectorAll('.ior-drawer__link[data-drawer]').forEach(b=>b.setAttribute('aria-expanded','false'));if(!isOpen){sub.classList.add('ior-drawer__sub--open');btn.setAttribute('aria-expanded','true');}});});
 const primaryNav=document.getElementById('primary-nav');
 if(primaryNav){window.addEventListener('scroll',()=>{primaryNav.classList.toggle('primary-nav--scrolled',window.scrollY>40);},{passive:true});}
-document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const answer=document.getElementById(btn.getAttribute('aria-controls'));const isOpen=btn.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-question').forEach(b=>{b.setAttribute('aria-expanded','false');const a=document.getElementById(b.getAttribute('aria-controls'));if(a)a.style.maxHeight='0';});if(!isOpen){btn.setAttribute('aria-expanded','true');answer.style.maxHeight=answer.scrollHeight+'px';}});});
+// TABS
+document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{const group=btn.closest('[role="tablist"]').getAttribute('data-group');const panel=document.getElementById(btn.getAttribute('aria-controls'));document.querySelectorAll('[data-group="'+group+'"] .tab-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});document.querySelectorAll('[data-group="'+group+'"] ~ .tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');btn.setAttribute('aria-selected','true');panel.classList.add('active');});});
+// RELATED CONTENT TABS
 document.querySelectorAll('.related-content__tab').forEach(tab=>{tab.addEventListener('click',()=>{const panel=document.getElementById(tab.getAttribute('aria-controls'));document.querySelectorAll('.related-content__tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');});document.querySelectorAll('.related-tab-panel').forEach(p=>p.classList.remove('active'));tab.classList.add('active');tab.setAttribute('aria-selected','true');panel.classList.add('active');});});
-document.querySelectorAll('.terminal-tab').forEach(tab=>{tab.addEventListener('click',()=>{const panel=document.getElementById(tab.getAttribute('aria-controls'));document.querySelectorAll('.terminal-tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');});document.querySelectorAll('.terminal-panel').forEach(p=>p.classList.remove('active'));tab.classList.add('active');tab.setAttribute('aria-selected','true');panel.classList.add('active');});});
+// FAQS
+document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const answer=document.getElementById(btn.getAttribute('aria-controls'));const isOpen=btn.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-question').forEach(b=>{b.setAttribute('aria-expanded','false');const a=document.getElementById(b.getAttribute('aria-controls'));if(a)a.style.maxHeight='0';});if(!isOpen){btn.setAttribute('aria-expanded','true');answer.style.maxHeight=answer.scrollHeight+'px';}});});
+// PARALLAX
+const parallaxBgs=document.querySelectorAll('.parallax-showcase__bg');
+if(parallaxBgs.length){window.addEventListener('scroll',()=>{parallaxBgs.forEach(bg=>{const rect=bg.closest('.parallax-showcase').getBoundingClientRect();const offset=(rect.top+rect.height/2-window.innerHeight/2)*0.25;bg.style.transform='translateY('+offset+'px)';});},{passive:true});}
+// FADE UP
 const fadeEls=document.querySelectorAll('.fade-up');
 const fadeObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('fade-up--visible');fadeObs.unobserve(e.target);}});},{threshold:0.1});
 fadeEls.forEach(el=>fadeObs.observe(el));
