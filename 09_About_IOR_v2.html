@@ -121,19 +121,49 @@
     .hub-card__link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--ior-blue);margin-top:8px;transition:gap .2s;}
     .hub-card:hover .hub-card__link{gap:10px;}
     .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--grey-200);margin-top:40px;}
-    .value-card{background:rgba(255,255,255,.05);padding:40px 32px;display:flex;flex-direction:column;gap:10px;transition:background .25s;}
-    .value-card:hover{background:rgba(255,255,255,.09);}
-    .value-card__num{font-size:clamp(48px,5vw,64px);font-weight:900;color:var(--ior-sky);line-height:1;opacity:.2;letter-spacing:-.03em;}
-    .value-card__title{font-size:clamp(18px,2vw,22px);font-weight:800;color:#fff;}
-    .value-card__desc{font-size:14px;color:rgba(255,255,255,.65);line-height:1.75;}
-    .timeline{display:flex;flex-direction:column;gap:0;margin-top:40px;position:relative;}
-    .timeline::before{content:'';position:absolute;left:20px;top:28px;bottom:28px;width:2px;background:var(--grey-200);}
-    .timeline-item{display:grid;grid-template-columns:40px 1fr;gap:28px;padding:28px 0;align-items:start;}
-    .timeline-dot{width:40px;height:40px;background:var(--ior-blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;transition:background .2s;}
-    .timeline-item:hover .timeline-dot{background:var(--ior-navy);}
-    .timeline-dot__year{font-size:10px;font-weight:800;color:#fff;letter-spacing:.04em;}
-    .timeline-body__title{font-size:17px;font-weight:800;color:var(--ior-navy);margin-bottom:4px;}
-    .timeline-body__desc{font-size:14px;color:var(--grey-700);line-height:1.65;}
+    .value-card{background:#fff;padding:40px 32px;display:flex;flex-direction:column;gap:10px;transition:background .25s;position:relative;overflow:hidden;}
+    .value-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--ior-blue);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+    .value-card:hover{background:var(--grey-100);}.value-card:hover::after{transform:scaleX(1);}
+    .value-card__icon{width:48px;height:48px;border:1.5px solid var(--ior-blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .value-card__icon svg{stroke:var(--ior-blue);}
+    .value-card__title{font-size:clamp(18px,2vw,22px);font-weight:800;color:var(--ior-navy);}
+    .value-card__desc{font-size:14px;color:var(--grey-700);line-height:1.75;}
+    /* NATIONAL FOOTPRINT */
+    .footprint-section{background:var(--ior-navy);padding:clamp(64px,8vw,100px) var(--section-pad-x);}
+    .footprint-section__inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+    .footprint-section__body{display:flex;flex-direction:column;gap:16px;}
+    .footprint-section__body p{font-size:clamp(15px,1.5vw,17px);color:rgba(255,255,255,.75);line-height:1.8;}
+    .footprint-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:24px;background:rgba(255,255,255,.08);}
+    .footprint-stat{padding:24px 20px;background:rgba(255,255,255,.04);display:flex;flex-direction:column;gap:4px;transition:background .2s;}
+    .footprint-stat:hover{background:rgba(255,255,255,.08);}
+    .footprint-stat__value{font-size:clamp(28px,3vw,40px);font-weight:900;color:#fff;line-height:1;letter-spacing:-.02em;}
+    .footprint-stat__label{font-size:12px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em;}
+    .aus-map-wrap{width:100%;max-width:480px;margin:0 auto;}
+    .aus-map-wrap svg{width:100%;height:auto;}
+    /* HORIZONTAL TIMELINE */
+    .htl-display{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:40px 48px;min-height:200px;display:flex;flex-direction:column;gap:16px;transition:opacity .2s ease;}
+    .htl-display__year{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-sky);}
+    .htl-display__title{font-size:clamp(22px,2.5vw,30px);font-weight:800;color:#fff;line-height:1.2;}
+    .htl-display__desc{font-size:15px;color:rgba(255,255,255,.7);line-height:1.8;max-width:640px;}
+    .htl-track{display:flex;align-items:flex-start;border-top:2px solid rgba(255,255,255,.15);position:relative;}
+    .htl-track__progress{position:absolute;top:-2px;left:0;height:2px;background:var(--ior-sky);transition:width .4s ease;}
+    .htl-btn{flex:1;padding:20px 16px 16px;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;transition:background .2s;}
+    .htl-btn:hover{background:rgba(255,255,255,.04);}
+    .htl-btn::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.3);transition:background .2s,border-color .2s;}
+    .htl-btn--active::before{background:var(--ior-sky);border-color:var(--ior-sky);}
+    .htl-btn__year{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);transition:color .2s;}
+    .htl-btn--active .htl-btn__year{color:var(--ior-sky);}
+    /* LEADERSHIP TEASER */
+    .leader-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--grey-200);margin-top:40px;}
+    .leader-card{background:#fff;display:flex;flex-direction:column;transition:background .25s;overflow:hidden;position:relative;}
+    .leader-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--ior-blue);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+    .leader-card:hover{background:var(--grey-100);}.leader-card:hover::after{transform:scaleX(1);}
+    .leader-card__photo{aspect-ratio:3/2;overflow:hidden;}
+    .leader-card__body{padding:24px 28px;display:flex;flex-direction:column;gap:4px;}
+    .leader-card__name{font-size:18px;font-weight:800;color:var(--ior-navy);}
+    .leader-card__role{font-size:13px;font-weight:600;color:var(--ior-blue);text-transform:uppercase;letter-spacing:.05em;}
+    @media(max-width:1024px){.footprint-section__inner{grid-template-columns:1fr;}.footprint-stats{grid-template-columns:repeat(2,1fr);}.leader-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:768px){.leader-grid{grid-template-columns:1fr;}.htl-track{overflow-x:auto;}}
     @media(max-width:1024px){.usp-strip__inner{grid-template-columns:repeat(2,1fr);}.usp-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.15);}.hub-grid{grid-template-columns:repeat(2,1fr);}.values-grid{grid-template-columns:repeat(2,1fr);}}
     @media(max-width:480px){.hub-grid{grid-template-columns:1fr;}.values-grid{grid-template-columns:1fr;}}
 </style>
@@ -170,15 +200,15 @@
 
   <section class="hero">
     <div class="hero__bg"></div>
-    <div style="position:absolute;inset:0;z-index:1;"><div class="asset-ph" style="position:absolute;inset:0;"><span>ASSET REQUIRED — IOR operations / team photography (1920×800px)</span></div></div>
+    <div style="position:absolute;inset:0;z-index:1;"><div class="asset-ph" style="position:absolute;inset:0;"><span>ASSET REQUIRED: Full-bleed video background — fast-cut montage: Eromanga Refinery / Road Trains / Lytton Terminal (MP4, H.264, 1920x1080, autoplay muted loop)</span></div></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <p class="hero__eyebrow fade-up">About IOR</p>
-      <h1 class="hero__headline fade-up fade-up--d1">Fuelling<br>Australia.</h1>
-      <p class="hero__sub fade-up fade-up--d2">For over 40 years, IOR has been the trusted fuel partner for Australia's hardest-working industries. 100% Australian owned. Proudly independent.</p>
+      <h1 class="hero__headline fade-up fade-up--d1">100% Australian Owned.<br>100% Driven by Purpose.</h1>
+      <p class="hero__sub fade-up fade-up--d2">For over 40 years, IOR has been the trusted fuel partner for Australia's hardest-working industries.</p>
       <div class="hero__ctas fade-up fade-up--d3">
-        <a href="#our-story" class="btn btn--primary">Our Story &#x2192;</a>
-        <a href="10_Careers_v2.html" class="btn btn--outline-white">Join the Team</a>
+        <a href="#" class="btn btn--primary btn--pill">Apply for an Account &#x2192;</a>
+        <a href="#" class="btn btn--outline-white btn--pill">Speak to a Specialist &#x2192;</a>
       </div>
     </div>
   </section>
@@ -187,8 +217,9 @@
     <div class="quick-links-bar__inner">
       <span class="quick-links-bar__label">Explore IOR:</span>
       <a href="#our-story" class="quick-links-bar__link quick-links-bar__link--active">Our Story</a>
+      <a href="#our-scale" class="quick-links-bar__link">Our Scale</a>
       <a href="#our-values" class="quick-links-bar__link">Our Values</a>
-      <a href="#history" class="quick-links-bar__link">History</a>
+      <a href="#our-history" class="quick-links-bar__link">History</a>
       <a href="09a_Our_Leadershipv5.html" class="quick-links-bar__link">Leadership</a>
       <a href="09b_Community.html" class="quick-links-bar__link">Community</a>
       <a href="09c_Sustainability.html" class="quick-links-bar__link">Sustainability</a>
@@ -201,22 +232,18 @@
       <div class="usp-item fade-up">
         <div class="usp-item__value"><span data-target="40">0</span>+</div>
         <div class="usp-item__label">Years in Business</div>
-        <div class="usp-item__desc">Proudly serving Australia since 1983</div>
       </div>
       <div class="usp-item fade-up fade-up--d1">
         <div class="usp-item__value"><span data-target="500">0</span>+</div>
-        <div class="usp-item__label">Team Members</div>
-        <div class="usp-item__desc">Across every state and territory</div>
+        <div class="usp-item__label">Team Members Nationwide</div>
       </div>
       <div class="usp-item fade-up fade-up--d2">
         <div class="usp-item__value">100%</div>
-        <div class="usp-item__label">Australian Owned</div>
-        <div class="usp-item__desc">No foreign ownership or control — ever</div>
+        <div class="usp-item__label">Australian Owned &amp; Operated</div>
       </div>
       <div class="usp-item fade-up fade-up--d3">
         <div class="usp-item__value"><span data-target="6">0</span></div>
-        <div class="usp-item__label">States &amp; Territories</div>
-        <div class="usp-item__desc">A truly national fuel supply network</div>
+        <div class="usp-item__label">States &amp; Territories Served</div>
       </div>
     </div>
   </div>
@@ -224,62 +251,169 @@
   <section class="section-pad" id="our-story">
     <div class="inner">
       <div class="split">
-        <div class="slide-in-left">
+        <div style="aspect-ratio:4/3;" class="slide-in-left">
+          <div class="asset-ph" style="height:100%;">
+            <span>ASSET REQUIRED: Archival photo of original Eromanga site or early road train (800x600px, high contrast)</span>
+          </div>
+        </div>
+        <div class="slide-in-right" style="display:flex;flex-direction:column;gap:16px;">
           <p class="eyebrow">Our Story</p>
-          <h2 class="section-heading">Built on trust.<br>Driven by purpose.</h2>
-          <p style="font-size:clamp(15px,1.5vw,17px);color:var(--grey-700);line-height:1.8;margin-bottom:20px;">IOR was founded on a simple belief: that Australian businesses deserve a fuel partner they can actually rely on. One that shows up, delivers on time, and stands behind every litre.</p>
-          <p style="font-size:clamp(15px,1.5vw,17px);color:var(--grey-700);line-height:1.8;margin-bottom:32px;">Over four decades, we've grown from a Queensland-based distributor into a national fuel supply business — but our values haven't changed. We're still 100% Australian owned, still independently operated, and still putting our customers first.</p>
-          <a href="#history" class="btn btn--primary">Our History &#x2192;</a>
-        </div>
-        <div class="slide-in-right">
-          <div style="aspect-ratio:4/3;"><div class="asset-ph" style="height:100%;"><span>ASSET REQUIRED — IOR story / heritage photography (800×560px)</span></div></div>
+          <h2 class="section-heading">Built on trust. Driven by purpose.</h2>
+          <p style="font-size:clamp(15px,1.5vw,17px);color:var(--grey-700);line-height:1.8;">IOR was founded in 1984 on a simple belief: Australian businesses deserve a fuel partner they can actually rely on. One that shows up, delivers on time, and stands behind every litre.</p>
+          <p style="font-size:clamp(15px,1.5vw,17px);color:var(--grey-700);line-height:1.8;">Over four decades, we have grown from a small outback refinery into a national fuel infrastructure business. But our values have not changed. We are still 100 percent Australian owned, independently operated, and relentlessly focused on our customers.</p>
+          <div style="margin-top:8px;">
+            <a href="#our-history" class="btn btn--outline btn--pill">Read our History &#x2192;</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section-pad section-pad--navy" id="our-values">
+  <!-- BLOCK 4: NATIONAL FOOTPRINT -->
+  <section class="footprint-section" id="our-scale" aria-labelledby="footprint-heading">
+    <div class="footprint-section__inner">
+      <div class="footprint-section__body fade-up">
+        <p class="eyebrow eyebrow--sky">Our Scale</p>
+        <h2 class="section-heading section-heading--white" id="footprint-heading">A truly national supply chain.</h2>
+        <p>From deep-water import terminals to the most remote outback mining camps, our infrastructure covers the country.</p>
+        <div class="footprint-stats">
+          <div class="footprint-stat">
+            <div class="footprint-stat__value"><span data-target="115">0</span>+</div>
+            <div class="footprint-stat__label">Unmanned Diesel Stops</div>
+          </div>
+          <div class="footprint-stat">
+            <div class="footprint-stat__value"><span data-target="32">0</span>+</div>
+            <div class="footprint-stat__label">Airport Fuelling Locations</div>
+          </div>
+          <div class="footprint-stat">
+            <div class="footprint-stat__value">2</div>
+            <div class="footprint-stat__label">Strategic Import Terminals</div>
+          </div>
+          <div class="footprint-stat">
+            <div class="footprint-stat__value">1</div>
+            <div class="footprint-stat__label">Sovereign Oil Refinery</div>
+          </div>
+        </div>
+      </div>
+      <div class="aus-map-wrap fade-up fade-up--d2">
+        <svg viewBox="0 0 500 450" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Map of Australia showing IOR network locations" role="img">
+          <path d="M 120 80 L 160 60 L 220 55 L 280 50 L 340 65 L 390 90 L 420 130 L 430 170 L 420 210 L 400 240 L 390 280 L 370 310 L 340 340 L 310 370 L 280 390 L 260 400 L 240 395 L 220 380 L 200 360 L 190 330 L 180 300 L 170 280 L 150 260 L 130 240 L 110 210 L 95 180 L 90 150 L 95 120 Z" fill="rgba(91,180,229,0.08)" stroke="rgba(91,180,229,0.4)" stroke-width="1.5"/>
+          <path d="M 270 415 L 285 410 L 295 420 L 290 435 L 275 438 L 265 428 Z" fill="rgba(91,180,229,0.08)" stroke="rgba(91,180,229,0.4)" stroke-width="1.5"/>
+          <line x1="0" y1="150" x2="500" y2="150" stroke="rgba(91,180,229,0.06)" stroke-width="1"/>
+          <line x1="0" y1="250" x2="500" y2="250" stroke="rgba(91,180,229,0.06)" stroke-width="1"/>
+          <line x1="0" y1="350" x2="500" y2="350" stroke="rgba(91,180,229,0.06)" stroke-width="1"/>
+          <line x1="150" y1="0" x2="150" y2="450" stroke="rgba(91,180,229,0.06)" stroke-width="1"/>
+          <line x1="250" y1="0" x2="250" y2="450" stroke="rgba(91,180,229,0.06)" stroke-width="1"/>
+          <line x1="350" y1="0" x2="350" y2="450" stroke="rgba(91,180,229,0.06)" stroke-width="1"/>
+          <circle cx="390" cy="250" r="6" fill="#5BB4E5" opacity="0.9"><animate attributeName="r" values="6;9;6" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.9;0.5;0.9" dur="2.5s" repeatCount="indefinite"/></circle>
+          <circle cx="390" cy="250" r="14" fill="none" stroke="#5BB4E5" stroke-width="1" opacity="0.3"/>
+          <circle cx="380" cy="310" r="5" fill="#5BB4E5" opacity="0.8"><animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite" begin="0.5s"/></circle>
+          <circle cx="330" cy="355" r="5" fill="#5BB4E5" opacity="0.8"><animate attributeName="r" values="5;8;5" dur="2.8s" repeatCount="indefinite" begin="1s"/></circle>
+          <circle cx="255" cy="320" r="4" fill="#5BB4E5" opacity="0.7"><animate attributeName="r" values="4;7;4" dur="3.2s" repeatCount="indefinite" begin="0.3s"/></circle>
+          <circle cx="130" cy="280" r="5" fill="#5BB4E5" opacity="0.8"><animate attributeName="r" values="5;8;5" dur="2.6s" repeatCount="indefinite" begin="0.8s"/></circle>
+          <circle cx="220" cy="110" r="4" fill="#5BB4E5" opacity="0.7"><animate attributeName="r" values="4;7;4" dur="3s" repeatCount="indefinite" begin="1.2s"/></circle>
+          <circle cx="310" cy="200" r="5" fill="#fff" opacity="0.9"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
+          <circle cx="310" cy="200" r="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+          <text x="322" y="196" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif" font-weight="600">Eromanga</text>
+          <line x1="310" y1="200" x2="390" y2="250" stroke="rgba(91,180,229,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="390" y1="250" x2="380" y2="310" stroke="rgba(91,180,229,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="380" y1="310" x2="330" y2="355" stroke="rgba(91,180,229,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="255" y1="320" x2="130" y2="280" stroke="rgba(91,180,229,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="220" y1="110" x2="310" y2="200" stroke="rgba(91,180,229,0.12)" stroke-width="1" stroke-dasharray="4 4"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad section-pad--grey" id="our-values">
     <div class="inner">
-      <p class="eyebrow eyebrow--sky fade-up">Our Values</p>
-      <h2 class="section-heading section-heading--white fade-up">What we stand for.</h2>
-      <p class="section-sub section-sub--white fade-up">Four values that guide every decision we make — from the boardroom to the bowser.</p>
+      <p class="eyebrow fade-up">Our Values</p>
+      <h2 class="section-heading fade-up">What we stand for.</h2>
       <div class="values-grid">
-        <div class="value-card fade-up"><div class="value-card__num">01</div><div class="value-card__title">Integrity</div><div class="value-card__desc">We do what we say we'll do. Every time. No exceptions.</div></div>
-        <div class="value-card fade-up fade-up--d1"><div class="value-card__num">02</div><div class="value-card__title">Reliability</div><div class="value-card__desc">Australia's industries depend on us. We don't let them down.</div></div>
-        <div class="value-card fade-up fade-up--d2"><div class="value-card__num">03</div><div class="value-card__title">Safety</div><div class="value-card__desc">Zero harm is not a target — it's our baseline. Every person, every day.</div></div>
-        <div class="value-card fade-up fade-up--d3"><div class="value-card__num">04</div><div class="value-card__title">Community</div><div class="value-card__desc">We invest in the communities we operate in — because their success is our success.</div></div>
+        <div class="value-card fade-up">
+          <div class="value-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="value-card__title">Integrity</div>
+          <div class="value-card__desc">We do what we say we will do. Every time. No exceptions.</div>
+        </div>
+        <div class="value-card fade-up fade-up--d1">
+          <div class="value-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="value-card__title">Reliability</div>
+          <div class="value-card__desc">Australia's industries depend on us. We do not let them down.</div>
+        </div>
+        <div class="value-card fade-up fade-up--d2">
+          <div class="value-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <div class="value-card__title">Safety</div>
+          <div class="value-card__desc">Zero harm is not a target. It is our baseline. Every person, every day.</div>
+        </div>
+        <div class="value-card fade-up fade-up--d3">
+          <div class="value-card__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="value-card__title">Community</div>
+          <div class="value-card__desc">We invest in the communities we operate in because their success is our success.</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section-pad section-pad--grey" id="history">
+  <!-- BLOCK 6: HORIZONTAL INTERACTIVE TIMELINE -->
+  <section style="background:var(--ior-navy);padding:clamp(64px,8vw,100px) var(--section-pad-x);" id="our-history" aria-labelledby="history-heading">
     <div class="inner">
-      <p class="eyebrow fade-up">Our History</p>
-      <h2 class="section-heading fade-up">40+ years of fuelling Australia.</h2>
-      <p class="section-sub fade-up">From a single Queensland depot to a national fuel supply network — here's how IOR grew.</p>
-      <div class="timeline">
-        <div class="timeline-item fade-up"><div class="timeline-dot"><span class="timeline-dot__year">1983</span></div><div class="timeline-body"><div class="timeline-body__title">IOR is Founded</div><div class="timeline-body__desc">IOR is established in Queensland as an independent fuel distributor, built on a commitment to reliable supply and honest service.</div></div></div>
-        <div class="timeline-item fade-up fade-up--d1"><div class="timeline-dot"><span class="timeline-dot__year">1990s</span></div><div class="timeline-body"><div class="timeline-body__title">Expansion Across Queensland</div><div class="timeline-body__desc">IOR expands its depot network across regional Queensland, becoming the go-to fuel partner for mining, agriculture, and transport.</div></div></div>
-        <div class="timeline-item fade-up fade-up--d2"><div class="timeline-dot"><span class="timeline-dot__year">2000s</span></div><div class="timeline-body"><div class="timeline-body__title">National Growth</div><div class="timeline-body__desc">IOR extends operations into New South Wales, Victoria, South Australia, and Western Australia — becoming a truly national business.</div></div></div>
-        <div class="timeline-item fade-up fade-up--d3"><div class="timeline-dot"><span class="timeline-dot__year">2010s</span></div><div class="timeline-body"><div class="timeline-body__title">Digital Innovation</div><div class="timeline-body__desc">IOR launches HyDip&#8482; FMS and the Fuelcharge App — bringing real-time fuel management to Australian businesses for the first time.</div></div></div>
-        <div class="timeline-item fade-up"><div class="timeline-dot"><span class="timeline-dot__year">Today</span></div><div class="timeline-body"><div class="timeline-body__title">Australia's Independent Fuel Partner</div><div class="timeline-body__desc">500+ team members. 6 states and territories. One mission: to be the most trusted fuel partner in Australia.</div></div></div>
+      <p class="eyebrow eyebrow--sky fade-up">Our History</p>
+      <h2 class="section-heading section-heading--white fade-up" id="history-heading" style="margin-bottom:40px;">40 years of fuelling Australia.</h2>
+      <div class="htl-display" id="htl-display" role="region" aria-live="polite">
+        <div class="htl-display__year" id="htl-year">1984</div>
+        <div class="htl-display__title" id="htl-title">IOR is established in Queensland.</div>
+        <div class="htl-display__desc" id="htl-desc">We build the Eromanga Refinery, securing a reliable fuel source for the outback and founding a business that would grow to fuel the nation.</div>
+      </div>
+      <div class="htl-track" role="tablist" aria-label="IOR history timeline">
+        <div class="htl-track__progress" id="htl-progress" style="width:0%"></div>
+        <button class="htl-btn htl-btn--active" data-year="1984" data-title="IOR is established in Queensland." data-desc="We build the Eromanga Refinery, securing a reliable fuel source for the outback and founding a business that would grow to fuel the nation." role="tab" aria-selected="true"><span class="htl-btn__year">1984</span></button>
+        <button class="htl-btn" data-year="1990s" data-title="Expansion across regional Queensland." data-desc="We expand our depot network across regional Queensland, becoming the primary fuel partner for remote mining and agriculture operations." role="tab" aria-selected="false"><span class="htl-btn__year">1990s</span></button>
+        <button class="htl-btn" data-year="2000s" data-title="IOR becomes a national infrastructure business." data-desc="IOR extends operations into NSW, Victoria, SA, and WA to become a truly national infrastructure business serving industries across the country." role="tab" aria-selected="false"><span class="htl-btn__year">2000s</span></button>
+        <button class="htl-btn" data-year="2010s" data-title="Digital innovation changes the game." data-desc="We launch HyDip&#8482; FMS and the Fuelcharge App, bringing real-time digital fuel management to Australian businesses for the first time." role="tab" aria-selected="false"><span class="htl-btn__year">2010s</span></button>
+        <button class="htl-btn" data-year="Today" data-title="Australia's leading independent fuel partner." data-desc="We operate deep-water terminals, a massive transport fleet, and employ over 500 Australians. 100% owned in Australia. Built to last." role="tab" aria-selected="false"><span class="htl-btn__year">Today</span></button>
       </div>
     </div>
   </section>
 
-  <section class="section-pad">
+  <!-- BLOCK 7: LEADERSHIP TEASER -->
+  <section class="section-pad" id="leadership-teaser" aria-labelledby="leader-heading">
     <div class="inner">
-      <p class="eyebrow fade-up">Explore IOR</p>
-      <h2 class="section-heading fade-up">There's more to IOR.</h2>
-      <div class="hub-grid">
-        <a href="09b_Community.html" class="hub-card fade-up"><p class="hub-card__cat">Community</p><h3 class="hub-card__title">Community &amp; Giving Back</h3><p class="hub-card__desc">We invest in the communities we operate in — through sponsorships, partnerships, and industry development.</p><span class="hub-card__link">Learn more &#x2192;</span></a>
-        <a href="09c_Sustainability.html" class="hub-card fade-up fade-up--d1"><p class="hub-card__cat">Sustainability</p><h3 class="hub-card__title">Sustainability, HSE &amp; ESG</h3><p class="hub-card__desc">Zero harm. ISO certified. A genuine commitment to responsible operations across every site and service.</p><span class="hub-card__link">Learn more &#x2192;</span></a>
-        <a href="10_Careers_v2.html" class="hub-card fade-up fade-up--d2"><p class="hub-card__cat">Careers</p><h3 class="hub-card__title">Careers at IOR</h3><p class="hub-card__desc">Join 500+ Australians who show up every day to fuel the country's hardest-working industries.</p><span class="hub-card__link">Explore careers &#x2192;</span></a>
+      <p class="eyebrow fade-up">Leadership</p>
+      <h2 class="section-heading fade-up" id="leader-heading">Guided by experience.</h2>
+      <div class="leader-grid">
+        <div class="leader-card fade-up">
+          <div class="leader-card__photo"><div class="asset-ph--light" style="height:220px;display:flex;align-items:center;justify-content:center;background:#e8eaed;border:2px dashed #cbd5e1;"><span style="font-size:12px;font-weight:600;color:#4A5568;text-align:center;padding:20px;">ASSET REQUIRED: Stewart Morland headshot (600x400px)</span></div></div>
+          <div class="leader-card__body"><div class="leader-card__name">Stewart Morland</div><div class="leader-card__role">Managing Director &amp; CEO</div></div>
+        </div>
+        <div class="leader-card fade-up fade-up--d1">
+          <div class="leader-card__photo"><div class="asset-ph--light" style="height:220px;display:flex;align-items:center;justify-content:center;background:#e8eaed;border:2px dashed #cbd5e1;"><span style="font-size:12px;font-weight:600;color:#4A5568;text-align:center;padding:20px;">ASSET REQUIRED: Ross Mackenzie headshot (600x400px)</span></div></div>
+          <div class="leader-card__body"><div class="leader-card__name">Ross Mackenzie</div><div class="leader-card__role">Executive Director</div></div>
+        </div>
+        <div class="leader-card fade-up fade-up--d2">
+          <div class="leader-card__photo"><div class="asset-ph--light" style="height:220px;display:flex;align-items:center;justify-content:center;background:#e8eaed;border:2px dashed #cbd5e1;"><span style="font-size:12px;font-weight:600;color:#4A5568;text-align:center;padding:20px;">ASSET REQUIRED: Executive headshot (name and title TBC)</span></div></div>
+          <div class="leader-card__body"><div class="leader-card__name">[Insert Name]</div><div class="leader-card__role">[Insert Title]</div></div>
+        </div>
+      </div>
+      <div style="margin-top:32px;display:flex;justify-content:center;">
+        <a href="09a_Our_Leadershipv5.html" class="btn btn--outline btn--pill">Meet the Executive Team &#x2192;</a>
       </div>
     </div>
   </section>
 
-  <div class="pre-footer"><div class="pre-footer__row"><h2 class="pre-footer__title">Want to learn more about IOR?</h2><div class="pre-footer__ctas"><a href="11a_Contact_Usv5.html" class="btn btn--primary">Get in Touch &#x2192;</a><a href="09a_Our_Leadershipv5.html" class="btn btn--outline-white">Meet Our Leaders</a></div></div></div>
+  <!-- BLOCK 8: FINAL CTA -->
+  <section style="background:var(--ior-navy);padding:clamp(64px,8vw,100px) var(--section-pad-x);" aria-labelledby="cta-heading">
+    <div class="inner" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;">
+      <p class="eyebrow eyebrow--sky fade-up">Ready to Partner with IOR?</p>
+      <h2 style="font-size:clamp(28px,4vw,52px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-.02em;" class="fade-up" id="cta-heading">Secure your fuel supply today.</h2>
+      <p style="font-size:clamp(15px,1.6vw,18px);color:rgba(255,255,255,.7);max-width:560px;line-height:1.75;" class="fade-up">Talk to our team about wholesale supply, terminal access, and national fleet accounts.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px;" class="fade-up">
+        <a href="#" class="btn btn--primary btn--pill">Apply for an Account &#x2192;</a>
+        <a href="#" class="btn btn--outline-white btn--pill">Speak to a Specialist &#x2192;</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="pre-footer"><div class="pre-footer__row"><h2 class="pre-footer__title">Explore more of IOR.</h2><div class="pre-footer__ctas"><a href="09a_Our_Leadershipv5.html" class="btn btn--primary btn--pill">Our Leadership &#x2192;</a><a href="10_Careers_v2.html" class="btn btn--outline-white btn--pill">Careers at IOR &#x2192;</a></div></div></div>
 
 </main>
 <footer class="site-footer">
@@ -309,6 +443,14 @@
   function animateCounter(el){const target=parseFloat(el.dataset.target);const isFloat=el.dataset.target.includes('.');const duration=1800;const start=performance.now();const step=ts=>{const p=Math.min((ts-start)/duration,1);const ease=1-Math.pow(1-p,3);const val=target*ease;el.textContent=isFloat?val.toFixed(1):Math.round(val).toLocaleString();if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);}
   const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCounter(e.target);counterObs.unobserve(e.target);}});},{threshold:0.3});
   document.querySelectorAll('[data-target]').forEach(el=>counterObs.observe(el));
+  // Interactive horizontal timeline
+  const htlBtns=document.querySelectorAll('.htl-btn');
+  const htlYear=document.getElementById('htl-year');
+  const htlTitle=document.getElementById('htl-title');
+  const htlDesc=document.getElementById('htl-desc');
+  const htlDisplay=document.getElementById('htl-display');
+  const htlProgress=document.getElementById('htl-progress');
+  if(htlBtns.length){htlBtns.forEach((btn,i)=>{btn.addEventListener('click',()=>{htlBtns.forEach(b=>{b.classList.remove('htl-btn--active');b.setAttribute('aria-selected','false');});btn.classList.add('htl-btn--active');btn.setAttribute('aria-selected','true');htlDisplay.style.opacity='0';setTimeout(()=>{htlYear.textContent=btn.dataset.year;htlTitle.textContent=btn.dataset.title;htlDesc.innerHTML=btn.dataset.desc;htlDisplay.style.opacity='1';},200);htlProgress.style.width=((i/(htlBtns.length-1))*100)+'%';});});}
 </script>
 </body>
 </html>
