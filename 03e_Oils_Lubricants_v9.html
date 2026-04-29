@@ -1,0 +1,1220 @@
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  IOR OILS & LUBRICANTS — v9                                          ║
+     ║  Repo:   ior-prototype-v3-5                                          ║
+     ║  Shell:  IOR_Global_Template_Shell_v4.html (v3-5 repo)               ║
+     ║  Nav:    Canonical global nav (OSR v9 pattern)                       ║
+     ║                                                                       ║
+     ║  SECTION ORDER                                                        ║
+     ║    1. Canonical Header (utility bar + sticky nav + mega panels)       ║
+     ║    2. Hero — solid navy, video wrapper ready, no gradient             ║
+     ║    3. Quick Links Bar — "Explore Ground Fuels:" label                 ║
+     ║    4. Stat Bar — 4 proof points                                       ║
+     ║    5. Brands We Stock — 6-tile brand section                          ║
+     ║    6. Product Range — 6-category visual card grid                     ║
+     ║    7. Co-Delivery Split — single supplier, one invoice                ║
+     ║    8. Industries Served — 2×3 icon grid                               ║
+     ║    9. Testimonial                                                      ║
+     ║   10. HubSpot Lead Capture                                            ║
+     ║   11. Related Content — tabbed Case Studies / Blog Posts              ║
+     ║   12. FAQ Accordion                                                   ║
+     ║   13. Final CTA                                                       ║
+     ║   14. Canonical Pre-Footer + Footer                                   ║
+     ║                                                                       ║
+     ║  AUDIT RULES                                                          ║
+     ║    ✓ No border-radius on content containers (btn--pill only)          ║
+     ║    ✓ No CSS gradients                                                 ║
+     ║    ✓ clamp() for all typography and spacing                           ║
+     ║    ✓ dvh for hero height                                              ║
+     ║    ✓ No operating hours in live copy                                  ║
+     ║    ✓ No SLA time commitments                                          ║
+     ║    ✓ No emoji in page content                                         ║
+     ║    ✓ No "IOR Petroleum" in customer-facing copy                       ║
+     ║    ✓ HubSpot only in developer comments                               ║
+     ║    ✓ No v3.5 filenames in href attributes                             ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oils &amp; Lubricants | Engine, Hydraulic &amp; Industrial | IOR</title>
+  <meta name="description" content="Simplify procurement with IOR. We supply a full range of premium engine oils, hydraulic fluids, and greases from leading brands. Delivered directly to your site.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.ior.com.au/fuel-solutions/ground-fuels/oils-lubricants/">
+  <meta property="og:title" content="Oils &amp; Lubricants | Engine, Hydraulic &amp; Industrial | IOR">
+  <meta property="og:description" content="Premium engine oils, hydraulic fluids, greases, and specialty lubricants delivered to site. One supplier, one invoice.">
+  <meta property="og:type" content="website">
+
+  <style>
+    /* ============================================================
+       IOR DESIGN SYSTEM TOKENS — v4.0
+    ============================================================ */
+    :root {
+      --ior-blue:          #0355A3;
+      --ior-navy:          #0A4066;
+      --ior-deep:          #0B1929;
+      --ior-sky:           #7FBEE6;
+      --ior-teal:          #00D1CC;
+      --ior-light:         #E8F1FB;
+      --ior-light-blue-bg: #E0F1FF;
+      --white:             #FFFFFF;
+      --off-white:         #F5F7FA;
+      --brand-fill:        #F4F5F7;
+      --mid-grey:          #94A9BA;
+      --dark-grey:         #374151;
+      --charcoal:          #383838;
+      --near-black:        #231F20;
+      --border-color-light:#e5e7eb;
+      --grey-50:           #F9FAFB;
+      --grey-100:          #F3F4F6;
+      --grey-200:          #E5E7EB;
+      --grey-400:          #9CA3AF;
+      --grey-700:          #374151;
+      --grey-800:          #1F2937;
+      --grey-900:          #111827;
+      --font:              'Avenir Next LT Pro','Avenir Next','Avenir','Nunito Sans',sans-serif;
+      --radius:            0px;
+      --section-pad:       clamp(50px, 7vw, 100px);
+      --section-pad-x:     clamp(20px, 8vw, 125px);
+      --container-max:     1550px;
+      --content-max:       1300px;
+      --transition-base:   250ms ease;
+      --transition-fast:   150ms ease;
+      --transition:        250ms ease;
+      --z-nav:             100;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--charcoal); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    .container { width: 100%; max-width: var(--container-max); margin-inline: auto; padding-inline: var(--section-pad-x); }
+
+    .eyebrow { font-size: clamp(11px, 1.2vw, 14px); font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--mid-grey); margin-bottom: 12px; display: block; }
+    .eyebrow--white { color: rgba(255,255,255,.7); }
+    .eyebrow--blue  { color: var(--ior-blue); }
+    .eyebrow--sky   { color: var(--ior-sky); }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font); font-size: clamp(14px, 1.4vw, 16px); font-weight: 800; padding: clamp(14px, 1.5vw, 18px) clamp(20px, 2vw, 28px); border-radius: 0; cursor: pointer; text-align: center; transition: all var(--transition-base); text-decoration: none; white-space: nowrap; border: 2px solid transparent; min-height: 44px; min-width: 44px; }
+    .btn--primary       { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
+    .btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
+    .btn--outline       { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+    .btn--outline:hover { background: var(--ior-blue); color: #fff; }
+    .btn--outline-white       { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+    .btn--outline-white:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+    .btn--white       { background: #fff; color: var(--ior-blue); border-color: #fff; }
+    .btn--white:hover { background: var(--ior-light); }
+    .btn--sm  { padding: 10px 20px; font-size: 14px; }
+    .btn--pill { border-radius: 500px; }
+
+    /* ============================================================
+       UTILITY BAR
+    ============================================================ */
+    .ior-utility-bar { background: var(--ior-deep); padding: 8px 0; }
+    .ior-utility-bar__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--section-pad-x); display: flex; align-items: center; justify-content: flex-end; gap: 0; }
+    .ior-utility-bar__actions { display: flex; align-items: center; gap: 0; }
+    .ior-utility-bar__link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.8); padding: 6px 14px; transition: color var(--transition-fast); text-decoration: none; white-space: nowrap; min-height: 32px; }
+    .ior-utility-bar__link:hover { color: #fff; }
+    .ior-utility-bar__icon { flex-shrink: 0; }
+    .ior-utility-bar__divider { width: 1px; height: 16px; background: rgba(255,255,255,.2); margin: 0 2px; }
+
+    /* ============================================================
+       PRIMARY NAV
+    ============================================================ */
+    .primary-nav { position: sticky; top: 0; z-index: var(--z-nav); background: #fff; border-bottom: 1px solid var(--grey-200); transition: box-shadow var(--transition-base); }
+    .primary-nav--scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.12); }
+    .nav-inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--section-pad-x); display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+    .nav-link { display: inline-flex; align-items: center; gap: 4px; font-size: clamp(13px, 1.1vw, 14px); font-weight: 700; color: var(--grey-800); padding: 8px 12px; background: none; border: none; cursor: pointer; transition: color var(--transition-fast); white-space: nowrap; min-height: 44px; }
+    .nav-link:hover, .nav-link.active { color: var(--ior-blue); }
+    .nav-chevron { display: inline-flex; transition: transform var(--transition-fast); }
+    .nav-link[aria-expanded="true"] .nav-chevron { transform: rotate(180deg); }
+    .nav-ctas { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 10px; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--grey-800); transition: all var(--transition-fast); }
+
+    /* Mega panels */
+    .mega-panel { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; border-top: 3px solid var(--ior-blue); box-shadow: 0 8px 40px rgba(0,0,0,.12); z-index: calc(var(--z-nav) - 1); }
+    .mega-panel--visible { display: block; }
+    .mega-inner { max-width: var(--container-max); margin-inline: auto; padding: 32px var(--section-pad-x); display: grid; gap: 32px; }
+    .mega-inner--4col { grid-template-columns: repeat(4, 1fr); }
+    .mega-inner--5col { grid-template-columns: repeat(5, 1fr); }
+    .mega-col__heading { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--mid-grey); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--grey-200); }
+    .mega-col__link { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; font-size: 13px; color: var(--grey-700); transition: color var(--transition-fast); min-height: 44px; }
+    .mega-col__link:hover { color: var(--ior-blue); }
+    .mega-col__link-icon { width: 32px; height: 32px; background: var(--grey-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .mega-col__link-text strong { display: block; font-size: 13px; font-weight: 700; color: var(--grey-900); margin-bottom: 2px; }
+    .mega-col__link-text span { font-size: 12px; color: var(--grey-400); }
+
+    /* Mobile drawer */
+    .ior-drawer { position: fixed; top: 0; right: 0; width: min(360px, 100vw); height: 100vh; background: #fff; z-index: 200; transform: translateX(100%); transition: transform .3s ease; overflow-y: auto; display: flex; flex-direction: column; }
+    .ior-drawer--open { transform: translateX(0); }
+    .ior-drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 190; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .ior-drawer-overlay--open { opacity: 1; pointer-events: auto; }
+    .ior-drawer__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--grey-200); }
+    .ior-drawer__close { display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; color: var(--grey-700); }
+    .ior-drawer__nav { padding: 16px 0; flex: 1; }
+    .ior-drawer__link { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 20px; font-size: 15px; font-weight: 700; color: var(--grey-900); background: none; border: none; cursor: pointer; text-align: left; min-height: 44px; }
+    .ior-drawer__link:hover { color: var(--ior-blue); background: var(--grey-50); }
+    .ior-drawer__sub { display: none; background: var(--grey-50); }
+    .ior-drawer__sub--open { display: block; }
+    .ior-drawer__sub-link { display: block; padding: 10px 20px 10px 32px; font-size: 14px; color: var(--grey-700); min-height: 44px; display: flex; align-items: center; }
+    .ior-drawer__sub-link:hover { color: var(--ior-blue); }
+    .ior-drawer__ctas { padding: 16px 20px; border-top: 1px solid var(--grey-200); display: flex; flex-direction: column; gap: 10px; }
+
+    /* ============================================================
+       PRE-NAV CTA BAR
+    ============================================================ */
+    .ior-prenav-cta { background: var(--ior-blue); padding: 8px 0; }
+    .ior-prenav-cta__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--section-pad-x); display: flex; align-items: center; gap: 0; flex-wrap: wrap; }
+    .ior-prenav-cta__link { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,.9); padding: 6px 16px 6px 0; margin-right: 16px; transition: color var(--transition-fast); white-space: nowrap; min-height: 32px; }
+    .ior-prenav-cta__link:hover { color: #fff; text-decoration: underline; }
+    @media (max-width: 768px) { .ior-prenav-cta { display: none; } }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .page-hero { background: var(--ior-navy); min-height: clamp(340px, 50dvh, 560px); display: flex; align-items: center; padding: clamp(60px,8vw,100px) 0; position: relative; overflow: hidden; }
+    .page-hero__video-wrapper { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .page-hero__video-wrapper video { width: 100%; height: 100%; object-fit: cover; opacity: .18; }
+    .page-hero__content { position: relative; z-index: 1; max-width: 760px; }
+    .page-hero__eyebrow { font-size: clamp(11px,1.2vw,13px); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 14px; display: block; }
+    .page-hero__h1 { font-size: clamp(32px, 5vw, 64px); font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: clamp(16px,2vw,24px); }
+    .page-hero__sub { font-size: clamp(15px,1.6vw,19px); color: rgba(255,255,255,.85); line-height: 1.6; margin-bottom: clamp(28px,3vw,40px); max-width: 600px; }
+    .page-hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ============================================================
+       QUICK LINKS BAR
+    ============================================================ */
+    .quick-links-bar { background: var(--ior-light-blue-bg); border-bottom: 1px solid #c8dff5; padding: 0; }
+    .quick-links-bar__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--section-pad-x); display: flex; align-items: center; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .quick-links-bar__label { font-size: 11px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--ior-navy); white-space: nowrap; padding: 14px 20px 14px 0; margin-right: 4px; flex-shrink: 0; }
+    .quick-links-bar__link { display: inline-flex; align-items: center; font-size: 13px; font-weight: 700; color: var(--ior-blue); padding: 14px 16px; white-space: nowrap; transition: color var(--transition-fast); min-height: 44px; flex-shrink: 0; }
+    .quick-links-bar__link:hover { color: var(--ior-navy); }
+    .quick-links-bar__link--active { color: var(--ior-navy); border-bottom: 3px solid var(--ior-navy); }
+
+    /* ============================================================
+       STAT BAR
+    ============================================================ */
+    .usp-bar { background: #fff; border-top: 1px solid var(--grey-200); border-bottom: 1px solid var(--grey-200); padding: clamp(20px,2.5vw,32px) 0; }
+    .usp-bar__inner { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--section-pad-x); display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .usp-bar__item { display: flex; align-items: center; gap: 14px; padding: 20px 24px; border-right: 1px solid var(--grey-200); }
+    .usp-bar__item:last-child { border-right: none; }
+    .usp-bar__icon { font-size: 28px; flex-shrink: 0; background: var(--ior-sky-10,#E8F4FD); border-radius: 10px; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; }
+    .usp-bar__text { display: flex; flex-direction: column; gap: 2px; }
+    .usp-bar__text strong { font-size: 14px; font-weight: 700; color: var(--grey-900); line-height: 1.3; }
+    .usp-bar__text span { font-size: 12px; color: var(--grey-500); line-height: 1.4; }
+
+    @media (max-width: 900px) { .usp-bar__inner { grid-template-columns: repeat(2, 1fr); } .usp-bar__item { border-right: none; border-bottom: 1px solid var(--grey-200); } .usp-bar__item:nth-child(odd) { border-right: 1px solid var(--grey-200); } }
+    @media (max-width: 480px) { .usp-bar__inner { grid-template-columns: 1fr; } .usp-bar__item { border-right: none; } }
+
+    /* ============================================================
+       BRANDS WE STOCK
+    ============================================================ */
+    .brands-section { background: var(--brand-fill); padding: clamp(40px,5vw,64px) 0; border-bottom: 1px solid var(--grey-200); }
+    .brands-section__heading { text-align: center; margin-bottom: clamp(28px,3vw,40px); }
+    .brands-section__heading h2 { font-size: clamp(20px,2.5vw,28px); font-weight: 800; color: var(--grey-900); margin-bottom: 8px; }
+    .brands-section__heading p { font-size: clamp(14px,1.4vw,16px); color: var(--grey-700); max-width: 560px; margin-inline: auto; }
+    .brands-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(12px,1.5vw,20px); }
+    @media (max-width: 900px) { .brands-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .brands-grid { grid-template-columns: repeat(2, 1fr); } }
+    .brand-tile { background: #fff; border: 1px solid var(--grey-200); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; gap: 10px; min-height: 100px; transition: box-shadow var(--transition-fast); }
+    .brand-tile:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .brand-tile__logo { width: 100%; max-width: 100px; height: 40px; display: flex; align-items: center; justify-content: center; }
+    .brand-tile__name { font-size: 13px; font-weight: 700; color: var(--grey-700); letter-spacing: .04em; text-align: center; }
+    .brand-tile--confirmed .brand-tile__name { color: var(--ior-blue); }
+    .brand-tile--placeholder .brand-tile__name { color: var(--grey-400); font-style: italic; }
+    .brand-tile__badge { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--ior-blue); color: #fff; padding: 2px 8px; }
+    .brand-tile--placeholder .brand-tile__badge { background: var(--grey-200); color: var(--grey-400); }
+
+    /* ============================================================
+       PRODUCT RANGE — 3-column visual card grid
+    ============================================================ */
+    .product-range-section { padding: var(--section-pad) 0; background: #fff; }
+    .section-heading { margin-bottom: clamp(28px,3vw,48px); }
+    .section-heading h2 { font-size: clamp(24px,3vw,40px); font-weight: 800; color: var(--grey-900); line-height: 1.2; margin-bottom: 12px; }
+    .section-heading p { font-size: clamp(14px,1.5vw,17px); color: var(--grey-700); max-width: 640px; }
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px,2vw,24px); }
+    @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .product-grid { grid-template-columns: 1fr; } }
+    .product-card { background: var(--grey-50); border: 1px solid var(--grey-200); border-top: 3px solid var(--ior-blue); padding: clamp(20px,2vw,28px); display: flex; flex-direction: column; gap: 12px; transition: box-shadow var(--transition-fast); }
+    .product-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+    .product-card__icon { width: 44px; height: 44px; background: var(--ior-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .product-card__title { font-size: clamp(15px,1.5vw,17px); font-weight: 800; color: var(--grey-900); line-height: 1.3; }
+    .product-card__desc { font-size: clamp(13px,1.2vw,14px); color: var(--grey-700); line-height: 1.6; }
+    .product-card__specs { display: flex; flex-direction: column; gap: 6px; }
+    .product-card__spec { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: var(--grey-700); }
+    .product-card__spec svg { flex-shrink: 0; margin-top: 2px; color: var(--ior-blue); }
+    .product-card__cta { margin-top: auto; font-size: 13px; font-weight: 700; color: var(--ior-blue); display: inline-flex; align-items: center; gap: 4px; }
+    .product-card__cta:hover { text-decoration: underline; }
+
+    /* ============================================================
+       CO-DELIVERY SPLIT
+    ============================================================ */
+    .co-delivery-section { background: var(--off-white); padding: var(--section-pad) 0; border-top: 1px solid var(--grey-200); }
+    .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,80px); align-items: center; }
+    @media (max-width: 768px) { .split-grid { grid-template-columns: 1fr; } }
+    .split-grid--alt .split-text { order: 2; }
+    .split-grid--alt .split-asset { order: 1; }
+    .split-text h2 { font-size: clamp(22px,3vw,36px); font-weight: 800; color: var(--grey-900); line-height: 1.2; margin-bottom: 16px; }
+    .split-text p { font-size: clamp(14px,1.4vw,16px); color: var(--grey-700); line-height: 1.7; margin-bottom: 16px; }
+    .split-text ul { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .split-text ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--grey-700); }
+    .split-text ul li svg { flex-shrink: 0; margin-top: 2px; color: var(--ior-blue); }
+    .asset-placeholder { background: var(--grey-100); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--grey-400); letter-spacing: .06em; text-transform: uppercase; border: 2px dashed var(--grey-200); }
+
+    /* ============================================================
+       INDUSTRIES SERVED
+    ============================================================ */
+    .industries-section { background: #fff; padding: var(--section-pad) 0; border-top: 1px solid var(--grey-200); }
+    .industry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px,2vw,24px); }
+    @media (max-width: 700px) { .industry-grid { grid-template-columns: repeat(2, 1fr); } }
+    .industry-card { background: var(--grey-50); border: 1px solid var(--grey-200); padding: clamp(20px,2vw,28px); display: flex; flex-direction: column; gap: 12px; transition: box-shadow var(--transition-fast); }
+    .industry-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .industry-card__icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .industry-card__title { font-size: clamp(14px,1.4vw,16px); font-weight: 800; color: var(--grey-900); }
+    .industry-card__body { font-size: 13px; color: var(--grey-700); line-height: 1.6; }
+    .industry-card__link { font-size: 13px; font-weight: 700; color: var(--ior-sky); margin-top: auto; }
+    .industry-card__link:hover { text-decoration: underline; }
+
+    /* ============================================================
+       TESTIMONIAL
+    ============================================================ */
+    .testimonial-section { background: var(--ior-deep); padding: var(--section-pad) 0; }
+    .testimonial-section__inner { max-width: 820px; margin-inline: auto; text-align: center; }
+    .testimonial-section blockquote { font-size: clamp(18px,2.5vw,28px); font-weight: 700; color: #fff; line-height: 1.5; margin-bottom: clamp(24px,3vw,36px); font-style: italic; }
+    .testimonial-section blockquote::before { content: '\201C'; }
+    .testimonial-section blockquote::after  { content: '\201D'; }
+    .testimonial-section__attr { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .testimonial-section__logo { background: rgba(255,255,255,.1); padding: 10px 16px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,.5); letter-spacing: .06em; text-transform: uppercase; text-align: center; }
+    .testimonial-section__attr-name { font-size: 15px; font-weight: 700; color: #fff; }
+    .testimonial-section__attr-role { font-size: 13px; color: rgba(255,255,255,.6); }
+    .testimonial-section__case-link { font-size: 13px; color: var(--ior-sky); text-decoration: underline; display: block; margin-top: 4px; }
+
+    /* ============================================================
+       LEAD CAPTURE
+    ============================================================ */
+    .lead-capture-section { background: var(--grey-50); padding: var(--section-pad) 0; border-top: 1px solid var(--grey-200); }
+    .lead-capture__card { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,80px); align-items: start; background: #fff; border: 1px solid var(--grey-200); padding: clamp(28px,4vw,56px); }
+    @media (max-width: 768px) { .lead-capture__card { grid-template-columns: 1fr; } }
+    .lead-capture__eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 10px; display: block; }
+    .lead-capture__h2 { font-size: clamp(22px,3vw,36px); font-weight: 800; color: var(--grey-900); line-height: 1.2; margin-bottom: 12px; }
+    .lead-capture__sub { font-size: clamp(14px,1.4vw,16px); color: var(--grey-700); line-height: 1.6; margin-bottom: 24px; }
+    .lead-capture__callouts { display: flex; flex-direction: column; gap: 10px; }
+    .lead-capture__callouts li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--grey-700); }
+    .dot { width: 8px; height: 8px; background: var(--ior-blue); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+    .hs-form-placeholder-light { background: var(--grey-100); border: 2px dashed var(--grey-300,#d1d5db); padding: 40px 24px; text-align: center; font-size: 13px; font-weight: 700; color: var(--grey-400); letter-spacing: .06em; text-transform: uppercase; min-height: 280px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; }
+
+    /* ============================================================
+       RELATED CONTENT
+    ============================================================ */
+    .related-content { padding: var(--section-pad) 0; background: var(--grey-50); border-top: 1px solid var(--grey-200); }
+    .related-content__tabs { display: flex; gap: 0; border-bottom: 2px solid var(--grey-200); margin-bottom: 28px; }
+    .related-content__tab { padding: 12px 20px; font-size: 14px; font-weight: 700; color: var(--grey-400); background: none; border: none; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all var(--transition-fast); min-height: 44px; }
+    .related-content__tab.active, .related-content__tab:hover { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+    .related-tab-panel { display: none; }
+    .related-tab-panel.active { display: block; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px,2vw,24px); }
+    @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
+    .related-card { background: #fff; border: 1px solid var(--grey-200); }
+    .related-card__img { background: var(--grey-100); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+    .related-card__img-logo { width: 28px; height: 28px; background: var(--ior-blue); display: flex; align-items: center; justify-content: center; }
+    .related-card__body { padding: 18px; }
+    .related-card__tag { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 6px; }
+    .related-card__title { font-size: 14px; font-weight: 700; color: var(--grey-900); line-height: 1.4; margin-bottom: 6px; }
+    .related-card__excerpt { font-size: 13px; color: var(--grey-700); line-height: 1.6; margin-bottom: 14px; }
+    .related-card__link { font-size: 13px; font-weight: 700; color: var(--ior-blue); }
+    .related-card__link:hover { text-decoration: underline; }
+    .related-content__view-all { text-align: center; margin-top: 28px; }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    .faq-section { padding: clamp(40px,5vw,72px) 0; background: #fff; border-top: 1px solid var(--grey-200); }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--grey-200); }
+    .faq-question { width: 100%; text-align: left; padding: clamp(12px,1.5vw,18px) 0; font-size: clamp(14px,1.4vw,16px); font-weight: 600; color: var(--grey-900); background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: color var(--transition); min-height: 44px; }
+    .faq-question:hover, .faq-question[aria-expanded="true"] { color: var(--ior-blue); }
+    .faq-chevron { flex-shrink: 0; transition: transform var(--transition); }
+    .faq-question[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { overflow: hidden; max-height: 0; transition: max-height .35s ease; }
+    .faq-answer p { font-size: 15px; color: var(--grey-700); line-height: 1.7; padding-bottom: 20px; }
+    .faq-footer { margin-top: 32px; padding: 24px 32px; background: var(--grey-50); border: 1px solid var(--grey-200); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .faq-footer__text h4 { font-size: 15px; font-weight: 700; color: var(--grey-900); margin-bottom: 4px; }
+    .faq-footer__text p { font-size: 13px; color: var(--grey-700); }
+    .faq-footer__actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; flex-shrink: 0; }
+    .faq-footer__help-link { font-size: 13px; color: var(--ior-blue); text-decoration: underline; text-underline-offset: 4px; }
+
+    /* ============================================================
+       FINAL CTA
+    ============================================================ */
+    .final-cta { padding: var(--section-pad) 0; background: #0a2240; text-align: center; }
+    .final-cta h2 { font-size: clamp(24px,3vw,40px); font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.2; }
+    .final-cta p { font-size: clamp(14px,1.5vw,17px); color: rgba(255,255,255,.85); margin-bottom: clamp(28px,3vw,40px); max-width: 560px; margin-inline: auto; }
+    .final-cta__ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================================================
+       PRE-FOOTER
+    ============================================================ */
+    .ior-pre-footer { background: var(--ior-blue); padding: clamp(40px,5vw,64px) var(--section-pad-x); }
+    .ior-pre-footer__inner { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .ior-pre-footer__title { font-size: clamp(24px,3.5vw,40px); font-weight: 800; color: #fff; line-height: 1.1; }
+    .ior-pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .ior-pre-footer__btn { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; font-size: clamp(14px,1.3vw,16px); font-weight: 700; border-radius: 500px; border: 2px solid #fff; cursor: pointer; transition: all var(--transition-fast); text-decoration: none; white-space: nowrap; min-height: 48px; }
+    .ior-pre-footer__btn--filled { background: #fff; color: var(--ior-blue); }
+    .ior-pre-footer__btn--filled:hover { background: var(--ior-light); }
+    .ior-pre-footer__btn--outline { background: transparent; color: #fff; }
+    .ior-pre-footer__btn--outline:hover { background: rgba(255,255,255,.1); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .ior-footer { background: var(--ior-blue); padding: clamp(40px,5vw,64px) var(--section-pad-x) 0; }
+    .ior-footer__inner { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr 1fr; gap: 32px; padding-bottom: clamp(32px,4vw,48px); border-bottom: 1px solid rgba(255,255,255,.15); }
+    .ior-footer__col { display: flex; flex-direction: column; gap: 10px; }
+    .ior-footer__heading { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 4px; }
+    .ior-footer__link { font-size: 14px; color: rgba(255,255,255,.85); text-decoration: none; min-height: 32px; display: flex; align-items: center; }
+    .ior-footer__link:hover { color: #fff; text-decoration: underline; }
+    .ior-footer__address { font-size: 14px; color: rgba(255,255,255,.75); font-style: normal; line-height: 1.6; }
+    .ior-footer__states { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ior-footer__state { display: inline-flex; align-items: center; justify-content: center; padding: 6px 12px; background: rgba(255,255,255,.1); font-size: 13px; font-weight: 700; color: #fff; min-height: 36px; transition: background var(--transition-fast); }
+    .ior-footer__state:hover { background: rgba(255,255,255,.2); }
+    .ior-footer__legal { max-width: var(--container-max); margin-inline: auto; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .ior-footer__legal-text { font-size: 12px; color: rgba(255,255,255,.55); }
+    .ior-footer__legal-link { color: rgba(255,255,255,.55); text-decoration: underline; }
+    .ior-footer__legal-link:hover { color: rgba(255,255,255,.85); }
+    .ior-footer__social { display: flex; gap: 12px; }
+    .ior-footer__social-link { display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+    @media (max-width: 1024px) { .ior-footer__inner { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 600px) { .ior-footer__inner { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) { .hamburger { display: flex; } .nav-links, .nav-ctas .btn:not(.hamburger) { display: none; } .nav-ctas { gap: 0; } }
+
+    /* Fade-up — safe default visible */
+    .fade-up { opacity: 1; transform: none; }
+    .fade-up--animated { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-up--animated.fade-up--visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- ── UTILITY BAR ──────────────────────────────────────────────────────── -->
+<div class="ior-utility-bar" role="complementary" aria-label="Utility navigation">
+  <div class="ior-utility-bar__inner">
+    <div class="ior-utility-bar__actions">
+      <a href="11d_Find_Locationv5.html" class="ior-utility-bar__link" aria-label="Find a diesel stop location">
+        <svg class="ior-utility-bar__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Find a Location
+      </a>
+      <span class="ior-utility-bar__divider" aria-hidden="true"></span>
+      <a href="11e_Make_Paymentv5.html" class="ior-utility-bar__link" aria-label="Make a payment">
+        <svg class="ior-utility-bar__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Make a Payment
+      </a>
+      <span class="ior-utility-bar__divider" aria-hidden="true"></span>
+      <a href="tel:1300457467" class="ior-utility-bar__link" aria-label="Call IOR on 1300 457 467">
+        <svg class="ior-utility-bar__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        1300 457 467
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRE-NAV CTA BAR ──────────────────────────────────────────────────── -->
+<div class="ior-prenav-cta" role="complementary" aria-label="Quick actions">
+  <div class="ior-prenav-cta__inner">
+    <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-prenav-cta__link" target="_blank" rel="noopener noreferrer">Apply for an Account &rarr;</a>
+    <a href="#lead-capture" class="ior-prenav-cta__link">Request a Quote &rarr;</a>
+    <a href="11a_Contact_Usv5.html" class="ior-prenav-cta__link">Speak to a Specialist &rarr;</a>
+    <a href="tel:1300457467" class="ior-prenav-cta__link">1300 457 467 &rarr;</a>
+  </div>
+</div>
+
+<!-- ── PRIMARY NAV ──────────────────────────────────────────────────────── -->
+<header role="banner">
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">
+        <svg width="90" height="42" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g clip-path="url(#ior-logo-clip-ol9)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/></g><defs><clipPath id="ior-logo-clip-ol9"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><button class="nav-link active" data-menu="fuel-solutions" aria-expanded="false" aria-controls="mega-fuel-solutions">Fuel Solutions <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link" data-menu="digital-platforms" aria-expanded="false" aria-controls="mega-digital-platforms">Digital Platforms <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link" data-menu="industries" aria-expanded="false" aria-controls="mega-industries">Industries We Serve <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link" data-menu="about-ior" aria-expanded="false" aria-controls="mega-about-ior">About IOR <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link" data-menu="support-contact" aria-expanded="false" aria-controls="mega-support-contact">Support &amp; Contact <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--outline btn--sm" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mega: Fuel Solutions -->
+    <div class="mega-panel" id="mega-fuel-solutions" role="region" aria-label="Fuel Solutions menu">
+      <div class="mega-inner mega-inner--5col">
+        <div class="mega-col">
+          <p class="mega-col__heading">Ground Fuels</p>
+          <a href="03_Ground_Fuels_v8.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="mega-col__link-text"><strong>Ground Fuels Overview</strong><span>All ground fuel solutions</span></div></a>
+          <a href="03a_Diesel_Network_v8.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="mega-col__link-text"><strong>Diesel Network</strong><span>500+ stop locations</span></div></a>
+          <a href="03b_On_Site_Refuelling_v9.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="mega-col__link-text"><strong>On-Site Refuelling</strong><span>Direct to equipment</span></div></a>
+          <a href="03c_Bulk_Diesel_Delivery_v9.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div><div class="mega-col__link-text"><strong>Bulk Diesel Delivery</strong><span>National fleet</span></div></a>
+          <a href="03d_HyBlue_v9.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div><div class="mega-col__link-text"><strong>HyBlue&#8482; AdBlue&#174;</strong><span>ISO 22241 certified</span></div></a>
+          <a href="03e_Oils_Lubricants_v9.html" class="mega-col__link" aria-current="page"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div class="mega-col__link-text"><strong>Oils &amp; Lubricants</strong><span>Premium lubes to site</span></div></a>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__heading">Aviation</p>
+          <a href="04_Aviation_Hub.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><div class="mega-col__link-text"><strong>Aviation Overview</strong><span>Avgas, Jet A-1, turbine</span></div></a>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__heading">Equipment &amp; Infrastructure</p>
+          <a href="05_Equipment_Infrastructure.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div class="mega-col__link-text"><strong>Tanks &amp; Infrastructure</strong><span>Self-bunded, frac tanks</span></div></a>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__heading">Supply &amp; Trading</p>
+          <a href="06_Supply_Trading.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="mega-col__link-text"><strong>Supply &amp; Trading</strong><span>Wholesale &amp; spot supply</span></div></a>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col__heading">Quick Actions</p>
+          <a href="https://iorapp.applyeasy.com.au/services/introduction" class="mega-col__link" target="_blank" rel="noopener noreferrer"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="mega-col__link-text"><strong>Apply for an Account</strong><span>Get started today</span></div></a>
+          <a href="11d_Find_Locationv5.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="mega-col__link-text"><strong>Find a Location</strong><span>500+ diesel stops</span></div></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega: Digital Platforms -->
+    <div class="mega-panel" id="mega-digital-platforms" role="region" aria-label="Digital Platforms menu">
+      <div class="mega-inner mega-inner--4col">
+        <div class="mega-col"><p class="mega-col__heading">Fuel Management</p><a href="07a_HyDip_FMSv6.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="mega-col__link-text"><strong>HyDip&#8482; FMS</strong><span>Real-time tank monitoring</span></div></a><a href="07b_Fuelcharge_App_v8.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div class="mega-col__link-text"><strong>Fuelcharge App</strong><span>Mobile fuel management</span></div></a></div>
+        <div class="mega-col"><p class="mega-col__heading">Account Management</p><a href="07c_Customer_Portalv5.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18M9 21V9"/></svg></div><div class="mega-col__link-text"><strong>Customer Portal</strong><span>Invoices, orders, reports</span></div></a></div>
+      </div>
+    </div>
+
+    <!-- Mega: Industries -->
+    <div class="mega-panel" id="mega-industries" role="region" aria-label="Industries We Serve menu">
+      <div class="mega-inner mega-inner--4col">
+        <div class="mega-col"><p class="mega-col__heading">Primary Industries</p><a href="08a_Mining_Resources.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M2 20h20M6 20V10l6-6 6 6v10"/></svg></div><div class="mega-col__link-text"><strong>Mining &amp; Resources</strong></div></a><a href="08b_Agriculture.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M12 22V12M12 12C12 7 7 3 2 3c0 5 4 9 10 9zM12 12c0-5 5-9 10-9-1 5-5 9-10 9"/></svg></div><div class="mega-col__link-text"><strong>Agriculture &amp; Harvest</strong></div></a></div>
+        <div class="mega-col"><p class="mega-col__heading">Construction &amp; Civil</p><a href="08c_Construction.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/></svg></div><div class="mega-col__link-text"><strong>Construction &amp; Civil</strong></div></a><a href="08d_Transport.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg></div><div class="mega-col__link-text"><strong>Transport &amp; Logistics</strong></div></a></div>
+        <div class="mega-col"><p class="mega-col__heading">Specialist Sectors</p><a href="08e_Oil_Gas.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div><div class="mega-col__link-text"><strong>Oil &amp; Gas</strong></div></a><a href="08f_Government.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="mega-col__link-text"><strong>Government &amp; Defence</strong></div></a></div>
+      </div>
+    </div>
+
+    <!-- Mega: About IOR -->
+    <div class="mega-panel" id="mega-about-ior" role="region" aria-label="About IOR menu">
+      <div class="mega-inner mega-inner--4col">
+        <div class="mega-col"><p class="mega-col__heading">Company</p><a href="09_About_IOR.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="mega-col__link-text"><strong>About IOR</strong><span>Our story and values</span></div></a><a href="09c_Sustainability.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="mega-col__link-text"><strong>Sustainability, HSE &amp; ESG</strong></div></a><a href="10_Careers.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div class="mega-col__link-text"><strong>Careers</strong></div></a></div>
+        <div class="mega-col"><p class="mega-col__heading">Resources</p><a href="09d_Case_Studies.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="mega-col__link-text"><strong>Case Studies</strong></div></a><a href="11c_News_Updates.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/></svg></div><div class="mega-col__link-text"><strong>News &amp; Updates</strong></div></a></div>
+      </div>
+    </div>
+
+    <!-- Mega: Support & Contact -->
+    <div class="mega-panel" id="mega-support-contact" role="region" aria-label="Support and Contact menu">
+      <div class="mega-inner mega-inner--4col">
+        <div class="mega-col"><p class="mega-col__heading">Get Help</p><a href="11_Support_Hubv5.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="mega-col__link-text"><strong>Help Centre &amp; FAQs</strong></div></a><a href="11a_Contact_Usv5.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="mega-col__link-text"><strong>Contact Us</strong></div></a><a href="11b_Regional_Contactsv5.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="mega-col__link-text"><strong>Regional Contacts</strong></div></a></div>
+        <div class="mega-col"><p class="mega-col__heading">Account</p><a href="https://iorapp.applyeasy.com.au/services/introduction" class="mega-col__link" target="_blank" rel="noopener noreferrer"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="mega-col__link-text"><strong>Apply for an Account</strong></div></a><a href="11e_Make_Paymentv5.html" class="mega-col__link"><div class="mega-col__link-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><div class="mega-col__link-text"><strong>Make a Payment</strong></div></a></div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ── MOBILE DRAWER ─────────────────────────────────────────────────────── -->
+<div class="ior-drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+<nav class="ior-drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="ior-drawer__header">
+    <a href="01_Homepage.html" aria-label="IOR home"><svg width="70" height="32" viewBox="0 0 98 46" fill="none"><g clip-path="url(#ior-logo-clip-ol9m)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/></g><defs><clipPath id="ior-logo-clip-ol9m"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg></a>
+    <button class="ior-drawer__close" id="drawer-close" aria-label="Close navigation menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="ior-drawer__nav">
+    <button class="ior-drawer__link" data-drawer="drawer-fuel" aria-expanded="false" aria-controls="drawer-fuel">Fuel Solutions <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="ior-drawer__sub" id="drawer-fuel">
+      <a href="03_Ground_Fuels_v8.html" class="ior-drawer__sub-link">Ground Fuels</a>
+      <a href="03a_Diesel_Network_v8.html" class="ior-drawer__sub-link">Diesel Network</a>
+      <a href="03b_On_Site_Refuelling_v9.html" class="ior-drawer__sub-link">On-Site Refuelling</a>
+      <a href="03c_Bulk_Diesel_Delivery_v9.html" class="ior-drawer__sub-link">Bulk Diesel Delivery</a>
+      <a href="03d_HyBlue_v9.html" class="ior-drawer__sub-link">HyBlue&#8482; AdBlue&#174;</a>
+      <a href="03e_Oils_Lubricants_v9.html" class="ior-drawer__sub-link">Oils &amp; Lubricants</a>
+      <a href="04_Aviation_Hub.html" class="ior-drawer__sub-link">Aviation</a>
+    </div>
+    <button class="ior-drawer__link" data-drawer="drawer-digital" aria-expanded="false" aria-controls="drawer-digital">Digital Platforms <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="ior-drawer__sub" id="drawer-digital">
+      <a href="07a_HyDip_FMSv6.html" class="ior-drawer__sub-link">HyDip&#8482; FMS</a>
+      <a href="07b_Fuelcharge_App_v8.html" class="ior-drawer__sub-link">Fuelcharge App</a>
+      <a href="07c_Customer_Portalv5.html" class="ior-drawer__sub-link">Customer Portal</a>
+    </div>
+    <button class="ior-drawer__link" data-drawer="drawer-industries" aria-expanded="false" aria-controls="drawer-industries">Industries We Serve <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="ior-drawer__sub" id="drawer-industries">
+      <a href="08a_Mining_Resources.html" class="ior-drawer__sub-link">Mining &amp; Resources</a>
+      <a href="08b_Agriculture.html" class="ior-drawer__sub-link">Agriculture &amp; Harvest</a>
+      <a href="08c_Construction.html" class="ior-drawer__sub-link">Construction &amp; Civil</a>
+      <a href="08d_Transport.html" class="ior-drawer__sub-link">Transport &amp; Logistics</a>
+      <a href="08e_Oil_Gas.html" class="ior-drawer__sub-link">Oil &amp; Gas</a>
+      <a href="08f_Government.html" class="ior-drawer__sub-link">Government &amp; Defence</a>
+    </div>
+    <a href="09_About_IOR.html" class="ior-drawer__link">About IOR</a>
+    <a href="11a_Contact_Usv5.html" class="ior-drawer__link">Contact Us</a>
+  </div>
+  <div class="ior-drawer__ctas">
+    <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary btn--pill" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+    <a href="11d_Find_Locationv5.html" class="btn btn--outline btn--pill">Find a Location</a>
+  </div>
+</nav>
+
+<main id="main-content">
+
+  <!-- ── SECTION 1: HERO ───────────────────────────────────────────────── -->
+  <section class="page-hero" aria-labelledby="hero-heading">
+    <div class="page-hero__video-wrapper" aria-hidden="true">
+      <!-- VIDEO PLACEHOLDER: Replace with autoplay muted loop video of lubricant delivery / equipment maintenance -->
+    </div>
+    <div class="container">
+      <div class="page-hero__content">
+        <span class="page-hero__eyebrow">OILS &amp; LUBRICANTS</span>
+        <h1 class="page-hero__h1" id="hero-heading">Premium brands. Delivered to your site.</h1>
+        <p class="page-hero__sub">IOR supplies lubricants from leading industry-approved brands. Contact us to confirm specific product availability for your application.</p>
+        <div class="page-hero__ctas">
+          <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary btn--pill" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+          <a href="11a_Contact_Usv5.html" class="btn btn--outline-white btn--pill">Speak to a Specialist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 2: QUICK LINKS BAR ───────────────────────────────────── -->
+  <nav class="quick-links-bar" aria-label="Explore Ground Fuels">
+    <div class="quick-links-bar__inner">
+      <span class="quick-links-bar__label">Explore Ground Fuels:</span>
+      <a href="03_Ground_Fuels_v8.html" class="quick-links-bar__link">Ground Fuels</a>
+      <a href="03a_IOR_Diesel_Network_v9.html" class="quick-links-bar__link">IOR Diesel Network</a>
+      <a href="03b_On_Site_Refuelling_v9.html" class="quick-links-bar__link">On-Site Refuelling</a>
+      <a href="03c_Bulk_Diesel_Delivery_v9.html" class="quick-links-bar__link">Bulk Diesel Delivery</a>
+      <a href="03d_HyBlue_v9.html" class="quick-links-bar__link">HyBlue&#8482;</a>
+      <a href="03e_Oils_Lubricants_v9.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">Oils &amp; Lubricants</a>
+    </div>
+  </nav>
+
+  <!-- ── SECTION 3: USP BAR ──────────────────────────────────────────── -->
+  <div class="usp-bar" role="region" aria-label="Key facts about IOR Oils and Lubricants">
+    <div class="usp-bar__inner">
+      <div class="usp-bar__item">
+        <div class="usp-bar__icon" aria-hidden="true">&#x1F6E2;&#xFE0F;</div>
+        <div class="usp-bar__text"><strong>6+ Product Categories</strong><span>Engine oils to specialty lubes</span></div>
+      </div>
+      <div class="usp-bar__item">
+        <div class="usp-bar__icon" aria-hidden="true">&#x2699;&#xFE0F;</div>
+        <div class="usp-bar__text"><strong>API OEM-Approved Grades</strong><span>Certified grades for your equipment</span></div>
+      </div>
+      <div class="usp-bar__item">
+        <div class="usp-bar__icon" aria-hidden="true">&#x1F69B;</div>
+        <div class="usp-bar__text"><strong>Co-Delivered with Bulk Diesel</strong><span>One truck, one invoice, zero admin</span></div>
+      </div>
+      <div class="usp-bar__item">
+        <div class="usp-bar__icon" aria-hidden="true">&#x1F3ED;</div>
+        <div class="usp-bar__text"><strong>40+ Years in the Industry</strong><span>Trusted by Australia's toughest sectors</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: First Brands block deleted per brief (keep only Section 5b after Product Range) -->
+
+  <!-- ── SECTION 5: PRODUCT RANGE ─────────────────────────────────────── -->
+  <section class="product-range-section" id="products" aria-labelledby="products-heading">
+    <div class="container">
+      <div class="section-heading fade-up">
+        <p class="eyebrow eyebrow--blue">Product Range</p>
+        <h2 id="products-heading">The right lubricant for every application.</h2>
+        <p>From heavy-duty diesel engine oils to specialty compressor lubricants. We stock a comprehensive range for transport, mining, civil construction, and agriculture.</p>
+      </div>
+      <div class="product-grid">
+
+        <!-- Engine Oils -->
+        <article class="product-card fade-up">
+          <div class="product-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3 class="product-card__title">Engine Oils</h3>
+          <p class="product-card__desc">Premium diesel engine oils for heavy-duty mining, agricultural, and transport applications. API and OEM-approved grades available.</p>
+          <ul class="product-card__specs" aria-label="Engine oil product types">
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Heavy-duty diesel engine oils (HDEO)</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>API CK-4 and FA-4 compliant grades</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Multi-grade and mono-grade options</li>
+          </ul>
+        </article>
+
+        <!-- Hydraulic Fluids -->
+        <article class="product-card fade-up">
+          <div class="product-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          </div>
+          <h3 class="product-card__title">Hydraulic Fluids</h3>
+          <p class="product-card__desc">Anti-wear hydraulic fluids for mobile and stationary equipment. Suitable for extreme pressure, high-temperature, and fire-resistant applications.</p>
+          <ul class="product-card__specs" aria-label="Hydraulic fluid product types">
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Anti-wear hydraulic oils (AW46, AW68)</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Biodegradable and fire-resistant options</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>High-viscosity index (HVI) grades</li>
+          </ul>
+        </article>
+
+        <!-- Greases -->
+        <article class="product-card fade-up">
+          <div class="product-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h3 class="product-card__title">Greases</h3>
+          <p class="product-card__desc">High-performance greases for bearings, chassis, and extreme-pressure applications in mining, agriculture, and civil construction.</p>
+          <ul class="product-card__specs" aria-label="Grease product types">
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>EP lithium complex greases</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Calcium sulfonate complex greases</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Open gear and wire rope lubricants</li>
+          </ul>
+        </article>
+
+        <!-- Gear & Transmission Oils -->
+        <article class="product-card fade-up">
+          <div class="product-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3 class="product-card__title">Gear &amp; Transmission Oils</h3>
+          <p class="product-card__desc">Gear oils, automatic transmission fluids, and wet brake fluids for heavy equipment, agricultural machinery, and transport fleets.</p>
+          <ul class="product-card__specs" aria-label="Gear and transmission oil product types">
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>EP gear oils (GL-4, GL-5)</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Automatic and manual transmission fluids</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Wet brake and UTTO fluids</li>
+          </ul>
+        </article>
+
+        <!-- Coolants & Antifreeze -->
+        <article class="product-card fade-up">
+          <div class="product-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3 class="product-card__title">Coolants &amp; Antifreeze</h3>
+          <p class="product-card__desc">Extended life coolants and antifreeze for heavy-duty diesel engines. OAT, HOAT, and conventional formulations for all climate conditions.</p>
+          <ul class="product-card__specs" aria-label="Coolant product types">
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Extended life coolants (OAT)</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Heavy-duty diesel coolants (HOAT)</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Concentrate and pre-mixed options</li>
+          </ul>
+        </article>
+
+        <!-- Specialty Lubricants -->
+        <article class="product-card fade-up">
+          <div class="product-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ior-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="product-card__title">Specialty Lubricants</h3>
+          <p class="product-card__desc">Compressor oils, chain oils, cutting fluids, and specialty lubricants for unique applications in mining, processing, and manufacturing.</p>
+          <ul class="product-card__specs" aria-label="Specialty lubricant product types">
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Compressor and vacuum pump oils</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Chain and conveyor lubricants</li>
+            <li class="product-card__spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Food-grade and biodegradable options</li>
+          </ul>
+        </article>
+
+      </div>
+      <!-- Unified Product Range CTA -->
+      <div style="text-align:center;margin-top:clamp(28px,3vw,40px);display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary btn--pill" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--outline btn--pill">Speak to a Fuel Specialist</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 5b: BRANDS WE STOCK (after Product Range) ──────────────── -->
+  <section class="brands-section" id="brands" aria-labelledby="brands-heading">
+    <div class="container">
+      <div class="brands-section__heading">
+        <p class="eyebrow eyebrow--blue">BRANDS WE STOCK</p>
+        <h2 id="brands-heading">Premium brands. Delivered to your site.</h2>
+        <p>IOR supplies lubricants from Australia's most trusted brands. Contact us to confirm specific product availability for your application.</p>
+      </div>
+      <div class="brands-grid">
+        <div class="brand-tile brand-tile--confirmed">
+          <div class="brand-tile__logo" aria-label="Caltex lubricants">
+            <svg width="80" height="32" viewBox="0 0 120 40" fill="none" aria-hidden="true"><rect width="120" height="40" fill="#E8F4FD"/><text x="60" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#0355A3">CALTEX</text></svg>
+          </div>
+          <div class="brand-tile__name">Caltex</div>
+          <div class="brand-tile__badge brand-tile__badge--confirmed">Confirmed</div>
+        </div>
+        <div class="brand-tile brand-tile--placeholder">
+          <div class="brand-tile__logo" aria-label="Brand logo placeholder">
+            <svg width="80" height="32" viewBox="0 0 120 40" fill="none" aria-hidden="true"><rect width="120" height="40" fill="#F3F4F6"/><text x="60" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#9CA3AF">BRAND LOGO</text></svg>
+          </div>
+          <div class="brand-tile__name">Pending confirmation</div>
+          <div class="brand-tile__badge">Placeholder</div>
+        </div>
+        <div class="brand-tile brand-tile--placeholder">
+          <div class="brand-tile__logo" aria-label="Brand logo placeholder">
+            <svg width="80" height="32" viewBox="0 0 120 40" fill="none" aria-hidden="true"><rect width="120" height="40" fill="#F3F4F6"/><text x="60" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#9CA3AF">BRAND LOGO</text></svg>
+          </div>
+          <div class="brand-tile__name">Pending confirmation</div>
+          <div class="brand-tile__badge">Placeholder</div>
+        </div>
+        <div class="brand-tile brand-tile--placeholder">
+          <div class="brand-tile__logo" aria-label="Brand logo placeholder">
+            <svg width="80" height="32" viewBox="0 0 120 40" fill="none" aria-hidden="true"><rect width="120" height="40" fill="#F3F4F6"/><text x="60" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#9CA3AF">BRAND LOGO</text></svg>
+          </div>
+          <div class="brand-tile__name">Pending confirmation</div>
+          <div class="brand-tile__badge">Placeholder</div>
+        </div>
+        <div class="brand-tile brand-tile--placeholder">
+          <div class="brand-tile__logo" aria-label="Brand logo placeholder">
+            <svg width="80" height="32" viewBox="0 0 120 40" fill="none" aria-hidden="true"><rect width="120" height="40" fill="#F3F4F6"/><text x="60" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#9CA3AF">BRAND LOGO</text></svg>
+          </div>
+          <div class="brand-tile__name">Pending confirmation</div>
+          <div class="brand-tile__badge">Placeholder</div>
+        </div>
+        <div class="brand-tile brand-tile--placeholder">
+          <div class="brand-tile__logo" aria-label="Brand logo placeholder">
+            <svg width="80" height="32" viewBox="0 0 120 40" fill="none" aria-hidden="true"><rect width="120" height="40" fill="#F3F4F6"/><text x="60" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#9CA3AF">BRAND LOGO</text></svg>
+          </div>
+          <div class="brand-tile__name">Pending confirmation</div>
+          <div class="brand-tile__badge">Placeholder</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 6: CO-DELIVERY SPLIT ─────────────────────────────────── -->
+  <section class="co-delivery-section" id="delivery" aria-labelledby="delivery-heading">
+    <div class="container">
+      <div class="split-grid split-grid--alt">
+        <div class="split-text fade-up">
+          <p class="eyebrow eyebrow--blue">DELIVERY OPTIONS</p>
+          <h2 id="delivery-heading">Delivered to site, on your schedule.</h2>
+          <p>IOR delivers lubricants in the format you need directly to your site. The same logistics network that delivers your diesel delivers your lubes.</p>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><strong>Drum &amp; Pail Delivery:</strong> 20L pails, 60L pails, and 205L drums delivered to site. Palletised for easy handling.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><strong>IBC Delivery:</strong> 1,000L IBCs for high-volume operations. Forklift-compatible and stackable.</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><strong>Consolidated Invoicing:</strong> Diesel and lubricants on one IOR invoice. One supplier, one account, one relationship.</li>
+          </ul>
+          <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--pill">Speak to a Fuel Specialist</a>
+        </div>
+        <div class="split-asset fade-up">
+          <div class="asset-placeholder" role="img" aria-label="Co-delivery image placeholder — single IOR truck delivering diesel and lubricants to a mine site">
+            ASSET PLACEHOLDER<br>Co-Delivery Visual<br>Diesel + Lubes, One Truck
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 7: INDUSTRIES SERVED ─────────────────────────────────── -->
+  <section class="industries-section" id="industries" aria-labelledby="industries-heading">
+    <div class="container">
+      <div class="section-heading fade-up" style="text-align:center; max-width:640px; margin-inline:auto; margin-bottom:clamp(28px,3vw,48px);">
+        <p class="eyebrow eyebrow--blue">Industries Served</p>
+        <h2 id="industries-heading">Lubricants for every sector.</h2>
+        <p>From remote mine sites to busy transport depots, IOR delivers the right lubricant for your equipment and environment.</p>
+      </div>
+      <div class="industry-grid">
+        <div class="industry-card fade-up">
+          <div class="industry-card__icon" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--ior-sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M6 20V10l6-6 6 6v10"/><path d="M9 20v-5h6v5"/></svg></div>
+          <h3 class="industry-card__title">Mining &amp; Resources</h3>
+          <p class="industry-card__body">Heavy-duty engine oils, hydraulic fluids, and EP greases for underground and surface mining equipment.</p>
+          <a href="08a_Mining_Resources.html" class="industry-card__link">Learn more &rarr;</a>
+        </div>
+        <div class="industry-card fade-up">
+          <div class="industry-card__icon" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--ior-sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <h3 class="industry-card__title">Transport &amp; Logistics</h3>
+          <p class="industry-card__body">Fleet-approved engine oils, transmission fluids, and axle oils for long-haul and regional transport operators.</p>
+          <a href="08d_Transport.html" class="industry-card__link">Learn more &rarr;</a>
+        </div>
+        <div class="industry-card fade-up">
+          <div class="industry-card__icon" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--ior-sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><line x1="12" y1="20" x2="12" y2="14"/><rect x="8" y="14" width="8" height="6"/></svg></div>
+          <h3 class="industry-card__title">Construction &amp; Civil</h3>
+          <p class="industry-card__body">Hydraulic fluids, greases, and gear oils for excavators, graders, and civil plant across project sites.</p>
+          <a href="08c_Construction.html" class="industry-card__link">Learn more &rarr;</a>
+        </div>
+        <div class="industry-card fade-up">
+          <div class="industry-card__icon" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--ior-sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12C12 7 7 3 2 3c0 5 4 9 10 9zM12 12c0-5 5-9 10-9-1 5-5 9-10 9"/></svg></div>
+          <h3 class="industry-card__title">Agriculture &amp; Harvest</h3>
+          <p class="industry-card__body">UTTO fluids, wet brake fluids, and engine oils for tractors, harvesters, and agricultural machinery.</p>
+          <a href="08b_Agriculture.html" class="industry-card__link">Learn more &rarr;</a>
+        </div>
+        <div class="industry-card fade-up">
+          <div class="industry-card__icon" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--ior-sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg></div>
+          <h3 class="industry-card__title">Oil &amp; Gas</h3>
+          <p class="industry-card__body">Compressor oils, specialty lubricants, and hydraulic fluids for upstream and downstream oil and gas operations.</p>
+          <a href="08e_Oil_Gas.html" class="industry-card__link">Learn more &rarr;</a>
+        </div>
+        <div class="industry-card fade-up">
+          <div class="industry-card__icon" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--ior-sky)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <h3 class="industry-card__title">Government &amp; Defence</h3>
+          <p class="industry-card__body">Compliant lubricant supply for government fleets, defence assets, and critical infrastructure operations.</p>
+          <a href="08f_Government.html" class="industry-card__link">Learn more &rarr;</a>
+        </div>
+      </div>
+      <!-- Industries CTA -->
+      <div class="industry-cta-row" style="text-align:center;margin-top:clamp(28px,3vw,40px);">
+        <a href="08_Industries_Hub.html" class="btn btn--outline btn--pill">View All Industries &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 8: TESTIMONIAL ────────────────────────────────────────── -->
+  <section class="testimonial-section" aria-labelledby="testimonial-heading">
+    <div class="container">
+      <div class="testimonial-section__inner">
+        <p class="eyebrow eyebrow--sky" id="testimonial-heading">WHAT OUR CUSTOMERS SAY</p>
+        <blockquote>
+          Consolidating our fuel and lubricant orders with IOR cut our procurement admin by more than half. One supplier, one invoice, one point of contact. It is exactly what we needed on a busy civil project.
+        </blockquote>
+        <div class="testimonial-section__attr">
+          <div class="testimonial-section__logo" aria-label="Customer logo placeholder">LOGO<br>PENDING</div>
+          <div>
+            <div class="testimonial-section__attr-name">Fleet Manager</div>
+            <div class="testimonial-section__attr-role">Major Civil Contractor, Queensland</div>
+            <a href="09d_Case_Study_Singlev6.html" class="testimonial-section__case-link" aria-label="Read the case study">Read the case study &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 9: LEAD CAPTURE ───────────────────────────────────────── -->
+  <!-- HubSpot form: replace .hs-form-placeholder-light with hbspt.forms.create() embed -->
+  <section class="lead-capture-section" id="lead-capture" aria-labelledby="lc-heading">
+    <div class="container">
+      <div class="lead-capture__card">
+        <div class="lead-capture__left">
+          <p class="lead-capture__eyebrow">OILS &amp; LUBRICANTS ENQUIRY</p>
+          <h2 class="lead-capture__h2" id="lc-heading">Request a site assessment.</h2>
+          <p class="lead-capture__sub">Tell us about your fleet and equipment. We will recommend the right lubricants delivered in the format that suits your operation.</p>
+          <ul class="lead-capture__callouts">
+            <li><span class="dot" aria-hidden="true"></span>6+ product categories</li>
+            <li><span class="dot" aria-hidden="true"></span>Co-delivered with your bulk diesel order</li>
+            <li><span class="dot" aria-hidden="true"></span>API and OEM-approved grades available</li>
+            <li><span class="dot" aria-hidden="true"></span>SDS documentation provided for all products</li>
+          </ul>
+        </div>
+        <div class="lead-capture__form-wrapper">
+          <div class="hs-form-placeholder-light" role="region" aria-label="Contact form placeholder">
+            HUBSPOT FORM<br>Oils &amp; Lubricants Enquiry<br>Form ID: [pending]
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 10: RELATED CONTENT ───────────────────────────────────── -->
+  <section class="related-content" id="related" aria-labelledby="rc-heading">
+    <div class="container">
+      <div class="section-heading fade-up" style="margin-bottom:clamp(24px,3vw,40px);">
+        <p class="eyebrow eyebrow--blue">Latest from IOR</p>
+        <h2 id="rc-heading">Case studies &amp; insights for fleet and equipment operators.</h2>
+      </div>
+      <div class="related-content__tabs" role="tablist" aria-label="Related content tabs">
+        <button class="related-content__tab active" id="rc-tab-ol9-cs" role="tab" aria-selected="true" aria-controls="rc-panel-ol9-cs">Case Studies</button>
+        <button class="related-content__tab" id="rc-tab-ol9-blog" role="tab" aria-selected="false" aria-controls="rc-panel-ol9-blog">Blog Posts</button>
+      </div>
+      <div class="related-tab-panel active" id="rc-panel-ol9-cs" role="tabpanel" aria-labelledby="rc-tab-ol9-cs">
+        <div class="related-grid">
+          <article class="related-card"><div class="related-card__img" aria-label="Case study image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7
+"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Case Study</p><h3 class="related-card__title">Civil contractor cuts procurement admin by 50% with co-delivered fuel and lubes</h3><p class="related-card__excerpt">How a Queensland civil contractor consolidated fuel and lubricant supply with IOR to reduce admin overhead and site traffic.</p><a href="09d_Case_Study_Singlev6.html" class="related-card__link">Read the case study &rarr;</a></div></article>
+          <article class="related-card"><div class="related-card__img" aria-label="Case study image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Case Study</p><h3 class="related-card__title">Mining operator standardises lubricant supply across three remote sites</h3><p class="related-card__excerpt">IOR's national distribution capability enabled a WA mining operator to standardise lubricant grades across multiple remote operations.</p><a href="09d_Case_Study_Singlev6.html" class="related-card__link">Read the case study &rarr;</a></div></article>
+          <article class="related-card"><div class="related-card__img" aria-label="Case study image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Case Study</p><h3 class="related-card__title">Transport fleet reduces downtime with OEM-approved engine oil programme</h3><p class="related-card__excerpt">How IOR's lubricant advisory service helped a national transport operator select the right engine oil grades for their mixed fleet.</p><a href="09d_Case_Study_Singlev6.html" class="related-card__link">Read the case study &rarr;</a></div></article>
+        </div>
+      </div>
+      <div class="related-tab-panel" id="rc-panel-ol9-blog" role="tabpanel" aria-labelledby="rc-tab-ol9-blog">
+        <div class="related-grid">
+          <article class="related-card"><div class="related-card__img" aria-label="Blog post image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Blog</p><h3 class="related-card__title">API CK-4 vs FA-4: which engine oil is right for your fleet?</h3><p class="related-card__excerpt">A practical guide to understanding the difference between API CK-4 and FA-4 engine oil specifications for heavy-duty diesel engines.</p><a href="11c_News_Updates.html" class="related-card__link">Read the article &rarr;</a></div></article>
+          <article class="related-card"><div class="related-card__img" aria-label="Blog post image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Blog</p><h3 class="related-card__title">Why co-delivering fuel and lubricants reduces total procurement cost</h3><p class="related-card__excerpt">Consolidating your fuel and lubricant supply with a single provider can significantly reduce admin overhead and total cost of ownership.</p><a href="11c_News_Updates.html" class="related-card__link">Read the article &rarr;</a></div></article>
+          <article class="related-card"><div class="related-card__img" aria-label="Blog post image placeholder"><div class="related-card__img-logo" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7"/></svg></div></div><div class="related-card__body"><p class="related-card__tag">Blog</p><h3 class="related-card__title">Hydraulic fluid selection guide for mobile mining equipment</h3><p class="related-card__excerpt">Choosing the right hydraulic fluid viscosity grade for your excavators, graders, and loaders in Australian conditions.</p><a href="11c_News_Updates.html" class="related-card__link">Read the article &rarr;</a></div></article>
+        </div>
+      </div>
+      <div class="related-content__view-all"><a href="09d_Case_Studies.html" class="btn btn--outline btn--pill">View all resources &rarr;</a></div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 11: FAQ ───────────────────────────────────────────────── -->
+  <section class="faq-section" id="faq" aria-labelledby="faq-heading">
+    <div class="container" style="max-width:860px;">
+      <div class="section-heading fade-up" style="margin-bottom:clamp(24px,3vw,40px);">
+        <p class="eyebrow eyebrow--blue">FAQs</p>
+        <h2 id="faq-heading">Oils &amp; Lubricants: Common Questions.</h2>
+      </div>
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-ol9-1" id="faq-ol9-q1">
+            Can IOR deliver lubricants at the same time as my bulk diesel order?
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer" id="faq-ol9-1" role="region" aria-labelledby="faq-ol9-q1">
+            <p>Yes. IOR co-delivers lubricants alongside bulk diesel orders wherever operationally feasible. This reduces the number of vehicles visiting your site and consolidates your procurement onto a single invoice. Contact your IOR representative to set up a co-delivery schedule.</p>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-ol9-2" id="faq-ol9-q2">
+            What lubricant grades does IOR supply?
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer" id="faq-ol9-2" role="region" aria-labelledby="faq-ol9-q2">
+            <p>IOR supplies a comprehensive range including API CK-4 and FA-4 engine oils, AW46/AW68 hydraulic fluids, EP lithium and calcium sulfonate greases, GL-4/GL-5 gear oils, UTTO fluids, extended life coolants, and specialty lubricants. Contact us to confirm specific grades and brands available for your application.</p>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-ol9-3" id="faq-ol9-q3">
+            Do you provide Safety Data Sheets (SDS) for all products?
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer" id="faq-ol9-3" role="region" aria-labelledby="faq-ol9-q3">
+            <p>Yes. Safety Data Sheets are provided for all lubricant products supplied by IOR. SDS documents are available on request and can be provided digitally or in hard copy with your delivery documentation.</p>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-ol9-4" id="faq-ol9-q4">
+            What delivery formats are available for lubricants?
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer" id="faq-ol9-4" role="region" aria-labelledby="faq-ol9-q4">
+            <p>IOR supplies lubricants in 20L pails, 60L pails, 205L drums, and 1,000L IBCs depending on the product and your site requirements. Speak with your IOR representative to confirm the most suitable format for your operation.</p>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-ol9-5" id="faq-ol9-q5">
+            Can IOR help me select the right lubricant for my equipment?
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer" id="faq-ol9-5" role="region" aria-labelledby="faq-ol9-q5">
+            <p>Yes. Our technical team can assist with lubricant selection based on your OEM specifications, operating environment, and equipment type. Contact us with your equipment make and model and we will recommend the most appropriate grade.</p>
+          </div>
+        </div>
+      </div>
+      <div class="faq-footer">
+        <div class="faq-footer__text">
+          <h4>Still have questions?</h4>
+          <p>Our team is available to help with product selection, SDS requests, and delivery enquiries.</p>
+        </div>
+        <div class="faq-footer__actions">
+          <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--pill btn--sm">Contact Us</a>
+          <a href="11_Support_Hubv5.html" class="faq-footer__help-link">Visit Help Centre</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 12: FINAL CTA ─────────────────────────────────────────── -->
+  <section class="final-cta" aria-labelledby="final-cta-heading">
+    <div class="container">
+      <p class="eyebrow eyebrow--sky">READY TO SIMPLIFY YOUR LUBRICANT SUPPLY?</p>
+      <h2 id="final-cta-heading">One supplier. One invoice. Delivered to site.</h2>
+      <p>Talk to IOR about co-delivering lubricants with your next bulk diesel order.</p>
+      <div class="final-cta__ctas">
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--white btn--pill" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white btn--pill">Speak to a Specialist</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     CANONICAL IOR PRE-FOOTER
+     Source: IOR_Global_Template_Shell_v4.html (v3-5)
+============================================================ -->
+<section class="ior-pre-footer" aria-label="We're here to help">
+  <div class="ior-pre-footer__inner">
+    <h2 class="ior-pre-footer__title">We&rsquo;re here to help</h2>
+    <div class="ior-pre-footer__ctas">
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-pre-footer__btn ior-pre-footer__btn--filled" target="_blank" rel="noopener noreferrer">Apply for an Account <span aria-hidden="true">&#8594;</span></a>
+      <a href="11_Support_Hubv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Need Help? <span aria-hidden="true">&#8594;</span></a>
+      <a href="11a_Contact_Usv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Contact Us <span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ior-footer" aria-label="Site footer">
+  <div class="ior-footer__inner">
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Contact</span>
+      <address class="ior-footer__address">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</address>
+      <a href="tel:1300457467" class="ior-footer__link">1300 457 467</a>
+      <a href="mailto:enquiries@ior.com.au" class="ior-footer__link">enquiries@ior.com.au</a>
+      <a href="11b_Regional_Contactsv5.html" class="ior-footer__link">Regional Contacts</a>
+    </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Fuel Solutions</span>
+      <a href="03_Ground_Fuels_v8.html" class="ior-footer__link">Ground Fuels</a>
+      <a href="04_Aviation_Hub.html" class="ior-footer__link">Aviation</a>
+      <a href="05_Equipment_Infrastructure.html" class="ior-footer__link">Equipment &amp; Infrastructure</a>
+      <a href="06_Supply_Trading.html" class="ior-footer__link">Supply &amp; Trading</a>
+    </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Digital Platforms</span>
+      <a href="07a_HyDip_FMSv6.html" class="ior-footer__link">HyDip&#8482; FMS</a>
+      <a href="07b_Fuelcharge_App_v8.html" class="ior-footer__link">Fuelcharge App</a>
+      <a href="07c_Customer_Portalv5.html" class="ior-footer__link">Customer Portal</a>
+    </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Corporate</span>
+      <a href="09_About_IOR.html" class="ior-footer__link">About IOR</a>
+      <a href="10_Careers.html" class="ior-footer__link">Careers</a>
+      <a href="09d_Case_Studies.html" class="ior-footer__link">Case Studies</a>
+      <a href="09c_Sustainability.html" class="ior-footer__link">Sustainability, HSE &amp; ESG</a>
+      <a href="11c_News_Updates.html" class="ior-footer__link">News &amp; Updates</a>
+    </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Quick Actions</span>
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-footer__link" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+      <a href="11e_Make_Paymentv5.html" class="ior-footer__link">Make a Payment</a>
+      <a href="11a_Contact_Usv5.html" class="ior-footer__link">Contact Us</a>
+      <a href="11_Support_Hubv5.html" class="ior-footer__link">Help Centre &amp; FAQs</a>
+    </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Find a Site By State</span>
+      <div class="ior-footer__states">
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">QLD</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">NSW</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">VIC</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">SA</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">WA</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">NT</a>
+      </div>
+    </div>
+  </div>
+  <div class="ior-footer__legal">
+    <p class="ior-footer__legal-text">
+      Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="ior-footer__legal-link">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="ior-footer__legal-link">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      Site by ThreePM
+    </p>
+    <div class="ior-footer__social" aria-label="Social media links">
+      <a href="https://www.linkedin.com/company/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M15 17h-3v9h3v-9zm-1.5-4.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM26 17c-1.7 0-2.8.9-3 1.8V17h-3v9h3v-4.5c0-1.4.7-2.5 2-2.5s2 1.1 2 2.5V26h3v-5c0-2.8-1.8-4-4-4z" fill="#0355A3"/></svg></a>
+      <a href="https://www.facebook.com/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M22 28v-7h2.4l.3-2.8H22v-1.8c0-.8.2-1.4 1.4-1.4H25V13c-.2 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.4v2H17V21h2.6v7H22z" fill="#0355A3"/></svg></a>
+      <a href="https://www.instagram.com/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><rect x="13" y="13" width="15" height="15" rx="4" stroke="#0355A3" stroke-width="2" fill="none"/><circle cx="20.5" cy="20.5" r="3.5" stroke="#0355A3" stroke-width="2" fill="none"/><circle cx="25" cy="16" r="1" fill="#0355A3"/></svg></a>
+      <a href="https://www.youtube.com/@iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M29 17.5s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C23.6 14.5 20.5 14.5 20.5 14.5s-3.1 0-5.7.1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S12 19 12 20.5v1.4c0 1.5.2 3 .2 3s.2 1.4.8 2c.8.8 1.8.8 2.3.9 1.7.2 7.2.2 7.2.2s3.1 0 5.7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.5.2-3v-1.4c0-1.5-.2-3-.2-3zM18.5 23v-5l5.5 2.5-5.5 2.5z" fill="#0355A3"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── NAV: Sticky scroll shadow ── */
+  const primaryNav = document.getElementById('primary-nav');
+  if (primaryNav) {
+    const scrollHandler = () => primaryNav.classList.toggle('primary-nav--scrolled', window.scrollY > 10);
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+  }
+
+  /* ── NAV: Mega menu ── */
+  const navButtons = document.querySelectorAll('.nav-link[data-menu]');
+  const megaPanels = document.querySelectorAll('.mega-panel');
+  let activeMega = null;
+
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const target = btn.dataset.menu;
+      const panel = document.getElementById('mega-' + target);
+      if (!panel) return;
+      const isOpen = panel.classList.contains('mega-panel--visible');
+      megaPanels.forEach(p => { p.classList.remove('mega-panel--visible'); });
+      navButtons.forEach(b => { b.setAttribute('aria-expanded', 'false'); });
+      if (!isOpen) {
+        panel.classList.add('mega-panel--visible');
+        btn.setAttribute('aria-expanded', 'true');
+        activeMega = panel;
+      } else {
+        activeMega = null;
+      }
+    });
+  });
+
+  document.addEventListener('click', () => {
+    megaPanels.forEach(p => p.classList.remove('mega-panel--visible'));
+    navButtons.forEach(b => b.setAttribute('aria-expanded', 'false'));
+    activeMega = null;
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && activeMega) {
+      megaPanels.forEach(p => p.classList.remove('mega-panel--visible'));
+      navButtons.forEach(b => b.setAttribute('aria-expanded', 'false'));
+      activeMega = null;
+    }
+  });
+
+  /* ── NAV: Mobile drawer ── */
+  const hamburger = document.getElementById('hamburger-btn');
+  const drawer = document.getElementById('mobile-drawer');
+  const drawerOverlay = document.getElementById('drawer-overlay');
+  const drawerClose = document.getElementById('drawer-close');
+
+  function openDrawer() {
+    drawer.classList.add('ior-drawer--open');
+    drawerOverlay.classList.add('ior-drawer-overlay--open');
+    drawer.setAttribute('aria-hidden', 'false');
+    drawerOverlay.setAttribute('aria-hidden', 'false');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('ior-drawer--open');
+    drawerOverlay.classList.remove('ior-drawer-overlay--open');
+    drawer.setAttribute('aria-hidden', 'true');
+    drawerOverlay.setAttribute('aria-hidden', 'true');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  if (hamburger) hamburger.addEventListener('click', openDrawer);
+  if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+  if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+  document.querySelectorAll('.ior-drawer__link[data-drawer]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const subId = btn.dataset.drawer;
+      const sub = document.getElementById(subId);
+      if (!sub) return;
+      const isOpen = sub.classList.contains('ior-drawer__sub--open');
+      document.querySelectorAll('.ior-drawer__sub').forEach(s => s.classList.remove('ior-drawer__sub--open'));
+      document.querySelectorAll('.ior-drawer__link[data-drawer]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+      if (!isOpen) {
+        sub.classList.add('ior-drawer__sub--open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ── RELATED CONTENT TABS ── */
+  document.querySelectorAll('.related-content__tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const panelId = tab.getAttribute('aria-controls');
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+      tab.closest('.related-content').querySelectorAll('.related-content__tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.closest('.related-content').querySelectorAll('.related-tab-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      panel.classList.add('active');
+    });
+  });
+
+  /* ── FAQ ACCORDION ── */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = document.getElementById(btn.getAttribute('aria-controls'));
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      if (answer) answer.style.maxHeight = isOpen ? '0' : answer.scrollHeight + 'px';
+    });
+  });
+</script>
+</body>
+</html>

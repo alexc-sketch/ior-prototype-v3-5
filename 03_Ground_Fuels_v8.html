@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ground Fuels | Commercial Diesel, AdBlue &amp; Lubricants | IOR</title>
-  <meta name="description" content="IOR delivers commercial diesel, AdBlue, and lubricants to mining, construction, transport, and agriculture operations across Australia. 500+ diesel stops and national bulk delivery.">
+  <title>Ground Fuels | Commercial Diesel, AdBlue &amp; Lubricants | IOR</title>  <meta name="description" content="IOR delivers commercial diesel, AdBlue, and lubricants to mining, construction, transport, and agriculture operations across Australia. 500+ diesel stops and national bulk delivery.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.ior.com.au/fuel-solutions/ground-fuels/">
   <meta property="og:title" content="Ground Fuels | Commercial Diesel, AdBlue &amp; Lubricants | IOR">
@@ -220,12 +219,15 @@
     /* ============================================================
        STAT BAR
     ============================================================ */
-    .stat-bar { background: var(--ior-blue); padding: clamp(20px,3vw,28px) 0; }
-    .stat-bar .container { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
-    .stat-item { text-align: center; padding: 0 16px; border-right: 1px solid rgba(255,255,255,.2); }
-    .stat-item:last-child { border-right: none; }
-    .stat-item__number { font-size: clamp(26px,3vw,38px); font-weight: 800; color: #fff; line-height: 1; margin-bottom: 6px; }
-    .stat-item__label { font-size: clamp(10px,1vw,12px); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.75); }
+    /* USP BAR */
+    .usp-bar { background: #fff; border-top: 1px solid var(--grey-200); border-bottom: 1px solid var(--grey-200); padding: clamp(28px,4vw,44px) 0; }
+    .usp-bar__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--section-pad-x); display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+    .usp-bar__item { display: flex; align-items: flex-start; gap: 16px; padding: 0 24px; border-right: 1px solid var(--grey-200); }
+    .usp-bar__item:first-child { padding-left: 0; }
+    .usp-bar__item:last-child { border-right: none; }
+    .usp-bar__icon { flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--ior-light); color: var(--ior-blue); font-size: 22px; }
+    .usp-bar__text strong { display: block; font-size: clamp(13px,1.2vw,15px); font-weight: 800; color: var(--ior-navy); margin-bottom: 3px; }
+    .usp-bar__text span { font-size: clamp(12px,1.1vw,13px); color: var(--mid-grey); line-height: 1.4; }
 
     /* ============================================================
        LOGO CAROUSEL — global standard
@@ -293,8 +295,8 @@
     /* ============================================================
        INDUSTRIES GRID
     ============================================================ */
-    .industries-section { padding: var(--section-pad) 0; background: var(--grey-50); }
-    .industries-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 40px; }
+    .industries-section { padding: var(--section-pad) 0; background: var(--off-white); }
+    .industries-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 40px; }
     .industry-card { background: var(--ior-navy); padding: 32px 24px; position: relative; overflow: hidden; }
     .industry-card__icon { margin-bottom: 20px; color: var(--ior-sky); display: flex; align-items: center; }
     .industry-card__icon svg { stroke: var(--ior-sky); }
@@ -304,6 +306,10 @@
     .industry-card__body { font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.6; margin-bottom: 20px; }
     .industry-card__link { font-size: 13px; font-weight: 700; color: var(--ior-sky); display: inline-flex; align-items: center; gap: 6px; }
     .industry-card__link:hover { text-decoration: underline; }
+    /* Industry view-all CTA */
+    .industry-cta-row { display: flex; justify-content: center; margin-top: clamp(32px,4vw,48px); }
+    .industry-view-all { display: inline-flex; align-items: center; padding: 14px 32px; font-size: clamp(14px,1.3vw,16px); font-weight: 700; font-family: var(--font); color: var(--ior-blue); border: 2px solid var(--ior-blue); border-radius: 500px; text-decoration: none; transition: all .2s; min-height: 48px; }
+    .industry-view-all:hover { background: var(--ior-blue); color: #fff; }
 
     /* ============================================================
        MAP TEASER
@@ -375,11 +381,54 @@
     /* ============================================================
        PRE-FOOTER + SITE FOOTER
     ============================================================ */
+    /* BESPOKE FINAL CTA */
+    .final-cta { padding: var(--section-pad) 0; background: #0a2240; text-align: center; }
+    .final-cta .eyebrow--sky { color: var(--ior-sky); margin-bottom: 16px; }
+    .final-cta h2 { font-size: clamp(24px,3vw,44px); font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.15; }
+    .final-cta p { font-size: clamp(14px,1.5vw,17px); color: rgba(255,255,255,.85); margin-bottom: clamp(28px,3vw,40px); max-width: 600px; margin-inline: auto; }
+    .final-cta__ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn--pill { border-radius: 500px; }
+    .btn--white { background: #fff; color: var(--ior-blue); border: 2px solid #fff; padding: 14px 32px; font-weight: 700; font-size: clamp(14px,1.3vw,16px); display: inline-flex; align-items: center; gap: 6px; text-decoration: none; transition: all .2s; min-height: 48px; }
+    .btn--white:hover { background: var(--ior-light); }
+    .btn--outline-white { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.7); padding: 14px 32px; font-weight: 700; font-size: clamp(14px,1.3vw,16px); display: inline-flex; align-items: center; gap: 6px; text-decoration: none; transition: all .2s; min-height: 48px; }
+    .btn--outline-white:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+
+    /* CANONICAL PRE-FOOTER */
+    .ior-pre-footer { background: var(--ior-blue); padding: clamp(40px,5vw,64px) var(--section-pad-x); }
+    .ior-pre-footer__inner { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .ior-pre-footer__title { font-size: clamp(24px,3.5vw,40px); font-weight: 800; color: #fff; line-height: 1.1; }
+    .ior-pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .ior-pre-footer__btn { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; font-size: clamp(14px,1.3vw,16px); font-weight: 700; border-radius: 500px; border: 2px solid #fff; cursor: pointer; transition: all .2s; text-decoration: none; white-space: nowrap; min-height: 48px; }
+    .ior-pre-footer__btn--filled { background: #fff; color: var(--ior-blue); }
+    .ior-pre-footer__btn--filled:hover { background: var(--ior-light); }
+    .ior-pre-footer__btn--outline { background: transparent; color: #fff; }
+    .ior-pre-footer__btn--outline:hover { background: rgba(255,255,255,.1); }
+
     .pre-footer { background: var(--ior-blue); padding: clamp(40px,5vw,56px) var(--section-pad-x) clamp(20px,2.5vw,28px); }
     .pre-footer__row { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
     .pre-footer__title { font-size: clamp(22px,2.5vw,32px); font-weight: 800; color: #fff; }
     .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
     .pre-footer__divider { max-width: var(--container-max); margin-inline: auto; height: 1px; background: rgba(255,255,255,.2); margin-top: clamp(20px,2.5vw,28px); }
+    /* CANONICAL IOR FOOTER */
+    .ior-footer { background: var(--ior-blue); padding: clamp(40px,5vw,64px) var(--section-pad-x) 0; }
+    .ior-footer__inner { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr 1fr; gap: 32px; padding-bottom: clamp(32px,4vw,48px); border-bottom: 1px solid rgba(255,255,255,.15); }
+    .ior-footer__col { display: flex; flex-direction: column; gap: 10px; }
+    .ior-footer__heading { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 4px; }
+    .ior-footer__link { font-size: 14px; color: rgba(255,255,255,.85); text-decoration: none; min-height: 32px; display: flex; align-items: center; }
+    .ior-footer__link:hover { color: #fff; text-decoration: underline; }
+    .ior-footer__address { font-size: 14px; color: rgba(255,255,255,.75); font-style: normal; line-height: 1.6; }
+    .ior-footer__states { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ior-footer__state { display: inline-flex; align-items: center; justify-content: center; padding: 6px 12px; background: rgba(255,255,255,.1); font-size: 13px; font-weight: 700; color: #fff; min-height: 36px; transition: background var(--transition-fast); }
+    .ior-footer__state:hover { background: rgba(255,255,255,.2); }
+    .ior-footer__legal { max-width: var(--container-max); margin-inline: auto; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .ior-footer__legal-text { font-size: 12px; color: rgba(255,255,255,.55); }
+    .ior-footer__legal-link { color: rgba(255,255,255,.55); text-decoration: underline; }
+    .ior-footer__legal-link:hover { color: rgba(255,255,255,.85); }
+    .ior-footer__social { display: flex; gap: 12px; }
+    .ior-footer__social-link { display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+    @media (max-width: 1024px) { .ior-footer__inner { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 600px) { .ior-footer__inner { grid-template-columns: repeat(2, 1fr); } }
+
     .site-footer { background: var(--ior-blue); color: #fff; padding: clamp(28px,3.5vw,40px) clamp(20px,8vw,80px) clamp(40px,5vw,60px); }
     .footer-nav-grid { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: repeat(6,1fr); gap: 32px; padding-bottom: 40px; }
     .footer-col__title { font-size: clamp(13px,1.3vw,16px); font-weight: 800; color: #fff; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.2); }
@@ -419,7 +468,10 @@
       .tabcordion__accordion { display: block; }
     }
     @media (max-width: 900px) {
-      .stat-bar .container { grid-template-columns: repeat(2,1fr); }
+      .usp-bar__inner { grid-template-columns: repeat(2,1fr); }
+      .usp-bar__item:nth-child(2) { border-right: none; }
+      .usp-bar__item:nth-child(3) { border-right: 1px solid var(--grey-200); padding-left: 0; border-top: 1px solid var(--grey-200); padding-top: 20px; }
+      .usp-bar__item:nth-child(4) { border-right: none; border-top: 1px solid var(--grey-200); padding-top: 20px; }
       .industries-grid { grid-template-columns: repeat(2,1fr); }
       .related-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -429,9 +481,9 @@
       .lead-capture__card { grid-template-columns: 1fr; padding: 24px; }
       .footer-nav-grid { grid-template-columns: repeat(2,1fr); }
       .pre-footer__row { flex-direction: column; align-items: flex-start; }
-      .stat-bar .container { grid-template-columns: 1fr 1fr; gap: 24px; }
-      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 20px; }
-      .stat-item:last-child { border-bottom: none; }
+      .usp-bar__inner { grid-template-columns: 1fr 1fr; }
+      .usp-bar__item { border-right: none; border-bottom: 1px solid var(--grey-200); padding-bottom: 20px; }
+      .usp-bar__item:last-child { border-bottom: none; }
       .industries-grid { grid-template-columns: 1fr; }
       .map-stats { grid-template-columns: 1fr 1fr; }
       .related-grid { grid-template-columns: 1fr; }
@@ -588,7 +640,7 @@
       <div class="hero__content">
         <span class="eyebrow eyebrow--sky">Ground Fuels</span>
         <h1>Australia's most trusted <span class="highlight">ground fuel network.</span></h1>
-        <p>From a single diesel stop to a fully managed on-site supply solution — IOR delivers commercial diesel, AdBlue®, and lubricants to mining, construction, transport, and agriculture operations across Australia.</p>
+        <p>From a single diesel stop to a fully managed on-site supply solution. IOR delivers commercial diesel, AdBlue®, and lubricants to mining, construction, transport, and agricultural operations across Australia.</p>
         <div class="hero-ctas">
           <a href="https://www.ior.com.au/apply" class="btn btn--primary">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
           <a href="11d_Find_Locationv5.html" class="btn btn--ghost">Find a Diesel Stop</a>
@@ -599,21 +651,47 @@
     <!-- QUICK LINKS BAR — NOT sticky -->
     <nav class="quick-links-bar" aria-label="Fuel Solutions quick links">
       <div class="quick-links-bar__inner">
-        <span class="quick-links-bar__label">Explore Fuel Solutions:</span>
+        <span class="quick-links-bar__label">Explore Ground Fuels:</span>
         <a href="03_Ground_Fuels_v8.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">Ground Fuels</a>
-        <a href="04_Aviation_Hub.html" class="quick-links-bar__link">Aviation</a>
-        <a href="06_Supply_Trading_v8.html" class="quick-links-bar__link">Supply &amp; Trading</a>
-        <a href="05_Equipment_Infrastructure_v8.html" class="quick-links-bar__link">Equipment &amp; Infrastructure</a>
+        <a href="03a_Diesel_Network_v8.html" class="quick-links-bar__link">IOR Diesel Network</a>
+        <a href="03b_On_Site_Refuelling_v9.html" class="quick-links-bar__link">On-Site Refuelling</a>
+        <a href="03c_Bulk_Diesel_Delivery_v9.html" class="quick-links-bar__link">Bulk Diesel Delivery</a>
+        <a href="03d_HyBlue_v9.html" class="quick-links-bar__link">HyBlue&#8482;</a>
+        <a href="03e_Oils_Lubricants_v9.html" class="quick-links-bar__link">Oils &amp; Lubricants</a>
       </div>
     </nav>
 
-    <!-- STAT BAR -->
-    <div class="stat-bar" aria-label="Key statistics">
-      <div class="container">
-        <div class="stat-item"><div class="stat-item__number">500+</div><div class="stat-item__label">Diesel Stop locations</div></div>
-        <div class="stat-item"><div class="stat-item__number">National</div><div class="stat-item__label">Bulk delivery fleet</div></div>
-        <div class="stat-item"><div class="stat-item__number">ISO 22241</div><div class="stat-item__label">Certified AdBlue®</div></div>
-        <div class="stat-item"><div class="stat-item__number">40+</div><div class="stat-item__label">Years in the industry</div></div>
+    <!-- USP BAR -->
+    <div class="usp-bar" aria-label="Why IOR Ground Fuels">
+      <div class="usp-bar__inner">
+        <div class="usp-bar__item">
+          <div class="usp-bar__icon" aria-hidden="true">&#128205;</div>
+          <div class="usp-bar__text">
+            <strong>500+ Diesel Stop Locations</strong>
+            <span>On Australia&#8217;s key transport corridors</span>
+          </div>
+        </div>
+        <div class="usp-bar__item">
+          <div class="usp-bar__icon" aria-hidden="true">&#128666;</div>
+          <div class="usp-bar__text">
+            <strong>National Bulk Delivery Fleet</strong>
+            <span>Rigid tankers, semi-trailers &amp; B-Doubles</span>
+          </div>
+        </div>
+        <div class="usp-bar__item">
+          <div class="usp-bar__icon" aria-hidden="true">&#9989;</div>
+          <div class="usp-bar__text">
+            <strong>ISO 22241 Certified AdBlue&#174;</strong>
+            <span>HyBlue&#8482; quality guaranteed</span>
+          </div>
+        </div>
+        <div class="usp-bar__item">
+          <div class="usp-bar__icon" aria-hidden="true">&#127981;</div>
+          <div class="usp-bar__text">
+            <strong>40+ Years in the Industry</strong>
+            <span>Australia&#8217;s most trusted fuel partner since 1984</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -689,7 +767,7 @@
               <div class="tabcordion__panel-content">
                 <span class="tabcordion__panel-eyebrow">On-Site Refuelling</span>
                 <h3 class="tabcordion__panel-title">Fuel at your fingertips.</h3>
-                <p class="tabcordion__panel-body">We manage your entire on-site fuel supply. Whether we provide a fully compliant IOR tank or upgrade your existing tank with HyDip® technology, we ensure zero downtime and guaranteed supply.</p>
+                <p class="tabcordion__panel-body">We manage your entire on-site fuel supply. We can provide a fully compliant IOR tank or upgrade your existing infrastructure with HyDip® technology. Guaranteed supply with zero downtime.</p>
                 <a href="03b_On_Site_Refuelling_v8.html" class="btn btn--primary">Explore On-Site Refuelling <span class="btn__arrow" aria-hidden="true"></span></a>
               </div>
             </div>
@@ -699,7 +777,7 @@
                 <span class="tabcordion__panel-eyebrow">Bulk Delivery</span>
                 <h3 class="tabcordion__panel-title">High-volume diesel delivery.</h3>
                 <p class="tabcordion__panel-body">Reliable bulk fuel delivery to remote and challenging environments. Our national fleet of rigid tankers, semi-trailers, and road trains is matched to your site's access requirements and volume needs.</p>
-                <a href="03c_Bulk_Diesel_Delivery_v8.html" class="btn btn--primary">Explore Bulk Delivery <span class="btn__arrow" aria-hidden="true"></span></a>
+                <a href="03c_Bulk_Diesel_Delivery_v9.html" class="btn btn--primary">Explore Bulk Delivery <span class="btn__arrow" aria-hidden="true"></span></a>
               </div>
             </div>
             <div class="tabcordion__panel" id="tc-panel-4" role="tabpanel" aria-labelledby="tc-tab-4">
@@ -708,7 +786,7 @@
                 <span class="tabcordion__panel-eyebrow">HyBlue&#8482; AdBlue&#174;</span>
                 <h3 class="tabcordion__panel-title">ISO 22241 certified DEF.</h3>
                 <p class="tabcordion__panel-body">Proudly Australian made. Protect your SCR systems and stay compliant with our VDA-certified diesel exhaust fluid, available in bulk, IBC, drum formats, or direct from our Diesel Stops.</p>
-                <a href="03d_HyBlue_v8.html" class="btn btn--primary">Explore HyBlue&#8482; <span class="btn__arrow" aria-hidden="true"></span></a>
+                <a href="03d_HyBlue_v9.html" class="btn btn--primary">Explore HyBlue&#8482; <span class="btn__arrow" aria-hidden="true"></span></a>
               </div>
             </div>
             <div class="tabcordion__panel" id="tc-panel-5" role="tabpanel" aria-labelledby="tc-tab-5">
@@ -717,7 +795,7 @@
                 <span class="tabcordion__panel-eyebrow">Oils &amp; Lubricants</span>
                 <h3 class="tabcordion__panel-title">Premium industrial lubricants.</h3>
                 <p class="tabcordion__panel-body">Heavy-duty engine oils, hydraulic fluids, and greases engineered for mining, construction, and agriculture. Co-delivered with your diesel supply on a single IOR invoice.</p>
-                <a href="03e_Oils_Lubricants_v8.html" class="btn btn--primary">Explore Oils &amp; Lubricants <span class="btn__arrow" aria-hidden="true"></span></a>
+                <a href="03e_Oils_Lubricants_v9.html" class="btn btn--primary">Explore Oils &amp; Lubricants <span class="btn__arrow" aria-hidden="true"></span></a>
               </div>
             </div>
           </div>
@@ -760,7 +838,7 @@
             <div class="tabcordion__acc-body" id="acc-body-3" role="region" aria-labelledby="acc-btn-3">
               <div class="tabcordion__acc-body-inner">
                 <p>Reliable bulk fuel delivery to remote and challenging environments. Our national fleet of rigid tankers, semi-trailers, and road trains is matched to your site's access requirements and volume needs.</p>
-                <a href="03c_Bulk_Diesel_Delivery_v8.html" class="btn btn--primary btn--sm">Explore Bulk Delivery <span class="btn__arrow" aria-hidden="true"></span></a>
+                <a href="03c_Bulk_Diesel_Delivery_v9.html" class="btn btn--primary btn--sm">Explore Bulk Delivery <span class="btn__arrow" aria-hidden="true"></span></a>
               </div>
             </div>
           </div>
@@ -773,7 +851,7 @@
             <div class="tabcordion__acc-body" id="acc-body-4" role="region" aria-labelledby="acc-btn-4">
               <div class="tabcordion__acc-body-inner">
                 <p>Proudly Australian made. Protect your SCR systems and stay compliant with our VDA-certified diesel exhaust fluid, available in bulk, IBC, drum formats, or direct from our Diesel Stops.</p>
-                <a href="03d_HyBlue_v8.html" class="btn btn--primary btn--sm">Explore HyBlue&#8482; <span class="btn__arrow" aria-hidden="true"></span></a>
+                <a href="03d_HyBlue_v9.html" class="btn btn--primary btn--sm">Explore HyBlue&#8482; <span class="btn__arrow" aria-hidden="true"></span></a>
               </div>
             </div>
           </div>
@@ -786,7 +864,7 @@
             <div class="tabcordion__acc-body" id="acc-body-5" role="region" aria-labelledby="acc-btn-5">
               <div class="tabcordion__acc-body-inner">
                 <p>Heavy-duty engine oils, hydraulic fluids, and greases engineered for mining, construction, and agriculture. Co-delivered with your diesel supply on a single IOR invoice.</p>
-                <a href="03e_Oils_Lubricants_v8.html" class="btn btn--primary btn--sm">Explore Oils &amp; Lubricants <span class="btn__arrow" aria-hidden="true"></span></a>
+                <a href="03e_Oils_Lubricants_v9.html" class="btn btn--primary btn--sm">Explore Oils &amp; Lubricants <span class="btn__arrow" aria-hidden="true"></span></a>
               </div>
             </div>
           </div>
@@ -802,18 +880,18 @@
           <div class="intro-content fade-up">
             <span class="eyebrow eyebrow--blue">Why IOR</span>
             <h2 id="about-heading">Built for Australia's <span class="accent">most demanding operations.</span></h2>
-            <p>IOR has been supplying fuel to Australia's remote and regional operations since 1984. We understand the unique challenges of fuelling mining camps, construction sites, agricultural operations, and transport fleets in locations where supply chain failures aren't an option.</p>
-            <p>Our ground fuel solutions are designed to eliminate downtime, simplify procurement, and give your operation a reliable, managed fuel supply — backed by a national network and a team that knows remote Australia.</p>
+            <p>IOR has supplied fuel to remote and regional operations since 1984. We understand the unique challenges of fuelling mining camps, construction sites, and transport fleets in locations where supply chain failures are not an option.</p>
+            <p>Our solutions eliminate downtime, simplify procurement, and give you a reliable fuel supply backed by a national network.</p>
             <ul>
-              <li>Managed supply with proactive monitoring and automatic replenishment</li>
-              <li>National network covering metropolitan, regional, and remote locations</li>
-              <li>Single account, single invoice for diesel, AdBlue®, and lubricants</li>
-              <li>Dedicated account management and 24/7 emergency support</li>
-              <li>Integrated with HyDip™ tank monitoring and FuelCharge app</li>
+              <li>Managed supply with proactive monitoring</li>
+              <li>National network covering remote locations</li>
+              <li>Single account and single invoice across all products</li>
+              <li>Dedicated account management and 24/7 support</li>
+              <li>Integrated HyDip&#8482; telemetry and Fuelcharge app</li>
             </ul>
             <div class="why-ior-ctas">
               <a href="09_About_IOR.html" class="btn btn--primary">About IOR <span class="btn__arrow" aria-hidden="true">&#8594;</span></a>
-              <a href="#lead-capture" class="btn btn--outline">Speak with a Fuel Specialist <span class="btn__arrow" aria-hidden="true">&#8594;</span></a>
+              <a href="#lead-capture" class="btn btn--outline">Speak to a Specialist <span class="btn__arrow" aria-hidden="true">&#8594;</span></a>
             </div>
           </div>
           <div class="fade-up">
@@ -831,13 +909,14 @@
           <h2 id="industries-heading">Fuelling Australia's <span class="accent">most critical industries.</span></h2>
         </div>
         <div class="industries-grid">
+          <!-- Row 1 -->
           <div class="industry-card fade-up">
             <div class="industry-card__icon" aria-hidden="true">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-7 8 7v10"/><path d="M9 20v-5h6v5"/><circle cx="12" cy="7" r="1"/></svg>
             </div>
             <h3 class="industry-card__title">Mining &amp; Resources</h3>
             <p class="industry-card__body">Managed on-site fuel supply for mine sites, processing plants, and exploration camps. High-volume bulk delivery, HyDip&#8482; monitoring, and 24/7 emergency support.</p>
-            <a href="03b_On_Site_Refuelling_v8.html" class="industry-card__link">On-Site Refuelling &#8594;</a>
+            <a href="03b_On_Site_Refuelling_v9.html" class="industry-card__link">On-Site Refuelling &#8594;</a>
           </div>
           <div class="industry-card fade-up">
             <div class="industry-card__icon" aria-hidden="true">
@@ -845,7 +924,7 @@
             </div>
             <h3 class="industry-card__title">Construction &amp; Civil</h3>
             <p class="industry-card__body">Flexible bulk delivery and on-site storage solutions for construction sites and civil projects. Temporary and permanent tank options with rapid deployment.</p>
-            <a href="03c_Bulk_Diesel_Delivery_v8.html" class="industry-card__link">Bulk Delivery &#8594;</a>
+            <a href="03c_Bulk_Diesel_Delivery_v9.html" class="industry-card__link">Bulk Delivery &#8594;</a>
           </div>
           <div class="industry-card fade-up">
             <div class="industry-card__icon" aria-hidden="true">
@@ -855,14 +934,35 @@
             <p class="industry-card__body">500+ diesel stop locations on Australia&#8217;s key transport corridors, plus on-site depot refuelling and bulk delivery for transport fleets of all sizes.</p>
             <a href="03a_Diesel_Network_v8.html" class="industry-card__link">Diesel Stops &#8594;</a>
           </div>
+          <!-- Row 2 -->
           <div class="industry-card fade-up">
             <div class="industry-card__icon" aria-hidden="true">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg>
             </div>
             <h3 class="industry-card__title">Agriculture &amp; Harvest</h3>
             <p class="industry-card__body">Seasonal bulk diesel delivery and on-farm storage solutions for cropping, livestock, and horticulture operations. Reliable supply when harvest timing is critical.</p>
-            <a href="03c_Bulk_Diesel_Delivery_v8.html" class="industry-card__link">Bulk Delivery &#8594;</a>
+            <a href="03c_Bulk_Diesel_Delivery_v9.html" class="industry-card__link">Bulk Delivery &#8594;</a>
           </div>
+          <div class="industry-card fade-up">
+            <div class="industry-card__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><path d="M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3"/></svg>
+            </div>
+            <h3 class="industry-card__title">Oil &amp; Gas</h3>
+            <p class="industry-card__body">Bulk diesel and lubricant supply to upstream and downstream oil and gas operations. Remote site delivery, managed storage, and HyDip&#8482; tank monitoring for critical energy assets.</p>
+            <a href="03b_On_Site_Refuelling_v9.html" class="industry-card__link">On-Site Refuelling &#8594;</a>
+          </div>
+          <div class="industry-card fade-up">
+            <div class="industry-card__icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="industry-card__title">Government &amp; Defence</h3>
+            <p class="industry-card__body">Compliant fuel supply for government fleets, defence operations, and emergency services. Secure bulk delivery, full audit trails, and single-account management across all sites.</p>
+            <a href="03c_Bulk_Diesel_Delivery_v9.html" class="industry-card__link">Bulk Delivery &#8594;</a>
+          </div>
+        </div>
+        <!-- Industries CTA -->
+        <div class="industry-cta-row fade-up">
+          <a href="08_Industries_Hub.html" class="industry-view-all">View All Industries &#8594;</a>
         </div>
       </div>
     </section>
@@ -904,21 +1004,21 @@
       <div class="container">
         <div class="lead-capture__card">
           <div class="lead-capture__content">
-            <span class="lead-capture__eyebrow">Get a Ground Fuels Quote</span>
-            <h2 class="lead-capture__h2" id="lc-h2">Get a tailored ground fuel solution for your operation.</h2>
-            <p class="lead-capture__sub">Tell us about your operation and we'll design a custom fuel supply solution. A member of our team will be in touch within one business day.</p>
+            <span class="lead-capture__eyebrow">SECURE YOUR SUPPLY</span>
+            <h2 class="lead-capture__h2" id="lc-h2">Get a tailored ground fuel solution.</h2>
+            <p class="lead-capture__sub">Tell us about your operation and we will design a custom fuel supply chain. A member of our team will respond rapidly to assess your requirements.</p>
             <ul class="lead-capture__callouts" aria-label="Key benefits">
               <li><span class="dot" aria-hidden="true"></span> Diesel stops, on-site refuelling, and bulk delivery</li>
-              <li><span class="dot" aria-hidden="true"></span> HyBlue&#8482; AdBlue&#174; and oils &amp; lubricants</li>
-              <li><span class="dot" aria-hidden="true"></span> HyDip&#8482; tank monitoring and FuelCharge app</li>
-              <li><span class="dot" aria-hidden="true"></span> Single account, single invoice</li>
+              <li><span class="dot" aria-hidden="true"></span> HyBlue&#8482; AdBlue&#174; and premium lubricants</li>
+              <li><span class="dot" aria-hidden="true"></span> HyDip&#8482; tank monitoring and digital integration</li>
+              <li><span class="dot" aria-hidden="true"></span> Single account with consolidated invoicing</li>
             </ul>
           </div>
           <div class="lead-capture__form-wrapper">
             <!-- HubSpot embed: replace this placeholder with the HubSpot embed script -->
             <!-- Portal ID: [portal-id] | Form ID: [form-id] -->
             <div class="hs-form-placeholder-light" aria-label="HubSpot enquiry form — embed pending">
-              <p>HubSpot Form &mdash; Embed Code Pending</p>
+              <p>HubSpot Form: Embed Code Pending</p>
             </div>
           </div>
         </div>
@@ -978,7 +1078,7 @@
       <div class="container">
         <div class="section-heading fade-up">
           <span class="eyebrow eyebrow--blue">FAQs</span>
-          <h2 id="faq-heading">Common questions about <span class="accent">IOR Ground Fuels.</span></h2>
+          <h2 id="faq-heading">Common questions about IOR Ground Fuels.</h2>
         </div>
         <div class="faq-list" role="list">
           <div class="faq-item" role="listitem">
@@ -1003,7 +1103,7 @@
           </div>
         </div>
         <div class="faq-footer">
-          <div class="faq-footer__text"><h4>Still have questions?</h4><p>Our team is here to help — call us or send an enquiry.</p></div>
+          <div class="faq-footer__text"><h4>Still have questions?</h4><p>Our team is here to help. Call us or send an enquiry.</p></div>
           <div class="faq-footer__actions">
             <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--sm">Contact Us</a>
             <a href="11_Support_Hubv5.html" class="faq-footer__help-link">Visit Help Centre</a>
@@ -1014,31 +1114,96 @@
 
   </main>
 
-  <!-- PRE-FOOTER -->
-  <section class="pre-footer" aria-label="We're here to help">
-    <div class="pre-footer__row">
-      <h2 class="pre-footer__title">Australia's most trusted ground fuel network &mdash; since 1984.</h2>
-      <div class="pre-footer__ctas">
-        <a href="#" class="btn btn--white">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
-        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white">Make an Enquiry <span class="btn__arrow" aria-hidden="true"></span></a>
-        <a href="11_Support_Hubv5.html" class="btn btn--outline-white">Need Help? <span class="btn__arrow" aria-hidden="true"></span></a>
+  <!-- ── BESPOKE FINAL CTA ─────────────────────────────────────────────── -->
+  <section class="final-cta" aria-labelledby="final-cta-heading">
+    <div class="container">
+      <p class="eyebrow eyebrow--sky">READY TO FUEL YOUR OPERATION?</p>
+      <h2 id="final-cta-heading">Australia's most trusted ground fuel network.</h2>
+      <p>Talk to IOR about fuelling your site, fleet, or operation anywhere in Australia.</p>
+      <div class="final-cta__ctas">
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--white btn--pill" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white btn--pill">Speak to a Specialist</a>
       </div>
     </div>
-    <div class="pre-footer__divider"></div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer" aria-label="Site footer">
-    <div class="footer-nav-grid">
-      <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link" style="align-items:flex-start;gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:3px" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span></span><a href="tel:1300457467" class="footer-col__link" style="gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link" style="gap:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>enquiries@ior.com.au</a><a href="11b_Regional_Contactsv5.html" class="footer-col__link">Regional Contacts</a></div></div>
-      <div><div class="footer-col__title">Fuel Solutions</div><div class="footer-col__links"><a href="03_Ground_Fuels_v8.html" class="footer-col__link">Ground Fuels</a><a href="04_Aviation_Hub_v3.5.html" class="footer-col__link">Aviation</a><a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a><a href="06_Supply_Trading_v8.html" class="footer-col__link">Supply &amp; Trading</a></div></div>
-      <div><div class="footer-col__title">Digital Platforms</div><div class="footer-col__links"><a href="07a_HyDip_FMS_v8.html" class="footer-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="footer-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v8.html" class="footer-col__link">Customer Portal</a></div></div>
-      <div><div class="footer-col__title">Corporate</div><div class="footer-col__links"><a href="09_About_IOR.html" class="footer-col__link">About IOR</a><a href="10_Careers.html" class="footer-col__link">Careers</a><a href="09d_Case_Studies.html" class="footer-col__link">Case Studies</a><a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a><a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a></div></div>
-      <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="11e_Make_Paymentv5.html" class="footer-col__link">Make a Payment</a><a href="11a_Contact_Usv5.html" class="footer-col__link">Contact Us</a><a href="11_Support_Hubv5.html" class="footer-col__link">Help Centre &amp; FAQs</a></div></div>
-      <div><div class="footer-col__title">Find a Site By State</div><div class="footer-state-pills"><a href="11d_Find_Locationv5.html" class="footer-state-pill">QLD</a><a href="11d_Find_Locationv5.html" class="footer-state-pill">NSW</a><a href="11d_Find_Locationv5.html" class="footer-state-pill">VIC</a><a href="11d_Find_Locationv5.html" class="footer-state-pill">SA</a><a href="11d_Find_Locationv5.html" class="footer-state-pill">WA</a><a href="11d_Find_Locationv5.html" class="footer-state-pill">NT</a></div></div>
+  <!-- ── CANONICAL IOR PRE-FOOTER ──────────────────────────────────────── -->
+  <section class="ior-pre-footer" aria-label="We're here to help">
+    <div class="ior-pre-footer__inner">
+      <h2 class="ior-pre-footer__title">We&rsquo;re here to help</h2>
+      <div class="ior-pre-footer__ctas">
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-pre-footer__btn ior-pre-footer__btn--filled" target="_blank" rel="noopener noreferrer">Apply for an Account &#8594;</a>
+        <a href="11_Support_Hubv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Need Help? &#8594;</a>
+        <a href="11a_Contact_Usv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Contact Us &#8594;</a>
+      </div>
     </div>
-    <div class="footer-legal"><p class="footer-legal__text">Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" class="footer-legal__link">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" class="footer-legal__link">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;Site by ThreePM</p><div class="footer-social" aria-label="Social media links"><a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a><a href="#" class="footer-social__icon" aria-label="Facebook">f</a><a href="#" class="footer-social__icon" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div></div>
-  </footer>
+  </section>
+
+  <!-- ── CANONICAL IOR FOOTER ──────────────────────────────────────────── -->
+  <footer class="ior-footer" aria-label="Site footer">
+  <div class="ior-footer__inner">
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Contact</span>
+      <address class="ior-footer__address">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</address>
+      <a href="tel:1300457467" class="ior-footer__link">1300 457 467</a>
+      <a href="mailto:enquiries@ior.com.au" class="ior-footer__link">enquiries@ior.com.au</a>
+      <a href="11b_Regional_Contactsv5.html" class="ior-footer__link">Regional Contacts</a>
+    </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Fuel Solutions</span>
+      <a href="03_Ground_Fuels_v8.html" class="ior-footer__link">Ground Fuels</a>
+      <a href="04_Aviation_Hub.html" class="ior-footer__link">Aviation</a>
+      <a href="05_Equipment_Infrastructure.html" class="ior-footer__link">Equipment &amp; Infrastructure</a>
+      <a href="06_Supply_Trading.html" class="ior-footer__link">Supply &amp; Trading</a>
+    </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Digital Platforms</span>
+      <a href="07a_HyDip_FMSv6.html" class="ior-footer__link">HyDip&#8482; FMS</a>
+      <a href="07b_Fuelcharge_App_v8.html" class="ior-footer__link">Fuelcharge App</a>
+      <a href="07c_Customer_Portalv5.html" class="ior-footer__link">Customer Portal</a>
+    </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Corporate</span>
+      <a href="09_About_IOR.html" class="ior-footer__link">About IOR</a>
+      <a href="10_Careers.html" class="ior-footer__link">Careers</a>
+      <a href="09d_Case_Studies.html" class="ior-footer__link">Case Studies</a>
+      <a href="09c_Sustainability.html" class="ior-footer__link">Sustainability, HSE &amp; ESG</a>
+      <a href="11c_News_Updates.html" class="ior-footer__link">News &amp; Updates</a>
+    </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Quick Actions</span>
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-footer__link" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+      <a href="11e_Make_Paymentv5.html" class="ior-footer__link">Make a Payment</a>
+      <a href="11a_Contact_Usv5.html" class="ior-footer__link">Contact Us</a>
+      <a href="11_Support_Hubv5.html" class="ior-footer__link">Help Centre &amp; FAQs</a>
+    </div>
+    <div class="ior-footer__col">
+      <span class="ior-footer__heading">Find a Site By State</span>
+      <div class="ior-footer__states">
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">QLD</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">NSW</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">VIC</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">SA</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">WA</a>
+        <a href="11d_Find_Locationv5.html" class="ior-footer__state">NT</a>
+      </div>
+    </div>
+  </div>
+  <div class="ior-footer__legal">
+    <p class="ior-footer__legal-text">
+      Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="ior-footer__legal-link">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="ior-footer__legal-link">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      Site by ThreePM
+    </p>
+    <div class="ior-footer__social" aria-label="Social media links">
+      <a href="https://www.linkedin.com/company/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M15 17h-3v9h3v-9zm-1.5-4.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM26 17c-1.7 0-2.8.9-3 1.8V17h-3v9h3v-4.5c0-1.4.7-2.5 2-2.5s2 1.1 2 2.5V26h3v-5c0-2.8-1.8-4-4-4z" fill="#0355A3"/></svg></a>
+      <a href="https://www.facebook.com/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M22 28v-7h2.4l.3-2.8H22v-1.8c0-.8.2-1.4 1.4-1.4H25V13c-.2 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.4v2H17V21h2.6v7H22z" fill="#0355A3"/></svg></a>
+      <a href="https://www.instagram.com/iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><rect x="13" y="13" width="15" height="15" rx="4" stroke="#0355A3" stroke-width="2" fill="none"/><circle cx="20.5" cy="20.5" r="3.5" stroke="#0355A3" stroke-width="2" fill="none"/><circle cx="25" cy="16" r="1" fill="#0355A3"/></svg></a>
+      <a href="https://www.youtube.com/@iorenergy" class="ior-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="41" height="41" viewBox="0 0 41 41" fill="none"><circle cx="20.5" cy="20.5" r="20.5" fill="white"/><path d="M29 17.5s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C23.6 14.5 20.5 14.5 20.5 14.5s-3.1 0-5.7.1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S12 19 12 20.5v1.4c0 1.5.2 3 .2 3s.2 1.4.8 2c.8.8 1.8.8 2.3.9 1.7.2 7.2.2 7.2.2s3.1 0 5.7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.5.2-3v-1.4c0-1.5-.2-3-.2-3zM18.5 23v-5l5.5 2.5-5.5 2.5z" fill="#0355A3"/></svg></a>
+    </div>
+  </div>
+</footer>
 
 <script>
   /* ---- NAV SCROLL ---- */
