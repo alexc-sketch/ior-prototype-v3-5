@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Community &amp; Giving Back | IOR Australia</title>
-  <meta name="description" content="We are more than a fuel supplier. Discover how IOR supports regional Australia through direct, social, and economic community investment.">
+  <title>Community &amp; Giving Back | Supporting Rural Australia | IOR</title>
+  <meta name="description" content="IOR is committed to the communities we operate in. Discover our partnerships with RFDS, Heart of Australia, and peak industry bodies across the nation.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -84,18 +84,20 @@
     .quick-links-bar__link:hover{color:var(--ior-blue);}
     .quick-links-bar__link--active{color:var(--ior-blue);border-bottom-color:var(--ior-blue);}
 
-    /* ── HERO ────────────────────────────────────────────────── */
-    .hero{position:relative;overflow:hidden;min-height:600px;display:flex;align-items:flex-end;padding:clamp(80px,10vw,120px) var(--pad-x) clamp(56px,7vw,80px);}
-    .hero__bg{position:absolute;inset:0;background:var(--ior-navy);display:flex;align-items:center;justify-content:center;}
-    .hero__bg-ph{font-size:12px;font-weight:600;color:rgba(255,255,255,.3);text-align:center;padding:24px;border:2px dashed rgba(91,180,229,.2);max-width:480px;line-height:1.7;}
-    .hero__overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,34,64,.9) 0%,rgba(10,34,64,.55) 55%,rgba(10,34,64,.2) 100%);}
+    /* ── HERO (Video Background) ─────────────────────────────── */
+    .hero{position:relative;overflow:hidden;min-height:640px;display:flex;align-items:flex-end;padding:clamp(80px,10vw,120px) var(--pad-x) clamp(56px,7vw,80px);}
+    .hero__video-wrap{position:absolute;inset:0;z-index:0;}
+    .hero__video-wrap video{width:100%;height:100%;object-fit:cover;}
+    .hero__video-ph{width:100%;height:100%;background:var(--ior-navy);display:flex;align-items:center;justify-content:center;}
+    .hero__video-ph-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.3);text-align:center;padding:24px;border:2px dashed rgba(91,180,229,.2);max-width:480px;line-height:1.7;}
+    .hero__overlay{position:absolute;inset:0;z-index:1;background:rgba(10,34,64,.72);}
     .hero__content{position:relative;z-index:2;max-width:1280px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:16px;}
     .hero__eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ior-sky);}
-    .hero__headline{font-size:clamp(36px,5.5vw,68px);font-weight:900;color:#fff;line-height:1.0;letter-spacing:-.025em;max-width:700px;}
-    .hero__sub{font-size:clamp(15px,1.7vw,19px);color:rgba(255,255,255,.82);max-width:540px;line-height:1.7;}
+    .hero__headline{font-size:clamp(36px,5.5vw,68px);font-weight:900;color:#fff;line-height:1.0;letter-spacing:-.025em;max-width:780px;}
+    .hero__sub{font-size:clamp(15px,1.7vw,19px);color:rgba(255,255,255,.82);max-width:600px;line-height:1.75;}
     .hero__ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
 
-    /* ── LAYOUT ──────────────────────────────────────────────── */
+    /* ── LAYOUT HELPERS ──────────────────────────────────────── */
     .inner{max-width:1280px;margin:0 auto;}
     .section-pad{padding:clamp(64px,8vw,100px) var(--pad-x);}
     .section-pad--grey{background:var(--grey-100);}
@@ -104,84 +106,74 @@
     .eyebrow--sky{color:var(--ior-sky);}
     .section-heading{font-size:clamp(26px,3.2vw,42px);font-weight:800;color:var(--ior-navy);line-height:1.1;letter-spacing:-.01em;margin-bottom:16px;}
     .section-heading--white{color:#fff;}
-    .body-text{font-size:clamp(15px,1.5vw,17px);color:var(--grey-700);line-height:1.8;max-width:720px;}
+    .body-text{font-size:clamp(15px,1.5vw,17px);color:var(--grey-700);line-height:1.8;}
 
-    /* ── THREE-PILLAR SECTION ────────────────────────────────── */
-    .pillar-section{padding:clamp(64px,8vw,100px) var(--pad-x);}
-    .pillar-section__inner{max-width:1280px;margin:0 auto;}
-    .pillar-section__intro{max-width:760px;margin-bottom:56px;}
-    .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:3px solid var(--ior-blue);}
-    .pillar-card{padding:40px 36px;border-right:1px solid var(--grey-200);position:relative;overflow:hidden;transition:background .25s;}
-    .pillar-card:last-child{border-right:none;}
-    .pillar-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--ior-blue);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
-    .pillar-card:hover{background:var(--grey-100);}.pillar-card:hover::after{transform:scaleX(1);}
-    .pillar-card__num{font-size:clamp(64px,8vw,96px);font-weight:900;color:var(--ior-blue);opacity:.06;position:absolute;top:-8px;right:12px;line-height:1;pointer-events:none;user-select:none;transition:opacity .3s;}
-    .pillar-card:hover .pillar-card__num{opacity:.1;}
-    .pillar-card__icon{width:48px;height:48px;background:var(--ior-blue);display:flex;align-items:center;justify-content:center;margin-bottom:20px;flex-shrink:0;}
-    .pillar-card__icon svg{color:#fff;}
-    .pillar-card__title{font-size:20px;font-weight:800;color:var(--ior-blue);margin-bottom:12px;}
-    .pillar-card__desc{font-size:14px;color:var(--grey-700);line-height:1.8;}
+    /* ── PHILOSOPHY 50/50 ────────────────────────────────────── */
+    .philosophy{display:grid;grid-template-columns:1fr 1fr;min-height:520px;}
+    .philosophy__body{padding:clamp(48px,6vw,80px);display:flex;flex-direction:column;justify-content:center;gap:20px;}
+    .philosophy__img{position:relative;overflow:hidden;background:var(--ior-navy);display:flex;align-items:center;justify-content:center;min-height:400px;}
+    .philosophy__img-ph{font-size:11px;font-weight:600;color:rgba(255,255,255,.35);text-align:center;padding:20px;border:2px dashed rgba(91,180,229,.2);max-width:280px;line-height:1.7;}
 
-    /* ── SPONSORSHIP BLOCKS (alternating 50/50) ──────────────── */
-    .sponsor-block{display:grid;grid-template-columns:1fr 1fr;min-height:440px;}
-    .sponsor-block--reversed .sponsor-block__img{order:2;}
-    .sponsor-block--reversed .sponsor-block__body{order:1;}
-    .sponsor-block__img{position:relative;overflow:hidden;background:var(--ior-navy);display:flex;align-items:center;justify-content:center;min-height:380px;}
-    .sponsor-block__img-ph{font-size:11px;font-weight:600;color:rgba(255,255,255,.35);text-align:center;padding:20px;border:2px dashed rgba(91,180,229,.2);max-width:280px;line-height:1.7;}
-    .sponsor-block__body{padding:clamp(40px,5vw,72px);display:flex;flex-direction:column;justify-content:center;gap:16px;background:#fff;}
-    .sponsor-block--grey .sponsor-block__body{background:var(--grey-100);}
-    .sponsor-block__logo-ph{display:inline-flex;align-items:center;padding:6px 14px;border:2px dashed var(--grey-200);font-size:11px;font-weight:700;color:var(--grey-700);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;align-self:flex-start;}
-    .sponsor-block__eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ior-blue);}
-    .sponsor-block__heading{font-size:clamp(20px,2.5vw,30px);font-weight:800;color:var(--ior-navy);line-height:1.2;}
-    .sponsor-block__text{font-size:clamp(14px,1.3vw,16px);color:var(--grey-700);line-height:1.8;}
-    .sponsor-block__quote{font-size:15px;font-style:italic;color:var(--grey-700);border-left:3px solid var(--ior-blue);padding-left:16px;line-height:1.75;}
-    .sponsor-block__attr{font-size:12px;font-weight:600;color:var(--grey-700);text-transform:uppercase;letter-spacing:.06em;}
+    /* ── MAJOR PARTNERSHIPS (3-col video card grid) ──────────── */
+    .partnerships{padding:clamp(64px,8vw,100px) var(--pad-x);}
+    .partnerships__inner{max-width:1280px;margin:0 auto;}
+    .partnerships__header{text-align:center;max-width:680px;margin:0 auto 48px;}
+    .partnerships__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .partner-card{border:1px solid var(--grey-200);display:flex;flex-direction:column;transition:border-color .2s,box-shadow .2s,transform .2s;}
+    .partner-card:hover{border-color:var(--ior-blue);box-shadow:0 8px 32px rgba(3,85,163,.1);transform:translateY(-4px);}
+    .partner-card__video{width:100%;aspect-ratio:16/9;background:#000;position:relative;overflow:hidden;}
+    .partner-card__video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+    .partner-card__video-ph{width:100%;height:100%;background:var(--ior-navy);display:flex;align-items:center;justify-content:center;}
+    .partner-card__video-ph span{font-size:11px;font-weight:600;color:rgba(255,255,255,.4);text-align:center;padding:16px;border:1px dashed rgba(255,255,255,.2);}
+    .partner-card__body{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1;}
+    .partner-card__title{font-size:18px;font-weight:800;color:var(--ior-navy);}
+    .partner-card__text{font-size:14px;color:var(--grey-700);line-height:1.75;}
+    .partner-card__link{font-size:13px;font-weight:700;color:var(--ior-blue);display:inline-flex;align-items:center;gap:4px;margin-top:auto;padding-top:8px;transition:gap .2s;}
+    .partner-card:hover .partner-card__link{gap:8px;}
 
-    /* ── VIDEO BAND ──────────────────────────────────────────── */
-    .video-band{background:var(--ior-navy);padding:clamp(64px,8vw,100px) var(--pad-x);}
-    .video-band__inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;}
-    .video-band__body{display:flex;flex-direction:column;gap:16px;}
-    .video-band__heading{font-size:clamp(24px,3vw,38px);font-weight:800;color:#fff;line-height:1.15;}
-    .video-band__text{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.75);line-height:1.8;}
-    .video-embed{width:100%;aspect-ratio:16/9;position:relative;background:#000;}
-    .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+    /* ── INDUSTRY LOGO GRID ──────────────────────────────────── */
+    .industry{padding:clamp(64px,8vw,100px) var(--pad-x);background:var(--grey-100);}
+    .industry__inner{max-width:1280px;margin:0 auto;}
+    .industry__header{max-width:720px;margin-bottom:48px;}
+    .industry__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+    .industry-card{background:#fff;border:1px solid var(--grey-200);padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;transition:border-color .2s,box-shadow .2s,transform .2s;}
+    .industry-card:hover{border-color:var(--ior-blue);box-shadow:0 4px 20px rgba(3,85,163,.1);transform:translateY(-3px);}
+    .industry-card__logo{width:100%;height:56px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--grey-200);background:var(--grey-100);}
+    .industry-card__logo span{font-size:10px;font-weight:700;color:var(--grey-700);text-align:center;padding:8px;letter-spacing:.04em;text-transform:uppercase;}
+    .industry-card__name{font-size:13px;font-weight:700;color:var(--ior-navy);line-height:1.35;}
+    .industry-card__link{font-size:12px;font-weight:700;color:var(--ior-blue);display:inline-flex;align-items:center;gap:3px;transition:gap .2s;}
+    .industry-card:hover .industry-card__link{gap:6px;}
 
-    /* ── POLICY DOWNLOADS ────────────────────────────────────── */
-    .policy-section{padding:clamp(64px,8vw,100px) var(--pad-x);background:var(--grey-100);}
-    .policy-section__inner{max-width:1280px;margin:0 auto;}
-    .policy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
-    .policy-card{background:#fff;border:1px solid var(--grey-200);padding:24px;display:flex;align-items:center;gap:16px;transition:border-color .2s,box-shadow .2s,transform .2s;cursor:pointer;}
-    .policy-card:hover{border-color:var(--ior-blue);box-shadow:0 4px 20px rgba(3,85,163,.1);transform:translateY(-2px);}
-    .policy-card__icon{width:44px;height:44px;background:var(--ior-blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .policy-card__icon svg{color:#fff;}
-    .policy-card__name{font-size:14px;font-weight:700;color:var(--ior-navy);line-height:1.4;}
-    .policy-card__type{font-size:11px;font-weight:600;color:var(--grey-700);text-transform:uppercase;letter-spacing:.06em;margin-top:3px;}
+    /* ── TAB-CORDION ─────────────────────────────────────────── */
+    .tabcordion{padding:clamp(64px,8vw,100px) var(--pad-x);}
+    .tabcordion__inner{max-width:1280px;margin:0 auto;}
+    .tabcordion__header{max-width:680px;margin-bottom:48px;}
+    .tabcordion__layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;}
+    .tabcordion__tabs{display:flex;flex-direction:column;gap:0;}
+    .tab-item{border-bottom:1px solid var(--grey-200);}
+    .tab-item__btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;background:none;border:none;cursor:pointer;text-align:left;gap:16px;}
+    .tab-item__label{font-size:16px;font-weight:700;color:var(--grey-700);transition:color .2s;}
+    .tab-item__chevron{width:20px;height:20px;flex-shrink:0;transition:transform .3s;color:var(--grey-700);}
+    .tab-item--active .tab-item__label{color:var(--ior-blue);}
+    .tab-item--active .tab-item__chevron{transform:rotate(180deg);color:var(--ior-blue);}
+    .tab-item__content{display:none;padding:0 0 24px;}
+    .tab-item--active .tab-item__content{display:block;}
+    .tab-item__h3{font-size:18px;font-weight:800;color:var(--ior-navy);margin-bottom:10px;}
+    .tab-item__body{font-size:15px;color:var(--grey-700);line-height:1.8;}
+    .tabcordion__img{position:sticky;top:100px;}
+    .tabcordion__img-frame{width:100%;aspect-ratio:4/3;background:var(--grey-100);border:2px dashed var(--grey-200);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:background .4s;}
+    .tabcordion__img-frame span{font-size:11px;font-weight:600;color:var(--grey-700);text-align:center;padding:20px;letter-spacing:.04em;}
 
-    /* ── GRANT BAND ──────────────────────────────────────────── */
-    .grant-band{background:var(--ior-navy);padding:clamp(64px,8vw,100px) var(--pad-x);}
-    .grant-band__inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
-    .grant-band__body{display:flex;flex-direction:column;gap:10px;}
-    .grant-band__heading{font-size:clamp(22px,3vw,34px);font-weight:800;color:#fff;line-height:1.2;}
-    .grant-band__text{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.75);line-height:1.75;max-width:580px;}
-
-    /* ── NEWS STRIP ──────────────────────────────────────────── */
-    .news-strip{padding:clamp(64px,8vw,100px) var(--pad-x);}
-    .news-strip__inner{max-width:1280px;margin:0 auto;}
-    .news-strip__header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px;}
-    .news-strip__heading{font-size:clamp(22px,2.8vw,34px);font-weight:800;color:var(--ior-navy);line-height:1.2;}
-    .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-    .news-card{display:flex;flex-direction:column;border:1px solid var(--grey-200);transition:border-color .2s,box-shadow .2s,transform .2s;}
-    .news-card:hover{border-color:var(--ior-blue);box-shadow:0 4px 20px rgba(3,85,163,.08);transform:translateY(-3px);}
-    .news-card__img{aspect-ratio:16/9;background:var(--grey-100);display:flex;align-items:center;justify-content:center;overflow:hidden;}
-    .news-card__img span{font-size:10px;font-weight:600;color:var(--grey-700);text-align:center;padding:12px;}
-    .news-card__body{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1;}
-    .news-card__cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ior-blue);}
-    .news-card__title{font-size:16px;font-weight:700;color:var(--ior-navy);line-height:1.35;}
-    .news-card__link{font-size:13px;font-weight:700;color:var(--ior-blue);display:inline-flex;align-items:center;gap:4px;margin-top:auto;padding-top:8px;transition:gap .2s;}
-    .news-card:hover .news-card__link{gap:8px;}
+    /* ── BESPOKE FINAL CTA ───────────────────────────────────── */
+    .final-cta{background:var(--ior-navy);padding:clamp(72px,9vw,112px) var(--pad-x);}
+    .final-cta__inner{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;}
+    .final-cta__eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ior-sky);}
+    .final-cta__heading{font-size:clamp(28px,4vw,52px);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-.02em;max-width:720px;}
+    .final-cta__body{font-size:clamp(15px,1.5vw,17px);color:rgba(255,255,255,.75);max-width:620px;line-height:1.8;}
+    .final-cta__ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;}
 
     /* ── PRE-FOOTER ──────────────────────────────────────────── */
-    .pre-footer{background:var(--ior-navy);padding:56px 0;}
+    .pre-footer{background:var(--ior-blue);padding:56px 0;}
     .pre-footer__row{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
     .pre-footer__title{font-size:clamp(22px,3vw,32px);font-weight:800;color:#fff;letter-spacing:-.01em;}
     .pre-footer__ctas{display:flex;gap:12px;flex-wrap:wrap;}
@@ -209,23 +201,24 @@
 
     /* ── RESPONSIVE ──────────────────────────────────────────── */
     @media(max-width:1024px){
-      .pillars-grid{grid-template-columns:1fr;}
-      .pillar-card{border-right:none;border-bottom:1px solid var(--grey-200);}
-      .sponsor-block{grid-template-columns:1fr;}
-      .sponsor-block--reversed .sponsor-block__img,.sponsor-block--reversed .sponsor-block__body{order:unset;}
-      .video-band__inner{grid-template-columns:1fr;gap:40px;}
-      .policy-grid{grid-template-columns:repeat(2,1fr);}
-      .news-grid{grid-template-columns:repeat(2,1fr);}
-      .grant-band__inner{flex-direction:column;align-items:flex-start;}
+      .philosophy{grid-template-columns:1fr;}
+      .philosophy__img{min-height:320px;}
+      .partnerships__grid{grid-template-columns:1fr 1fr;}
+      .industry__grid{grid-template-columns:repeat(3,1fr);}
+      .tabcordion__layout{grid-template-columns:1fr;}
+      .tabcordion__img{display:none;}
     }
     @media(max-width:768px){
       .nav-links,.nav-ctas{display:none;}.hamburger{display:flex;margin-left:auto;}
+      .partnerships__grid{grid-template-columns:1fr;}
+      .industry__grid{grid-template-columns:repeat(2,1fr);}
       .footer-nav-grid{grid-template-columns:repeat(2,1fr);gap:24px;}
       .pre-footer__row{flex-direction:column;align-items:flex-start;}
-      .policy-grid{grid-template-columns:1fr;}
-      .news-grid{grid-template-columns:1fr;}
     }
-    @media(max-width:480px){.footer-nav-grid{grid-template-columns:1fr;}}
+    @media(max-width:480px){
+      .footer-nav-grid{grid-template-columns:1fr;}
+      .industry__grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
@@ -268,13 +261,13 @@
     <div class="nav-inner">
       <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">
         <svg width="90" height="42" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <g clip-path="url(#ior-logo-comm)">
+          <g clip-path="url(#ior-logo-c)">
             <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/>
             <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/>
             <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/>
             <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/>
           </g>
-          <defs><clipPath id="ior-logo-comm"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
+          <defs><clipPath id="ior-logo-c"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
         </svg>
       </a>
       <ul class="nav-links" role="list">
@@ -304,12 +297,12 @@
   <div class="drawer-overlay" id="drawer-overlay"></div>
   <nav class="drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
     <div class="drawer__header">
-      <svg width="72" height="34" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="IOR" role="img"><g clip-path="url(#ior-dr-c)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="white"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#5BB4E5"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="white"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="white"/></g><defs><clipPath id="ior-dr-c"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg>
+      <svg width="72" height="34" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="IOR" role="img"><g clip-path="url(#ior-dr-c2)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="white"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#5BB4E5"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="white"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="white"/></g><defs><clipPath id="ior-dr-c2"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg>
       <button class="drawer__close" id="drawer-close" aria-label="Close menu">&times;</button>
     </div>
     <div class="drawer__nav">
-      <div class="drawer__item"><button class="drawer__link" data-drawer-toggle="dr-fuel-c">Fuel Solutions <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="drawer__sub" id="dr-fuel-c"><a href="#" class="drawer__sub-link">On-Site Refuelling</a><a href="#" class="drawer__sub-link">Bulk Diesel Supply</a></div></div>
-      <div class="drawer__item"><button class="drawer__link" data-drawer-toggle="dr-about-c">About IOR <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="drawer__sub" id="dr-about-c"><a href="09_About_IOR_v2.html" class="drawer__sub-link">About Us</a><a href="09a_Our_Leadershipv5.html" class="drawer__sub-link">Our Leadership</a><a href="09b_Community.html" class="drawer__sub-link">Community &amp; Giving Back</a><a href="09c_Sustainability.html" class="drawer__sub-link">Sustainability, HSE &amp; ESG</a><a href="10_Careers_v2.html" class="drawer__sub-link">Careers</a></div></div>
+      <div class="drawer__item"><button class="drawer__link" data-drawer-toggle="dr-fuel-c2">Fuel Solutions <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="drawer__sub" id="dr-fuel-c2"><a href="#" class="drawer__sub-link">On-Site Refuelling</a><a href="#" class="drawer__sub-link">Bulk Diesel Supply</a></div></div>
+      <div class="drawer__item"><button class="drawer__link" data-drawer-toggle="dr-about-c2">About IOR <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button><div class="drawer__sub" id="dr-about-c2"><a href="09_About_IOR_v2.html" class="drawer__sub-link">About Us</a><a href="09a_Our_Leadershipv5.html" class="drawer__sub-link">Our Leadership</a><a href="09b_Community.html" class="drawer__sub-link">Community &amp; Giving Back</a><a href="09c_Sustainability.html" class="drawer__sub-link">Sustainability, HSE &amp; ESG</a><a href="10_Careers_v2.html" class="drawer__sub-link">Careers</a></div></div>
       <div class="drawer__item"><a href="11a_Contact_Usv5.html" class="drawer__link">Support &amp; Contact</a></div>
     </div>
     <div class="drawer__cta">
@@ -318,11 +311,31 @@
     </div>
   </nav>
 
-  <!-- QUICK-LINKS BAR -->
+  <!-- HERO (Video Background) -->
+  <section class="hero" aria-label="Community &amp; Giving Back hero">
+    <div class="hero__video-wrap" aria-hidden="true">
+      <div class="hero__video-ph">
+        <div class="hero__video-ph-label">VIDEO ASSET REQUIRED: Full-bleed video background featuring emotional, community-focused footage, outback landscapes, or charity partners. Client to provide. Dark overlay rgba(10,34,64,0.72) applied above.</div>
+      </div>
+    </div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow fade-up">Community &amp; Giving Back</p>
+      <h1 class="hero__headline fade-up fade-up--d1">Fuelling the communities that fuel Australia.</h1>
+      <p class="hero__sub fade-up fade-up--d2">We operate in some of the most remote and hardworking regions of the country. For over 40 years, we have believed that investing in these communities is not just a responsibility, it is a privilege.</p>
+      <div class="hero__ctas fade-up fade-up--d3">
+        <a href="09c_Sustainability.html" class="btn btn--primary btn--pill">Explore Sustainability &#x2192;</a>
+        <a href="09_About_IOR_v2.html" class="btn btn--outline-white btn--pill">About IOR</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK-LINKS BAR (Not Sticky) -->
   <nav class="quick-links-bar" aria-label="Explore IOR">
     <div class="quick-links-bar__inner">
       <span class="quick-links-bar__label">Explore IOR:</span>
       <a href="09_About_IOR_v2.html" class="quick-links-bar__link">About IOR</a>
+      <a href="09d_Case_Studies.html" class="quick-links-bar__link">Case Studies</a>
       <a href="09a_Our_Leadershipv5.html" class="quick-links-bar__link">Our Leadership</a>
       <a href="09b_Community.html" class="quick-links-bar__link quick-links-bar__link--active">Community &amp; Giving Back</a>
       <a href="09c_Sustainability.html" class="quick-links-bar__link">Sustainability, HSE &amp; ESG</a>
@@ -333,237 +346,188 @@
 
   <main id="main-content">
 
-    <!-- HERO -->
-    <section class="hero" aria-label="Community &amp; Giving Back hero">
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__bg-ph">ASSET REQUIRED: Authentic IOR community photography — regional Australia, RFDS aircraft, community events. 1920x620px. Dark overlay rgba(11,25,41,0.7).</div>
+    <!-- BLOCK 3: OUR PHILOSOPHY (50/50 Split) -->
+    <section class="philosophy" aria-labelledby="philosophy-heading">
+      <div class="philosophy__body slide-left">
+        <p class="eyebrow">Our Philosophy</p>
+        <h2 class="section-heading" id="philosophy-heading">More than just a fuel supplier.</h2>
+        <p class="body-text">Our footprint spans the vast expanses of regional and outback Australia. These are not just lines on a map to us; they are the towns where our teams live, work, and raise their families.</p>
+        <p class="body-text" style="margin-top:12px;">When local communities thrive, our industry thrives. That is why IOR actively sponsors health initiatives, grassroots sports, and local events that bring regional Australians together. We are proud to give back to the regions that keep this country moving.</p>
+        <a href="09c_Sustainability.html" class="btn btn--outline btn--pill" style="align-self:flex-start;margin-top:8px;">View Our Sustainability Policies &#x2192;</a>
       </div>
-      <div class="hero__overlay" aria-hidden="true"></div>
-      <div class="hero__content">
-        <p class="hero__eyebrow fade-up">Community &amp; Giving Back</p>
-        <h1 class="hero__headline fade-up fade-up--d1">We never forget where we came from.</h1>
-        <p class="hero__sub fade-up fade-up--d2">We believe that we are more than a fuel supplier and seek to be a true member of the communities in which we work.</p>
-        <div class="hero__ctas fade-up fade-up--d3">
-          <a href="#our-story" class="btn btn--primary btn--pill">Watch Our Story</a>
-          <a href="11a_Contact_Usv5.html" class="btn btn--outline-white btn--pill">Contact Us</a>
-        </div>
+      <div class="philosophy__img slide-right" aria-hidden="true">
+        <div class="philosophy__img-ph">ASSET REQUIRED: High-fidelity image of IOR staff engaging with a local community event or charity. 960x520px.</div>
       </div>
     </section>
 
-    <!-- THREE-PILLAR SUPPORT MODEL -->
-    <section class="pillar-section" id="support-model" aria-labelledby="support-heading">
-      <div class="pillar-section__inner">
-        <div class="pillar-section__intro">
-          <p class="eyebrow fade-up">How We Give Back</p>
-          <h2 class="section-heading fade-up" id="support-heading">Creating Joint Value</h2>
-          <p class="body-text fade-up">As an organisation, we seek to ensure that our growth creates joint value between our business and the community. Our approach to supporting Australian communities is via three pillars: Direct support, Social support, and Economic support.</p>
+    <!-- BLOCK 4: MAJOR PARTNERSHIPS (3-Column Video Card Grid) -->
+    <section class="partnerships" aria-labelledby="partnerships-heading">
+      <div class="partnerships__inner">
+        <div class="partnerships__header fade-up">
+          <p class="eyebrow">Major Initiatives</p>
+          <h2 class="section-heading" id="partnerships-heading">Bringing essential services to the outback.</h2>
         </div>
-        <div class="pillars-grid">
-          <div class="pillar-card fade-up">
-            <div class="pillar-card__num" aria-hidden="true">1</div>
-            <div class="pillar-card__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="partnerships__grid">
+
+          <!-- Card 1: Heart of Australia -->
+          <div class="partner-card fade-up">
+            <div class="partner-card__video">
+              <div class="partner-card__video-ph">
+                <span>VIDEO ASSET REQUIRED: Heart of Australia YouTube embed. Client to provide video URL.</span>
+              </div>
             </div>
-            <h3 class="pillar-card__title">Direct Support</h3>
-            <p class="pillar-card__desc">Bringing energy to regional Australia, providing a quality service, managing health and safety risks, and managing our environmental impact.</p>
-          </div>
-          <div class="pillar-card fade-up fade-up--d1">
-            <div class="pillar-card__num" aria-hidden="true">2</div>
-            <div class="pillar-card__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div class="partner-card__body">
+              <h3 class="partner-card__title">Heart of Australia</h3>
+              <p class="partner-card__text">Delivering specialist medical services to regional, rural, and remote communities on custom-built mobile clinics. IOR is a proud foundational partner, providing the fuel that keeps these vital clinics moving across the state.</p>
+              <a href="#" class="partner-card__link">Learn More &#x2197;</a>
             </div>
-            <h3 class="pillar-card__title">Social Support</h3>
-            <p class="pillar-card__desc">Corporate Social Responsibility investment, committing to a Reconciliation Action Plan, and providing all who work with IOR an equal opportunity to succeed.</p>
           </div>
-          <div class="pillar-card fade-up fade-up--d2">
-            <div class="pillar-card__num" aria-hidden="true">3</div>
-            <div class="pillar-card__icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+
+          <!-- Card 2: Royal Flying Doctor Service -->
+          <div class="partner-card fade-up fade-up--d1">
+            <div class="partner-card__video">
+              <div class="partner-card__video-ph">
+                <span>VIDEO ASSET REQUIRED: Royal Flying Doctor Service YouTube embed. Client to provide video URL.</span>
+              </div>
             </div>
-            <h3 class="pillar-card__title">Economic Support</h3>
-            <p class="pillar-card__desc">Our local employment program, our buy local program, and our engagement with industry bodies that advocate for progressing agriculture and resources industries in Australia.</p>
+            <div class="partner-card__body">
+              <h3 class="partner-card__title">Royal Flying Doctor Service</h3>
+              <p class="partner-card__text">The RFDS provides a critical lifeline for outback Australians. IOR proudly supports their mission, ensuring aeromedical teams can reach patients in the most isolated corners of the country.</p>
+              <a href="#" class="partner-card__link">Learn More &#x2197;</a>
+            </div>
+          </div>
+
+          <!-- Card 3: LifeFlight Australia -->
+          <div class="partner-card fade-up fade-up--d2">
+            <div class="partner-card__video">
+              <div class="partner-card__video-ph">
+                <span>VIDEO ASSET REQUIRED: LifeFlight Australia YouTube embed. Client to provide video URL.</span>
+              </div>
+            </div>
+            <div class="partner-card__body">
+              <h3 class="partner-card__title">LifeFlight Australia</h3>
+              <p class="partner-card__text">Providing rapid response aeromedical care when every second counts. IOR supports LifeFlight's lifesaving helicopter rescue missions across regional networks.</p>
+              <a href="#" class="partner-card__link">Learn More &#x2197;</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCK 5: INDUSTRY PARTNERSHIPS (Logo Grid) -->
+    <section class="industry" aria-labelledby="industry-heading">
+      <div class="industry__inner">
+        <div class="industry__header">
+          <p class="eyebrow fade-up">Advocacy</p>
+          <h2 class="section-heading fade-up" id="industry-heading">Championing our primary industries.</h2>
+          <p class="body-text fade-up">We are active, proud members of the peak industry bodies that advocate for the agricultural, mining, and energy sectors across Australia.</p>
+        </div>
+        <div class="industry__grid">
+
+          <a href="https://www.agforceqld.org.au" target="_blank" rel="noopener noreferrer" class="industry-card fade-up">
+            <div class="industry-card__logo"><span>AgForce Queensland Logo</span></div>
+            <div class="industry-card__name">AgForce Queensland</div>
+            <span class="industry-card__link">Learn More &#x2197;</span>
+          </a>
+
+          <a href="https://www.tsbe.com.au" target="_blank" rel="noopener noreferrer" class="industry-card fade-up fade-up--d1">
+            <div class="industry-card__logo"><span>TSBE Logo</span></div>
+            <div class="industry-card__name">Toowoomba Surat Basin Enterprise</div>
+            <span class="industry-card__link">Learn More &#x2197;</span>
+          </a>
+
+          <a href="https://www.qrc.org.au" target="_blank" rel="noopener noreferrer" class="industry-card fade-up fade-up--d2">
+            <div class="industry-card__logo"><span>QRC Logo</span></div>
+            <div class="industry-card__name">Queensland Resources Council</div>
+            <span class="industry-card__link">Learn More &#x2197;</span>
+          </a>
+
+          <a href="https://www.sacome.org.au" target="_blank" rel="noopener noreferrer" class="industry-card fade-up">
+            <div class="industry-card__logo"><span>SACOME Logo</span></div>
+            <div class="industry-card__name">South Australian Chamber of Mines and Energy</div>
+            <span class="industry-card__link">Learn More &#x2197;</span>
+          </a>
+
+          <a href="https://www.energyproducers.com.au" target="_blank" rel="noopener noreferrer" class="industry-card fade-up fade-up--d1">
+            <div class="industry-card__logo"><span>AEP Logo</span></div>
+            <div class="industry-card__name">Australian Energy Producers</div>
+            <span class="industry-card__link">Learn More &#x2197;</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCK 6: GRASSROOTS SUPPORT (Tab-cordion) -->
+    <section class="tabcordion" aria-labelledby="grassroots-heading">
+      <div class="tabcordion__inner">
+        <div class="tabcordion__header fade-up">
+          <p class="eyebrow">Local Impact</p>
+          <h2 class="section-heading" id="grassroots-heading">Supporting grassroots communities.</h2>
+        </div>
+        <div class="tabcordion__layout">
+          <div class="tabcordion__tabs" role="tablist" aria-label="Grassroots community support">
+
+            <div class="tab-item tab-item--active" id="tab-sports">
+              <button class="tab-item__btn" role="tab" aria-selected="true" aria-controls="panel-sports" data-tab="sports">
+                <span class="tab-item__label">Local Sports &amp; Clubs</span>
+                <svg class="tab-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="tab-item__content" id="panel-sports" role="tabpanel" aria-labelledby="tab-sports">
+                <h3 class="tab-item__h3">Backing local talent.</h3>
+                <p class="tab-item__body">Regional sporting clubs are the lifeblood of outback towns. IOR provides sponsorships and grants to local rugby, netball, and cricket clubs to ensure regional talent has the resources to compete and thrive.</p>
+              </div>
+            </div>
+
+            <div class="tab-item" id="tab-rodeos">
+              <button class="tab-item__btn" role="tab" aria-selected="false" aria-controls="panel-rodeos" data-tab="rodeos">
+                <span class="tab-item__label">Rodeos &amp; Campdrafts</span>
+                <svg class="tab-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="tab-item__content" id="panel-rodeos" role="tabpanel" aria-labelledby="tab-rodeos">
+                <h3 class="tab-item__h3">Celebrating rural heritage.</h3>
+                <p class="tab-item__body">We proudly sponsor regional rodeos, campdrafts, and agricultural shows. These events preserve Australia's rural heritage and provide vital economic stimulus to outback townships.</p>
+              </div>
+            </div>
+
+            <div class="tab-item" id="tab-grants">
+              <button class="tab-item__btn" role="tab" aria-selected="false" aria-controls="panel-grants" data-tab="grants">
+                <span class="tab-item__label">Community Grants</span>
+                <svg class="tab-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="tab-item__content" id="panel-grants" role="tabpanel" aria-labelledby="tab-grants">
+                <h3 class="tab-item__h3">Investing in local ideas.</h3>
+                <p class="tab-item__body">Through targeted community grants, we help fund local infrastructure upgrades, community events, and educational initiatives that create lasting positive impacts in the areas we operate.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Dynamic image panel -->
+          <div class="tabcordion__img" aria-hidden="true">
+            <div class="tabcordion__img-frame" id="tab-img-frame">
+              <span id="tab-img-label">ASSET REQUIRED: Local sports club photography (rugby, netball, cricket). Regional, authentic. 800x600px.</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SPONSORSHIP: RFDS (image left, text right) -->
-    <div class="sponsor-block" aria-label="Royal Flying Doctor Service partnership">
-      <div class="sponsor-block__img slide-left" aria-hidden="true">
-        <div class="sponsor-block__img-ph">ASSET REQUIRED: RFDS aircraft photography. Authentic, high-quality. 960x440px.</div>
-      </div>
-      <div class="sponsor-block__body slide-right">
-        <div class="sponsor-block__logo-ph">Royal Flying Doctor Service</div>
-        <p class="sponsor-block__eyebrow">Proud Partner</p>
-        <h2 class="sponsor-block__heading">Proud Partner of the Royal Flying Doctor Service</h2>
-        <p class="sponsor-block__text">IOR is proud to support the Royal Flying Doctor Service, one of the largest and most comprehensive aeromedical organisations in the world, delivering essential healthcare to remote and rural Australians.</p>
-        <blockquote class="sponsor-block__quote">"Bold blockquote from RFDS representative about the IOR partnership."</blockquote>
-        <p class="sponsor-block__attr">RFDS Spokesperson</p>
-        <a href="#" class="btn btn--primary btn--pill" style="align-self:flex-start;margin-top:8px;">Learn More &#x2192;</a>
-      </div>
-    </div>
-
-    <!-- SPONSORSHIP: LifeFlight (text left, image right) -->
-    <div class="sponsor-block sponsor-block--reversed sponsor-block--grey" aria-label="RACQ LifeFlight partnership">
-      <div class="sponsor-block__img slide-right" aria-hidden="true">
-        <div class="sponsor-block__img-ph">ASSET REQUIRED: LifeFlight helicopter photography. Authentic, high-quality. 960x440px.</div>
-      </div>
-      <div class="sponsor-block__body slide-left">
-        <div class="sponsor-block__logo-ph">LifeFlight</div>
-        <p class="sponsor-block__eyebrow">Aeromedical Partner</p>
-        <h2 class="sponsor-block__heading">LifeFlight</h2>
-        <p class="sponsor-block__text">One of Australia's largest aeromedical charities providing rapid response medical care to thousands of people each year. Queensland's rural and remote communities rely on LifeFlight helicopters to bring the hospital to them in their darkest hour.</p>
-        <p class="sponsor-block__text">IOR's role: Keeping aeromedical helicopters in the air.</p>
-        <a href="#" class="btn btn--primary btn--pill" style="align-self:flex-start;margin-top:8px;">Learn More &#x2192;</a>
-      </div>
-    </div>
-
-    <!-- SPONSORSHIP: Heart of Australia (image left, text right) -->
-    <div class="sponsor-block" aria-label="Heart of Australia partnership">
-      <div class="sponsor-block__img slide-left" aria-hidden="true">
-        <div class="sponsor-block__img-ph">ASSET REQUIRED: Heart of Australia bus / clinic photography. Authentic, high-quality. 960x440px.</div>
-      </div>
-      <div class="sponsor-block__body slide-right">
-        <div class="sponsor-block__logo-ph">Heart of Australia</div>
-        <p class="sponsor-block__eyebrow">Healthcare Partner</p>
-        <h2 class="sponsor-block__heading">Heart of Australia</h2>
-        <p class="sponsor-block__text">Delivers specialist medical services using customised road trains, specialist medical clinics on wheels. Over 5,000 patients across 150,000km on the road, helping save more than 250 lives.</p>
-        <p class="sponsor-block__text">IOR's role: Supplying fuel for the heart buses.</p>
-        <a href="#" class="btn btn--primary btn--pill" style="align-self:flex-start;margin-top:8px;">Learn More &#x2192;</a>
-      </div>
-    </div>
-
-    <!-- SPONSORSHIP: Outback Futures & It's a Bloke Thing (text left, image right) -->
-    <div class="sponsor-block sponsor-block--reversed sponsor-block--grey" aria-label="Outback Futures and It's a Bloke Thing partnership">
-      <div class="sponsor-block__img slide-right" aria-hidden="true">
-        <div class="sponsor-block__img-ph">ASSET REQUIRED: Outback Futures / rural community photography. Authentic, high-quality. 960x440px.</div>
-      </div>
-      <div class="sponsor-block__body slide-left">
-        <div class="sponsor-block__logo-ph">Outback Futures &amp; It's a Bloke Thing</div>
-        <p class="sponsor-block__eyebrow">Mental Health Partners</p>
-        <h2 class="sponsor-block__heading">Outback Futures &amp; It's a Bloke Thing</h2>
-        <p class="sponsor-block__text">Racing funds to educate rural Australia about prostate cancer, and providing consistent mental and allied health services to remote Queenslanders.</p>
-        <a href="#" class="btn btn--primary btn--pill" style="align-self:flex-start;margin-top:8px;">Learn More &#x2192;</a>
-      </div>
-    </div>
-
-    <!-- SPONSORSHIP: Westpac Lifesaver (image left, text right) -->
-    <div class="sponsor-block" aria-label="Westpac Lifesaver Rescue Helicopter partnership">
-      <div class="sponsor-block__img slide-left" aria-hidden="true">
-        <div class="sponsor-block__img-ph">ASSET REQUIRED: Westpac Lifesaver Rescue Helicopter photography. Authentic, high-quality. 960x440px.</div>
-      </div>
-      <div class="sponsor-block__body slide-right">
-        <div class="sponsor-block__logo-ph">Westpac Lifesaver Rescue Helicopter QLD</div>
-        <p class="sponsor-block__eyebrow">Emergency Services Partner</p>
-        <h2 class="sponsor-block__heading">Westpac Lifesaver Rescue Helicopter QLD</h2>
-        <p class="sponsor-block__text">Specialist medical services using customised road trains, specialist medical clinics on wheels. Over 5,000 patients across 150,000km on the road, helping save more than 250 lives.</p>
-        <a href="#" class="btn btn--primary btn--pill" style="align-self:flex-start;margin-top:8px;">Learn More &#x2192;</a>
-      </div>
-    </div>
-
-    <!-- VIDEO BAND -->
-    <section class="video-band" id="our-story" aria-labelledby="video-heading">
-      <div class="video-band__inner">
-        <div class="video-band__body fade-up">
-          <p class="eyebrow eyebrow--sky">Our Story</p>
-          <h2 class="video-band__heading" id="video-heading">Fuelling the communities that keep Australia moving.</h2>
-          <p class="video-band__text">From the outback to the coast, IOR has been a quiet but constant presence in the communities that define regional Australia. Watch how we give back.</p>
-          <a href="11a_Contact_Usv5.html" class="btn btn--outline-white btn--pill" style="align-self:flex-start;margin-top:8px;">Apply for a Community Grant &#x2192;</a>
-        </div>
-        <div class="fade-up fade-up--d1">
-          <div class="video-embed">
-            <iframe
-              src="https://www.youtube.com/embed/KLziCCUIH38"
-              title="IOR Community &amp; Giving Back"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
-          </div>
+    <!-- BLOCK 7: BESPOKE FINAL CTA -->
+    <section class="final-cta" aria-labelledby="cta-heading">
+      <div class="final-cta__inner">
+        <p class="final-cta__eyebrow fade-up">Beyond the Bowser</p>
+        <h2 class="final-cta__heading fade-up fade-up--d1" id="cta-heading">Discover how we operate responsibly.</h2>
+        <p class="final-cta__body fade-up fade-up--d2">Our commitment to the community is matched by our dedication to safety, environmental sustainability, and ethical governance. Learn more about our corporate standards or explore career opportunities with IOR.</p>
+        <div class="final-cta__ctas fade-up fade-up--d3">
+          <a href="09c_Sustainability.html" class="btn btn--white btn--pill">Explore Sustainability &amp; ESG &#x2192;</a>
+          <a href="10_Careers_v2.html" class="btn btn--outline-white btn--pill">View Careers &#x2192;</a>
         </div>
       </div>
     </section>
 
-    <!-- POLICY DOWNLOADS -->
-    <section class="policy-section" aria-labelledby="policy-heading">
-      <div class="policy-section__inner">
-        <p class="eyebrow fade-up">Our Commitments</p>
-        <h2 class="section-heading fade-up" id="policy-heading">Policies &amp; Programs</h2>
-        <div class="policy-grid">
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up">
-            <div class="policy-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div><div class="policy-card__name">Buy Local Program</div><div class="policy-card__type">PDF Download</div></div>
-          </a>
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up fade-up--d1">
-            <div class="policy-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div><div class="policy-card__name">Local Employment Program</div><div class="policy-card__type">PDF Download</div></div>
-          </a>
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up fade-up--d2">
-            <div class="policy-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div><div class="policy-card__name">Equal Opportunity Policy</div><div class="policy-card__type">PDF Download</div></div>
-          </a>
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up">
-            <div class="policy-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div><div class="policy-card__name">Energy for Regional Australia</div><div class="policy-card__type">PDF Download</div></div>
-          </a>
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up fade-up--d1">
-            <div class="policy-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div><div class="policy-card__name">Industry Development</div><div class="policy-card__type">PDF Download</div></div>
-          </a>
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up fade-up--d2">
-            <div class="policy-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div><div class="policy-card__name">Health &amp; Safety Policy</div><div class="policy-card__type">PDF Download</div></div>
-          </a>
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up">
-            <div class="policy-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <div><div class="policy-card__name">Environment Policy</div><div class="policy-card__type">PDF Download</div></div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- GRANT CTA BAND -->
-    <section class="grant-band" aria-labelledby="grant-heading">
-      <div class="grant-band__inner">
-        <div class="grant-band__body fade-up">
-          <p class="eyebrow eyebrow--sky">Want to Partner with IOR?</p>
-          <h2 class="grant-band__heading" id="grant-heading">We support regional community organisations across Australia.</h2>
-          <p class="grant-band__text">Apply for community grant funding or sponsorship. IOR actively supports organisations that make a real difference in regional and remote Australia.</p>
-        </div>
-        <div class="fade-up fade-up--d1">
-          <a href="11a_Contact_Usv5.html" class="btn btn--white btn--pill">Apply for a Community Grant &#x2192;</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEWS STRIP -->
-    <section class="news-strip" aria-labelledby="news-heading">
-      <div class="news-strip__inner">
-        <div class="news-strip__header">
-          <div>
-            <p class="eyebrow fade-up">Latest from IOR</p>
-            <h2 class="news-strip__heading fade-up" id="news-heading">Innovations and insights from the team keeping Australia moving</h2>
-          </div>
-          <a href="11c_News_Updates.html" class="btn btn--outline btn--pill fade-up">View all blog posts &#x2192;</a>
-        </div>
-        <div class="news-grid">
-          <a href="#" class="news-card fade-up">
-            <div class="news-card__img"><span>ASSET: News thumbnail 640x360px</span></div>
-            <div class="news-card__body"><p class="news-card__cat">News Article</p><h3 class="news-card__title">IOR White Sands NOW OPEN!</h3><span class="news-card__link">Read Article &#x2192;</span></div>
-          </a>
-          <a href="#" class="news-card fade-up fade-up--d1">
-            <div class="news-card__img"><span>ASSET: News thumbnail 640x360px</span></div>
-            <div class="news-card__body"><p class="news-card__cat">News Article</p><h3 class="news-card__title">IOR Aviation Lands in Camden!</h3><span class="news-card__link">Read Article &#x2192;</span></div>
-          </a>
-          <a href="#" class="news-card fade-up fade-up--d2">
-            <div class="news-card__img"><span>ASSET: News thumbnail 640x360px</span></div>
-            <div class="news-card__body"><p class="news-card__cat">News Article</p><h3 class="news-card__title">Stewart Morland Takes Top Prize at Surat Basin Energy Awards</h3><span class="news-card__link">Read Article &#x2192;</span></div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CANONICAL PRE-FOOTER -->
+    <!-- BLOCK 8: CANONICAL PRE-FOOTER -->
     <section class="pre-footer fade-up" aria-label="We're here to help">
       <div class="pre-footer__row">
         <h2 class="pre-footer__title">We&#8217;re here to help</h2>
@@ -625,7 +589,7 @@
   </footer>
 
   <script>
-    // Sticky nav
+    // Sticky nav shadow
     const nav = document.getElementById('primary-nav');
     window.addEventListener('scroll', () => { nav.classList.toggle('primary-nav--scrolled', window.scrollY > 80); }, { passive: true });
 
@@ -662,6 +626,32 @@
         const chevron = btn.querySelector('.drawer__chevron');
         sub.classList.toggle('is-open');
         if (chevron) chevron.style.transform = sub.classList.contains('is-open') ? 'rotate(180deg)' : '';
+      });
+    });
+
+    // Tab-cordion
+    const tabImgs = {
+      sports: 'ASSET REQUIRED: Local sports club photography (rugby, netball, cricket). Regional, authentic. 800x600px.',
+      rodeos: 'ASSET REQUIRED: Rodeo or campdraft photography. Outback, authentic. 800x600px.',
+      grants: 'ASSET REQUIRED: Community grant / local infrastructure photography. Regional, authentic. 800x600px.'
+    };
+    document.querySelectorAll('.tab-item__btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.tab-item').forEach(item => {
+          item.classList.remove('tab-item--active');
+          item.querySelector('.tab-item__btn').setAttribute('aria-selected','false');
+        });
+        btn.closest('.tab-item').classList.add('tab-item--active');
+        btn.setAttribute('aria-selected','true');
+        const frame = document.getElementById('tab-img-frame');
+        const label = document.getElementById('tab-img-label');
+        frame.style.opacity = '0';
+        setTimeout(() => {
+          label.textContent = tabImgs[tab] || '';
+          frame.style.opacity = '1';
+        }, 200);
+        frame.style.transition = 'opacity .3s ease';
       });
     });
 
