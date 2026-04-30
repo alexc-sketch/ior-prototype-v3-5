@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IOR Component & Template Register — Design Team</title>
+<style>
+  /* ─── TOKENS ─────────────────────────────────────────────── */
+  :root {
+    --ior-navy:    #0B1F3A;
+    --ior-gold:    #C8A04A;
+    --ior-mid:     #1E3A5F;
+    --ior-light:   #F4F6F9;
+    --ior-border:  #D6DCE6;
+    --ior-text:    #1A2B3C;
+    --ior-muted:   #5A6A7A;
+    --ior-white:   #FFFFFF;
+    --fc-dark:     #1A0A2E;
+    --fc-teal:     #00C9A7;
+    --hd-navy:     #0D2137;
+    --hd-teal:     #00B4C8;
+    --tier-blue:   #1565C0;
+    --tier-amber:  #E65100;
+    --tier-grey:   #546E7A;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--ior-light);
+    color: var(--ior-text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ─── PROTO BAR ───────────────────────────────────────────── */
+  .proto-bar {
+    background: var(--ior-navy);
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+    padding: 6px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .proto-bar strong { color: var(--ior-gold); letter-spacing: .05em; }
+  .proto-bar a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  .proto-bar a:hover { color: var(--ior-gold); }
+  .proto-bar .spacer { flex: 1; }
+
+  /* ─── HEADER ──────────────────────────────────────────────── */
+  .page-header {
+    background: var(--ior-navy);
+    color: var(--ior-white);
+    padding: 48px 40px 40px;
+    border-bottom: 3px solid var(--ior-gold);
+  }
+  .page-header__eyebrow {
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ior-gold);
+    margin-bottom: 10px;
+  }
+  .page-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    margin-bottom: 10px;
+  }
+  .page-header p {
+    color: rgba(255,255,255,0.65);
+    font-size: 14px;
+    max-width: 680px;
+  }
+  .page-header__meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+    padding: 5px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .meta-pill span { color: var(--ior-gold); font-weight: 700; }
+
+  /* ─── NAV TABS ────────────────────────────────────────────── */
+  .tab-nav {
+    background: var(--ior-white);
+    border-bottom: 2px solid var(--ior-border);
+    padding: 0 40px;
+    display: flex;
+    gap: 0;
+    position: sticky;
+    top: 29px;
+    z-index: 90;
+  }
+  .tab-nav a {
+    display: block;
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ior-muted);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: color .15s, border-color .15s;
+  }
+  .tab-nav a:hover { color: var(--ior-navy); border-color: var(--ior-border); }
+  .tab-nav a.active { color: var(--ior-navy); border-color: var(--ior-gold); }
+
+  /* ─── LAYOUT ──────────────────────────────────────────────── */
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  .section { padding: 48px 0; }
+  .section + .section { border-top: 1px solid var(--ior-border); }
+
+  .section__header { margin-bottom: 28px; }
+  .section__header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ior-navy);
+    margin-bottom: 6px;
+  }
+  .section__header p { color: var(--ior-muted); font-size: 13px; max-width: 700px; }
+
+  /* ─── SUMMARY CARDS ───────────────────────────────────────── */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .summary-card {
+    background: var(--ior-white);
+    border: 1px solid var(--ior-border);
+    border-top: 3px solid var(--ior-gold);
+    padding: 20px;
+  }
+  .summary-card__num {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--ior-navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .summary-card__label { font-size: 12px; color: var(--ior-muted); text-transform: uppercase; letter-spacing: .06em; }
+
+  /* ─── TEMPLATE GROUPS ─────────────────────────────────────── */
+  .template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+  .template-card {
+    background: var(--ior-white);
+    border: 1px solid var(--ior-border);
+    overflow: hidden;
+  }
+  .template-card__head {
+    background: var(--ior-navy);
+    color: var(--ior-white);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .template-card__head h3 { font-size: 13px; font-weight: 700; }
+  .template-card__count {
+    background: var(--ior-gold);
+    color: var(--ior-navy);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    min-width: 24px;
+    text-align: center;
+  }
+  .template-card__body { padding: 16px 18px; }
+  .template-card__pages { list-style: none; margin-bottom: 14px; }
+  .template-card__pages li {
+    font-size: 12px;
+    color: var(--ior-text);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--ior-border);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .template-card__pages li:last-child { border-bottom: none; }
+  .template-card__pages a { color: var(--ior-mid); text-decoration: none; font-size: 11px; }
+  .template-card__pages a:hover { color: var(--ior-gold); }
+  .template-card__components {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  .comp-tag {
+    background: var(--ior-light);
+    border: 1px solid var(--ior-border);
+    color: var(--ior-muted);
+    font-size: 10px;
+    padding: 2px 7px;
+    white-space: nowrap;
+  }
+
+  /* ─── COMPONENT REGISTER TABLE ───────────────────────────── */
+  .register-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--ior-white);
+  }
+  .register-table th {
+    background: var(--ior-navy);
+    color: var(--ior-white);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .register-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--ior-border);
+    vertical-align: top;
+  }
+  .register-table tr:hover td { background: #F8FAFC; }
+  .register-table .comp-name { font-weight: 600; color: var(--ior-navy); }
+  .register-table .page-list { color: var(--ior-muted); font-size: 11px; line-height: 1.8; }
+
+  .tier-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    white-space: nowrap;
+  }
+  .tier-universal { background: #E3F2FD; color: var(--tier-blue); border: 1px solid #90CAF9; }
+  .tier-common    { background: #FFF3E0; color: var(--tier-amber); border: 1px solid #FFCC80; }
+  .tier-specialised { background: #ECEFF1; color: var(--tier-grey); border: 1px solid #CFD8DC; }
+
+  .count-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .count-bar__fill {
+    height: 6px;
+    background: var(--ior-gold);
+    min-width: 4px;
+  }
+  .count-bar__num { font-size: 12px; font-weight: 700; color: var(--ior-navy); min-width: 24px; }
+
+  /* ─── PRIORITY TABLE ──────────────────────────────────────── */
+  .priority-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--ior-white);
+  }
+  .priority-table th {
+    background: var(--ior-navy);
+    color: var(--ior-white);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .priority-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--ior-border);
+    vertical-align: middle;
+  }
+  .priority-table tr:hover td { background: #F8FAFC; }
+  .priority-num {
+    background: var(--ior-navy);
+    color: var(--ior-gold);
+    font-size: 13px;
+    font-weight: 800;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .priority-comp { font-weight: 700; color: var(--ior-navy); font-size: 14px; }
+  .priority-note { font-size: 12px; color: var(--ior-muted); margin-top: 2px; }
+
+  /* ─── NOTES ───────────────────────────────────────────────── */
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .note-card {
+    background: var(--ior-white);
+    border: 1px solid var(--ior-border);
+    border-left: 4px solid var(--ior-gold);
+    padding: 18px 20px;
+  }
+  .note-card h4 { font-size: 13px; font-weight: 700; color: var(--ior-navy); margin-bottom: 8px; }
+  .note-card p, .note-card li { font-size: 13px; color: var(--ior-muted); line-height: 1.7; }
+  .note-card ul { padding-left: 16px; }
+  .note-card a { color: var(--ior-mid); }
+
+  .sub-brand-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .sub-brand-card {
+    padding: 16px;
+    border: 1px solid var(--ior-border);
+  }
+  .sub-brand-card.fc { background: var(--fc-dark); color: var(--ior-white); border-color: var(--fc-teal); }
+  .sub-brand-card.hd { background: var(--hd-navy); color: var(--ior-white); border-color: var(--hd-teal); }
+  .sub-brand-card h5 { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .sub-brand-card.fc h5 { color: var(--fc-teal); }
+  .sub-brand-card.hd h5 { color: var(--hd-teal); }
+  .token-row { display: flex; align-items: center; gap: 8px; font-size: 11px; margin-top: 5px; }
+  .token-swatch { width: 14px; height: 14px; border: 1px solid rgba(255,255,255,0.2); flex-shrink: 0; }
+  .token-name { font-family: monospace; opacity: .8; }
+
+  /* ─── FOOTER ──────────────────────────────────────────────── */
+  .page-footer {
+    background: var(--ior-navy);
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 60px;
+  }
+  .page-footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+  .page-footer a:hover { color: var(--ior-gold); }
+  .page-footer .spacer { flex: 1; }
+</style>
+</head>
+<body>
+
+<!-- PROTO BAR -->
+<div class="proto-bar">
+  <strong>IOR PROTOTYPE</strong>
+  <span>Internal Use Only</span>
+  <div class="spacer"></div>
+  <a href="00_Client_Preview.html">← Client Preview</a>
+  <a href="00_Dashboard.html">Dashboard</a>
+  <a href="00_Global_Components.html">Global Components</a>
+  <a href="IOR_Design_System.html">Design System</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header__eyebrow">IOR PROTOTYPE — DESIGN TEAM RESOURCE</div>
+  <h1>Component &amp; Template Register</h1>
+  <p>A structural audit of all 40 Live pages on the Client Preview. Use this register to build a consistent, scalable Figma component library. No source files were modified during this audit.</p>
+  <div class="page-header__meta">
+    <div class="meta-pill">Pages Audited <span>40</span></div>
+    <div class="meta-pill">Templates Identified <span>12</span></div>
+    <div class="meta-pill">Components Catalogued <span>31</span></div>
+    <div class="meta-pill">Universal Components <span>15</span></div>
+    <div class="meta-pill">Audit Date <span>1 May 2026</span></div>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<div class="tab-nav">
+  <a href="#templates" class="active">Template Groups</a>
+  <a href="#register">Component Register</a>
+  <a href="#priority">Build Priority</a>
+  <a href="#notes">Designer Notes</a>
+</div>
+
+<div class="container">
+
+  <!-- ─── SECTION 1: TEMPLATE GROUPS ─────────────────────── -->
+  <div class="section" id="templates">
+    <div class="section__header">
+      <h2>1. Template Groups</h2>
+      <p>Pages within the same template group share the same layout skeleton and can be designed as a single Figma frame with content swaps. The Product / Service Page template covers nearly half the entire site.</p>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="summary-card__num">1</div>
+        <div class="summary-card__label">Homepage Template</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card__num">4</div>
+        <div class="summary-card__label">Hub / Category Templates</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card__num">19</div>
+        <div class="summary-card__label">Product / Service Pages</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card__num">9</div>
+        <div class="summary-card__label">Bio Pages</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card__num">4</div>
+        <div class="summary-card__label">Utility Pages</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card__num">3</div>
+        <div class="summary-card__label">Other Templates</div>
+      </div>
+    </div>
+
+    <div class="template-grid">
+
+      <!-- Homepage -->
+      <div class="template-card">
+        <div class="template-card__head">
+          <h3>Template: Homepage</h3>
+          <div class="template-card__count">1</div>
+        </div>
+        <div class="template-card__body">
+          <ul class="template-card__pages">
+            <li>🏠 <a href="01_Homepage.html" target="_blank">Homepage</a></li>
+          </ul>
+          <div class="template-card__components">
+            <span class="comp-tag">Hero — Video</span>
+            <span class="comp-tag">Stat Bar</span>
+            <span class="comp-tag">Logo Carousel</span>
+            <span class="comp-tag">Case Study Cards</span>
+            <span class="comp-tag">FAQ Accordion</span>
+            <span class="comp-tag">Pre-footer CTA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hub / Category -->
+      <div class="template-card">
+        <div class="template-card__head">
+          <h3>Template: Hub / Category Page</h3>
+          <div class="template-card__count">4</div>
+        </div>
+        <div class="template-card__body">
+          <ul class="template-card__pages">
+            <li>⛽ <a href="02_Fuel_Solutions_Hub.html" target="_blank">Fuel Solutions Hub</a></li>
+            <li>✈️ <a href="https://alexc-sketch.github.io/ior-prototype/04_Aviation_Hub_v9.html" target="_blank">Aviation Hub</a></li>
+            <li>🏭 <a href="https://alexc-sketch.github.io/ior-prototype/05_Equipment_Infrastructure_v8.html" target="_blank">Equipment &amp; Infrastructure Hub</a></li>
+            <li>🌏 <a href="08_Industries_v6.html" target="_blank">Industries We Serve Hub</a></li>
+          </ul>
+          <div class="template-card__components">
+            <span class="comp-tag">Hero — Image/Video</span>
+            <span class="comp-tag">Quick Links Bar</span>
+            <span class="comp-tag">Stat Bar</span>
+            <span class="comp-tag">Logo Carousel</span>
+            <span class="comp-tag">Related Content Grid</span>
+            <span class="comp-tag">Lead Capture</span>
+            <span class="comp-tag">Pre-footer CTA</span>
+            <span class="comp-tag">FAQ Accordion</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product / Service -->
+      <div class="template-card">
+        <div class="template-card__head">
+          <h3>Template: Product / Service Page</h3>
+          <div class="template-card__count">19</div>
+        </div>
+        <div class="template-card__body">
+          <ul class="template-card__pages">
+            <li>🛢 <a href="03_Ground_Fuels_v8.html" target="_blank">Ground Fuels Hub</a></li>
+            <li>🚛 <a href="03a_Diesel_Network_v8.html" target="_blank">IOR Diesel Network</a></li>
+            <li>🔧 <a href="03b_On_Site_Refuelling_v9.html" target="_blank">On-Site Refuelling</a></li>
+            <li>📦 <a href="03c_Bulk_Diesel_Delivery_v9.html" target="_blank">Bulk Diesel Delivery</a></li>
+            <li>💧 <a href="03d_HyBlue_v8.html" target="_blank">HyBlue™ AdBlue®</a></li>
+            <li>🔩 <a href="03e_Oils_Lubricants_v9.html" target="_blank">Oils &amp; Lubricants</a></li>
+            <li>✈️ <a href="04a_Aviation_Network_v8.html" target="_blank">IOR Aviation Network</a></li>
+            <li>🛬 <a href="https://alexc-sketch.github.io/ior-prototype/04b_Airport_Fuelling_v9.html" target="_blank">Airport Fuelling Services</a></li>
+            <li>🚁 <a href="https://alexc-sketch.github.io/ior-prototype/04c_Aviation_Bulk_Delivery_v9.html" target="_blank">Aviation Bulk Delivery</a></li>
+            <li>🛢 <a href="https://alexc-sketch.github.io/ior-prototype/04d_Aviation_Oils_v9.html" target="_blank">Aviation Oils &amp; Lubricants</a></li>
+            <li>🏗 <a href="https://alexc-sketch.github.io/ior-prototype/05a_Fuel_Storage_Tanks_v8.html" target="_blank">Fuel Storage Tanks</a></li>
+            <li>🏗 <a href="https://alexc-sketch.github.io/ior-prototype/05b_Frac_Tanks_v8.html" target="_blank">Frac Tanks</a></li>
+            <li>📊 <a href="06_Supply_Trading_v8.html" target="_blank">Supply &amp; Trading Hub</a></li>
+            <li>🏭 <a href="https://alexc-sketch.github.io/ior-prototype/06a_Terminals_v8.html" target="_blank">Lytton &amp; Port Bonython</a></li>
+            <li>🏭 <a href="06b_Eromanga_v8.html" target="_blank">Eromanga Refinery</a></li>
+            <li>📱 <a href="07_Digital_Platformsv5.html" target="_blank">Digital Platforms Hub v5</a></li>
+            <li>📱 <a href="07b_Fuelcharge_App_v8.html" target="_blank">Fuelcharge App v8</a></li>
+            <li>🚚 <a href="08c_Transport_v6.html" target="_blank">Transport &amp; Logistics</a></li>
+            <li>📋 <a href="09d_Case_Study_Singlev6.html" target="_blank">Case Study Template v6</a></li>
+          </ul>
+          <div class="template-card__components">
+            <span class="comp-tag">Hero — Image/Video</span>
+            <span class="comp-tag">Quick Links Bar</span>
+            <span class="comp-tag">Stat Bar</span>
+            <span class="comp-tag">Logo Carousel</span>
+            <span class="comp-tag">Testimonial</span>
+            <span class="comp-tag">Related Content Grid</span>
+            <span class="comp-tag">Lead Capture</span>
+            <span class="comp-tag">Pre-footer CTA</span>
+            <span class="comp-tag">FAQ Accordion</span>
+            <span class="comp-tag">Map Component</span>
+            <span class="comp-tag">Timeline / Steps</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio Page -->
+      <div class="template-card">
+        <div class="template-card__head">
+          <h3>Template: Bio Page</h3>
+          <div class="template-card__count">9</div>
+        </div>
+        <div class="template-card__body">
+          <ul class="template-card__pages">
+            <li>👤 Drew Morland — CEO</li>
+            <li>👤 Drew Leishman — COO</li>
+            <li>👤 Adriaan Esterhuizen — CFO</li>
+            <li>👤 Nick Mackenzie — CSO</li>
+            <li>👤 Bryce Morland — GM Aviation</li>
+            <li>👤 Chris Werfel — GM Supply</li>
+            <li>👤 Daniel Roberts — GM Ground Fuels</li>
+            <li>👤 Hamish Jarrett — GM Technology</li>
+            <li>👤 Nell Bond — GM Marketing</li>
+          </ul>
+          <div class="template-card__components">
+            <span class="comp-tag">Bio Card / Profile</span>
+            <span class="comp-tag">Related Content Grid</span>
+            <span class="comp-tag">Pre-footer CTA</span>
+            <span class="comp-tag">Breadcrumb</span>
+            <span class="comp-tag">Social Links</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team / Leadership -->
+      <div class="template-card">
+        <div class="template-card__head">
+          <h3>Template: Team / Leadership Grid</h3>
+          <div class="template-card__count">1</div>
+        </div>
+        <div class="template-card__body">
+          <ul class="template-card__pages">
+            <li>👥 <a href="09a_Our_Leadershipv5.html" target="_blank">Our Leadership</a></li>
+          </ul>
+          <div class="template-card__components">
+            <span class="comp-tag">Leader Card Grid</span>
+            <span class="comp-tag">Pre-footer CTA</span>
+            <span class="comp-tag">Social Links</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Studies -->
+      <div class="template-card">
+        <div class="template-card__head">
+          <h3>Template: Case Studies — List</h3>
+          <div class="template-card__count">1</div>
+        </div>
+        <div class="template-card__body">
+          <ul class="template-card__pages">
+            <li>📰 <a href="09d_Case_Studies_v6.html" target="_blank">Case Studies List v6</a></li>
+          </ul>
+          <div class="template-card__components">
+            <span class="comp-tag">Case Study Cards</span>
+            <span class="comp-tag">Tag / Category Filter</span>
+            <span class="comp-tag">Pagination</span>
+            <span class="comp-tag">Pre-footer CTA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Utility Pages -->
+      <div class="template-card">
+        <div class="template-card__head">
+          <h3>Template: Utility Pages</h3>
+          <div class="template-card__count">4</div>
+        </div>
+        <div class="template-card__body">
+          <ul class="template-card__pages">
+            <li>📞 <a href="11a_Contact_Usv5.html" target="_blank">Contact Us</a></li>
+            <li>📍 <a href="11b_Regional_Contactsv5.html" target="_blank">Regional Contacts</a></li>
+            <li>🗺 <a href="11d_Find_Locationv5.html" target="_blank">Find a Location</a></li>
+            <li>💳 <a href="11e_Make_Paymentv5.html" target="_blank">Make a Payment</a></li>
+          </ul>
+          <div class="template-card__components">
+            <span class="comp-tag">Contact Form</span>
+            <span class="comp-tag">Map Component</span>
+            <span class="comp-tag">Payment Form</span>
+            <span class="comp-tag">Quick Links Bar</span>
+            <span class="comp-tag">Pre-footer CTA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Policy / Legal -->
+      <div class="template-card">
+        <div class="template-card__head">
+          <h3>Template: Policy / Legal</h3>
+          <div class="template-card__count">1</div>
+        </div>
+        <div class="template-card__body">
+          <ul class="template-card__pages">
+            <li>📄 <a href="11f_Privacy_Policyv5.html" target="_blank">Privacy Policy</a></li>
+          </ul>
+          <div class="template-card__components">
+            <span class="comp-tag">Policy / Legal Text Block</span>
+            <span class="comp-tag">Pre-footer CTA</span>
+            <span class="comp-tag">Social Links</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SECTION 2: COMPONENT REGISTER ──────────────────── -->
+  <div class="section" id="register">
+    <div class="section__header">
+      <h2>2. Component Register</h2>
+      <p>All 31 components detected across the 40 Live pages, sorted by frequency. 🔵 Universal = 10+ pages. 🟡 Common = 5–9 pages. ⚪ Specialised = fewer than 5 pages.</p>
+    </div>
+
+    <table class="register-table">
+      <thead>
+        <tr>
+          <th style="width:28%">Component</th>
+          <th style="width:12%">Frequency</th>
+          <th style="width:15%">Tier</th>
+          <th>Pages</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="comp-name">Pre-footer CTA Band</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:100%"></div><span class="count-bar__num">39</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">All content pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">FAQ Accordion</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:97%"></div><span class="count-bar__num">38</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">All content pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Proto-bar / Prototype Nav</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:90%"></div><span class="count-bar__num">35</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">All prototype pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Social Links</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:87%"></div><span class="count-bar__num">34</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">All pages with footer</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Accordion / Expandable Rows</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:82%"></div><span class="count-bar__num">32</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">All FAQ-bearing pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Lead Capture / CTA Form</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:77%"></div><span class="count-bar__num">30</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">All product + utility pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Quick Links Bar (EXPLORE)</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:72%"></div><span class="count-bar__num">28</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">All hub + product pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Related Content Grid</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:69%"></div><span class="count-bar__num">27</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">All product + bio pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Hero — Full Bleed Image / Scrim</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:64%"></div><span class="count-bar__num">25</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">Ground Fuels, Aviation, Equipment, Supply pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Policy / Legal Text Block</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:56%"></div><span class="count-bar__num">22</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">All product pages (disclaimer text)</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Logo Carousel / Partner Strip</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:54%"></div><span class="count-bar__num">21</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">All hub + major product pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Stat Bar / KPI Strip</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:51%"></div><span class="count-bar__num">20</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">Homepage, all hub pages, utility pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Testimonial / Quote Block</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:46%"></div><span class="count-bar__num">18</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">Fuel Solutions, Diesel, Aviation, Equipment pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Hero — Full Bleed Video</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:41%"></div><span class="count-bar__num">16</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">Homepage, On-Site, Bulk Diesel, Oils, Contact Us</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Bio Card / Profile</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:23%"></div><span class="count-bar__num">9</span></div></td>
+          <td><span class="tier-badge tier-universal">🔵 Universal</span></td>
+          <td class="page-list">All 9 Bio pages</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Map / Coverage Component</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:20%"></div><span class="count-bar__num">8</span></div></td>
+          <td><span class="tier-badge tier-common">🟡 Common</span></td>
+          <td class="page-list">Fuel Solutions, Ground Fuels, Diesel Network, Aviation Hub, Aviation Network, Contact Us, Find a Location</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Timeline / Steps Section</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:18%"></div><span class="count-bar__num">7</span></div></td>
+          <td><span class="tier-badge tier-common">🟡 Common</span></td>
+          <td class="page-list">Diesel Network, Bulk Diesel, Aviation Network, Aviation Bulk, Equipment Hub, Contact Us</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Breadcrumb</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:15%"></div><span class="count-bar__num">10</span></div></td>
+          <td><span class="tier-badge tier-common">🟡 Common</span></td>
+          <td class="page-list">All Bio pages + Homepage</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Cross-sell / Product Band</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:13%"></div><span class="count-bar__num">5</span></div></td>
+          <td><span class="tier-badge tier-common">🟡 Common</span></td>
+          <td class="page-list">Homepage, Aviation Bulk, Equipment Hub, Make a Payment</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Fuelcharge Brand Band</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:8%"></div><span class="count-bar__num">3</span></div></td>
+          <td><span class="tier-badge tier-specialised">⚪ Specialised</span></td>
+          <td class="page-list">Digital Platforms Hub, Diesel Network, Aviation Network</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Gated Asset / Download CTA</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:8%"></div><span class="count-bar__num">3</span></div></td>
+          <td><span class="tier-badge tier-specialised">⚪ Specialised</span></td>
+          <td class="page-list">Homepage, Find a Location</td>
+        </tr>
+        <tr>
+          <td class="comp-name">App Store / Google Play Badges</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:8%"></div><span class="count-bar__num">3</span></div></td>
+          <td><span class="tier-badge tier-specialised">⚪ Specialised</span></td>
+          <td class="page-list">Fuel Solutions Hub, Fuelcharge App, Find a Location</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Case Study Cards</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:8%"></div><span class="count-bar__num">3</span></div></td>
+          <td><span class="tier-badge tier-specialised">⚪ Specialised</span></td>
+          <td class="page-list">Homepage, Case Studies List, Case Study Single</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Contact Form</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:5%"></div><span class="count-bar__num">1</span></div></td>
+          <td><span class="tier-badge tier-specialised">⚪ Specialised</span></td>
+          <td class="page-list">Contact Us</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Payment / Gateway Form</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:5%"></div><span class="count-bar__num">1</span></div></td>
+          <td><span class="tier-badge tier-specialised">⚪ Specialised</span></td>
+          <td class="page-list">Make a Payment</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Tag / Category Filter</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:5%"></div><span class="count-bar__num">1</span></div></td>
+          <td><span class="tier-badge tier-specialised">⚪ Specialised</span></td>
+          <td class="page-list">Case Studies List</td>
+        </tr>
+        <tr>
+          <td class="comp-name">HyDip Brand Band</td>
+          <td><div class="count-bar"><div class="count-bar__fill" style="width:5%"></div><span class="count-bar__num">1</span></div></td>
+          <td><span class="tier-badge tier-specialised">⚪ Specialised</span></td>
+          <td class="page-list">HyDip FMS (not yet live)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ─── SECTION 3: BUILD PRIORITY ──────────────────────── -->
+  <div class="section" id="priority">
+    <div class="section__header">
+      <h2>3. Figma Build Priority</h2>
+      <p>Build these components first. Completing the top 8 will unlock the design of over 80% of all pages on the site.</p>
+    </div>
+
+    <table class="priority-table">
+      <thead>
+        <tr>
+          <th style="width:60px">#</th>
+          <th>Component</th>
+          <th style="width:120px">Used On</th>
+          <th>Why First</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="priority-num">1</div></td>
+          <td>
+            <div class="priority-comp">Global Shell (Nav + Footer)</div>
+            <div class="priority-note">Desktop + Mobile. Utility bar + main nav + footer columns.</div>
+          </td>
+          <td><strong>40 pages</strong></td>
+          <td>Every single page depends on this. Build once, apply everywhere.</td>
+        </tr>
+        <tr>
+          <td><div class="priority-num">2</div></td>
+          <td>
+            <div class="priority-comp">Hero — Full Bleed Image / Scrim</div>
+            <div class="priority-note">Full-width, edge-to-edge. Dark scrim overlay. H1 + subtext + CTA pair.</div>
+          </td>
+          <td><strong>25 pages</strong></td>
+          <td>The most common hero type. Covers all Ground Fuels, Aviation, Equipment and Supply pages.</td>
+        </tr>
+        <tr>
+          <td><div class="priority-num">3</div></td>
+          <td>
+            <div class="priority-comp">Hero — Full Bleed Video</div>
+            <div class="priority-note">Autoplay muted video background. Same overlay + copy structure as image hero.</div>
+          </td>
+          <td><strong>16 pages</strong></td>
+          <td>Used on Homepage, key product pages, and Contact Us. Variant of the image hero.</td>
+        </tr>
+        <tr>
+          <td><div class="priority-num">4</div></td>
+          <td>
+            <div class="priority-comp">Quick Links Bar (EXPLORE)</div>
+            <div class="priority-note">Horizontal pill links. Active state = gold underline. Never sticky.</div>
+          </td>
+          <td><strong>28 pages</strong></td>
+          <td>Appears immediately below the hero on all hub and product pages. Critical for wayfinding.</td>
+        </tr>
+        <tr>
+          <td><div class="priority-num">5</div></td>
+          <td>
+            <div class="priority-comp">Stat Bar / KPI Strip</div>
+            <div class="priority-note">3–4 stats in a dark navy band. Large number + short label.</div>
+          </td>
+          <td><strong>20 pages</strong></td>
+          <td>Trust signal used on all hub pages and major product pages.</td>
+        </tr>
+        <tr>
+          <td><div class="priority-num">6</div></td>
+          <td>
+            <div class="priority-comp">Feature Cards (3-col grid)</div>
+            <div class="priority-note">Icon + heading + body text. White cards on light grey background.</div>
+          </td>
+          <td><strong>19 pages</strong></td>
+          <td>The primary content layout component across all product pages.</td>
+        </tr>
+        <tr>
+          <td><div class="priority-num">7</div></td>
+          <td>
+            <div class="priority-comp">Lead Capture / CTA Form</div>
+            <div class="priority-note">Navy background band. Heading + subtext + form fields + submit CTA.</div>
+          </td>
+          <td><strong>30 pages</strong></td>
+          <td>The primary conversion component. Present on every product and utility page.</td>
+        </tr>
+        <tr>
+          <td><div class="priority-num">8</div></td>
+          <td>
+            <div class="priority-comp">Pre-footer CTA Band</div>
+            <div class="priority-note">Full-width gold or navy band. Heading + 1–2 CTA buttons.</div>
+          </td>
+          <td><strong>39 pages</strong></td>
+          <td>Present on virtually every page. The last conversion opportunity before the footer.</td>
+        </tr>
+        <tr>
+          <td><div class="priority-num">9</div></td>
+          <td>
+            <div class="priority-comp">Related Content Grid</div>
+            <div class="priority-note">3-col card grid. Image + category tag + title + short description + CTA.</div>
+          </td>
+          <td><strong>27 pages</strong></td>
+          <td>Used on all product and bio pages to drive internal linking.</td>
+        </tr>
+        <tr>
+          <td><div class="priority-num">10</div></td>
+          <td>
+            <div class="priority-comp">FAQ Accordion</div>
+            <div class="priority-note">Expandable rows. Question + answer. Supports schema markup.</div>
+          </td>
+          <td><strong>38 pages</strong></td>
+          <td>Present on almost every page. Critical for SEO and E-E-A-T.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ─── SECTION 4: DESIGNER NOTES ──────────────────────── -->
+  <div class="section" id="notes">
+    <div class="section__header">
+      <h2>4. Designer Notes</h2>
+      <p>Key rules and references for the Figma design team.</p>
+    </div>
+
+    <div class="notes-grid">
+      <div class="note-card">
+        <h4>What is Locked vs What You Own</h4>
+        <p>The UX structure, copy, and section order are locked in the HTML wireframes. Your role is to own the <strong>visual execution</strong> — imagery, iconography, typography scale, colour application, and spacing. Do not change copy or remove sections.</p>
+      </div>
+      <div class="note-card">
+        <h4>Geometry Rules</h4>
+        <p>Rounded corners are permitted and encouraged, particularly on imagery, cards, and icon containers. All hero banners and major section banners must be <strong>full-bleed (edge-to-edge)</strong>. Do not use gradients on hero imagery — use a solid dark scrim overlay instead.</p>
+      </div>
+      <div class="note-card">
+        <h4>Colour Palette — Core IOR</h4>
+        <ul>
+          <li>Navy: <code>#0B1F3A</code> — primary backgrounds</li>
+          <li>Gold: <code>#C8A04A</code> — CTAs, accents, active states</li>
+          <li>Mid Blue: <code>#1E3A5F</code> — secondary backgrounds</li>
+          <li>Light Grey: <code>#F4F6F9</code> — section backgrounds</li>
+          <li>White: <code>#FFFFFF</code> — card backgrounds</li>
+        </ul>
+      </div>
+      <div class="note-card">
+        <h4>Sub-Brand Colour Tokens</h4>
+        <div class="sub-brand-grid">
+          <div class="sub-brand-card fc">
+            <h5>Fuelcharge™</h5>
+            <div class="token-row"><div class="token-swatch" style="background:#1A0A2E"></div><span class="token-name">--fc-dark: #1A0A2E</span></div>
+            <div class="token-row"><div class="token-swatch" style="background:#00C9A7"></div><span class="token-name">--fc-teal: #00C9A7</span></div>
+          </div>
+          <div class="sub-brand-card hd">
+            <h5>HyDip™</h5>
+            <div class="token-row"><div class="token-swatch" style="background:#0D2137"></div><span class="token-name">--hd-navy: #0D2137</span></div>
+            <div class="token-row"><div class="token-swatch" style="background:#00B4C8"></div><span class="token-name">--hd-teal: #00B4C8</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="note-card">
+        <h4>Quick Links Bar Behaviour</h4>
+        <p>The Quick Links Bar must <strong>never be sticky</strong>. It scrolls with the page. The active state is a gold underline beneath the current page's link. Each section has its own EXPLORE label (e.g., "EXPLORE Ground Fuels", "EXPLORE Digital Platforms").</p>
+      </div>
+      <div class="note-card">
+        <h4>Reference Files</h4>
+        <ul>
+          <li><a href="00_Global_Components.html">Global Components</a></li>
+          <li><a href="IOR_Design_System.html">Design System</a></li>
+          <li><a href="IOR_Shell_Digital_Platforms_v4.html">Global Shell v4</a></li>
+          <li><a href="00_Client_Preview.html">Client Preview</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PAGE FOOTER -->
+<div class="page-footer">
+  <strong style="color:rgba(255,255,255,0.7)">IOR Prototype</strong>
+  <span>Component &amp; Template Register — Internal Use Only</span>
+  <div class="spacer"></div>
+  <a href="00_Client_Preview.html">← Client Preview</a>
+  <a href="00_Dashboard.html">Dashboard</a>
+  <span>Audit: 1 May 2026</span>
+</div>
+
+</body>
+</html>
