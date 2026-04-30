@@ -21,7 +21,7 @@
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:var(--font);color:var(--grey-900);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+    body{font-family:var(--font);color:var(--grey-900);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
     img{display:block;max-width:100%}
     a{text-decoration:none;color:inherit}
     button{cursor:pointer;font-family:inherit;border:none;background:none}
@@ -98,8 +98,8 @@
     .drawer__cta{padding:20px;display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(255,255,255,.1)}
 
     /* QUICK LINKS BAR */
-    .quick-links-bar{background:var(--grey-100);border-bottom:1px solid rgba(3,85,163,.15);padding:0 var(--section-pad-x)}
-    .quick-links-bar__inner{max-width:1280px;margin-inline:auto;display:flex;align-items:center;overflow-x:auto}
+    .quick-links-bar{background:var(--grey-100);border-bottom:1px solid rgba(3,85,163,.15);padding:0 var(--section-pad-x);overflow-x:auto}
+    .quick-links-bar__inner{max-width:1280px;margin-inline:auto;display:flex;align-items:center;min-width:max-content}
     .quick-links-bar__label{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ior-blue);white-space:nowrap;padding:12px 20px 12px 0;border-right:1px solid rgba(3,85,163,.2);margin-right:4px;flex-shrink:0}
     .quick-links-bar__link{display:inline-flex;align-items:center;padding:12px 16px;font-size:14px;font-weight:700;color:var(--ior-navy);white-space:nowrap;border-bottom:2px solid transparent;transition:all var(--transition-fast);min-height:44px}
     .quick-links-bar__link:hover{color:var(--ior-blue);border-bottom-color:var(--ior-blue)}
@@ -108,66 +108,73 @@
     /* HERO */
     .hero{background:var(--ior-navy);min-height:520px;display:flex;align-items:center;position:relative;overflow:hidden}
     .hero__bg{position:absolute;inset:0;background:var(--grey-200);display:flex;align-items:center;justify-content:center}
-    .hero__bg-placeholder{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-400)}
+    .hero__bg-placeholder{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-400);text-align:center;padding:20px}
     .hero__overlay{position:absolute;inset:0;background:rgba(10,34,64,.72)}
-    .hero__content{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:clamp(60px,8vw,100px) var(--section-pad-x);display:flex;flex-direction:column;gap:16px;max-width:720px}
+    .hero__content{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:clamp(60px,8vw,100px) var(--section-pad-x);display:flex;flex-direction:column;gap:16px}
+    .hero__content-inner{max-width:680px;display:flex;flex-direction:column;gap:16px}
     .hero__eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-sky)}
     .hero__headline{font-size:clamp(32px,5vw,56px);font-weight:800;color:#fff;line-height:1.05}
-    .hero__sub{font-size:clamp(16px,2vw,20px);color:rgba(255,255,255,.85);max-width:560px;line-height:1.6}
+    .hero__sub{font-size:clamp(16px,1.8vw,20px);color:rgba(255,255,255,.85);max-width:560px;line-height:1.6}
     .hero__ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
 
     /* SECTION UTILITIES */
-    .section-pad{padding:clamp(60px,8vw,100px) var(--section-pad-x)}
+    .section-pad{padding:clamp(56px,7vw,88px) var(--section-pad-x)}
     .section-pad--tight{padding:clamp(40px,5vw,64px) var(--section-pad-x)}
     .inner{max-width:1280px;margin:0 auto}
     .eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-blue)}
     .section-heading{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:var(--ior-navy);line-height:1.15;margin-top:8px;margin-bottom:16px}
-    .section-body{font-size:clamp(15px,1.5vw,17px);color:var(--grey-700);line-height:1.75;max-width:760px;margin-bottom:24px}
-    .asset-placeholder{background:var(--grey-100);border:2px dashed var(--grey-200);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--grey-400);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+    .section-body{font-size:clamp(15px,1.5vw,17px);color:var(--grey-700);line-height:1.75;max-width:760px;margin-bottom:0}
 
-    /* PHILOSOPHY SPLIT */
-    .philosophy-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+    /* PHILOSOPHY SECTION */
+    .philosophy-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start}
     .philosophy-content h2{font-size:clamp(26px,3vw,36px);font-weight:800;color:var(--ior-navy);line-height:1.15;margin-bottom:16px}
     .philosophy-content p{font-size:clamp(15px,1.5vw,17px);color:var(--grey-700);line-height:1.75;margin-bottom:16px}
     .philosophy-content ul{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;padding-left:0;list-style:none}
     .philosophy-content ul li{font-size:15px;color:var(--grey-700);display:flex;align-items:flex-start;gap:10px;line-height:1.6}
     .philosophy-content ul li::before{content:'';display:inline-block;width:8px;height:8px;background:var(--ior-blue);flex-shrink:0;margin-top:7px}
-    .pillars-visual{display:flex;flex-direction:column}
-    .pillar-item{display:flex;align-items:flex-start;gap:20px;padding:24px 0;border-bottom:1px solid var(--grey-200)}
-    .pillar-item:last-child{border-bottom:none}
-    .pillar-num{font-size:clamp(36px,4vw,52px);font-weight:800;color:var(--grey-200);line-height:1;flex-shrink:0;width:60px}
-    .pillar-body h3{font-size:16px;font-weight:700;color:var(--ior-blue);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
-    .pillar-body p{font-size:14px;color:var(--grey-700);line-height:1.6}
+    .philosophy-image{background:var(--grey-100);border:2px dashed var(--grey-200);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--grey-400);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;text-align:center;padding:20px}
+
+    /* PILLARS SECTION */
+    .pillars-section{background:var(--ior-navy);padding:clamp(56px,7vw,88px) var(--section-pad-x)}
+    .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1)}
+    .pillar-card{background:var(--ior-navy);padding:clamp(32px,4vw,48px);display:flex;flex-direction:column;gap:20px;transition:background var(--transition-fast)}
+    .pillar-card:hover{background:rgba(255,255,255,.05)}
+    .pillar-card__icon{width:56px;height:56px;background:rgba(91,180,229,.15);border:1px solid rgba(91,180,229,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .pillar-card__num{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-sky)}
+    .pillar-card__title{font-size:clamp(18px,2vw,22px);font-weight:800;color:#fff;line-height:1.2}
+    .pillar-card__body{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.75);line-height:1.7}
 
     /* TABCORDION */
-    .tabcordion-section{padding:clamp(60px,8vw,100px) 0;background:var(--grey-50)}
+    .tabcordion-section{padding:clamp(56px,7vw,88px) 0}
+    .tabcordion-section--grey{background:var(--grey-50)}
     .tabcordion-section--white{background:#fff}
     .tabcordion-section__header{max-width:1280px;margin:0 auto;padding:0 var(--section-pad-x) clamp(32px,4vw,48px)}
-    .tabcordion{display:grid;grid-template-columns:300px 1fr;gap:0;border:1px solid var(--grey-200);background:#fff;max-width:1280px;margin:0 auto}
+    .tabcordion{display:grid;grid-template-columns:280px 1fr;border:1px solid var(--grey-200);background:#fff;max-width:1280px;margin:0 auto}
     .tabcordion__tabs{display:flex;flex-direction:column;border-right:1px solid var(--grey-200)}
-    .tabcordion__tab{display:flex;align-items:center;gap:14px;padding:22px 24px;font-size:15px;font-weight:700;color:var(--grey-700);cursor:pointer;border-left:4px solid transparent;border-bottom:1px solid var(--grey-200);background:none;text-align:left;transition:all var(--transition-fast);min-height:44px;font-family:var(--font)}
+    .tabcordion__tab{display:flex;align-items:center;gap:14px;padding:20px 24px;font-size:14px;font-weight:700;color:var(--grey-700);cursor:pointer;border-left:4px solid transparent;border-bottom:1px solid var(--grey-200);background:none;text-align:left;transition:all var(--transition-fast);min-height:56px;font-family:var(--font);line-height:1.3}
     .tabcordion__tab:last-child{border-bottom:none}
     .tabcordion__tab:hover{background:var(--grey-50);color:var(--ior-blue)}
     .tabcordion__tab.active{border-left-color:var(--ior-green);color:var(--ior-blue);background:var(--ior-light);font-weight:800}
-    .tabcordion__tab-num{font-size:12px;font-weight:700;color:var(--mid-grey);width:20px;flex-shrink:0}
+    .tabcordion__tab-num{font-size:11px;font-weight:700;color:var(--mid-grey);width:20px;flex-shrink:0;font-family:var(--font)}
     .tabcordion__tab.active .tabcordion__tab-num{color:var(--ior-green)}
-    .tabcordion__panels{position:relative}
-    .tabcordion__panel{display:none;grid-template-columns:1fr 1fr;min-height:460px}
+    .tabcordion__panels{position:relative;min-height:400px}
+    .tabcordion__panel{display:none;grid-template-columns:1fr 1fr;min-height:400px}
     .tabcordion__panel.active{display:grid}
-    .tabcordion__panel-img{background:var(--grey-200);position:relative;overflow:hidden;min-height:340px}
+    .tabcordion__panel-media{background:var(--grey-200);position:relative;overflow:hidden;min-height:320px}
+    .tabcordion__panel-media iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
     .tabcordion__panel-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--grey-400);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:20px;text-align:center}
-    .tabcordion__panel-video{position:relative;overflow:hidden;min-height:340px;background:#000}
-    .tabcordion__panel-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-    .tabcordion__panel-content{padding:clamp(32px,4vw,48px);display:flex;flex-direction:column;justify-content:center}
-    .tabcordion__panel-eyebrow{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ior-green);margin-bottom:12px}
-    .tabcordion__panel-title{font-size:clamp(20px,2.2vw,28px);font-weight:800;color:var(--charcoal);line-height:1.15;margin-bottom:16px}
-    .tabcordion__panel-body{font-size:clamp(14px,1.4vw,16px);color:var(--grey-700);line-height:1.7;margin-bottom:28px}
-    .tabcordion__panel-cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--ior-blue);transition:gap .2s}
+    .tabcordion__panel-content{padding:clamp(28px,3.5vw,44px);display:flex;flex-direction:column;justify-content:center;gap:0}
+    .tabcordion__panel-logo{height:48px;display:flex;align-items:center;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--grey-200)}
+    .tabcordion__panel-logo-placeholder{background:var(--grey-100);border:1px dashed var(--grey-200);height:40px;width:160px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-400)}
+    .tabcordion__panel-eyebrow{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ior-green);margin-bottom:10px}
+    .tabcordion__panel-title{font-size:clamp(18px,2vw,24px);font-weight:800;color:var(--charcoal);line-height:1.2;margin-bottom:14px}
+    .tabcordion__panel-body{font-size:clamp(13px,1.3vw,15px);color:var(--grey-700);line-height:1.7;margin-bottom:24px}
+    .tabcordion__panel-cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--ior-blue);transition:gap .2s;width:fit-content}
     .tabcordion__panel-cta:hover{gap:12px}
     .tabcordion__accordion{display:none;border:1px solid var(--grey-200);max-width:1280px;margin:0 auto}
     .tabcordion__acc-item{border-bottom:1px solid var(--grey-200)}
     .tabcordion__acc-item:last-child{border-bottom:none}
-    .tabcordion__acc-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;font-size:15px;font-weight:700;color:var(--grey-900);background:none;border:none;cursor:pointer;text-align:left;font-family:var(--font);min-height:44px;border-left:4px solid transparent;transition:all var(--transition-fast)}
+    .tabcordion__acc-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;font-size:15px;font-weight:700;color:var(--grey-900);background:none;border:none;cursor:pointer;text-align:left;font-family:var(--font);min-height:56px;border-left:4px solid transparent;transition:all var(--transition-fast)}
     .tabcordion__acc-trigger[aria-expanded="true"]{border-left-color:var(--ior-green);color:var(--ior-blue);background:var(--ior-light)}
     .tabcordion__acc-chevron{flex-shrink:0;transition:transform var(--transition-fast)}
     .tabcordion__acc-trigger[aria-expanded="true"] .tabcordion__acc-chevron{transform:rotate(180deg)}
@@ -178,8 +185,8 @@
     /* COMMUNITY BAND */
     .community-band{background:var(--ior-navy);padding:clamp(56px,7vw,80px) var(--section-pad-x)}
     .community-band__inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
-    .community-band h2{font-size:clamp(26px,3vw,36px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:16px}
-    .community-band p{font-size:clamp(15px,1.5vw,17px);color:rgba(255,255,255,.8);line-height:1.75;margin-bottom:24px}
+    .community-band h2{font-size:clamp(24px,3vw,34px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:16px}
+    .community-band p{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.8);line-height:1.75;margin-bottom:16px}
     .community-band__asset{background:rgba(255,255,255,.06);border:2px dashed rgba(255,255,255,.2);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:20px;text-align:center}
 
     /* FINAL CTA */
@@ -193,13 +200,13 @@
     /* PRE-FOOTER */
     .pre-footer{background:var(--ior-blue);padding:56px 0}
     .pre-footer__row{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
-    .pre-footer__title{font-size:clamp(22px,3vw,28px);font-weight:700;color:#fff}
+    .pre-footer__title{font-size:clamp(20px,2.5vw,26px);font-weight:700;color:#fff}
     .pre-footer__ctas{display:flex;gap:12px;flex-wrap:wrap}
 
     /* FOOTER */
     .site-footer{background:var(--ior-blue);padding:56px 0 0;border-top:1px solid rgba(255,255,255,.1)}
     .footer-nav-grid{max-width:1280px;margin:0 auto;padding:0 24px 48px;display:grid;grid-template-columns:repeat(6,1fr);gap:32px}
-    .footer-col__title{font-size:clamp(13px,1.3vw,16px);font-weight:800;color:#fff;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.2)}
+    .footer-col__title{font-size:clamp(13px,1.3vw,15px);font-weight:800;color:#fff;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.2)}
     .footer-col__links{display:flex;flex-direction:column;gap:10px}
     .footer-col__link{font-size:clamp(12px,1.2vw,14px);color:rgba(255,255,255,.8);min-height:44px;display:flex;align-items:center}
     .footer-col__link:hover{color:#fff;text-decoration:underline}
@@ -219,12 +226,17 @@
     /* ANIMATIONS */
     .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .fade-up.is-visible{opacity:1;transform:translateY(0)}
+    .fade-up-delay-1{transition-delay:.1s}
+    .fade-up-delay-2{transition-delay:.2s}
+    .fade-up-delay-3{transition-delay:.3s}
 
     /* RESPONSIVE */
     @media(max-width:1024px){
       .footer-nav-grid{grid-template-columns:repeat(3,1fr)}
       .philosophy-grid{grid-template-columns:1fr}
       .community-band__inner{grid-template-columns:1fr}
+      .pillars-grid{grid-template-columns:1fr}
+      .tabcordion{grid-template-columns:240px 1fr}
     }
     @media(max-width:768px){
       .nav-links,.nav-ctas{display:none}
@@ -235,8 +247,15 @@
       .tabcordion__panel{grid-template-columns:1fr}
       .footer-nav-grid{grid-template-columns:repeat(2,1fr);gap:24px}
       .pre-footer__row{flex-direction:column;align-items:flex-start}
+      .hero__ctas{flex-direction:column;align-items:flex-start}
+      .hero__ctas .btn{width:100%;justify-content:center}
     }
-    @media(max-width:480px){.footer-nav-grid{grid-template-columns:1fr}}
+    @media(max-width:480px){
+      .footer-nav-grid{grid-template-columns:1fr}
+      .pillars-grid{grid-template-columns:1fr}
+      .final-cta-strip__buttons{flex-direction:column;align-items:center;width:100%}
+      .final-cta-strip__buttons .btn{width:100%;justify-content:center}
+    }
   </style>
 </head>
 <body>
@@ -301,61 +320,18 @@
       <span></span><span></span><span></span>
     </button>
   </div>
-  <!-- Mega: Fuel Solutions -->
-  <div class="mega-panel" id="mega-fuel-solutions">
-    <div class="mega-inner mega-inner--4col">
-      <div class="mega-col"><p class="mega-col__title">Ground Fuels</p><div class="mega-col__links"><a href="#" class="mega-col__link">On-Site Refuelling</a><a href="#" class="mega-col__link">Bulk Diesel Supply</a><a href="#" class="mega-col__link">Fleet Fuelling</a></div></div>
-      <div class="mega-col"><p class="mega-col__title">Aviation</p><div class="mega-col__links"><a href="#" class="mega-col__link">Avgas</a><a href="#" class="mega-col__link">Jet A-1</a><a href="#" class="mega-col__link">Into-Plane Fuelling</a></div></div>
-      <div class="mega-col"><p class="mega-col__title">Equipment &amp; Infrastructure</p><div class="mega-col__links"><a href="#" class="mega-col__link">Storage Tanks</a><a href="#" class="mega-col__link">Dispensing Equipment</a></div></div>
-      <div class="mega-col"><p class="mega-col__title">Supply &amp; Trading</p><div class="mega-col__links"><a href="#" class="mega-col__link">Fuel Procurement</a><a href="#" class="mega-col__link">Price Risk Management</a></div></div>
-    </div>
-  </div>
-  <!-- Mega: Digital Platforms -->
-  <div class="mega-panel" id="mega-digital-platforms">
-    <div class="mega-inner mega-inner--3col">
-      <div class="mega-col"><p class="mega-col__title">Platforms</p><div class="mega-col__links"><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v4.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a></div></div>
-      <div class="mega-col"><p class="mega-col__title">Features</p><div class="mega-col__links"><a href="#" class="mega-col__link">Fuel Monitoring</a><a href="#" class="mega-col__link">Reporting &amp; Analytics</a></div></div>
-      <div class="mega-col"><p class="mega-col__title">Resources</p><div class="mega-col__links"><a href="#" class="mega-col__link">Case Studies</a></div></div>
-    </div>
-  </div>
-  <!-- Mega: Industries -->
-  <div class="mega-panel" id="mega-industries">
-    <div class="mega-inner mega-inner--4col">
-      <div class="mega-col"><p class="mega-col__title">Mining &amp; Resources</p><div class="mega-col__links"><a href="#" class="mega-col__link">Open Cut Mining</a><a href="#" class="mega-col__link">Underground Mining</a></div></div>
-      <div class="mega-col"><p class="mega-col__title">Agriculture</p><div class="mega-col__links"><a href="#" class="mega-col__link">Cropping &amp; Grazing</a><a href="#" class="mega-col__link">Horticulture</a></div></div>
-      <div class="mega-col"><p class="mega-col__title">Transport &amp; Logistics</p><div class="mega-col__links"><a href="#" class="mega-col__link">Road Transport</a><a href="#" class="mega-col__link">Fleet Operators</a></div></div>
-      <div class="mega-col"><p class="mega-col__title">Construction</p><div class="mega-col__links"><a href="#" class="mega-col__link">Civil Construction</a></div></div>
-    </div>
-  </div>
-  <!-- Mega: About IOR -->
-  <div class="mega-panel" id="mega-about-ior">
-    <div class="mega-inner mega-inner--2col">
-      <div class="mega-col"><p class="mega-col__title">About IOR</p><div class="mega-col__links"><a href="09_About_IOR_v2.html" class="mega-col__link">About Us</a><a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a><a href="09b_Community.html" class="mega-col__link">Community &amp; Giving Back</a><a href="09c_Sustainability.html" class="mega-col__link">Sustainability, HSE &amp; ESG</a></div></div>
-      <div class="mega-col"><p class="mega-col__title">More</p><div class="mega-col__links"><a href="09d_Case_Studies.html" class="mega-col__link">Case Studies</a><a href="10_Careers_v2.html" class="mega-col__link">Careers</a><a href="11c_News_Updates.html" class="mega-col__link">News &amp; Updates</a></div></div>
-    </div>
-  </div>
-  <!-- Mega: Support & Contact -->
-  <div class="mega-panel" id="mega-support-contact">
-    <div class="mega-inner mega-inner--2col">
-      <div class="mega-col"><p class="mega-col__title">Support</p><div class="mega-col__links"><a href="11a_Contact_Usv5.html" class="mega-col__link">Contact Us</a><a href="11_Support_Hubv5.html" class="mega-col__link">Help Centre &amp; FAQs</a></div></div>
-      <div class="mega-col"><p class="mega-col__title">Quick Actions</p><div class="mega-col__links"><a href="#" class="mega-col__link">Apply for an Account</a><a href="11e_Make_Paymentv5.html" class="mega-col__link">Make a Payment</a></div></div>
-    </div>
-  </div>
+  <div class="mega-panel" id="mega-fuel-solutions"><div class="mega-inner mega-inner--4col"><div class="mega-col"><p class="mega-col__title">Ground Fuels</p><div class="mega-col__links"><a href="#" class="mega-col__link">On-Site Refuelling</a><a href="#" class="mega-col__link">Bulk Diesel Supply</a><a href="#" class="mega-col__link">Fleet Fuelling</a></div></div><div class="mega-col"><p class="mega-col__title">Aviation</p><div class="mega-col__links"><a href="#" class="mega-col__link">Avgas</a><a href="#" class="mega-col__link">Jet A-1</a><a href="#" class="mega-col__link">Into-Plane Fuelling</a></div></div><div class="mega-col"><p class="mega-col__title">Equipment &amp; Infrastructure</p><div class="mega-col__links"><a href="#" class="mega-col__link">Storage Tanks</a><a href="#" class="mega-col__link">Dispensing Equipment</a></div></div><div class="mega-col"><p class="mega-col__title">Supply &amp; Trading</p><div class="mega-col__links"><a href="#" class="mega-col__link">Fuel Procurement</a><a href="#" class="mega-col__link">Price Risk Management</a></div></div></div></div>
+  <div class="mega-panel" id="mega-digital-platforms"><div class="mega-inner mega-inner--3col"><div class="mega-col"><p class="mega-col__title">Platforms</p><div class="mega-col__links"><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v4.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a></div></div><div class="mega-col"><p class="mega-col__title">Features</p><div class="mega-col__links"><a href="#" class="mega-col__link">Fuel Monitoring</a><a href="#" class="mega-col__link">Reporting &amp; Analytics</a></div></div><div class="mega-col"><p class="mega-col__title">Resources</p><div class="mega-col__links"><a href="#" class="mega-col__link">Case Studies</a></div></div></div></div>
+  <div class="mega-panel" id="mega-industries"><div class="mega-inner mega-inner--4col"><div class="mega-col"><p class="mega-col__title">Mining &amp; Resources</p><div class="mega-col__links"><a href="#" class="mega-col__link">Open Cut Mining</a><a href="#" class="mega-col__link">Underground Mining</a></div></div><div class="mega-col"><p class="mega-col__title">Agriculture</p><div class="mega-col__links"><a href="#" class="mega-col__link">Cropping &amp; Grazing</a><a href="#" class="mega-col__link">Horticulture</a></div></div><div class="mega-col"><p class="mega-col__title">Transport &amp; Logistics</p><div class="mega-col__links"><a href="#" class="mega-col__link">Road Transport</a><a href="#" class="mega-col__link">Fleet Operators</a></div></div><div class="mega-col"><p class="mega-col__title">Construction</p><div class="mega-col__links"><a href="#" class="mega-col__link">Civil Construction</a></div></div></div></div>
+  <div class="mega-panel" id="mega-about-ior"><div class="mega-inner mega-inner--2col"><div class="mega-col"><p class="mega-col__title">About IOR</p><div class="mega-col__links"><a href="09_About_IOR_v2.html" class="mega-col__link">About Us</a><a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a><a href="09b_Community.html" class="mega-col__link">Community &amp; Giving Back</a><a href="09c_Sustainability.html" class="mega-col__link">Sustainability, HSE &amp; ESG</a></div></div><div class="mega-col"><p class="mega-col__title">More</p><div class="mega-col__links"><a href="09d_Case_Studies.html" class="mega-col__link">Case Studies</a><a href="10_Careers_v2.html" class="mega-col__link">Careers</a><a href="11c_News_Updates.html" class="mega-col__link">News &amp; Updates</a></div></div></div></div>
+  <div class="mega-panel" id="mega-support-contact"><div class="mega-inner mega-inner--2col"><div class="mega-col"><p class="mega-col__title">Support</p><div class="mega-col__links"><a href="11a_Contact_Usv5.html" class="mega-col__link">Contact Us</a><a href="11_Support_Hubv5.html" class="mega-col__link">Help Centre &amp; FAQs</a></div></div><div class="mega-col"><p class="mega-col__title">Quick Actions</p><div class="mega-col__links"><a href="#" class="mega-col__link">Apply for an Account</a><a href="11e_Make_Paymentv5.html" class="mega-col__link">Make a Payment</a></div></div></div></div>
 </nav>
 
 <!-- MOBILE DRAWER -->
 <div class="drawer-overlay" id="drawer-overlay"></div>
 <nav class="drawer" id="mobile-drawer" aria-hidden="true">
   <div class="drawer__header">
-    <svg width="72" height="34" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#ior-d)">
-        <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="white"/>
-        <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#5BB4E5"/>
-        <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="white"/>
-        <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="white"/>
-      </g>
-      <defs><clipPath id="ior-d"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
-    </svg>
+    <svg width="72" height="34" viewBox="0 0 98 46" fill="none"><g clip-path="url(#ior-d)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="white"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#5BB4E5"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="white"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="white"/></g><defs><clipPath id="ior-d"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg>
     <button class="drawer__close" id="drawer-close">&times;</button>
   </div>
   <nav class="drawer__nav">
@@ -372,15 +348,17 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero__bg"><span class="hero__bg-placeholder">[ ASSET: Community hero — regional Australia, people, landscape ]</span></div>
+  <div class="hero__bg"><span class="hero__bg-placeholder">[ ASSET: Community hero — regional Australia, people, landscape. Recommended: 1920x800px ]</span></div>
   <div class="hero__overlay"></div>
   <div class="hero__content">
-    <span class="hero__eyebrow">Community &amp; Giving Back</span>
-    <h1 class="hero__headline">We never forget where we come from.</h1>
-    <p class="hero__sub">IOR has operated in regional, rural and remote Australia for over 40 years. We invest in the communities that keep this country moving.</p>
-    <div class="hero__ctas">
-      <a href="#sponsorships" class="btn btn--white btn--pill">Our Sponsorships <span class="btn__arrow"></span></a>
-      <a href="#industry" class="btn btn--outline-white btn--pill">Industry Partnerships</a>
+    <div class="hero__content-inner">
+      <span class="hero__eyebrow">Community &amp; Giving Back</span>
+      <h1 class="hero__headline">We never forget where we come from.</h1>
+      <p class="hero__sub">IOR has operated in regional, rural and remote Australia for over 40 years. We invest in the communities that keep this country moving.</p>
+      <div class="hero__ctas">
+        <a href="#sponsorships" class="btn btn--white btn--pill">Our Sponsorships <span class="btn__arrow"></span></a>
+        <a href="#industry" class="btn btn--outline-white btn--pill">Industry Partnerships</a>
+      </div>
     </div>
   </div>
 </section>
@@ -407,7 +385,7 @@
       <div class="philosophy-grid">
         <div class="fade-up">
           <span class="eyebrow">Our Philosophy</span>
-          <h2 id="philosophy-heading" style="font-size:clamp(26px,3vw,36px);font-weight:800;color:var(--ior-navy);line-height:1.15;margin-bottom:16px;">Building trust in every community we serve.</h2>
+          <h2 id="philosophy-heading" style="font-size:clamp(26px,3vw,36px);font-weight:800;color:var(--ior-navy);line-height:1.15;margin-top:8px;margin-bottom:16px;">Building trust in every community we serve.</h2>
           <p style="font-size:clamp(15px,1.5vw,17px);color:var(--grey-700);line-height:1.75;margin-bottom:16px;">We seek to build long-standing relationships and earn the trust of the communities in which we work. This means actively engaging with community groups, and giving back through targeted social investments.</p>
           <p style="font-size:clamp(15px,1.5vw,17px);color:var(--grey-700);line-height:1.75;margin-bottom:16px;">Our social support includes:</p>
           <ul style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;padding-left:0;list-style:none;">
@@ -417,35 +395,52 @@
           </ul>
           <a href="09c_Sustainability.html" class="btn btn--outline btn--pill">View Our Sustainability Policies <span class="btn__arrow"></span></a>
         </div>
-        <div class="pillars-visual fade-up">
-          <div class="pillar-item">
-            <span class="pillar-num">01</span>
-            <div class="pillar-body">
-              <h3>Direct Support</h3>
-              <p>Sponsoring not-for-profit and profit-for-purpose organisations that deliver critical services to regional and remote Australians.</p>
-            </div>
-          </div>
-          <div class="pillar-item">
-            <span class="pillar-num">02</span>
-            <div class="pillar-body">
-              <h3>Economic Support</h3>
-              <p>Through local employment programmes, buy-local procurement, and engagement with industry bodies that advocate for agriculture and resources.</p>
-            </div>
-          </div>
-          <div class="pillar-item">
-            <span class="pillar-num">03</span>
-            <div class="pillar-body">
-              <h3>Social Support</h3>
-              <p>Backing grassroots events, community grants, and initiatives that strengthen the social fabric of the regions we operate in.</p>
-            </div>
-          </div>
-        </div>
+        <div class="philosophy-image fade-up fade-up-delay-1">[ ASSET: Community philosophy image — IOR people in community. Recommended: 800x600px ]</div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 2: CORPORATE SPONSORSHIPS TABCORDION -->
-  <section class="tabcordion-section" id="sponsorships" aria-labelledby="sponsorships-heading">
+  <!-- SECTION 2: THREE PILLARS -->
+  <section class="pillars-section" aria-labelledby="pillars-heading">
+    <div class="inner" style="margin-bottom:clamp(32px,4vw,48px);">
+      <div class="fade-up" style="text-align:center;max-width:640px;margin:0 auto;">
+        <span class="eyebrow" style="color:var(--ior-sky);">How We Give Back</span>
+        <h2 id="pillars-heading" style="font-size:clamp(26px,3vw,36px);font-weight:800;color:#fff;line-height:1.15;margin-top:8px;">Three ways IOR supports regional Australia.</h2>
+      </div>
+    </div>
+    <div class="pillars-grid inner">
+      <!-- Pillar 1 -->
+      <div class="pillar-card fade-up">
+        <div class="pillar-card__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5BB4E5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <span class="pillar-card__num">01</span>
+        <h3 class="pillar-card__title">Direct Support</h3>
+        <p class="pillar-card__body">Sponsoring not-for-profit and profit-for-purpose organisations that deliver critical services to regional and remote Australians.</p>
+      </div>
+      <!-- Pillar 2 -->
+      <div class="pillar-card fade-up fade-up-delay-1">
+        <div class="pillar-card__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5BB4E5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <span class="pillar-card__num">02</span>
+        <h3 class="pillar-card__title">Economic Support</h3>
+        <p class="pillar-card__body">Through local employment programmes, buy-local procurement, and engagement with industry bodies that advocate for agriculture and resources.</p>
+      </div>
+      <!-- Pillar 3 -->
+      <div class="pillar-card fade-up fade-up-delay-2">
+        <div class="pillar-card__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5BB4E5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span class="pillar-card__num">03</span>
+        <h3 class="pillar-card__title">Social Support</h3>
+        <p class="pillar-card__body">Backing grassroots events, community grants, and initiatives that strengthen the social fabric of the regions we operate in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: CORPORATE SPONSORSHIPS TABCORDION -->
+  <section class="tabcordion-section tabcordion-section--grey" id="sponsorships" aria-labelledby="sponsorships-heading">
     <div class="tabcordion-section__header fade-up">
       <span class="eyebrow">Corporate Sponsorships</span>
       <h2 id="sponsorships-heading" class="section-heading">Supporting those who support regional Australia.</h2>
@@ -461,48 +456,58 @@
         <button class="tabcordion__tab" role="tab" aria-selected="false" aria-controls="sp-p5" id="sp-t5" data-tc-sp="5"><span class="tabcordion__tab-num">05</span>Westpac Lifesaver</button>
       </div>
       <div class="tabcordion__panels">
+        <!-- LifeFlight -->
         <div class="tabcordion__panel active" id="sp-p1" role="tabpanel" aria-labelledby="sp-t1">
-          <div class="tabcordion__panel-video"><iframe src="https://www.youtube.com/embed/xZt_LIqstb4" title="RACQ LifeFlight Rescue" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+          <div class="tabcordion__panel-media" style="position:relative;"><iframe src="https://www.youtube.com/embed/xZt_LIqstb4" title="RACQ LifeFlight Rescue" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
           <div class="tabcordion__panel-content">
+            <div class="tabcordion__panel-logo"><div class="tabcordion__panel-logo-placeholder">[ LOGO: LifeFlight ]</div></div>
             <span class="tabcordion__panel-eyebrow">Corporate Sponsorship</span>
             <h3 class="tabcordion__panel-title">RACQ LifeFlight Rescue</h3>
             <p class="tabcordion__panel-body">LifeFlight is one of Australia's largest aeromedical charities providing rapid response medical care to thousands of people each year. Queensland's rural and remote communities rely on the LifeFlight helicopters to bring the hospital to them in their darkest hour.</p>
             <a href="https://www.lifeflight.org.au" class="tabcordion__panel-cta" target="_blank" rel="noopener noreferrer">Learn More &#8594;</a>
           </div>
         </div>
+        <!-- Heart of Australia -->
         <div class="tabcordion__panel" id="sp-p2" role="tabpanel" aria-labelledby="sp-t2">
-          <div class="tabcordion__panel-video"><iframe src="https://www.youtube.com/embed/4PxkuebDRjs" title="Heart of Australia" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+          <div class="tabcordion__panel-media" style="position:relative;"><iframe src="https://www.youtube.com/embed/4PxkuebDRjs" title="Heart of Australia" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
           <div class="tabcordion__panel-content">
+            <div class="tabcordion__panel-logo"><div class="tabcordion__panel-logo-placeholder">[ LOGO: Heart of Australia ]</div></div>
             <span class="tabcordion__panel-eyebrow">Corporate Sponsorship</span>
             <h3 class="tabcordion__panel-title">Heart of Australia</h3>
             <p class="tabcordion__panel-body">Heart of Australia delivers specialist medical services to regional, rural and remote communities across Queensland. Using customised road trains as specialist medical clinics-on-wheels, they have seen over 5,000 patients across 150,000km and helped save more than 250 lives.</p>
             <a href="https://www.heartofaustralia.com" class="tabcordion__panel-cta" target="_blank" rel="noopener noreferrer">Learn More &#8594;</a>
           </div>
         </div>
+        <!-- It's a Bloke Thing -->
         <div class="tabcordion__panel" id="sp-p3" role="tabpanel" aria-labelledby="sp-t3">
-          <div class="tabcordion__panel-video"><iframe src="https://www.youtube.com/embed/DOiny5Ym0jY" title="It's a Bloke Thing" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+          <div class="tabcordion__panel-media" style="position:relative;"><iframe src="https://www.youtube.com/embed/DOiny5Ym0jY" title="It's a Bloke Thing" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
           <div class="tabcordion__panel-content">
+            <div class="tabcordion__panel-logo"><div class="tabcordion__panel-logo-placeholder">[ LOGO: It's a Bloke Thing ]</div></div>
             <span class="tabcordion__panel-eyebrow">Corporate Sponsorship</span>
             <h3 class="tabcordion__panel-title">It's a Bloke Thing</h3>
             <p class="tabcordion__panel-body">It's a Bloke Thing raises funds to educate men and women in rural Australia about prostate cancer. Their roadshow visits over 65 towns throughout regional Queensland annually, covering over 25,000 km.</p>
             <a href="https://www.itsablokethingtrust.com.au" class="tabcordion__panel-cta" target="_blank" rel="noopener noreferrer">Learn More &#8594;</a>
           </div>
         </div>
+        <!-- Outback Futures -->
         <div class="tabcordion__panel" id="sp-p4" role="tabpanel" aria-labelledby="sp-t4">
-          <div class="tabcordion__panel-video"><iframe src="https://www.youtube.com/embed/Px-Ox3RUBxo" title="Outback Futures" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+          <div class="tabcordion__panel-media" style="position:relative;"><iframe src="https://www.youtube.com/embed/Px-Ox3RUBxo" title="Outback Futures" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
           <div class="tabcordion__panel-content">
+            <div class="tabcordion__panel-logo"><div class="tabcordion__panel-logo-placeholder">[ LOGO: Outback Futures ]</div></div>
             <span class="tabcordion__panel-eyebrow">Corporate Sponsorship</span>
             <h3 class="tabcordion__panel-title">Outback Futures</h3>
             <p class="tabcordion__panel-body">Outback Futures is a not-for-profit organisation committed to providing regular, professional and consistent mental and allied health and wellbeing services to rural and remote Queenslanders.</p>
             <a href="https://www.outbackfutures.org.au" class="tabcordion__panel-cta" target="_blank" rel="noopener noreferrer">Learn More &#8594;</a>
           </div>
         </div>
+        <!-- Westpac Lifesaver -->
         <div class="tabcordion__panel" id="sp-p5" role="tabpanel" aria-labelledby="sp-t5">
-          <div class="tabcordion__panel-img"><span class="tabcordion__panel-img-placeholder">[ ASSET: Westpac Lifesaver Rescue Helicopter photography ]</span></div>
+          <div class="tabcordion__panel-media" style="position:relative;background:var(--grey-200);"><span class="tabcordion__panel-img-placeholder">[ ASSET: Westpac Lifesaver Rescue Helicopter photography ]</span></div>
           <div class="tabcordion__panel-content">
+            <div class="tabcordion__panel-logo"><div class="tabcordion__panel-logo-placeholder">[ LOGO: Westpac Lifesaver ]</div></div>
             <span class="tabcordion__panel-eyebrow">Corporate Sponsorship</span>
             <h3 class="tabcordion__panel-title">Westpac Lifesaver Rescue Helicopter Service QLD</h3>
-            <p class="tabcordion__panel-body">One of the oldest community-based helicopter rescue services in the world, operating across South-East Queensland since 1976. The service patrols the South East Queensland coast and carries out beach surveillance, shark warnings, preventative actions, missing person searches and rescues.</p>
+            <p class="tabcordion__panel-body">One of the oldest community-based helicopter rescue services in the world, operating across South-East Queensland since 1976. The service patrols the coast and carries out beach surveillance, shark warnings, preventative actions, missing person searches and rescues.</p>
             <a href="https://www.lifesaverrescue.org.au" class="tabcordion__panel-cta" target="_blank" rel="noopener noreferrer">Learn More &#8594;</a>
           </div>
         </div>
@@ -518,7 +523,7 @@
     </div>
   </section>
 
-  <!-- SECTION 3: COMMUNITY SPONSORSHIPS BAND -->
+  <!-- SECTION 4: COMMUNITY SPONSORSHIPS BAND -->
   <section class="community-band" aria-labelledby="comm-band-heading">
     <div class="community-band__inner">
       <div class="fade-up">
@@ -526,13 +531,13 @@
         <h2 id="comm-band-heading">Proud to support local events, causes and initiatives.</h2>
         <p>In each of the regions in which we work, we are proud to support events, causes, and initiatives. Our support may take many forms including staff volunteering, making a financial contribution, or through an in-kind donation of fuel.</p>
         <p>To register your interest in sponsorship from IOR, click to download the IOR Sponsorship Application Form.</p>
-        <a href="#" class="btn btn--white btn--pill">Download Application Form <span class="btn__arrow"></span></a>
+        <a href="#" class="btn btn--white btn--pill" style="margin-top:8px;">Download Application Form <span class="btn__arrow"></span></a>
       </div>
-      <div class="community-band__asset fade-up">[ ASSET: Community event photography — regional Australia ]</div>
+      <div class="community-band__asset fade-up fade-up-delay-1">[ ASSET: Community event photography — regional Australia. Recommended: 800x600px ]</div>
     </div>
   </section>
 
-  <!-- SECTION 4: INDUSTRY DEVELOPMENT TABCORDION -->
+  <!-- SECTION 5: INDUSTRY DEVELOPMENT TABCORDION -->
   <section class="tabcordion-section tabcordion-section--white" id="industry" aria-labelledby="industry-heading">
     <div class="tabcordion-section__header fade-up">
       <span class="eyebrow">Industry Development</span>
@@ -549,45 +554,55 @@
         <button class="tabcordion__tab" role="tab" aria-selected="false" aria-controls="ind-p5" id="ind-t5" data-tc-ind="5"><span class="tabcordion__tab-num">05</span>Australian Energy Producers</button>
       </div>
       <div class="tabcordion__panels">
+        <!-- AgForce -->
         <div class="tabcordion__panel active" id="ind-p1" role="tabpanel" aria-labelledby="ind-t1">
-          <div class="tabcordion__panel-img"><span class="tabcordion__panel-img-placeholder">[ ASSET: AgForce Queensland / agriculture imagery ]</span></div>
+          <div class="tabcordion__panel-media" style="background:var(--grey-200);position:relative;"><span class="tabcordion__panel-img-placeholder">[ ASSET: AgForce Queensland / agriculture imagery ]</span></div>
           <div class="tabcordion__panel-content">
+            <div class="tabcordion__panel-logo"><div class="tabcordion__panel-logo-placeholder">[ LOGO: AgForce Queensland ]</div></div>
             <span class="tabcordion__panel-eyebrow">Industry Association</span>
             <h3 class="tabcordion__panel-title">AgForce Queensland</h3>
-            <p class="tabcordion__panel-body">We're invested in helping ensure sustainable and long-term growth in Australian Agriculture. IOR is a gold partner of AgForce, the peak organisation representing the interests of Queensland primary producers. As part of our support, AgForce members are able to apply for a discount of up to 6cpl on fuel through the IOR Diesel Network.</p>
+            <p class="tabcordion__panel-body">We're invested in helping ensure sustainable and long-term growth in Australian Agriculture. IOR is a gold partner of AgForce, the peak organisation representing the interests of Queensland primary producers. AgForce members are able to apply for a discount of up to 6cpl on fuel through the IOR Diesel Network.</p>
             <a href="https://www.agforceqld.org.au" class="tabcordion__panel-cta" target="_blank" rel="noopener noreferrer">Learn More &#8594;</a>
           </div>
         </div>
+        <!-- TSBE -->
         <div class="tabcordion__panel" id="ind-p2" role="tabpanel" aria-labelledby="ind-t2">
-          <div class="tabcordion__panel-img"><span class="tabcordion__panel-img-placeholder">[ ASSET: Toowoomba / Surat Basin regional imagery ]</span></div>
+          <div class="tabcordion__panel-media" style="background:var(--grey-200);position:relative;"><span class="tabcordion__panel-img-placeholder">[ ASSET: Toowoomba / Surat Basin regional imagery ]</span></div>
           <div class="tabcordion__panel-content">
+            <div class="tabcordion__panel-logo"><div class="tabcordion__panel-logo-placeholder">[ LOGO: TSBE ]</div></div>
             <span class="tabcordion__panel-eyebrow">Industry Association</span>
             <h3 class="tabcordion__panel-title">Toowoomba Surat Basin Enterprise</h3>
-            <p class="tabcordion__panel-body">We are helping to grow industry capabilities in regional Queensland. IOR is a diamond member of the Toowoomba and Surat Basin Enterprise (TSBE). TSBE aims to create sustainable growth and diversity in the Toowoomba and Surat Basin region. With projects injecting a total of $14 billion into the region's economy, Toowoomba is set to become a major hub in Queensland and Australia.</p>
+            <p class="tabcordion__panel-body">We are helping to grow industry capabilities in regional Queensland. IOR is a diamond member of the Toowoomba and Surat Basin Enterprise (TSBE). TSBE aims to create sustainable growth and diversity in the Toowoomba and Surat Basin region, with projects injecting a total of $14 billion into the region's economy.</p>
             <a href="https://www.tsbe.com.au" class="tabcordion__panel-cta" target="_blank" rel="noopener noreferrer">Learn More &#8594;</a>
           </div>
         </div>
+        <!-- QRC -->
         <div class="tabcordion__panel" id="ind-p3" role="tabpanel" aria-labelledby="ind-t3">
-          <div class="tabcordion__panel-img"><span class="tabcordion__panel-img-placeholder">[ ASSET: Queensland Resources Council / resources industry imagery ]</span></div>
+          <div class="tabcordion__panel-media" style="background:var(--grey-200);position:relative;"><span class="tabcordion__panel-img-placeholder">[ ASSET: Queensland Resources Council / resources industry imagery ]</span></div>
           <div class="tabcordion__panel-content">
+            <div class="tabcordion__panel-logo"><div class="tabcordion__panel-logo-placeholder">[ LOGO: Queensland Resources Council ]</div></div>
             <span class="tabcordion__panel-eyebrow">Industry Association</span>
             <h3 class="tabcordion__panel-title">Queensland Resources Council</h3>
             <p class="tabcordion__panel-body">IOR believes that industry associations provide valuable insights on industry best practices while advocating for better outcomes in the interests of their members. The Queensland Resources Council is the peak industry body representing Queensland's resource sector, advocating for a strong, sustainable resources industry that benefits all Queenslanders.</p>
             <a href="https://www.qrc.org.au" class="tabcordion__panel-cta" target="_blank" rel="noopener noreferrer">Learn More &#8594;</a>
           </div>
         </div>
+        <!-- SACOME -->
         <div class="tabcordion__panel" id="ind-p4" role="tabpanel" aria-labelledby="ind-t4">
-          <div class="tabcordion__panel-img"><span class="tabcordion__panel-img-placeholder">[ ASSET: South Australian mining / energy industry imagery ]</span></div>
+          <div class="tabcordion__panel-media" style="background:var(--grey-200);position:relative;"><span class="tabcordion__panel-img-placeholder">[ ASSET: South Australian mining / energy industry imagery ]</span></div>
           <div class="tabcordion__panel-content">
+            <div class="tabcordion__panel-logo"><div class="tabcordion__panel-logo-placeholder">[ LOGO: SACOME ]</div></div>
             <span class="tabcordion__panel-eyebrow">Industry Association</span>
             <h3 class="tabcordion__panel-title">South Australian Chamber of Mines and Energy</h3>
             <p class="tabcordion__panel-body">IOR is proud to support SACOME, the peak industry body for the South Australian minerals, energy and petroleum sector. SACOME advocates for policies and regulations that support a thriving resources industry in South Australia, creating jobs and economic growth for the state.</p>
             <a href="https://www.sacome.org.au" class="tabcordion__panel-cta" target="_blank" rel="noopener noreferrer">Learn More &#8594;</a>
           </div>
         </div>
+        <!-- AEP -->
         <div class="tabcordion__panel" id="ind-p5" role="tabpanel" aria-labelledby="ind-t5">
-          <div class="tabcordion__panel-img"><span class="tabcordion__panel-img-placeholder">[ ASSET: Australian energy / petroleum industry imagery ]</span></div>
+          <div class="tabcordion__panel-media" style="background:var(--grey-200);position:relative;"><span class="tabcordion__panel-img-placeholder">[ ASSET: Australian energy / petroleum industry imagery ]</span></div>
           <div class="tabcordion__panel-content">
+            <div class="tabcordion__panel-logo"><div class="tabcordion__panel-logo-placeholder">[ LOGO: Australian Energy Producers ]</div></div>
             <span class="tabcordion__panel-eyebrow">Industry Association</span>
             <h3 class="tabcordion__panel-title">Australian Energy Producers</h3>
             <p class="tabcordion__panel-body">IOR supports Australian Energy Producers, the peak body representing Australia's oil and gas industry. The organisation advocates for policies that enable a secure, affordable and lower-emissions energy future for Australia, supporting the industries and communities that depend on reliable energy supply.</p>
@@ -606,7 +621,7 @@
     </div>
   </section>
 
-  <!-- SECTION 5: FINAL CTA -->
+  <!-- SECTION 6: FINAL CTA -->
   <section class="final-cta-strip" aria-labelledby="final-cta-heading">
     <div class="final-cta-strip__inner fade-up">
       <span class="final-cta-strip__eyebrow">Beyond the Bowser</span>
@@ -697,9 +712,7 @@
     <div class="footer-social">
       <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
       <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
-      <a href="#" class="footer-social__icon" aria-label="YouTube">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-      </a>
+      <a href="#" class="footer-social__icon" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
     </div>
   </div>
 </footer>
@@ -786,7 +799,7 @@
   // Fade-up on scroll
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
