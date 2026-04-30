@@ -371,6 +371,27 @@
     }
     @media (max-width: 640px) { .ior-footer__inner { grid-template-columns: 1fr; } }
     @media (max-width: 480px) { .mega-inner--4col, .mega-inner--3col { grid-template-columns: 1fr; } }
+
+    /* TESTIMONIAL CAROUSEL */
+    .testimonial-carousel-section { background: #0B1929; padding: clamp(64px,8vw,96px) 0; }
+    .testimonial-carousel-section .section-heading h2 { color: #fff; }
+    .tcarousel { max-width: 860px; margin: clamp(40px,5vw,64px) auto 0; text-align: center; position: relative; }
+    .tcarousel__track { min-height: 220px; display: flex; align-items: center; justify-content: center; }
+    .tcarousel__slide { width: 100%; animation: fadeIn 0.4s ease; }
+    .tcarousel__slide[hidden] { display: none; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .tcarousel__quote-mark { font-size: clamp(64px,8vw,96px); line-height: 0.6; color: #7FBEE6; font-family: Georgia, serif; margin-bottom: 24px; display: block; }
+    .tcarousel__quote { font-size: clamp(18px,2.2vw,24px); font-style: italic; color: rgba(255,255,255,0.92); line-height: 1.6; margin: 0 0 32px; quotes: none; }
+    .tcarousel__attr { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+    .tcarousel__name { color: #fff; font-size: 15px; font-weight: 700; letter-spacing: 0.02em; }
+    .tcarousel__role { color: rgba(255,255,255,0.55); font-size: 13px; }
+    .tcarousel__controls { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 40px; }
+    .tcarousel__btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, color 0.2s; flex-shrink: 0; }
+    .tcarousel__btn:hover { background: rgba(127,190,230,0.15); color: #7FBEE6; }
+    .tcarousel__dots { display: flex; gap: 10px; align-items: center; }
+    .tcarousel__dot { width: 10px; height: 10px; background: rgba(255,255,255,0.25); border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; padding: 0; flex-shrink: 0; }
+    .tcarousel__dot.active { background: #7FBEE6; transform: scale(1.3); }
+    @media (max-width: 600px) { .tcarousel__quote { font-size: 17px; } .tcarousel__btn { width: 36px; height: 36px; } }
   </style>
 </head>
 <body>
@@ -466,8 +487,8 @@
     <h1>Fueling Australia's freight network.</h1>
     <p>Route efficiency depends on reliable access. With over 115 unmanned, high-flow diesel stops and heavy vehicle truck washes across the country, IOR is the network that never sleeps.</p>
     <div class="hero-ctas">
-      <a href="#lead-capture" class="btn btn--primary">Speak to a Fleet Specialist <span class="btn__arrow" aria-hidden="true"></span></a>
-      <a href="#network-map" class="btn btn--outline-white">View the Network Map</a>
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+      <a href="#lead-capture" class="btn btn--outline-white">Speak to a Fleet Specialist</a>
     </div>
   </div>
 </section>
@@ -570,8 +591,8 @@
         <div class="challenge-card__icon" aria-hidden="true">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v4H4z"/><path d="M4 8v12h16V8"/><path d="M9 12h6"/></svg>
         </div>
-        <h3 class="challenge-card__title">Poor Driver Amenities</h3>
-        <p class="challenge-card__body">Finding sites that accommodate heavy vehicles with proper facilities and truck washes is a constant challenge for interstate drivers.</p>
+        <h3 class="challenge-card__title">Driver Retention &amp; Amenities</h3>
+        <p class="challenge-card__body">Drivers expect secure, well-equipped facilities. Sites without high-clearance canopies or truck washes lead to frustration and high turnover.</p>
         <ul class="challenge-card__resolution" aria-label="IOR solution">
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00B140" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Drive-through heavy vehicle truck washes</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00B140" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>High-clearance canopies</li>
@@ -583,7 +604,7 @@
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="0"/><path d="M3 9h18M9 21V9"/></svg>
         </div>
         <h3 class="challenge-card__title">Disconnected Data</h3>
-        <p class="challenge-card__body">Chasing paper dockets and manually reconciling fuel usage across a national fleet wastes days of administrative time.</p>
+        <p class="challenge-card__body">Chasing paper dockets and manually reconciling fuel usage across a national fleet wastes days of administrative time and invites fraud.</p>
         <ul class="challenge-card__resolution" aria-label="IOR solution">
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00B140" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Real-time tracking via Fuelcharge</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00B140" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>HyDip&#8482; FMS integration</li>
@@ -677,7 +698,7 @@
     </div>
 
     <div class="tabcordion-cta-wrap fade-up">
-      <a href="03_Ground_Fuels_v8.html" class="btn btn--outline">Explore Ground Fuels <span class="btn__arrow" aria-hidden="true"></span></a>
+      <a href="03_Ground_Fuels_v8.html" class="btn btn--outline">View All Ground Fuels <span class="btn__arrow" aria-hidden="true"></span></a>
     </div>
   </div>
 </section>
@@ -717,24 +738,61 @@
 </section>
 
 <!-- ============================================================
-     7. TESTIMONIAL
+     7. TESTIMONIAL CAROUSEL
 ============================================================ -->
-<section class="testimonial-section" aria-labelledby="testimonial-heading">
+<section class="testimonial-carousel-section" aria-labelledby="tcarousel-heading">
   <div class="container">
-    <div class="testimonial-grid fade-up">
-      <div class="testimonial-quote">
-        <div class="testimonial-quote__mark" aria-hidden="true">"</div>
-        <blockquote class="testimonial-quote__text">"IOR's expansive 24/7 diesel network is critical to our national logistics operations. Their commitment to building high-quality, heavy-vehicle friendly sites with excellent amenities ensures our drivers can refuel safely and efficiently across Australia's major freight routes."</blockquote>
-        <div class="testimonial-quote__attr">
-          <strong>[Insert Linfox Executive Name]</strong>
-          [Insert Title], Linfox Australia
+    <div class="section-heading section-heading--center fade-up">
+      <span class="eyebrow eyebrow--blue">WHAT OUR CUSTOMERS SAY</span>
+      <h2 id="tcarousel-heading">Trusted by Australian transport operators.</h2>
+    </div>
+    <div class="tcarousel" role="region" aria-label="Customer testimonials" aria-roledescription="carousel">
+      <div class="tcarousel__track" id="tcarousel-track">
+
+        <!-- Slide 1 -->
+        <div class="tcarousel__slide" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
+          <div class="tcarousel__quote-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="tcarousel__quote">IOR's expansive 24/7 diesel network is critical to our national logistics operations. Their commitment to building high-quality, heavy-vehicle friendly sites with excellent amenities ensures our drivers can refuel safely and efficiently across Australia's major freight routes.</blockquote>
+          <div class="tcarousel__attr">
+            <strong class="tcarousel__name">[Insert Executive Name]</strong>
+            <span class="tcarousel__role">[Insert Title], [Insert Major Client e.g., Linfox]</span>
+          </div>
         </div>
-      </div>
-      <div class="testimonial-case">
-        <p class="testimonial-case__eyebrow">Case Study</p>
-        <h3 class="testimonial-case__title" id="testimonial-heading">Linfox: National Fleet Fuel Management</h3>
-        <p class="testimonial-case__body">One of Australia's largest logistics operators relies on IOR's national diesel network and Fuelcharge app to manage fuel access across their entire national fleet, eliminating fuel card fraud and reducing administrative overhead.</p>
-        <a href="#" class="btn btn--outline-white btn--sm">Read Case Study <span class="btn__arrow" aria-hidden="true"></span></a>
+
+        <!-- Slide 2 -->
+        <div class="tcarousel__slide" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3" hidden>
+          <div class="tcarousel__quote-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="tcarousel__quote">Having access to reliable, high-flow diesel and high-quality truck washes keeps our fleet moving and our drivers happy. IOR understands what the transport industry actually needs on the road.</blockquote>
+          <div class="tcarousel__attr">
+            <strong class="tcarousel__name">[Insert Name]</strong>
+            <span class="tcarousel__role">Fleet Manager, [Insert Regional Transport Client]</span>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="tcarousel__slide" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3" hidden>
+          <div class="tcarousel__quote-mark" aria-hidden="true">&ldquo;</div>
+          <blockquote class="tcarousel__quote">Switching our fleet to the Fuelcharge app completely eliminated our issues with fuel card fraud. The real-time reporting has saved our admin team days of manual reconciliation every month.</blockquote>
+          <div class="tcarousel__attr">
+            <strong class="tcarousel__name">[Insert Name]</strong>
+            <span class="tcarousel__role">Director, [Insert Owner-Operator Client]</span>
+          </div>
+        </div>
+
+      </div><!-- /.tcarousel__track -->
+
+      <div class="tcarousel__controls" aria-label="Carousel controls">
+        <button class="tcarousel__btn tcarousel__btn--prev" id="tcarousel-prev" aria-label="Previous testimonial">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="tcarousel__dots" role="tablist" aria-label="Testimonial slides">
+          <button class="tcarousel__dot active" role="tab" aria-selected="true" aria-label="Slide 1" data-slide="0"></button>
+          <button class="tcarousel__dot" role="tab" aria-selected="false" aria-label="Slide 2" data-slide="1"></button>
+          <button class="tcarousel__dot" role="tab" aria-selected="false" aria-label="Slide 3" data-slide="2"></button>
+        </div>
+        <button class="tcarousel__btn tcarousel__btn--next" id="tcarousel-next" aria-label="Next testimonial">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -909,8 +967,30 @@
 
 <script>
 /* ============================================================
-   IOR GLOBAL JS — Transport v9
+   TESTIMONIAL CAROUSEL JS
 ============================================================ */
+(function(){
+  const slides = document.querySelectorAll('.tcarousel__slide');
+  const dots = document.querySelectorAll('.tcarousel__dot');
+  const prev = document.getElementById('tcarousel-prev');
+  const next = document.getElementById('tcarousel-next');
+  if(!slides.length) return;
+  let current = 0;
+  function goTo(n){
+    slides[current].hidden = true;
+    dots[current].classList.remove('active');
+    dots[current].setAttribute('aria-selected','false');
+    current = (n + slides.length) % slides.length;
+    slides[current].hidden = false;
+    dots[current].classList.add('active');
+    dots[current].setAttribute('aria-selected','true');
+  }
+  if(prev) prev.addEventListener('click', function(){ goTo(current - 1); });
+  if(next) next.addEventListener('click', function(){ goTo(current + 1); });
+  dots.forEach(function(dot, i){ dot.addEventListener('click', function(){ goTo(i); }); });
+  // Auto-advance every 6s
+  setInterval(function(){ goTo(current + 1); }, 6000);
+})();
 
 // NAV MEGA MENUS
 (function(){
