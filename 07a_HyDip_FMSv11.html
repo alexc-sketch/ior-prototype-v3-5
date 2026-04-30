@@ -377,20 +377,51 @@
     .hd-step__img svg{opacity:.4;color:var(--hd-teal)}
     .hd-deploy__cta{text-align:center;margin-top:clamp(40px,5vw,56px)}
     @media(max-width:768px){.hd-step{grid-template-columns:48px 1fr}.hd-step__img{display:none}}
-    /* CROSS-SELL */
-    .hd-crosssell{background:#fff;padding:clamp(56px,7vw,88px) var(--section-pad-x)}
-    .hd-crosssell__inner{max-width:var(--container-max);margin-inline:auto}
-    .hd-crosssell__header{text-align:center;margin-bottom:clamp(40px,5vw,56px)}
-    .hd-crosssell__h2{font-size:clamp(26px,3.2vw,42px);font-weight:800;color:var(--hd-dark);line-height:1.15;margin-bottom:14px}
-    .hd-cs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-    .hd-cs-card{border:1px solid #e5e7eb;padding:32px 28px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s,box-shadow .2s}
-    .hd-cs-card:hover{border-color:#0355A3;box-shadow:0 4px 20px rgba(3,85,163,.08)}
-    .hd-cs-card__icon{width:44px;height:44px;background:#eff6ff;display:flex;align-items:center;justify-content:center;color:#0355A3}
-    .hd-cs-card__title{font-size:clamp(16px,1.6vw,20px);font-weight:800;color:var(--hd-dark)}
-    .hd-cs-card__body{font-size:clamp(13px,1.3vw,15px);color:#374151;line-height:1.7;flex:1}
-    .hd-cs-card__link{font-size:13px;font-weight:700;color:#0355A3;display:inline-flex;align-items:center;gap:5px;margin-top:auto;text-decoration:none}
-    .hd-cs-card__link:hover{color:#0B1929}
-    @media(max-width:900px){.hd-cs-grid{grid-template-columns:1fr}}
+    /* ECOSYSTEM — Ground Fuels tabcordion product container */
+    .hd-ecosystem{background:var(--grey-50,#F9FAFB);padding:clamp(56px,7vw,88px) var(--section-pad-x)}
+    .hd-ecosystem__inner{max-width:var(--container-max);margin-inline:auto}
+    .hd-ecosystem__header{margin-bottom:clamp(32px,4vw,48px)}
+    .hd-ecosystem__h2{font-size:clamp(26px,3.2vw,42px);font-weight:800;color:var(--hd-dark);line-height:1.15;margin-bottom:14px}
+    .hd-ecosystem__sub{font-size:clamp(14px,1.4vw,16px);color:#374151;line-height:1.7;max-width:640px}
+    /* Tabcordion shell */
+    .eco-tabcordion{display:grid;grid-template-columns:260px 1fr;gap:0;border:1px solid var(--grey-200,#E5E7EB);background:#fff}
+    .eco-tabs{display:flex;flex-direction:column;border-right:1px solid var(--grey-200,#E5E7EB)}
+    .eco-tab{display:flex;align-items:center;gap:14px;padding:22px 24px;font-size:15px;font-weight:700;color:#374151;cursor:pointer;border-left:4px solid transparent;border-bottom:1px solid var(--grey-200,#E5E7EB);background:none;text-align:left;transition:all 150ms ease;min-height:44px;font-family:inherit;width:100%}
+    .eco-tab:last-child{border-bottom:none}
+    .eco-tab:hover{background:var(--grey-50,#F9FAFB);color:var(--ior-blue,#0355A3)}
+    .eco-tab.active{border-left-color:var(--hd-teal,#00D1CC);color:var(--hd-dark,#0B1929);background:rgba(0,209,204,.06);font-weight:800}
+    .eco-tab__num{font-size:12px;font-weight:700;color:#94A9BA;width:20px;flex-shrink:0}
+    .eco-tab.active .eco-tab__num{color:var(--hd-teal,#00D1CC)}
+    /* Panels */
+    .eco-panels{position:relative}
+    .eco-panel{display:none;grid-template-columns:1fr 1fr;min-height:420px}
+    .eco-panel.active{display:grid}
+    .eco-panel__img{background:var(--grey-200,#E5E7EB);position:relative;overflow:hidden;min-height:320px;display:flex;align-items:center;justify-content:center}
+    .eco-panel__img-placeholder{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#94A9BA;text-align:center;padding:20px}
+    .eco-panel__content{padding:clamp(32px,4vw,48px);display:flex;flex-direction:column;justify-content:center}
+    .eco-panel__eyebrow{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--hd-teal,#00D1CC);margin-bottom:12px}
+    .eco-panel__title{font-size:clamp(22px,2.5vw,30px);font-weight:800;color:var(--hd-dark,#0B1929);line-height:1.15;margin-bottom:16px}
+    .eco-panel__body{font-size:clamp(14px,1.4vw,16px);color:#374151;line-height:1.7;margin-bottom:28px}
+    .eco-panel__link{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--ior-blue,#0355A3);color:#fff;font-weight:800;font-size:15px;text-decoration:none;border-radius:0;transition:background .2s}
+    .eco-panel__link:hover{background:var(--ior-navy,#0A4066)}
+    /* Accordion (mobile) */
+    .eco-accordion{display:none}
+    .eco-acc-item{border-bottom:1px solid var(--grey-200,#E5E7EB)}
+    .eco-acc-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;font-size:15px;font-weight:700;color:#0B1929;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;min-height:44px;border-left:4px solid transparent;transition:all 150ms ease}
+    .eco-acc-trigger[aria-expanded="true"]{border-left-color:var(--hd-teal,#00D1CC);color:var(--hd-dark,#0B1929);background:rgba(0,209,204,.06)}
+    .eco-acc-chevron{flex-shrink:0;transition:transform 150ms ease}
+    .eco-acc-trigger[aria-expanded="true"] .eco-acc-chevron{transform:rotate(180deg)}
+    .eco-acc-body{overflow:hidden;max-height:0;transition:max-height .4s ease}
+    .eco-acc-body-inner{padding:20px 20px 28px;font-size:15px;color:#374151;line-height:1.7}
+    .eco-acc-body-inner p{margin-bottom:20px}
+    /* CTA row below tabcordion */
+    .eco-cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:32px}
+    .eco-cta-primary{display:inline-block;padding:14px 32px;background:var(--ior-blue,#0355A3);color:#fff;font-weight:700;font-size:15px;text-decoration:none;border-radius:0;transition:background .2s}
+    .eco-cta-primary:hover{background:var(--ior-navy,#0A4066)}
+    .eco-cta-ghost{display:inline-block;padding:13px 32px;background:transparent;color:var(--hd-dark,#0B1929);font-weight:700;font-size:15px;text-decoration:none;border-radius:0;border:2px solid var(--hd-dark,#0B1929);transition:background .2s,color .2s}
+    .eco-cta-ghost:hover{background:var(--hd-dark,#0B1929);color:#fff}
+    @media(max-width:1024px){.eco-tabcordion{grid-template-columns:1fr}.eco-tabs{display:none}.eco-panels{display:none}.eco-accordion{display:block}}
+    @media(max-width:768px){.eco-panel{grid-template-columns:1fr}.eco-cta-row{flex-direction:column}}
 
     /* LEAD CAPTURE */
     .hd-lead{background:#f9fafb;padding:clamp(56px,7vw,88px) var(--section-pad-x)}
@@ -800,38 +831,127 @@
   </section>
 
   <!-- SECTION 6: DEPLOYMENT -->
-  <!-- SECTION 7: CROSS-SELL -->
-  <section class="hd-crosssell" id="ecosystem" aria-labelledby="hd-cs-heading">
-    <div class="hd-crosssell__inner">
-      <div class="hd-crosssell__header fade-up">
+  <!-- SECTION 7: ECOSYSTEM — Ground Fuels product container -->
+  <section class="hd-ecosystem" id="ecosystem" aria-labelledby="hd-eco-heading">
+    <div class="hd-ecosystem__inner">
+      <div class="hd-ecosystem__header fade-up">
         <span class="eyebrow">Ecosystem</span>
-        <h2 class="hd-crosssell__h2" id="hd-cs-heading">Complete your fuel infrastructure.</h2>
+        <h2 class="hd-ecosystem__h2" id="hd-eco-heading">Complete your fuel infrastructure.</h2>
+        <p class="hd-ecosystem__sub">HyDip&#8482; integrates with IOR&#8217;s full ground fuels offering &#8212; from bulk storage and on-site refuelling to direct diesel delivery.</p>
       </div>
-      <div class="hd-cs-grid">
-        <div class="hd-cs-card fade-up">
-          <div class="hd-cs-card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-          </div>
-          <h3 class="hd-cs-card__title">Deployable Frac Tanks</h3>
-          <p class="hd-cs-card__body">High-volume temporary storage delivered and commissioned rapidly. Fully compatible with HyDip telemetry.</p>
-          <a href="05_Equipment_Infrastructure.html" class="hd-cs-card__link">Explore Frac Tanks &#8594;</a>
+
+      <!-- DESKTOP: Tabcordion -->
+      <div class="eco-tabcordion" role="tablist" aria-label="HyDip ecosystem products">
+        <div class="eco-tabs">
+          <button class="eco-tab active" role="tab" aria-selected="true" aria-controls="eco-panel-1" id="eco-tab-1" data-eco="1">
+            <span class="eco-tab__num">01</span> On-Site Refuelling
+          </button>
+          <button class="eco-tab" role="tab" aria-selected="false" aria-controls="eco-panel-2" id="eco-tab-2" data-eco="2">
+            <span class="eco-tab__num">02</span> Deployable Frac Tanks
+          </button>
+          <button class="eco-tab" role="tab" aria-selected="false" aria-controls="eco-panel-3" id="eco-tab-3" data-eco="3">
+            <span class="eco-tab__num">03</span> Self-Bunded Storage
+          </button>
+          <button class="eco-tab" role="tab" aria-selected="false" aria-controls="eco-panel-4" id="eco-tab-4" data-eco="4">
+            <span class="eco-tab__num">04</span> Bulk Diesel Delivery
+          </button>
         </div>
-        <div class="hd-cs-card fade-up">
-          <div class="hd-cs-card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <div class="eco-panels">
+          <div class="eco-panel active" id="eco-panel-1" role="tabpanel" aria-labelledby="eco-tab-1">
+            <div class="eco-panel__img"><span class="eco-panel__img-placeholder">[ Asset: On-site refuelling rig at a mine site ]</span></div>
+            <div class="eco-panel__content">
+              <span class="eco-panel__eyebrow">On-Site Refuelling</span>
+              <h3 class="eco-panel__title">Fuel at your fingertips.</h3>
+              <p class="eco-panel__body">IOR manages your entire on-site fuel supply. Pair a fully compliant IOR storage tank with HyDip&#8482; telemetry for complete visibility of every litre dispensed &#8212; guaranteed supply with zero downtime.</p>
+              <a href="03b_On_Site_Refuelling_v8.html" class="eco-panel__link">Explore On-Site Refuelling</a>
+            </div>
           </div>
-          <h3 class="hd-cs-card__title">Self-Bunded Storage</h3>
-          <p class="hd-cs-card__body">Permanent and semi-permanent storage manufactured to Australian Standards. Ranging from 13KL to 100KL.</p>
-          <a href="05_Equipment_Infrastructure.html" class="hd-cs-card__link">Explore Storage Tanks &#8594;</a>
-        </div>
-        <div class="hd-cs-card fade-up">
-          <div class="hd-cs-card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <div class="eco-panel" id="eco-panel-2" role="tabpanel" aria-labelledby="eco-tab-2">
+            <div class="eco-panel__img"><span class="eco-panel__img-placeholder">[ Asset: Deployable frac tank on remote site ]</span></div>
+            <div class="eco-panel__content">
+              <span class="eco-panel__eyebrow">Deployable Frac Tanks</span>
+              <h3 class="eco-panel__title">High-volume temporary storage.</h3>
+              <p class="eco-panel__body">Delivered and commissioned rapidly for project sites, disaster response, or seasonal demand spikes. Fully compatible with HyDip&#8482; telemetry from day one.</p>
+              <a href="05_Equipment_Infrastructure.html" class="eco-panel__link">Explore Frac Tanks</a>
+            </div>
           </div>
-          <h3 class="hd-cs-card__title">On-Site Refuelling</h3>
-          <p class="hd-cs-card__body">Direct-to-equipment refuelling via our specialised fleet. Eliminate downtime and manual handling risks.</p>
-          <a href="03b_On_Site_Refuelling_v3.5.html" class="hd-cs-card__link">Explore On-Site Refuelling &#8594;</a>
+          <div class="eco-panel" id="eco-panel-3" role="tabpanel" aria-labelledby="eco-tab-3">
+            <div class="eco-panel__img"><span class="eco-panel__img-placeholder">[ Asset: Self-bunded storage tank on farm or mine ]</span></div>
+            <div class="eco-panel__content">
+              <span class="eco-panel__eyebrow">Self-Bunded Storage</span>
+              <h3 class="eco-panel__title">Permanent storage, built to standard.</h3>
+              <p class="eco-panel__body">Manufactured to Australian Standards, ranging from 13KL to 110KL. Pair with HyDip&#8482; tank gauging for automated level monitoring and reorder alerts.</p>
+              <a href="05_Equipment_Infrastructure.html" class="eco-panel__link">Explore Storage Tanks</a>
+            </div>
+          </div>
+          <div class="eco-panel" id="eco-panel-4" role="tabpanel" aria-labelledby="eco-tab-4">
+            <div class="eco-panel__img"><span class="eco-panel__img-placeholder">[ Asset: IOR bulk diesel tanker on remote road ]</span></div>
+            <div class="eco-panel__content">
+              <span class="eco-panel__eyebrow">Bulk Diesel Delivery</span>
+              <h3 class="eco-panel__title">High-volume delivery, anywhere.</h3>
+              <p class="eco-panel__body">Our national fleet of rigid tankers, semi-trailers, and road trains delivers to remote and challenging environments. HyDip&#8482; tank gauging automates your reorder trigger so you never run dry.</p>
+              <a href="03c_Bulk_Diesel_Delivery_v9.html" class="eco-panel__link">Explore Bulk Delivery</a>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- MOBILE: Accordion -->
+      <div class="eco-accordion" aria-label="HyDip ecosystem products">
+        <div class="eco-acc-item">
+          <button class="eco-acc-trigger" aria-expanded="true" aria-controls="eco-acc-body-1" id="eco-acc-btn-1">
+            <span><strong>01</strong>&nbsp; On-Site Refuelling</span>
+            <svg class="eco-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eco-acc-body" id="eco-acc-body-1" role="region" aria-labelledby="eco-acc-btn-1" style="max-height:500px">
+            <div class="eco-acc-body-inner">
+              <p>IOR manages your entire on-site fuel supply. Pair a fully compliant IOR storage tank with HyDip&#8482; telemetry for complete visibility of every litre dispensed.</p>
+              <a href="03b_On_Site_Refuelling_v8.html" class="eco-panel__link">Explore On-Site Refuelling</a>
+            </div>
+          </div>
+        </div>
+        <div class="eco-acc-item">
+          <button class="eco-acc-trigger" aria-expanded="false" aria-controls="eco-acc-body-2" id="eco-acc-btn-2">
+            <span><strong>02</strong>&nbsp; Deployable Frac Tanks</span>
+            <svg class="eco-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eco-acc-body" id="eco-acc-body-2" role="region" aria-labelledby="eco-acc-btn-2">
+            <div class="eco-acc-body-inner">
+              <p>Delivered and commissioned rapidly for project sites, disaster response, or seasonal demand spikes. Fully compatible with HyDip&#8482; telemetry from day one.</p>
+              <a href="05_Equipment_Infrastructure.html" class="eco-panel__link">Explore Frac Tanks</a>
+            </div>
+          </div>
+        </div>
+        <div class="eco-acc-item">
+          <button class="eco-acc-trigger" aria-expanded="false" aria-controls="eco-acc-body-3" id="eco-acc-btn-3">
+            <span><strong>03</strong>&nbsp; Self-Bunded Storage</span>
+            <svg class="eco-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eco-acc-body" id="eco-acc-body-3" role="region" aria-labelledby="eco-acc-btn-3">
+            <div class="eco-acc-body-inner">
+              <p>Manufactured to Australian Standards, ranging from 13KL to 110KL. Pair with HyDip&#8482; tank gauging for automated level monitoring and reorder alerts.</p>
+              <a href="05_Equipment_Infrastructure.html" class="eco-panel__link">Explore Storage Tanks</a>
+            </div>
+          </div>
+        </div>
+        <div class="eco-acc-item">
+          <button class="eco-acc-trigger" aria-expanded="false" aria-controls="eco-acc-body-4" id="eco-acc-btn-4">
+            <span><strong>04</strong>&nbsp; Bulk Diesel Delivery</span>
+            <svg class="eco-acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="eco-acc-body" id="eco-acc-body-4" role="region" aria-labelledby="eco-acc-btn-4">
+            <div class="eco-acc-body-inner">
+              <p>Our national fleet delivers to remote and challenging environments. HyDip&#8482; tank gauging automates your reorder trigger so you never run dry.</p>
+              <a href="03c_Bulk_Diesel_Delivery_v9.html" class="eco-panel__link">Explore Bulk Delivery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA row -->
+      <div class="eco-cta-row">
+        <a href="03_Ground_Fuels_v8.html" class="eco-cta-primary">Explore Ground Fuels</a>
+        <a href="#contact" class="eco-cta-ghost">Speak to a HyDip&#8482; Specialist</a>
       </div>
     </div>
   </section>
@@ -1105,5 +1225,32 @@
     });
   });
 </script>
+
+  /* ---- ECO TABCORDION ---- */
+  const ecoTabs = document.querySelectorAll('.eco-tab');
+  const ecoPanels = document.querySelectorAll('.eco-panel');
+  ecoTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const id = tab.getAttribute('data-eco');
+      ecoTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      ecoPanels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const panel = document.getElementById('eco-panel-' + id);
+      if (panel) panel.classList.add('active');
+    });
+  });
+  /* ---- ECO ACCORDION (mobile) ---- */
+  document.querySelectorAll('.eco-acc-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const bodyId = trigger.getAttribute('aria-controls');
+      const body = document.getElementById(bodyId);
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.eco-acc-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+      document.querySelectorAll('.eco-acc-body').forEach(b => { b.style.maxHeight = '0'; });
+      if (!isOpen) { trigger.setAttribute('aria-expanded', 'true'); body.style.maxHeight = body.scrollHeight + 'px'; }
+    });
+  });
+
 </body>
 </html>
