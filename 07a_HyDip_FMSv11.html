@@ -219,7 +219,7 @@
     .pt-thumb:hover .pt-play{background:rgba(0,209,204,.35)}
     @media(max-width:768px){.pt-section__inner{grid-template-columns:1fr}}
     /* FAQ */
-    .faq-section{background:var(--fc-cream);padding:clamp(56px,7vw,88px) var(--section-pad-x)}
+    .faq-section{background:#f5f7f9;padding:clamp(56px,7vw,88px) var(--section-pad-x)}
     .faq-section__inner{max-width:var(--container-max);margin-inline:auto;display:grid;grid-template-columns:1fr 2fr;gap:clamp(40px,6vw,80px);align-items:start}
     .faq-section__eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-blue);margin-bottom:14px}
     .faq-section__h2{font-size:clamp(24px,3vw,38px);font-weight:700;color:var(--fc-dark);line-height:1.15;margin-bottom:20px}
@@ -227,7 +227,7 @@
     .faq-kb-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--ior-blue);border-bottom:2px solid var(--ior-blue);padding-bottom:2px;transition:color var(--transition-fast)}
     .faq-kb-link:hover{color:var(--ior-navy)}
     .faq-section__phone{font-size:13px;color:var(--mid-grey);margin-top:16px;margin-bottom:8px;font-style:italic}
-    .faq-section__phone-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--fc-dark);text-decoration:none;transition:color var(--transition-fast)}
+    .faq-section__phone-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--hd-dark);text-decoration:none;transition:color var(--transition-fast)}
     .faq-section__phone-link:hover{color:var(--ior-blue)}
     .faq-list{display:flex;flex-direction:column;gap:0}
     .faq-item{border-bottom:1px solid rgba(19,17,77,.12)}
@@ -275,6 +275,10 @@
        HYDIP FMS v11 - PAGE-SPECIFIC CSS
     ============================================================ */
     :root{--hd-dark:#0B1929;--hd-navy:#0D2137;--hd-teal:#00D1CC}
+    /* HyDip brand button overrides */
+    .hd-hero .btn--primary,.hd-deploy .btn--primary,.hd-final-cta .btn--primary,.hd-lead .btn--primary{background:var(--hd-teal);color:var(--hd-dark)}
+    .hd-hero .btn--primary:hover,.hd-deploy .btn--primary:hover,.hd-final-cta .btn--primary:hover,.hd-lead .btn--primary:hover{background:#00b8b4;color:var(--hd-dark)}
+    .hd-hero .btn--outline-white:hover,.hd-final-cta .btn--outline-white:hover{background:#fff;color:var(--hd-dark)}
 
     /* HERO */
     .hd-hero{background:var(--hd-dark);border-top:4px solid var(--hd-teal);padding:clamp(56px,8vw,96px) var(--section-pad-x)}
@@ -351,27 +355,23 @@
     .hd-hw-card__link:hover{color:#fff}
     @media(max-width:900px){.hd-hw-grid{grid-template-columns:1fr}}
 
-    /* DEPLOYMENT TAB TRACK */
+    /* DEPLOYMENT */
     .hd-deploy{background:var(--hd-navy);padding:clamp(56px,7vw,88px) var(--section-pad-x)}
     .hd-deploy__inner{max-width:var(--container-max);margin-inline:auto}
-    .hd-deploy__hook{text-align:center;margin-bottom:clamp(32px,4vw,48px)}
+    .hd-deploy__hook{text-align:center;margin-bottom:clamp(40px,5vw,56px)}
     .hd-deploy__h2{font-size:clamp(26px,3.2vw,42px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:14px}
     .hd-deploy__sub{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.65);max-width:560px;margin-inline:auto;line-height:1.7}
-    .hd-tab-track{margin-bottom:clamp(24px,3vw,40px);overflow-x:auto}
-    .hd-tab-track__inner{display:flex;gap:0;border-bottom:2px solid rgba(255,255,255,.12);min-width:max-content}
-    .hd-tab-track__btn{flex:1;min-width:120px;padding:14px 24px;font-size:clamp(13px,1.2vw,15px);font-weight:700;color:rgba(255,255,255,.55);background:none;border:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap;font-family:inherit;text-align:center;min-height:44px}
-    .hd-tab-track__btn:hover{color:rgba(255,255,255,.85)}
-    .hd-tab-track__btn.is-active{color:var(--hd-teal);border-bottom-color:var(--hd-teal)}
-    .hd-tab-track__num{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.35);margin-bottom:4px}
-    .hd-tab-track__btn.is-active .hd-tab-track__num{color:var(--hd-teal)}
-    .hd-deploy-panel{display:none}
-    .hd-deploy-panel.is-active{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,72px);align-items:center}
-    .hd-deploy-panel__body{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.75);line-height:1.8}
-    .hd-deploy-panel__img{background:rgba(0,209,204,.06);border:1px solid rgba(0,209,204,.15);min-height:clamp(260px,28vw,380px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:40px;text-align:center}
-    .hd-deploy-panel__img svg{opacity:.3;color:var(--hd-teal)}
-    .hd-deploy-panel__img span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,209,204,.4);max-width:240px;line-height:1.6}
-    @media(max-width:900px){.hd-deploy-panel.is-active{grid-template-columns:1fr}.hd-deploy-panel__img{display:none}}
-
+    .hd-steps{display:flex;flex-direction:column;gap:0}
+    .hd-step{display:grid;grid-template-columns:80px 1fr 1fr;gap:clamp(24px,4vw,48px);align-items:start;padding:clamp(32px,4vw,48px) 0;border-bottom:1px solid rgba(255,255,255,.08)}
+    .hd-step:last-child{border-bottom:none}
+    .hd-step__num{font-size:clamp(48px,6vw,72px);font-weight:900;color:rgba(0,209,204,.15);line-height:1;padding-top:4px}
+    .hd-step__label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--hd-teal);margin-bottom:10px;display:block}
+    .hd-step__h3{font-size:clamp(18px,2vw,22px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px}
+    .hd-step__p{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.7);line-height:1.8}
+    .hd-step__img{background:rgba(0,209,204,.06);border:1px solid rgba(0,209,204,.15);min-height:clamp(200px,20vw,280px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:32px;text-align:center;font-size:11px;color:rgba(0,209,204,.5);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+    .hd-step__img svg{opacity:.4;color:var(--hd-teal)}
+    .hd-deploy__cta{text-align:center;margin-top:clamp(40px,5vw,56px)}
+    @media(max-width:768px){.hd-step{grid-template-columns:48px 1fr}.hd-step__img{display:none}}
     /* CROSS-SELL */
     .hd-crosssell{background:#fff;padding:clamp(56px,7vw,88px) var(--section-pad-x)}
     .hd-crosssell__inner{max-width:var(--container-max);margin-inline:auto}
@@ -415,7 +415,7 @@
 
     /* FINAL CTA */
     .hd-final-cta{background:var(--hd-dark);border-top:4px solid var(--hd-teal);padding:clamp(56px,7vw,88px) var(--section-pad-x)}
-    .hd-final-cta__inner{max-width:var(--container-max);margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,72px);align-items:center}
+    .hd-final-cta__inner{max-width:680px;margin-inline:auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:28px}
     .hd-final-cta__eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--hd-teal);margin-bottom:14px;display:block}
     .hd-final-cta__h2{font-size:clamp(28px,3.5vw,48px);font-weight:800;color:#fff;line-height:1.1;margin-bottom:16px}
     .hd-final-cta__body{font-size:clamp(14px,1.4vw,16px);color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:clamp(28px,3.5vw,40px)}
@@ -728,56 +728,57 @@
     </div>
   </section>
 
-  <!-- SECTION 6: DEPLOYMENT (HORIZONTAL TAB TRACK) -->
+  <!-- SECTION 6: DEPLOYMENT -->
   <section class="hd-deploy" id="deployment" aria-labelledby="hd-deploy-heading">
     <div class="hd-deploy__inner">
       <div class="hd-deploy__hook fade-up">
-        <span class="eyebrow eyebrow--teal">Deployment</span>
+        <span class="eyebrow">Deployment</span>
         <h2 class="hd-deploy__h2" id="hd-deploy-heading">Up and running in three steps.</h2>
         <p class="hd-deploy__sub">From first enquiry to live dashboard, our digital integration team handles everything.</p>
       </div>
-      <div class="hd-tab-track" role="tablist" aria-label="Deployment steps">
-        <div class="hd-tab-track__inner">
-          <button class="hd-tab-track__btn is-active" role="tab" aria-selected="true" aria-controls="hd-deploy-panel-1" id="hd-deploy-tab-1" data-deploy="1"><span class="hd-tab-track__num">01</span>Design</button>
-          <button class="hd-tab-track__btn" role="tab" aria-selected="false" aria-controls="hd-deploy-panel-2" id="hd-deploy-tab-2" data-deploy="2"><span class="hd-tab-track__num">02</span>Install</button>
-          <button class="hd-tab-track__btn" role="tab" aria-selected="false" aria-controls="hd-deploy-panel-3" id="hd-deploy-tab-3" data-deploy="3"><span class="hd-tab-track__num">03</span>Manage</button>
-        </div>
-      </div>
-      <div class="hd-deploy-panels">
-        <div class="hd-deploy-panel is-active" id="hd-deploy-panel-1" role="tabpanel" aria-labelledby="hd-deploy-tab-1">
-          <div class="hd-deploy-panel__body">
-            <p>Speak to our digital team to spec the right HyDip hardware for your bulk tanks and fleet size. We will map out sensor placement, communication options, and integration requirements before a single cable is run.</p>
-            <a href="#contact" class="btn btn--primary" >Enquire about HyDip&#8482; &#8594;</a>
+      <div class="hd-steps">
+        <div class="hd-step fade-up">
+          <div class="hd-step__num" aria-hidden="true">01</div>
+          <div class="hd-step__body">
+            <span class="hd-step__label">Design your solution</span>
+            <h3 class="hd-step__h3">Speak to our team. We spec the right hardware.</h3>
+            <p class="hd-step__p">Speak to our digital team to spec the right HyDip hardware for your bulk tanks and fleet size. We will map out sensor placement, communication options, and integration requirements before a single cable is run.</p>
           </div>
-          <div class="hd-deploy-panel__img" aria-hidden="true">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <div class="hd-step__img" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             <span>ASSET REQUIRED: Site assessment or solution design screen</span>
           </div>
         </div>
-        <div class="hd-deploy-panel" id="hd-deploy-panel-2" role="tabpanel" aria-labelledby="hd-deploy-tab-2">
-          <div class="hd-deploy-panel__body">
-            <p>Our technicians deploy the hardware on-site, whether you need standard 4G/Ethernet connectivity or a remote off-grid solar setup. All hardware is robust and engineered for Australian conditions.</p>
-            <a href="#contact" class="btn btn--primary" >Enquire about HyDip&#8482; &#8594;</a>
+        <div class="hd-step fade-up">
+          <div class="hd-step__num" aria-hidden="true">02</div>
+          <div class="hd-step__body">
+            <span class="hd-step__label">HyDip is installed</span>
+            <h3 class="hd-step__h3">Our technicians deploy the hardware on-site.</h3>
+            <p class="hd-step__p">Our technicians deploy the hardware on-site, whether you need standard 4G/Ethernet connectivity or a remote off-grid solar setup. All hardware is robust and engineered for Australian conditions.</p>
           </div>
-          <div class="hd-deploy-panel__img" aria-hidden="true">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <div class="hd-step__img" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             <span>ASSET REQUIRED: Technician installing HyDip hardware on bulk tank</span>
           </div>
         </div>
-        <div class="hd-deploy-panel" id="hd-deploy-panel-3" role="tabpanel" aria-labelledby="hd-deploy-tab-3">
-          <div class="hd-deploy-panel__body">
-            <p>Log in to the HyDip Cloud dashboard to manage RFID tags, set dispense limits, run reports, and connect your data directly to Xero, MYOB, or SAP. Your team is live from day one.</p>
-            <a href="#contact" class="btn btn--primary" >Enquire about HyDip&#8482; &#8594;</a>
+        <div class="hd-step fade-up">
+          <div class="hd-step__num" aria-hidden="true">03</div>
+          <div class="hd-step__body">
+            <span class="hd-step__label">Manage your fuel</span>
+            <h3 class="hd-step__h3">Log in. Your team is live from day one.</h3>
+            <p class="hd-step__p">Log in to the HyDip Cloud dashboard to manage RFID tags, set dispense limits, run reports, and connect your data directly to Xero, MYOB, or SAP. Your team is live from day one.</p>
           </div>
-          <div class="hd-deploy-panel__img" aria-hidden="true">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <div class="hd-step__img" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             <span>ASSET REQUIRED: HyDip Cloud dashboard screenshot on laptop or tablet</span>
           </div>
         </div>
       </div>
+      <div class="hd-deploy__cta fade-up">
+        <a href="#contact" class="btn btn--primary">Enquire about HyDip&#8482; &#8594;</a>
+      </div>
     </div>
   </section>
-
   <!-- SECTION 7: CROSS-SELL -->
   <section class="hd-crosssell" id="ecosystem" aria-labelledby="hd-cs-heading">
     <div class="hd-crosssell__inner">
@@ -829,13 +830,15 @@
   </section>
 
   <!-- SECTION 9: FAQ -->
-  <section class="hd-faq" id="faq" aria-labelledby="hd-faq-heading">
-    <div class="hd-faq__inner">
-      <div>
-        <span class="eyebrow">FAQ</span>
-        <h2 class="hd-faq__h2" id="hd-faq-heading">Common questions about HyDip&#8482;.</h2>
-        <p class="hd-faq__sub">Can&#8217;t find what you&#8217;re looking for? Our support team is available 24/7.</p>
-        <a href="11_Support_Hub.html" class="hd-faq__contact">Browse the Help Centre &#8594;</a>
+  <section class="faq-section" id="faqs" aria-labelledby="faq-heading">
+    <div class="faq-section__inner">
+      <div class="faq-section__sidebar fade-up">
+        <p class="faq-section__eyebrow">FAQS</p>
+        <h2 class="faq-section__h2" id="faq-heading">Common questions about HyDip&#8482;</h2>
+        <p class="faq-section__sub">Need assistance?</p>
+        <a href="11_Support_Hubv5.html" class="faq-kb-link">Browse the Help Centre &rarr;</a>
+        <p class="faq-section__phone">Or</p>
+        <a href="tel:1300457467" class="faq-section__phone-link">&#128222; Call 1300 457 467</a>
       </div>
       <div class="faq-list" role="list">
         <div class="faq-item" role="listitem">
@@ -861,7 +864,6 @@
       </div>
     </div>
   </section>
-
   <!-- SECTION 10: FINAL CTA -->
   <section class="hd-final-cta" id="final-cta" aria-labelledby="hd-final-cta-heading">
     <div class="hd-final-cta__inner">
@@ -898,6 +900,7 @@
   <div class="pre-footer__divider"></div>
 </section>
 
+<!-- FOOTER -->
 <footer class="site-footer" aria-label="Site footer">
     <div class="footer-nav-grid">
       <div>
