@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IOR Component Library — Visual Reference</title>
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --ior-blue:    #0057A8;
+      --ior-navy:    #0A1628;
+      --charcoal:    #1C2B3A;
+      --grey-100:    #F5F6F8;
+      --grey-200:    #E8EAED;
+      --grey-600:    #6B7280;
+      --white:       #FFFFFF;
+      --gold:        #C9A84C;
+      --tier-univ:   #0057A8;
+      --tier-common: #C9A84C;
+      --tier-spec:   #6B7280;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--grey-100);
+      color: var(--charcoal);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    a { color: var(--ior-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── PROTO BAR ──────────────────────────────────────────── */
+    .proto-bar {
+      background: var(--ior-navy);
+      padding: 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: rgba(255,255,255,.6);
+      flex-wrap: wrap;
+    }
+    .proto-bar strong { color: #fff; }
+    .proto-bar a { color: rgba(255,255,255,.7); }
+    .proto-bar a:hover { color: #fff; }
+    .proto-bar__spacer { flex: 1; }
+
+    /* ─── PAGE HEADER ────────────────────────────────────────── */
+    .page-header {
+      background: var(--ior-navy);
+      color: #fff;
+      padding: 48px 24px 40px;
+      border-bottom: 3px solid var(--ior-blue);
+    }
+    .page-header__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .page-header__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .page-header p {
+      font-size: 16px;
+      color: rgba(255,255,255,.7);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+    .page-header__meta {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .page-header__stat {
+      text-align: center;
+    }
+    .page-header__stat-num {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .page-header__stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,.5);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-top: 4px;
+    }
+
+    /* ─── TIER LEGEND ────────────────────────────────────────── */
+    .tier-legend {
+      background: var(--white);
+      border-bottom: 1px solid var(--grey-200);
+      padding: 12px 24px;
+    }
+    .tier-legend__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 12px;
+    }
+    .tier-legend__label { font-weight: 700; color: var(--charcoal); }
+    .tier-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tier-dot::before {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .tier-dot--univ::before  { background: var(--tier-univ); }
+    .tier-dot--common::before { background: var(--tier-common); }
+    .tier-dot--spec::before  { background: var(--tier-spec); }
+
+    /* ─── NAV TABS ───────────────────────────────────────────── */
+    .section-nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--grey-200);
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .section-nav__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+    }
+    .section-nav a {
+      display: block;
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--grey-600);
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: color .2s, border-color .2s;
+    }
+    .section-nav a:hover {
+      color: var(--ior-blue);
+      border-bottom-color: var(--ior-blue);
+      text-decoration: none;
+    }
+
+    /* ─── CONTAINER ──────────────────────────────────────────── */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── SECTION ────────────────────────────────────────────── */
+    .section {
+      padding: 56px 0 64px;
+      border-bottom: 1px solid var(--grey-200);
+    }
+    .section:last-child { border-bottom: none; }
+    .section__header {
+      margin-bottom: 40px;
+    }
+    .section__header h2 {
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 800;
+      color: var(--ior-navy);
+      margin-bottom: 10px;
+    }
+    .section__header p {
+      font-size: 15px;
+      color: var(--grey-600);
+      max-width: 720px;
+      line-height: 1.7;
+    }
+
+    /* ─── COMPONENT GRID ─────────────────────────────────────── */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 24px;
+    }
+
+    /* ─── COMPONENT CARD ─────────────────────────────────────── */
+    .comp-card {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      overflow: hidden;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .comp-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,.1);
+      transform: translateY(-2px);
+    }
+
+    /* Tier accent bar */
+    .comp-card--univ  { border-top: 3px solid var(--tier-univ); }
+    .comp-card--common { border-top: 3px solid var(--tier-common); }
+    .comp-card--spec  { border-top: 3px solid var(--tier-spec); }
+
+    /* Screenshot */
+    .comp-card__thumb {
+      position: relative;
+      overflow: hidden;
+      background: var(--grey-200);
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .comp-card__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .comp-card:hover .comp-card__thumb img {
+      transform: scale(1.03);
+    }
+    .comp-card__thumb--placeholder {
+      background: var(--grey-200);
+      color: var(--grey-600);
+      font-size: 13px;
+      font-style: italic;
+    }
+    .comp-card__thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,22,40,0);
+      transition: background .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .comp-card:hover .comp-card__thumb-overlay {
+      background: rgba(10,22,40,.35);
+    }
+    .comp-card__view-btn {
+      background: var(--white);
+      color: var(--ior-navy);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 16px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .3s, transform .3s;
+      text-decoration: none;
+    }
+    .comp-card:hover .comp-card__view-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Body */
+    .comp-card__body {
+      padding: 20px 20px 24px;
+    }
+    .comp-card__tier-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .comp-card__tier-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .comp-card__tier-badge--univ  { background: #E8F0FB; color: var(--tier-univ); }
+    .comp-card__tier-badge--common { background: #FBF4E0; color: #8B6914; }
+    .comp-card__tier-badge--spec  { background: var(--grey-100); color: var(--grey-600); }
+    .comp-card__freq {
+      font-size: 11px;
+      color: var(--grey-600);
+    }
+    .comp-card__name {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--ior-navy);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .comp-card__desc {
+      font-size: 13px;
+      color: var(--grey-600);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .comp-card__pages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .comp-card__page-tag {
+      font-size: 11px;
+      background: var(--grey-100);
+      color: var(--grey-600);
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    .page-footer {
+      background: var(--ior-navy);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 12px;
+    }
+    .page-footer a { color: rgba(255,255,255,.7); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .comp-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Proto Bar -->
+<div class="proto-bar">
+  <strong>IOR Prototype</strong>
+  <span>Component Library — Visual Reference</span>
+  <div class="proto-bar__spacer"></div>
+  <a href="00_Client_Preview.html">← Client Preview</a>
+  <a href="00_Dashboard.html">Dashboard</a>
+  <a href="00_Component_Register.html">Component Register</a>
+  <a href="IOR_Design_System.html">Design System</a>
+  <a href="00_Global_Components.html">Global Components</a>
+</div>
+
+<!-- Page Header -->
+<header class="page-header">
+  <div class="page-header__inner">
+    <p class="page-header__eyebrow">IOR Design System — Internal Reference</p>
+    <h1>Component Library</h1>
+    <p>Visual reference for every UI component used across the IOR prototype. Each component is shown as a live screenshot from the actual page, with its tier classification, frequency, and usage notes.</p>
+    <div class="page-header__meta">
+      <div class="page-header__stat">
+        <div class="page-header__stat-num">22</div>
+        <div class="page-header__stat-label">Components</div>
+      </div>
+      <div class="page-header__stat">
+        <div class="page-header__stat-num">15</div>
+        <div class="page-header__stat-label">Universal (10+ pages)</div>
+      </div>
+      <div class="page-header__stat">
+        <div class="page-header__stat-num">40</div>
+        <div class="page-header__stat-label">Live Pages</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Tier Legend -->
+<div class="tier-legend">
+  <div class="tier-legend__inner">
+    <span class="tier-legend__label">Tier:</span>
+    <span class="tier-dot tier-dot--univ">Universal — appears on 10+ pages</span>
+    <span class="tier-dot tier-dot--common">Common — appears on 5–9 pages</span>
+    <span class="tier-dot tier-dot--spec">Specialised — fewer than 5 pages</span>
+  </div>
+</div>
+
+<!-- Section Nav -->
+<nav class="section-nav" aria-label="Component sections">
+  <div class="section-nav__inner">
+    <a href="#heroes">Heroes</a>
+    <a href="#navigation">Navigation</a>
+    <a href="#social-proof">Social Proof</a>
+    <a href="#content">Content Blocks</a>
+    <a href="#conversion">Conversion</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#utility">Utility</a>
+    <a href="#sub-brand">Sub-Brand</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- ─── HEROES ─────────────────────────────────────────────── -->
+  <div class="section" id="heroes">
+    <div class="section__header">
+      <h2>Heroes</h2>
+      <p>Full-bleed hero sections that open every page. All banners must be edge-to-edge with no horizontal padding. The video variant is used on the Homepage only; all other pages use a full-bleed image with a dark scrim overlay.</p>
+    </div>
+    <div class="comp-grid">
+
+      <div class="comp-card comp-card--univ">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/hero-image.jpg" alt="Hero — Full Bleed Image/Video screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="03a_Diesel_Network_v8.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--univ">Universal</span>
+            <span class="comp-card__freq">31 pages</span>
+          </div>
+          <h3 class="comp-card__name">Hero — Full Bleed Image/Video</h3>
+          <p class="comp-card__desc">Full-bleed hero with dark scrim overlay, H1, subtext, and 1–2 CTAs. Used on all product, service, hub, and utility pages. Image must be edge-to-edge (no padding). No gradients.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">All product pages</span>
+            <span class="comp-card__page-tag">All hub pages</span>
+            <span class="comp-card__page-tag">Utility pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--spec">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/hero-video.jpg" alt="Hero — Homepage Video screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="01_Homepage.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--spec">Specialised</span>
+            <span class="comp-card__freq">1 page</span>
+          </div>
+          <h3 class="comp-card__name">Hero — Homepage Video</h3>
+          <p class="comp-card__desc">Autoplay muted looping video background with overlay text and CTAs. Used exclusively on the Homepage. Video container must be full-bleed.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Homepage only</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── NAVIGATION ─────────────────────────────────────────── -->
+  <div class="section" id="navigation">
+    <div class="section__header">
+      <h2>Navigation Elements</h2>
+      <p>In-page navigation components that help users orient themselves and move between related content. The Quick Links Bar must never be sticky.</p>
+    </div>
+    <div class="comp-grid">
+
+      <div class="comp-card comp-card--univ">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/quick-links-bar.jpg" alt="Quick Links Bar screenshot" style="object-position: top;">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="03a_Diesel_Network_v8.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--univ">Universal</span>
+            <span class="comp-card__freq">28 pages</span>
+          </div>
+          <h3 class="comp-card__name">Quick Links Bar</h3>
+          <p class="comp-card__desc">Horizontal "EXPLORE IOR:" navigation bar placed immediately below the hero. Shows sibling pages with a minimalist underline on the active page. Must never be sticky. Active state uses a subtle underline only.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">All product pages</span>
+            <span class="comp-card__page-tag">Hub pages</span>
+            <span class="comp-card__page-tag">Industry pages</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SOCIAL PROOF ───────────────────────────────────────── -->
+  <div class="section" id="social-proof">
+    <div class="section__header">
+      <h2>Social Proof</h2>
+      <p>Components that build credibility and trust through numbers, client logos, and customer voices.</p>
+    </div>
+    <div class="comp-grid">
+
+      <div class="comp-card comp-card--univ">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/stat-bar.jpg" alt="Stat Bar screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="01_Homepage.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--univ">Universal</span>
+            <span class="comp-card__freq">22 pages</span>
+          </div>
+          <h3 class="comp-card__name">Stat Bar</h3>
+          <p class="comp-card__desc">Full-width dark navy band with 3–4 key metrics (e.g. "115+ Stops", "24/7 Service"). Placed immediately after the Quick Links Bar or Hero. Numbers must be specific and verifiable — no vague claims.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Homepage</span>
+            <span class="comp-card__page-tag">Hub pages</span>
+            <span class="comp-card__page-tag">Product pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--univ">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/logo-carousel.jpg" alt="Logo Carousel screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="01_Homepage.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--univ">Universal</span>
+            <span class="comp-card__freq">18 pages</span>
+          </div>
+          <h3 class="comp-card__name">Logo Carousel</h3>
+          <p class="comp-card__desc">Auto-scrolling strip of client logos on a white background with fade-out edges. Logos are placeholders until client approval is obtained. Do not use competitor logos as stand-ins.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Homepage</span>
+            <span class="comp-card__page-tag">Hub pages</span>
+            <span class="comp-card__page-tag">Product pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--common">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/testimonial.jpg" alt="Testimonial / Quote Block screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="03a_Diesel_Network_v8.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--common">Common</span>
+            <span class="comp-card__freq">14 pages</span>
+          </div>
+          <h3 class="comp-card__name">Testimonial / Quote Block</h3>
+          <p class="comp-card__desc">Large pull-quote with attribution (name, title, company). Placed mid-page after the feature section. Testimonials must be real and attributable — no fabricated quotes.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Product pages</span>
+            <span class="comp-card__page-tag">Industry pages</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── CONTENT BLOCKS ─────────────────────────────────────── -->
+  <div class="section" id="content">
+    <div class="section__header">
+      <h2>Content Blocks</h2>
+      <p>The core content components that make up the body of every page. Feature Cards and Related Content are the most frequently used components on the site.</p>
+    </div>
+    <div class="comp-grid">
+
+      <div class="comp-card comp-card--univ">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/feature-cards.jpg" alt="Feature Cards screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="03a_Diesel_Network_v8.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--univ">Universal</span>
+            <span class="comp-card__freq">29 pages</span>
+          </div>
+          <h3 class="comp-card__name">Feature Cards (3-col / 4-col Grid)</h3>
+          <p class="comp-card__desc">Grid of 3 or 4 cards with icon, heading, and short body copy. Used to present key product features, service benefits, or USPs. Cards have a blue top border accent. No rounded corners.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">All product pages</span>
+            <span class="comp-card__page-tag">Hub pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--univ">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/related-content.jpg" alt="Related Content Grid screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="03a_Diesel_Network_v8.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--univ">Universal</span>
+            <span class="comp-card__freq">26 pages</span>
+          </div>
+          <h3 class="comp-card__name">Related Content Grid</h3>
+          <p class="comp-card__desc">3-column grid of related articles, case studies, or blog posts. Each card has an image placeholder, tag label, title, excerpt, and "Read Article →" link. Placed near the bottom of every page.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">All product pages</span>
+            <span class="comp-card__page-tag">Industry pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--common">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/timeline-steps.jpg" alt="Timeline / Steps screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="03a_Diesel_Network_v8.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--common">Common</span>
+            <span class="comp-card__freq">8 pages</span>
+          </div>
+          <h3 class="comp-card__name">Timeline / Steps</h3>
+          <p class="comp-card__desc">Dark navy section with numbered step cards (3-col). Used to explain a process, onboarding journey, or "How it works" sequence. Large oversized step numbers are a key visual element.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Product pages</span>
+            <span class="comp-card__page-tag">Service pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--univ">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/faq-accordion.jpg" alt="FAQ Accordion screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="03a_Diesel_Network_v8.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--univ">Universal</span>
+            <span class="comp-card__freq">24 pages</span>
+          </div>
+          <h3 class="comp-card__name">FAQ Accordion</h3>
+          <p class="comp-card__desc">Expandable Q&A accordion. Placed near the bottom of product and service pages. Each question expands to reveal the answer. Supports E-E-A-T by addressing real customer questions.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Product pages</span>
+            <span class="comp-card__page-tag">Hub pages</span>
+            <span class="comp-card__page-tag">Support pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--common">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/case-study-cards.jpg" alt="Case Study Cards screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="09d_Case_Studies_v6.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--common">Common</span>
+            <span class="comp-card__freq">9 pages</span>
+          </div>
+          <h3 class="comp-card__name">Case Study Cards</h3>
+          <p class="comp-card__desc">Card with image, industry tag, title, excerpt, and "Read Case Study →" link. Used on the Case Studies list page and as a related content component on product pages.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Case Studies list</span>
+            <span class="comp-card__page-tag">Homepage</span>
+            <span class="comp-card__page-tag">Product pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--spec">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/tag-filter.jpg" alt="Tag / Category Filter screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="09d_Case_Studies_v6.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--spec">Specialised</span>
+            <span class="comp-card__freq">2 pages</span>
+          </div>
+          <h3 class="comp-card__name">Tag / Category Filter</h3>
+          <p class="comp-card__desc">Horizontal row of filter tags (e.g. "All", "Mining", "Aviation") used to filter case study or blog post cards. Active tag is highlighted. Used on list/archive pages only.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Case Studies list</span>
+            <span class="comp-card__page-tag">Blog list</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── CONVERSION ─────────────────────────────────────────── -->
+  <div class="section" id="conversion">
+    <div class="section__header">
+      <h2>Conversion Components</h2>
+      <p>Components designed to capture leads, drive enquiries, and convert visitors. These are the highest-priority components for the designer to execute with precision.</p>
+    </div>
+    <div class="comp-grid">
+
+      <div class="comp-card comp-card--univ">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/lead-capture.jpg" alt="Lead Capture / CTA Form screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="03a_Diesel_Network_v8.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--univ">Universal</span>
+            <span class="comp-card__freq">28 pages</span>
+          </div>
+          <h3 class="comp-card__name">Lead Capture / CTA Form</h3>
+          <p class="comp-card__desc">Full-width section with a headline, short body copy, and an embedded enquiry form (name, company, phone, email, message). The primary conversion point on every product and service page.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">All product pages</span>
+            <span class="comp-card__page-tag">Hub pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--univ">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/pre-footer-cta.jpg" alt="Pre-footer CTA Band screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="03a_Diesel_Network_v8.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--univ">Universal</span>
+            <span class="comp-card__freq">39 pages</span>
+          </div>
+          <h3 class="comp-card__name">Pre-footer CTA Band</h3>
+          <p class="comp-card__desc">Full-width dark navy band placed immediately above the footer. Contains a headline, short copy, and a single centred CTA button. The final conversion opportunity before the user leaves the page.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">All pages (except Privacy Policy)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--spec">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/contact-form.jpg" alt="Contact Form screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="11a_Contact_Usv5.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--spec">Specialised</span>
+            <span class="comp-card__freq">2 pages</span>
+          </div>
+          <h3 class="comp-card__name">Contact Form</h3>
+          <p class="comp-card__desc">Full enquiry form with department routing (General, Account, Technical, Media). Used on the Contact Us and Support Hub pages. Includes a success message state.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Contact Us</span>
+            <span class="comp-card__page-tag">Support Hub</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--spec">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/payment-form.jpg" alt="Payment Form screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="11e_Make_Paymentv5.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--spec">Specialised</span>
+            <span class="comp-card__freq">1 page</span>
+          </div>
+          <h3 class="comp-card__name">Payment Form</h3>
+          <p class="comp-card__desc">Secure payment form with account number, amount, and payment method fields. Used exclusively on the Make a Payment page. Must include a trust badge / security indicator.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Make a Payment</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── LEADERSHIP ─────────────────────────────────────────── -->
+  <div class="section" id="leadership">
+    <div class="section__header">
+      <h2>Leadership Components</h2>
+      <p>Components used exclusively on the Our Leadership and individual Bio pages.</p>
+    </div>
+    <div class="comp-grid">
+
+      <div class="comp-card comp-card--spec">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/leader-card-grid.jpg" alt="Leader Card Grid screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="09a_Our_Leadershipv5.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--spec">Specialised</span>
+            <span class="comp-card__freq">1 page</span>
+          </div>
+          <h3 class="comp-card__name">Leader Card Grid</h3>
+          <p class="comp-card__desc">Grid of executive profile cards with headshot, name, title, and a link to the individual bio page. Used on the Our Leadership page. Cards should use real photography — no stock images.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Our Leadership</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--spec">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/bio-card.jpg" alt="Bio Card / Profile screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="09a_Bio_DrewMorland_v5.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--spec">Specialised</span>
+            <span class="comp-card__freq">9 pages</span>
+          </div>
+          <h3 class="comp-card__name">Bio Card / Profile</h3>
+          <p class="comp-card__desc">Full-width executive profile section with large headshot, name, title, LinkedIn link, and detailed biography. Used on each individual leadership bio page.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">All 9 Bio pages</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── UTILITY ────────────────────────────────────────────── -->
+  <div class="section" id="utility">
+    <div class="section__header">
+      <h2>Utility Components</h2>
+      <p>Components used on utility and support pages — maps, routing blocks, and support resources.</p>
+    </div>
+    <div class="comp-grid">
+
+      <div class="comp-card comp-card--common">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/map-component.jpg" alt="Map Component screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="11d_Find_Locationv5.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--common">Common</span>
+            <span class="comp-card__freq">5 pages</span>
+          </div>
+          <h3 class="comp-card__name">Map Component</h3>
+          <p class="comp-card__desc">Embedded Google Maps iframe showing IOR depot/terminal locations. Used on Find a Location, Regional Contacts, and relevant product pages. Map must be full-width within its container.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Find a Location</span>
+            <span class="comp-card__page-tag">Regional Contacts</span>
+            <span class="comp-card__page-tag">Diesel Network</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card--spec">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/support-routing.jpg" alt="Support Routing Block screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="11_Support_Hubv5.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--spec">Specialised</span>
+            <span class="comp-card__freq">1 page</span>
+          </div>
+          <h3 class="comp-card__name">Support Routing Block</h3>
+          <p class="comp-card__desc">Grid of support pathway cards (General Enquiry, Account Support, Technical, Media) that route users to the correct contact channel. Used exclusively on the Support Hub page.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Support Hub</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SUB-BRAND ──────────────────────────────────────────── -->
+  <div class="section" id="sub-brand">
+    <div class="section__header">
+      <h2>Sub-Brand Components</h2>
+      <p>Components that use the Fuelcharge or HyDip™ brand tokens instead of the IOR master brand. These must only appear on their designated pages and must use the correct sub-brand colour palette.</p>
+    </div>
+    <div class="comp-grid">
+
+      <div class="comp-card comp-card--spec">
+        <div class="comp-card__thumb">
+          <img src="assets/component-thumbs/fuelcharge-band.jpg" alt="Fuelcharge Brand Band screenshot">
+          <div class="comp-card__thumb-overlay">
+            <a class="comp-card__view-btn" href="07_Digital_Platformsv5.html" target="_blank">View Example ↗</a>
+          </div>
+        </div>
+        <div class="comp-card__body">
+          <div class="comp-card__tier-row">
+            <span class="comp-card__tier-badge comp-card__tier-badge--spec">Specialised</span>
+            <span class="comp-card__freq">3 pages</span>
+          </div>
+          <h3 class="comp-card__name">Fuelcharge Brand Band</h3>
+          <p class="comp-card__desc">Dark purple/teal Fuelcharge-branded section with App Store and Google Play download badges. Uses <code>--fc-dark</code> (#1A0A2E) and <code>--fc-teal</code> (#00D4AA) tokens. No IOR blue in this section.</p>
+          <div class="comp-card__pages">
+            <span class="comp-card__page-tag">Digital Platforms Hub</span>
+            <span class="comp-card__page-tag">Fuelcharge App page</span>
+            <span class="comp-card__page-tag">Diesel Network</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- Footer -->
+<footer class="page-footer">
+  <p>IOR Component Library — Internal Design Reference &nbsp;|&nbsp;
+    <a href="00_Client_Preview.html">Client Preview</a> &nbsp;|&nbsp;
+    <a href="00_Component_Register.html">Component Register</a> &nbsp;|&nbsp;
+    <a href="IOR_Design_System.html">Design System</a> &nbsp;|&nbsp;
+    <a href="00_Global_Components.html">Global Components</a>
+  </p>
+</footer>
+
+</body>
+</html>
