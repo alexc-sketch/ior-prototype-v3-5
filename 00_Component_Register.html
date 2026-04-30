@@ -160,9 +160,62 @@
   /* ─── TEMPLATE GROUPS ─────────────────────────────────────── */
   .template-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 24px;
   }
+
+  /* ─── THUMBNAIL ──────────────────────────────────────────── */
+  .template-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 1px solid var(--ior-border);
+    background: var(--ior-navy);
+    display: block;
+    text-decoration: none;
+  }
+  .template-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform .3s ease;
+  }
+  .template-thumb:hover img { transform: scale(1.03); }
+  .template-thumb__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(11,31,58,0.7) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .template-thumb__label {
+    position: absolute;
+    bottom: 10px;
+    left: 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ior-gold);
+    background: rgba(11,31,58,0.85);
+    padding: 3px 8px;
+  }
+  .template-thumb__view {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--ior-white);
+    background: rgba(11,31,58,0.75);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 3px 8px;
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .template-thumb:hover .template-thumb__view { opacity: 1; }
   .template-card {
     background: var(--ior-white);
     border: 1px solid var(--ior-border);
@@ -430,6 +483,12 @@
 
       <!-- Homepage -->
       <div class="template-card">
+        <a class="template-thumb" href="01_Homepage.html" target="_blank">
+          <img src="assets/template-thumbs/homepage.jpg" alt="Homepage template screenshot" loading="lazy">
+          <div class="template-thumb__overlay"></div>
+          <span class="template-thumb__label">Homepage</span>
+          <span class="template-thumb__view">View Page ↗</span>
+        </a>
         <div class="template-card__head">
           <h3>Template: Homepage</h3>
           <div class="template-card__count">1</div>
@@ -451,6 +510,12 @@
 
       <!-- Hub / Category -->
       <div class="template-card">
+        <a class="template-thumb" href="02_Fuel_Solutions_Hub.html" target="_blank">
+          <img src="assets/template-thumbs/hub.jpg" alt="Hub / Category Page template screenshot" loading="lazy">
+          <div class="template-thumb__overlay"></div>
+          <span class="template-thumb__label">Hub / Category Page</span>
+          <span class="template-thumb__view">View Page ↗</span>
+        </a>
         <div class="template-card__head">
           <h3>Template: Hub / Category Page</h3>
           <div class="template-card__count">4</div>
@@ -477,6 +542,12 @@
 
       <!-- Product / Service -->
       <div class="template-card">
+        <a class="template-thumb" href="03a_Diesel_Network_v8.html" target="_blank">
+          <img src="assets/template-thumbs/product.jpg" alt="Product / Service Page template screenshot" loading="lazy">
+          <div class="template-thumb__overlay"></div>
+          <span class="template-thumb__label">Product / Service Page</span>
+          <span class="template-thumb__view">View Page ↗</span>
+        </a>
         <div class="template-card__head">
           <h3>Template: Product / Service Page</h3>
           <div class="template-card__count">19</div>
@@ -521,6 +592,12 @@
 
       <!-- Bio Page -->
       <div class="template-card">
+        <a class="template-thumb" href="09a_Bio_DrewMorlandv5.html" target="_blank">
+          <img src="assets/template-thumbs/bio-single.jpg" alt="Bio Page template screenshot" loading="lazy">
+          <div class="template-thumb__overlay"></div>
+          <span class="template-thumb__label">Bio Page</span>
+          <span class="template-thumb__view">View Page ↗</span>
+        </a>
         <div class="template-card__head">
           <h3>Template: Bio Page</h3>
           <div class="template-card__count">9</div>
@@ -549,6 +626,12 @@
 
       <!-- Team / Leadership -->
       <div class="template-card">
+        <a class="template-thumb" href="09a_Our_Leadershipv5.html" target="_blank">
+          <img src="assets/template-thumbs/bio.jpg" alt="Team / Leadership Grid template screenshot" loading="lazy">
+          <div class="template-thumb__overlay"></div>
+          <span class="template-thumb__label">Team / Leadership Grid</span>
+          <span class="template-thumb__view">View Page ↗</span>
+        </a>
         <div class="template-card__head">
           <h3>Template: Team / Leadership Grid</h3>
           <div class="template-card__count">1</div>
@@ -567,6 +650,12 @@
 
       <!-- Case Studies -->
       <div class="template-card">
+        <a class="template-thumb" href="09d_Case_Studies_v6.html" target="_blank">
+          <img src="assets/template-thumbs/case-studies.jpg" alt="Case Studies List template screenshot" loading="lazy">
+          <div class="template-thumb__overlay"></div>
+          <span class="template-thumb__label">Case Studies — List</span>
+          <span class="template-thumb__view">View Page ↗</span>
+        </a>
         <div class="template-card__head">
           <h3>Template: Case Studies — List</h3>
           <div class="template-card__count">1</div>
@@ -586,6 +675,12 @@
 
       <!-- Utility Pages -->
       <div class="template-card">
+        <a class="template-thumb" href="11a_Contact_Usv5.html" target="_blank">
+          <img src="assets/template-thumbs/utility.jpg" alt="Utility Pages template screenshot" loading="lazy">
+          <div class="template-thumb__overlay"></div>
+          <span class="template-thumb__label">Utility Pages</span>
+          <span class="template-thumb__view">View Page ↗</span>
+        </a>
         <div class="template-card__head">
           <h3>Template: Utility Pages</h3>
           <div class="template-card__count">4</div>
@@ -609,6 +704,12 @@
 
       <!-- Policy / Legal -->
       <div class="template-card">
+        <a class="template-thumb" href="11f_Privacy_Policyv5.html" target="_blank">
+          <img src="assets/template-thumbs/policy.jpg" alt="Policy / Legal template screenshot" loading="lazy">
+          <div class="template-thumb__overlay"></div>
+          <span class="template-thumb__label">Policy / Legal</span>
+          <span class="template-thumb__view">View Page ↗</span>
+        </a>
         <div class="template-card__head">
           <h3>Template: Policy / Legal</h3>
           <div class="template-card__count">1</div>
