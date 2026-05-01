@@ -180,6 +180,18 @@
     @media (max-width: 900px) { .usp-bar__grid { grid-template-columns: repeat(2,1fr); gap: 16px; } .usp-item { border-right: none; } }
     @media (max-width: 480px) { .usp-bar__grid { grid-template-columns: 1fr; } }
 
+    /* LOGO CAROUSEL */
+    .logo-carousel-wrap { background: #fff; padding: clamp(24px,3vw,36px) 0; overflow: hidden; border-top: 1px solid #e8eaed; border-bottom: 1px solid #e8eaed; }
+    .logo-carousel-label { text-align: center; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #9aa0a8; margin-bottom: 20px; }
+    .logo-carousel-track-outer { overflow: hidden; position: relative; }
+    .logo-carousel-track-outer::before, .logo-carousel-track-outer::after { content: ''; position: absolute; top: 0; width: 80px; height: 100%; z-index: 2; pointer-events: none; }
+    .logo-carousel-track-outer::before { left: 0; background: linear-gradient(to right, #fff, transparent); }
+    .logo-carousel-track-outer::after { right: 0; background: linear-gradient(to left, #fff, transparent); }
+    .logo-carousel-track { display: flex; gap: 40px; width: max-content; animation: scroll-left 28s linear infinite; }
+    .logo-carousel-track:hover { animation-play-state: paused; }
+    .logo-placeholder { min-width: 140px; height: 56px; background: #f0f2f5; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #9aa0a8; letter-spacing: .08em; text-transform: uppercase; flex-shrink: 0; }
+    @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
     /* CHALLENGE SECTION */
     .challenge-section { background: var(--ior-deep); padding: var(--section-pad) 0; }
     .challenge-section .section-heading h2 { color: #fff; }
