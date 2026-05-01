@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Careers at IOR | Go Far with IOR | Fuel Industry Jobs</title>
   <meta name="description" content="Join the IOR family. From driving trucks to designing tech, a career with IOR means going further. Explore our current opportunities and entry pathways.">
+  <meta name="keywords" content="Careers at IOR, fuel industry jobs, truck driving jobs Australia, corporate careers Brisbane, IOR employment">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -27,14 +28,18 @@
       --font-primary:       'Inter', sans-serif;
       --section-pad-x:      clamp(20px, 5vw, 80px);
     }
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-primary); color: var(--grey-900); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
     img { display: block; max-width: 100%; }
     a { text-decoration: none; color: inherit; }
     button { cursor: pointer; font-family: inherit; border: none; background: none; }
-
-    /* PROTO-BAR */
+    /* ============================================================
+       PROTO-BAR
+    ============================================================ */
     .proto-bar {
       background: #0A2240; color: rgba(255,255,255,.7);
       font-size: 11px; font-weight: 600; letter-spacing: .06em;
@@ -46,8 +51,9 @@
     .proto-bar__sep { color: rgba(255,255,255,.3); }
     .proto-bar__label { color: #5BB4E5; }
     .proto-bar__current { color: #fff; }
-
-    /* UTILITY BAR */
+    /* ============================================================
+       UTILITY BAR
+    ============================================================ */
     .utility-bar { background: var(--ior-blue); padding: 0; }
     .utility-bar__inner {
       max-width: 1280px; margin: 0 auto; padding: 0 24px;
@@ -60,8 +66,9 @@
     }
     .utility-bar__link:hover { color: #fff; }
     .utility-bar__divider { width: 1px; height: 16px; background: rgba(255,255,255,.25); }
-
-    /* PRIMARY NAV */
+    /* ============================================================
+       PRIMARY NAV
+    ============================================================ */
     .primary-nav {
       background: #fff; border-bottom: 1px solid var(--grey-200);
       position: sticky; top: 0; z-index: 200;
@@ -105,452 +112,298 @@
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 8px;
     }
-    .hamburger span {
-      display: block; width: 22px; height: 2px;
-      background: var(--grey-700); transition: transform .3s, opacity .3s;
-    }
-
-    /* MEGA MENUS */
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--grey-700); transition: transform .3s, opacity .3s; }
+    /* ============================================================
+       MEGA MENUS
+    ============================================================ */
     .mega-panel {
       display: none; position: absolute; top: 100%; left: 0; right: 0;
       background: #fff; border-top: 2px solid var(--ior-blue);
       box-shadow: 0 8px 32px rgba(0,0,0,.12); z-index: 190;
     }
     .mega-panel.is-open { display: block; }
-    .mega-inner {
-      max-width: 1280px; margin: 0 auto; padding: 32px 24px;
-      display: grid; gap: 32px;
-    }
+    .mega-inner { max-width: 1280px; margin: 0 auto; padding: 32px 24px; display: grid; gap: 32px; }
     .mega-inner--4col { grid-template-columns: repeat(4,1fr); }
     .mega-inner--3col { grid-template-columns: repeat(3,1fr); }
     .mega-inner--2col { grid-template-columns: repeat(2,1fr); }
-    .mega-col__title {
-      font-size: 11px; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px;
-    }
+    .mega-col__title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
     .mega-col__links { display: flex; flex-direction: column; gap: 8px; }
     .mega-col__link { font-size: 14px; color: var(--grey-700); transition: color .2s; }
     .mega-col__link:hover { color: var(--ior-blue); }
-
-    /* MOBILE DRAWER */
-    .drawer-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,.5); z-index: 290;
-    }
+    /* ============================================================
+       MOBILE DRAWER
+    ============================================================ */
+    .drawer-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 290; }
     .drawer-overlay.is-open { display: block; }
-    .drawer {
-      position: fixed; top: 0; right: -320px; width: 300px; height: 100%;
-      background: var(--ior-navy); z-index: 300; overflow-y: auto;
-      transition: right .3s ease; display: flex; flex-direction: column;
-    }
+    .drawer { position: fixed; top: 0; right: -320px; width: 300px; height: 100%; background: var(--ior-navy); z-index: 300; overflow-y: auto; transition: right .3s ease; display: flex; flex-direction: column; }
     .drawer.is-open { right: 0; }
-    .drawer__header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 20px 16px; border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-    .drawer__close {
-      background: none; border: none; color: rgba(255,255,255,.7);
-      font-size: 24px; cursor: pointer; padding: 4px;
-    }
+    .drawer__header { display: flex; align-items: center; justify-content: space-between; padding: 20px 20px 16px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .drawer__close { background: none; border: none; color: rgba(255,255,255,.7); font-size: 24px; cursor: pointer; padding: 4px; }
     .drawer__close:hover { color: #fff; }
     .drawer__nav { display: flex; flex-direction: column; flex: 1; padding: 8px 0; }
     .drawer__item { border-bottom: 1px solid rgba(255,255,255,.06); }
-    .drawer__link {
-      display: flex; align-items: center; justify-content: space-between;
-      width: 100%; padding: 14px 20px;
-      font-size: 15px; font-weight: 600; color: rgba(255,255,255,.9);
-      background: none; border: none; cursor: pointer; text-align: left;
-      transition: background .2s;
-    }
+    .drawer__link { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 20px; font-size: 15px; font-weight: 600; color: rgba(255,255,255,.9); background: none; border: none; cursor: pointer; text-align: left; transition: background .2s; }
     .drawer__link:hover { background: rgba(255,255,255,.06); }
     .drawer__chevron { transition: transform .2s; }
     .drawer__sub { display: none; flex-direction: column; background: rgba(0,0,0,.2); }
     .drawer__sub.is-open { display: flex; }
-    .drawer__sub-link {
-      padding: 10px 20px 10px 32px;
-      font-size: 14px; color: rgba(255,255,255,.7);
-      transition: color .2s;
-    }
+    .drawer__sub-link { padding: 10px 20px 10px 32px; font-size: 14px; color: rgba(255,255,255,.7); transition: color .2s; }
     .drawer__sub-link:hover { color: #fff; }
-    .drawer__cta {
-      padding: 20px; display: flex; flex-direction: column; gap: 10px;
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
-
-    /* QUICK LINKS BAR */
-    .quick-links-bar {
-      background: var(--grey-100); border-bottom: 1px solid rgba(3,85,163,.15);
-      padding: 0 var(--section-pad-x);
-    }
-    .quick-links-bar__inner {
-      max-width: 1280px; margin-inline: auto;
-      display: flex; align-items: center; gap: 0; overflow-x: auto;
-    }
-    .quick-links-bar__label {
-      font-size: 12px; font-weight: 700; letter-spacing: .06em;
-      text-transform: uppercase; color: var(--ior-blue);
-      white-space: nowrap; padding: 12px 20px 12px 0;
-      border-right: 1px solid rgba(3,85,163,.2); margin-right: 4px;
-      flex-shrink: 0;
-    }
-    .quick-links-bar__link {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 12px 16px; font-size: 14px; font-weight: 700;
-      color: var(--ior-navy); white-space: nowrap;
-      border-bottom: 2px solid transparent;
-      transition: all .2s; min-height: 44px;
-    }
+    .drawer__cta { padding: 20px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(255,255,255,.1); }
+    /* ============================================================
+       QUICK LINKS BAR
+    ============================================================ */
+    .quick-links-bar { background: var(--grey-100); border-bottom: 1px solid rgba(3,85,163,.15); padding: 0 var(--section-pad-x); }
+    .quick-links-bar__inner { max-width: 1280px; margin-inline: auto; display: flex; align-items: center; gap: 0; overflow-x: auto; }
+    .quick-links-bar__label { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ior-blue); white-space: nowrap; padding: 12px 20px 12px 0; border-right: 1px solid rgba(3,85,163,.2); margin-right: 4px; flex-shrink: 0; }
+    .quick-links-bar__link { display: inline-flex; align-items: center; gap: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: var(--ior-navy); white-space: nowrap; border-bottom: 2px solid transparent; transition: all .2s; min-height: 44px; }
     .quick-links-bar__link:hover { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
     .quick-links-bar__link--active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
-
-    /* HERO */
+    /* ============================================================
+       HERO
+    ============================================================ */
     .hero {
-      background: var(--ior-navy);
-      min-height: 600px;
-      padding: clamp(80px, 10vw, 120px) var(--section-pad-x);
+      position: relative; min-height: 640px;
       display: flex; align-items: center;
-      position: relative; overflow: hidden;
+      background: var(--ior-navy);
+      padding: clamp(80px, 10vw, 120px) var(--section-pad-x);
+      overflow: hidden;
     }
-    .hero__asset {
+    .hero__bg {
       position: absolute; inset: 0;
-      background: #0A2240;
+      background: var(--ior-navy);
       display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 600; color: rgba(255,255,255,.2);
+      letter-spacing: .06em; text-transform: uppercase;
     }
-    .hero__overlay { position: absolute; inset: 0; background: rgba(10,34,64,.72); z-index: 1; }
-    .hero__content { position: relative; z-index: 2; max-width: 700px; display: flex; flex-direction: column; gap: 20px; }
-    .hero__eyebrow {
-      font-size: 11px; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--ior-sky);
-    }
-    .hero__headline {
-      font-size: clamp(40px, 6vw, 72px); font-weight: 800;
-      color: #fff; line-height: 1.0;
-    }
-    .hero__sub {
-      font-size: clamp(16px, 2vw, 20px); color: rgba(255,255,255,.85);
-      max-width: 580px; line-height: 1.6;
-    }
-    .hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
-
-    /* ASSET PLACEHOLDER */
-    .asset-ph {
-      background: #e8edf2; border: 2px dashed #cbd5e1;
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 8px;
-      color: #4a5568; font-size: 12px; font-weight: 600; letter-spacing: .04em;
-      text-align: center; padding: 16px;
-    }
-    .asset-ph__icon { font-size: 24px; opacity: .4; }
-
-    /* SECTION UTILITIES */
+    .hero__overlay { position: absolute; inset: 0; background: rgba(10,34,64,.7); }
+    .hero__content { position: relative; z-index: 2; max-width: 680px; display: flex; flex-direction: column; gap: 20px; text-align: left; }
+    .hero__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-sky); }
+    .hero__headline { font-size: clamp(36px, 5.5vw, 64px); font-weight: 800; color: #fff; line-height: 1.05; }
+    .hero__sub { font-size: clamp(16px, 2vw, 19px); color: rgba(255,255,255,.85); max-width: 580px; line-height: 1.7; }
+    .hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    /* ============================================================
+       SECTION UTILITIES
+    ============================================================ */
     .section-pad { padding: clamp(60px, 8vw, 100px) var(--section-pad-x); }
     .section-pad--tight { padding: clamp(40px, 5vw, 64px) var(--section-pad-x); }
-    .section-pad--grey { background: var(--grey-100); }
     .section-pad--navy { background: var(--ior-navy); }
     .section-pad--blue { background: var(--ior-blue); }
+    .section-pad--grey { background: var(--grey-100); }
     .inner { max-width: 1280px; margin: 0 auto; }
-    .eyebrow {
-      font-size: 11px; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--ior-blue);
-    }
+    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); }
     .eyebrow--sky { color: var(--ior-sky); }
-    .eyebrow--white { color: #fff; }
-    .section-heading {
-      font-size: clamp(26px, 3.5vw, 40px); font-weight: 800;
-      color: var(--ior-navy); line-height: 1.15; margin-top: 8px; margin-bottom: 32px;
-    }
+    .eyebrow--white { color: rgba(255,255,255,.7); }
+    .section-heading { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; color: var(--ior-navy); line-height: 1.15; margin-top: 8px; margin-bottom: 40px; }
     .section-heading--white { color: #fff; }
-    .body-copy { font-size: 16px; color: var(--grey-700); line-height: 1.7; }
-    .body-copy--white { color: rgba(255,255,255,.85); }
-    .body-copy + .body-copy { margin-top: 16px; }
-
-    /* FADE-UP */
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-    .fade-up.is-visible { opacity: 1; transform: translateY(0); }
-
+    .body-text { font-size: 16px; color: var(--grey-700); line-height: 1.75; }
+    .body-text--white { color: rgba(255,255,255,.85); }
     /* ============================================================
-       SECTION 3: EVP VIDEO (50/50)
+       SPLIT 50/50
     ============================================================ */
-    .split-50 {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .split--reverse { direction: rtl; }
+    .split--reverse > * { direction: ltr; }
+    .split__text { display: flex; flex-direction: column; gap: 16px; }
+    .split__img {
+      aspect-ratio: 16/10; background: var(--grey-200);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 600; color: var(--grey-700);
+      letter-spacing: .05em; text-transform: uppercase;
     }
-    .split-50__text { display: flex; flex-direction: column; gap: 20px; }
-    .split-50__video { position: relative; aspect-ratio: 16/9; overflow: hidden; }
-    .split-50__video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-
+    .split__video { aspect-ratio: 16/9; }
+    .split__video iframe { width: 100%; height: 100%; border: none; display: block; }
     /* ============================================================
-       SECTION 4: EVP PILLARS
+       EVP PILLARS
     ============================================================ */
-    .pillar-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
-    }
+    .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
     .pillar-card {
-      background: #fff; border-top: 3px solid var(--ior-blue);
-      padding: 32px 28px; position: relative; overflow: hidden;
-      transition: box-shadow .25s, transform .25s;
+      position: relative; overflow: hidden;
+      background: var(--grey-100); padding: 36px 28px 32px;
+      border-bottom: 3px solid transparent;
+      transition: border-color .25s, box-shadow .25s, transform .25s;
     }
-    .pillar-card:hover { box-shadow: 0 8px 32px rgba(3,85,163,.14); transform: translateY(-3px); }
+    .pillar-card:hover { border-bottom-color: var(--ior-blue); box-shadow: 0 8px 32px rgba(3,85,163,.12); transform: translateY(-3px); }
     .pillar-card__num {
-      font-size: 72px; font-weight: 800; color: var(--grey-200);
-      position: absolute; top: -8px; right: 16px; line-height: 1;
-      pointer-events: none; user-select: none;
+      position: absolute; top: -12px; right: 16px;
+      font-size: 96px; font-weight: 900; color: rgba(3,85,163,.06);
+      line-height: 1; pointer-events: none; user-select: none;
     }
-    .pillar-card__tag {
-      font-size: 11px; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--ior-blue);
-      margin-bottom: 12px;
-    }
-    .pillar-card__title {
-      font-size: 20px; font-weight: 800; color: var(--ior-navy);
-      line-height: 1.25; margin-bottom: 12px;
-    }
-    .pillar-card__body { font-size: 15px; color: var(--grey-700); line-height: 1.65; }
-
+    .pillar-card__tag { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 10px; }
+    .pillar-card__title { font-size: 20px; font-weight: 800; color: var(--ior-navy); line-height: 1.25; margin-bottom: 12px; }
+    .pillar-card__body { font-size: 15px; color: var(--grey-700); line-height: 1.7; }
     /* ============================================================
-       SECTION 5: PERKS TABS (Our Solutions pattern)
+       PERKS TABCORDION (Ground Fuels v8 pattern)
     ============================================================ */
-    .perks-layout {
-      display: grid; grid-template-columns: 320px 1fr; gap: 0;
-      border: 1px solid var(--grey-200); background: #fff;
-    }
-    .perks-tabs { border-right: 1px solid var(--grey-200); }
-    .perks-tab {
+    .tabcordion { display: grid; grid-template-columns: 320px 1fr; gap: 0; border: 1px solid var(--grey-200); }
+    .tabcordion__nav { border-right: 1px solid var(--grey-200); }
+    .tabcordion__tab {
       display: flex; align-items: center; gap: 14px;
       padding: 20px 24px; cursor: pointer;
       border-left: 3px solid transparent;
       border-bottom: 1px solid var(--grey-200);
       transition: background .2s, border-color .2s;
     }
-    .perks-tab:last-child { border-bottom: none; }
-    .perks-tab:hover { background: var(--grey-100); }
-    .perks-tab.is-active { background: #EEF4FB; border-left-color: var(--ior-blue); }
-    .perks-tab__num {
-      font-size: 13px; font-weight: 700; color: var(--grey-700);
-      min-width: 28px;
+    .tabcordion__tab:last-child { border-bottom: none; }
+    .tabcordion__tab:hover { background: var(--grey-100); }
+    .tabcordion__tab.is-active { background: var(--grey-100); border-left-color: var(--ior-blue); }
+    .tabcordion__tab-num { font-size: 13px; font-weight: 700; color: rgba(3,85,163,.4); min-width: 24px; }
+    .tabcordion__tab.is-active .tabcordion__tab-num { color: var(--ior-blue); }
+    .tabcordion__tab-label { font-size: 15px; font-weight: 600; color: var(--grey-700); }
+    .tabcordion__tab.is-active .tabcordion__tab-label { color: var(--ior-blue); }
+    .tabcordion__panels { position: relative; min-height: 420px; }
+    .tabcordion__panel { display: none; grid-template-columns: 1fr 1fr; height: 100%; }
+    .tabcordion__panel.is-active { display: grid; }
+    .tabcordion__panel-img {
+      background: var(--grey-200); min-height: 420px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 600; color: var(--grey-700);
+      letter-spacing: .05em; text-transform: uppercase;
     }
-    .perks-tab.is-active .perks-tab__num { color: var(--ior-blue); }
-    .perks-tab__label { font-size: 15px; font-weight: 600; color: var(--grey-900); }
-    .perks-tab.is-active .perks-tab__label { color: var(--ior-blue); }
-    .perks-panel { display: none; }
-    .perks-panel.is-active { display: grid; grid-template-columns: 1fr 1fr; }
-    .perks-panel__img { aspect-ratio: 4/3; overflow: hidden; }
-    .perks-panel__img .asset-ph { width: 100%; height: 100%; }
-    .perks-panel__content {
-      padding: 40px 36px; display: flex; flex-direction: column; gap: 16px; justify-content: center;
-    }
-    .perks-panel__eyebrow {
-      font-size: 11px; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--ior-blue);
-    }
-    .perks-panel__title {
-      font-size: clamp(20px, 2.5vw, 28px); font-weight: 800;
-      color: var(--ior-navy); line-height: 1.2;
-    }
-    .perks-panel__body { font-size: 15px; color: var(--grey-700); line-height: 1.65; }
-
+    .tabcordion__panel-content { padding: 40px 36px; display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+    .tabcordion__panel-title { font-size: clamp(20px, 2.5vw, 26px); font-weight: 800; color: var(--ior-navy); line-height: 1.2; }
+    .tabcordion__panel-body { font-size: 15px; color: var(--grey-700); line-height: 1.75; }
     /* ============================================================
-       SECTION 6: DIVERSITY & INCLUSION
+       VIDEO GRID (Meet Our People)
+    ============================================================ */
+    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .video-card { background: var(--grey-100); overflow: hidden; transition: box-shadow .25s, transform .25s; }
+    .video-card:hover { box-shadow: 0 8px 32px rgba(3,85,163,.12); transform: translateY(-3px); }
+    .video-card__embed { aspect-ratio: 16/9; }
+    .video-card__embed iframe { width: 100%; height: 100%; border: none; display: block; }
+    .video-card__body { padding: 20px 20px 24px; border-left: 3px solid var(--ior-blue); }
+    .video-card__name { font-size: 16px; font-weight: 700; color: var(--ior-navy); }
+    .video-card__role { font-size: 13px; color: var(--grey-700); margin-top: 2px; }
+    .video-card__quote { font-size: 14px; color: var(--grey-700); font-style: italic; margin-top: 10px; line-height: 1.6; }
+    /* ============================================================
+       D&I SECTION
     ============================================================ */
     .quote-block {
       border-left: 3px solid var(--ior-sky);
       padding: 16px 20px; margin-top: 8px;
     }
-    .quote-block__text {
-      font-size: 16px; font-style: italic; color: rgba(255,255,255,.9); line-height: 1.6;
-    }
-    .quote-block__attr {
-      font-size: 13px; font-weight: 600; color: var(--ior-sky); margin-top: 8px;
-    }
-
+    .quote-block__text { font-size: 17px; font-style: italic; color: rgba(255,255,255,.9); line-height: 1.6; }
+    .quote-block__attr { font-size: 13px; color: rgba(255,255,255,.6); margin-top: 8px; font-weight: 600; }
     /* ============================================================
-       SECTION 7: RECRUITMENT STEPS
+       RECRUITMENT STEPS
     ============================================================ */
-    .steps-grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
-      position: relative;
-    }
-    .steps-grid::before {
-      content: ''; position: absolute;
-      top: 28px; left: 10%; right: 10%; height: 2px;
-      background: var(--grey-200); z-index: 0;
-    }
-    .step-item {
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; padding: 0 12px; position: relative; z-index: 1;
-    }
-    .step-item__num {
+    .steps-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+    .steps-row::before { content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 2px; background: var(--grey-200); z-index: 0; }
+    .step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 12px; position: relative; z-index: 1; }
+    .step__num {
       width: 56px; height: 56px; border-radius: 50%;
       background: var(--ior-blue); color: #fff;
       font-size: 18px; font-weight: 800;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 16px; flex-shrink: 0;
+      transition: background .2s, transform .2s;
     }
-    .step-item__title { font-size: 15px; font-weight: 700; color: var(--ior-navy); margin-bottom: 8px; }
-    .step-item__body { font-size: 13px; color: var(--grey-700); line-height: 1.5; }
-
+    .step:hover .step__num { background: var(--ior-navy); transform: scale(1.08); }
+    .step__title { font-size: 14px; font-weight: 700; color: var(--ior-navy); margin-bottom: 6px; }
+    .step__body { font-size: 13px; color: var(--grey-700); line-height: 1.6; }
     /* ============================================================
-       SECTION 8: ENTRY PATHWAYS BAND
+       FAQ ACCORDION
     ============================================================ */
-    .pathways-band {
-      background: var(--ior-blue);
-      padding: clamp(48px, 6vw, 72px) var(--section-pad-x);
-      text-align: center;
+    .faq-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--grey-200); }
+    .faq-item { border-bottom: 1px solid var(--grey-200); }
+    .faq-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0; font-size: 16px; font-weight: 600; color: var(--ior-navy);
+      background: none; border: none; cursor: pointer; text-align: left; gap: 16px;
+      transition: color .2s;
     }
-    .pathways-band__eyebrow {
-      font-size: 11px; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 12px;
-    }
-    .pathways-band__headline {
-      font-size: clamp(28px, 4vw, 44px); font-weight: 800;
-      color: #fff; line-height: 1.1; margin-bottom: 16px;
-    }
-    .pathways-band__body {
-      font-size: 17px; color: rgba(255,255,255,.85); max-width: 600px;
-      margin: 0 auto 32px; line-height: 1.6;
-    }
-
+    .faq-btn:hover { color: var(--ior-blue); }
+    .faq-btn.is-open { color: var(--ior-blue); }
+    .faq-icon { flex-shrink: 0; width: 24px; height: 24px; border: 2px solid var(--grey-200); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: transform .3s, border-color .2s; }
+    .faq-btn.is-open .faq-icon { transform: rotate(45deg); border-color: var(--ior-blue); }
+    .faq-answer { display: none; padding: 0 0 20px; font-size: 15px; color: var(--grey-700); line-height: 1.75; max-width: 760px; }
+    .faq-answer.is-open { display: block; }
     /* ============================================================
-       SECTION 9: JOBS TABLE
+       JOBS TABLE
     ============================================================ */
     .jobs-table { width: 100%; border-collapse: collapse; }
-    .jobs-table th {
-      font-size: 11px; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--ior-blue);
-      padding: 12px 16px; border-bottom: 2px solid var(--ior-blue);
-      text-align: left;
-    }
-    .jobs-table td {
-      padding: 16px; border-bottom: 1px solid var(--grey-200);
-      font-size: 14px; color: var(--grey-700); vertical-align: middle;
-    }
+    .jobs-table th { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ior-blue); padding: 12px 16px; border-bottom: 2px solid var(--ior-blue); text-align: left; }
+    .jobs-table td { padding: 16px 16px; border-bottom: 1px solid var(--grey-200); font-size: 15px; color: var(--grey-700); vertical-align: middle; }
     .jobs-table tr:hover td { background: var(--grey-100); }
-    .jobs-table__role { font-weight: 600; color: var(--ior-navy); }
-    .jobs-table__footer {
-      text-align: center; padding: 32px 0 0;
-    }
-
+    .jobs-table .job-title { font-weight: 600; color: var(--ior-navy); }
+    .jobs-table .job-apply { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--ior-blue); transition: gap .2s; }
+    .jobs-table .job-apply:hover { gap: 10px; }
     /* ============================================================
-       SECTION 10: FAQ ACCORDION
+       ENTRY PATHWAYS BAND
     ============================================================ */
-    .faq-list { display: flex; flex-direction: column; gap: 0; }
-    .faq-item { border-bottom: 1px solid var(--grey-200); }
-    .faq-item:first-child { border-top: 1px solid var(--grey-200); }
-    .faq-trigger {
-      width: 100%; display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 0; cursor: pointer; background: none; border: none;
-      text-align: left; gap: 16px;
-    }
-    .faq-trigger__q { font-size: 16px; font-weight: 600; color: var(--ior-navy); }
-    .faq-trigger__icon {
-      width: 28px; height: 28px; flex-shrink: 0;
-      border: 2px solid var(--grey-200); display: flex; align-items: center; justify-content: center;
-      font-size: 18px; color: var(--ior-blue); transition: transform .3s;
-    }
-    .faq-item.is-open .faq-trigger__icon { transform: rotate(45deg); }
-    .faq-body { display: none; padding: 0 0 20px; }
-    .faq-item.is-open .faq-body { display: block; }
-    .faq-body p { font-size: 15px; color: var(--grey-700); line-height: 1.7; }
-
+    .pathways-band { background: var(--ior-blue); padding: clamp(48px, 6vw, 72px) var(--section-pad-x); text-align: center; }
+    .pathways-band .eyebrow { color: rgba(255,255,255,.7); margin-bottom: 12px; }
+    .pathways-band h2 { font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; color: #fff; margin-bottom: 16px; }
+    .pathways-band p { font-size: 17px; color: rgba(255,255,255,.85); max-width: 560px; margin: 0 auto 28px; line-height: 1.7; }
     /* ============================================================
        FINAL CTA
     ============================================================ */
-    .final-cta {
-      background: var(--ior-navy);
-      padding: clamp(64px, 8vw, 96px) var(--section-pad-x);
-      text-align: center;
-    }
-    .final-cta__eyebrow {
-      font-size: 11px; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--ior-sky); margin-bottom: 16px;
-    }
-    .final-cta__headline {
-      font-size: clamp(28px, 4.5vw, 52px); font-weight: 800;
-      color: #fff; line-height: 1.1; margin-bottom: 16px;
-    }
-    .final-cta__body {
-      font-size: 17px; color: rgba(255,255,255,.8);
-      max-width: 560px; margin: 0 auto 36px; line-height: 1.6;
-    }
+    .final-cta { background: var(--ior-navy); padding: clamp(64px, 8vw, 96px) var(--section-pad-x); text-align: center; }
+    .final-cta .eyebrow { color: var(--ior-sky); margin-bottom: 16px; }
+    .final-cta h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.1; }
+    .final-cta p { font-size: 17px; color: rgba(255,255,255,.8); max-width: 540px; margin: 0 auto 32px; line-height: 1.7; }
     .final-cta__ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-    /* PRE-FOOTER */
+    /* ============================================================
+       PRE-FOOTER
+    ============================================================ */
     .pre-footer { background: var(--ior-navy); padding: 56px 0; }
-    .pre-footer__row {
-      max-width: 1280px; margin: 0 auto; padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 32px; flex-wrap: wrap;
-    }
+    .pre-footer__row { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
     .pre-footer__title { font-size: clamp(22px, 3vw, 28px); font-weight: 700; color: var(--white); }
     .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-
-    /* SITE FOOTER */
+    /* ============================================================
+       SITE FOOTER
+    ============================================================ */
     .site-footer { background: var(--ior-blue); padding: 56px 0 0; border-top: 1px solid rgba(255,255,255,.1); }
-    .footer-nav-grid {
-      max-width: 1280px; margin: 0 auto; padding: 0 24px 48px;
-      display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px;
-    }
-    .footer-col__title {
-      font-size: clamp(13px, 1.3vw, 16px); font-weight: 800; color: #fff;
-      margin-bottom: 16px; padding-bottom: 10px;
-      border-bottom: 1px solid rgba(255,255,255,.2);
-    }
+    .footer-nav-grid { max-width: 1280px; margin: 0 auto; padding: 0 24px 48px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; }
+    .footer-col__title { font-size: clamp(13px, 1.3vw, 16px); font-weight: 800; color: #fff; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.2); }
     .footer-col__links { display: flex; flex-direction: column; gap: 10px; }
     .footer-col__link { font-size: clamp(12px, 1.2vw, 14px); color: rgba(255,255,255,.8); min-height: 44px; display: flex; align-items: center; }
     .footer-col__link:hover { color: #fff; text-decoration: underline; }
     .footer-col__link--address { font-size: 14px; color: rgba(255,255,255,.9); line-height: 1.6; display: block; }
     .footer-col__link--icon { display: flex; align-items: center; gap: 8px; }
-    .footer-col__link--icon svg { flex-shrink: 0; margin-top: 2px; }
     .footer-state-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-    .footer-state-pill {
-      display: inline-flex; align-items: center;
-      padding: 4px 12px; border: 1px solid rgba(255,255,255,.4); color: #fff;
-      font-size: 13px; font-weight: 700;
-      transition: all .2s; min-height: 44px;
-    }
+    .footer-state-pill { display: inline-flex; align-items: center; padding: 4px 12px; border: 1px solid rgba(255,255,255,.4); color: #fff; font-size: 13px; font-weight: 700; transition: all .2s; min-height: 44px; }
     .footer-state-pill:hover { background: rgba(255,255,255,.15); border-color: #fff; }
-    .footer-legal {
-      max-width: 1280px; margin-inline: auto;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 0; border-top: 1px solid rgba(255,255,255,.2);
-      flex-wrap: wrap; gap: 16px;
-    }
+    .footer-legal { max-width: 1280px; margin-inline: auto; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.2); flex-wrap: wrap; gap: 16px; }
     .footer-legal__text { font-size: 12px; color: rgba(255,255,255,.6); }
     .footer-legal__link--muted { color: rgba(255,255,255,.6); text-decoration: underline; }
     .footer-social { display: flex; gap: 10px; }
-    .footer-social__icon {
-      width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.3);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 700; color: #fff;
-      transition: all .2s;
-    }
+    .footer-social__icon { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; transition: all .2s; }
     .footer-social__icon:hover { background: rgba(255,255,255,.15); border-color: #fff; }
-
-    /* RESPONSIVE */
+    /* ============================================================
+       FADE-UP ANIMATION
+    ============================================================ */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
     @media (max-width: 1024px) {
-      .split-50 { grid-template-columns: 1fr; gap: 40px; }
-      .pillar-grid { grid-template-columns: repeat(2, 1fr); }
-      .perks-layout { grid-template-columns: 1fr; }
-      .perks-tabs { border-right: none; border-bottom: 1px solid var(--grey-200); display: flex; overflow-x: auto; }
-      .perks-tab { border-left: none; border-bottom: 3px solid transparent; flex-shrink: 0; }
-      .perks-tab.is-active { border-left: none; border-bottom-color: var(--ior-blue); }
-      .perks-panel.is-active { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
-      .steps-grid::before { display: none; }
+      .pillar-grid { grid-template-columns: 1fr 1fr; }
+      .video-grid { grid-template-columns: 1fr 1fr; }
+      .steps-row { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .steps-row::before { display: none; }
+      .tabcordion { grid-template-columns: 1fr; }
+      .tabcordion__nav { border-right: none; border-bottom: 1px solid var(--grey-200); display: flex; overflow-x: auto; }
+      .tabcordion__tab { border-left: none; border-bottom: 3px solid transparent; flex-shrink: 0; }
+      .tabcordion__tab.is-active { border-bottom-color: var(--ior-blue); background: transparent; }
+      .tabcordion__panel { grid-template-columns: 1fr; }
+      .tabcordion__panel-img { min-height: 260px; }
       .footer-nav-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 768px) {
       .nav-links, .nav-ctas { display: none; }
       .hamburger { display: flex; margin-left: auto; }
+      .split { grid-template-columns: 1fr; gap: 32px; }
+      .split--reverse { direction: ltr; }
       .pillar-grid { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .video-grid { grid-template-columns: 1fr; }
+      .steps-row { grid-template-columns: 1fr; }
       .footer-nav-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
       .pre-footer__row { flex-direction: column; align-items: flex-start; }
     }
     @media (max-width: 480px) {
-      .steps-grid { grid-template-columns: 1fr; }
       .footer-nav-grid { grid-template-columns: 1fr; }
-      .hero__ctas { flex-direction: column; }
-      .final-cta__ctas { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
@@ -678,190 +531,197 @@
     <nav class="drawer__nav">
       <div class="drawer__item">
         <button class="drawer__link" data-drawer-toggle="drawer-fuel-careers">Fuel Solutions <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="drawer__sub" id="drawer-fuel-careers"><a href="#" class="drawer__sub-link">On-Site Refuelling</a><a href="#" class="drawer__sub-link">Bulk Diesel Supply</a><a href="#" class="drawer__sub-link">Aviation</a></div>
+        <div class="drawer__sub" id="drawer-fuel-careers">
+          <a href="#" class="drawer__sub-link">On-Site Refuelling</a>
+          <a href="#" class="drawer__sub-link">Bulk Diesel Supply</a>
+          <a href="#" class="drawer__sub-link">Aviation</a>
+        </div>
       </div>
       <div class="drawer__item">
         <button class="drawer__link" data-drawer-toggle="drawer-digital-careers">Digital Platforms <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="drawer__sub" id="drawer-digital-careers"><a href="07a_HyDip_FMSv6.html" class="drawer__sub-link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v4.html" class="drawer__sub-link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="drawer__sub-link">Customer Portal</a></div>
+        <div class="drawer__sub" id="drawer-digital-careers">
+          <a href="07a_HyDip_FMSv6.html" class="drawer__sub-link">HyDip&#8482; FMS</a>
+          <a href="07b_Fuelcharge_App_v4.html" class="drawer__sub-link">Fuelcharge App</a>
+          <a href="07c_Customer_Portalv5.html" class="drawer__sub-link">Customer Portal</a>
+        </div>
       </div>
       <div class="drawer__item">
         <button class="drawer__link" data-drawer-toggle="drawer-industries-careers">Industries We Serve <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="drawer__sub" id="drawer-industries-careers"><a href="#" class="drawer__sub-link">Mining &amp; Resources</a><a href="#" class="drawer__sub-link">Agriculture</a><a href="#" class="drawer__sub-link">Transport &amp; Logistics</a></div>
+        <div class="drawer__sub" id="drawer-industries-careers">
+          <a href="#" class="drawer__sub-link">Mining &amp; Resources</a>
+          <a href="#" class="drawer__sub-link">Agriculture</a>
+          <a href="#" class="drawer__sub-link">Transport &amp; Logistics</a>
+        </div>
       </div>
       <div class="drawer__item">
         <button class="drawer__link" data-drawer-toggle="drawer-about-careers">About IOR <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
-        <div class="drawer__sub" id="drawer-about-careers"><a href="09_About_IOR_v2.html" class="drawer__sub-link">About Us</a><a href="09a_Our_Leadershipv5.html" class="drawer__sub-link">Our Leadership</a><a href="10_Careers_v2.html" class="drawer__sub-link">Careers</a></div>
+        <div class="drawer__sub" id="drawer-about-careers">
+          <a href="09_About_IOR_v2.html" class="drawer__sub-link">About Us</a>
+          <a href="09a_Our_Leadershipv5.html" class="drawer__sub-link">Our Leadership</a>
+          <a href="09b_Community.html" class="drawer__sub-link">Community &amp; Giving Back</a>
+          <a href="09c_Sustainability.html" class="drawer__sub-link">Sustainability, HSE &amp; ESG</a>
+          <a href="10_Careers_v2.html" class="drawer__sub-link">Careers</a>
+        </div>
       </div>
-      <div class="drawer__item"><a href="11a_Contact_Usv5.html" class="drawer__link">Support &amp; Contact</a></div>
+      <div class="drawer__item">
+        <button class="drawer__link" data-drawer-toggle="drawer-support-careers">Support &amp; Contact <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer__sub" id="drawer-support-careers">
+          <a href="11a_Contact_Usv5.html" class="drawer__sub-link">Contact Us</a>
+          <a href="11_Support_Hubv5.html" class="drawer__sub-link">Help Centre &amp; FAQs</a>
+        </div>
+      </div>
     </nav>
     <div class="drawer__cta">
-      <a href="#" class="btn btn--primary btn--pill">Apply for an Account</a>
-      <a href="11e_Make_Paymentv5.html" class="btn btn--outline-white btn--pill">Make a Payment</a>
-    </div>
-  </nav>
-
-  <!-- QUICK LINKS BAR -->
-  <nav class="quick-links-bar" aria-label="Explore Careers">
-    <div class="quick-links-bar__inner">
-      <span class="quick-links-bar__label">Explore Careers:</span>
-      <a href="10_Careers_v2.html" class="quick-links-bar__link quick-links-bar__link--active">Careers Hub</a>
-      <a href="10b_Meet_The_Team.html" class="quick-links-bar__link">Meet Our People</a>
-      <a href="10a_Entry_Pathways.html" class="quick-links-bar__link">Entry Pathways</a>
-      <a href="10c_Apprentices.html" class="quick-links-bar__link">Apprentices</a>
-      <a href="10d_Graduates.html" class="quick-links-bar__link">Graduates</a>
-      <a href="10e_School_Based.html" class="quick-links-bar__link">School Based</a>
-      <a href="10f_Trainees.html" class="quick-links-bar__link">Trainees</a>
+      <a href="#" class="btn btn--white btn--pill" style="justify-content:center;">Apply for an Account</a>
+      <a href="#" class="btn btn--outline-white btn--pill" style="justify-content:center;">Customer Login</a>
     </div>
   </nav>
 
   <main id="main-content">
 
-    <!-- 1. HERO -->
+    <!-- ============================================================
+         SECTION 1: HERO
+    ============================================================ -->
     <section class="hero" aria-label="Careers hero">
-      <div class="hero__asset">
-        <div class="asset-ph" style="width:100%;height:100%;">
-          <span class="asset-ph__icon">📸</span>
-          ASSET REQUIRED — Hero image: candid IOR driver smiling next to truck, or inclusive group shot of office staff and tradies. Must look genuine. (1920x600px)
-        </div>
-      </div>
+      <div class="hero__bg">[ IMAGE: Candid IOR driver smiling next to truck / inclusive group shot — 1920x900px, dark subject matter ]</div>
       <div class="hero__overlay"></div>
       <div class="hero__content">
-        <p class="hero__eyebrow fade-up">Careers at IOR</p>
-        <h1 class="hero__headline fade-up">Go far with IOR.</h1>
-        <p class="hero__sub fade-up">IOR might be the great Aussie success story you haven't heard of yet. From humble roots in Eromanga, we have been fuelling the furthest corners of Australia for over 40 years. We think the most exciting journey is still on the horizon.</p>
-        <div class="hero__ctas fade-up">
-          <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--white btn--pill">View Current Jobs &#8599;</a>
-          <a href="#entry-pathways" class="btn btn--outline-white btn--pill">Explore Entry Pathways</a>
+        <p class="hero__eyebrow">Careers at IOR</p>
+        <h1 class="hero__headline">Build a career that keeps Australia moving.</h1>
+        <p class="hero__sub">IOR might be the great Aussie success story you haven't heard of yet. From humble roots in Eromanga, we've been fuelling the furthest corners of Australia for over 40 years. And the most exciting journey is still on the horizon.</p>
+        <div class="hero__ctas">
+          <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--white btn--pill">View Current Jobs on SEEK <span class="btn__arrow"></span></a>
+          <a href="#entry-pathways" class="btn btn--outline-white btn--pill">Explore Entry Pathways <span class="btn__arrow"></span></a>
         </div>
       </div>
     </section>
 
-    <!-- 3. OVERARCHING EVP VIDEO -->
-    <section class="section-pad section-pad--navy" aria-label="Why Work With Us">
+    <!-- ============================================================
+         SECTION 2: QUICK LINKS BAR
+    ============================================================ -->
+    <nav class="quick-links-bar" aria-label="Careers quick links">
+      <div class="quick-links-bar__inner">
+        <span class="quick-links-bar__label">Explore Careers:</span>
+        <a href="10_Careers_v2.html" class="quick-links-bar__link quick-links-bar__link--active">Careers Hub</a>
+        <a href="10b_Meet_The_Team.html" class="quick-links-bar__link">Meet Our People</a>
+        <a href="10a_Entry_Pathways.html" class="quick-links-bar__link">Entry Pathways</a>
+        <a href="10c_Apprentices.html" class="quick-links-bar__link">Apprentices</a>
+        <a href="10d_Graduates.html" class="quick-links-bar__link">Graduates</a>
+        <a href="10e_School_Based.html" class="quick-links-bar__link">School Based</a>
+        <a href="10f_Trainees.html" class="quick-links-bar__link">Trainees</a>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         SECTION 3: OVERARCHING EVP VIDEO (50/50)
+    ============================================================ -->
+    <section class="section-pad section-pad--navy" aria-labelledby="evp-heading">
       <div class="inner">
-        <div class="split-50">
-          <div class="split-50__text">
-            <p class="eyebrow eyebrow--sky fade-up">Why Work With Us?</p>
-            <h2 class="section-heading section-heading--white fade-up">We are more than fuel. Just ask our people.</h2>
-            <p class="body-copy body-copy--white fade-up">It is the scale, complexity, and ambition involved in rolling out each new project, whether that is a remote site or a new digital platform. It is the satisfaction of growing market share and expanding rapidly into new industries.</p>
-            <p class="body-copy body-copy--white fade-up">We have a massive pipeline of projects, and we need your help to deliver them. Our goal is to become the premier commercial fuel supplier in the Australian market. With people like you at the wheel, we know we can get there.</p>
+        <div class="split fade-up">
+          <div class="split__text">
+            <p class="eyebrow eyebrow--sky">Why Work With Us?</p>
+            <h2 class="section-heading section-heading--white" id="evp-heading">We're more than fuel, just ask our people.</h2>
+            <p class="body-text body-text--white">It's the scale, complexity, and ambition involved in rolling out each new project, whether that's a remote site or a new digital platform. It's the satisfaction of growing market share and expanding rapidly into new industries.</p>
+            <p class="body-text body-text--white">We have a massive pipeline of projects, and we need your help to deliver them. Our goal is to become the premier commercial fuel supplier in the Australian market, and with people like you at the wheel, we know we can get there.</p>
           </div>
-          <div class="split-50__video fade-up">
-            <iframe src="https://www.youtube.com/embed/GMmcRbgk1AY?rel=0&modestbranding=1" title="Go Far with IOR — Overarching EVP" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <div class="split__video">
+            <iframe src="https://www.youtube.com/embed/GMmcRbgk1AY?rel=0&modestbranding=1" title="Go Far with IOR: Overarching EVP" loading="lazy" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. EVP PILLARS -->
-    <section class="section-pad section-pad--grey" aria-label="Our Promise">
+    <!-- ============================================================
+         SECTION 4: EVP PILLARS (3-Card Grid)
+    ============================================================ -->
+    <section class="section-pad" aria-labelledby="pillars-heading">
       <div class="inner">
-        <p class="eyebrow fade-up">Our Promise</p>
-        <h2 class="section-heading fade-up">Three reasons to choose IOR.</h2>
+        <p class="eyebrow">Our Employee Value Proposition</p>
+        <h2 class="section-heading" id="pillars-heading">Three reasons to choose IOR.</h2>
         <div class="pillar-grid">
           <div class="pillar-card fade-up">
-            <div class="pillar-card__num">01</div>
+            <div class="pillar-card__num" aria-hidden="true">01</div>
             <p class="pillar-card__tag">Right Team</p>
             <h3 class="pillar-card__title">People you trust. Relationships that go the distance.</h3>
-            <p class="pillar-card__body">There is something special about the people at IOR. It is the kind of place where you walk in the door and instantly know you belong. We look out for each other.</p>
+            <p class="pillar-card__body">There is something special about the people at IOR. It's the kind of place where you walk in the door and instantly know you belong. Just mates looking after mates.</p>
           </div>
           <div class="pillar-card fade-up">
-            <div class="pillar-card__num">02</div>
+            <div class="pillar-card__num" aria-hidden="true">02</div>
             <p class="pillar-card__tag">Right Track</p>
             <h3 class="pillar-card__title">The more we grow, the further you go.</h3>
-            <p class="pillar-card__body">You can feel it from day one. The energy, the growth, and the sense that this place is going somewhere. You are not just along for the ride. You are behind the wheel.</p>
+            <p class="pillar-card__body">You can feel it from day one. The energy, the growth, and the sense that this place is going somewhere. You're not just along for the ride. You're behind the wheel.</p>
           </div>
           <div class="pillar-card fade-up">
-            <div class="pillar-card__num">03</div>
+            <div class="pillar-card__num" aria-hidden="true">03</div>
             <p class="pillar-card__tag">Right Now</p>
             <h3 class="pillar-card__title">Big work. Big impact. Get things done.</h3>
-            <p class="pillar-card__body">It has always been the IOR way to chase opportunities. We are driven to grow and innovate. Our customers cannot wait, so neither do we.</p>
+            <p class="pillar-card__body">It has always been the IOR way to chase opportunities. We're driven to grow and innovate. Our customers can't wait, so neither do we.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 5. PERKS OF LIVING BLUE -->
-    <section class="section-pad" aria-label="Perks of Living Blue">
+    <!-- ============================================================
+         SECTION 5: PERKS OF LIVING BLUE (Audience Tabs)
+    ============================================================ -->
+    <section class="section-pad section-pad--grey" aria-labelledby="perks-heading">
       <div class="inner">
-        <p class="eyebrow fade-up">Perks of Living Blue</p>
-        <h2 class="section-heading fade-up">What's in it for you?</h2>
-        <div class="perks-layout fade-up">
-          <!-- Tabs -->
-          <div class="perks-tabs" role="tablist" aria-label="Audience tabs">
-            <div class="perks-tab is-active" role="tab" data-perks-tab="drivers" aria-selected="true" tabindex="0">
-              <span class="perks-tab__num">01</span>
-              <span class="perks-tab__label">For Drivers</span>
+        <p class="eyebrow">Perks of Living Blue</p>
+        <h2 class="section-heading" id="perks-heading">What's in it for you?</h2>
+        <div class="tabcordion" role="tablist" aria-label="Audience tabs">
+          <div class="tabcordion__nav">
+            <div class="tabcordion__tab is-active" role="tab" aria-selected="true" aria-controls="tab-drivers" data-tab="drivers" tabindex="0">
+              <span class="tabcordion__tab-num">01</span>
+              <span class="tabcordion__tab-label">For Drivers</span>
             </div>
-            <div class="perks-tab" role="tab" data-perks-tab="tradies" aria-selected="false" tabindex="-1">
-              <span class="perks-tab__num">02</span>
-              <span class="perks-tab__label">For Tradies</span>
+            <div class="tabcordion__tab" role="tab" aria-selected="false" aria-controls="tab-tradies" data-tab="tradies" tabindex="0">
+              <span class="tabcordion__tab-num">02</span>
+              <span class="tabcordion__tab-label">For Tradies</span>
             </div>
-            <div class="perks-tab" role="tab" data-perks-tab="aviation" aria-selected="false" tabindex="-1">
-              <span class="perks-tab__num">03</span>
-              <span class="perks-tab__label">Aviation Crew</span>
+            <div class="tabcordion__tab" role="tab" aria-selected="false" aria-controls="tab-aviation" data-tab="aviation" tabindex="0">
+              <span class="tabcordion__tab-num">03</span>
+              <span class="tabcordion__tab-label">Aviation Crew</span>
             </div>
-            <div class="perks-tab" role="tab" data-perks-tab="corporate" aria-selected="false" tabindex="-1">
-              <span class="perks-tab__num">04</span>
-              <span class="perks-tab__label">Corporate &amp; Admin</span>
+            <div class="tabcordion__tab" role="tab" aria-selected="false" aria-controls="tab-corporate" data-tab="corporate" tabindex="0">
+              <span class="tabcordion__tab-num">04</span>
+              <span class="tabcordion__tab-label">Corporate &amp; Admin</span>
             </div>
           </div>
-          <!-- Panels -->
-          <div>
-            <div class="perks-panel is-active" id="perks-drivers" role="tabpanel">
-              <div class="perks-panel__img">
-                <div class="asset-ph" style="height:100%;min-height:320px;">
-                  <span class="asset-ph__icon">🚛</span>
-                  ASSET REQUIRED — IOR driver in cab of new Kenworth or Volvo (600x400px)
-                </div>
-              </div>
-              <div class="perks-panel__content">
-                <p class="perks-panel__eyebrow">For Drivers</p>
-                <h3 class="perks-panel__title">Get behind the wheel of a brand new Kenworth or Volvo you'll call your own.</h3>
-                <p class="perks-panel__body">With support from a dedicated Driver Trainer while you find your feet, IOR gives you the tools, the truck, and the team to build a career on the road you are proud of.</p>
-                <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill" style="align-self:flex-start;margin-top:8px;">View Driver Roles &#8599;</a>
+          <div class="tabcordion__panels">
+            <div class="tabcordion__panel is-active" id="tab-drivers" role="tabpanel">
+              <div class="tabcordion__panel-img">[ IMAGE: IOR driver in cab of new Kenworth or Volvo ]</div>
+              <div class="tabcordion__panel-content">
+                <p class="eyebrow">For Drivers</p>
+                <h3 class="tabcordion__panel-title">Get behind the wheel of a brand new Kenworth or Volvo you'll call your own.</h3>
+                <p class="tabcordion__panel-body">With support from a dedicated Driver Trainer while you find your feet, IOR gives you the tools, the truck, and the team to build a career on the road that you'll feel seriously proud of.</p>
+                <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill">View Driver Roles <span class="btn__arrow"></span></a>
               </div>
             </div>
-            <div class="perks-panel" id="perks-tradies" role="tabpanel">
-              <div class="perks-panel__img">
-                <div class="asset-ph" style="height:100%;min-height:320px;">
-                  <span class="asset-ph__icon">🔧</span>
-                  ASSET REQUIRED — IOR tradie working on engine or equipment (600x400px)
-                </div>
-              </div>
-              <div class="perks-panel__content">
-                <p class="perks-panel__eyebrow">For Tradies</p>
-                <h3 class="perks-panel__title">Great rates and varied work. We do our own engine repairs in-house.</h3>
-                <p class="perks-panel__body">You will not be doing the same thing day in, day out. At IOR, you will work across a diverse fleet and a range of heavy equipment, keeping Australia's fuel supply chain moving.</p>
-                <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill" style="align-self:flex-start;margin-top:8px;">View Trades Roles &#8599;</a>
+            <div class="tabcordion__panel" id="tab-tradies" role="tabpanel">
+              <div class="tabcordion__panel-img">[ IMAGE: IOR tradie working on engine or equipment ]</div>
+              <div class="tabcordion__panel-content">
+                <p class="eyebrow">For Tradies</p>
+                <h3 class="tabcordion__panel-title">Great rates and varied work. We do our own engine repairs in-house.</h3>
+                <p class="tabcordion__panel-body">You won't be doing the same thing day in and day out. Get your hands dirty across a diverse fleet and state-of-the-art equipment.</p>
+                <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill">View Trades Roles <span class="btn__arrow"></span></a>
               </div>
             </div>
-            <div class="perks-panel" id="perks-aviation" role="tabpanel">
-              <div class="perks-panel__img">
-                <div class="asset-ph" style="height:100%;min-height:320px;">
-                  <span class="asset-ph__icon">✈️</span>
-                  ASSET REQUIRED — IOR aviation crew at airport fuelling operation (600x400px)
-                </div>
-              </div>
-              <div class="perks-panel__content">
-                <p class="perks-panel__eyebrow">Aviation Crew</p>
-                <h3 class="perks-panel__title">No day is the same in our fastest-growing business unit.</h3>
-                <p class="perks-panel__body">We are on a mission to expand our national aviation footprint. You will enjoy a fast-moving, dynamic atmosphere with plenty of support along the way.</p>
-                <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill" style="align-self:flex-start;margin-top:8px;">View Aviation Roles &#8599;</a>
+            <div class="tabcordion__panel" id="tab-aviation" role="tabpanel">
+              <div class="tabcordion__panel-img">[ IMAGE: IOR aviation crew at airport fuelling operation ]</div>
+              <div class="tabcordion__panel-content">
+                <p class="eyebrow">Aviation Crew</p>
+                <h3 class="tabcordion__panel-title">No day is the same in our fastest-growing business unit.</h3>
+                <p class="tabcordion__panel-body">We're on a mission to expand our national aviation footprint, meaning you'll enjoy a fast-moving, dynamic atmosphere with plenty of support.</p>
+                <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill">View Aviation Roles <span class="btn__arrow"></span></a>
               </div>
             </div>
-            <div class="perks-panel" id="perks-corporate" role="tabpanel">
-              <div class="perks-panel__img">
-                <div class="asset-ph" style="height:100%;min-height:320px;">
-                  <span class="asset-ph__icon">💼</span>
-                  ASSET REQUIRED — IOR corporate team in office environment (600x400px)
-                </div>
-              </div>
-              <div class="perks-panel__content">
-                <p class="perks-panel__eyebrow">Corporate &amp; Admin</p>
-                <h3 class="perks-panel__title">Even from behind the scenes, you will see the real-world impact of your work.</h3>
-                <p class="perks-panel__body">Whether it is fuelling a LifeFlight helicopter or keeping our transport fleet moving, every role at IOR contributes to something bigger than a desk job.</p>
-                <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill" style="align-self:flex-start;margin-top:8px;">View Corporate Roles &#8599;</a>
+            <div class="tabcordion__panel" id="tab-corporate" role="tabpanel">
+              <div class="tabcordion__panel-img">[ IMAGE: IOR corporate team in office environment ]</div>
+              <div class="tabcordion__panel-content">
+                <p class="eyebrow">Corporate &amp; Admin</p>
+                <h3 class="tabcordion__panel-title">Even from behind the scenes, you'll see the real-world impact of your work.</h3>
+                <p class="tabcordion__panel-body">Whether it's fuelling a LifeFlight helicopter or keeping our transport fleet moving, every role at IOR contributes to something bigger than a desk job.</p>
+                <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill">View Corporate Roles <span class="btn__arrow"></span></a>
               </div>
             </div>
           </div>
@@ -869,259 +729,339 @@
       </div>
     </section>
 
-    <!-- 6. DIVERSITY & INCLUSION -->
-    <section class="section-pad section-pad--navy" aria-label="Diversity and Inclusion">
+    <!-- ============================================================
+         SECTION 6: MEET OUR PEOPLE (Video Grid)
+    ============================================================ -->
+    <section class="section-pad" aria-labelledby="meet-heading">
       <div class="inner">
-        <div class="split-50">
-          <div class="split-50__text">
-            <p class="eyebrow eyebrow--sky fade-up">Diversity &amp; Inclusion</p>
-            <h2 class="section-heading section-heading--white fade-up">From commitment to action.</h2>
-            <p class="body-copy body-copy--white fade-up">At IOR, we believe that a diverse workforce makes us stronger, smarter, and better equipped to serve the communities we operate in. We are committed to building an inclusive workplace where every team member can thrive, regardless of background, gender, age, or experience.</p>
-            <p class="body-copy body-copy--white fade-up">We actively support pathways for women in transport, First Nations employment, and regional community hiring. When everyone has a seat at the table, the whole team goes further.</p>
-            <div class="quote-block fade-up">
+        <p class="eyebrow">Meet Our People</p>
+        <h2 class="section-heading" id="meet-heading">Hear it straight from the team.</h2>
+        <div class="video-grid">
+          <div class="video-card fade-up">
+            <div class="video-card__embed">
+              <iframe src="https://www.youtube.com/embed/jfRvKBQEN7U?rel=0&modestbranding=1" title="Tahlia - IOR EVP" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="video-card__body">
+              <p class="video-card__name">Tahlia</p>
+              <p class="video-card__role">IOR Team Member</p>
+              <p class="video-card__quote">"IOR gave me the opportunity to prove myself in an industry that doesn't always make it easy."</p>
+            </div>
+          </div>
+          <div class="video-card fade-up">
+            <div class="video-card__embed">
+              <iframe src="https://www.youtube.com/embed/fKv96fMT6gE?rel=0&modestbranding=1" title="Risky - IOR EVP" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="video-card__body">
+              <p class="video-card__name">Risky</p>
+              <p class="video-card__role">IOR Team Member</p>
+              <p class="video-card__quote">"The people here look out for each other. That's what makes IOR different."</p>
+            </div>
+          </div>
+          <div class="video-card fade-up">
+            <div class="video-card__embed">
+              <iframe src="https://www.youtube.com/embed/WCXTJTDkkwU?rel=0&modestbranding=1" title="Dylan - IOR EVP" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="video-card__body">
+              <p class="video-card__name">Dylan</p>
+              <p class="video-card__role">IOR Team Member</p>
+              <p class="video-card__quote">"I've grown more here in two years than I did anywhere else in five."</p>
+            </div>
+          </div>
+          <div class="video-card fade-up">
+            <div class="video-card__embed">
+              <iframe src="https://www.youtube.com/embed/t1GjkDWLarU?rel=0&modestbranding=1" title="Luke - IOR EVP" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="video-card__body">
+              <p class="video-card__name">Luke</p>
+              <p class="video-card__role">IOR Team Member</p>
+              <p class="video-card__quote">"The scale of what we do is incredible. You don't realise how big IOR is until you're in it."</p>
+            </div>
+          </div>
+          <div class="video-card fade-up">
+            <div class="video-card__embed">
+              <iframe src="https://www.youtube.com/embed/YEEQHCUrujo?rel=0&modestbranding=1" title="Drew - IOR EVP" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="video-card__body">
+              <p class="video-card__name">Drew</p>
+              <p class="video-card__role">IOR Team Member</p>
+              <p class="video-card__quote">"IOR backs you. They invest in your development and want to see you succeed."</p>
+            </div>
+          </div>
+          <div class="video-card fade-up">
+            <div class="video-card__embed">
+              <iframe src="https://www.youtube.com/embed/KHstAN5AuUs?rel=0&modestbranding=1" title="Darren - IOR EVP" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="video-card__body">
+              <p class="video-card__name">Darren</p>
+              <p class="video-card__role">IOR Team Member</p>
+              <p class="video-card__quote">"I've been here over a decade. There's always something new to work on."</p>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:40px;">
+          <a href="10b_Meet_The_Team.html" class="btn btn--outline btn--pill">Meet the Full Team <span class="btn__arrow"></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 7: DIVERSITY & INCLUSION (50/50 Split)
+    ============================================================ -->
+    <section class="section-pad section-pad--navy" aria-labelledby="di-heading">
+      <div class="inner">
+        <div class="split fade-up">
+          <div class="split__text">
+            <p class="eyebrow eyebrow--sky">Diversity &amp; Inclusion</p>
+            <h2 class="section-heading section-heading--white" id="di-heading">From commitment to action.</h2>
+            <p class="body-text body-text--white">At IOR, we believe that a diverse workforce makes us stronger, smarter, and better equipped to serve the communities we operate in. We're committed to building an inclusive workplace where every team member can thrive, regardless of background, gender, age, or experience.</p>
+            <p class="body-text body-text--white">We actively support pathways for women in transport, First Nations employment, and regional community hiring. When everyone has a seat at the table, the whole team goes further.</p>
+            <div class="quote-block">
               <p class="quote-block__text">"IOR gave me the opportunity to prove myself in an industry that doesn't always make it easy for women. I've never looked back."</p>
               <p class="quote-block__attr">Jess Akers, IOR Team Member</p>
             </div>
           </div>
-          <div class="fade-up">
-            <div class="asset-ph" style="height:460px;">
-              <span class="asset-ph__icon">👥</span>
-              ASSET REQUIRED — Diverse IOR team: women, First Nations, regional workers (700x460px)
-            </div>
+          <div class="split__img">[ IMAGE: Diverse IOR team: women, First Nations, regional workers ]</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 8: RECRUITMENT PROCESS (Horizontal Steps)
+    ============================================================ -->
+    <section class="section-pad" aria-labelledby="process-heading">
+      <div class="inner">
+        <p class="eyebrow">How to Apply</p>
+        <h2 class="section-heading" id="process-heading">Our recruitment process.</h2>
+        <div class="steps-row">
+          <div class="step fade-up">
+            <div class="step__num">1</div>
+            <p class="step__title">Apply Online</p>
+            <p class="step__body">Submit your application via SEEK or our careers portal. It takes less than 10 minutes.</p>
+          </div>
+          <div class="step fade-up">
+            <div class="step__num">2</div>
+            <p class="step__title">Phone Screen</p>
+            <p class="step__body">A quick call with our recruitment team to learn more about you and the role.</p>
+          </div>
+          <div class="step fade-up">
+            <div class="step__num">3</div>
+            <p class="step__title">Interview</p>
+            <p class="step__body">Meet the team in person or via video. We keep it relaxed and genuine.</p>
+          </div>
+          <div class="step fade-up">
+            <div class="step__num">4</div>
+            <p class="step__title">Pre-Employment Checks</p>
+            <p class="step__body">Reference checks, background screening, and any role-specific requirements.</p>
+          </div>
+          <div class="step fade-up">
+            <div class="step__num">5</div>
+            <p class="step__title">Welcome to IOR</p>
+            <p class="step__body">Onboarding, induction, and your first day with the team. You are officially going far.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 7. RECRUITMENT PROCESS -->
-    <section class="section-pad section-pad--grey" aria-label="Recruitment Process">
-      <div class="inner">
-        <p class="eyebrow fade-up" style="text-align:center;">How to Apply</p>
-        <h2 class="section-heading fade-up" style="text-align:center;margin-bottom:56px;">Our recruitment process.</h2>
-        <div class="steps-grid">
-          <div class="step-item fade-up">
-            <div class="step-item__num">1</div>
-            <h3 class="step-item__title">Apply Online</h3>
-            <p class="step-item__body">Submit your application via SEEK or our careers portal. It takes less than 10 minutes.</p>
+    <!-- ============================================================
+         SECTION 9: FAQS
+    ============================================================ -->
+    <section class="section-pad section-pad--grey" aria-labelledby="faq-heading">
+      <div class="inner" style="max-width:860px;">
+        <h2 class="section-heading" id="faq-heading">Frequently asked questions.</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">Do I need fuel industry experience to apply? <span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer">Not at all. Many of our best team members came from outside the industry. We hire for attitude and train for skill. If you're driven, reliable, and ready to go far, we want to hear from you.</div>
           </div>
-          <div class="step-item fade-up">
-            <div class="step-item__num">2</div>
-            <h3 class="step-item__title">Phone Screen</h3>
-            <p class="step-item__body">A quick call with our recruitment team to learn more about you and the role.</p>
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">Do you offer roles in regional and remote Australia? <span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer">Yes. In fact, some of our most exciting roles are in regional and remote locations. We operate across all states and territories, with a strong presence in QLD, NSW, SA, WA, and the NT.</div>
           </div>
-          <div class="step-item fade-up">
-            <div class="step-item__num">3</div>
-            <h3 class="step-item__title">Interview</h3>
-            <p class="step-item__body">Meet the team in person or via video. We keep it relaxed and genuine.</p>
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">What entry pathways are available for school leavers? <span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer">We offer apprenticeships, traineeships, school-based programmes, and graduate roles. Visit our Entry Pathways page to find the right fit for you.</div>
           </div>
-          <div class="step-item fade-up">
-            <div class="step-item__num">4</div>
-            <h3 class="step-item__title">Checks</h3>
-            <p class="step-item__body">Reference checks, background screening, and any role-specific requirements.</p>
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">How long does the recruitment process take? <span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer">Typically 2 to 4 weeks from application to offer, depending on the role and location. We aim to keep you informed at every stage.</div>
           </div>
-          <div class="step-item fade-up">
-            <div class="step-item__num">5</div>
-            <h3 class="step-item__title">Welcome</h3>
-            <p class="step-item__body">Onboarding, induction, and your first day with the team. You are officially going far.</p>
+          <div class="faq-item">
+            <button class="faq-btn" aria-expanded="false">Can I apply for multiple roles at once? <span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer">Yes. If you see multiple roles that suit your skills and experience, we encourage you to apply for each one separately so your application is reviewed in the right context.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 8. ENTRY PATHWAYS BAND -->
-    <section class="pathways-band" id="entry-pathways" aria-label="Entry Pathways">
-      <p class="pathways-band__eyebrow fade-up">Just Starting Out?</p>
-      <h2 class="pathways-band__headline fade-up">Explore our entry pathways.</h2>
-      <p class="pathways-band__body fade-up">Graduate programmes, apprenticeships, traineeships, and school-based roles, designed to launch your career with IOR from day one.</p>
-      <a href="10a_Entry_Pathways.html" class="btn btn--white btn--pill fade-up">View Entry Pathways</a>
+    <!-- ============================================================
+         SECTION 10: ENTRY PATHWAYS BAND
+    ============================================================ -->
+    <section class="pathways-band" id="entry-pathways" aria-labelledby="pathways-heading">
+      <p class="eyebrow">Just Starting Out?</p>
+      <h2 id="pathways-heading">Explore our entry pathways.</h2>
+      <p>Graduate programmes, apprenticeships, traineeships, and school-based roles designed to launch your career with IOR from day one.</p>
+      <a href="10a_Entry_Pathways.html" class="btn btn--white btn--pill">View Entry Pathways <span class="btn__arrow"></span></a>
     </section>
 
-    <!-- 9. CURRENT OPPORTUNITIES -->
-    <section class="section-pad" aria-label="Current Opportunities">
+    <!-- ============================================================
+         SECTION 11: CURRENT OPPORTUNITIES (Jobs Table)
+    ============================================================ -->
+    <section class="section-pad" aria-labelledby="jobs-heading">
       <div class="inner">
-        <p class="eyebrow fade-up">Current Opportunities</p>
-        <h2 class="section-heading fade-up">Find your role at IOR.</h2>
-        <table class="jobs-table fade-up" aria-label="Current job listings">
+        <p class="eyebrow">Current Opportunities</p>
+        <h2 class="section-heading" id="jobs-heading">Find your role at IOR.</h2>
+        <table class="jobs-table" role="table" aria-label="Current job openings">
           <thead>
             <tr>
-              <th>Role</th>
-              <th>Location</th>
-              <th>Department</th>
-              <th>Action</th>
+              <th scope="col">Role</th>
+              <th scope="col">Location</th>
+              <th scope="col">Department</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="jobs-table__role">Heavy Vehicle Driver (HC/MC)</td>
-              <td>Brisbane, QLD</td>
-              <td>Transport &amp; Logistics</td>
-              <td><a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill" style="font-size:13px;padding:8px 16px;">Apply Now &#8599;</a></td>
+              <td class="job-title">[Job Title from ATS]</td>
+              <td>[Location]</td>
+              <td>[Department]</td>
+              <td><a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="job-apply">Apply <span>→</span></a></td>
             </tr>
             <tr>
-              <td class="jobs-table__role">Heavy Diesel Mechanic</td>
-              <td>Toowoomba, QLD</td>
-              <td>Workshop &amp; Maintenance</td>
-              <td><a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill" style="font-size:13px;padding:8px 16px;">Apply Now &#8599;</a></td>
+              <td class="job-title">[Job Title from ATS]</td>
+              <td>[Location]</td>
+              <td>[Department]</td>
+              <td><a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="job-apply">Apply <span>→</span></a></td>
             </tr>
             <tr>
-              <td class="jobs-table__role">Aviation Refueller</td>
-              <td>Darwin, NT</td>
-              <td>Aviation</td>
-              <td><a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill" style="font-size:13px;padding:8px 16px;">Apply Now &#8599;</a></td>
+              <td class="job-title">[Job Title from ATS]</td>
+              <td>[Location]</td>
+              <td>[Department]</td>
+              <td><a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="job-apply">Apply <span>→</span></a></td>
             </tr>
             <tr>
-              <td class="jobs-table__role">Customer Success Coordinator</td>
-              <td>Cannon Hill, QLD</td>
-              <td>Corporate &amp; Admin</td>
-              <td><a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill" style="font-size:13px;padding:8px 16px;">Apply Now &#8599;</a></td>
+              <td class="job-title">[Job Title from ATS]</td>
+              <td>[Location]</td>
+              <td>[Department]</td>
+              <td><a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="job-apply">Apply <span>→</span></a></td>
             </tr>
           </tbody>
         </table>
-        <div class="jobs-table__footer fade-up">
-          <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--pill">View All Jobs on SEEK &#8599;</a>
+        <div style="text-align:center; margin-top:32px;">
+          <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--pill">View All Jobs on SEEK <span class="btn__arrow"></span></a>
         </div>
       </div>
     </section>
 
-    <!-- 10. FAQs -->
-    <section class="section-pad section-pad--grey" aria-label="Frequently Asked Questions">
-      <div class="inner" style="max-width:800px;">
-        <p class="eyebrow fade-up">FAQs</p>
-        <h2 class="section-heading fade-up">Frequently asked questions.</h2>
-        <div class="faq-list fade-up">
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span class="faq-trigger__q">Do I need experience in the fuel industry to apply?</span>
-              <span class="faq-trigger__icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-body"><p>Not at all. While industry experience is valued, IOR hires for attitude and aptitude. We provide comprehensive training and onboarding to set every team member up for success, regardless of their background.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span class="faq-trigger__q">Are there roles available in regional and remote areas?</span>
-              <span class="faq-trigger__icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-body"><p>Yes. IOR operates across every state and territory in Australia, including many regional and remote locations. If you are open to working regionally, there are often excellent opportunities with competitive packages and relocation support.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span class="faq-trigger__q">What entry pathway programmes does IOR offer?</span>
-              <span class="faq-trigger__icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-body"><p>IOR offers apprenticeships, graduate programmes, traineeships, and school-based roles. These programmes are designed to give early-career candidates a structured, supported pathway into the fuel and energy industry.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span class="faq-trigger__q">How long does the recruitment process take?</span>
-              <span class="faq-trigger__icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-body"><p>Our typical recruitment process takes two to four weeks from application to offer, depending on the role and volume of applicants. We aim to keep you informed at every stage and provide timely feedback.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span class="faq-trigger__q">Can I apply for more than one role at a time?</span>
-              <span class="faq-trigger__icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-body"><p>Absolutely. If you see multiple roles that suit your skills and interests, we encourage you to apply for each one separately. Our recruitment team reviews all applications individually.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 11. FINAL CTA -->
-    <section class="final-cta" aria-label="Final call to action">
-      <p class="final-cta__eyebrow fade-up">Go Far with IOR</p>
-      <h2 class="final-cta__headline fade-up">Your next chapter starts here.</h2>
-      <p class="final-cta__body fade-up">Whether you are a seasoned professional or just starting out, IOR has a place for you. Join a team that is driven, genuine, and going places.</p>
-      <div class="final-cta__ctas fade-up">
-        <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--white btn--pill">View Current Jobs &#8599;</a>
-        <a href="10a_Entry_Pathways.html" class="btn btn--outline-white btn--pill">Explore Entry Pathways</a>
+    <!-- ============================================================
+         SECTION 12: BESPOKE FINAL CTA
+    ============================================================ -->
+    <section class="final-cta" aria-labelledby="final-cta-heading">
+      <p class="eyebrow eyebrow--sky">Go Far with IOR</p>
+      <h2 id="final-cta-heading">Your next chapter starts here.</h2>
+      <p>Whether you're a seasoned professional or just starting out, IOR has a place for you. Join a team that's driven, genuine, and going places.</p>
+      <div class="final-cta__ctas">
+        <a href="https://www.seek.com.au/ior-jobs" target="_blank" rel="noopener noreferrer" class="btn btn--white btn--pill">View Current Jobs on SEEK <span class="btn__arrow"></span></a>
+        <a href="10a_Entry_Pathways.html" class="btn btn--outline-white btn--pill">Explore Entry Pathways <span class="btn__arrow"></span></a>
       </div>
     </section>
 
   </main>
 
-  <!-- PRE-FOOTER -->
-  <section class="pre-footer" aria-label="We're here to help">
+  <!-- COMPONENT 8a: GLOBAL PRE-FOOTER — Shell v4 canonical -->
+  <div class="pre-footer" aria-label="Pre-footer">
     <div class="pre-footer__row">
       <p class="pre-footer__title">We're here to help.</p>
       <div class="pre-footer__ctas">
-        <a href="#" class="btn btn--primary btn--pill">Apply for an Account</a>
-        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white btn--pill">Make an Enquiry</a>
-        <a href="11_Support_Hubv5.html" class="btn btn--outline-white btn--pill">Need Help?</a>
+        <a href="#" class="btn btn--white btn--pill">Apply for an Account <span class="btn__arrow"></span></a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white btn--pill">Make an Enquiry <span class="btn__arrow"></span></a>
+        <a href="11_Support_Hubv5.html" class="btn btn--outline-white btn--pill">Need Help? <span class="btn__arrow"></span></a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
+  <!-- COMPONENT 8b: GLOBAL FOOTER — Shell v4 canonical -->
   <footer class="site-footer" aria-label="Site footer">
-    <div class="footer-nav-grid">
-      <div>
-        <div class="footer-col__title">Contact</div>
-        <div class="footer-col__links">
-          <span class="footer-col__link footer-col__link--address"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span></span>
-          <a href="tel:1300457467" class="footer-col__link footer-col__link--icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>1300 457 467</a>
-          <a href="mailto:enquiries@ior.com.au" class="footer-col__link footer-col__link--icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>enquiries@ior.com.au</a>
-          <a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Contacts</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col__title">Fuel Solutions</div>
-        <div class="footer-col__links">
-          <a href="03_Ground_Fuels.html" class="footer-col__link">Ground Fuels</a>
-          <a href="04_Aviation.html" class="footer-col__link">Aviation</a>
-          <a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
-          <a href="06_Supply_Trading.html" class="footer-col__link">Supply &amp; Trading</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col__title">Digital Platforms</div>
-        <div class="footer-col__links">
-          <a href="07_Digital_Platforms.html#hydip" class="footer-col__link">HyDip&#8482; FMS</a>
-          <a href="07_Digital_Platforms.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
-          <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col__title">Corporate</div>
-        <div class="footer-col__links">
-          <a href="09_About_IOR_v2.html" class="footer-col__link">About IOR</a>
-          <a href="10_Careers_v2.html" class="footer-col__link">Careers</a>
-          <a href="09d_Case_Studies.html" class="footer-col__link">Case Studies</a>
-          <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
-          <a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col__title">Quick Actions</div>
-        <div class="footer-col__links">
-          <a href="#" class="footer-col__link">Apply for an Account</a>
-          <a href="11e_Make_Paymentv5.html" class="footer-col__link">Make a Payment</a>
-          <a href="11a_Contact_Usv5.html" class="footer-col__link">Contact Us</a>
-          <a href="11_Support_Hubv5.html" class="footer-col__link">Help Centre &amp; FAQs</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col__title">Find a Site By State</div>
-        <div class="footer-state-pills">
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">QLD</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">NSW</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">VIC</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">SA</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">WA</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">NT</a>
-        </div>
+  <div class="footer-nav-grid">
+    <div>
+      <div class="footer-col__title">Contact</div>
+      <div class="footer-col__links">
+        <span class="footer-col__link footer-col__link--address">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
+        </span>
+        <a href="tel:1300457467" class="footer-col__link footer-col__link--icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          1300 457 467
+        </a>
+        <a href="mailto:enquiries@ior.com.au" class="footer-col__link footer-col__link--icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          enquiries@ior.com.au
+        </a>
+        <a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Contacts</a>
       </div>
     </div>
-    <div class="footer-legal">
-      <p class="footer-legal__text">Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" class="footer-legal__link--muted">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" class="footer-legal__link--muted">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;Site by 3PM</p>
-      <div class="footer-social" aria-label="Social media links">
-        <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
-        <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
-        <a href="#" class="footer-social__icon" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-        <a href="#" class="footer-social__icon" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+    <div>
+      <div class="footer-col__title">Fuel Solutions</div>
+      <div class="footer-col__links">
+        <a href="03_Ground_Fuels.html" class="footer-col__link">Ground Fuels</a>
+        <a href="04_Aviation.html" class="footer-col__link">Aviation</a>
+        <a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading.html" class="footer-col__link">Supply &amp; Trading</a>
       </div>
     </div>
+    <div>
+      <div class="footer-col__title">Digital Platforms</div>
+      <div class="footer-col__links">
+        <a href="07_Digital_Platforms.html#hydip" class="footer-col__link">HyDip&#8482; FMS</a>
+        <a href="07_Digital_Platforms.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
+        <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Corporate</div>
+      <div class="footer-col__links">
+        <a href="09_About_IOR_v2.html" class="footer-col__link">About IOR</a>
+        <a href="10_Careers_v2.html" class="footer-col__link">Careers</a>
+        <a href="09d_Case_Studies.html" class="footer-col__link">Case Studies</a>
+        <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+        <a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Quick Actions</div>
+      <div class="footer-col__links">
+        <a href="#" class="footer-col__link">Apply for an Account</a>
+        <a href="11e_Make_Paymentv5.html" class="footer-col__link">Make a Payment</a>
+        <a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a>
+        <a href="11_Support_Hubv5.html" class="footer-col__link">Help Centre &amp; FAQs</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Find a Site By State</div>
+      <div class="footer-state-pills">
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">QLD</a>
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">NSW</a>
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">VIC</a>
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">SA</a>
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">WA</a>
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">NT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">
+      Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link--muted">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link--muted">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      Site by 3PM
+    </p>
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
+      <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
+      <a href="#" class="footer-social__icon" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="#" class="footer-social__icon" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+    </div>
+  </div>
   </footer>
 
   <script>
@@ -1137,7 +1077,7 @@
         const menuId = 'mega-' + btn.dataset.menu;
         const panel = document.getElementById(menuId);
         const isOpen = panel.classList.contains('is-open');
-        document.querySelectorAll('.mega-panel').forEach(p => { p.classList.remove('is-open'); });
+        document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('is-open'));
         document.querySelectorAll('.nav-link[data-menu]').forEach(b => b.setAttribute('aria-expanded', 'false'));
         if (!isOpen) {
           panel.classList.add('is-open');
@@ -1172,38 +1112,40 @@
       });
     });
 
+    // Tabcordion
+    document.querySelectorAll('.tabcordion__tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.dataset.tab;
+        document.querySelectorAll('.tabcordion__tab').forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+        document.querySelectorAll('.tabcordion__panel').forEach(p => p.classList.remove('is-active'));
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+        const panel = document.getElementById('tab-' + tabId);
+        if (panel) panel.classList.add('is-active');
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('is-open');
+        document.querySelectorAll('.faq-btn').forEach(b => { b.classList.remove('is-open'); b.setAttribute('aria-expanded', 'false'); });
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('is-open'));
+        if (!isOpen) {
+          btn.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+          answer.classList.add('is-open');
+        }
+      });
+    });
+
     // Fade-up on scroll
     const fadeEls = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.1 });
     fadeEls.forEach(el => observer.observe(el));
-
-    // Perks tabs
-    document.querySelectorAll('.perks-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        const target = tab.dataset.perksTab;
-        document.querySelectorAll('.perks-tab').forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
-        document.querySelectorAll('.perks-panel').forEach(p => p.classList.remove('is-active'));
-        tab.classList.add('is-active');
-        tab.setAttribute('aria-selected', 'true');
-        const panel = document.getElementById('perks-' + target);
-        if (panel) panel.classList.add('is-active');
-      });
-    });
-
-    // FAQ accordion
-    document.querySelectorAll('.faq-trigger').forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const item = trigger.closest('.faq-item');
-        const isOpen = item.classList.contains('is-open');
-        document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('is-open'); i.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false'); });
-        if (!isOpen) {
-          item.classList.add('is-open');
-          trigger.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
   </script>
 </body>
 </html>
