@@ -338,7 +338,64 @@
     .split__body { font-size: 15px; color: var(--grey-700); line-height: 1.75; margin-bottom: 16px; }
     .split__body:last-of-type { margin-bottom: 28px; }
     /* ============================================================
-       POLICY DOWNLOADS
+       POLICY DOWNLOADS — TIERED HORIZONTAL CARDS
+    ============================================================ */
+    .policy-tier { margin-bottom: 40px; }
+    .policy-tier__label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--ior-blue);
+      margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 2px solid var(--ior-blue);
+    }
+    .policy-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .policy-row--3col { grid-template-columns: repeat(3, 1fr); }
+    .policy-card-h {
+      display: flex; flex-direction: column; gap: 12px;
+      background: #fff; border: 1px solid var(--grey-200);
+      padding: 24px; transition: border-color .2s, box-shadow .2s;
+      text-decoration: none; color: inherit;
+    }
+    .policy-card-h:hover {
+      border-color: var(--ior-blue);
+      box-shadow: 0 4px 20px rgba(3,85,163,.08);
+    }
+    .policy-card-h__icon {
+      width: 44px; height: 44px;
+      background: var(--grey-100); display: flex; align-items: center;
+      justify-content: center; color: var(--ior-blue);
+    }
+    .policy-card-h__content { flex: 1; }
+    .policy-card-h__title {
+      font-size: 15px; font-weight: 700; color: var(--ior-navy);
+      margin-bottom: 6px;
+    }
+    .policy-card-h__desc {
+      font-size: 13px; color: var(--grey-700); line-height: 1.5;
+    }
+    .policy-card-h__cta {
+      font-size: 13px; font-weight: 700; color: var(--ior-blue);
+      margin-top: auto;
+    }
+    .policy-downloads__footer {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; padding-top: 32px;
+      border-top: 1px solid var(--grey-200);
+      font-size: 14px; color: var(--grey-700);
+    }
+    @media (max-width: 900px) {
+      .policy-row { grid-template-columns: repeat(2, 1fr); }
+      .policy-row--3col { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .policy-row, .policy-row--3col { grid-template-columns: 1fr; }
+      .policy-downloads__footer { flex-direction: column; align-items: flex-start; }
+    }
+    /* ============================================================
+       POLICY DOWNLOADS (legacy — kept for fallback)
     ============================================================ */
     .policy-downloads { background: var(--grey-100); padding: clamp(60px,8vw,100px) var(--section-pad-x); }
     .policy-downloads__inner { max-width: 1280px; margin: 0 auto; }
@@ -880,58 +937,97 @@
       <div class="policy-downloads__inner">
         <div class="policy-downloads__head fade-up">
           <p class="policy-downloads__eyebrow">Compliance Documents</p>
-          <h2 class="policy-downloads__title">Our policies, available to download.</h2>
-          <p class="policy-downloads__sub">Review our commitments to health, safety, the environment, and responsible business practices.</p>
+          <h2 class="policy-downloads__title">Transparency in everything we do.</h2>
+          <p class="policy-downloads__sub">Access IOR's governance policies, legal terms, and compliance statements. All documents are publicly available and regularly reviewed.</p>
         </div>
-        <div class="policy-grid">
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up">
-            <div class="policy-card__icon">📄</div>
-            <div class="policy-card__content">
-              <p class="policy-card__title">Health &amp; Safety Policy</p>
-              <p class="policy-card__type">PDF Download</p>
-            </div>
-            <span class="policy-card__arrow">↓</span>
-          </a>
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up" style="transition-delay:.05s">
-            <div class="policy-card__icon">📄</div>
-            <div class="policy-card__content">
-              <p class="policy-card__title">Environmental Policy</p>
-              <p class="policy-card__type">PDF Download</p>
-            </div>
-            <span class="policy-card__arrow">↓</span>
-          </a>
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up" style="transition-delay:.1s">
-            <div class="policy-card__icon">📄</div>
-            <div class="policy-card__content">
-              <p class="policy-card__title">Quality Policy</p>
-              <p class="policy-card__type">PDF Download</p>
-            </div>
-            <span class="policy-card__arrow">↓</span>
-          </a>
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up" style="transition-delay:.15s">
-            <div class="policy-card__icon">📄</div>
-            <div class="policy-card__content">
-              <p class="policy-card__title">Buy Local Policy</p>
-              <p class="policy-card__type">PDF Download</p>
-            </div>
-            <span class="policy-card__arrow">↓</span>
-          </a>
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up" style="transition-delay:.2s">
-            <div class="policy-card__icon">📄</div>
-            <div class="policy-card__content">
-              <p class="policy-card__title">Local Employment Policy</p>
-              <p class="policy-card__type">PDF Download</p>
-            </div>
-            <span class="policy-card__arrow">↓</span>
-          </a>
-          <a href="08e_Policy_Downloads_v2.html" class="policy-card fade-up" style="transition-delay:.25s">
-            <div class="policy-card__icon">📄</div>
-            <div class="policy-card__content">
-              <p class="policy-card__title">Equal Opportunity Policy</p>
-              <p class="policy-card__type">PDF Download</p>
-            </div>
-            <span class="policy-card__arrow">↓</span>
-          </a>
+
+        <!-- TIER 1: GOVERNANCE & ETHICS -->
+        <div class="policy-tier fade-up">
+          <p class="policy-tier__label">Governance &amp; Ethics</p>
+          <div class="policy-row">
+            <a href="https://www.ior.com.au/about/downloads/" target="_blank" rel="noopener noreferrer" class="policy-card-h">
+              <div class="policy-card-h__icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M16 3L4 9v8c0 8 12 12 12 12s12-4 12-12V9L16 3z"/></svg>
+              </div>
+              <div class="policy-card-h__content">
+                <p class="policy-card-h__title">Whistleblower Policy</p>
+                <p class="policy-card-h__desc">IOR's approach to ensuring reports of suspected misconduct are handled appropriately and safely.</p>
+              </div>
+              <span class="policy-card-h__cta">View &rarr;</span>
+            </a>
+            <a href="https://www.ior.com.au/about/downloads/" target="_blank" rel="noopener noreferrer" class="policy-card-h">
+              <div class="policy-card-h__icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><circle cx="16" cy="16" r="12"/><path d="M16 10v6l4 2"/></svg>
+              </div>
+              <div class="policy-card-h__content">
+                <p class="policy-card-h__title">Modern Slavery Statement</p>
+                <p class="policy-card-h__desc">IOR Group's annual statement on actions taken to address modern slavery risks in our operations and supply chain.</p>
+              </div>
+              <span class="policy-card-h__cta">View &rarr;</span>
+            </a>
+            <a href="https://www.ior.com.au/about/downloads/" target="_blank" rel="noopener noreferrer" class="policy-card-h">
+              <div class="policy-card-h__icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><rect x="4" y="6" width="24" height="20" rx="1"/><path d="M10 12h12M10 17h8"/></svg>
+              </div>
+              <div class="policy-card-h__content">
+                <p class="policy-card-h__title">Community Code of Conduct</p>
+                <p class="policy-card-h__desc">Standards of behaviour IOR expects from its team members, contractors, and partners in the communities we operate in.</p>
+              </div>
+              <span class="policy-card-h__cta">View &rarr;</span>
+            </a>
+            <a href="https://www.ior.com.au/about/downloads/" target="_blank" rel="noopener noreferrer" class="policy-card-h">
+              <div class="policy-card-h__icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M16 4a8 8 0 100 16A8 8 0 0016 4z"/><path d="M16 20v8M12 28h8"/></svg>
+              </div>
+              <div class="policy-card-h__content">
+                <p class="policy-card-h__title">Privacy Policy &amp; Notice</p>
+                <p class="policy-card-h__desc">How IOR collects, uses, and protects personal information in accordance with the Privacy Act 1988.</p>
+              </div>
+              <span class="policy-card-h__cta">View &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- TIER 2: LEGAL & COMMERCIAL -->
+        <div class="policy-tier fade-up" style="transition-delay:.15s">
+          <p class="policy-tier__label">Legal &amp; Commercial</p>
+          <div class="policy-row policy-row--3col">
+            <a href="https://www.ior.com.au/about/downloads/" target="_blank" rel="noopener noreferrer" class="policy-card-h">
+              <div class="policy-card-h__icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><rect x="4" y="4" width="24" height="24" rx="1"/><path d="M10 10h12M10 16h12M10 22h8"/></svg>
+              </div>
+              <div class="policy-card-h__content">
+                <p class="policy-card-h__title">Fuel Supply Terms</p>
+                <p class="policy-card-h__desc">Standard terms and conditions governing IOR fuel supply agreements.</p>
+              </div>
+              <span class="policy-card-h__cta">View &rarr;</span>
+            </a>
+            <a href="https://www.ior.com.au/about/downloads/" target="_blank" rel="noopener noreferrer" class="policy-card-h">
+              <div class="policy-card-h__icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><rect x="4" y="4" width="24" height="24" rx="1"/><path d="M10 10h12M10 16h8"/><path d="M20 20l4 4M20 24l4-4"/></svg>
+              </div>
+              <div class="policy-card-h__content">
+                <p class="policy-card-h__title">Purchase Order Terms</p>
+                <p class="policy-card-h__desc">IOR's standard purchase order terms and conditions for suppliers.</p>
+              </div>
+              <span class="policy-card-h__cta">View &rarr;</span>
+            </a>
+            <a href="https://www.ior.com.au/about/downloads/" target="_blank" rel="noopener noreferrer" class="policy-card-h">
+              <div class="policy-card-h__icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M16 4L4 10v10l12 8 12-8V10L16 4z"/></svg>
+              </div>
+              <div class="policy-card-h__content">
+                <p class="policy-card-h__title">Road Transport Services Terms</p>
+                <p class="policy-card-h__desc">Terms and conditions applicable to IOR road transport services.</p>
+              </div>
+              <span class="policy-card-h__cta">View &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="policy-downloads__footer fade-up" style="transition-delay:.3s">
+          <p>All documents are hosted on the IOR Downloads Centre.</p>
+          <a href="https://www.ior.com.au/about/downloads/" target="_blank" rel="noopener noreferrer" class="btn btn--outline-blue">View All Downloads &rarr;</a>
         </div>
       </div>
     </section>
