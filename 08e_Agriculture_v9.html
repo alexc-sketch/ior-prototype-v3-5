@@ -169,17 +169,32 @@
     .tab-track-section{background:var(--ior-deep);padding:var(--section-pad) 0;}
     .tab-track-section .section-heading h2{color:#fff;}
     .tab-track-section .section-heading p{color:rgba(255,255,255,.7);max-width:700px;}
-    .tab-track__nav{display:flex;border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:0;overflow-x:auto;}
-    .tab-track__btn{flex:1;min-width:120px;padding:14px 20px;font-size:clamp(12px,1.2vw,14px);font-weight:700;color:rgba(255,255,255,.6);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;font-family:var(--font);transition:all var(--transition-fast);white-space:nowrap;text-align:center;min-height:44px;}
-    .tab-track__btn:hover{color:#fff;}
-    .tab-track__btn.active{color:var(--ior-green);border-bottom-color:var(--ior-green);}
+    /* Step indicator nav */
+    .tab-track__nav{display:flex;align-items:flex-start;justify-content:center;margin-top:clamp(36px,5vw,60px);margin-bottom:0;position:relative;padding-bottom:0;overflow:visible;border-bottom:none;}
+    .tab-track__nav::before{content:'';position:absolute;top:22px;left:calc(var(--section-pad-x,40px) + 22px);right:calc(var(--section-pad-x,40px) + 22px);height:2px;background:rgba(255,255,255,.15);z-index:0;}
+    .tab-track__step{display:flex;flex-direction:column;align-items:center;flex:1;gap:12px;cursor:pointer;background:none;border:none;font-family:var(--font);padding:0 4px;position:relative;z-index:1;min-height:44px;}
+    .tab-track__step-circle{width:44px;height:44px;border:2px solid rgba(255,255,255,.25);background:var(--ior-deep);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:rgba(255,255,255,.4);transition:all 250ms ease;flex-shrink:0;position:relative;}
+    .tab-track__step-label{font-size:clamp(10px,1vw,12px);font-weight:700;color:rgba(255,255,255,.45);letter-spacing:.06em;text-transform:uppercase;text-align:center;line-height:1.3;transition:color 250ms ease;max-width:80px;}
+    .tab-track__step:hover .tab-track__step-circle{border-color:rgba(0,177,64,.5);color:rgba(255,255,255,.7);}
+    .tab-track__step:hover .tab-track__step-label{color:rgba(255,255,255,.7);}
+    .tab-track__step.active .tab-track__step-circle{background:var(--ior-green);border-color:var(--ior-green);color:#fff;}
+    .tab-track__step.active .tab-track__step-label{color:var(--ior-green);}
+    .tab-track__nav-line-fill{position:absolute;top:22px;left:calc(var(--section-pad-x,40px) + 22px);height:2px;background:var(--ior-green);z-index:0;transition:width 350ms ease;width:0;}
     .tab-track__panels{margin-top:0;}
-    .tab-track__panel{display:none;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;padding:clamp(32px,4vw,56px) 0;}
+    .tab-track__panel{display:none;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;padding:clamp(36px,5vw,64px) var(--section-pad-x,40px);border-top:1px solid rgba(255,255,255,.1);margin-top:clamp(24px,3vw,36px);}
     .tab-track__panel.active{display:grid;}
+    .tab-track__panel-content{border-left:3px solid var(--ior-green);padding-left:clamp(20px,2.5vw,32px);}
+    .tab-track__panel-title{font-size:clamp(22px,2.4vw,28px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px;}
     .tab-track__panel-body{font-size:clamp(15px,1.5vw,17px);color:rgba(255,255,255,.85);line-height:1.8;}
-    .tab-track__panel-img{background:rgba(255,255,255,.08);min-height:320px;position:relative;overflow:hidden;}
-    .tab-track__panel-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:20px;}
-    @media(max-width:900px){.tab-track__panel{grid-template-columns:1fr;}.tab-track__panel-img{min-height:220px;}}
+    .tab-track__panel-nav{display:flex;gap:12px;margin-top:clamp(24px,3vw,32px);align-items:center;}
+    .tab-track__panel-nav-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:rgba(255,255,255,.5);background:none;border:1px solid rgba(255,255,255,.2);padding:8px 16px;cursor:pointer;font-family:var(--font);transition:all 200ms ease;min-height:36px;}
+    .tab-track__panel-nav-btn:hover{color:#fff;border-color:rgba(255,255,255,.5);}
+    .tab-track__panel-nav-btn--next{color:var(--ior-green);border-color:var(--ior-green);}
+    .tab-track__panel-nav-btn--next:hover{background:var(--ior-green);color:#fff;}
+    .tab-track__panel-img{background:rgba(255,255,255,.06);min-height:340px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);}
+    .tab-track__panel-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:20px;}
+    @media(max-width:1024px){.tab-track__step-label{display:none;}.tab-track__step-circle{width:38px;height:38px;font-size:13px;}.tab-track__nav::before{top:19px;}.tab-track__nav-line-fill{top:19px;}}
+    @media(max-width:900px){.tab-track__panel{grid-template-columns:1fr;padding-inline:var(--section-pad-x,40px);}.tab-track__panel-img{min-height:220px;order:-1;}.tab-track__step-circle{width:34px;height:34px;font-size:12px;}.tab-track__nav::before{top:17px;}.tab-track__nav-line-fill{top:17px;}}
     .testimonial-section{background:var(--ior-navy);padding:var(--section-pad) 0;}
     .testimonial-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center;}
     .testimonial-quote__mark{font-size:clamp(60px,8vw,100px);line-height:.8;color:var(--ior-green);font-weight:900;margin-bottom:8px;}
@@ -514,32 +529,86 @@
         <h2 id="tt-heading">From pre-season planning to harvest-day delivery.</h2>
         <p>IOR's agricultural supply model is built around your season — not our logistics schedule.</p>
       </div>
-      <nav class="tab-track__nav" aria-label="Supply stages" role="tablist">
-        <button class="tab-track__btn active" role="tab" aria-selected="true" aria-controls="tt-panel-1" id="tt-btn-1" data-tt="1">Pre-Season Planning</button>
-        <button class="tab-track__btn" role="tab" aria-selected="false" aria-controls="tt-panel-2" id="tt-btn-2" data-tt="2">Storage Setup</button>
-        <button class="tab-track__btn" role="tab" aria-selected="false" aria-controls="tt-panel-3" id="tt-btn-3" data-tt="3">Bulk Delivery</button>
-        <button class="tab-track__btn" role="tab" aria-selected="false" aria-controls="tt-panel-4" id="tt-btn-4" data-tt="4">Fleet Management</button>
-        <button class="tab-track__btn" role="tab" aria-selected="false" aria-controls="tt-panel-5" id="tt-btn-5" data-tt="5">Harvest Support</button>
+      <nav class="tab-track__nav fade-up" aria-label="Supply stages" role="tablist" id="tt-nav">
+        <div class="tab-track__nav-line-fill" id="tt-line-fill" aria-hidden="true"></div>
+        <button class="tab-track__step active" role="tab" aria-selected="true" aria-controls="tt-panel-1" id="tt-btn-1" data-tt="1">
+          <span class="tab-track__step-circle">1</span>
+          <span class="tab-track__step-label">Pre-Season Planning</span>
+        </button>
+        <button class="tab-track__step" role="tab" aria-selected="false" aria-controls="tt-panel-2" id="tt-btn-2" data-tt="2">
+          <span class="tab-track__step-circle">2</span>
+          <span class="tab-track__step-label">Storage Setup</span>
+        </button>
+        <button class="tab-track__step" role="tab" aria-selected="false" aria-controls="tt-panel-3" id="tt-btn-3" data-tt="3">
+          <span class="tab-track__step-circle">3</span>
+          <span class="tab-track__step-label">Bulk Delivery</span>
+        </button>
+        <button class="tab-track__step" role="tab" aria-selected="false" aria-controls="tt-panel-4" id="tt-btn-4" data-tt="4">
+          <span class="tab-track__step-circle">4</span>
+          <span class="tab-track__step-label">Fleet Management</span>
+        </button>
+        <button class="tab-track__step" role="tab" aria-selected="false" aria-controls="tt-panel-5" id="tt-btn-5" data-tt="5">
+          <span class="tab-track__step-circle">5</span>
+          <span class="tab-track__step-label">Harvest Support</span>
+        </button>
       </nav>
-      <div class="tab-track__panels">
+      <div class="tab-track__panels fade-up">
         <div class="tab-track__panel active" id="tt-panel-1" role="tabpanel" aria-labelledby="tt-btn-1">
-          <div class="tab-track__panel-content"><span class="eyebrow eyebrow--green">Stage 1</span><h3 style="font-size:clamp(22px,2.5vw,30px);font-weight:800;color:#fff;margin-bottom:16px;line-height:1.2;">Your season starts with a conversation.</h3><p class="tab-track__panel-body">IOR's agricultural account managers contact clients before each season to forecast demand, schedule deliveries, and ensure on-farm storage is sized correctly. Pre-season planning eliminates the risk of running short during your harvest window.</p></div>
+          <div class="tab-track__panel-content">
+            <span class="eyebrow eyebrow--green" style="margin-bottom:8px;">Stage 1</span>
+            <h3 class="tab-track__panel-title">Your season starts with a conversation.</h3>
+            <p class="tab-track__panel-body">IOR's agricultural account managers contact clients before each season to forecast demand, schedule deliveries, and ensure on-farm storage is sized correctly. Pre-season planning eliminates the risk of running short during your harvest window.</p>
+            <div class="tab-track__panel-nav">
+              <button class="tab-track__panel-nav-btn tab-track__panel-nav-btn--next" data-tt-goto="2">Stage 2: Storage Setup <span aria-hidden="true">&#8594;</span></button>
+            </div>
+          </div>
           <div class="tab-track__panel-img"><div class="tab-track__panel-img-placeholder">Image Asset Pending: IOR account manager meeting with a farmer pre-season</div></div>
         </div>
         <div class="tab-track__panel" id="tt-panel-2" role="tabpanel" aria-labelledby="tt-btn-2">
-          <div class="tab-track__panel-content"><span class="eyebrow eyebrow--green">Stage 2</span><h3 style="font-size:clamp(22px,2.5vw,30px);font-weight:800;color:#fff;margin-bottom:16px;line-height:1.2;">On-farm storage commissioned before first fill.</h3><p class="tab-track__panel-body">IOR supplies and commissions AS1940-compliant self-bunded storage tanks from 13kL to 100kL. All tanks are installed, documented, and ready before your first bulk delivery — no delays, no compliance risk.</p></div>
+          <div class="tab-track__panel-content">
+            <span class="eyebrow eyebrow--green" style="margin-bottom:8px;">Stage 2</span>
+            <h3 class="tab-track__panel-title">On-farm storage commissioned before first fill.</h3>
+            <p class="tab-track__panel-body">IOR supplies and commissions AS1940-compliant self-bunded storage tanks from 13kL to 100kL. All tanks are installed, documented, and ready before your first bulk delivery — no delays, no compliance risk.</p>
+            <div class="tab-track__panel-nav">
+              <button class="tab-track__panel-nav-btn" data-tt-goto="1"><span aria-hidden="true">&#8592;</span> Stage 1</button>
+              <button class="tab-track__panel-nav-btn tab-track__panel-nav-btn--next" data-tt-goto="3">Stage 3: Bulk Delivery <span aria-hidden="true">&#8594;</span></button>
+            </div>
+          </div>
           <div class="tab-track__panel-img"><div class="tab-track__panel-img-placeholder">Image Asset Pending: Self-bunded storage tank being installed at an agricultural property</div></div>
         </div>
         <div class="tab-track__panel" id="tt-panel-3" role="tabpanel" aria-labelledby="tt-btn-3">
-          <div class="tab-track__panel-content"><span class="eyebrow eyebrow--green">Stage 3</span><h3 style="font-size:clamp(22px,2.5vw,30px);font-weight:800;color:#fff;margin-bottom:16px;line-height:1.2;">Bulk diesel to your farm gate.</h3><p class="tab-track__panel-body">IOR's owned delivery fleet delivers bulk diesel directly to your farm gate on a scheduled or on-demand basis. Our rural delivery network covers all major Australian grain belts — Darling Downs, Riverina, Eyre Peninsula, and beyond.</p></div>
+          <div class="tab-track__panel-content">
+            <span class="eyebrow eyebrow--green" style="margin-bottom:8px;">Stage 3</span>
+            <h3 class="tab-track__panel-title">Bulk diesel to your farm gate.</h3>
+            <p class="tab-track__panel-body">IOR's owned delivery fleet delivers bulk diesel directly to your farm gate on a scheduled or on-demand basis. Our rural delivery network covers all major Australian grain belts — Darling Downs, Riverina, Eyre Peninsula, and beyond.</p>
+            <div class="tab-track__panel-nav">
+              <button class="tab-track__panel-nav-btn" data-tt-goto="2"><span aria-hidden="true">&#8592;</span> Stage 2</button>
+              <button class="tab-track__panel-nav-btn tab-track__panel-nav-btn--next" data-tt-goto="4">Stage 4: Fleet Management <span aria-hidden="true">&#8594;</span></button>
+            </div>
+          </div>
           <div class="tab-track__panel-img"><div class="tab-track__panel-img-placeholder">Image Asset Pending: IOR tanker delivering to a farm gate in a grain belt region</div></div>
         </div>
         <div class="tab-track__panel" id="tt-panel-4" role="tabpanel" aria-labelledby="tt-btn-4">
-          <div class="tab-track__panel-content"><span class="eyebrow eyebrow--green">Stage 4</span><h3 style="font-size:clamp(22px,2.5vw,30px);font-weight:800;color:#fff;margin-bottom:16px;line-height:1.2;">Fleet fuel managed from your phone.</h3><p class="tab-track__panel-body">The Fuelcharge App gives you real-time visibility over every litre your fleet consumes. Set limits by vehicle or operator, track spend across your operation, and access 115+ IOR diesel stops nationwide — all from a single dashboard.</p></div>
+          <div class="tab-track__panel-content">
+            <span class="eyebrow eyebrow--green" style="margin-bottom:8px;">Stage 4</span>
+            <h3 class="tab-track__panel-title">Fleet fuel managed from your phone.</h3>
+            <p class="tab-track__panel-body">The Fuelcharge App gives you real-time visibility over every litre your fleet consumes. Set limits by vehicle or operator, track spend across your operation, and access 115+ IOR diesel stops nationwide — all from a single dashboard.</p>
+            <div class="tab-track__panel-nav">
+              <button class="tab-track__panel-nav-btn" data-tt-goto="3"><span aria-hidden="true">&#8592;</span> Stage 3</button>
+              <button class="tab-track__panel-nav-btn tab-track__panel-nav-btn--next" data-tt-goto="5">Stage 5: Harvest Support <span aria-hidden="true">&#8594;</span></button>
+            </div>
+          </div>
           <div class="tab-track__panel-img"><div class="tab-track__panel-img-placeholder">Image Asset Pending: Fuelcharge App dashboard on a mobile device</div></div>
         </div>
         <div class="tab-track__panel" id="tt-panel-5" role="tabpanel" aria-labelledby="tt-btn-5">
-          <div class="tab-track__panel-content"><span class="eyebrow eyebrow--green">Stage 5</span><h3 style="font-size:clamp(22px,2.5vw,30px);font-weight:800;color:#fff;margin-bottom:16px;line-height:1.2;">Emergency response during harvest.</h3><p class="tab-track__panel-body">When unexpected demand spikes during harvest, IOR's emergency delivery capability means your operation does not stop. Our owned fleet and 115+ stop network gives us the flexibility to respond faster than any broker-dependent supplier.</p></div>
+          <div class="tab-track__panel-content">
+            <span class="eyebrow eyebrow--green" style="margin-bottom:8px;">Stage 5</span>
+            <h3 class="tab-track__panel-title">Emergency response during harvest.</h3>
+            <p class="tab-track__panel-body">When unexpected demand spikes during harvest, IOR's emergency delivery capability means your operation does not stop. Our owned fleet and 115+ stop network gives us the flexibility to respond faster than any broker-dependent supplier.</p>
+            <div class="tab-track__panel-nav">
+              <button class="tab-track__panel-nav-btn" data-tt-goto="4"><span aria-hidden="true">&#8592;</span> Stage 4</button>
+            </div>
+          </div>
           <div class="tab-track__panel-img"><div class="tab-track__panel-img-placeholder">Image Asset Pending: IOR tanker responding to an emergency agricultural delivery</div></div>
         </div>
       </div>
@@ -690,7 +759,7 @@ const hamburgerBtn=document.getElementById('hamburger-btn');const drawerClose=do
 const primaryNav=document.getElementById('primary-nav');if(primaryNav)window.addEventListener('scroll',()=>{primaryNav.classList.toggle('primary-nav--scrolled',window.scrollY>40);},{passive:true});
 document.querySelectorAll('.tabcordion__tab').forEach(tab=>{tab.addEventListener('click',()=>{const tc=tab.getAttribute('data-tc');document.querySelectorAll('.tabcordion__tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');});document.querySelectorAll('.tabcordion__panel').forEach(p=>p.classList.remove('active'));tab.classList.add('active');tab.setAttribute('aria-selected','true');const panel=document.getElementById('tc-panel-'+tc);if(panel)panel.classList.add('active');});});
 document.querySelectorAll('.tabcordion__acc-trigger').forEach(btn=>{btn.addEventListener('click',()=>{const bodyId=btn.getAttribute('aria-controls');const body=document.getElementById(bodyId);const isOpen=btn.getAttribute('aria-expanded')==='true';document.querySelectorAll('.tabcordion__acc-trigger').forEach(b=>{b.setAttribute('aria-expanded','false');});document.querySelectorAll('.tabcordion__acc-body').forEach(b=>{b.style.maxHeight='0';});if(!isOpen&&body){btn.setAttribute('aria-expanded','true');body.style.maxHeight=body.scrollHeight+'px';}});});
-document.querySelectorAll('.tab-track__btn').forEach(btn=>{btn.addEventListener('click',()=>{const tt=btn.getAttribute('data-tt');document.querySelectorAll('.tab-track__btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});document.querySelectorAll('.tab-track__panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');btn.setAttribute('aria-selected','true');const panel=document.getElementById('tt-panel-'+tt);if(panel)panel.classList.add('active');});});
+(function(){const steps=document.querySelectorAll('.tab-track__step');const panels=document.querySelectorAll('.tab-track__panel');const lineFill=document.getElementById('tt-line-fill');const nav=document.getElementById('tt-nav');const TOTAL=steps.length;function updateLineFill(idx){if(!lineFill||!nav||TOTAL<2)return;const pct=idx/(TOTAL-1);const navW=nav.offsetWidth;const padX=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--section-pad-x'))||40;const lineW=navW-(padX*2)-44;lineFill.style.width=(pct*lineW)+'px';}function activateStep(i){steps.forEach((s,j)=>{s.classList.toggle('active',j===i);s.setAttribute('aria-selected',j===i?'true':'false');});panels.forEach((p,j)=>p.classList.toggle('active',j===i));updateLineFill(i);}steps.forEach((btn,i)=>{btn.addEventListener('click',()=>activateStep(i));});document.querySelectorAll('[data-tt-goto]').forEach(btn=>{btn.addEventListener('click',()=>{const t=parseInt(btn.getAttribute('data-tt-goto'),10)-1;if(t>=0&&t<TOTAL)activateStep(t);});});updateLineFill(0);window.addEventListener('resize',()=>{const ai=Array.from(steps).findIndex(s=>s.classList.contains('active'));if(ai>-1)updateLineFill(ai);});})();
 document.querySelectorAll('.related-content__tab').forEach(tab=>{tab.addEventListener('click',()=>{const panelId=tab.getAttribute('aria-controls');document.querySelectorAll('.related-content__tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');});document.querySelectorAll('.related-tab-panel').forEach(p=>p.classList.remove('active'));tab.classList.add('active');tab.setAttribute('aria-selected','true');const panel=document.getElementById(panelId);if(panel)panel.classList.add('active');});});
 document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const answerId=btn.getAttribute('aria-controls');const answer=document.getElementById(answerId);const isOpen=btn.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-question').forEach(b=>b.setAttribute('aria-expanded','false'));document.querySelectorAll('.faq-answer').forEach(a=>a.style.maxHeight='0');if(!isOpen&&answer){btn.setAttribute('aria-expanded','true');answer.style.maxHeight=answer.scrollHeight+'px';}});});
 const fadeEls=document.querySelectorAll('.fade-up');if('IntersectionObserver' in window){const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('fade-up--visible');obs.unobserve(e.target);}});},{threshold:0.12});fadeEls.forEach(el=>obs.observe(el));}else{fadeEls.forEach(el=>el.classList.add('fade-up--visible'));}
