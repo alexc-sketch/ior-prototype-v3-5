@@ -148,8 +148,24 @@
     .footer-social__icon:hover { background: rgba(255,255,255,.15); border-color: #fff; }
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
     .fade-up.is-visible { opacity: 1; transform: translateY(0); }
-    @media (max-width: 1024px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } .team-grid { grid-template-columns: repeat(2, 1fr); } .intro-band__inner { grid-template-columns: 1fr; gap: 40px; } }
+    .ior-family { background: var(--ior-navy); padding: clamp(60px, 8vw, 100px) var(--section-pad-x); overflow: hidden; }
+    .ior-family__inner { max-width: 1280px; margin: 0 auto; }
+    .ior-family__header { max-width: 640px; margin-bottom: 48px; }
+    .ior-family__heading { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; color: #fff; line-height: 1.15; margin-top: 8px; margin-bottom: 16px; }
+    .ior-family__body { font-size: clamp(15px, 1.6vw, 17px); color: rgba(255,255,255,.8); line-height: 1.75; }
+    .ior-family__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-sky); }
+    .gallery-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .gallery-item { position: relative; overflow: hidden; aspect-ratio: 4/3; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item__caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 14px; background: linear-gradient(to top, rgba(10,34,64,.85) 0%, transparent 100%); font-size: 12px; font-weight: 600; color: rgba(255,255,255,.9); opacity: 0; transition: opacity .3s; }
+    .gallery-item:hover .gallery-item__caption { opacity: 1; }
+    .gallery-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; text-align: center; }
+    .gallery-ph__icon { color: rgba(255,255,255,.25); }
+    .gallery-ph__label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .05em; line-height: 1.4; }
+    @media (max-width: 1024px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } .team-grid { grid-template-columns: repeat(2, 1fr); } .intro-band__inner { grid-template-columns: 1fr; gap: 40px; } .gallery-strip { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 768px) { .nav-links, .nav-ctas { display: none; } .hamburger { display: flex; margin-left: auto; } .team-grid { grid-template-columns: 1fr; } .footer-nav-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; } .pre-footer__row { flex-direction: column; align-items: flex-start; } .intro-band__stats { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .gallery-strip { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 480px) { .footer-nav-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -320,8 +336,12 @@
     <div class="quick-links-bar__inner">
       <span class="quick-links-bar__label">Explore Careers:</span>
       <a href="10_Careers_v2.html" class="quick-links-bar__link">Careers Hub</a>
-      <a href="10a_Entry_Pathways.html" class="quick-links-bar__link">Entry Pathways</a>
       <a href="10b_Meet_The_Team.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">Meet Our People</a>
+      <a href="10a_Entry_Pathways.html" class="quick-links-bar__link">Entry Pathways</a>
+      <a href="10c_Apprentices.html" class="quick-links-bar__link">Apprentices</a>
+      <a href="10d_Graduates.html" class="quick-links-bar__link">Graduates</a>
+      <a href="10e_School_Based.html" class="quick-links-bar__link">School Based</a>
+      <a href="10f_Trainees.html" class="quick-links-bar__link">Trainees</a>
       <a href="https://www.seek.com.au/ior-jobs" class="quick-links-bar__link" target="_blank" rel="noopener noreferrer">Current Jobs &#8599;</a>
     </div>
   </nav>
@@ -370,7 +390,7 @@
     <section class="section-pad" aria-label="Team stories">
       <div class="inner">
         <p class="eyebrow fade-up">Team Stories</p>
-        <h2 class="section-heading fade-up">Hear it from the team</h2>
+        <h2 class="section-heading fade-up">Hear it from the team.</h2>
         <p class="section-lead fade-up">Six IOR team members. Six different journeys. One shared commitment to doing the job right.</p>
 
         <div class="team-grid">
@@ -445,6 +465,65 @@
               <div class="team-card__role">Supply &amp; Infrastructure</div>
               <p class="team-card__quote">"The culture here is what keeps me. People look out for each other. That matters."</p>
             </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- IOR FAMILY CAROUSEL -->
+    <section class="ior-family" aria-label="The IOR Family">
+      <div class="ior-family__inner">
+        <div class="ior-family__header fade-up">
+          <p class="ior-family__eyebrow">The IOR Family</p>
+          <h2 class="ior-family__heading">Mates looking after mates.</h2>
+          <p class="ior-family__body">Take a look at life behind the scenes. From Blue Squad social events to outback depots and state-of-the-art workshops, this is what it looks like to live blue.</p>
+        </div>
+        <div class="gallery-strip fade-up">
+
+          <!-- Image 1 -->
+          <div class="gallery-item">
+            <div class="gallery-ph">
+              <svg class="gallery-ph__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <p class="gallery-ph__label">IOR Blue Squad social gathering</p>
+            </div>
+            <div class="gallery-item__caption">Blue Squad Social Event</div>
+          </div>
+
+          <!-- Image 2 -->
+          <div class="gallery-item">
+            <div class="gallery-ph">
+              <svg class="gallery-ph__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <p class="gallery-ph__label">Driver in Kenworth cab, thumbs up</p>
+            </div>
+            <div class="gallery-item__caption">On the Road</div>
+          </div>
+
+          <!-- Image 3 -->
+          <div class="gallery-item">
+            <div class="gallery-ph">
+              <svg class="gallery-ph__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <p class="gallery-ph__label">Mechanics in workshop, under the hood</p>
+            </div>
+            <div class="gallery-item__caption">Workshop Team</div>
+          </div>
+
+          <!-- Image 4 -->
+          <div class="gallery-item">
+            <div class="gallery-ph">
+              <svg class="gallery-ph__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <p class="gallery-ph__label">Office team collaborating, Cannon Hill HQ</p>
+            </div>
+            <div class="gallery-item__caption">Cannon Hill HQ</div>
+          </div>
+
+          <!-- Image 5 -->
+          <div class="gallery-item">
+            <div class="gallery-ph">
+              <svg class="gallery-ph__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <p class="gallery-ph__label">Aviation crew refuelling LifeFlight helicopter</p>
+            </div>
+            <div class="gallery-item__caption">Aviation Crew</div>
           </div>
 
         </div>
