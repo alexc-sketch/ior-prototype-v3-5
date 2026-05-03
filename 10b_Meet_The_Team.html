@@ -91,8 +91,13 @@
     .quick-links-bar__link { display: inline-flex; align-items: center; gap: 4px; padding: 10px 11px; font-size: 13px; font-weight: 700; color: var(--ior-navy); white-space: nowrap; border-bottom: 2px solid transparent; transition: all .2s; min-height: 44px; }
     .quick-links-bar__link:hover { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
     .quick-links-bar__link--active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
-    .hero { background: var(--ior-navy); padding: clamp(60px, 8vw, 100px) var(--section-pad-x); display: flex; align-items: center; }
-    .hero__content { max-width: 680px; display: flex; flex-direction: column; gap: 16px; }
+    .hero { background: var(--ior-navy); padding: 0 var(--section-pad-x); display: flex; align-items: stretch; min-height: clamp(420px, 55vw, 600px); position: relative; overflow: hidden; }
+    .hero__content { max-width: 600px; display: flex; flex-direction: column; gap: 16px; justify-content: center; padding: clamp(60px, 8vw, 100px) 0; flex: 1; position: relative; z-index: 2; }
+    .hero__image { flex: 0 0 45%; position: relative; overflow: hidden; }
+    .hero__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero__image-ph { width: 100%; height: 100%; background: rgba(255,255,255,.05); border: 2px dashed rgba(255,255,255,.2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 32px; text-align: center; min-height: 400px; }
+    .hero__image-ph svg { color: rgba(255,255,255,.2); }
+    .hero__image-ph__label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.35); line-height: 1.6; }
     .hero__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-sky); }
     .hero__headline { font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: #fff; line-height: 1.05; }
     .hero__sub { font-size: clamp(16px, 2vw, 20px); color: rgba(255,255,255,.85); max-width: 560px; line-height: 1.6; }
@@ -165,8 +170,8 @@
     .gallery-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; text-align: center; }
     .gallery-ph__icon { color: rgba(255,255,255,.25); }
     .gallery-ph__label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .05em; line-height: 1.4; }
-    @media (max-width: 1024px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } .team-grid { grid-template-columns: repeat(2, 1fr); } .intro-band__inner { grid-template-columns: 1fr; gap: 40px; } .gallery-strip { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 768px) { .nav-links, .nav-ctas { display: none; } .hamburger { display: flex; margin-left: auto; } .team-grid { grid-template-columns: 1fr; } .footer-nav-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; } .pre-footer__row { flex-direction: column; align-items: flex-start; } .intro-band__stats { grid-template-columns: 1fr; } }
+    @media (max-width: 1024px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } .team-grid { grid-template-columns: repeat(2, 1fr); } .intro-band__inner { grid-template-columns: 1fr; gap: 40px; } .gallery-strip { grid-template-columns: repeat(3, 1fr); } .hero { flex-direction: column; } .hero__image { flex: 0 0 auto; width: 100%; min-height: 280px; } .hero__image-ph { min-height: 280px; } }
+    @media (max-width: 768px) { .nav-links, .nav-ctas { display: none; } .hamburger { display: flex; margin-left: auto; } .team-grid { grid-template-columns: 1fr; } .footer-nav-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; } .pre-footer__row { flex-direction: column; align-items: flex-start; } .intro-band__stats { grid-template-columns: 1fr; } .hero__image { display: none; } }
     @media (max-width: 640px) { .gallery-strip { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 480px) { .footer-nav-grid { grid-template-columns: 1fr; } }
   </style>
@@ -346,6 +351,12 @@
           <a href="10a_Entry_Pathways.html" class="btn btn--outline-white btn--pill">View Entry Pathways &#8599;</a>
         </div>
       </div>
+      <div class="hero__image">
+        <div class="hero__image-ph">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span class="hero__image-ph__label">Asset Required<br>Team members hero photography<br>1920 &times; 800px recommended<br>IOR Blue Squad / field team candid</span>
+        </div>
+      </div>
     </section>
 
     <!-- QUICK LINKS BAR -->
@@ -373,20 +384,20 @@
         </div>
         <div class="intro-band__stats fade-up">
           <div class="stat-card">
-            <div class="stat-card__number">500+</div>
-            <div class="stat-card__label">Team Members Nationwide</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card__number">35+</div>
+            <div class="stat-card__number">40+</div>
             <div class="stat-card__label">Years Fuelling Australia</div>
           </div>
           <div class="stat-card">
-            <div class="stat-card__number">6</div>
-            <div class="stat-card__label">States &amp; Territories</div>
+            <div class="stat-card__number">1.6B</div>
+            <div class="stat-card__label">Litres Delivered Annually</div>
           </div>
           <div class="stat-card">
-            <div class="stat-card__number">100+</div>
-            <div class="stat-card__label">Locations Serviced</div>
+            <div class="stat-card__number">7,000+</div>
+            <div class="stat-card__label">Active Commercial Customers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__number">155+</div>
+            <div class="stat-card__label">Sites Across Australia</div>
           </div>
         </div>
       </div>
