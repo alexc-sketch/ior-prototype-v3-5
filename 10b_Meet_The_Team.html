@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meet the Team | IOR Careers</title>
+  <meta name="description" content="Hear directly from the IOR team. Real stories from real people about what it means to build a career at IOR.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ior-blue: #0355A3; --ior-navy: #0A2240; --ior-sky: #5BB4E5;
+      --grey-100: #F5F6F8; --grey-200: #E8EAED; --grey-700: #4A5568;
+      --grey-900: #1A1A1A; --white: #FFFFFF;
+      --radius-none: 0px; --radius-pill: 100px;
+      --font-primary: 'Inter', sans-serif;
+      --section-pad-x: clamp(20px, 5vw, 80px);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-primary); color: var(--grey-900); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+    .proto-bar { background: #0A2240; color: rgba(255,255,255,.7); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 6px 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .proto-bar a { color: rgba(255,255,255,.7); transition: color .2s; }
+    .proto-bar a:hover { color: #fff; }
+    .proto-bar__sep { color: rgba(255,255,255,.3); }
+    .proto-bar__label { color: #5BB4E5; }
+    .proto-bar__current { color: #fff; }
+    .utility-bar { background: var(--ior-blue); }
+    .utility-bar__inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: flex-end; gap: 0; height: 36px; }
+    .utility-bar__link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,.85); padding: 0 14px; height: 36px; transition: color .2s; }
+    .utility-bar__link:hover { color: #fff; }
+    .utility-bar__divider { width: 1px; height: 16px; background: rgba(255,255,255,.25); }
+    .primary-nav { background: #fff; border-bottom: 1px solid var(--grey-200); position: sticky; top: 0; z-index: 200; }
+    .primary-nav--scrolled { box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 32px; height: 72px; }
+    .nav-logo { flex-shrink: 0; display: flex; align-items: center; }
+    .nav-links { display: flex; list-style: none; gap: 4px; flex: 1; }
+    .nav-link { font-size: 14px; font-weight: 500; color: var(--grey-700); padding: 8px 12px; background: none; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: color .2s; white-space: nowrap; }
+    .nav-link:hover { color: var(--ior-blue); }
+    .nav-link--active { color: var(--ior-blue); font-weight: 700; }
+    .nav-chevron { display: inline-flex; align-items: center; transition: transform .2s; }
+    .nav-ctas { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; padding: 10px 20px; border: 2px solid transparent; cursor: pointer; transition: background .2s, color .2s, border-color .2s; border-radius: var(--radius-none); text-decoration: none; white-space: nowrap; }
+    .btn--primary { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
+    .btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
+    .btn--outline { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+    .btn--outline:hover { background: var(--ior-blue); color: #fff; }
+    .btn--white { background: #fff; color: var(--ior-navy); border-color: #fff; }
+    .btn--white:hover { background: var(--grey-100); }
+    .btn--outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+    .btn--outline-white:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+    .btn--pill { border-radius: var(--radius-pill); }
+    .btn__arrow::after { content: '\2192'; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--grey-700); transition: transform .3s, opacity .3s; }
+    .mega-panel { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; border-top: 2px solid var(--ior-blue); box-shadow: 0 8px 32px rgba(0,0,0,.12); z-index: 190; }
+    .mega-panel.is-open { display: block; }
+    .mega-inner { max-width: 1280px; margin: 0 auto; padding: 32px 24px; display: grid; gap: 32px; }
+    .mega-inner--4col { grid-template-columns: repeat(4,1fr); }
+    .mega-inner--3col { grid-template-columns: repeat(3,1fr); }
+    .mega-inner--2col { grid-template-columns: repeat(2,1fr); }
+    .mega-col__title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
+    .mega-col__links { display: flex; flex-direction: column; gap: 8px; }
+    .mega-col__link { font-size: 14px; color: var(--grey-700); transition: color .2s; }
+    .mega-col__link:hover { color: var(--ior-blue); }
+    .drawer-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 290; }
+    .drawer-overlay.is-open { display: block; }
+    .drawer { position: fixed; top: 0; right: -320px; width: 300px; height: 100%; background: var(--ior-navy); z-index: 300; overflow-y: auto; transition: right .3s ease; display: flex; flex-direction: column; }
+    .drawer.is-open { right: 0; }
+    .drawer__header { display: flex; align-items: center; justify-content: space-between; padding: 20px 20px 16px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .drawer__close { background: none; border: none; color: rgba(255,255,255,.7); font-size: 24px; cursor: pointer; padding: 4px; }
+    .drawer__close:hover { color: #fff; }
+    .drawer__nav { display: flex; flex-direction: column; flex: 1; padding: 8px 0; }
+    .drawer__item { border-bottom: 1px solid rgba(255,255,255,.06); }
+    .drawer__link { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 20px; font-size: 15px; font-weight: 600; color: rgba(255,255,255,.9); background: none; border: none; cursor: pointer; text-align: left; transition: background .2s; }
+    .drawer__link:hover { background: rgba(255,255,255,.06); }
+    .drawer__chevron { transition: transform .2s; }
+    .drawer__sub { display: none; flex-direction: column; background: rgba(0,0,0,.2); }
+    .drawer__sub.is-open { display: flex; }
+    .drawer__sub-link { padding: 10px 20px 10px 32px; font-size: 14px; color: rgba(255,255,255,.7); transition: color .2s; }
+    .drawer__sub-link:hover { color: #fff; }
+    .drawer__cta { padding: 20px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(255,255,255,.1); }
+    .quick-links-bar { background: var(--grey-100); border-bottom: 1px solid rgba(3,85,163,.15); padding: 0 var(--section-pad-x); }
+    .quick-links-bar__inner { max-width: 1280px; margin-inline: auto; display: flex; align-items: center; gap: 0; overflow-x: auto; }
+    .quick-links-bar__label { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ior-blue); white-space: nowrap; padding: 12px 20px 12px 0; border-right: 1px solid rgba(3,85,163,.2); margin-right: 4px; flex-shrink: 0; }
+    .quick-links-bar__link { display: inline-flex; align-items: center; gap: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: var(--ior-navy); white-space: nowrap; border-bottom: 2px solid transparent; transition: all .2s; min-height: 44px; }
+    .quick-links-bar__link:hover { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+    .quick-links-bar__link--active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+    .hero { background: var(--ior-navy); padding: clamp(60px, 8vw, 100px) var(--section-pad-x); display: flex; align-items: center; }
+    .hero__content { max-width: 680px; display: flex; flex-direction: column; gap: 16px; }
+    .hero__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-sky); }
+    .hero__headline { font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: #fff; line-height: 1.05; }
+    .hero__sub { font-size: clamp(16px, 2vw, 20px); color: rgba(255,255,255,.85); max-width: 560px; line-height: 1.6; }
+    .section-pad { padding: clamp(60px, 8vw, 100px) var(--section-pad-x); }
+    .inner { max-width: 1280px; margin: 0 auto; }
+    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); }
+    .section-heading { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; color: var(--ior-navy); line-height: 1.15; margin-top: 8px; margin-bottom: 16px; }
+    .section-lead { font-size: clamp(16px, 1.8vw, 18px); color: var(--grey-700); max-width: 720px; line-height: 1.7; margin-bottom: 48px; }
+    .intro-band { background: var(--grey-100); padding: clamp(40px, 5vw, 64px) var(--section-pad-x); border-bottom: 1px solid var(--grey-200); }
+    .intro-band__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .intro-band__text { display: flex; flex-direction: column; gap: 16px; }
+    .intro-band__heading { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--ior-navy); line-height: 1.15; }
+    .intro-band__body { font-size: 16px; color: var(--grey-700); line-height: 1.75; }
+    .intro-band__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .stat-card { background: #fff; border-top: 3px solid var(--ior-blue); padding: 24px; display: flex; flex-direction: column; gap: 4px; }
+    .stat-card__number { font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: var(--ior-blue); line-height: 1; }
+    .stat-card__label { font-size: 13px; font-weight: 600; color: var(--grey-700); text-transform: uppercase; letter-spacing: .04em; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .team-card { display: flex; flex-direction: column; background: var(--grey-100); border-top: 3px solid var(--ior-blue); overflow: hidden; transition: box-shadow .25s, transform .25s; }
+    .team-card:hover { box-shadow: 0 8px 32px rgba(3,85,163,.14); transform: translateY(-3px); }
+    .team-card__video { position: relative; width: 100%; padding-bottom: 56.25%; background: var(--ior-navy); overflow: hidden; }
+    .team-card__video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .team-card__body { padding: 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .team-card__name { font-size: 18px; font-weight: 700; color: var(--ior-blue); }
+    .team-card__role { font-size: 13px; font-weight: 600; color: var(--grey-700); text-transform: uppercase; letter-spacing: .04em; }
+    .team-card__quote { font-size: 15px; color: var(--grey-700); line-height: 1.65; font-style: italic; margin-top: 4px; border-left: 3px solid var(--ior-sky); padding-left: 14px; }
+    .cta-band { background: var(--ior-blue); padding: clamp(48px, 6vw, 80px) var(--section-pad-x); text-align: center; }
+    .cta-band__inner { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; align-items: center; }
+    .cta-band__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-sky); }
+    .cta-band__heading { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; color: #fff; line-height: 1.15; }
+    .cta-band__sub { font-size: 16px; color: rgba(255,255,255,.85); line-height: 1.65; }
+    .cta-band__actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .pre-footer { background: var(--ior-navy); padding: 56px 0; }
+    .pre-footer__row { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .pre-footer__title { font-size: clamp(22px, 3vw, 28px); font-weight: 700; color: var(--white); }
+    .pre-footer__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .site-footer { background: var(--ior-blue); padding: 56px 0 0; border-top: 1px solid rgba(255,255,255,.1); }
+    .footer-nav-grid { max-width: 1280px; margin: 0 auto; padding: 0 24px 48px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; }
+    .footer-col__title { font-size: clamp(13px, 1.3vw, 16px); font-weight: 800; color: #fff; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .footer-col__links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col__link { font-size: clamp(12px, 1.2vw, 14px); color: rgba(255,255,255,.8); min-height: 44px; display: flex; align-items: center; }
+    .footer-col__link:hover { color: #fff; text-decoration: underline; }
+    .footer-col__link--address { font-size: 14px; color: rgba(255,255,255,.9); line-height: 1.6; display: block; }
+    .footer-col__link--icon { display: flex; align-items: center; gap: 8px; }
+    .footer-col__link--icon svg { flex-shrink: 0; margin-top: 2px; }
+    .footer-state-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .footer-state-pill { display: inline-flex; align-items: center; padding: 4px 12px; border: 1px solid rgba(255,255,255,.4); color: #fff; font-size: 13px; font-weight: 700; transition: all .2s; min-height: 44px; }
+    .footer-state-pill:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+    .footer-legal { max-width: 1280px; margin-inline: auto; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.2); flex-wrap: wrap; gap: 16px; }
+    .footer-legal__text { font-size: 12px; color: rgba(255,255,255,.6); }
+    .footer-legal__link--muted { color: rgba(255,255,255,.6); text-decoration: underline; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social__icon { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; transition: all .2s; }
+    .footer-social__icon:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-up.is-visible { opacity: 1; transform: translateY(0); }
+    .ior-family { background: var(--ior-navy); padding: clamp(60px, 8vw, 100px) var(--section-pad-x); overflow: hidden; }
+    .ior-family__inner { max-width: 1280px; margin: 0 auto; }
+    .ior-family__header { max-width: 640px; margin-bottom: 48px; }
+    .ior-family__heading { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; color: #fff; line-height: 1.15; margin-top: 8px; margin-bottom: 16px; }
+    .ior-family__body { font-size: clamp(15px, 1.6vw, 17px); color: rgba(255,255,255,.8); line-height: 1.75; }
+    .ior-family__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-sky); }
+    .gallery-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .gallery-item { position: relative; overflow: hidden; aspect-ratio: 4/3; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item__caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 14px; background: linear-gradient(to top, rgba(10,34,64,.85) 0%, transparent 100%); font-size: 12px; font-weight: 600; color: rgba(255,255,255,.9); opacity: 0; transition: opacity .3s; }
+    .gallery-item:hover .gallery-item__caption { opacity: 1; }
+    .gallery-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; text-align: center; }
+    .gallery-ph__icon { color: rgba(255,255,255,.25); }
+    .gallery-ph__label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .05em; line-height: 1.4; }
+    @media (max-width: 1024px) { .footer-nav-grid { grid-template-columns: repeat(3, 1fr); } .team-grid { grid-template-columns: repeat(2, 1fr); } .intro-band__inner { grid-template-columns: 1fr; gap: 40px; } .gallery-strip { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px) { .nav-links, .nav-ctas { display: none; } .hamburger { display: flex; margin-left: auto; } .team-grid { grid-template-columns: 1fr; } .footer-nav-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; } .pre-footer__row { flex-direction: column; align-items: flex-start; } .intro-band__stats { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .gallery-strip { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .footer-nav-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- PROTO-BAR -->
+  <div class="proto-bar" role="navigation" aria-label="Prototype navigation">
+    <span class="proto-bar__label">PROTO v5</span>
+    <span class="proto-bar__sep">/</span>
+    <a href="00_Client_Preview.html">&#8592; Client Preview</a>
+    <span class="proto-bar__sep">/</span>
+    <a href="00_Global_Components.html">Global Components</a>
+    <span class="proto-bar__sep">/</span>
+    <a href="10_Careers_v2.html">Careers Hub</a>
+    <span class="proto-bar__sep">/</span>
+    <span class="proto-bar__current">Meet the Team</span>
+  </div>
+
+  <!-- UTILITY BAR -->
+  <div class="utility-bar">
+    <div class="utility-bar__inner">
+      <a href="11d_Find_Locationv5.html" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Find a Location
+      </a>
+      <div class="utility-bar__divider" aria-hidden="true"></div>
+      <a href="11e_Make_Paymentv5.html" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        Make a Payment
+      </a>
+      <div class="utility-bar__divider" aria-hidden="true"></div>
+      <a href="tel:1300457467" class="utility-bar__link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        1300 457 467
+      </a>
+    </div>
+  </div>
+
+  <!-- PRIMARY NAV -->
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">
+        <svg width="90" height="42" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g clip-path="url(#ior-logo-mtt)">
+            <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/>
+            <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/>
+            <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/>
+            <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/>
+          </g>
+          <defs><clipPath id="ior-logo-mtt"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
+        </svg>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><button class="nav-link" data-menu="fuel-solutions" aria-expanded="false" aria-haspopup="true">Fuel Solutions <span class="nav-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link" data-menu="digital-platforms" aria-expanded="false" aria-haspopup="true">Digital Platforms <span class="nav-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link" data-menu="industries" aria-expanded="false" aria-haspopup="true">Industries We Serve <span class="nav-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link nav-link--active" data-menu="about-ior" aria-expanded="false" aria-haspopup="true">About IOR <span class="nav-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+        <li><button class="nav-link" data-menu="support-contact" aria-expanded="false" aria-haspopup="true">Support &amp; Contact <span class="nav-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="#" class="btn btn--outline btn--pill">Customer Login &#8594;</a>
+        <a href="#" class="btn btn--primary btn--pill">Apply for an Account &#8594;</a>
+      </div>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <!-- Mega: Fuel Solutions -->
+    <div class="mega-panel" id="mega-fuel-solutions" role="region" aria-label="Fuel Solutions menu">
+      <div class="mega-inner mega-inner--4col">
+        <div class="mega-col"><p class="mega-col__title">Ground Fuels</p><div class="mega-col__links"><a href="#" class="mega-col__link">On-Site Refuelling</a><a href="#" class="mega-col__link">Bulk Diesel Supply</a><a href="#" class="mega-col__link">Fleet Fuelling</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Aviation</p><div class="mega-col__links"><a href="#" class="mega-col__link">Avgas</a><a href="#" class="mega-col__link">Jet A-1</a><a href="#" class="mega-col__link">Into-Plane Fuelling</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Equipment &amp; Infrastructure</p><div class="mega-col__links"><a href="#" class="mega-col__link">Storage Tanks</a><a href="#" class="mega-col__link">Dispensing Equipment</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Supply &amp; Trading</p><div class="mega-col__links"><a href="#" class="mega-col__link">Fuel Procurement</a><a href="#" class="mega-col__link">Price Risk Management</a></div></div>
+      </div>
+    </div>
+    <!-- Mega: Digital Platforms -->
+    <div class="mega-panel" id="mega-digital-platforms" role="region" aria-label="Digital Platforms menu">
+      <div class="mega-inner mega-inner--3col">
+        <div class="mega-col"><p class="mega-col__title">Platforms</p><div class="mega-col__links"><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v4.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Features</p><div class="mega-col__links"><a href="#" class="mega-col__link">Fuel Monitoring</a><a href="#" class="mega-col__link">Reporting &amp; Analytics</a><a href="#" class="mega-col__link">Fleet Management</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Resources</p><div class="mega-col__links"><a href="#" class="mega-col__link">Product Brochures</a><a href="#" class="mega-col__link">Case Studies</a></div></div>
+      </div>
+    </div>
+    <!-- Mega: Industries We Serve -->
+    <div class="mega-panel" id="mega-industries" role="region" aria-label="Industries We Serve menu">
+      <div class="mega-inner mega-inner--4col">
+        <div class="mega-col"><p class="mega-col__title">Mining &amp; Resources</p><div class="mega-col__links"><a href="#" class="mega-col__link">Open Cut Mining</a><a href="#" class="mega-col__link">Underground Mining</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Agriculture</p><div class="mega-col__links"><a href="#" class="mega-col__link">Cropping &amp; Grazing</a><a href="#" class="mega-col__link">Horticulture</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Transport &amp; Logistics</p><div class="mega-col__links"><a href="#" class="mega-col__link">Road Transport</a><a href="#" class="mega-col__link">Fleet Operators</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Construction</p><div class="mega-col__links"><a href="#" class="mega-col__link">Civil Construction</a><a href="#" class="mega-col__link">Building &amp; Infrastructure</a></div></div>
+      </div>
+    </div>
+    <!-- Mega: About IOR -->
+    <div class="mega-panel" id="mega-about-ior" role="region" aria-label="About IOR menu">
+      <div class="mega-inner mega-inner--2col">
+        <div class="mega-col"><p class="mega-col__title">About IOR</p><div class="mega-col__links"><a href="09_About_IOR_v2.html" class="mega-col__link">About Us</a><a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a><a href="09b_Community.html" class="mega-col__link">Community &amp; Giving Back</a><a href="09c_Sustainability.html" class="mega-col__link">Sustainability, HSE &amp; ESG</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">More</p><div class="mega-col__links"><a href="09d_Case_Studies.html" class="mega-col__link">Case Studies</a><a href="10_Careers_v2.html" class="mega-col__link">Careers</a><a href="11c_News_Updates.html" class="mega-col__link">News &amp; Updates</a></div></div>
+      </div>
+    </div>
+    <!-- Mega: Support & Contact -->
+    <div class="mega-panel" id="mega-support-contact" role="region" aria-label="Support and Contact menu">
+      <div class="mega-inner mega-inner--2col">
+        <div class="mega-col"><p class="mega-col__title">Support</p><div class="mega-col__links"><a href="11a_Contact_Usv5.html" class="mega-col__link">Contact Us</a><a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a><a href="11_Support_Hubv5.html" class="mega-col__link">Help Centre &amp; FAQs</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Quick Actions</p><div class="mega-col__links"><a href="#" class="mega-col__link">Apply for an Account</a><a href="11e_Make_Paymentv5.html" class="mega-col__link">Make a Payment</a><a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a></div></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+  <nav class="drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="drawer__header">
+      <svg width="72" height="34" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="IOR logo" role="img">
+        <g clip-path="url(#ior-drawer-mtt)">
+          <path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="white"/>
+          <path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#5BB4E5"/>
+          <path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="white"/>
+          <path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="white"/>
+        </g>
+        <defs><clipPath id="ior-drawer-mtt"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs>
+      </svg>
+      <button class="drawer__close" id="drawer-close" aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="drawer__nav">
+      <div class="drawer__item">
+        <button class="drawer__link" data-drawer-toggle="drawer-fuel-mtt">Fuel Solutions <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer__sub" id="drawer-fuel-mtt">
+          <a href="#" class="drawer__sub-link">On-Site Refuelling</a>
+          <a href="#" class="drawer__sub-link">Bulk Diesel Supply</a>
+          <a href="#" class="drawer__sub-link">Aviation</a>
+        </div>
+      </div>
+      <div class="drawer__item">
+        <button class="drawer__link" data-drawer-toggle="drawer-digital-mtt">Digital Platforms <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer__sub" id="drawer-digital-mtt">
+          <a href="07a_HyDip_FMSv6.html" class="drawer__sub-link">HyDip&#8482; FMS</a>
+          <a href="07b_Fuelcharge_App_v4.html" class="drawer__sub-link">Fuelcharge App</a>
+          <a href="07c_Customer_Portalv5.html" class="drawer__sub-link">Customer Portal</a>
+        </div>
+      </div>
+      <div class="drawer__item">
+        <button class="drawer__link" data-drawer-toggle="drawer-industries-mtt">Industries We Serve <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer__sub" id="drawer-industries-mtt">
+          <a href="#" class="drawer__sub-link">Mining &amp; Resources</a>
+          <a href="#" class="drawer__sub-link">Agriculture</a>
+          <a href="#" class="drawer__sub-link">Transport &amp; Logistics</a>
+        </div>
+      </div>
+      <div class="drawer__item">
+        <button class="drawer__link" data-drawer-toggle="drawer-about-mtt">About IOR <svg class="drawer__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="drawer__sub" id="drawer-about-mtt">
+          <a href="09_About_IOR_v2.html" class="drawer__sub-link">About Us</a>
+          <a href="09a_Our_Leadershipv5.html" class="drawer__sub-link">Our Leadership</a>
+          <a href="10_Careers_v2.html" class="drawer__sub-link">Careers</a>
+        </div>
+      </div>
+      <div class="drawer__item"><a href="11a_Contact_Usv5.html" class="drawer__link">Support &amp; Contact</a></div>
+    </nav>
+    <div class="drawer__cta">
+      <a href="#" class="btn btn--primary btn--pill">Apply for an Account</a>
+      <a href="11e_Make_Paymentv5.html" class="btn btn--outline-white btn--pill">Make a Payment</a>
+    </div>
+  </nav>
+
+  <!-- QUICK LINKS BAR -->
+  <nav class="quick-links-bar" aria-label="Explore Careers">
+    <div class="quick-links-bar__inner">
+      <span class="quick-links-bar__label">Explore Careers:</span>
+      <a href="10_Careers_v2.html" class="quick-links-bar__link">Careers Hub</a>
+      <a href="10b_Meet_The_Team.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">Meet Our People</a>
+      <a href="10a_Entry_Pathways.html" class="quick-links-bar__link">Entry Pathways</a>
+      <a href="10c_Apprentices.html" class="quick-links-bar__link">Apprentices</a>
+      <a href="10d_Graduates.html" class="quick-links-bar__link">Graduates</a>
+      <a href="10e_School_Based.html" class="quick-links-bar__link">School Based</a>
+      <a href="10f_Trainees.html" class="quick-links-bar__link">Trainees</a>
+      <a href="https://www.seek.com.au/ior-jobs" class="quick-links-bar__link" target="_blank" rel="noopener noreferrer">Current Jobs &#8599;</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Meet the Team hero">
+      <div class="hero__content">
+        <p class="hero__eyebrow fade-up">IOR Careers</p>
+        <h1 class="hero__headline fade-up">Meet the people who keep Australia moving.</h1>
+        <p class="hero__sub fade-up">Real stories. Real careers. Hear directly from the IOR team about what it means to work here.</p>
+      </div>
+    </section>
+
+    <!-- INTRO BAND -->
+    <section class="intro-band" aria-label="About our people">
+      <div class="intro-band__inner">
+        <div class="intro-band__text fade-up">
+          <p class="eyebrow">Our People</p>
+          <h2 class="intro-band__heading">More than a job. A career worth talking about.</h2>
+          <p class="intro-band__body">At IOR, our people are the reason we can deliver fuel reliably to some of Australia's most remote and demanding locations. From apprentices just starting out to experienced operators with decades of service, every person plays a part in keeping Australia moving. We asked six of our team members to share their stories in their own words.</p>
+        </div>
+        <div class="intro-band__stats fade-up">
+          <div class="stat-card">
+            <div class="stat-card__number">500+</div>
+            <div class="stat-card__label">Team Members Nationwide</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__number">35+</div>
+            <div class="stat-card__label">Years Fuelling Australia</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__number">6</div>
+            <div class="stat-card__label">States &amp; Territories</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__number">100+</div>
+            <div class="stat-card__label">Locations Serviced</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM VIDEO GRID -->
+    <section class="section-pad" aria-label="Team stories">
+      <div class="inner">
+        <p class="eyebrow fade-up">Team Stories</p>
+        <h2 class="section-heading fade-up">Hear it from the team.</h2>
+        <p class="section-lead fade-up">Six IOR team members. Six different journeys. One shared commitment to doing the job right.</p>
+
+        <div class="team-grid">
+
+          <!-- Tahlia -->
+          <div class="team-card fade-up">
+            <div class="team-card__video">
+              <iframe src="https://www.youtube.com/embed/jfRvKBQEN7U?rel=0&modestbranding=1" title="Tahlia's story at IOR" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Tahlia</div>
+              <div class="team-card__role">Operations</div>
+              <p class="team-card__quote">"IOR gave me the opportunity to grow from day one. The support here is genuine."</p>
+            </div>
+          </div>
+
+          <!-- Risky -->
+          <div class="team-card fade-up">
+            <div class="team-card__video">
+              <iframe src="https://www.youtube.com/embed/fKv96fMT6gE?rel=0&modestbranding=1" title="Risky's story at IOR" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Risky</div>
+              <div class="team-card__role">Logistics &amp; Distribution</div>
+              <p class="team-card__quote">"Every day is different. I love that I'm trusted to make decisions and get the job done."</p>
+            </div>
+          </div>
+
+          <!-- Dylan -->
+          <div class="team-card fade-up">
+            <div class="team-card__video">
+              <iframe src="https://www.youtube.com/embed/WCXTJTDkkwU?rel=0&modestbranding=1" title="Dylan's story at IOR" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Dylan</div>
+              <div class="team-card__role">Technical &amp; Field Services</div>
+              <p class="team-card__quote">"I started as an apprentice and now I'm leading my own team. IOR invests in you."</p>
+            </div>
+          </div>
+
+          <!-- Luke -->
+          <div class="team-card fade-up">
+            <div class="team-card__video">
+              <iframe src="https://www.youtube.com/embed/t1GjkDWLarU?rel=0&modestbranding=1" title="Luke's story at IOR" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Luke</div>
+              <div class="team-card__role">Aviation Fuelling</div>
+              <p class="team-card__quote">"Working in aviation at IOR means real responsibility. No two days are the same."</p>
+            </div>
+          </div>
+
+          <!-- Drew -->
+          <div class="team-card fade-up">
+            <div class="team-card__video">
+              <iframe src="https://www.youtube.com/embed/YEEQHCUrujo?rel=0&modestbranding=1" title="Drew's story at IOR" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Drew</div>
+              <div class="team-card__role">Regional Operations</div>
+              <p class="team-card__quote">"Regional work at IOR is challenging in the best way. You're part of something bigger."</p>
+            </div>
+          </div>
+
+          <!-- Darren -->
+          <div class="team-card fade-up">
+            <div class="team-card__video">
+              <iframe src="https://www.youtube.com/embed/KHstAN5AuUs?rel=0&modestbranding=1" title="Darren's story at IOR" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Darren</div>
+              <div class="team-card__role">Supply &amp; Infrastructure</div>
+              <p class="team-card__quote">"The culture here is what keeps me. People look out for each other. That matters."</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- IOR FAMILY CAROUSEL -->
+    <section class="ior-family" aria-label="The IOR Family">
+      <div class="ior-family__inner">
+        <div class="ior-family__header fade-up">
+          <p class="ior-family__eyebrow">The IOR Family</p>
+          <h2 class="ior-family__heading">Mates looking after mates.</h2>
+          <p class="ior-family__body">Take a look at life behind the scenes. From Blue Squad social events to outback depots and state-of-the-art workshops, this is what it looks like to live blue.</p>
+        </div>
+        <div class="gallery-strip fade-up">
+
+          <!-- Image 1 -->
+          <div class="gallery-item">
+            <div class="gallery-ph">
+              <svg class="gallery-ph__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <p class="gallery-ph__label">IOR Blue Squad social gathering</p>
+            </div>
+            <div class="gallery-item__caption">Blue Squad Social Event</div>
+          </div>
+
+          <!-- Image 2 -->
+          <div class="gallery-item">
+            <div class="gallery-ph">
+              <svg class="gallery-ph__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <p class="gallery-ph__label">Driver in Kenworth cab, thumbs up</p>
+            </div>
+            <div class="gallery-item__caption">On the Road</div>
+          </div>
+
+          <!-- Image 3 -->
+          <div class="gallery-item">
+            <div class="gallery-ph">
+              <svg class="gallery-ph__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <p class="gallery-ph__label">Mechanics in workshop, under the hood</p>
+            </div>
+            <div class="gallery-item__caption">Workshop Team</div>
+          </div>
+
+          <!-- Image 4 -->
+          <div class="gallery-item">
+            <div class="gallery-ph">
+              <svg class="gallery-ph__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <p class="gallery-ph__label">Office team collaborating, Cannon Hill HQ</p>
+            </div>
+            <div class="gallery-item__caption">Cannon Hill HQ</div>
+          </div>
+
+          <!-- Image 5 -->
+          <div class="gallery-item">
+            <div class="gallery-ph">
+              <svg class="gallery-ph__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <p class="gallery-ph__label">Aviation crew refuelling LifeFlight helicopter</p>
+            </div>
+            <div class="gallery-item__caption">Aviation Crew</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="cta-band fade-up" aria-label="View current jobs">
+      <div class="cta-band__inner">
+        <p class="cta-band__eyebrow">Ready to Join?</p>
+        <h2 class="cta-band__heading">Your story starts here.</h2>
+        <p class="cta-band__sub">Browse current opportunities across Australia and find the role that is right for you. IOR is always looking for driven people who want to build a career, not just fill a position.</p>
+        <div class="cta-band__actions">
+          <a href="https://www.seek.com.au/ior-jobs" class="btn btn--white btn--pill" target="_blank" rel="noopener noreferrer">View Current Jobs &#8594;</a>
+          <a href="10a_Entry_Pathways.html" class="btn btn--outline-white btn--pill">Explore Entry Pathways &#8594;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRE-FOOTER CTA -->
+    <section class="pre-footer fade-up" aria-label="We're here to help">
+      <div class="pre-footer__row">
+        <h2 class="pre-footer__title">We&#8217;re here to help</h2>
+        <div class="pre-footer__ctas">
+          <a href="https://www.seek.com.au/ior-jobs" class="btn btn--white btn--pill" target="_blank" rel="noopener noreferrer">View Jobs &#8594;</a>
+          <a href="11a_Contact_Usv5.html" class="btn btn--outline-white btn--pill">Make an Enquiry &#8594;</a>
+          <a href="11_Support_Hubv5.html" class="btn btn--outline-white btn--pill">Need Help? &#8594;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="site-footer" aria-label="Site footer">
+  <div class="footer-nav-grid">
+    <div>
+      <div class="footer-col__title">Contact</div>
+      <div class="footer-col__links">
+        <span class="footer-col__link footer-col__link--address">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
+        </span>
+        <a href="tel:1300457467" class="footer-col__link footer-col__link--icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          1300 457 467
+        </a>
+        <a href="mailto:enquiries@ior.com.au" class="footer-col__link footer-col__link--icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          enquiries@ior.com.au
+        </a>
+        <a href="11b_Regional_Contacts.html" class="footer-col__link">Regional Contacts</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Fuel Solutions</div>
+      <div class="footer-col__links">
+        <a href="03_Ground_Fuels.html" class="footer-col__link">Ground Fuels</a>
+        <a href="04_Aviation.html" class="footer-col__link">Aviation</a>
+        <a href="05_Equipment_Infrastructure.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading.html" class="footer-col__link">Supply &amp; Trading</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Digital Platforms</div>
+      <div class="footer-col__links">
+        <a href="07_Digital_Platforms.html#hydip" class="footer-col__link">HyDip&#8482; FMS</a>
+        <a href="07_Digital_Platforms.html#fuelcharge" class="footer-col__link">Fuelcharge App</a>
+        <a href="07_Digital_Platforms.html#customer-portal" class="footer-col__link">Customer Portal</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Corporate</div>
+      <div class="footer-col__links">
+        <a href="09_About_IOR_v2.html" class="footer-col__link">About IOR</a>
+        <a href="10_Careers_v2.html" class="footer-col__link">Careers</a>
+        <a href="09d_Case_Studies.html" class="footer-col__link">Case Studies</a>
+        <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+        <a href="11c_News_Updates.html" class="footer-col__link">News &amp; Updates</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Quick Actions</div>
+      <div class="footer-col__links">
+        <a href="#" class="footer-col__link">Apply for an Account</a>
+        <a href="11e_Make_Paymentv5.html" class="footer-col__link">Make a Payment</a>
+        <a href="11a_Contact_Us.html" class="footer-col__link">Contact Us</a>
+        <a href="11_Support_Hubv5.html" class="footer-col__link">Help Centre &amp; FAQs</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col__title">Find a Site By State</div>
+      <div class="footer-state-pills">
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">QLD</a>
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">NSW</a>
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">VIC</a>
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">SA</a>
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">WA</a>
+        <a href="11d_Find_Locationv5.html" class="footer-state-pill">NT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">
+      Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link--muted">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-legal__link--muted">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+      Site by 3PM
+    </p>
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
+      <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
+      <a href="#" class="footer-social__icon" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="#" class="footer-social__icon" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+    </div>
+  </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('primary-nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('primary-nav--scrolled', window.scrollY > 80); }, { passive: true });
+    document.querySelectorAll('.nav-link[data-menu]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const menuId = 'mega-' + btn.dataset.menu;
+        const panel = document.getElementById(menuId);
+        const isOpen = panel.classList.contains('is-open');
+        document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('is-open'));
+        document.querySelectorAll('.nav-link[data-menu]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+        if (!isOpen) { panel.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.primary-nav')) {
+        document.querySelectorAll('.mega-panel').forEach(p => p.classList.remove('is-open'));
+        document.querySelectorAll('.nav-link[data-menu]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+      }
+    });
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    const hamburger = document.getElementById('hamburger-btn');
+    const drawerClose = document.getElementById('drawer-close');
+    function openDrawer() { drawer.classList.add('is-open'); overlay.classList.add('is-open'); drawer.setAttribute('aria-hidden', 'false'); hamburger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { drawer.classList.remove('is-open'); overlay.classList.remove('is-open'); drawer.setAttribute('aria-hidden', 'true'); hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+    hamburger.addEventListener('click', openDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.querySelectorAll('[data-drawer-toggle]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const subId = btn.dataset.drawerToggle;
+        const sub = document.getElementById(subId);
+        const chevron = btn.querySelector('.drawer__chevron');
+        sub.classList.toggle('is-open');
+        if (chevron) chevron.style.transform = sub.classList.contains('is-open') ? 'rotate(180deg)' : '';
+      });
+    });
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
