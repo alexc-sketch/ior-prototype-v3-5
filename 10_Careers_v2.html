@@ -416,8 +416,12 @@
       .steps-row { grid-template-columns: 1fr 1fr; gap: 32px; }
       .steps-row::before { display: none; }
       .tabcordion { grid-template-columns: 1fr; }
-      .tabcordion__nav { border-right: none; border-bottom: 1px solid var(--grey-200); display: flex; overflow-x: auto; }
-      .tabcordion__tab { border-left: none; border-bottom: 3px solid transparent; flex-shrink: 0; }
+      .tabcordion__tabs { flex-direction: row; overflow-x: auto; border-right: none; border-bottom: 1px solid var(--grey-200); scrollbar-width: none; }
+      .tabcordion__tabs::-webkit-scrollbar { display: none; }
+      .tabcordion__tab { border-left: none; border-bottom: 3px solid transparent; flex-shrink: 0; padding: 14px 18px; }
+      .tabcordion__tab.active { border-left: none; border-bottom-color: var(--ior-blue); }
+      .tabcordion__panel { grid-template-columns: 1fr; }
+      .tabcordion__panel-img { min-height: 240px; }
       .tabcordion__tab.is-active { border-bottom-color: var(--ior-blue); background: transparent; }
       .tabcordion__panel { grid-template-columns: 1fr; }
       .tabcordion__panel-img { min-height: 260px; }
@@ -739,49 +743,57 @@
     <!-- ============================================================
          SECTION 6: ENTRY PATHWAYS (Tabcordion))
     ============================================================ -->
-    <section class="section-pad section-pad--navy" id="entry-pathways" aria-labelledby="pathways-heading">
+    <section class="section-pad" style="background:var(--grey-100);" id="entry-pathways" aria-labelledby="pathways-heading">
       <div class="inner">
-        <p class="eyebrow eyebrow--sky fade-up">Entry Pathways</p>
-        <h2 class="section-heading section-heading--white fade-up fade-up--d1" id="pathways-heading">Find the right fit for you.</h2>
+        <p class="eyebrow fade-up">Entry Pathways</p>
+        <h2 class="section-heading fade-up fade-up--d1" id="pathways-heading">Find the right fit for you.</h2>
         <div class="tabcordion fade-up fade-up--d2" role="tablist" aria-label="Entry pathways">
-          <nav class="tabcordion__nav">
-            <button class="tabcordion__tab is-active" data-tab="apprentices" role="tab" aria-selected="true" aria-controls="tab-apprentices">Apprentices</button>
-            <button class="tabcordion__tab" data-tab="graduates" role="tab" aria-selected="false" aria-controls="tab-graduates">Graduates &amp; Interns</button>
-            <button class="tabcordion__tab" data-tab="school-based" role="tab" aria-selected="false" aria-controls="tab-school-based">School Based</button>
-            <button class="tabcordion__tab" data-tab="trainees" role="tab" aria-selected="false" aria-controls="tab-trainees">Trainees</button>
-          </nav>
+          <div class="tabcordion__tabs">
+            <button class="tabcordion__tab active" role="tab" aria-selected="true" aria-controls="tc-panel-1" id="tc-tab-1" data-tc="1">
+              <span class="tabcordion__tab-num">01</span> Apprentices
+            </button>
+            <button class="tabcordion__tab" role="tab" aria-selected="false" aria-controls="tc-panel-2" id="tc-tab-2" data-tc="2">
+              <span class="tabcordion__tab-num">02</span> Graduates &amp; Interns
+            </button>
+            <button class="tabcordion__tab" role="tab" aria-selected="false" aria-controls="tc-panel-3" id="tc-tab-3" data-tc="3">
+              <span class="tabcordion__tab-num">03</span> School Based
+            </button>
+            <button class="tabcordion__tab" role="tab" aria-selected="false" aria-controls="tc-panel-4" id="tc-tab-4" data-tc="4">
+              <span class="tabcordion__tab-num">04</span> Trainees
+            </button>
+          </div>
           <div class="tabcordion__panels">
-            <div class="tabcordion__panel is-active" id="tab-apprentices" role="tabpanel">
+            <div class="tabcordion__panel active" id="tc-panel-1" role="tabpanel" aria-labelledby="tc-tab-1">
               <div class="tabcordion__panel-img"><div class="asset-ph"><span>ASSET REQUIRED &#8212; Authentic photo of an apprentice working in an IOR workshop</span></div></div>
               <div class="tabcordion__panel-content">
-                <p class="eyebrow">Apprentices</p>
+                <span class="tabcordion__panel-eyebrow">Apprentices</span>
                 <h3 class="tabcordion__panel-title">Earn while you learn with an IOR apprenticeship.</h3>
                 <p class="tabcordion__panel-body">Combine on-the-job training with nationally recognised trade qualifications. Get paid to learn, work in state-of-the-art workshops, and be guided by dedicated mentors.</p>
                 <a href="10c_Apprentices.html" class="btn btn--primary">View Apprenticeships &#8599;</a>
               </div>
             </div>
-            <div class="tabcordion__panel" id="tab-graduates" role="tabpanel">
+            <div class="tabcordion__panel" id="tc-panel-2" role="tabpanel" aria-labelledby="tc-tab-2">
               <div class="tabcordion__panel-img"><div class="asset-ph"><span>ASSET REQUIRED &#8212; Candid photo of young professionals collaborating in the Cannon Hill office</span></div></div>
               <div class="tabcordion__panel-content">
-                <p class="eyebrow">Graduates &amp; Interns</p>
+                <span class="tabcordion__panel-eyebrow">Graduates &amp; Interns</span>
                 <h3 class="tabcordion__panel-title">Launch your professional career with real responsibility.</h3>
                 <p class="tabcordion__panel-body">Work alongside experienced professionals, build industry knowledge, and fast-track your career in tech, corporate services, or operations.</p>
                 <a href="10d_Graduates.html" class="btn btn--primary">View Graduate Roles &#8599;</a>
               </div>
             </div>
-            <div class="tabcordion__panel" id="tab-school-based" role="tabpanel">
+            <div class="tabcordion__panel" id="tc-panel-3" role="tabpanel" aria-labelledby="tc-tab-3">
               <div class="tabcordion__panel-img"><div class="asset-ph"><span>ASSET REQUIRED &#8212; Candid photo of a young school-based trainee interacting with a mentor</span></div></div>
               <div class="tabcordion__panel-content">
-                <p class="eyebrow">School Based</p>
+                <span class="tabcordion__panel-eyebrow">School Based</span>
                 <h3 class="tabcordion__panel-title">Start your career before you finish school.</h3>
                 <p class="tabcordion__panel-body">Earn, learn, and get a head start on your future. Our school-based programmes offer a smooth transition from the classroom to the workforce.</p>
                 <a href="10e_School_Based.html" class="btn btn--primary">View School Based Roles &#8599;</a>
               </div>
             </div>
-            <div class="tabcordion__panel" id="tab-trainees" role="tabpanel">
+            <div class="tabcordion__panel" id="tc-panel-4" role="tabpanel" aria-labelledby="tc-tab-4">
               <div class="tabcordion__panel-img"><div class="asset-ph"><span>ASSET REQUIRED &#8212; Candid photo of a trainee learning operations out in the field</span></div></div>
               <div class="tabcordion__panel-content">
-                <p class="eyebrow">Trainees</p>
+                <span class="tabcordion__panel-eyebrow">Trainees</span>
                 <h3 class="tabcordion__panel-title">Build your skills with a structured traineeship.</h3>
                 <p class="tabcordion__panel-body">Gain a nationally recognised qualification while working alongside experienced IOR professionals. Discover a hands-on pathway to success.</p>
                 <a href="10f_Trainees.html" class="btn btn--primary">View Traineeships &#8599;</a>
@@ -1110,16 +1122,18 @@
       });
     });
 
-    // Tabcordion
-    document.querySelectorAll('.tabcordion__tab').forEach(tab => {
+    // Tabcordion (Ground Fuels pattern)
+    const tcTabs = document.querySelectorAll('.tabcordion__tab');
+    const tcPanels = document.querySelectorAll('.tabcordion__panel');
+    tcTabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        const tabId = tab.dataset.tab;
-        document.querySelectorAll('.tabcordion__tab').forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
-        document.querySelectorAll('.tabcordion__panel').forEach(p => p.classList.remove('is-active'));
-        tab.classList.add('is-active');
+        const id = tab.getAttribute('data-tc');
+        tcTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        tcPanels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
         tab.setAttribute('aria-selected', 'true');
-        const panel = document.getElementById('tab-' + tabId);
-        if (panel) panel.classList.add('is-active');
+        const panel = document.getElementById('tc-panel-' + id);
+        if (panel) panel.classList.add('active');
       });
     });
 
