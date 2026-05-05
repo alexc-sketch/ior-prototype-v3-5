@@ -267,32 +267,34 @@
     /* ============================================================
        PERKS TABCORDION (Ground Fuels v8 pattern)
     ============================================================ */
-    .tabcordion { display: grid; grid-template-columns: 320px 1fr; gap: 0; border: 1px solid var(--grey-200); }
-    .tabcordion__nav { border-right: 1px solid var(--grey-200); }
+    /* Tabcordion — Entry Pathways */
+    .tabcordion { display: grid; grid-template-columns: 280px 1fr; gap: 0; border: 1px solid var(--grey-200); background: #fff; }
+    .tabcordion__tabs { display: flex; flex-direction: column; border-right: 1px solid var(--grey-200); }
     .tabcordion__tab {
       display: flex; align-items: center; gap: 14px;
       padding: 20px 24px; cursor: pointer;
-      border-left: 3px solid transparent;
+      border: none; border-left: 3px solid transparent;
       border-bottom: 1px solid var(--grey-200);
+      background: #fff; width: 100%; text-align: left;
+      font-size: 15px; font-weight: 600; color: var(--grey-700);
       transition: background .2s, border-color .2s;
     }
     .tabcordion__tab:last-child { border-bottom: none; }
     .tabcordion__tab:hover { background: var(--grey-100); }
-    .tabcordion__tab.is-active { background: var(--grey-100); border-left-color: var(--ior-blue); }
+    .tabcordion__tab.active { background: var(--grey-100); border-left-color: var(--ior-blue); color: var(--ior-blue); }
     .tabcordion__tab-num { font-size: 13px; font-weight: 700; color: rgba(3,85,163,.4); min-width: 24px; }
-    .tabcordion__tab.is-active .tabcordion__tab-num { color: var(--ior-blue); }
-    .tabcordion__tab-label { font-size: 15px; font-weight: 600; color: var(--grey-700); }
-    .tabcordion__tab.is-active .tabcordion__tab-label { color: var(--ior-blue); }
+    .tabcordion__tab.active .tabcordion__tab-num { color: var(--ior-blue); }
     .tabcordion__panels { position: relative; min-height: 420px; }
     .tabcordion__panel { display: none; grid-template-columns: 1fr 1fr; height: 100%; }
-    .tabcordion__panel.is-active { display: grid; }
+    .tabcordion__panel.active { display: grid; }
     .tabcordion__panel-img {
       background: var(--grey-200); min-height: 420px;
       display: flex; align-items: center; justify-content: center;
       font-size: 12px; font-weight: 600; color: var(--grey-700);
-      letter-spacing: .05em; text-transform: uppercase;
+      letter-spacing: .05em; text-transform: uppercase; padding: 20px; text-align: center;
     }
     .tabcordion__panel-content { padding: 40px 36px; display: flex; flex-direction: column; gap: 16px; justify-content: center; background: #fff; }
+    .tabcordion__panel-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ior-sky); }
     .tabcordion__panel-title { font-size: clamp(20px, 2.5vw, 26px); font-weight: 800; color: var(--ior-navy); line-height: 1.2; }
     .tabcordion__panel-body { font-size: 15px; color: var(--grey-700); line-height: 1.75; }
     /* ============================================================
@@ -422,8 +424,6 @@
       .tabcordion__tab.active { border-left: none; border-bottom-color: var(--ior-blue); }
       .tabcordion__panel { grid-template-columns: 1fr; }
       .tabcordion__panel-img { min-height: 240px; }
-      .tabcordion__tab.is-active { border-bottom-color: var(--ior-blue); background: transparent; }
-      .tabcordion__panel { grid-template-columns: 1fr; }
       .tabcordion__panel-img { min-height: 260px; }
       .footer-nav-grid { grid-template-columns: repeat(3, 1fr); }
     }
