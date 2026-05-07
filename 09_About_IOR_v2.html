@@ -330,34 +330,33 @@
     .vtimeline__title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
     .vtimeline__desc { font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.75; }
     /* ============================================================
-       TRANSPORT CAPABILITY BAND (dark navy, 4 silo buttons)
+       TRANSPORT CAPABILITY (light grey 50/50 split)
     ============================================================ */
     .capability-band {
-      position: relative; overflow: hidden;
-      background: var(--ior-navy); padding: clamp(56px, 7vw, 96px) var(--pad-x);
+      background: var(--grey-100); padding: clamp(56px, 7vw, 96px) var(--pad-x);
     }
-    .capability-band__asset {
-      position: absolute; inset: 0; z-index: 0;
-      background: var(--ior-navy);
+    .capability-band__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .capability-band__visual {
+      background: var(--grey-200); aspect-ratio: 4/3;
       display: flex; align-items: center; justify-content: center;
+      border: 2px dashed var(--grey-200);
     }
-    .capability-band__asset span { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.3); text-align: center; padding: 16px; border: 2px dashed rgba(91,180,229,.2); }
-    .capability-band__overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to right, rgba(10,34,64,.97) 50%, rgba(10,34,64,.7) 100%);
-    }
-    .capability-band__content { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; }
-    .capability-band__eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ior-sky); margin-bottom: 8px; }
-    .capability-band__heading { font-size: clamp(26px, 3.5vw, 42px); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 16px; }
-    .capability-band__body { font-size: clamp(14px, 1.4vw, 16px); color: rgba(255,255,255,.75); line-height: 1.75; max-width: 640px; margin-bottom: 36px; }
+    .capability-band__visual span { font-size: 11px; font-weight: 600; color: var(--grey-400); text-align: center; padding: 16px; }
+    .capability-band__eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ior-blue); margin-bottom: 8px; }
+    .capability-band__heading { font-size: clamp(26px, 3.5vw, 42px); font-weight: 900; color: var(--ior-navy); line-height: 1.1; margin-bottom: 16px; }
+    .capability-band__body { font-size: clamp(14px, 1.4vw, 16px); color: var(--grey-700); line-height: 1.75; margin-bottom: 36px; }
     .silo-btns { display: flex; gap: 12px; flex-wrap: wrap; }
     .silo-btn {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 12px 22px; font-size: 14px; font-weight: 600; color: #fff;
-      border: 2px solid rgba(255,255,255,.5); background: transparent;
-      transition: background .2s, border-color .2s; white-space: nowrap; cursor: pointer;
+      padding: 12px 22px; font-size: 14px; font-weight: 600; color: var(--ior-blue);
+      border: 2px solid var(--ior-blue); background: transparent;
+      transition: background .2s, color .2s; white-space: nowrap; cursor: pointer;
     }
-    .silo-btn:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+    .silo-btn:hover { background: var(--ior-blue); color: #fff; }
+    @media (max-width: 1024px) { .capability-band__inner { grid-template-columns: 1fr; gap: 40px; } }
     /* ============================================================
        HUB GRID (visual image overlay cards)
     ============================================================ */
@@ -685,7 +684,7 @@
       <div class="inner">
         <div class="split">
           <div class="split__body slide-left">
-            <p class="eyebrow">100% Australian Owned</p>
+            <p class="eyebrow">100% AUSTRALIAN OWNED</p>
             <h2 class="section-heading" id="who-heading">We are more than fuel.</h2>
             <p>IOR is an Australian operated business, dedicated to service and committed to local, hands-on relationships with our customers and suppliers. We are passionate about making sure our hard-working customers across Australia can fuel up, keep going, and keep growing.</p>
             <p>We own every part of our supply chain. From our inland refinery in Eromanga to our proprietary HyDip&#174; Fuel Management System, we invest in the infrastructure that keeps Australia moving.</p>
@@ -808,20 +807,21 @@
       </div>
     </section>
 
-    <!-- BLOCK 7: TRANSPORT CAPABILITY (Full-Bleed Routing Band) -->
+    <!-- BLOCK 7: TRANSPORT CAPABILITY (Light Grey 50/50 Split) -->
     <section class="capability-band" aria-labelledby="capability-heading">
-      <div class="capability-band__asset" aria-hidden="true">
-        <span>ASSET REQUIRED: IOR road train / transport fleet photography. 1920x640px. Low opacity for text legibility.</span>
-      </div>
-      <div class="capability-band__overlay" aria-hidden="true"></div>
-      <div class="capability-band__content fade-up">
-        <p class="capability-band__eyebrow">Unmatched Reach</p>
-        <h2 class="capability-band__heading" id="capability-heading">The capacity to deliver. Anywhere.</h2>
-        <p class="capability-band__body">With a massive fleet of modern trucks, IOR is prepared to go on roads many competitors cannot. We operate approximately 100 trucks and 300 trailers, fully accredited in mass, fatigue, and maintenance management.</p>
-        <div class="silo-btns">
-          <a href="02_Fuel_Solutions_Hub.html" class="silo-btn">Explore Fuel Solutions &#x2192;</a>
-          <a href="07_Digital_Platformsv5.html" class="silo-btn">Explore Digital Platforms &#x2192;</a>
-          <a href="06_Supply_Trading_v8.html" class="silo-btn">Explore Supply &amp; Trading &#x2192;</a>
+      <div class="capability-band__inner">
+        <div class="capability-band__visual slide-left" aria-hidden="true">
+          <span>ASSET REQUIRED: Authentic photo of an IOR road train on a regional highway. Framed in clean visual container.</span>
+        </div>
+        <div class="slide-right">
+          <p class="capability-band__eyebrow">UNMATCHED REACH</p>
+          <h2 class="capability-band__heading" id="capability-heading">The capacity to deliver. Anywhere.</h2>
+          <p class="capability-band__body">With a massive fleet of modern trucks, IOR is prepared to go on roads many competitors cannot. We operate approximately 100 trucks and 300 trailers, fully accredited in mass, fatigue, and maintenance management.</p>
+          <div class="silo-btns">
+            <a href="02_Fuel_Solutions_Hub.html" class="silo-btn">Explore Fuel Solutions &#x2192;</a>
+            <a href="07_Digital_Platformsv5.html" class="silo-btn">Explore Digital Platforms &#x2192;</a>
+            <a href="06_Supply_Trading_v8.html" class="silo-btn">Explore Supply &amp; Trading &#x2192;</a>
+          </div>
         </div>
       </div>
     </section>
@@ -829,7 +829,7 @@
     <!-- BLOCK 8: EVERYTHING IOR (High-Fidelity Visual Hub Grid) -->
     <section class="section-pad" aria-labelledby="hub-heading">
       <div class="inner">
-        <p class="eyebrow fade-up">Explore</p>
+        <p class="eyebrow fade-up">EXPLORE</p>
         <h2 class="section-heading section-heading--dark fade-up" id="hub-heading">Everything IOR.</h2>
         <div class="hub-grid">
           <a href="09d_Case_Studies.html" class="hub-card fade-up">
