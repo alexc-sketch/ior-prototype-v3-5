@@ -298,6 +298,44 @@
     .leader-card__link:hover { gap: 10px; }
     .leader-card__link-arrow { font-size: 14px; }
     /* ============================================================
+       CSR TEASER SECTION
+       Elementor: 2-col Section widget (50/50), stacks on mobile
+    ============================================================ */
+    .csr-teaser { background: var(--ior-navy); padding: clamp(56px,8vw,96px) var(--section-pad-x); }
+    .csr-teaser__inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .csr-teaser__pillars { display: flex; flex-direction: column; gap: 20px; margin: 28px 0 36px; }
+    .csr-pillar { display: flex; gap: 16px; align-items: flex-start; }
+    .csr-pillar__num { font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--ior-sky); min-width: 28px; padding-top: 3px; flex-shrink: 0; }
+    .csr-pillar__title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .csr-pillar__body { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.55; }
+    .csr-teaser__image { background: rgba(255,255,255,.06); border: 1px dashed rgba(255,255,255,.2); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.35); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; text-align: center; padding: 24px; }
+    .btn--sky { background: var(--ior-sky); color: var(--ior-navy); border-color: var(--ior-sky); }
+    .btn--sky:hover { background: #4aa8d8; border-color: #4aa8d8; }
+    /* ============================================================
+       ORGANISATIONS WE SUPPORT
+       Elementor: Section > Heading + 2x Inner Section (5-col)
+       Tablet: 3 columns | Mobile: 2 columns
+    ============================================================ */
+    .orgs-section { background: var(--grey-100); padding: clamp(56px,8vw,96px) var(--section-pad-x); }
+    .orgs-section__inner { max-width: 1200px; margin: 0 auto; }
+    .orgs-section__header { margin-bottom: 40px; }
+    .orgs-section__subtitle { font-size: 15px; color: var(--grey-700); margin-top: 10px; max-width: 600px; line-height: 1.6; }
+    .orgs-category-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin: 36px 0 16px; display: block; }
+    .orgs-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .org-tile { background: #fff; border: 1px solid var(--grey-200); padding: 24px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; transition: box-shadow .2s, border-color .2s; min-height: 110px; }
+    .org-tile:hover { box-shadow: 0 4px 20px rgba(3,85,163,.1); border-color: var(--ior-sky); }
+    .org-tile__logo { width: 80px; height: 48px; background: var(--grey-200); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--grey-700); }
+    .org-tile__name { font-size: 12px; font-weight: 600; color: var(--grey-900); line-height: 1.3; }
+    .orgs-cta-row { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    @media (max-width: 900px) {
+      .csr-teaser__inner { grid-template-columns: 1fr; }
+      .csr-teaser__image { display: none; }
+      .orgs-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .orgs-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    /* ============================================================
        PRE-FOOTER
     ============================================================ */
     .pre-footer { background: var(--ior-navy); padding: 56px 0; }
@@ -782,6 +820,122 @@
             </div>
           </a>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CSR TEASER
+         Elementor build notes:
+         - Section: Full-width, navy background (#0A2240), 96px top/bottom padding
+         - Inner Section: 2 columns (50/50), gap 56px, vertically centred
+         - Col 1: Heading widget (eyebrow as Text Editor), H2, Text, Icon List (3 items), Button
+         - Col 2: Image widget — asset TBC (4:3 ratio, 800x600px)
+         - Mobile: Col 2 hidden via Elementor responsive visibility
+    ============================================================ -->
+    <section class="csr-teaser fade-up" aria-labelledby="csr-heading">
+      <div class="csr-teaser__inner">
+        <div class="csr-teaser__content">
+          <span class="eyebrow eyebrow--sky">Our Community Commitment</span>
+          <h2 id="csr-heading" style="color:#fff;font-size:clamp(26px,3.5vw,38px);font-weight:800;line-height:1.15;margin:12px 0 0;">Creating joint value.</h2>
+          <p style="color:rgba(255,255,255,.75);font-size:15px;margin:14px 0 0;max-width:520px;line-height:1.65;">As an organisation, we seek to ensure that our growth creates joint value between our business and the community. Our approach is built on three pillars:</p>
+          <div class="csr-teaser__pillars">
+            <div class="csr-pillar">
+              <span class="csr-pillar__num">01</span>
+              <div>
+                <div class="csr-pillar__title">Direct Support</div>
+                <div class="csr-pillar__body">Bringing energy to regional Australia, providing a quality service, and managing health, safety and environmental risks.</div>
+              </div>
+            </div>
+            <div class="csr-pillar">
+              <span class="csr-pillar__num">02</span>
+              <div>
+                <div class="csr-pillar__title">Social Support</div>
+                <div class="csr-pillar__body">Corporate Social Responsibility investment, committing to a Reconciliation Action Plan, and providing equal opportunity to all who work with IOR.</div>
+              </div>
+            </div>
+            <div class="csr-pillar">
+              <span class="csr-pillar__num">03</span>
+              <div>
+                <div class="csr-pillar__title">Economic Support</div>
+                <div class="csr-pillar__body">Our local employment programme, buy local programme, and engagement with industry bodies advocating for agriculture and resources in Australia.</div>
+              </div>
+            </div>
+          </div>
+          <a href="09b_Community.html" class="btn btn--sky">Explore Community &amp; Giving Back <span class="btn__arrow" aria-hidden="true"></span></a>
+        </div>
+        <div class="csr-teaser__image" aria-hidden="true">[ ASSET: Community &amp; CSR image<br>Recommended: 800&times;600px ]</div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ORGANISATIONS WE SUPPORT
+         Elementor build notes:
+         - Section: Full-width, light grey background (#F5F6F8), 96px top/bottom padding
+         - Heading + Text Editor for intro
+         - Two Inner Sections (one per category), each with 5 equal columns
+         - Each column: Image Box widget (logo placeholder + name)
+         - Tablet breakpoint: 3 columns | Mobile: 2 columns (Elementor column responsive settings)
+         - CTA Button widget below second grid
+    ============================================================ -->
+    <section class="orgs-section fade-up" aria-labelledby="orgs-heading">
+      <div class="orgs-section__inner">
+        <div class="orgs-section__header">
+          <span class="eyebrow eyebrow--blue">Organisations We Support</span>
+          <h2 id="orgs-heading" style="font-size:clamp(24px,3vw,34px);font-weight:800;margin:10px 0 0;">Proud to support the organisations building Australia.</h2>
+          <p class="orgs-section__subtitle">IOR is a proud sponsor and member of the following not-for-profit, profit-for-purpose, and industry organisations.</p>
+        </div>
+
+        <span class="orgs-category-label">Corporate Sponsorships</span>
+        <div class="orgs-grid">
+          <a href="09b_Community.html" class="org-tile">
+            <div class="org-tile__logo">LOGO</div>
+            <span class="org-tile__name">LifeFlight</span>
+          </a>
+          <a href="09b_Community.html" class="org-tile">
+            <div class="org-tile__logo">LOGO</div>
+            <span class="org-tile__name">Heart of Australia</span>
+          </a>
+          <a href="09b_Community.html" class="org-tile">
+            <div class="org-tile__logo">LOGO</div>
+            <span class="org-tile__name">It&#8217;s a Bloke Thing</span>
+          </a>
+          <a href="09b_Community.html" class="org-tile">
+            <div class="org-tile__logo">LOGO</div>
+            <span class="org-tile__name">Outback Futures</span>
+          </a>
+          <a href="09b_Community.html" class="org-tile">
+            <div class="org-tile__logo">LOGO</div>
+            <span class="org-tile__name">Westpac Lifesaver Rescue</span>
+          </a>
+        </div>
+
+        <span class="orgs-category-label">Industry Associations</span>
+        <div class="orgs-grid">
+          <a href="09b_Community.html" class="org-tile">
+            <div class="org-tile__logo">LOGO</div>
+            <span class="org-tile__name">AgForce Queensland</span>
+          </a>
+          <a href="09b_Community.html" class="org-tile">
+            <div class="org-tile__logo">LOGO</div>
+            <span class="org-tile__name">Toowoomba Surat Basin Enterprise</span>
+          </a>
+          <a href="09b_Community.html" class="org-tile">
+            <div class="org-tile__logo">LOGO</div>
+            <span class="org-tile__name">Queensland Resources Council</span>
+          </a>
+          <a href="09b_Community.html" class="org-tile">
+            <div class="org-tile__logo">LOGO</div>
+            <span class="org-tile__name">SA Chamber of Mines &amp; Energy</span>
+          </a>
+          <a href="09b_Community.html" class="org-tile">
+            <div class="org-tile__logo">LOGO</div>
+            <span class="org-tile__name">Australian Energy Producers</span>
+          </a>
+        </div>
+
+        <div class="orgs-cta-row">
+          <a href="09b_Community.html" class="btn btn--primary">Explore Community &amp; Giving Back <span class="btn__arrow" aria-hidden="true"></span></a>
         </div>
       </div>
     </section>
