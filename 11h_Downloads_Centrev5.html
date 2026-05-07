@@ -4,25 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Downloads Centre | IOR&#174;</title>
-  <meta name="description" content="Access IOR account application forms, safety data sheets, product brochures, HyDip spec documents, aviation documents, supplier forms, and terms &amp; conditions. Download essential IOR resources for your fleet or business.">
+  <meta name="description" content="Access IOR account application forms, safety data sheets, product brochures, HyDip spec documents, aviation resources, supplier forms, and terms &amp; conditions. Download essential IOR resources for your fleet or business.">
   <!--
   ╔══════════════════════════════════════════════════════════════════════════╗
   ║  11h_Downloads_Centrev5.html                                             ║
-  ║  Version: 5.0 | Built: 2026-05-07                                        ║
+  ║  Version: 5.1 | Built: 2026-05-07                                        ║
   ║  Purpose: Downloads Centre — Elementor-friendly wireframe                ║
+  ║  Documents: 63 real documents across 7 categories                        ║
   ║                                                                          ║
-  ║  COMPONENTS:                                                             ║
-  ║    ✓ Proto-bar                                                           ║
-  ║    ✓ Utility Bar + Primary Nav + Mega Menus (sticky)                     ║
-  ║    ✓ Mobile Drawer                                                       ║
-  ║    ✓ Utility Hero (var(--ior-navy), breadcrumb/eyebrow/H1/subcopy)       ║
-  ║    ✗ Quick Links Bar — OMITTED per brief                                 ║
-  ║    ✓ Category Filter Pills                                               ║
-  ║    ✓ Accordion Download Library (7 categories)                           ║
-  ║    ✓ Gated Download Placeholder (inline form)                            ║
-  ║    ✓ Still Have Questions? routing block                                 ║
-  ║    ✓ Pre-footer ("We're here to help")                                   ║
-  ║    ✓ 6-column Global Footer                                              ║
+  ║  CATEGORIES:                                                             ║
+  ║    1. Accounts & Admin (9 docs — Account Form, Fuel Tags, Supplier)      ║
+  ║    2. Eromanga UMF (3 docs)                                              ║
+  ║    3. Frac Tanks (3 docs)                                                ║
+  ║    4. HyDip™ Spec Documents (2 docs)                                     ║
+  ║    5. IOR Aviation Documents (2 docs)                                    ║
+  ║    6. Specifications & SDS (28 docs — Fuel, AdBlue, Thinners, etc.)      ║
+  ║    7. Terms & Conditions and Policies (16 docs)                          ║
   ║                                                                          ║
   ║  ELEMENTOR BUILD NOTES:                                                  ║
   ║    • Use Elementor "Single Page" template, no sidebar                    ║
@@ -47,9 +44,6 @@
       --ior-sky:           #7FBEE6;
       --ior-teal:          #00D1CC;
       --ior-light:         #E8F1FB;
-      --ior-light-blue-bg: #E0F1FF;
-      --aviation-gold:     #D98300;
-      --hyblue:            #0069C6;
       --white:             #FFFFFF;
       --off-white:         #F5F7FA;
       --brand-fill:        #F4F5F7;
@@ -72,9 +66,7 @@
       --content-max:       1300px;
       --transition-base:   250ms ease;
       --transition-fast:   150ms ease;
-      --transition:        250ms ease;
       --z-nav:             100;
-      --silo-accent-color: #0355A3;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; }
@@ -91,7 +83,6 @@
     .eyebrow { font-size: clamp(11px, 1.2vw, 14px); font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--mid-grey); margin-bottom: 12px; display: block; }
     .eyebrow--sky   { color: var(--ior-sky); }
     .eyebrow--blue  { color: var(--ior-blue); }
-    .eyebrow--white { color: rgba(255,255,255,.7); }
 
     .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font); font-size: clamp(14px, 1.4vw, 16px); font-weight: 800; padding: clamp(14px, 1.5vw, 18px) clamp(20px, 2vw, 28px); border-radius: 0; cursor: pointer; text-align: center; transition: all var(--transition-base); text-decoration: none; white-space: nowrap; border: 2px solid transparent; min-height: 44px; min-width: 44px; }
     .btn__arrow { display: inline-block; width: 9px; height: 9px; flex-shrink: 0; border-right: 2px solid currentColor; border-top: 2px solid currentColor; transform: rotate(45deg); }
@@ -103,14 +94,12 @@
     .btn--outline-white:hover { border-color: #fff; background: rgba(255,255,255,.1); }
     .btn--white          { background: #fff; color: var(--ior-blue); border-color: #fff; }
     .btn--white:hover    { background: var(--ior-light); }
-    .btn--ghost          { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
-    .btn--ghost:hover    { border-color: #fff; background: rgba(255,255,255,.1); }
     .btn--sm             { padding: 10px 20px; font-size: 14px; }
     .btn--pill           { border-radius: 500px; }
 
     /* Proto-bar */
-    .proto-bar { background: #1a1a2e; padding: 6px var(--section-pad-x); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .proto-bar__inner { max-width: var(--container-max); margin-inline: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .proto-bar { background: #1a1a2e; padding: 6px var(--section-pad-x); }
+    .proto-bar__inner { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .proto-bar__label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); }
     .proto-bar__links { display: flex; align-items: center; gap: 16px; }
     .proto-bar__link { font-size: 11px; color: rgba(255,255,255,.7); font-weight: 500; transition: color var(--transition-fast); min-height: 28px; display: flex; align-items: center; }
@@ -118,16 +107,15 @@
     .proto-bar__sep { width: 1px; height: 10px; background: rgba(255,255,255,.15); }
 
     /* Utility Bar */
-    .utility-bar { background: var(--ior-blue); color: #fff; padding: clamp(6px, 0.8vw, 8px) var(--section-pad-x); display: flex; justify-content: space-between; align-items: center; font-size: clamp(12px, 1.2vw, 14px); gap: 16px; flex-wrap: wrap; }
-    .utility-bar__inner { max-width: var(--container-max); margin-inline: auto; width: 100%; display: flex; align-items: center; justify-content: flex-end; gap: 20px; }
-    .utility-bar__link { color: #fff; opacity: .9; font-weight: 400; display: flex; align-items: center; gap: 5px; min-height: 44px; }
+    .utility-bar { background: var(--ior-blue); color: #fff; padding: clamp(6px, 0.8vw, 8px) var(--section-pad-x); }
+    .utility-bar__inner { max-width: var(--container-max); margin-inline: auto; display: flex; align-items: center; justify-content: flex-end; gap: 20px; }
+    .utility-bar__link { color: #fff; opacity: .9; font-size: clamp(12px, 1.2vw, 14px); font-weight: 400; display: flex; align-items: center; gap: 5px; min-height: 44px; }
     .utility-bar__link:hover { opacity: 1; text-decoration: underline; }
     .utility-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.4); }
 
     /* Primary Nav */
     .primary-nav { background: #fff; border-bottom: 1px solid var(--border-color-light); position: sticky; top: 0; z-index: var(--z-nav); display: flex; align-items: center; padding: 0 var(--section-pad-x); height: clamp(60px, 6vw, 72px); transition: all var(--transition-base); }
     .primary-nav--scrolled { height: 56px; box-shadow: 0 2px 20px rgba(0,0,0,.10); }
-    .primary-nav--scrolled .nav-logo svg { width: 70px; }
     .nav-inner { display: flex; align-items: center; width: 100%; max-width: var(--container-max); margin-inline: auto; }
     .nav-logo { display: flex; align-items: center; margin-right: clamp(20px, 3vw, 40px); flex-shrink: 0; text-decoration: none; }
     .nav-logo svg { width: 90px; height: auto; display: block; transition: width var(--transition-base); }
@@ -145,9 +133,7 @@
     .mega-inner { max-width: var(--container-max); margin-inline: auto; }
     .mega-inner--4col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
     .mega-inner--3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    .mega-inner--2col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
     .mega-col__title { font-size: clamp(12px, 1.1vw, 14px); font-weight: 800; color: var(--ior-blue); text-transform: uppercase; letter-spacing: .06em; padding-bottom: 10px; border-bottom: 2px solid var(--ior-blue); margin-bottom: 12px; }
-    .mega-col__title--gold { color: var(--aviation-gold); border-bottom-color: var(--aviation-gold); }
     .mega-col__links { display: flex; flex-direction: column; gap: 2px; }
     .mega-col__link { font-size: clamp(13px, 1.1vw, 14px); color: var(--charcoal); padding: 6px 8px; display: flex; align-items: center; gap: 6px; transition: background var(--transition-fast); min-height: 44px; }
     .mega-col__link:hover { background: var(--ior-light); color: var(--ior-blue); }
@@ -177,7 +163,6 @@
     /* Utility Hero */
     .utility-hero { background: var(--ior-navy); border-top: 4px solid var(--ior-blue); padding: clamp(48px, 7vw, 80px) var(--section-pad-x); }
     .utility-hero__inner { max-width: var(--content-max); margin-inline: auto; }
-    .utility-hero .eyebrow { color: var(--ior-sky); margin-bottom: 12px; }
     .utility-hero h1 { font-size: clamp(28px, 4vw, 52px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 16px; }
     .utility-hero p { font-size: clamp(15px, 1.5vw, 18px); color: rgba(255,255,255,.85); max-width: 640px; }
     .breadcrumb { font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
@@ -188,77 +173,75 @@
     /* ─── Downloads Centre Specific ───────────────────────────────────────── */
 
     /* Category Filter Strip */
-    .filter-section { background: var(--grey-50); border-bottom: 1px solid var(--grey-200); padding: clamp(20px, 2.5vw, 28px) var(--section-pad-x); }
-    .filter-section__inner { max-width: var(--content-max); margin-inline: auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .filter-section { background: var(--grey-50); border-bottom: 1px solid var(--grey-200); padding: clamp(16px, 2vw, 24px) var(--section-pad-x); }
+    .filter-section__inner { max-width: var(--content-max); margin-inline: auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .filter-section__label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mid-grey); white-space: nowrap; flex-shrink: 0; }
-    .filter-btn { padding: 8px 20px; border-radius: 500px; font-size: 13px; font-weight: 700; cursor: pointer; border: 1.5px solid var(--grey-200); color: var(--grey-700); background: #fff; transition: all var(--transition-fast); min-height: 36px; font-family: var(--font); }
+    .filter-btn { padding: 8px 18px; border-radius: 500px; font-size: 13px; font-weight: 700; cursor: pointer; border: 1.5px solid var(--grey-200); color: var(--grey-700); background: #fff; transition: all var(--transition-fast); min-height: 36px; font-family: var(--font); }
     .filter-btn:hover { border-color: var(--ior-blue); color: var(--ior-blue); }
     .filter-btn.active { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
 
     /* Download Library Section */
     .download-library { padding: clamp(48px, 6vw, 80px) var(--section-pad-x); }
     .download-library__inner { max-width: var(--content-max); margin-inline: auto; }
-    .download-library__heading { margin-bottom: clamp(32px, 4vw, 48px); }
-    .download-library__heading h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: var(--ior-navy); margin-bottom: 12px; }
+    .download-library__heading { margin-bottom: clamp(28px, 3.5vw, 40px); }
+    .download-library__heading h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: var(--ior-navy); margin-bottom: 10px; }
     .download-library__heading p { font-size: clamp(14px, 1.3vw, 16px); color: var(--grey-700); max-width: 640px; }
 
     /* Accordion */
-    .accordion-group { display: flex; flex-direction: column; gap: 12px; }
+    .accordion-group { display: flex; flex-direction: column; gap: 10px; }
     .accordion-item { border: 1px solid var(--grey-200); background: #fff; }
-    .accordion-item[data-category].hidden { display: none; }
-    .accordion__trigger { width: 100%; background: #fff; border: none; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; font-size: clamp(15px, 1.5vw, 17px); font-weight: 800; cursor: pointer; text-align: left; color: var(--ior-navy); font-family: var(--font); transition: background var(--transition-fast); gap: 16px; }
+    .accordion-item.hidden { display: none; }
+    .accordion__trigger { width: 100%; background: #fff; border: none; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; font-size: clamp(14px, 1.4vw, 16px); font-weight: 800; cursor: pointer; text-align: left; color: var(--ior-navy); font-family: var(--font); transition: background var(--transition-fast); gap: 16px; }
     .accordion__trigger:hover { background: var(--ior-light); }
     .accordion__trigger[aria-expanded="true"] { background: var(--ior-light); border-bottom: 1px solid var(--grey-200); }
     .accordion__icon { flex-shrink: 0; width: 24px; height: 24px; border: 2px solid var(--ior-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ior-blue); font-size: 16px; font-weight: 400; transition: transform var(--transition-fast); }
     .accordion__trigger[aria-expanded="true"] .accordion__icon { transform: rotate(45deg); }
     .accordion__meta { font-size: 12px; font-weight: 400; color: var(--mid-grey); margin-left: 8px; }
     .accordion__panel { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-    .accordion__panel.is-open { max-height: 2000px; }
+    .accordion__panel.is-open { max-height: 6000px; }
     .accordion__body { padding: 0 24px 24px; }
 
+    /* Subcategory heading */
+    .subcat-heading { font-size: 12px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--ior-blue); padding: 16px 0 8px; border-bottom: 1px solid var(--ior-light); margin-bottom: 4px; margin-top: 8px; }
+    .subcat-heading:first-child { margin-top: 16px; }
+
     /* Download Items */
-    .download-item { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--grey-100); }
+    .download-item { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--grey-100); }
     .download-item:last-child { border-bottom: none; }
-    .doc-icon { flex-shrink: 0; width: 40px; height: 40px; background: var(--ior-light); display: flex; align-items: center; justify-content: center; }
-    .doc-icon svg { width: 20px; height: 20px; fill: none; stroke: var(--ior-blue); stroke-width: 1.5; }
+    .doc-icon { flex-shrink: 0; width: 36px; height: 36px; background: var(--ior-light); display: flex; align-items: center; justify-content: center; }
+    .doc-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--ior-blue); stroke-width: 1.5; }
+    .doc-icon--xlsx { background: #E6F4EA; }
+    .doc-icon--xlsx svg { stroke: #1B7A3E; }
+    .doc-icon--docx { background: #E8F0FE; }
+    .doc-icon--docx svg { stroke: #1967D2; }
     .download-item__info { flex: 1; min-width: 0; }
-    .download-item__name { font-size: clamp(14px, 1.3vw, 15px); font-weight: 700; color: var(--grey-900); }
-    .download-item__meta { font-size: 12px; color: var(--mid-grey); margin-top: 3px; }
-    .download-item__badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; margin-left: 8px; }
-    .download-item__badge--gated { background: #FEF3C7; color: #92400E; }
-    .download-item__badge--free { background: #D1FAE5; color: #065F46; }
-    .download-item__cta { font-size: 13px; font-weight: 800; color: var(--ior-blue); display: flex; align-items: center; gap: 6px; white-space: nowrap; padding: 8px 16px; border: 1.5px solid var(--ior-blue); transition: all var(--transition-fast); flex-shrink: 0; min-height: 36px; }
+    .download-item__name { font-size: clamp(13px, 1.2vw, 14px); font-weight: 700; color: var(--grey-900); line-height: 1.4; }
+    .download-item__meta { font-size: 11px; color: var(--mid-grey); margin-top: 2px; }
+    .download-item__cta { font-size: 13px; font-weight: 800; color: var(--ior-blue); display: flex; align-items: center; gap: 6px; white-space: nowrap; padding: 7px 14px; border: 1.5px solid var(--ior-blue); transition: all var(--transition-fast); flex-shrink: 0; min-height: 34px; }
     .download-item__cta:hover { background: var(--ior-blue); color: #fff; }
-    .download-item__cta--gated { border-color: var(--grey-400); color: var(--grey-700); }
-    .download-item__cta--gated:hover { background: var(--grey-700); color: #fff; border-color: var(--grey-700); }
 
     /* Gated Notice */
-    .gated-notice { background: var(--ior-light); border-left: 4px solid var(--ior-blue); padding: 16px 20px; margin-bottom: 20px; font-size: 14px; color: var(--ior-navy); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .gated-notice svg { flex-shrink: 0; }
+    .gated-notice { background: var(--ior-light); border-left: 4px solid var(--ior-blue); padding: 14px 18px; margin-bottom: 20px; font-size: 14px; color: var(--ior-navy); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .gated-notice a { color: var(--ior-blue); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
 
     /* Gated Form Placeholder */
-    .gated-form-placeholder { background: var(--grey-50); border: 1px solid var(--grey-200); padding: 28px 24px; margin-top: 16px; }
-    .gated-form-placeholder__heading { font-size: 15px; font-weight: 800; color: var(--ior-navy); margin-bottom: 6px; }
-    .gated-form-placeholder__sub { font-size: 13px; color: var(--grey-700); margin-bottom: 20px; }
-    .gated-form-placeholder__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    .gated-form-placeholder { background: var(--grey-50); border: 1px solid var(--grey-200); padding: 24px; margin-top: 16px; }
+    .gated-form-placeholder__heading { font-size: 15px; font-weight: 800; color: var(--ior-navy); margin-bottom: 4px; }
+    .gated-form-placeholder__sub { font-size: 13px; color: var(--grey-700); margin-bottom: 18px; }
+    .gated-form-placeholder__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
     .form-field { display: flex; flex-direction: column; gap: 4px; }
     .form-field--full { grid-column: 1 / -1; }
-    .form-field label { font-size: 12px; font-weight: 700; color: var(--grey-700); text-transform: uppercase; letter-spacing: .06em; }
-    .form-field input, .form-field select { padding: 10px 14px; border: 1px solid var(--grey-200); font-family: var(--font); font-size: 14px; color: var(--charcoal); background: #fff; outline: none; transition: border-color var(--transition-fast); min-height: 44px; }
-    .form-field input:focus, .form-field select:focus { border-color: var(--ior-blue); }
+    .form-field label { font-size: 11px; font-weight: 700; color: var(--grey-700); text-transform: uppercase; letter-spacing: .06em; }
+    .form-field input { padding: 10px 14px; border: 1px solid var(--grey-200); font-family: var(--font); font-size: 14px; color: var(--charcoal); background: #fff; outline: none; transition: border-color var(--transition-fast); min-height: 44px; }
+    .form-field input:focus { border-color: var(--ior-blue); }
     .form-field input::placeholder { color: var(--grey-400); }
-    .form-consent { font-size: 12px; color: var(--grey-700); line-height: 1.5; margin-bottom: 16px; display: flex; gap: 10px; align-items: flex-start; }
+    .form-consent { font-size: 12px; color: var(--grey-700); line-height: 1.5; margin-bottom: 14px; display: flex; gap: 10px; align-items: flex-start; }
     .form-consent input[type="checkbox"] { flex-shrink: 0; margin-top: 2px; width: 16px; height: 16px; }
     .form-note { font-size: 11px; color: var(--mid-grey); margin-top: 8px; }
 
-    /* Section Divider */
-    .section-divider { height: 1px; background: var(--grey-200); margin: 0 var(--section-pad-x); }
-
-    /* FAQ Routing Section */
+    /* FAQ Routing */
     .faq-routing-section { background: var(--grey-50); border-top: 1px solid var(--grey-200); padding: clamp(32px, 4vw, 48px) var(--section-pad-x); }
-    .faq-routing-section .inner { max-width: var(--content-max); }
-    .faq-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .faq-footer { max-width: var(--content-max); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
     .faq-footer__text h4 { font-size: clamp(18px, 2vw, 22px); font-weight: 800; color: var(--ior-navy); margin-bottom: 6px; }
     .faq-footer__text p { font-size: 15px; color: var(--grey-700); }
     .faq-footer__actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
@@ -312,7 +295,7 @@
       .download-item__cta { width: 100%; justify-content: center; }
     }
 
-    /* Fade-up animation */
+    /* Fade-up */
     .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .fade-up--visible { opacity: 1; transform: translateY(0); }
   </style>
@@ -320,9 +303,7 @@
 <body>
 <div class="main-audit-container">
 
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <!-- PROTO-BAR                                                               -->
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- PROTO-BAR -->
   <div class="proto-bar" role="navigation" aria-label="Prototype navigation">
     <div class="proto-bar__inner">
       <span class="proto-bar__label">Prototype</span>
@@ -338,11 +319,8 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <!-- HEADER: Utility Bar + Primary Nav + Mega Menus (STICKY)                -->
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- HEADER -->
   <header role="banner">
-    <!-- Utility Bar -->
     <div class="utility-bar" role="complementary" aria-label="Site utilities">
       <div class="utility-bar__inner">
         <a href="11d_Find_Locationv5.html" class="utility-bar__link">
@@ -362,42 +340,21 @@
       </div>
     </div>
 
-    <!-- Primary Nav (Sticky) -->
     <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
       <div class="nav-inner">
         <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home">
           <svg width="90" height="42" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g clip-path="url(#ior-logo-clip-nav)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#231F20"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#0054A4"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#231F20"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#231F20"/></g><defs><clipPath id="ior-logo-clip-nav"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg>
         </a>
         <ul class="nav-links" role="list">
-          <li>
-            <button class="nav-link" data-menu="fuel-solutions" aria-expanded="false" aria-controls="mega-fuel-solutions">
-              Fuel Solutions <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
-            </button>
-          </li>
-          <li>
-            <button class="nav-link" data-menu="digital-platforms" aria-expanded="false" aria-controls="mega-digital-platforms">
-              Digital Platforms <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
-            </button>
-          </li>
-          <li>
-            <button class="nav-link" data-menu="industries" aria-expanded="false" aria-controls="mega-industries">
-              Industries We Serve <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
-            </button>
-          </li>
-          <li>
-            <button class="nav-link active" data-menu="about-ior" aria-expanded="false" aria-controls="mega-about-ior">
-              About IOR <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
-            </button>
-          </li>
-          <li>
-            <button class="nav-link" data-menu="support-contact" aria-expanded="false" aria-controls="mega-support-contact">
-              Support &amp; Contact <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
-            </button>
-          </li>
+          <li><button class="nav-link" data-menu="fuel-solutions" aria-expanded="false" aria-controls="mega-fuel-solutions">Fuel Solutions <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+          <li><button class="nav-link" data-menu="digital-platforms" aria-expanded="false" aria-controls="mega-digital-platforms">Digital Platforms <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+          <li><button class="nav-link" data-menu="industries" aria-expanded="false" aria-controls="mega-industries">Industries We Serve <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+          <li><button class="nav-link active" data-menu="about-ior" aria-expanded="false" aria-controls="mega-about-ior">About IOR <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
+          <li><button class="nav-link" data-menu="support-contact" aria-expanded="false" aria-controls="mega-support-contact">Support &amp; Contact <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
         </ul>
         <div class="nav-ctas">
-          <a href="#" class="btn btn--outline btn--pill btn--sm" aria-label="Customer Login">Customer Login</a>
-          <a href="https://iorapp.applyeasy.com.au" target="_blank" rel="noopener" class="btn btn--primary btn--pill btn--sm" aria-label="Apply for an Account">Apply for an Account</a>
+          <a href="#" class="btn btn--outline btn--pill btn--sm">Customer Login</a>
+          <a href="https://iorapp.applyeasy.com.au" target="_blank" rel="noopener" class="btn btn--primary btn--pill btn--sm">Apply for an Account</a>
           <button class="hamburger" id="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
             <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
           </button>
@@ -405,166 +362,11 @@
       </div>
 
       <!-- Mega Menus -->
-      <div class="mega-panel" id="mega-fuel-solutions" role="region" aria-label="Fuel Solutions menu">
-        <div class="mega-inner mega-inner--4col">
-          <div class="mega-col">
-            <p class="mega-col__title">Ground Fuels</p>
-            <div class="mega-col__links">
-              <a href="03_Ground_Fuels.html" class="mega-col__link">Ground Fuels Hub</a>
-              <a href="#" class="mega-col__link">IOR Diesel Stops</a>
-              <a href="#" class="mega-col__link">On-Site Refuelling</a>
-              <a href="#" class="mega-col__link">Bulk Diesel Delivery</a>
-              <a href="#" class="mega-col__link">HyBlue&#8482; AdBlue</a>
-              <a href="#" class="mega-col__link">Oils &amp; Lubricants</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Aviation Fuels</p>
-            <div class="mega-col__links">
-              <a href="04_Aviation_Hub.html" class="mega-col__link">Aviation Hub</a>
-              <a href="#" class="mega-col__link">Aviation Network</a>
-              <a href="#" class="mega-col__link">Airport Fuelling</a>
-              <a href="#" class="mega-col__link">Aviation Bulk Delivery</a>
-              <a href="#" class="mega-col__link">Aviation Oils</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Speciality</p>
-            <div class="mega-col__links">
-              <a href="#" class="mega-col__link">Marine Fuels</a>
-              <a href="#" class="mega-col__link">Rail Fuels</a>
-              <a href="#" class="mega-col__link">Emergency Fuel</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Quick Actions</p>
-            <div class="mega-col__links">
-              <a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a>
-              <a href="#" class="mega-col__link">Get a Quote</a>
-              <a href="https://iorapp.applyeasy.com.au" target="_blank" rel="noopener" class="mega-col__link">Apply for an Account</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mega-panel" id="mega-digital-platforms" role="region" aria-label="Digital Platforms menu">
-        <div class="mega-inner mega-inner--3col">
-          <div class="mega-col">
-            <p class="mega-col__title">Platforms</p>
-            <div class="mega-col__links">
-              <a href="07_Digital_Platformsv5.html" class="mega-col__link">Digital Platforms Hub</a>
-              <a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a>
-              <a href="07b_Fuelcharge_App_v8.html" class="mega-col__link">Fuelcharge App</a>
-              <a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Features</p>
-            <div class="mega-col__links">
-              <a href="#" class="mega-col__link">Fleet Management</a>
-              <a href="#" class="mega-col__link">Real-Time Reporting</a>
-              <a href="#" class="mega-col__link">Tank Monitoring</a>
-              <a href="#" class="mega-col__link">Payment Integration</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Get Started</p>
-            <div class="mega-col__links">
-              <a href="#" class="mega-col__link">Request a Demo</a>
-              <a href="https://iorapp.applyeasy.com.au" target="_blank" rel="noopener" class="mega-col__link">Apply for an Account</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mega-panel" id="mega-industries" role="region" aria-label="Industries We Serve menu">
-        <div class="mega-inner mega-inner--4col">
-          <div class="mega-col">
-            <p class="mega-col__title">Primary Industries</p>
-            <div class="mega-col__links">
-              <a href="#" class="mega-col__link">Mining &amp; Resources</a>
-              <a href="#" class="mega-col__link">Agriculture</a>
-              <a href="#" class="mega-col__link">Construction</a>
-              <a href="#" class="mega-col__link">Transport &amp; Logistics</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Aviation &amp; Marine</p>
-            <div class="mega-col__links">
-              <a href="#" class="mega-col__link">General Aviation</a>
-              <a href="#" class="mega-col__link">Commercial Aviation</a>
-              <a href="#" class="mega-col__link">Marine &amp; Boating</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Government &amp; Defence</p>
-            <div class="mega-col__links">
-              <a href="#" class="mega-col__link">Government Fleets</a>
-              <a href="#" class="mega-col__link">Defence</a>
-              <a href="#" class="mega-col__link">Emergency Services</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Case Studies</p>
-            <div class="mega-col__links">
-              <a href="09d_Case_Study_Singlev6.html" class="mega-col__link">View Case Studies</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mega-panel" id="mega-about-ior" role="region" aria-label="About IOR menu">
-        <div class="mega-inner mega-inner--3col">
-          <div class="mega-col">
-            <p class="mega-col__title">Company</p>
-            <div class="mega-col__links">
-              <a href="09_About_IOR.html" class="mega-col__link">About IOR</a>
-              <a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a>
-              <a href="#" class="mega-col__link">Our History</a>
-              <a href="#" class="mega-col__link">Community &amp; Giving Back</a>
-              <a href="#" class="mega-col__link">Sustainability, HSE &amp; ESG</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Careers</p>
-            <div class="mega-col__links">
-              <a href="10_Careers.html" class="mega-col__link">Work at IOR</a>
-              <a href="#" class="mega-col__link">Current Vacancies</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Resources</p>
-            <div class="mega-col__links">
-              <a href="#" class="mega-col__link">News &amp; Updates</a>
-              <a href="11h_Downloads_Centrev5.html" class="mega-col__link" aria-current="page">Downloads Centre</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mega-panel" id="mega-support-contact" role="region" aria-label="Support &amp; Contact menu">
-        <div class="mega-inner mega-inner--3col">
-          <div class="mega-col">
-            <p class="mega-col__title">Get Help</p>
-            <div class="mega-col__links">
-              <a href="11_Support_Hubv5.html" class="mega-col__link">Help Centre &amp; FAQs</a>
-              <a href="11a_Contact_Usv5.html" class="mega-col__link">Contact Us</a>
-              <a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Accounts</p>
-            <div class="mega-col__links">
-              <a href="https://iorapp.applyeasy.com.au" target="_blank" rel="noopener" class="mega-col__link">Apply for an Account</a>
-              <a href="#" class="mega-col__link">Customer Login</a>
-              <a href="11e_Make_Paymentv5.html" class="mega-col__link">Make a Payment</a>
-            </div>
-          </div>
-          <div class="mega-col">
-            <p class="mega-col__title">Find Us</p>
-            <div class="mega-col__links">
-              <a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a>
-              <a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="mega-panel" id="mega-fuel-solutions"><div class="mega-inner mega-inner--4col"><div class="mega-col"><p class="mega-col__title">Ground Fuels</p><div class="mega-col__links"><a href="03_Ground_Fuels.html" class="mega-col__link">Ground Fuels Hub</a><a href="#" class="mega-col__link">IOR Diesel Stops</a><a href="#" class="mega-col__link">On-Site Refuelling</a><a href="#" class="mega-col__link">Bulk Diesel Delivery</a><a href="#" class="mega-col__link">HyBlue&#8482; AdBlue</a></div></div><div class="mega-col"><p class="mega-col__title">Aviation Fuels</p><div class="mega-col__links"><a href="04_Aviation_Hub.html" class="mega-col__link">Aviation Hub</a><a href="#" class="mega-col__link">Aviation Network</a><a href="#" class="mega-col__link">Airport Fuelling</a></div></div><div class="mega-col"><p class="mega-col__title">Speciality</p><div class="mega-col__links"><a href="#" class="mega-col__link">Marine Fuels</a><a href="#" class="mega-col__link">Rail Fuels</a></div></div><div class="mega-col"><p class="mega-col__title">Quick Actions</p><div class="mega-col__links"><a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a><a href="https://iorapp.applyeasy.com.au" target="_blank" rel="noopener" class="mega-col__link">Apply for an Account</a></div></div></div></div>
+      <div class="mega-panel" id="mega-digital-platforms"><div class="mega-inner mega-inner--3col"><div class="mega-col"><p class="mega-col__title">Platforms</p><div class="mega-col__links"><a href="07_Digital_Platformsv5.html" class="mega-col__link">Digital Platforms Hub</a><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="mega-col__link">Customer Portal</a></div></div><div class="mega-col"><p class="mega-col__title">Get Started</p><div class="mega-col__links"><a href="#" class="mega-col__link">Request a Demo</a><a href="https://iorapp.applyeasy.com.au" target="_blank" rel="noopener" class="mega-col__link">Apply for an Account</a></div></div></div></div>
+      <div class="mega-panel" id="mega-industries"><div class="mega-inner mega-inner--4col"><div class="mega-col"><p class="mega-col__title">Primary Industries</p><div class="mega-col__links"><a href="#" class="mega-col__link">Mining &amp; Resources</a><a href="#" class="mega-col__link">Agriculture</a><a href="#" class="mega-col__link">Construction</a><a href="#" class="mega-col__link">Transport &amp; Logistics</a></div></div><div class="mega-col"><p class="mega-col__title">Aviation &amp; Marine</p><div class="mega-col__links"><a href="#" class="mega-col__link">General Aviation</a><a href="#" class="mega-col__link">Commercial Aviation</a></div></div><div class="mega-col"><p class="mega-col__title">Government &amp; Defence</p><div class="mega-col__links"><a href="#" class="mega-col__link">Government Fleets</a><a href="#" class="mega-col__link">Defence</a></div></div><div class="mega-col"><p class="mega-col__title">Case Studies</p><div class="mega-col__links"><a href="09d_Case_Study_Singlev6.html" class="mega-col__link">View Case Studies</a></div></div></div></div>
+      <div class="mega-panel" id="mega-about-ior"><div class="mega-inner mega-inner--3col"><div class="mega-col"><p class="mega-col__title">Company</p><div class="mega-col__links"><a href="09_About_IOR.html" class="mega-col__link">About IOR</a><a href="09a_Our_Leadershipv5.html" class="mega-col__link">Our Leadership</a><a href="#" class="mega-col__link">Community &amp; Giving Back</a><a href="#" class="mega-col__link">Sustainability, HSE &amp; ESG</a></div></div><div class="mega-col"><p class="mega-col__title">Careers</p><div class="mega-col__links"><a href="10_Careers.html" class="mega-col__link">Work at IOR</a></div></div><div class="mega-col"><p class="mega-col__title">Resources</p><div class="mega-col__links"><a href="#" class="mega-col__link">News &amp; Updates</a><a href="11h_Downloads_Centrev5.html" class="mega-col__link" aria-current="page">Downloads Centre</a></div></div></div></div>
+      <div class="mega-panel" id="mega-support-contact"><div class="mega-inner mega-inner--3col"><div class="mega-col"><p class="mega-col__title">Get Help</p><div class="mega-col__links"><a href="11_Support_Hubv5.html" class="mega-col__link">Help Centre &amp; FAQs</a><a href="11a_Contact_Usv5.html" class="mega-col__link">Contact Us</a><a href="11b_Regional_Contactsv5.html" class="mega-col__link">Regional Contacts</a></div></div><div class="mega-col"><p class="mega-col__title">Accounts</p><div class="mega-col__links"><a href="https://iorapp.applyeasy.com.au" target="_blank" rel="noopener" class="mega-col__link">Apply for an Account</a><a href="#" class="mega-col__link">Customer Login</a><a href="11e_Make_Paymentv5.html" class="mega-col__link">Make a Payment</a></div></div><div class="mega-col"><p class="mega-col__title">Find Us</p><div class="mega-col__links"><a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Location</a></div></div></div></div>
     </nav>
 
     <!-- Mobile Drawer -->
@@ -574,12 +376,12 @@
         <a href="01_Homepage.html" class="nav-logo" aria-label="IOR home"><svg width="70" height="33" viewBox="0 0 98 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g clip-path="url(#ior-logo-drawer-11h)"><path d="M9.27151 12.9164H0V44.8747H9.27151V12.9164Z" fill="#fff"/><path d="M9.27151 1.06712H0V9.2438H9.27151V1.06712Z" fill="#7FBEE6"/><path d="M86.5341 26.3871C92.7151 25.2784 95.9858 20.511 95.9858 14.3993C95.9858 4.19921 88.4466 1.1087 79.48 1.1087H62.5446V9.25766H73.5485H78.4961C82.0162 9.25766 85.9798 9.93674 85.9798 14.33C85.9798 19.0974 81.4064 19.2083 77.8863 19.2083H72.2042V12.9164H62.5585V44.8608H72.2042V27.3711H76.9577L86.1045 44.8608H97.6627L86.5341 26.3732V26.3871Z" fill="#fff"/><path d="M36.0051 37.0861C44.2233 37.0861 49.6005 31.1545 49.6005 22.9917C49.6005 14.8289 44.2233 8.89733 36.0051 8.89733C27.7868 8.89733 22.4096 14.8289 22.4096 22.9917C22.4096 31.1545 27.7868 37.0861 36.0051 37.0861ZM36.0051 0C49.6698 0 59.6204 8.96662 59.6204 22.9917C59.6204 37.0168 49.6698 45.9834 36.0051 45.9834C22.3403 45.9834 12.3897 37.0168 12.3897 22.9917C12.3897 8.96662 22.3403 0 36.0051 0Z" fill="#fff"/></g><defs><clipPath id="ior-logo-drawer-11h"><rect width="97.6489" height="45.9834" fill="white"/></clipPath></defs></svg></a>
         <button class="drawer__close" id="drawer-close" aria-label="Close mobile menu">&times;</button>
       </div>
-      <nav class="drawer__nav" aria-label="Mobile navigation links">
-        <div class="drawer__item"><button class="drawer__link" data-drawer="gf-drawer" aria-expanded="false">Fuel Solutions <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="gf-drawer"><a href="03_Ground_Fuels.html" class="drawer__sub-link">Ground Fuels Hub</a><a href="#" class="drawer__sub-link">IOR Diesel Stops</a><a href="#" class="drawer__sub-link">On-Site Refuelling</a><a href="#" class="drawer__sub-link">Bulk Diesel Delivery</a><a href="04_Aviation_Hub.html" class="drawer__sub-link">Aviation Hub</a></div></div>
-        <div class="drawer__item"><button class="drawer__link" data-drawer="dig-drawer" aria-expanded="false">Digital Platforms <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="dig-drawer"><a href="07_Digital_Platformsv5.html" class="drawer__sub-link">Digital Platforms Hub</a><a href="07a_HyDip_FMSv6.html" class="drawer__sub-link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="drawer__sub-link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="drawer__sub-link">Customer Portal</a></div></div>
-        <div class="drawer__item"><button class="drawer__link" data-drawer="ind-drawer" aria-expanded="false">Industries We Serve <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="ind-drawer"><a href="#" class="drawer__sub-link">Mining &amp; Resources</a><a href="#" class="drawer__sub-link">Agriculture</a><a href="#" class="drawer__sub-link">Construction</a><a href="#" class="drawer__sub-link">Transport &amp; Logistics</a></div></div>
-        <div class="drawer__item"><button class="drawer__link" data-drawer="abt-drawer" aria-expanded="false">About IOR <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="abt-drawer"><a href="09_About_IOR.html" class="drawer__sub-link">About IOR</a><a href="09a_Our_Leadershipv5.html" class="drawer__sub-link">Our Leadership</a><a href="#" class="drawer__sub-link">Community &amp; Giving Back</a><a href="10_Careers.html" class="drawer__sub-link">Careers</a><a href="11h_Downloads_Centrev5.html" class="drawer__sub-link">Downloads Centre</a></div></div>
-        <div class="drawer__item"><button class="drawer__link" data-drawer="sup-drawer" aria-expanded="false">Support &amp; Contact <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="sup-drawer"><a href="11_Support_Hubv5.html" class="drawer__sub-link">Help Centre &amp; FAQs</a><a href="11a_Contact_Usv5.html" class="drawer__sub-link">Contact Us</a><a href="11d_Find_Locationv5.html" class="drawer__sub-link">Find a Location</a><a href="11e_Make_Paymentv5.html" class="drawer__sub-link">Make a Payment</a></div></div>
+      <nav class="drawer__nav">
+        <div class="drawer__item"><button class="drawer__link" data-drawer="gf-drawer" aria-expanded="false">Fuel Solutions <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="gf-drawer"><a href="03_Ground_Fuels.html" class="drawer__sub-link">Ground Fuels Hub</a><a href="04_Aviation_Hub.html" class="drawer__sub-link">Aviation Hub</a></div></div>
+        <div class="drawer__item"><button class="drawer__link" data-drawer="dig-drawer" aria-expanded="false">Digital Platforms <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="dig-drawer"><a href="07a_HyDip_FMSv6.html" class="drawer__sub-link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="drawer__sub-link">Fuelcharge App</a><a href="07c_Customer_Portalv5.html" class="drawer__sub-link">Customer Portal</a></div></div>
+        <div class="drawer__item"><button class="drawer__link" data-drawer="ind-drawer" aria-expanded="false">Industries We Serve <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="ind-drawer"><a href="#" class="drawer__sub-link">Mining &amp; Resources</a><a href="#" class="drawer__sub-link">Agriculture</a><a href="#" class="drawer__sub-link">Construction</a></div></div>
+        <div class="drawer__item"><button class="drawer__link" data-drawer="abt-drawer" aria-expanded="false">About IOR <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="abt-drawer"><a href="09_About_IOR.html" class="drawer__sub-link">About IOR</a><a href="09a_Our_Leadershipv5.html" class="drawer__sub-link">Our Leadership</a><a href="10_Careers.html" class="drawer__sub-link">Careers</a><a href="11h_Downloads_Centrev5.html" class="drawer__sub-link">Downloads Centre</a></div></div>
+        <div class="drawer__item"><button class="drawer__link" data-drawer="sup-drawer" aria-expanded="false">Support &amp; Contact <span class="drawer__link-chevron" aria-hidden="true"></span></button><div class="drawer__sub" id="sup-drawer"><a href="11_Support_Hubv5.html" class="drawer__sub-link">Help Centre &amp; FAQs</a><a href="11a_Contact_Usv5.html" class="drawer__sub-link">Contact Us</a><a href="11d_Find_Locationv5.html" class="drawer__sub-link">Find a Location</a></div></div>
       </nav>
       <div class="drawer__ctas">
         <a href="#" class="btn btn--outline-white btn--pill">Customer Login</a>
@@ -588,12 +390,10 @@
     </nav>
   </header>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <!-- MAIN CONTENT                                                            -->
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- MAIN -->
   <main id="main-content">
 
-    <!-- ─── UTILITY HERO ──────────────────────────────────────────────────── -->
+    <!-- UTILITY HERO -->
     <section class="utility-hero" aria-labelledby="downloads-h1">
       <div class="utility-hero__inner">
         <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -609,484 +409,635 @@
       </div>
     </section>
 
-    <!-- ─── CATEGORY FILTER STRIP ─────────────────────────────────────────── -->
-    <!-- Elementor: Nav Menu widget or Custom HTML | No sticky -->
+    <!-- CATEGORY FILTER STRIP -->
     <section class="filter-section" aria-label="Filter downloads by category">
       <div class="filter-section__inner">
         <span class="filter-section__label">Filter by:</span>
         <button class="filter-btn active" data-filter="all" aria-pressed="true">All Documents</button>
         <button class="filter-btn" data-filter="accounts" aria-pressed="false">Accounts &amp; Admin</button>
-        <button class="filter-btn" data-filter="fuel-tags" aria-pressed="false">Fuel Tags</button>
-        <button class="filter-btn" data-filter="supplier" aria-pressed="false">Supplier Information</button>
-        <button class="filter-btn" data-filter="aviation" aria-pressed="false">Aviation</button>
+        <button class="filter-btn" data-filter="eromanga" aria-pressed="false">Eromanga UMF</button>
+        <button class="filter-btn" data-filter="frac-tanks" aria-pressed="false">Frac Tanks</button>
         <button class="filter-btn" data-filter="hydip" aria-pressed="false">HyDip&#8482; Spec</button>
-        <button class="filter-btn" data-filter="sds" aria-pressed="false">SDS &amp; Specifications</button>
+        <button class="filter-btn" data-filter="aviation" aria-pressed="false">Aviation</button>
+        <button class="filter-btn" data-filter="sds" aria-pressed="false">Specifications &amp; SDS</button>
         <button class="filter-btn" data-filter="terms" aria-pressed="false">Terms &amp; Conditions</button>
       </div>
     </section>
 
-    <!-- ─── DOWNLOAD LIBRARY ──────────────────────────────────────────────── -->
-    <!-- Elementor: Accordion widget or Custom HTML -->
+    <!-- DOWNLOAD LIBRARY -->
     <section class="download-library" aria-labelledby="download-library-heading">
       <div class="download-library__inner">
         <div class="download-library__heading fade-up">
           <span class="eyebrow eyebrow--blue">Document Library</span>
           <h2 id="download-library-heading">IOR Resource Library</h2>
-          <p>Browse all available downloads below. Documents marked <strong>Gated</strong> require a brief registration to access. All other documents are available immediately.</p>
-        </div>
-
-        <!-- Gated Notice -->
-        <div class="gated-notice fade-up" role="note">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <span>Some documents require a brief registration to unlock. <a href="https://iorapp.applyeasy.com.au" target="_blank" rel="noopener">Apply for an Account</a> to access the full library without a form each time.</span>
+          <p>63 documents across 7 categories. Browse all available downloads below.</p>
         </div>
 
         <div class="accordion-group" id="download-accordion">
 
-          <!-- ── 1. Accounts & Admin ────────────────────────────────────── -->
+          <!-- ── 1. Accounts & Admin (9 docs) ─────────────────────────── -->
           <div class="accordion-item" data-category="accounts">
             <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-accounts">
-              <span>Accounts &amp; Admin <span class="accordion__meta">4 documents</span></span>
+              <span>Accounts &amp; Admin <span class="accordion__meta">9 documents</span></span>
               <span class="accordion__icon" aria-hidden="true">+</span>
             </button>
             <div class="accordion__panel" id="acc-accounts" role="region">
               <div class="accordion__body">
-                <p style="font-size:14px;color:var(--grey-700);margin-bottom:20px;line-height:1.6;">Are you looking to set up an account with IOR to access our Diesel Stop network or to get fuel delivered to your site? Access our account application and direct debit forms below.</p>
 
+                <p class="subcat-heading">Account Form</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">IOR Account Application Form <span class="download-item__badge download-item__badge--free">Free</span></div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
+                    <div class="download-item__name">Direct Debit Request</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#" class="download-item__cta" aria-label="Download IOR Account Application Form">Download &rarr;</a>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2022/06/20220601-DIRECT-DEBIT-REQUEST-V.3.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download Direct Debit Request PDF">Download &rarr;</a>
                 </div>
 
+                <p class="subcat-heading">IOR Fuel Tags</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">Direct Debit Authority Form <span class="download-item__badge download-item__badge--free">Free</span></div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
+                    <div class="download-item__name">Tag Order Form</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#" class="download-item__cta" aria-label="Download Direct Debit Authority Form">Download &rarr;</a>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2022/06/20220601-TAG-ORDER-FORM-V.2.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download Tag Order Form PDF">Download &rarr;</a>
                 </div>
-
+                <div class="download-item">
+                  <div class="doc-icon doc-icon--xlsx"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info">
+                    <div class="download-item__name">Tag Order Form (Excel Version)</div>
+                    <div class="download-item__meta">XLSX</div>
+                  </div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/20170830-Tag-Order-Form-Excel-Version.xlsx" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download Tag Order Form Excel version">Download &rarr;</a>
+                </div>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">IOR Diesel Network Directory <span class="download-item__badge download-item__badge--gated">Gated</span></div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied] &mdash; Register to download</div>
+                    <div class="download-item__name">How to Use Your IOR Fuel Tag</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#gated-form-accounts" class="download-item__cta download-item__cta--gated" aria-label="Register to download IOR Diesel Network Directory">Register &amp; Download &rarr;</a>
+                  <a href="http://www.ior.com.au/wp-content/uploads/2020/01/Tag-How-To_PROOF.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download IOR Fuel Tag user guide">Download &rarr;</a>
                 </div>
 
+                <p class="subcat-heading">New Supplier Information</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">IOR Aviation Network Directory <span class="download-item__badge download-item__badge--gated">Gated</span></div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied] &mdash; Register to download</div>
+                    <div class="download-item__name">New Supplier Form</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#gated-form-accounts" class="download-item__cta download-item__cta--gated" aria-label="Register to download IOR Aviation Network Directory">Register &amp; Download &rarr;</a>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2025/05/IOR-FIN-FRM-09-New-Supplier-Form.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download New Supplier Form">Download &rarr;</a>
                 </div>
-
-                <!-- Gated Form Placeholder -->
-                <div class="gated-form-placeholder" id="gated-form-accounts" aria-label="Registration form to access gated documents">
-                  <p class="gated-form-placeholder__heading">Register to Access Gated Documents</p>
-                  <p class="gated-form-placeholder__sub">Complete the form below to receive your download link. Your details are kept private and used only to send you the requested document.</p>
-                  <div class="gated-form-placeholder__fields">
-                    <div class="form-field">
-                      <label for="gf-acc-fname">First Name <span aria-hidden="true">*</span></label>
-                      <input type="text" id="gf-acc-fname" placeholder="John" required autocomplete="given-name">
-                    </div>
-                    <div class="form-field">
-                      <label for="gf-acc-lname">Last Name <span aria-hidden="true">*</span></label>
-                      <input type="text" id="gf-acc-lname" placeholder="Smith" required autocomplete="family-name">
-                    </div>
-                    <div class="form-field">
-                      <label for="gf-acc-company">Company Name <span aria-hidden="true">*</span></label>
-                      <input type="text" id="gf-acc-company" placeholder="Acme Pty Ltd" required autocomplete="organization">
-                    </div>
-                    <div class="form-field">
-                      <label for="gf-acc-email">Email Address <span aria-hidden="true">*</span></label>
-                      <input type="email" id="gf-acc-email" placeholder="john@acme.com.au" required autocomplete="email">
-                    </div>
-                    <div class="form-field">
-                      <label for="gf-acc-phone">Phone Number</label>
-                      <input type="tel" id="gf-acc-phone" placeholder="0400 000 000" autocomplete="tel">
-                    </div>
-                    <div class="form-field">
-                      <label for="gf-acc-postcode">Post Code</label>
-                      <input type="text" id="gf-acc-postcode" placeholder="4000" autocomplete="postal-code">
-                    </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info">
+                    <div class="download-item__name">IOR Purchase Order Terms</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <div class="form-consent">
-                    <input type="checkbox" id="gf-acc-consent" required>
-                    <label for="gf-acc-consent">I agree to the <a href="#" style="color:var(--ior-blue);text-decoration:underline;">Privacy Policy</a>. I consent to IOR contacting me with relevant updates and communications. I can opt out at any time.</label>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/V2.0-Purchase-Order-Terms.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download IOR Purchase Order Terms">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info">
+                    <div class="download-item__name">IOR Road Transport Services Terms</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <button type="submit" class="btn btn--primary btn--sm" aria-label="Submit registration and receive download link">Send Me the Download &rarr;</button>
-                  <p class="form-note">&#128274; Your details are kept private. Used only to send you the requested document.</p>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/V2.0-Road-Transport-Services-Terms.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download IOR Road Transport Services Terms">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info">
+                    <div class="download-item__name">External Mechanic Statement</div>
+                    <div class="download-item__meta">PDF</div>
+                  </div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2025/01/IOR-External-Mechanic-Statement-For-Signing.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download External Mechanic Statement">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info">
+                    <div class="download-item__name">IOR Contractor Declaration</div>
+                    <div class="download-item__meta">PDF</div>
+                  </div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2025/12/IOR-Contractor-Declaration.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download IOR Contractor Declaration">Download &rarr;</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- ── 2. IOR Fuel Tags ───────────────────────────────────────── -->
-          <div class="accordion-item" data-category="fuel-tags">
-            <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-fuel-tags">
-              <span>IOR Fuel Tags <span class="accordion__meta">3 documents</span></span>
+          <!-- ── 2. Eromanga UMF (3 docs) ──────────────────────────────── -->
+          <div class="accordion-item" data-category="eromanga">
+            <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-eromanga">
+              <span>Eromanga UMF <span class="accordion__meta">3 documents</span></span>
               <span class="accordion__icon" aria-hidden="true">+</span>
             </button>
-            <div class="accordion__panel" id="acc-fuel-tags" role="region">
+            <div class="accordion__panel" id="acc-eromanga" role="region">
               <div class="accordion__body">
-                <p style="font-size:14px;color:var(--grey-700);margin-bottom:20px;line-height:1.6;">Order IOR fuel tags for your fleet or download the guide to get started with your existing tags.</p>
-
-                <div class="download-item">
+                <div class="download-item" style="padding-top:16px;">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">Tag Order Form <span class="download-item__badge download-item__badge--free">Free</span></div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
+                    <div class="download-item__name">QUT Report for Eromanga UMF</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#" class="download-item__cta" aria-label="Download Tag Order Form PDF">Download &rarr;</a>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/QUT-Report-for-Eromanga-UMF-Project_Part-A-For-Website.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download QUT Report for Eromanga UMF">Download &rarr;</a>
                 </div>
-
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">Tag Order Form &mdash; Excel Version <span class="download-item__badge download-item__badge--free">Free</span></div>
-                    <div class="download-item__meta">XLSX &mdash; [PLACEHOLDER: link to be supplied]</div>
+                    <div class="download-item__name">Eromanga UMF Spec Sheet</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#" class="download-item__cta" aria-label="Download Tag Order Form Excel version">Download &rarr;</a>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Spec-Eromanga-UMF-1-12-2010.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download Eromanga UMF Spec Sheet">Download &rarr;</a>
                 </div>
-
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">How to Use Your IOR Fuel Tag <span class="download-item__badge download-item__badge--free">Free</span></div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
+                    <div class="download-item__name">Eromanga UMF Safety Data Sheet</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#" class="download-item__cta" aria-label="Download IOR Fuel Tag user guide">Download &rarr;</a>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/11/SDS-Petroleum-Underground-Mining-Fuel-29-05-2024.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download Eromanga UMF Safety Data Sheet">Download &rarr;</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- ── 3. New Supplier Information ───────────────────────────── -->
-          <div class="accordion-item" data-category="supplier">
-            <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-supplier">
-              <span>New Supplier Information <span class="accordion__meta">5 documents</span></span>
+          <!-- ── 3. Frac Tanks (3 docs) ─────────────────────────────────── -->
+          <div class="accordion-item" data-category="frac-tanks">
+            <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-frac-tanks">
+              <span>Frac Tanks <span class="accordion__meta">3 documents</span></span>
               <span class="accordion__icon" aria-hidden="true">+</span>
             </button>
-            <div class="accordion__panel" id="acc-supplier" role="region">
+            <div class="accordion__panel" id="acc-frac-tanks" role="region">
               <div class="accordion__body">
-                <p style="font-size:14px;color:var(--grey-700);margin-bottom:20px;line-height:1.6;">New suppliers working with IOR can access the required forms and terms documentation below.</p>
-
+                <p class="subcat-heading">Mobile Steel Frac Tanks</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">New Supplier Form <span class="download-item__badge download-item__badge--free">Free</span></div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
+                    <div class="download-item__name">500 bbl Mobile Frac Tank</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#" class="download-item__cta" aria-label="Download New Supplier Form">Download &rarr;</a>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Mobile-Frac-Tank-500bbl.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download 500 bbl Mobile Frac Tank spec">Download &rarr;</a>
                 </div>
-
+                <p class="subcat-heading">Skidded Frac Tanks (Closed Top)</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">IOR Purchase Order Terms <span class="download-item__badge download-item__badge--free">Free</span></div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
+                    <div class="download-item__name">450 bbl Container Frac Tank (Skidded)</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#" class="download-item__cta" aria-label="Download IOR Purchase Order Terms">Download &rarr;</a>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Container-Frac-Tanks-skidded-45-ft.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download 450 bbl Container Frac Tank Skidded spec">Download &rarr;</a>
                 </div>
-
+                <p class="subcat-heading">Open Top Frac Tanks &mdash; DST</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">IOR Road Transport Services Terms <span class="download-item__badge download-item__badge--free">Free</span></div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
+                    <div class="download-item__name">450 bbl Open Top DST Tanks (180&ndash;400 bbl)</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#" class="download-item__cta" aria-label="Download IOR Road Transport Services Terms">Download &rarr;</a>
-                </div>
-
-                <div class="download-item">
-                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-                  <div class="download-item__info">
-                    <div class="download-item__name">External Mechanic Statement <span class="download-item__badge download-item__badge--free">Free</span></div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
-                  </div>
-                  <a href="#" class="download-item__cta" aria-label="Download External Mechanic Statement">Download &rarr;</a>
-                </div>
-
-                <div class="download-item">
-                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-                  <div class="download-item__info">
-                    <div class="download-item__name">IOR Contractor Declaration <span class="download-item__badge download-item__badge--free">Free</span></div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
-                  </div>
-                  <a href="#" class="download-item__cta" aria-label="Download IOR Contractor Declaration">Download &rarr;</a>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Open-Top-DST-Tanks-180Bbl-400Bbl.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download Open Top DST Tanks spec">Download &rarr;</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- ── 4. IOR Aviation Documents ─────────────────────────────── -->
-          <div class="accordion-item" data-category="aviation">
-            <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-aviation">
-              <span>IOR Aviation Documents <span class="accordion__meta">Placeholder — documents TBC</span></span>
-              <span class="accordion__icon" aria-hidden="true">+</span>
-            </button>
-            <div class="accordion__panel" id="acc-aviation" role="region">
-              <div class="accordion__body">
-                <p style="font-size:14px;color:var(--grey-700);margin-bottom:20px;line-height:1.6;">IOR Aviation Downloads — AvPulp specifications, aviation fuel handling guides, and airport network directories. Documents and links to be supplied by client.</p>
-
-                <div class="download-item">
-                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-                  <div class="download-item__info">
-                    <div class="download-item__name">[PLACEHOLDER] Aviation Document 1</div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
-                  </div>
-                  <a href="#" class="download-item__cta" aria-label="Download Aviation Document 1">Download &rarr;</a>
-                </div>
-
-                <div class="download-item">
-                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-                  <div class="download-item__info">
-                    <div class="download-item__name">[PLACEHOLDER] Aviation Document 2</div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
-                  </div>
-                  <a href="#" class="download-item__cta" aria-label="Download Aviation Document 2">Download &rarr;</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ── 5. HyDip Spec Documents ────────────────────────────────── -->
+          <!-- ── 4. HyDip Spec Documents (2 docs) ──────────────────────── -->
           <div class="accordion-item" data-category="hydip">
             <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-hydip">
-              <span>HyDip&#8482; Spec Documents <span class="accordion__meta">Placeholder — documents TBC</span></span>
+              <span>HyDip&#8482; Spec Documents <span class="accordion__meta">2 documents</span></span>
               <span class="accordion__icon" aria-hidden="true">+</span>
             </button>
             <div class="accordion__panel" id="acc-hydip" role="region">
               <div class="accordion__body">
-                <p style="font-size:14px;color:var(--grey-700);margin-bottom:20px;line-height:1.6;">HyDip&#8482; systems for tank monitoring and fleet management. Technical specifications, installation guides, and integration documentation. Documents and links to be supplied by client.</p>
-
+                <p class="subcat-heading">HyDip&#8482; Systems</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">[PLACEHOLDER] HyDip&#8482; Technical Specification</div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
+                    <div class="download-item__name">HyDip&#8482; Tank Gauging</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#" class="download-item__cta" aria-label="Download HyDip Technical Specification">Download &rarr;</a>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/11/HDV2_web_v170418-1.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download HyDip Tank Gauging spec">Download &rarr;</a>
                 </div>
-
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
                   <div class="download-item__info">
-                    <div class="download-item__name">[PLACEHOLDER] HyDip&#8482; Installation Guide</div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
+                    <div class="download-item__name">HyDip&#8482; Fuel Tracking</div>
+                    <div class="download-item__meta">PDF</div>
                   </div>
-                  <a href="#" class="download-item__cta" aria-label="Download HyDip Installation Guide">Download &rarr;</a>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/11/HFTV1_web_v170418.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download HyDip Fuel Tracking spec">Download &rarr;</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- ── 6. Specification & SDS ─────────────────────────────────── -->
+          <!-- ── 5. IOR Aviation Documents (2 docs) ────────────────────── -->
+          <div class="accordion-item" data-category="aviation">
+            <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-aviation">
+              <span>IOR Aviation Documents <span class="accordion__meta">2 documents</span></span>
+              <span class="accordion__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion__panel" id="acc-aviation" role="region">
+              <div class="accordion__body">
+                <div class="download-item" style="padding-top:16px;">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info">
+                    <div class="download-item__name">AvPulp Supply Terms</div>
+                    <div class="download-item__meta">PDF</div>
+                  </div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2023/08/SDS-Supply-Terms-Avpulp-IORA-Combined.pdf" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download AvPulp Supply Terms">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon doc-icon--docx"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info">
+                    <div class="download-item__name">Aviation 3 Monthly Site Inspection</div>
+                    <div class="download-item__meta">DOCX</div>
+                  </div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/11/IOR-3-Monthly-Site-Inspection-V3.docx" target="_blank" rel="noopener" class="download-item__cta" aria-label="Download Aviation 3 Monthly Site Inspection form">Download &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── 6. Specifications & SDS (28 docs) ─────────────────────── -->
           <div class="accordion-item" data-category="sds">
             <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-sds">
-              <span>Specification &amp; SDS &mdash; Solvents &amp; Fuel <span class="accordion__meta">Placeholder — documents TBC</span></span>
+              <span>Specifications &amp; SDS &mdash; Solvents &amp; Fuel <span class="accordion__meta">28 documents</span></span>
               <span class="accordion__icon" aria-hidden="true">+</span>
             </button>
             <div class="accordion__panel" id="acc-sds" role="region">
               <div class="accordion__body">
-                <p style="font-size:14px;color:var(--grey-700);margin-bottom:20px;line-height:1.6;">Safety Data Sheets (SDS) and product specifications for IOR fuel products including diesel, Jet A-1, Avgas, AdBlue/HyBlue&#8482;, and solvents. Documents and links to be supplied by client.</p>
 
+                <p class="subcat-heading">Fuel</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-                  <div class="download-item__info">
-                    <div class="download-item__name">[PLACEHOLDER] Diesel Fuel SDS</div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
-                  </div>
-                  <a href="#" class="download-item__cta" aria-label="Download Diesel Fuel SDS">Download &rarr;</a>
+                  <div class="download-item__info"><div class="download-item__name">Aviation Gasoline &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2026/03/Aviation-Gasoline_2025_June_11_AUS_EN.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">AvPulp &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2026/03/AvPulp_2025_June_11_AUS_EN.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Jet A-1 &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2026/03/Jet-A1_2025_June_12_AUS_EN.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; Diesel &mdash; Specification</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Spec-Enersol-ULS-Diesel-1-12-2010.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; Diesel &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/SDS-Diesel-13-06-2024.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Premium Unleaded Petrol &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/SDS-Premium-Unleaded-Petrol-27-03-2023.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Diesel B10 &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2025/10/Diesel-B10_2025_October_15_AUS_EN.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Diesel B20 &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2025/10/Diesel-B20_2025_October_15_AUS_EN.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Renewable Diesel &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/SDS-Unleaded-Petrol-27.03.2023.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
                 </div>
 
+                <p class="subcat-heading">AdBlue</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-                  <div class="download-item__info">
-                    <div class="download-item__name">[PLACEHOLDER] Jet A-1 Aviation Fuel SDS</div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
-                  </div>
-                  <a href="#" class="download-item__cta" aria-label="Download Jet A-1 Aviation Fuel SDS">Download &rarr;</a>
+                  <div class="download-item__info"><div class="download-item__name">HyBlue&#8482; (AdBlue) &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2023/11/AdBlue_SDS.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
                 </div>
 
+                <p class="subcat-heading">Thinners</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-                  <div class="download-item__info">
-                    <div class="download-item__name">[PLACEHOLDER] AdBlue / HyBlue&#8482; SDS</div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
-                  </div>
-                  <a href="#" class="download-item__cta" aria-label="Download AdBlue HyBlue SDS">Download &rarr;</a>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; L &mdash; Specification</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Spec-Enersol-L-07-04-2016.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; L &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/SDS-Enersol-L-06-05-2023.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; M &mdash; Specification</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Spec-Enersol-M-10-02-2015.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; M &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/SDS-Enersol-M-29-05-2024.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+
+                <p class="subcat-heading">White Spirit</p>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; HA &mdash; Specification</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Spec-Enersol-HA-17-09-2015.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; HA &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/SDS-Enersol-HA-129-05-2024.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+
+                <p class="subcat-heading">Low Aromatic White Spirit</p>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; H &mdash; Specification</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Spec-Enersol-H-17-09-2015.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; H &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/SDS-Enersol-H-29-05-2024.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+
+                <p class="subcat-heading">Kerosene</p>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; K &mdash; Specification</div><div class="download-item__meta">PDF</div></div>
+                  <a href="http://www.ior.com.au/wp-content/uploads/2019/06/Spec-Enersol-K-01-03-2019.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; K &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/SDS-Enersol-K-29-05-2024.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; HFK &mdash; Specification</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Spec-Enersol-HFK-1-12-2010.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; HFK &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/SDS-Enersol-HFK-29-05-2024.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+
+                <p class="subcat-heading">Heating Oil</p>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; 88 &mdash; Specification</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Spec-Enersol-88-27-06-2017.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; 88 &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/SDS-Enersol-88-11-05-2023.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; 99 &mdash; Specification</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Spec-Enersol-99-1-11-2012.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; 99 &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/SDS-Enersol-99-29-05-2024.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; HFO &mdash; Specification</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2018/09/Spec-Enersol-HFO-20-05-2011.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Enersol&#174; HFO &mdash; SDS</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2023/09/Enersol-HFO_2023_August_30_AUS_EN.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- ── 7. Terms & Conditions and Policies ────────────────────── -->
+          <!-- ── 7. Terms & Conditions and Policies (16 docs) ──────────── -->
           <div class="accordion-item" data-category="terms">
             <button class="accordion__trigger" aria-expanded="false" aria-controls="acc-terms">
-              <span>Terms &amp; Conditions and Policies <span class="accordion__meta">Placeholder — documents TBC</span></span>
+              <span>Terms &amp; Conditions and Policies <span class="accordion__meta">16 documents</span></span>
               <span class="accordion__icon" aria-hidden="true">+</span>
             </button>
             <div class="accordion__panel" id="acc-terms" role="region">
               <div class="accordion__body">
-                <p style="font-size:14px;color:var(--grey-700);margin-bottom:20px;line-height:1.6;">Access IOR terms and conditions, privacy policy, and compliance documentation. Documents and links to be supplied by client.</p>
 
+                <p class="subcat-heading">General</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-                  <div class="download-item__info">
-                    <div class="download-item__name">[PLACEHOLDER] IOR Terms &amp; Conditions</div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
-                  </div>
-                  <a href="#" class="download-item__cta" aria-label="Download IOR Terms and Conditions">Download &rarr;</a>
+                  <div class="download-item__info"><div class="download-item__name">Fuel Supply Terms</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2022/06/20220601-FUEL-SUPPLY-TERMS-IORP-V.2.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Cattle Cross Loading Stations &mdash; Access Conditions</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2022/06/20220601-CATTLE-CROSS-ACCESS-CONDITIONS-V.2.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Purchase Order Terms</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/V2.0-Purchase-Order-Terms.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Notice Regarding Emails</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2022/06/20220601-NOTICE-REGARDING-EMAILS-V.3.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Community Code of Conduct</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2019/05/Community-code-of-conduct_MAY19.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
                 </div>
 
+                <p class="subcat-heading">Whistleblower Policy</p>
                 <div class="download-item">
                   <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-                  <div class="download-item__info">
-                    <div class="download-item__name">[PLACEHOLDER] Privacy Policy</div>
-                    <div class="download-item__meta">PDF &mdash; [PLACEHOLDER: link to be supplied]</div>
-                  </div>
-                  <a href="#" class="download-item__cta" aria-label="Download Privacy Policy">Download &rarr;</a>
+                  <div class="download-item__info"><div class="download-item__name">Whistleblower Policy</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2026/02/PC-POL-02-Whistleblower-Policy.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+
+                <p class="subcat-heading">Modern Slavery</p>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">IOR Group Modern Slavery Statement</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/11/IOR-BDV-STD-01-Modern-Slavery-Statement.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+
+                <p class="subcat-heading">Privacy</p>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Privacy Policy</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2022/06/20220601-PRIVACY-POLICY-V.3.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Privacy Notice (Credit Applications)</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2024/10/20220601-PRIVACY-NOTICE-V.3-Applications-for-credit.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+
+                <p class="subcat-heading">Customer Survey</p>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">2025 Customer Survey Terms &amp; Conditions</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2025/04/250328-IOR-2025-Customer-Survey-Terms-and-Conditions-v4-clean.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+
+                <p class="subcat-heading">IOR Customer Portal</p>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">IOR Customer Portal Terms &amp; Conditions</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2025/11/IOR-Customer-Portal-Terms-Conditions-FINAL.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+
+                <p class="subcat-heading">Promotions &amp; Campaigns</p>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Refer-A-Friend Terms &amp; Conditions</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2025/10/IOR-Refer-a-Friend-T-Cs-2025-v3-13102025.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Reconnect Rewards Terms &amp; Conditions</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2025/11/IOR-Customer-Reconnect-Rewards-T-Cs-2025-v3_FINAL.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">Bushtrackers Owners Group Fuelcharge Discount 2025 T&amp;Cs</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2025/11/251125-Bushtracker-Owners-Group-Fuelcharge-Terms-and-Conditions.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">LBRCA NSW Rural Carriers' Convention 2026 HyBlue Giveaway T&amp;Cs</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2026/02/2026-02-16-LBRCA-NSW-Rural-Carriers-Convention-2026-HyBlue-Giveaway.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
+                </div>
+                <div class="download-item">
+                  <div class="doc-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                  <div class="download-item__info"><div class="download-item__name">NT Cattlemen's Association 2026 Annual Industry Conference BCF Voucher Giveaway T&amp;Cs</div><div class="download-item__meta">PDF</div></div>
+                  <a href="https://www.ior.com.au/wp-content/uploads/2026/03/2026-03-18-NTCA-Conference-BCF-Giveaway-TC.pdf" target="_blank" rel="noopener" class="download-item__cta">Download &rarr;</a>
                 </div>
               </div>
             </div>
           </div>
-
-        </div><!-- /accordion-group -->
-      </div>
-    </section>
-
-    <!-- ─── STILL HAVE QUESTIONS? ─────────────────────────────────────────── -->
-    <section class="faq-routing-section" aria-labelledby="faq-routing-heading">
-      <div class="inner">
-        <div class="faq-footer fade-up">
-          <div class="faq-footer__text">
-            <h4 id="faq-routing-heading">Can&rsquo;t find what you need?</h4>
-            <p>Contact our team directly or visit the Help Centre for additional resources and support.</p>
-          </div>
-          <div class="faq-footer__actions">
-            <a href="11_Support_Hubv5.html" class="faq-footer__help-link" aria-label="Browse the IOR Help Centre">Browse Help Centre</a>
-            <a href="11a_Contact_Usv5.html" class="btn btn--outline btn--sm" aria-label="Contact IOR">Contact Us &rarr;</a>
-          </div>
+          <!-- /accordion-group -->
         </div>
       </div>
     </section>
 
-  </main><!-- /main -->
+    <!-- CAN'T FIND WHAT YOU NEED? -->
+    <section class="faq-routing-section" aria-labelledby="faq-routing-heading">
+      <div class="faq-footer">
+        <div class="faq-footer__text">
+          <h4 id="faq-routing-heading">Can't find what you need?</h4>
+          <p>Our team can help with specific document requests, SDS queries, or account forms.</p>
+        </div>
+        <div class="faq-footer__actions">
+          <a href="11_Support_Hubv5.html" class="faq-footer__help-link">Help Centre &amp; FAQs</a>
+          <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--sm">Contact Us <span class="btn__arrow" aria-hidden="true"></span></a>
+        </div>
+      </div>
+    </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <!-- PRE-FOOTER: "We're here to help"                                        -->
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="pre-footer" aria-label="We're here to help">
+  </main>
+
+  <!-- PRE-FOOTER -->
+  <section class="pre-footer" aria-label="Pre-footer call to action">
     <div class="pre-footer__row">
-      <h2 class="pre-footer__title">We&rsquo;re here to help</h2>
+      <p class="pre-footer__title">We're here to help.</p>
       <div class="pre-footer__ctas">
-        <a href="11a_Contact_Usv5.html" class="btn btn--white" aria-label="Get in touch with IOR">Get in Touch <span class="btn__arrow" aria-hidden="true"></span></a>
-        <a href="11_Support_Hubv5.html" class="btn btn--outline-white" aria-label="Visit the support hub">Need Help? <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--white">Contact Us <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="https://iorapp.applyeasy.com.au" target="_blank" rel="noopener" class="btn btn--outline-white">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
       </div>
     </div>
-    <div class="pre-footer__divider"></div>
+    <div class="pre-footer__divider" aria-hidden="true"></div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <!-- GLOBAL FOOTER: 6-column canonical                                       -->
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <footer class="site-footer" aria-label="Site footer">
+  <!-- SITE FOOTER -->
+  <footer class="site-footer" role="contentinfo" aria-label="Site footer">
     <div class="footer-nav-grid">
-      <!-- Contact -->
-      <div>
-        <div class="footer-col__title">Contact</div>
+      <div class="footer-col">
+        <p class="footer-col__title">Fuel Solutions</p>
         <div class="footer-col__links">
-          <span class="footer-col__link footer-col__link--address">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
-          </span>
+          <a href="03_Ground_Fuels.html" class="footer-col__link">Ground Fuels</a>
+          <a href="04_Aviation_Hub.html" class="footer-col__link">Aviation Fuels</a>
+          <a href="#" class="footer-col__link">Marine Fuels</a>
+          <a href="#" class="footer-col__link">HyBlue&#8482; AdBlue</a>
+          <a href="11d_Find_Locationv5.html" class="footer-col__link">Find a Location</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col__title">Digital Platforms</p>
+        <div class="footer-col__links">
+          <a href="07a_HyDip_FMSv6.html" class="footer-col__link">HyDip&#8482; FMS</a>
+          <a href="07b_Fuelcharge_App_v8.html" class="footer-col__link">Fuelcharge App</a>
+          <a href="07c_Customer_Portalv5.html" class="footer-col__link">Customer Portal</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col__title">Industries</p>
+        <div class="footer-col__links">
+          <a href="#" class="footer-col__link">Mining &amp; Resources</a>
+          <a href="#" class="footer-col__link">Agriculture</a>
+          <a href="#" class="footer-col__link">Construction</a>
+          <a href="#" class="footer-col__link">Transport &amp; Logistics</a>
+          <a href="#" class="footer-col__link">Aviation</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col__title">About IOR</p>
+        <div class="footer-col__links">
+          <a href="09_About_IOR.html" class="footer-col__link">About IOR</a>
+          <a href="09a_Our_Leadershipv5.html" class="footer-col__link">Our Leadership</a>
+          <a href="10_Careers.html" class="footer-col__link">Careers</a>
+          <a href="11h_Downloads_Centrev5.html" class="footer-col__link" aria-current="page">Downloads Centre</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col__title">Support</p>
+        <div class="footer-col__links">
+          <a href="11_Support_Hubv5.html" class="footer-col__link">Help Centre &amp; FAQs</a>
+          <a href="11a_Contact_Usv5.html" class="footer-col__link">Contact Us</a>
+          <a href="11b_Regional_Contactsv5.html" class="footer-col__link">Regional Contacts</a>
+          <a href="11e_Make_Paymentv5.html" class="footer-col__link">Make a Payment</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col__title">Contact IOR</p>
+        <div class="footer-col__links">
           <a href="tel:1300457467" class="footer-col__link footer-col__link--icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             1300 457 467
           </a>
-          <a href="mailto:enquiries@ior.com.au" class="footer-col__link footer-col__link--icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            enquiries@ior.com.au
-          </a>
-          <a href="11b_Regional_Contactsv5.html" class="footer-col__link">Regional Contacts</a>
-        </div>
-      </div>
-      <!-- Fuel Solutions -->
-      <div>
-        <div class="footer-col__title">Fuel Solutions</div>
-        <div class="footer-col__links">
-          <a href="03_Ground_Fuels.html"              class="footer-col__link">Ground Fuels</a>
-          <a href="04_Aviation_Hub.html"              class="footer-col__link">Aviation</a>
-          <a href="#"                                 class="footer-col__link">Equipment &amp; Infrastructure</a>
-          <a href="#"                                 class="footer-col__link">Supply &amp; Trading</a>
-        </div>
-      </div>
-      <!-- Digital Platforms -->
-      <div>
-        <div class="footer-col__title">Digital Platforms</div>
-        <div class="footer-col__links">
-          <a href="07a_HyDip_FMSv6.html"             class="footer-col__link">HyDip&#8482; FMS</a>
-          <a href="07b_Fuelcharge_App_v8.html"        class="footer-col__link">Fuelcharge App</a>
-          <a href="07c_Customer_Portalv5.html"        class="footer-col__link">Customer Portal</a>
-        </div>
-      </div>
-      <!-- Corporate -->
-      <div>
-        <div class="footer-col__title">Corporate</div>
-        <div class="footer-col__links">
-          <a href="09_About_IOR.html"                 class="footer-col__link">About IOR</a>
-          <a href="10_Careers.html"                   class="footer-col__link">Careers</a>
-          <a href="09d_Case_Study_Singlev6.html"      class="footer-col__link">Case Studies</a>
-          <a href="#"                                 class="footer-col__link">Sustainability, HSE &amp; ESG</a>
-          <a href="#"                                 class="footer-col__link">News &amp; Updates</a>
-        </div>
-      </div>
-      <!-- Quick Actions -->
-      <div>
-        <div class="footer-col__title">Quick Actions</div>
-        <div class="footer-col__links">
-          <a href="https://iorapp.applyeasy.com.au" target="_blank" rel="noopener" class="footer-col__link">Apply for an Account</a>
-          <a href="11e_Make_Paymentv5.html"           class="footer-col__link">Make a Payment</a>
-          <a href="11a_Contact_Usv5.html"             class="footer-col__link">Contact Us</a>
-          <a href="11_Support_Hubv5.html"             class="footer-col__link">Help Centre &amp; FAQs</a>
-          <a href="11h_Downloads_Centrev5.html"       class="footer-col__link" aria-current="page">Downloads Centre</a>
-        </div>
-      </div>
-      <!-- Find a Site By State -->
-      <div>
-        <div class="footer-col__title">Find a Site By State</div>
-        <div class="footer-state-pills">
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">QLD</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">NSW</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">VIC</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">SA</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">WA</a>
-          <a href="11d_Find_Locationv5.html" class="footer-state-pill">NT</a>
+          <span class="footer-col__link footer-col__link--address">PO Box 3039, Toowoomba QLD 4350</span>
+          <div class="footer-state-pills" style="margin-top:8px;">
+            <a href="#" class="footer-state-pill">QLD</a>
+            <a href="#" class="footer-state-pill">NSW</a>
+            <a href="#" class="footer-state-pill">VIC</a>
+            <a href="#" class="footer-state-pill">SA</a>
+            <a href="#" class="footer-state-pill">WA</a>
+            <a href="#" class="footer-state-pill">NT</a>
+          </div>
         </div>
       </div>
     </div>
     <div class="footer-legal">
-      <p class="footer-legal__text">
-        Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="#" class="footer-legal__link--muted">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="#" class="footer-legal__link--muted">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        Site by 3PM
-      </p>
-      <div class="footer-social" aria-label="Social media links">
-        <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
-        <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
-        <a href="#" class="footer-social__icon" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-        <a href="#" class="footer-social__icon" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+      <p class="footer-legal__text">&copy; 2026 IOR Petroleum Pty Ltd. All rights reserved. ABN 52 010 583 069.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+        <a href="https://www.ior.com.au/wp-content/uploads/2022/06/20220601-PRIVACY-POLICY-V.3.pdf" target="_blank" rel="noopener" class="footer-legal__link--muted" style="font-size:12px;">Privacy Policy</a>
+        <a href="https://www.ior.com.au/wp-content/uploads/2022/06/20220601-FUEL-SUPPLY-TERMS-IORP-V.2.pdf" target="_blank" rel="noopener" class="footer-legal__link--muted" style="font-size:12px;">Terms of Use</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/IORPetroleum" target="_blank" rel="noopener" class="footer-social__icon" aria-label="IOR on Facebook">f</a>
+        <a href="https://www.linkedin.com/company/ior-petroleum" target="_blank" rel="noopener" class="footer-social__icon" aria-label="IOR on LinkedIn">in</a>
       </div>
     </div>
   </footer>
@@ -1094,103 +1045,139 @@
 </div><!-- /main-audit-container -->
 
 <script>
-  /* ─── Nav: sticky scroll ─────────────────────────────────────────────── */
-  const nav = document.getElementById('primary-nav');
-  window.addEventListener('scroll', () => { nav.classList.toggle('primary-nav--scrolled', window.scrollY > 80); }, { passive: true });
+(function(){
+  'use strict';
 
-  /* ─── Nav: mega menus ────────────────────────────────────────────────── */
-  const navBtns = document.querySelectorAll('.nav-link[data-menu]');
-  const megaPanels = document.querySelectorAll('.mega-panel');
-  navBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const menuId = btn.getAttribute('data-menu');
-      const panel = document.getElementById('mega-' + menuId);
-      const isOpen = panel.classList.contains('mega-panel--visible');
-      megaPanels.forEach(p => p.classList.remove('mega-panel--visible'));
-      navBtns.forEach(b => b.setAttribute('aria-expanded', 'false'));
-      if (!isOpen) { panel.classList.add('mega-panel--visible'); btn.setAttribute('aria-expanded', 'true'); }
-    });
-  });
-  document.addEventListener('click', e => {
-    if (!e.target.closest('.primary-nav')) {
-      megaPanels.forEach(p => p.classList.remove('mega-panel--visible'));
-      navBtns.forEach(b => b.setAttribute('aria-expanded', 'false'));
-    }
-  });
-
-  /* ─── Mobile Drawer ──────────────────────────────────────────────────── */
-  const hamburger = document.getElementById('hamburger-btn');
-  const drawer = document.getElementById('mobile-drawer');
-  const overlay = document.getElementById('drawer-overlay');
-  const drawerClose = document.getElementById('drawer-close');
-  function openDrawer() { drawer.classList.add('drawer--open'); overlay.classList.add('drawer-overlay--open'); drawer.removeAttribute('aria-hidden'); hamburger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
-  function closeDrawer() { drawer.classList.remove('drawer--open'); overlay.classList.remove('drawer-overlay--open'); drawer.setAttribute('aria-hidden', 'true'); hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
-  hamburger.addEventListener('click', openDrawer);
-  drawerClose.addEventListener('click', closeDrawer);
-  overlay.addEventListener('click', closeDrawer);
-  document.querySelectorAll('.drawer__link[data-drawer]').forEach(link => {
-    link.addEventListener('click', () => {
-      const subId = link.getAttribute('data-drawer');
-      const sub = document.getElementById(subId);
-      const chevron = link.querySelector('.drawer__link-chevron');
-      const isOpen = sub.classList.contains('drawer__sub--open');
-      document.querySelectorAll('.drawer__sub').forEach(s => s.classList.remove('drawer__sub--open'));
-      document.querySelectorAll('.drawer__link-chevron').forEach(c => c.classList.remove('drawer__link-chevron--open'));
-      document.querySelectorAll('.drawer__link[data-drawer]').forEach(l => l.setAttribute('aria-expanded', 'false'));
-      if (!isOpen) { sub.classList.add('drawer__sub--open'); chevron.classList.add('drawer__link-chevron--open'); link.setAttribute('aria-expanded', 'true'); }
+  // ── Accordion ────────────────────────────────────────────────────────────
+  document.querySelectorAll('.accordion__trigger').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      // Close all
+      document.querySelectorAll('.accordion__trigger').forEach(function(b){
+        b.setAttribute('aria-expanded','false');
+        var panel = document.getElementById(b.getAttribute('aria-controls'));
+        if(panel) panel.classList.remove('is-open');
+      });
+      // Open clicked if was closed
+      if(!expanded){
+        this.setAttribute('aria-expanded','true');
+        var panel = document.getElementById(this.getAttribute('aria-controls'));
+        if(panel) panel.classList.add('is-open');
+      }
     });
   });
 
-  /* ─── Category Filter Pills ──────────────────────────────────────────── */
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const accordionItems = document.querySelectorAll('.accordion-item[data-category]');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      const filter = btn.getAttribute('data-filter');
-      accordionItems.forEach(item => {
-        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+  // ── Category Filter ───────────────────────────────────────────────────────
+  document.querySelectorAll('.filter-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var filter = this.dataset.filter;
+      // Update active state
+      document.querySelectorAll('.filter-btn').forEach(function(b){
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed','false');
+      });
+      this.classList.add('active');
+      this.setAttribute('aria-pressed','true');
+      // Show/hide accordion items
+      document.querySelectorAll('.accordion-item').forEach(function(item){
+        if(filter === 'all' || item.dataset.category === filter){
           item.classList.remove('hidden');
         } else {
           item.classList.add('hidden');
-          // Close any open panels in hidden items
-          const panel = item.querySelector('.accordion__panel');
-          const trigger = item.querySelector('.accordion__trigger');
-          if (panel) { panel.classList.remove('is-open'); panel.style.maxHeight = '0'; }
-          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+          // Close hidden panels
+          var trigger = item.querySelector('.accordion__trigger');
+          if(trigger) trigger.setAttribute('aria-expanded','false');
+          var panel = item.querySelector('.accordion__panel');
+          if(panel) panel.classList.remove('is-open');
         }
       });
     });
   });
 
-  /* ─── Accordion ──────────────────────────────────────────────────────── */
-  document.querySelectorAll('.accordion__trigger').forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const panelId = trigger.getAttribute('aria-controls');
-      const panel = document.getElementById(panelId);
-      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-      // Close all
-      document.querySelectorAll('.accordion__trigger').forEach(t => {
-        t.setAttribute('aria-expanded', 'false');
-        const p = document.getElementById(t.getAttribute('aria-controls'));
-        if (p) { p.classList.remove('is-open'); p.style.maxHeight = '0'; }
-      });
-      // Open clicked if it was closed
-      if (!isOpen) {
-        trigger.setAttribute('aria-expanded', 'true');
-        panel.classList.add('is-open');
-        panel.style.maxHeight = panel.scrollHeight + 'px';
+  // ── Mega Menu ─────────────────────────────────────────────────────────────
+  var navBtns = document.querySelectorAll('.nav-link[data-menu]');
+  var megaPanels = document.querySelectorAll('.mega-panel');
+  navBtns.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var menuId = 'mega-' + this.dataset.menu;
+      var isOpen = this.getAttribute('aria-expanded') === 'true';
+      navBtns.forEach(function(b){ b.setAttribute('aria-expanded','false'); });
+      megaPanels.forEach(function(p){ p.classList.remove('mega-panel--visible'); });
+      if(!isOpen){
+        this.setAttribute('aria-expanded','true');
+        var panel = document.getElementById(menuId);
+        if(panel) panel.classList.add('mega-panel--visible');
+      }
+    });
+  });
+  document.addEventListener('click', function(){
+    navBtns.forEach(function(b){ b.setAttribute('aria-expanded','false'); });
+    megaPanels.forEach(function(p){ p.classList.remove('mega-panel--visible'); });
+  });
+
+  // ── Mobile Drawer ─────────────────────────────────────────────────────────
+  var hamburger = document.getElementById('hamburger-btn');
+  var drawer = document.getElementById('mobile-drawer');
+  var overlay = document.getElementById('drawer-overlay');
+  var closeBtn = document.getElementById('drawer-close');
+  function openDrawer(){
+    drawer.classList.add('drawer--open');
+    overlay.classList.add('drawer-overlay--open');
+    drawer.setAttribute('aria-hidden','false');
+    hamburger.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer(){
+    drawer.classList.remove('drawer--open');
+    overlay.classList.remove('drawer-overlay--open');
+    drawer.setAttribute('aria-hidden','true');
+    hamburger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+  if(hamburger) hamburger.addEventListener('click', openDrawer);
+  if(closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if(overlay) overlay.addEventListener('click', closeDrawer);
+  document.querySelectorAll('.drawer__link[data-drawer]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var subId = this.dataset.drawer;
+      var sub = document.getElementById(subId);
+      var chevron = this.querySelector('.drawer__link-chevron');
+      var isOpen = sub && sub.classList.contains('drawer__sub--open');
+      document.querySelectorAll('.drawer__sub').forEach(function(s){ s.classList.remove('drawer__sub--open'); });
+      document.querySelectorAll('.drawer__link-chevron').forEach(function(c){ c.classList.remove('drawer__link-chevron--open'); });
+      document.querySelectorAll('.drawer__link[data-drawer]').forEach(function(b){ b.setAttribute('aria-expanded','false'); });
+      if(!isOpen && sub){
+        sub.classList.add('drawer__sub--open');
+        if(chevron) chevron.classList.add('drawer__link-chevron--open');
+        this.setAttribute('aria-expanded','true');
       }
     });
   });
 
-  /* ─── Fade-up on scroll ──────────────────────────────────────────────── */
-  const fadeObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('fade-up--visible'); fadeObs.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+  // ── Sticky Nav ────────────────────────────────────────────────────────────
+  var nav = document.getElementById('primary-nav');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 60){
+      nav.classList.add('primary-nav--scrolled');
+    } else {
+      nav.classList.remove('primary-nav--scrolled');
+    }
+  }, {passive:true});
+
+  // ── Fade-up on scroll ─────────────────────────────────────────────────────
+  var fadeEls = document.querySelectorAll('.fade-up');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('fade-up--visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.1});
+  fadeEls.forEach(function(el){ io.observe(el); });
+
+})();
 </script>
 </body>
 </html>
