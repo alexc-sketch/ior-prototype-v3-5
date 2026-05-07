@@ -246,72 +246,89 @@
     .video-embed { width: 100%; aspect-ratio: 16/9; position: relative; background: #000; }
     .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     /* ============================================================
-       I.O.R. VALUES GRID
+       I.O.R. VALUES GRID — hover-reveal image cards
     ============================================================ */
-    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; margin-top: 40px; }
+    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 40px; background: var(--grey-200); }
     .value-card {
       position: relative; overflow: hidden;
-      padding: 48px 36px; background: var(--grey-100);
-      border-right: 1px solid var(--grey-200);
-      transition: background .25s;
+      aspect-ratio: 3/4; display: flex; flex-direction: column; justify-content: flex-end;
+      background: var(--ior-navy); cursor: default;
     }
-    .value-card:last-child { border-right: none; }
-    .value-card::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 3px; background: var(--ior-blue);
-      transform: scaleX(0); transform-origin: left; transition: transform .35s;
+    .value-card__bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: var(--ior-navy);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .6s ease;
     }
-    .value-card:hover { background: #fff; }
-    .value-card:hover::after { transform: scaleX(1); }
-    /* Giant watermark letter */
+    .value-card__bg span { font-size: 10px; font-weight: 600; color: rgba(255,255,255,.3); text-align: center; padding: 12px; }
+    .value-card:hover .value-card__bg { transform: scale(1.06); }
+    .value-card__overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top, rgba(10,34,64,.95) 0%, rgba(10,34,64,.5) 50%, rgba(10,34,64,.15) 100%);
+      transition: background .4s;
+    }
+    .value-card:hover .value-card__overlay { background: linear-gradient(to top, rgba(10,34,64,.98) 0%, rgba(10,34,64,.75) 60%, rgba(10,34,64,.3) 100%); }
     .value-card__letter {
-      position: absolute; top: -16px; right: 16px;
-      font-size: clamp(100px, 14vw, 160px); font-weight: 900;
-      color: var(--ior-blue); opacity: .06; line-height: 1;
+      position: absolute; top: 16px; left: 20px; z-index: 2;
+      font-size: clamp(64px, 10vw, 96px); font-weight: 900;
+      color: rgba(255,255,255,.12); line-height: 1;
       pointer-events: none; user-select: none; letter-spacing: -.05em;
-      transition: opacity .3s;
+      transition: opacity .4s;
     }
-    .value-card:hover .value-card__letter { opacity: .1; }
-    .value-card__content { position: relative; z-index: 1; }
-    .value-card__title { font-size: 20px; font-weight: 900; color: var(--ior-blue); letter-spacing: -.01em; margin-bottom: 12px; }
-    .value-card__desc { font-size: 14px; color: var(--grey-700); line-height: 1.75; }
+    .value-card:hover .value-card__letter { color: rgba(91,180,229,.18); }
+    .value-card__content {
+      position: relative; z-index: 2; padding: 28px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .value-card__title { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: -.01em; }
+    .value-card__desc {
+      font-size: 14px; color: rgba(255,255,255,.0); line-height: 1.75;
+      max-height: 0; overflow: hidden;
+      transition: max-height .45s ease, color .35s ease;
+    }
+    .value-card:hover .value-card__desc { max-height: 120px; color: rgba(255,255,255,.8); }
+    .value-card__bar {
+      width: 0; height: 3px; background: var(--ior-sky);
+      transition: width .4s ease; margin-bottom: 4px;
+    }
+    .value-card:hover .value-card__bar { width: 40px; }
     /* ============================================================
-       INTERACTIVE HORIZONTAL TIMELINE
+       VERTICAL SCROLL TIMELINE
     ============================================================ */
     .timeline-section { padding: clamp(56px, 7vw, 96px) var(--pad-x); background: var(--ior-navy); }
     .timeline-section .eyebrow { color: var(--ior-sky); }
-    .timeline-section .section-heading { color: #fff; }
-    .timeline-track {
-      display: flex; align-items: center; gap: 0;
-      margin: 40px 0 0; position: relative; overflow-x: auto;
-      padding-bottom: 4px;
+    .vtimeline {
+      position: relative; margin-top: 56px;
+      max-width: 760px;
     }
-    .timeline-track::before {
-      content: ''; position: absolute; top: 20px; left: 0; right: 0;
-      height: 2px; background: rgba(255,255,255,.15); z-index: 0;
+    .vtimeline::before {
+      content: ''; position: absolute; left: 56px; top: 0; bottom: 0;
+      width: 2px; background: rgba(255,255,255,.12);
     }
-    .timeline-btn {
-      position: relative; z-index: 1; flex-shrink: 0;
-      background: none; border: none; cursor: pointer;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      padding: 0 32px 0 0; transition: opacity .2s;
+    .vtimeline__item {
+      display: grid; grid-template-columns: 112px 1fr;
+      gap: 0 32px; align-items: start;
+      padding-bottom: 56px; position: relative;
     }
-    .timeline-btn:last-child { padding-right: 0; }
-    .timeline-btn__dot {
+    .vtimeline__item:last-child { padding-bottom: 0; }
+    .vtimeline__year-col {
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: 4px;
+    }
+    .vtimeline__dot {
       width: 14px; height: 14px; border-radius: 50%;
-      background: rgba(255,255,255,.3); border: 2px solid rgba(255,255,255,.4);
-      transition: background .25s, border-color .25s, transform .25s;
+      background: var(--ior-sky); border: 3px solid var(--ior-navy);
+      box-shadow: 0 0 0 2px var(--ior-sky);
+      flex-shrink: 0; margin-bottom: 10px;
     }
-    .timeline-btn.is-active .timeline-btn__dot { background: var(--ior-sky); border-color: var(--ior-sky); transform: scale(1.4); }
-    .timeline-btn__year { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.5); white-space: nowrap; transition: color .25s; }
-    .timeline-btn.is-active .timeline-btn__year { color: var(--ior-sky); }
-    .timeline-content { margin-top: 40px; min-height: 120px; }
-    .timeline-panel { display: none; animation: tl-fade .4s ease; }
-    .timeline-panel.is-active { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start; }
-    @keyframes tl-fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    .timeline-panel__year { font-size: clamp(56px, 7vw, 80px); font-weight: 900; color: var(--ior-sky); opacity: .4; line-height: 1; letter-spacing: -.04em; }
-    .timeline-panel__title { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 10px; }
-    .timeline-panel__desc { font-size: 15px; color: rgba(255,255,255,.7); line-height: 1.75; }
+    .vtimeline__year {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 900;
+      color: var(--ior-sky); opacity: .35; line-height: 1;
+      letter-spacing: -.04em; writing-mode: horizontal-tb;
+    }
+    .vtimeline__body { padding-top: 2px; }
+    .vtimeline__title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .vtimeline__desc { font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.75; }
     /* ============================================================
        TRANSPORT CAPABILITY BAND (dark navy, 4 silo buttons)
     ============================================================ */
@@ -435,8 +452,8 @@
       .hub-grid { grid-template-columns: repeat(2,1fr); }
       .values-grid { grid-template-columns: 1fr; }
       .split { grid-template-columns: 1fr; gap: 40px; }
-      .timeline-panel.is-active { grid-template-columns: 1fr; gap: 16px; }
-      .timeline-panel__year { font-size: 48px; }
+      .vtimeline::before { left: 40px; }
+      .vtimeline__item { grid-template-columns: 80px 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links, .nav-ctas { display: none; }
@@ -599,12 +616,11 @@
   <nav class="quick-links-bar" aria-label="Explore IOR">
     <div class="quick-links-bar__inner">
       <span class="quick-links-bar__label">Explore IOR:</span>
-      <a href="09d_Case_Studies.html" class="quick-links-bar__link">Case Studies</a>
-      <a href="09a_Our_Leadershipv5.html" class="quick-links-bar__link">Our Leadership</a>
-      <a href="09b_Community.html" class="quick-links-bar__link">Community &amp; Giving Back</a>
-      <a href="09c_Sustainability.html" class="quick-links-bar__link">Sustainability, HSE &amp; ESG</a>
-      <a href="10_Careers_v2.html" class="quick-links-bar__link">Careers</a>
-      <a href="11c_News_Updates.html" class="quick-links-bar__link">News &amp; Updates</a>
+      <a href="02_Fuel_Solutions_Hub.html" class="quick-links-bar__link">Fuel Solutions</a>
+      <a href="07_Digital_Platformsv5.html" class="quick-links-bar__link">Digital Platforms</a>
+      <a href="08_Industries_v10.html" class="quick-links-bar__link">Industries We Serve</a>
+      <a href="09_About_IOR_v2.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">About IOR</a>
+      <a href="11a_Contact_Usv5.html" class="quick-links-bar__link">Support &amp; Contact</a>
     </div>
   </nav>
 
@@ -692,29 +708,38 @@
     <!-- BLOCK 5: OUR VALUES (I.O.R. Visual Grid) -->
     <section class="section-pad section-pad--grey" id="our-values" aria-labelledby="values-heading">
       <div class="inner">
-        <p class="eyebrow fade-up">What We Stand For</p>
+        <p class="eyebrow fade-up">WHAT WE STAND FOR</p>
         <h2 class="section-heading fade-up" id="values-heading">Driven by our values.</h2>
         <div class="values-grid">
           <!-- I: Innovation -->
           <div class="value-card fade-up">
+            <div class="value-card__bg" aria-hidden="true"><span>ASSET: IOR tech team / HyDip workshop (candid)</span></div>
+            <div class="value-card__overlay" aria-hidden="true"></div>
             <div class="value-card__letter" aria-hidden="true">I</div>
             <div class="value-card__content">
+              <div class="value-card__bar"></div>
               <div class="value-card__title">Innovation</div>
               <div class="value-card__desc">Finding Solutions. We work hard to understand our customers and our team. We challenge assumptions and improve every time. We experiment and find creative solutions.</div>
             </div>
           </div>
           <!-- O: Our Communities -->
           <div class="value-card fade-up fade-up--d1">
+            <div class="value-card__bg" aria-hidden="true"><span>ASSET: IOR staff at community event / regional customers (candid)</span></div>
+            <div class="value-card__overlay" aria-hidden="true"></div>
             <div class="value-card__letter" aria-hidden="true">O</div>
             <div class="value-card__content">
+              <div class="value-card__bar"></div>
               <div class="value-card__title">Our Communities</div>
               <div class="value-card__desc">Serving People. We make sure our team is respected, safe, and supported. We grow together with customers and suppliers. We take responsibility for our communities' success.</div>
             </div>
           </div>
           <!-- R: Reliability -->
           <div class="value-card fade-up fade-up--d2">
+            <div class="value-card__bg" aria-hidden="true"><span>ASSET: IOR road train delivering at dawn or dusk (candid)</span></div>
+            <div class="value-card__overlay" aria-hidden="true"></div>
             <div class="value-card__letter" aria-hidden="true">R</div>
             <div class="value-card__content">
+              <div class="value-card__bar"></div>
               <div class="value-card__title">Reliability</div>
               <div class="value-card__desc">Getting results. We communicate early, clearly, and directly. We say what we do. We always find a way.</div>
             </div>
@@ -723,69 +748,60 @@
       </div>
     </section>
 
-    <!-- BLOCK 6: OUR HISTORY (Interactive Horizontal Timeline) -->
+    <!-- BLOCK 6: OUR HISTORY (Vertical Scroll Timeline) -->
     <section class="timeline-section" id="our-history" aria-labelledby="history-heading">
       <div class="inner">
-        <p class="eyebrow fade-up">Our Heritage</p>
+        <p class="eyebrow fade-up">OUR HERITAGE</p>
         <h2 class="section-heading section-heading--white fade-up" id="history-heading">40 years of fuelling Australia.</h2>
-        <!-- Timeline track -->
-        <div class="timeline-track" role="tablist" aria-label="IOR history timeline">
-          <button class="timeline-btn is-active" data-panel="tl-1984" role="tab" aria-selected="true" aria-controls="tl-1984">
-            <div class="timeline-btn__dot"></div>
-            <span class="timeline-btn__year">1984</span>
-          </button>
-          <button class="timeline-btn" data-panel="tl-1996" role="tab" aria-selected="false" aria-controls="tl-1996">
-            <div class="timeline-btn__dot"></div>
-            <span class="timeline-btn__year">1996</span>
-          </button>
-          <button class="timeline-btn" data-panel="tl-2003" role="tab" aria-selected="false" aria-controls="tl-2003">
-            <div class="timeline-btn__dot"></div>
-            <span class="timeline-btn__year">2003</span>
-          </button>
-          <button class="timeline-btn" data-panel="tl-2014" role="tab" aria-selected="false" aria-controls="tl-2014">
-            <div class="timeline-btn__dot"></div>
-            <span class="timeline-btn__year">2014</span>
-          </button>
-          <button class="timeline-btn" data-panel="tl-2025" role="tab" aria-selected="false" aria-controls="tl-2025">
-            <div class="timeline-btn__dot"></div>
-            <span class="timeline-btn__year">2025</span>
-          </button>
-        </div>
-        <!-- Timeline panels -->
-        <div class="timeline-content">
-          <div class="timeline-panel is-active" id="tl-1984" role="tabpanel">
-            <div class="timeline-panel__year">1984</div>
-            <div>
-              <div class="timeline-panel__title">IOR is Founded</div>
-              <div class="timeline-panel__desc">Founded by John Bonner and Arthur Nommensen as Inland Oil Refinery, operating a small oil refinery in Eromanga.</div>
+        <div class="vtimeline">
+          <div class="vtimeline__item fade-up">
+            <div class="vtimeline__year-col">
+              <div class="vtimeline__dot"></div>
+              <div class="vtimeline__year">1984</div>
+            </div>
+            <div class="vtimeline__body">
+              <div class="vtimeline__title">IOR is Founded</div>
+              <div class="vtimeline__desc">Founded by John Bonner and Arthur Nommensen as Inland Oil Refinery, operating a small oil refinery in Eromanga.</div>
             </div>
           </div>
-          <div class="timeline-panel" id="tl-1996" role="tabpanel">
-            <div class="timeline-panel__year">1996</div>
-            <div>
-              <div class="timeline-panel__title">Leadership Expands</div>
-              <div class="timeline-panel__desc">Stewart Morland joins IOR, leading to the discovery of Inland Oil Field 7L99. Ross Mackenzie joins as General Manager.</div>
+          <div class="vtimeline__item fade-up fade-up--d1">
+            <div class="vtimeline__year-col">
+              <div class="vtimeline__dot"></div>
+              <div class="vtimeline__year">1996</div>
+            </div>
+            <div class="vtimeline__body">
+              <div class="vtimeline__title">Leadership Expands</div>
+              <div class="vtimeline__desc">Stewart Morland joins IOR, leading to the discovery of Inland Oil Field 7L99. Ross Mackenzie joins as General Manager.</div>
             </div>
           </div>
-          <div class="timeline-panel" id="tl-2003" role="tabpanel">
-            <div class="timeline-panel__year">2003</div>
-            <div>
-              <div class="timeline-panel__title">First Unmanned Diesel Stop</div>
-              <div class="timeline-panel__desc">IOR establishes the first unmanned 24/7 diesel stop in Winton, entering the long-haul transport industry.</div>
+          <div class="vtimeline__item fade-up fade-up--d2">
+            <div class="vtimeline__year-col">
+              <div class="vtimeline__dot"></div>
+              <div class="vtimeline__year">2003</div>
+            </div>
+            <div class="vtimeline__body">
+              <div class="vtimeline__title">First Unmanned Diesel Stop</div>
+              <div class="vtimeline__desc">IOR establishes the first unmanned 24/7 diesel stop in Winton, entering the long-haul transport industry.</div>
             </div>
           </div>
-          <div class="timeline-panel" id="tl-2014" role="tabpanel">
-            <div class="timeline-panel__year">2014</div>
-            <div>
-              <div class="timeline-panel__title">Aviation Expansion</div>
-              <div class="timeline-panel__desc">Aviation fuels are added to expand and strengthen services to remote and regional areas.</div>
+          <div class="vtimeline__item fade-up">
+            <div class="vtimeline__year-col">
+              <div class="vtimeline__dot"></div>
+              <div class="vtimeline__year">2014</div>
+            </div>
+            <div class="vtimeline__body">
+              <div class="vtimeline__title">Aviation Expansion</div>
+              <div class="vtimeline__desc">Aviation fuels are added to expand and strengthen services to remote and regional areas.</div>
             </div>
           </div>
-          <div class="timeline-panel" id="tl-2025" role="tabpanel">
-            <div class="timeline-panel__year">2025</div>
-            <div>
-              <div class="timeline-panel__title">Stonepeak Acquisition</div>
-              <div class="timeline-panel__desc">Stonepeak acquires a 75 percent interest, furthering IOR's position as a critical pillar of essential fuel distribution in Australia.</div>
+          <div class="vtimeline__item fade-up fade-up--d1">
+            <div class="vtimeline__year-col">
+              <div class="vtimeline__dot"></div>
+              <div class="vtimeline__year">2025</div>
+            </div>
+            <div class="vtimeline__body">
+              <div class="vtimeline__title">Stonepeak Acquisition</div>
+              <div class="vtimeline__desc">Stonepeak acquires a 75 percent interest, furthering IOR's position as a critical pillar of essential fuel distribution in Australia.</div>
             </div>
           </div>
         </div>
@@ -803,10 +819,9 @@
         <h2 class="capability-band__heading" id="capability-heading">The capacity to deliver. Anywhere.</h2>
         <p class="capability-band__body">With a massive fleet of modern trucks, IOR is prepared to go on roads many competitors cannot. We operate approximately 100 trucks and 300 trailers, fully accredited in mass, fatigue, and maintenance management.</p>
         <div class="silo-btns">
-          <a href="03_Ground_Fuels.html" class="silo-btn">Explore Ground Fuels &#x2192;</a>
-          <a href="04_Aviation.html" class="silo-btn">Explore Aviation &#x2192;</a>
-          <a href="05_Equipment_Infrastructure.html" class="silo-btn">Explore Equipment &amp; Infrastructure &#x2192;</a>
-          <a href="06_Supply_Trading.html" class="silo-btn">Explore Supply &amp; Trading &#x2192;</a>
+          <a href="02_Fuel_Solutions_Hub.html" class="silo-btn">Explore Fuel Solutions &#x2192;</a>
+          <a href="07_Digital_Platformsv5.html" class="silo-btn">Explore Digital Platforms &#x2192;</a>
+          <a href="06_Supply_Trading_v8.html" class="silo-btn">Explore Supply &amp; Trading &#x2192;</a>
         </div>
       </div>
     </section>
@@ -863,18 +878,18 @@
             <div class="hub-card__body">
               <p class="hub-card__cat">Careers</p>
               <h3 class="hub-card__title">Careers</h3>
-              <p class="hub-card__desc">Go far with IOR. Join our growing team.</p>
+              <p class="hub-card__desc">Go far with IOR. Join our growing team across Australia.</p>
               <span class="hub-card__link">Start Your Journey &#x2192;</span>
             </div>
           </a>
-          <a href="06_Supply_Trading_v8.html" class="hub-card fade-up fade-up--d2">
-            <div class="hub-card__img"><span>ASSET: Supply &amp; Trading photography (640x480px)</span></div>
+          <a href="11c_News_Updates.html" class="hub-card fade-up fade-up--d2">
+            <div class="hub-card__img"><span>ASSET: News / IOR site opening photography (640x480px)</span></div>
             <div class="hub-card__overlay"></div>
             <div class="hub-card__body">
-              <p class="hub-card__cat">Supply &amp; Trading</p>
-              <h3 class="hub-card__title">Supply &amp; Trading</h3>
-              <p class="hub-card__desc">Sovereign supply you can count on.</p>
-              <span class="hub-card__link">Explore Supply &amp; Trading &#x2192;</span>
+              <p class="hub-card__cat">News</p>
+              <h3 class="hub-card__title">News &amp; Updates</h3>
+              <p class="hub-card__desc">Stay up to date with the latest network expansions, company announcements, and industry insights.</p>
+              <span class="hub-card__link">Read Latest News &#x2192;</span>
             </div>
           </a>
         </div>
@@ -1062,19 +1077,7 @@
     }, { threshold: 0.4 });
     document.querySelectorAll('[data-counter]').forEach(el => counterObs.observe(el));
 
-    // ── Interactive horizontal timeline ───────────────────────
-    document.querySelectorAll('.timeline-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Deactivate all
-        document.querySelectorAll('.timeline-btn').forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-selected', 'false'); });
-        document.querySelectorAll('.timeline-panel').forEach(p => p.classList.remove('is-active'));
-        // Activate clicked
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-selected', 'true');
-        const panel = document.getElementById(btn.dataset.panel);
-        if (panel) panel.classList.add('is-active');
-      });
-    });
+    // ── Vertical timeline — no JS needed (pure scroll + fade-up) ─
   </script>
 </body>
 </html>
