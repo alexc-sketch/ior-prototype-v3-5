@@ -316,17 +316,17 @@
        Elementor: Section > Heading + 2x Inner Section (5-col)
        Tablet: 3 columns | Mobile: 2 columns
     ============================================================ */
-    .orgs-section { background: var(--grey-100); padding: clamp(56px,8vw,96px) var(--section-pad-x); }
     .orgs-section__inner { max-width: 1200px; margin: 0 auto; }
-    .orgs-section__header { margin-bottom: 40px; }
-    .orgs-section__subtitle { font-size: 15px; color: var(--grey-700); margin-top: 10px; max-width: 600px; line-height: 1.6; }
-    .orgs-category-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-blue); margin: 36px 0 16px; display: block; }
-    .orgs-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-    .org-tile { background: #fff; border: 1px solid var(--grey-200); padding: 24px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; transition: box-shadow .2s, border-color .2s; min-height: 110px; }
-    .org-tile:hover { box-shadow: 0 4px 20px rgba(3,85,163,.1); border-color: var(--ior-sky); }
-    .org-tile__logo { width: 80px; height: 48px; background: var(--grey-200); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--grey-700); }
-    .org-tile__name { font-size: 12px; font-weight: 600; color: var(--grey-900); line-height: 1.3; }
-    .orgs-cta-row { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .orgs-divider { border: none; border-top: 1px solid rgba(255,255,255,.12); margin: 48px 0; }
+    .orgs-section__header { margin-bottom: 32px; }
+    .orgs-section__subtitle { font-size: 15px; color: rgba(255,255,255,.65); margin-top: 10px; max-width: 600px; line-height: 1.6; }
+    .orgs-category-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-sky); margin: 28px 0 14px; display: block; }
+    .orgs-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .org-tile { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); padding: 20px 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; transition: background .2s, border-color .2s; min-height: 100px; }
+    .org-tile:hover { background: rgba(255,255,255,.1); border-color: var(--ior-sky); }
+    .org-tile__logo { width: 80px; height: 44px; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+    .org-tile__name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.8); line-height: 1.3; }
+    .orgs-cta-row { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
     @media (max-width: 900px) {
       .csr-teaser__inner { grid-template-columns: 1fr; }
       .csr-teaser__image { display: none; }
@@ -825,13 +825,17 @@
     </section>
 
     <!-- ============================================================
-         CSR TEASER
+         COMMUNITY COMMITMENT + ORGANISATIONS WE SUPPORT (combined)
          Elementor build notes:
-         - Section: Full-width, navy background (#0A2240), 96px top/bottom padding
-         - Inner Section: 2 columns (50/50), gap 56px, vertically centred
-         - Col 1: Heading widget (eyebrow as Text Editor), H2, Text, Icon List (3 items), Button
-         - Col 2: Image widget — asset TBC (4:3 ratio, 800x600px)
-         - Mobile: Col 2 hidden via Elementor responsive visibility
+         - Single Section: Full-width, navy background (#0A2240), 96px top/bottom padding
+         - Part 1 (top): Inner Section — 2 columns (50/50), gap 56px, vertically centred
+           · Col 1: Text Editor (eyebrow), Heading (H2), Text, Icon List (3 items), Button
+           · Col 2: Image widget — asset TBC (4:3, 800×600px); hide on mobile via responsive visibility
+         - Divider widget (1px, rgba white 12%)
+         - Part 2 (bottom): Heading (H3), Text Editor, two Inner Sections (5-col each)
+           · Each column: Image Box widget (logo + name)
+           · Tablet: 3 columns | Mobile: 2 columns (Elementor responsive column settings)
+         - CTA Button widget at bottom
     ============================================================ -->
     <section class="csr-teaser fade-up" aria-labelledby="csr-heading">
       <div class="csr-teaser__inner">
@@ -862,27 +866,16 @@
               </div>
             </div>
           </div>
-          <a href="09b_Community.html" class="btn btn--sky">Explore Community &amp; Giving Back <span class="btn__arrow" aria-hidden="true"></span></a>
         </div>
         <div class="csr-teaser__image" aria-hidden="true">[ ASSET: Community &amp; CSR image<br>Recommended: 800&times;600px ]</div>
       </div>
-    </section>
 
-    <!-- ============================================================
-         ORGANISATIONS WE SUPPORT
-         Elementor build notes:
-         - Section: Full-width, light grey background (#F5F6F8), 96px top/bottom padding
-         - Heading + Text Editor for intro
-         - Two Inner Sections (one per category), each with 5 equal columns
-         - Each column: Image Box widget (logo placeholder + name)
-         - Tablet breakpoint: 3 columns | Mobile: 2 columns (Elementor column responsive settings)
-         - CTA Button widget below second grid
-    ============================================================ -->
-    <section class="orgs-section fade-up" aria-labelledby="orgs-heading">
+      <!-- Divider -->
       <div class="orgs-section__inner">
+        <hr class="orgs-divider" aria-hidden="true">
         <div class="orgs-section__header">
-          <span class="eyebrow eyebrow--blue">Organisations We Support</span>
-          <h2 id="orgs-heading" style="font-size:clamp(24px,3vw,34px);font-weight:800;margin:10px 0 0;">Proud to support the organisations building Australia.</h2>
+          <span class="eyebrow eyebrow--sky">Organisations We Support</span>
+          <h3 id="orgs-heading" style="color:#fff;font-size:clamp(20px,2.5vw,28px);font-weight:800;margin:10px 0 0;">Proud to support the organisations building Australia.</h3>
           <p class="orgs-section__subtitle">IOR is a proud sponsor and member of the following not-for-profit, profit-for-purpose, and industry organisations.</p>
         </div>
 
@@ -935,7 +928,7 @@
         </div>
 
         <div class="orgs-cta-row">
-          <a href="09b_Community.html" class="btn btn--primary">Explore Community &amp; Giving Back <span class="btn__arrow" aria-hidden="true"></span></a>
+          <a href="09b_Community.html" class="btn btn--sky">Explore Community &amp; Giving Back <span class="btn__arrow" aria-hidden="true"></span></a>
         </div>
       </div>
     </section>
